@@ -1,0 +1,118 @@
+/* Button Base Styles */
+.qd-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+}
+
+.qd-button:focus {
+  outline: 2px solid #0a60ff;
+  outline-offset: 2px;
+}
+
+/* Size Variants */
+.qd-button--large {
+  padding: 12px 24px;
+  font-size: 16px;
+  line-height: 24px;
+  min-height: 48px;
+}
+
+.qd-button--small {
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 36px;
+}
+
+/* Primary Variant */
+.qd-button--primary {
+  background-color: #003d5c;
+  color: #ffffff;
+  border-color: #003d5c;
+}
+
+.qd-button--primary:hover:not(.qd-button--disabled) {
+  background-color: #002838;
+  border-color: #002838;
+}
+
+.qd-button--primary:active:not(.qd-button--disabled) {
+  background-color: #001419;
+  border-color: #001419;
+}
+
+/* Secondary Variant */
+.qd-button--secondary {
+  background-color: #d2ff26;
+  color: #003d5c;
+  border-color: #d2ff26;
+}
+
+.qd-button--secondary:hover:not(.qd-button--disabled) {
+  background-color: #bdeb00;
+  border-color: #bdeb00;
+}
+
+.qd-button--secondary:active:not(.qd-button--disabled) {
+  background-color: #a4cc00;
+  border-color: #a4cc00;
+}
+
+/* Ghost Light Variant */
+.qd-button--ghost-light {
+  background-color: transparent;
+  color: #003d5c;
+  border-color: #a9b5bd;
+}
+
+.qd-button--ghost-light:hover:not(.qd-button--disabled) {
+  background-color: #f3f4f5;
+  border-color: #003d5c;
+}
+
+.qd-button--ghost-light:active:not(.qd-button--disabled) {
+  background-color: #e6e8ea;
+  border-color: #002838;
+}
+
+/* Ghost Dark Variant */
+.qd-button--ghost-dark {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.qd-button--ghost-dark:hover:not(.qd-button--disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.qd-button--ghost-dark:active:not(.qd-button--disabled) {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Disabled State */
+.qd-button--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Icon Spacing */
+.qd-button__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.qd-button__text {
+  display: inline-flex;
+  align-items: center;
+}

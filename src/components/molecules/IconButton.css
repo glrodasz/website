@@ -1,0 +1,33 @@
+/* IconButton Molecule */
+.qd-icon-button {
+  position: relative;
+}
+
+.qd-icon-button__content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qd-icon-button__content--right {
+  flex-direction: row-reverse;
+}
+
+.qd-icon-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.qd-icon-button__label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Size adjustments for small buttons */
+.qd-button--small .qd-icon-button__icon {
+  width: 16px;
+  height: 16px;
+}

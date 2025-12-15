@@ -1,0 +1,76 @@
+/* Typography Base */
+.qd-typography {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #003d5c;
+}
+
+/* Display Text */
+.qd-typography--display {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+/* Heading Text */
+.qd-typography--heading {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+}
+
+/* Title Text */
+.qd-typography--title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+/* Subtitle Text */
+.qd-typography--subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+/* Paragraph Text */
+.qd-typography--paragraph {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Label Text */
+.qd-typography--label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+/* Button Text */
+.qd-typography--button {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .qd-typography--display {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .qd-typography--heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .qd-typography--title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}

@@ -1,49 +1,57 @@
+@import '../../tokens/design-tokens.css';
+
 /* Typography Base */
 .qd-typography {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: #003d5c;
+  font-family: var(--global-tokens--typography--font-family--inter), system-ui, -apple-system, sans-serif;
+  color: var(--system-tokens--colors--primary--principal);
 }
 
 /* Display Text */
 .qd-typography--display {
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
+  font-family: var(--components-tokens--typography--styles--display--large--font-family);
+  font-size: var(--components-tokens--typography--styles--display--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--display--large--font-weight);
+  line-height: var(--components-tokens--typography--styles--display--large--line-height);
   letter-spacing: -0.02em;
 }
 
 /* Heading Text */
 .qd-typography--heading {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 40px;
+  font-family: var(--components-tokens--typography--styles--heading--large--font-family);
+  font-size: var(--components-tokens--typography--styles--heading--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--heading--large--font-weight);
+  line-height: var(--components-tokens--typography--styles--heading--large--line-height);
   letter-spacing: -0.01em;
 }
 
 /* Title Text */
 .qd-typography--title {
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 32px;
+  font-family: var(--components-tokens--typography--styles--title--large--font-family);
+  font-size: var(--components-tokens--typography--styles--title--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--title--large--font-weight);
+  line-height: var(--components-tokens--typography--styles--title--large--line-height);
 }
 
 /* Subtitle Text */
 .qd-typography--subtitle {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 28px;
+  font-family: var(--components-tokens--typography--styles--subtitle--large--font-family);
+  font-size: var(--components-tokens--typography--styles--subtitle--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--subtitle--large--font-weight);
+  line-height: var(--components-tokens--typography--styles--subtitle--large--line-height);
 }
 
 /* Paragraph Text */
 .qd-typography--paragraph {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  font-family: var(--components-tokens--typography--styles--paragraph--large--font-family);
+  font-size: var(--components-tokens--typography--styles--paragraph--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--paragraph--large--font-weight-regular);
+  line-height: var(--components-tokens--typography--styles--paragraph--large--line-height);
 }
 
 /* Label Text */
 .qd-typography--label {
+  font-family: var(--global-tokens--typography--font-family--inter);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -51,6 +59,7 @@
 
 /* Button Text */
 .qd-typography--button {
+  font-family: var(--global-tokens--typography--font-family--inter);
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -60,17 +69,17 @@
 /* Responsive Typography */
 @media (max-width: 768px) {
   .qd-typography--display {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: var(--components-tokens--typography--styles--display--small--font-size);
+    line-height: var(--components-tokens--typography--styles--display--small--line-height);
   }
 
   .qd-typography--heading {
-    font-size: 28px;
-    line-height: 36px;
+    font-size: var(--components-tokens--typography--styles--heading--small--font-size);
+    line-height: var(--components-tokens--typography--styles--heading--small--line-height);
   }
 
   .qd-typography--title {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: var(--components-tokens--typography--styles--title--small--font-size);
+    line-height: var(--components-tokens--typography--styles--title--small--line-height);
   }
 }

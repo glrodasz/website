@@ -1,103 +1,115 @@
+@import '../../tokens/design-tokens.css';
+
 /* Button Base Styles */
 .qd-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 500;
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  border-radius: 8px;
 }
 
 .qd-button:focus {
-  outline: 2px solid #0a60ff;
+  outline: 2px solid var(--global-tokens--colors--schemas--frozen-ribon--blue-ribon--400);
   outline-offset: 2px;
 }
 
 /* Size Variants */
 .qd-button--large {
-  padding: 12px 24px;
+  gap: var(--components-tokens--button--spacing--large--gap);
+  padding: var(--components-tokens--button--spacing--large--vertical) var(--components-tokens--button--spacing--large--horizontal);
   font-size: 16px;
   line-height: 24px;
   min-height: 48px;
+  border-radius: var(--components-tokens--button--border-radius--large);
 }
 
 .qd-button--small {
-  padding: 8px 16px;
+  gap: var(--components-tokens--button--spacing--small--gap);
+  padding: var(--components-tokens--button--spacing--small--vertical) var(--components-tokens--button--spacing--small--horizontal);
   font-size: 14px;
   line-height: 20px;
   min-height: 36px;
+  border-radius: var(--components-tokens--button--border-radius--small);
 }
 
 /* Primary Variant */
 .qd-button--primary {
-  background-color: #003d5c;
-  color: #ffffff;
-  border-color: #003d5c;
+  background-color: var(--components-tokens--button--background-color--primary--default);
+  color: var(--components-tokens--button--text-color--primary--default);
+  border-color: var(--components-tokens--button--background-color--primary--default);
 }
 
 .qd-button--primary:hover:not(.qd-button--disabled) {
-  background-color: #002838;
-  border-color: #002838;
+  background-color: var(--components-tokens--button--background-color--primary--hover);
+  color: var(--components-tokens--button--text-color--primary--hover);
+  border-color: var(--components-tokens--button--background-color--primary--hover);
 }
 
 .qd-button--primary:active:not(.qd-button--disabled) {
-  background-color: #001419;
-  border-color: #001419;
+  background-color: var(--components-tokens--button--background-color--primary--acctived);
+  color: var(--components-tokens--button--text-color--primary--actived);
+  border-color: var(--components-tokens--button--background-color--primary--acctived);
 }
 
 /* Secondary Variant */
 .qd-button--secondary {
-  background-color: #d2ff26;
-  color: #003d5c;
-  border-color: #d2ff26;
+  background-color: var(--components-tokens--button--background-color--secondary--default);
+  color: var(--components-tokens--button--text-color--secondary--default);
+  border-color: var(--components-tokens--button--border-color--secondary--default);
 }
 
 .qd-button--secondary:hover:not(.qd-button--disabled) {
-  background-color: #bdeb00;
-  border-color: #bdeb00;
+  background-color: var(--components-tokens--button--background-color--secondary--hover);
+  color: var(--components-tokens--button--text-color--secondary--hover);
+  border-color: var(--components-tokens--button--background-color--secondary--hover);
 }
 
 .qd-button--secondary:active:not(.qd-button--disabled) {
-  background-color: #a4cc00;
-  border-color: #a4cc00;
+  background-color: var(--components-tokens--button--background-color--secondary--acctived);
+  color: var(--components-tokens--button--text-color--secondary--actived);
+  border-color: var(--components-tokens--button--background-color--secondary--acctived);
 }
 
 /* Ghost Light Variant */
 .qd-button--ghost-light {
-  background-color: transparent;
-  color: #003d5c;
-  border-color: #a9b5bd;
+  background-color: var(--components-tokens--button--background-color--ghost-light--default);
+  color: var(--components-tokens--button--text-color--ghost-light--default);
+  border-color: var(--components-tokens--button--border-color--ghost-light--default);
 }
 
 .qd-button--ghost-light:hover:not(.qd-button--disabled) {
-  background-color: #f3f4f5;
-  border-color: #003d5c;
+  background-color: var(--components-tokens--button--background-color--ghost-light--hover);
+  color: var(--components-tokens--button--text-color--ghost-light--hover);
+  border-color: var(--components-tokens--button--border-color--ghost-light--default);
 }
 
 .qd-button--ghost-light:active:not(.qd-button--disabled) {
-  background-color: #e6e8ea;
-  border-color: #002838;
+  background-color: var(--components-tokens--button--background-color--ghost-light--acctived);
+  color: var(--components-tokens--button--text-color--ghost-light--actived);
+  border-color: var(--components-tokens--button--border-color--ghost-light--default);
 }
 
 /* Ghost Dark Variant */
 .qd-button--ghost-dark {
-  background-color: transparent;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--components-tokens--button--background-color--ghost-dark--default);
+  color: var(--components-tokens--button--text-color--ghost-dark--default);
+  border-color: var(--components-tokens--button--border-color--ghost-dark--default);
 }
 
 .qd-button--ghost-dark:hover:not(.qd-button--disabled) {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--components-tokens--button--background-color--ghost-dark--hover);
+  color: var(--components-tokens--button--text-color--ghost-dark--hover);
+  border-color: var(--components-tokens--button--border-color--ghost-dark--default);
 }
 
 .qd-button--ghost-dark:active:not(.qd-button--disabled) {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--components-tokens--button--background-color--ghost-dark--acctived);
+  color: var(--components-tokens--button--text-color--ghost-dark--actived);
+  border-color: var(--components-tokens--button--border-color--ghost-dark--default);
 }
 
 /* Disabled State */

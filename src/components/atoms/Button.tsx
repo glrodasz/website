@@ -1,5 +1,4 @@
 import React from 'react';
-import { getColor } from '../../tokens';
 import './Button.css';
 
 export interface ButtonProps {

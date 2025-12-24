@@ -1,3 +1,5 @@
+@import '../../tokens/design-tokens.css';
+
 /* IconButton Molecule */
 .qd-icon-button {
   position: relative;
@@ -6,7 +8,7 @@
 .qd-icon-button__content {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--components-tokens--button--spacing--large--gap);
 }
 
 .qd-icon-button__content--right {
@@ -17,8 +19,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: var(--components-tokens--button--sizing--icon--large);
+  height: var(--components-tokens--button--sizing--icon--large);
 }
 
 .qd-icon-button__label {
@@ -28,6 +30,10 @@
 
 /* Size adjustments for small buttons */
 .qd-button--small .qd-icon-button__icon {
-  width: 16px;
-  height: 16px;
+  width: var(--components-tokens--button--sizing--icon--small);
+  height: var(--components-tokens--button--sizing--icon--small);
+}
+
+.qd-button--small .qd-icon-button__content {
+  gap: var(--components-tokens--button--spacing--small--gap);
 }

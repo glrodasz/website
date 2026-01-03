@@ -1,6 +1,6 @@
 /**
  * Build Script for Design Tokens
- * Generates CSS variables from design-tokens.tokens.json
+ * Generates CSS variables from W3C DTCG design token JSON files
  */
 
 import fs from 'fs';
@@ -10,24 +10,54 @@ import { generateCSSVariables, generateStats } from './generator.js';
 
 async function buildTokens() {
   try {
-    console.log('🔧 Building design tokens...\n');
+    console.log('🔧 Building design tokens from W3C DTCG format...\n');
 
-    // Read the design tokens JSON file
-    const tokensPath = path.join(process.cwd(), 'design-tokens.tokens.json');
-    console.log(`📖 Reading tokens from: ${tokensPath}`);
+    // Read the three W3C DTCG token files
+    const tokensDir = path.join(process.cwd(), 'src', 'tokens', 'json');
 
-    const designTokensContent = fs.readFileSync(tokensPath, 'utf-8');
-    const designTokens = JSON.parse(designTokensContent);
+    const globalPath = path.join(tokensDir, 'global.json');
+    const systemPath = path.join(tokensDir, 'system.json');
+    const componentsPath = path.join(tokensDir, 'components.json');
 
-    // Parse tokens
+    console.log(`📖 Reading tokens from: ${tokensDir}`);
+    console.log(`   - global.json`);
+    console.log(`   - system.json`);
+    console.log(`   - components.json\n`);
+
+    // Verify files exist
+    if (!fs.existsSync(globalPath)) {
+      throw new Error(`Global tokens file not found: ${globalPath}`);
+    }
+    if (!fs.existsSync(systemPath)) {
+      throw new Error(`System tokens file not found: ${systemPath}`);
+    }
+    if (!fs.existsSync(componentsPath)) {
+      throw new Error(`Component tokens file not found: ${componentsPath}`);
+    }
+
+    const globalTokens = JSON.parse(fs.readFileSync(globalPath, 'utf-8'));
+    const systemTokens = JSON.parse(fs.readFileSync(systemPath, 'utf-8'));
+    const componentTokens = JSON.parse(fs.readFileSync(componentsPath, 'utf-8'));
+
+    // Parse each file with appropriate level wrapper and level tag
     console.log('⚙️  Parsing design tokens...');
-    const tokenMap = parseTokens(designTokens);
-    console.log(`   Found ${Object.keys(tokenMap).length} tokens`);
+    const globalMap = parseTokens(globalTokens, 'global tokens', 'global');
+    console.log(`   ✓ Global: ${Object.keys(globalMap).length} tokens`);
+
+    const systemMap = parseTokens(systemTokens, 'system tokens', 'system');
+    console.log(`   ✓ System: ${Object.keys(systemMap).length} tokens`);
+
+    const componentMap = parseTokens(componentTokens, 'components tokens', 'component');
+    console.log(`   ✓ Component: ${Object.keys(componentMap).length} tokens\n`);
+
+    // Merge all token maps
+    const tokenMap = { ...globalMap, ...systemMap, ...componentMap };
+    console.log(`📊 Total tokens found: ${Object.keys(tokenMap).length}\n`);
 
     // Resolve references
     console.log('🔗 Resolving token references...');
     const resolvedTokens = resolveReferences(tokenMap);
-    console.log(`   Resolved ${Object.keys(resolvedTokens).length} tokens`);
+    console.log(`   ✓ Resolved ${Object.keys(resolvedTokens).length} tokens\n`);
 
     // Generate CSS
     console.log('🎨 Generating CSS variables...');

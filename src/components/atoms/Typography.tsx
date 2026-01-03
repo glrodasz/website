@@ -18,6 +18,10 @@ export interface TypographyProps {
    * Additional CSS class
    */
   className?: string;
+  /**
+   * Inline styles
+   */
+  style?: React.CSSProperties;
 }
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -25,9 +29,10 @@ export const Typography: React.FC<TypographyProps> = ({
   children,
   as,
   className = '',
+  style,
 }) => {
   // Auto-select HTML element based on variant if not specified
-  const defaultElement: Record<string, keyof JSX.IntrinsicElements> = {
+  const defaultElement: Record<string, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label'> = {
     display: 'h1',
     heading: 'h2',
     title: 'h3',
@@ -37,12 +42,12 @@ export const Typography: React.FC<TypographyProps> = ({
     button: 'span',
   };
 
-  const Element = as || defaultElement[variant] || 'p';
+  const Element = (as || defaultElement[variant] || 'p') as React.ElementType;
   const classNames = ['qd-typography', `qd-typography--${variant}`, className]
     .filter(Boolean)
     .join(' ');
 
-  return <Element className={classNames}>{children}</Element>;
+  return <Element className={classNames} style={style}>{children}</Element>;
 };
 
 export default Typography;

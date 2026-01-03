@@ -55,7 +55,7 @@ export function sanitizeTokenName(path: string): string {
 
 /**
  * Traverse nested object and build flat token map
- * Supports both legacy format and W3C DTCG format
+ * Supports W3C DTCG format
  */
 export function parseTokens(
   obj: any,
@@ -102,17 +102,6 @@ export function parseTokens(
           level: level,
           isReference: isReference,
           referencePath: referencePath
-        };
-      }
-      // Legacy format support (has type and value without $)
-      else if (current.type && current.value !== undefined && !current.$type) {
-        tokenMap[path] = {
-          type: current.type,
-          value: current.value,
-          extensions: current.extensions,
-          level: level,
-          isReference: String(current.value).startsWith('{') && String(current.value).endsWith('}'),
-          referencePath: undefined
         };
       }
       // Continue traversing (including mode definition containers)
@@ -207,8 +196,7 @@ function generateCssVarName(path: string): string {
 }
 
 /**
- * Resolve token references recursively
- * Handles both legacy {reference} syntax and W3C DTCG aliasData
+ * Resolve token references using W3C DTCG aliasData
  */
 export function resolveReferences(tokenMap: TokenMap): ResolvedTokenMap {
   const resolvedMap: ResolvedTokenMap = {};
@@ -229,61 +217,31 @@ export function resolveReferences(tokenMap: TokenMap): ResolvedTokenMap {
     }
   }
 
-  // Second pass: Resolve references
+  // Second pass: Resolve references via aliasData
   for (const path in tokenMap) {
     const token = tokenMap[path];
 
-    if (token.isReference) {
-      // W3C DTCG format - aliasData reference
-      if (token.referencePath) {
-        const targetPath = findReferencedPath(token.referencePath, nameToPath, resolvedMap);
+    if (token.isReference && token.referencePath) {
+      const targetPath = findReferencedPath(token.referencePath, nameToPath, resolvedMap);
 
-        if (targetPath && resolvedMap[targetPath]) {
-          resolvedMap[path] = {
-            originalPath: path,
-            cssVarName: generateCssVarName(path),
-            type: token.type,
-            resolvedValue: resolvedMap[targetPath].resolvedValue,
-            level: token.level
-          };
-        } else {
-          console.warn(`⚠️  Could not resolve reference: ${path} -> ${token.referencePath}`);
-          // Fallback: use the current value as-is
-          resolvedMap[path] = {
-            originalPath: path,
-            cssVarName: generateCssVarName(path),
-            type: token.type,
-            resolvedValue: String(token.value),
-            level: token.level
-          };
-        }
-      }
-      // Legacy format - {reference} syntax
-      else {
-        const value = String(token.value);
-        if (value.startsWith('{') && value.endsWith('}')) {
-          const referencePath = value.slice(1, -1);
-          const targetToken = tokenMap[referencePath];
-
-          if (targetToken && resolvedMap[referencePath]) {
-            resolvedMap[path] = {
-              originalPath: path,
-              cssVarName: generateCssVarName(path),
-              type: token.type,
-              resolvedValue: resolvedMap[referencePath].resolvedValue,
-              level: token.level
-            };
-          } else {
-            console.warn(`⚠️  Could not resolve legacy reference: ${path} -> ${referencePath}`);
-            resolvedMap[path] = {
-              originalPath: path,
-              cssVarName: generateCssVarName(path),
-              type: token.type,
-              resolvedValue: value,
-              level: token.level
-            };
-          }
-        }
+      if (targetPath && resolvedMap[targetPath]) {
+        resolvedMap[path] = {
+          originalPath: path,
+          cssVarName: generateCssVarName(path),
+          type: token.type,
+          resolvedValue: resolvedMap[targetPath].resolvedValue,
+          level: token.level
+        };
+      } else {
+        console.warn(`⚠️  Could not resolve reference: ${path} -> ${token.referencePath}`);
+        // Fallback: use the current value as-is
+        resolvedMap[path] = {
+          originalPath: path,
+          cssVarName: generateCssVarName(path),
+          type: token.type,
+          resolvedValue: String(token.value),
+          level: token.level
+        };
       }
     }
   }

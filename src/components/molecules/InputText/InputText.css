@@ -1,0 +1,121 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-input-text__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--system-tokens--spacing--xs, 8px);
+}
+
+.qd-input-text__label {
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--system-tokens--colors--foregrounds--primary);
+  line-height: 1.4;
+}
+
+.qd-input-text__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--system-tokens--colors--borders--neutral);
+  border-radius: var(--system-tokens--border-radius--sm);
+  background-color: var(--system-tokens--colors--backgrounds--primary);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Size variants */
+.qd-input-text__container--large {
+  height: 48px;
+  padding: 0 var(--system-tokens--spacing--md, 16px);
+}
+
+.qd-input-text__container--small {
+  height: 40px;
+  padding: 0 var(--system-tokens--spacing--sm, 12px);
+}
+
+/* Container with icon */
+.qd-input-text__container--with-icon.qd-input-text__container--large {
+  padding-left: var(--system-tokens--spacing--ml, 48px);
+}
+
+.qd-input-text__container--with-icon.qd-input-text__container--small {
+  padding-left: var(--system-tokens--spacing--lg, 40px);
+}
+
+/* Icon */
+.qd-input-text__icon {
+  position: absolute;
+  left: var(--system-tokens--spacing--md, 16px);
+  width: 20px;
+  height: 20px;
+  color: var(--system-tokens--colors--foregrounds--secondary);
+  pointer-events: none;
+}
+
+.qd-input-text__container--small .qd-input-text__icon {
+  left: var(--system-tokens--spacing--sm, 12px);
+  width: 16px;
+  height: 16px;
+}
+
+/* Input field */
+.qd-input-text__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  font-size: 16px;
+  color: var(--system-tokens--colors--foregrounds--primary);
+  width: 100%;
+}
+
+.qd-input-text__container--small .qd-input-text__input {
+  font-size: 14px;
+}
+
+.qd-input-text__input::placeholder {
+  color: var(--system-tokens--colors--foregrounds--disabled);
+}
+
+/* Focus state */
+.qd-input-text__container:focus-within {
+  border-color: var(--system-tokens--colors--primary--principal);
+  box-shadow: 0 0 0 3px var(--system-tokens--colors--primary--off);
+}
+
+/* Hover state */
+.qd-input-text__container:hover:not(.qd-input-text__container--disabled):not(:focus-within) {
+  border-color: var(--system-tokens--colors--borders--strong);
+}
+
+/* Error state */
+.qd-input-text__container--error {
+  border-color: var(--system-tokens--colors--danger--high);
+}
+
+.qd-input-text__container--error:focus-within {
+  border-color: var(--system-tokens--colors--danger--high);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.qd-input-text__error-message {
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  font-size: 12px;
+  color: var(--system-tokens--colors--danger--high);
+  line-height: 1.4;
+}
+
+/* Disabled state */
+.qd-input-text__container--disabled {
+  background-color: var(--system-tokens--colors--backgrounds--secondary);
+  border-color: var(--system-tokens--colors--borders--disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.qd-input-text__container--disabled .qd-input-text__input {
+  cursor: not-allowed;
+}

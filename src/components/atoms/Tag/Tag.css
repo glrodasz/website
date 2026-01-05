@@ -1,0 +1,124 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--system-tokens--spacing--xs, 8px);
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  font-weight: 500;
+  border-radius: var(--system-tokens--border-radius--full, 100px);
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Size variants */
+.qd-tag--large {
+  padding: var(--system-tokens--spacing--xs, 8px) var(--system-tokens--spacing--md, 16px);
+  font-size: 14px;
+  height: 32px;
+}
+
+.qd-tag--small {
+  padding: var(--system-tokens--spacing--xxs, 4px) var(--system-tokens--spacing--sm, 12px);
+  font-size: 12px;
+  height: 24px;
+}
+
+.qd-tag__text {
+  line-height: 1;
+}
+
+.qd-tag__close {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.qd-tag__close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.qd-tag--outlined .qd-tag__close:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Discovery variant */
+.qd-tag--discovery.qd-tag--filled {
+  background-color: var(--system-tokens--colors--primary--principal);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+}
+
+.qd-tag--discovery.qd-tag--outlined {
+  background-color: transparent;
+  color: var(--system-tokens--colors--primary--principal);
+  border-color: var(--system-tokens--colors--primary--principal);
+}
+
+/* Info variant */
+.qd-tag--info.qd-tag--filled {
+  background-color: var(--system-tokens--colors--info--high);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+}
+
+.qd-tag--info.qd-tag--outlined {
+  background-color: transparent;
+  color: var(--system-tokens--colors--info--high);
+  border-color: var(--system-tokens--colors--info--high);
+}
+
+/* Success variant */
+.qd-tag--success.qd-tag--filled {
+  background-color: var(--system-tokens--colors--success--high);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+}
+
+.qd-tag--success.qd-tag--outlined {
+  background-color: transparent;
+  color: var(--system-tokens--colors--success--high);
+  border-color: var(--system-tokens--colors--success--high);
+}
+
+/* Warning variant */
+.qd-tag--warning.qd-tag--filled {
+  background-color: var(--system-tokens--colors--warning--high);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+}
+
+.qd-tag--warning.qd-tag--outlined {
+  background-color: transparent;
+  color: var(--system-tokens--colors--warning--high);
+  border-color: var(--system-tokens--colors--warning--high);
+}
+
+/* Error variant */
+.qd-tag--error.qd-tag--filled {
+  background-color: var(--system-tokens--colors--danger--high);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+}
+
+.qd-tag--error.qd-tag--outlined {
+  background-color: transparent;
+  color: var(--system-tokens--colors--danger--high);
+  border-color: var(--system-tokens--colors--danger--high);
+}
+
+/* Neutral variant */
+.qd-tag--neutral.qd-tag--filled {
+  background-color: var(--system-tokens--colors--neutral--principal);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+}
+
+.qd-tag--neutral.qd-tag--outlined {
+  background-color: transparent;
+  color: var(--system-tokens--colors--neutral--principal);
+  border-color: var(--system-tokens--colors--neutral--principal);
+}

@@ -1,0 +1,76 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--system-tokens--spacing--sm, 12px);
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: default;
+}
+
+.qd-logo--clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.qd-logo--clickable:hover {
+  opacity: 0.8;
+}
+
+.qd-logo--clickable:focus {
+  outline: 2px solid var(--system-tokens--colors--primary--principal);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Logo icon/mark */
+.qd-logo__icon {
+  flex-shrink: 0;
+}
+
+.qd-logo--large .qd-logo__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.qd-logo--small .qd-logo__icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Logo text */
+.qd-logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.qd-logo__text-quantum {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.qd-logo__text-design {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Color variants */
+.qd-logo--default {
+  color: var(--system-tokens--colors--primary--principal);
+}
+
+.qd-logo--contrast {
+  color: var(--system-tokens--colors--complementary--principal);
+}
+
+/* SVG elements color inheritance */
+.qd-logo__circle,
+.qd-logo__tail {
+  color: inherit;
+}

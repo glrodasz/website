@@ -1,0 +1,70 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-number-button {
+  /* Reset button styles */
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  transition: all 0.2s ease-in-out;
+
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--system-tokens--border-radius--sm);
+  font-weight: 500;
+
+  /* Default state colors - using system tokens as fallback */
+  background-color: var(--system-tokens--colors--backgrounds--secondary);
+  color: var(--system-tokens--colors--foregrounds--primary);
+  border: 1px solid var(--system-tokens--colors--borders--neutral);
+}
+
+/* Size variants */
+.qd-number-button--large {
+  min-width: var(--system-tokens--sizing--ml, 48px);
+  height: var(--system-tokens--sizing--ml, 48px);
+  padding: var(--system-tokens--spacing--sm, 12px);
+  font-size: 16px;
+}
+
+.qd-number-button--small {
+  min-width: var(--system-tokens--sizing--md, 32px);
+  height: var(--system-tokens--sizing--md, 32px);
+  padding: var(--system-tokens--spacing--xs, 8px);
+  font-size: 14px;
+}
+
+/* Hover state */
+.qd-number-button:hover:not(.qd-number-button--disabled):not(.qd-number-button--selected) {
+  background-color: var(--system-tokens--colors--backgrounds--tertiary);
+  border-color: var(--system-tokens--colors--primary--subtle);
+}
+
+/* Focus state */
+.qd-number-button:focus {
+  outline: 2px solid var(--system-tokens--colors--primary--principal);
+  outline-offset: 2px;
+}
+
+/* Selected state */
+.qd-number-button--selected {
+  background-color: var(--system-tokens--colors--primary--principal);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+  border-color: var(--system-tokens--colors--primary--principal);
+}
+
+.qd-number-button--selected:hover:not(.qd-number-button--disabled) {
+  background-color: var(--system-tokens--colors--primary--high);
+  border-color: var(--system-tokens--colors--primary--high);
+}
+
+/* Disabled state */
+.qd-number-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--system-tokens--colors--backgrounds--secondary);
+  color: var(--system-tokens--colors--foregrounds--disabled);
+  border-color: var(--system-tokens--colors--borders--disabled);
+}

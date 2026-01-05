@@ -1,0 +1,49 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Size variants using system sizing tokens */
+.qd-icon--xxs {
+  width: var(--system-tokens--sizing--xxs);
+  height: var(--system-tokens--sizing--xxs);
+}
+
+.qd-icon--xs {
+  width: var(--system-tokens--sizing--xs);
+  height: var(--system-tokens--sizing--xs);
+}
+
+.qd-icon--sm {
+  width: var(--system-tokens--sizing--sm);
+  height: var(--system-tokens--sizing--sm);
+}
+
+.qd-icon--md {
+  width: var(--system-tokens--sizing--md);
+  height: var(--system-tokens--sizing--md);
+}
+
+.qd-icon--ml {
+  width: var(--system-tokens--sizing--ml);
+  height: var(--system-tokens--sizing--ml);
+}
+
+.qd-icon--lg {
+  width: var(--system-tokens--sizing--lg);
+  height: var(--system-tokens--sizing--lg);
+}
+
+.qd-icon--xl {
+  width: var(--system-tokens--sizing--xl);
+  height: var(--system-tokens--sizing--xl);
+}
+
+.qd-icon--xxl {
+  width: var(--system-tokens--sizing--xxl);
+  height: var(--system-tokens--sizing--xxl);
+}

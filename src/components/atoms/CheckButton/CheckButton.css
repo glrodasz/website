@@ -1,0 +1,80 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-check-button {
+  /* Reset button styles */
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  transition: all 0.2s ease-in-out;
+
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Circular button */
+  flex-shrink: 0;
+
+  /* Default state colors */
+  background-color: var(--system-tokens--colors--backgrounds--secondary);
+  color: var(--system-tokens--colors--foregrounds--primary);
+  border: 2px solid var(--system-tokens--colors--borders--neutral);
+}
+
+/* Size variants */
+.qd-check-button--large {
+  width: var(--system-tokens--sizing--ml, 48px);
+  height: var(--system-tokens--sizing--ml, 48px);
+}
+
+.qd-check-button--small {
+  width: var(--system-tokens--sizing--md, 32px);
+  height: var(--system-tokens--sizing--md, 32px);
+}
+
+/* Checkmark icon */
+.qd-check-button__checkmark {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Label (if provided) */
+.qd-check-button__label {
+  margin-left: var(--system-tokens--spacing--xs, 8px);
+}
+
+/* Hover state */
+.qd-check-button:hover:not(.qd-check-button--disabled):not(.qd-check-button--active) {
+  background-color: var(--system-tokens--colors--backgrounds--tertiary);
+  border-color: var(--system-tokens--colors--primary--subtle);
+}
+
+/* Focus state */
+.qd-check-button:focus {
+  outline: 2px solid var(--system-tokens--colors--primary--principal);
+  outline-offset: 2px;
+}
+
+/* Active/completed state */
+.qd-check-button--active {
+  background-color: var(--system-tokens--colors--success--high);
+  color: var(--system-tokens--colors--foregrounds--contrast);
+  border-color: var(--system-tokens--colors--success--high);
+}
+
+.qd-check-button--active:hover:not(.qd-check-button--disabled) {
+  background-color: var(--system-tokens--colors--success--principal);
+  border-color: var(--system-tokens--colors--success--principal);
+}
+
+/* Disabled state */
+.qd-check-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--system-tokens--colors--backgrounds--secondary);
+  color: var(--system-tokens--colors--foregrounds--disabled);
+  border-color: var(--system-tokens--colors--borders--disabled);
+}

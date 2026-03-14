@@ -1,0 +1,254 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #2e2e2e;
+  padding: 0 24px;
+}
+
+.nav__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+}
+
+.nav__logo {
+  font-family: 'Syne', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #F5E642;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav__logo:hover {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__links li {
+  position: relative;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  background-color: #F5E642;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.nav__link:hover {
+  opacity: 0.8;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.nav__link.active {
+  background-color: #F5E642;
+  color: #1a1a1a;
+  box-shadow: 0 0 0 2px #ffffff40;
+}
+
+/* Dropdown */
+.nav__dropdown-btn {
+  background-color: #F5E642;
+  color: #1a1a1a;
+}
+
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background-color: #2e2e2e;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 6px;
+  list-style: none;
+  margin: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+}
+
+.nav__dropdown:hover .nav__dropdown-menu,
+.nav__dropdown:focus-within .nav__dropdown-menu {
+  display: block;
+}
+
+.nav__dropdown-menu li a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.nav__dropdown-menu li a:hover {
+  background-color: #3a3a3a;
+  text-decoration: none;
+  color: #F5E642;
+}
+
+.nav__dropdown-menu li a.active {
+  color: #F5E642;
+}
+
+/* Arrow icon */
+.nav__arrow {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+.nav__dropdown:hover .nav__arrow {
+  transform: rotate(180deg);
+}
+
+/* Hamburger */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav__hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu */
+.nav__mobile {
+  display: none;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  border-top: 1px solid #2e2e2e;
+  padding: 16px 24px 24px;
+  gap: 8px;
+}
+
+.nav__mobile.open {
+  display: flex;
+}
+
+.nav__mobile-link {
+  display: block;
+  padding: 10px 16px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  background-color: #F5E642;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.nav__mobile-link:hover {
+  opacity: 0.8;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.nav__mobile-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 16px;
+  margin-top: 4px;
+}
+
+.nav__mobile-sub a {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #2e2e2e;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.nav__mobile-sub a:hover {
+  background-color: #3a3a3a;
+  text-decoration: none;
+  color: #F5E642;
+}
+
+.nav__mobile-label {
+  padding: 10px 16px 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #aaaaaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+}

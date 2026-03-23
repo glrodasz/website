@@ -2,11 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import AboutProfessional from './pages/AboutProfessional';
 import AboutHistory from './pages/AboutHistory';
 import AboutLifestyle from './pages/AboutLifestyle';
 import Courses from './pages/Courses';
-import Talks from './pages/Talks';
 import Contact from './pages/Contact';
 
 function App() {
@@ -15,11 +13,9 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about/professional" element={<AboutProfessional />} />
         <Route path="/about/history" element={<AboutHistory />} />
         <Route path="/about/lifestyle" element={<AboutLifestyle />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/talks" element={<Talks />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

@@ -32,13 +32,13 @@ const Navigation: React.FC = () => {
               </span>
               <ul className="nav__dropdown-menu">
                 <li>
-                  <NavLink to="/about/professional" className={({ isActive }) => isActive ? 'active' : ''}>
+                  <a href="https://vitae.guillermorodas.com" target="_blank" rel="noopener noreferrer">
                     Professional
-                  </NavLink>
+                  </a>
                 </li>
                 <li>
                   <NavLink to="/about/history" className={({ isActive }) => isActive ? 'active' : ''}>
-                    History
+                    My History
                   </NavLink>
                 </li>
                 <li>
@@ -51,11 +51,6 @@ const Navigation: React.FC = () => {
             <li>
               <NavLink to="/courses" className={({ isActive }) => `nav__link${isActive ? ' active' : ''}`}>
                 Courses
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/talks" className={({ isActive }) => `nav__link${isActive ? ' active' : ''}`}>
-                Talks
               </NavLink>
             </li>
             <li>
@@ -95,8 +90,10 @@ const Navigation: React.FC = () => {
           </button>
           {aboutOpen && (
             <div className="nav__mobile-sub">
-              <NavLink to="/about/professional" onClick={closeMobile}>Professional</NavLink>
-              <NavLink to="/about/history" onClick={closeMobile}>History</NavLink>
+              <a href="https://vitae.guillermorodas.com" target="_blank" rel="noopener noreferrer" onClick={closeMobile}>
+                Professional
+              </a>
+              <NavLink to="/about/history" onClick={closeMobile}>My History</NavLink>
               <NavLink to="/about/lifestyle" onClick={closeMobile}>Lifestyle</NavLink>
             </div>
           )}
@@ -104,9 +101,6 @@ const Navigation: React.FC = () => {
 
         <NavLink to="/courses" className="nav__mobile-link" onClick={closeMobile}>
           Courses
-        </NavLink>
-        <NavLink to="/talks" className="nav__mobile-link" onClick={closeMobile}>
-          Talks
         </NavLink>
         <NavLink to="/contact" className="nav__mobile-link" onClick={closeMobile}>
           Contact

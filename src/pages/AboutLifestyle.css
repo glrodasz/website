@@ -1,0 +1,117 @@
+.lifestyle-intro {
+  font-size: 1.1rem;
+  color: var(--system-tokens--colors--foregrounds--contrast, #cccccc);
+  max-width: 680px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.lifestyle-intro a {
+  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  text-decoration: none;
+}
+
+.lifestyle-intro a:hover {
+  text-decoration: underline;
+}
+
+.lifestyle-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.lifestyle-external {
+  flex-shrink: 0;
+}
+
+.lifestyle-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.lifestyle-grid--books {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.lifestyle-grid--films {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.lifestyle-book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--components-tokens--card-text--spacing--vertical, 20px)
+    var(--components-tokens--card-text--spacing--horizontal, 20px);
+  border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
+  background-color: var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1a2430);
+  text-decoration: none;
+  color: var(--system-tokens--colors--foregrounds--contrast, #fff);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lifestyle-book-card:hover {
+  border-color: var(--system-tokens--colors--borders--alternative, #d6ff33);
+  transform: translateY(-2px);
+}
+
+.lifestyle-book-card__title {
+  font-family: 'Syne', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.lifestyle-book-card__author {
+  font-size: 0.85rem;
+  color: var(--system-tokens--colors--foregrounds--contrast, #ccc);
+  opacity: 0.85;
+}
+
+.lifestyle-film-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  overflow: hidden;
+  border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
+  background-color: var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1a2430);
+  text-decoration: none;
+  color: var(--system-tokens--colors--foregrounds--contrast, #fff);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lifestyle-film-card:hover {
+  border-color: var(--system-tokens--colors--borders--alternative, #d6ff33);
+  transform: translateY(-2px);
+}
+
+.lifestyle-film-card__poster,
+.lifestyle-film-card__poster-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
+}
+
+.lifestyle-film-card__poster-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+}
+
+.lifestyle-film-card__title {
+  padding: 12px 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}

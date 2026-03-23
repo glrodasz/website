@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  AI_FIRST_WAITLIST_MAILTO,
+  FREE_YOUTUBE_PLAYLISTS,
+  HOME_FEATURED_PLAYLIST_ID,
+  playlistUrl,
+  youtubeThumb,
+} from '../data/courses';
 import './Home.css';
 
 interface BlogPost {
@@ -53,12 +60,10 @@ function parseFeed(xmlText: string): BlogPost[] {
       ? new Date(pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
       : '';
 
-    // Try to find cover image in content or enclosure
     const enclosureUrl = item.querySelector('enclosure')?.getAttribute('url') ?? '';
     const mediaContent = item.querySelector('content')?.getAttribute('url') ?? '';
     const cover = enclosureUrl || mediaContent || '';
 
-    // Strip HTML from description for excerpt
     const div = document.createElement('div');
     div.innerHTML = description;
     const excerpt = div.textContent?.slice(0, 160) ?? '';
@@ -87,20 +92,11 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => (
   </article>
 );
 
-const RECENT_TALKS = [
-  {
-    event: 'Invincible Innovation · April 2025',
-    title: 'AI and Humans: Staying Ahead in AI — Practical Insights for Developers',
-  },
-  {
-    event: 'DevFest Singapore / EpicHey! · Nov 2023',
-    title: 'WebAuthn & Passkeys: The Future of Authentication',
-  },
-];
-
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>(STATIC_POSTS);
   const [loadingPosts, setLoadingPosts] = useState(true);
+
+  const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
 
   useEffect(() => {
     const RSS_URL = 'https://undefined.sh/rss.xml';
@@ -108,7 +104,6 @@ const Home: React.FC = () => {
 
     const fetchPosts = async () => {
       try {
-        // Try direct fetch first
         const directRes = await fetch(RSS_URL, { signal: AbortSignal.timeout(5000) });
         if (directRes.ok) {
           const text = await directRes.text();
@@ -119,7 +114,7 @@ const Home: React.FC = () => {
           }
         }
       } catch {
-        // Direct fetch failed, try proxy
+        // try proxy
       }
 
       try {
@@ -132,7 +127,7 @@ const Home: React.FC = () => {
           }
         }
       } catch {
-        // Both failed, keep static posts
+        // keep static
       } finally {
         setLoadingPosts(false);
       }
@@ -149,7 +144,6 @@ const Home: React.FC = () => {
 
   return (
     <main className="page">
-      {/* Hero */}
       <section className="home-hero">
         <div className="home-hero__content">
           <span className="home-hero__label">Welcome</span>
@@ -179,43 +173,57 @@ const Home: React.FC = () => {
 
       <hr className="section-divider" />
 
-      {/* Intro Video */}
-      <section className="home-video">
-        <div className="home-video__inner">
-          <div className="home-video__label-col">
-            <span className="home-video__eyebrow">Intro</span>
-            <span className="home-video__label-text">Watch intro</span>
+      <section className="home-courses">
+        <div className="home-courses__inner">
+          <div className="home-courses__header">
+            <h2 className="home-courses__title">Courses</h2>
+            <Link to="/courses" className="btn btn-outline home-courses__see-all">
+              See all courses
+            </Link>
           </div>
-          <div className="home-video__embed" aria-label="Intro video placeholder">
-            <div className="home-video__play-icon" aria-hidden="true" />
+          <div className="home-courses__grid">
+            <article className="home-course-card home-course-card--accent">
+              <div className="home-course-card__body">
+                <span className="home-course-card__badge">Coming soon</span>
+                <h3 className="home-course-card__name">AI-first programming</h3>
+                <p className="home-course-card__desc">
+                  Build software with AI as your primary tool — short, focused lessons across the stack.
+                </p>
+                <a href={AI_FIRST_WAITLIST_MAILTO} className="btn btn-primary">
+                  Join waitlist
+                </a>
+              </div>
+            </article>
+            {featuredPlaylist && (
+              <article className="home-course-card">
+                <a
+                  href={playlistUrl(featuredPlaylist.playlistId)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="home-course-card__link"
+                >
+                  {featuredPlaylist.thumbnailVideoId ? (
+                    <img
+                      src={youtubeThumb(featuredPlaylist.thumbnailVideoId)}
+                      alt=""
+                      className="home-course-card__thumb"
+                    />
+                  ) : (
+                    <div className="home-course-card__thumb-placeholder">▶</div>
+                  )}
+                  <div className="home-course-card__body">
+                    <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
+                    <span className="home-course-card__cta">Open playlist on YouTube →</span>
+                  </div>
+                </a>
+              </article>
+            )}
           </div>
-        </div>
-      </section>
-
-      {/* Teaching */}
-      <section className="home-teaching">
-        <div className="home-teaching__content">
-          <span className="home-teaching__label">Education</span>
-          <h2 className="home-teaching__title">I'm an online teacher</h2>
-          <p className="home-teaching__copy">
-            Over the past decade I've taught thousands of developers through online platforms,
-            bootcamps, and workshops. My courses focus on practical, real-world JavaScript,
-            React, Node.js, and modern web development — helping you grow from junior to senior.
-          </p>
-          <Link to="/courses" className="btn btn-primary">See my courses</Link>
-        </div>
-        <div className="home-teaching__visual" aria-hidden="true">
-          <div className="home-teaching__platform home-teaching__platform--featured">Platzi</div>
-          <div className="home-teaching__platform">Código Facilito</div>
-          <div className="home-teaching__platform">Platzi Master</div>
-          <div className="home-teaching__platform">Undefined Academy</div>
-          <div className="home-teaching__platform">World Tech Makers</div>
         </div>
       </section>
 
       <hr className="section-divider" />
 
-      {/* Writing / Blog */}
       <section className="home-writing">
         <div className="home-writing__inner">
           <div className="home-writing__header">
@@ -239,22 +247,6 @@ const Home: React.FC = () => {
               ))}
             </div>
           )}
-        </div>
-      </section>
-
-      {/* Talks Preview */}
-      <section className="home-talks">
-        <div className="home-talks__header">
-          <h2 className="home-talks__title">Talks</h2>
-          <Link to="/talks" className="btn btn-outline">See all talks</Link>
-        </div>
-        <div className="home-talks__grid">
-          {RECENT_TALKS.map((talk, i) => (
-            <div key={i} className="talk-card">
-              <div className="talk-card__event">{talk.event}</div>
-              <h3 className="talk-card__title">{talk.title}</h3>
-            </div>
-          ))}
         </div>
       </section>
     </main>

@@ -1,57 +1,145 @@
+import { useMemo, useState } from 'react';
+import {
+  AI_FIRST_WAITLIST_MAILTO,
+  FREE_YOUTUBE_PLAYLISTS,
+  OTHER_PLATFORM_COURSES,
+  playlistUrl,
+  youtubeThumb,
+} from '../data/courses';
+import { GARAJE_CODE_PILLS, garajeWatchUrl } from '../data/garajeCodePills';
 import './pages.css';
 
-const PAST_COURSES = [
-  { platform: 'Platzi', detail: 'Multiple courses', years: '2018, 2019, 2023' },
-  { platform: 'Código Facilito', detail: 'Bootcamp Instructor', years: '2022 – 2024' },
-  { platform: 'Platzi Master', detail: 'Bootcamp Instructor', years: '2020 – 2022' },
-  { platform: 'Undefined Academy', detail: 'Bootcamp Instructor', years: '2023' },
-  { platform: 'World Tech Makers', detail: 'Instructor', years: '2017' },
-];
+const INITIAL_TUTORIALS = 5;
 
-const Courses: React.FC = () => (
-  <main className="page">
-    <section className="page-hero">
-      <span className="section-label">Education</span>
-      <h1 className="section-title">Courses</h1>
-    </section>
+const Courses: React.FC = () => {
+  const [showAllTutorials, setShowAllTutorials] = useState(false);
+  const visibleTutorials = useMemo(
+    () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),
+    [showAllTutorials],
+  );
+  const hasMoreTutorials = GARAJE_CODE_PILLS.length > INITIAL_TUTORIALS;
 
-    <section className="page-section">
-      <div className="featured-course-card">
-        <div className="featured-course-card__header">
-          <span className="badge">Coming Soon</span>
-        </div>
-        <h2 className="featured-course-card__title">AI-First Programming Course</h2>
-        <p className="featured-course-card__description">
-          Learn to build software using AI as your primary tool. Covers JavaScript/TypeScript,
-          Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
-          who want to move fast and build better with AI.
-        </p>
-        <a
-          href="mailto:me@guillermorodas.com?subject=AI-First%20Programming%20Course%20Waitlist"
-          className="btn btn-primary"
-        >
-          Join waitlist
-        </a>
-      </div>
-    </section>
+  return (
+    <main className="page">
+      <section className="page-hero">
+        <span className="section-label">Courses</span>
+        <h1 className="section-title">Courses</h1>
+      </section>
 
-    <hr className="section-divider" />
-
-    <section className="page-section">
-      <h2 className="section-title">Past Teaching</h2>
-      <div className="card-grid card-grid--3">
-        {PAST_COURSES.map((course) => (
-          <div key={course.platform + course.years} className="card">
-            <div className="card__body">
-              <div className="card__tag">{course.years}</div>
-              <h3 className="card__title">{course.platform}</h3>
-              <p className="card__excerpt">{course.detail}</p>
-            </div>
+      <section className="page-section" id="ai-first">
+        <div className="featured-course-card">
+          <div className="featured-course-card__header">
+            <span className="badge">Coming Soon</span>
           </div>
-        ))}
-      </div>
-    </section>
-  </main>
-);
+          <h2 className="featured-course-card__title">AI-First Programming Course</h2>
+          <p className="featured-course-card__description">
+            Learn to build software using AI as your primary tool. Covers JavaScript/TypeScript,
+            Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
+            who want to move fast and build better with AI.
+          </p>
+          <a href={AI_FIRST_WAITLIST_MAILTO} className="btn btn-primary">
+            Join waitlist
+          </a>
+        </div>
+      </section>
+
+      <hr className="section-divider" />
+
+      <section className="page-section">
+        <h2 className="section-title">Free courses</h2>
+        <p className="page-section__lead">
+          Full playlists on YouTube — no paywall.
+        </p>
+        <div className="card-grid card-grid--2 playlist-card-grid">
+          {FREE_YOUTUBE_PLAYLISTS.map((pl) => (
+            <a
+              key={pl.playlistId}
+              href={playlistUrl(pl.playlistId)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="playlist-card"
+            >
+              {pl.thumbnailVideoId ? (
+                <img
+                  src={youtubeThumb(pl.thumbnailVideoId)}
+                  alt=""
+                  className="playlist-card__img"
+                />
+              ) : (
+                <div className="playlist-card__img-placeholder">▶</div>
+              )}
+              <div className="playlist-card__body">
+                <h3 className="playlist-card__title">{pl.title}</h3>
+                <span className="playlist-card__link">Watch on YouTube →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <hr className="section-divider" />
+
+      <section className="page-section">
+        <h2 className="section-title">Tutorials</h2>
+        <p className="page-section__lead">
+          Garaje Code Pills — short practical videos.
+        </p>
+        <ul className="tutorial-list">
+          {visibleTutorials.map((v) => (
+            <li key={v.videoId}>
+              <a
+                href={garajeWatchUrl(v.videoId)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tutorial-row"
+              >
+                <img
+                  src={youtubeThumb(v.videoId)}
+                  alt=""
+                  className="tutorial-row__thumb"
+                  width={120}
+                  height={68}
+                  loading="lazy"
+                />
+                <span className="tutorial-row__title">{v.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {hasMoreTutorials && (
+          <button
+            type="button"
+            className="btn-load-more"
+            onClick={() => setShowAllTutorials((s) => !s)}
+          >
+            {showAllTutorials ? 'Show less' : 'Load more'}
+          </button>
+        )}
+      </section>
+
+      <hr className="section-divider" />
+
+      <section className="page-section">
+        <h2 className="section-title">Courses on other platforms</h2>
+        <div className="card-grid card-grid--3 platform-course-grid">
+          {OTHER_PLATFORM_COURSES.map((c) => (
+            <a
+              key={c.id}
+              href={c.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="platform-course-card"
+            >
+              <span className="platform-course-card__platform">{c.platform}</span>
+              <h3 className="platform-course-card__title">{c.title}</h3>
+              {c.description && <p className="platform-course-card__desc">{c.description}</p>}
+              <span className="platform-course-card__cta">Open course →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+};
 
 export default Courses;

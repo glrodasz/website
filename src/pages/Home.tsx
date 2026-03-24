@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   AI_FIRST_WAITLIST_MAILTO,
@@ -95,8 +95,13 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => (
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>(STATIC_POSTS);
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [heroPhotoFailed, setHeroPhotoFailed] = useState(false);
 
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
+
+  const onHeroPhotoError = useCallback(() => {
+    setHeroPhotoFailed(true);
+  }, []);
 
   useEffect(() => {
     const RSS_URL = 'https://undefined.sh/rss.xml';
@@ -145,28 +150,76 @@ const Home: React.FC = () => {
   return (
     <main className="page">
       <section className="home-hero">
-        <div className="home-hero__content">
-          <span className="home-hero__label">Welcome</span>
-          <h1 className="home-hero__title">
-            Hello, I'm <span className="accent">Guillermo Rodas</span>,
-          </h1>
-          <p className="home-hero__subtitle">
-            and I help developers improve their skills while creating quality products.
-          </p>
-          <div className="home-hero__location">
-            <span className="home-hero__location-tag">🇨🇴 From Colombia</span>
-            <span className="home-hero__location-tag">🇸🇪 Living in Sweden</span>
-          </div>
-          <div className="home-hero__ctas">
-            <Link to="/courses" className="btn btn-primary">Courses</Link>
-            <Link to="/courses" className="btn btn-primary">AI Course</Link>
-            <Link to="/contact" className="btn btn-outline">Get in touch</Link>
-          </div>
-        </div>
-        <div className="home-hero__photo" aria-hidden="true">
-          <div className="home-hero__photo-placeholder">
-            <span className="home-hero__photo-placeholder-icon">👤</span>
-            <span>Photo coming soon</span>
+        <div className="home-hero__inner">
+          <div className="home-hero__layout">
+            <div className="home-hero__content-col">
+              <div className="home-hero__text">
+                <div className="home-hero__logo">
+                  <img
+                    src="/logos/guillermorodas-light.svg"
+                    alt="Guillermo Rodas"
+                    width={293}
+                    height={71}
+                  />
+                </div>
+                <p className="home-hero__hello">Hello,</p>
+                <h1 className="home-hero__fullname">
+                  <span className="home-hero__name-line home-hero__name-line--first">
+                    I&apos;m <strong>Guillermo</strong>
+                  </span>
+                  <span className="home-hero__name-line">Rodas</span>
+                </h1>
+                <p className="home-hero__tagline">
+                  I help developers to improve their skills while creating quality products.
+                </p>
+                <div className="home-hero__relocation-outer" aria-label="Location">
+                  <div className="home-hero__relocation">
+                    <div className="home-hero__relocation-country">
+                      <picture className="home-hero__relocation-picture">
+                        <img src="/flags/colombia.svg" alt="" width={55} height={55} />
+                      </picture>
+                      <span className="home-hero__relocation-desc">From Colombia</span>
+                    </div>
+                    <div className="home-hero__relocation-connector">
+                      <span className="home-hero__relocation-plane" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div className="home-hero__relocation-divider" aria-hidden="true" />
+                    <div className="home-hero__relocation-country">
+                      <picture className="home-hero__relocation-picture">
+                        <img src="/flags/sweden.svg" alt="" width={55} height={55} />
+                      </picture>
+                      <span className="home-hero__relocation-desc">Living in Sweden</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="home-hero__ctas">
+                  <Link to="/courses" className="btn btn-primary">Courses</Link>
+                  <Link to="/courses" className="btn btn-primary">AI Course</Link>
+                  <Link to="/contact" className="btn btn-outline">Get in touch</Link>
+                </div>
+              </div>
+            </div>
+            <div className="home-hero__photo-col">
+              {!heroPhotoFailed ? (
+                <img
+                  className="home-hero__photo"
+                  src="/images/guillermo-rodas.png"
+                  alt="Guillermo Rodas"
+                  width={800}
+                  height={800}
+                  onError={onHeroPhotoError}
+                />
+              ) : (
+                <div className="home-hero__photo-placeholder">
+                  <span className="home-hero__photo-placeholder-icon" aria-hidden="true">👤</span>
+                  <span>Photo coming soon</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>

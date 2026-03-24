@@ -1,5 +1,5 @@
 @import '../tokens/design-tokens.css';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@600;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Syne:wght@700;800&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -7,12 +7,14 @@
 
 :root {
   --color-bg: #1a1a1a;
-  --color-accent: #F5E642;
+  --golden-yellow: #f7df1d;
+  --color-accent: var(--golden-yellow);
   --color-text: #ffffff;
   --color-text-muted: #aaaaaa;
   --color-surface: #242424;
   --color-surface-2: #2e2e2e;
   --color-border: #333333;
+  --concrete: #f3f1f1;
 
   --font-body: 'Inter', system-ui, sans-serif;
   --font-display: 'Syne', 'Inter', sans-serif;

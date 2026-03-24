@@ -31,7 +31,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #F5E642;
+  color: var(--color-accent);
   margin-bottom: 12px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .card:hover {
-  border-color: #F5E642;
+  border-color: var(--color-accent);
   transform: translateY(-2px);
 }
 
@@ -106,7 +106,7 @@
   letter-spacing: 0.08em;
   padding: 3px 10px;
   border-radius: 100px;
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   color: #1a1a1a;
   margin-bottom: 12px;
 }
@@ -163,7 +163,7 @@
 
 .skill-item__years {
   font-size: 0.8rem;
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 /* Timeline */
@@ -196,14 +196,14 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   border: 2px solid #1a1a1a;
 }
 
 .timeline__period {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #F5E642;
+  color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 6px;
@@ -242,7 +242,7 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 /* Education */
@@ -274,7 +274,7 @@
 
 .education-item__year {
   font-size: 0.8rem;
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 /* Languages */
@@ -326,14 +326,14 @@
   letter-spacing: 0.1em;
   padding: 4px 12px;
   border-radius: 100px;
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   color: #1a1a1a;
 }
 
 .badge--outline {
   background-color: transparent;
-  border: 1px solid #F5E642;
-  color: #F5E642;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* Recognitions */
@@ -389,7 +389,7 @@
 }
 
 .playlist-card:hover {
-  border-color: var(--system-tokens--colors--borders--alternative, #d6ff33);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
 }
 
@@ -408,7 +408,7 @@
   justify-content: center;
   font-size: 2rem;
   background: var(--system-tokens--colors--backgrounds--contrast, #002529);
-  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  color: var(--color-accent);
 }
 
 .playlist-card__body {
@@ -428,7 +428,7 @@
 .playlist-card__link {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  color: var(--color-accent);
 }
 
 /* Garaje tutorial rows */
@@ -455,7 +455,7 @@
 }
 
 .tutorial-row:hover {
-  border-color: var(--system-tokens--colors--borders--alternative, #d6ff33);
+  border-color: var(--color-accent);
 }
 
 .tutorial-row__thumb {
@@ -481,14 +481,14 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid var(--system-tokens--colors--borders--alternative, #d6ff33);
+  border: 1px solid var(--color-accent);
   background: transparent;
-  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  color: var(--color-accent);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-load-more:hover {
-  background-color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  background-color: var(--color-accent);
   color: var(--system-tokens--colors--backgrounds--contrast, #002529);
 }
 
@@ -510,7 +510,7 @@
 }
 
 .platform-course-card:hover {
-  border-color: var(--system-tokens--colors--borders--alternative, #d6ff33);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
 }
 
@@ -519,7 +519,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  color: var(--color-accent);
   margin-bottom: 8px;
 }
 
@@ -543,7 +543,7 @@
 .platform-course-card__cta {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  color: var(--color-accent);
 }
 
 /* Featured course card */
@@ -553,7 +553,7 @@
     var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1e1e1e) 0%,
     var(--system-tokens--colors--backgrounds--contrast, #002529) 100%
   );
-  border: 2px solid var(--system-tokens--colors--borders--alternative, #d6ff33);
+  border: 2px solid var(--color-accent);
   border-radius: 16px;
   padding: 40px 48px;
 }
@@ -653,7 +653,7 @@
 .contact-social-list__link {
   display: inline-block;
   padding: 10px 0;
-  color: var(--system-tokens--colors--typography--alternative, #d6ff33);
+  color: var(--color-accent);
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -662,7 +662,7 @@
 }
 
 .contact-social-list__link:hover {
-  border-bottom-color: var(--system-tokens--colors--borders--alternative, #d6ff33);
+  border-bottom-color: var(--color-accent);
   opacity: 0.9;
 }
 
@@ -678,7 +678,7 @@
   display: block;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #F5E642;
+  color: var(--color-accent);
   margin-top: 0;
   margin-bottom: 8px;
   text-decoration: none;
@@ -703,7 +703,7 @@
 }
 
 .social-link:hover {
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 .contact-form {
@@ -738,7 +738,7 @@
 }
 
 .form-input:focus {
-  border-color: #F5E642;
+  border-color: var(--color-accent);
 }
 
 .form-textarea {

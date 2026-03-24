@@ -21,7 +21,7 @@
   font-family: 'Syne', 'Inter', sans-serif;
   font-weight: 700;
   font-size: 0.875rem;
-  color: #F5E642;
+  color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 16px;
@@ -44,7 +44,7 @@
 }
 
 .footer__col ul li a:hover {
-  color: #F5E642;
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -95,7 +95,7 @@
 }
 
 .footer__social-link:hover {
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   color: #1a1a1a;
   text-decoration: none;
 }
@@ -127,7 +127,7 @@
   font-family: 'Syne', 'Inter', sans-serif;
   font-weight: 800;
   font-size: 0.9rem;
-  color: #F5E642;
+  color: var(--color-accent);
   text-decoration: none;
 }
 

@@ -83,7 +83,7 @@ const Navigation: React.FC = () => {
         <div>
           <button
             className="nav__mobile-link"
-            style={{ width: '100%', background: '#F5E642', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+            style={{ width: '100%', background: 'var(--color-accent)', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
             onClick={() => setAboutOpen((v) => !v)}
           >
             About <span className="nav__arrow" style={{ transform: aboutOpen ? 'rotate(180deg)' : 'none' }}>▼</span>

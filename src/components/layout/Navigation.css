@@ -21,7 +21,7 @@
   font-family: 'Syne', 'Inter', sans-serif;
   font-weight: 800;
   font-size: 1rem;
-  color: #F5E642;
+  color: var(--color-accent);
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
@@ -55,7 +55,7 @@
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   color: #1a1a1a;
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   text-decoration: none;
   transition: opacity 0.2s ease;
   white-space: nowrap;
@@ -70,14 +70,14 @@
 }
 
 .nav__link.active {
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   color: #1a1a1a;
   box-shadow: 0 0 0 2px #ffffff40;
 }
 
 /* Dropdown */
 .nav__dropdown-btn {
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   color: #1a1a1a;
 }
 
@@ -120,11 +120,11 @@
 .nav__dropdown-menu li a:hover {
   background-color: #3a3a3a;
   text-decoration: none;
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 .nav__dropdown-menu li a.active {
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 /* Arrow icon */
@@ -196,7 +196,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: #1a1a1a;
-  background-color: #F5E642;
+  background-color: var(--color-accent);
   text-decoration: none;
   text-align: center;
   transition: opacity 0.2s ease;
@@ -231,7 +231,7 @@
 .nav__mobile-sub a:hover {
   background-color: #3a3a3a;
   text-decoration: none;
-  color: #F5E642;
+  color: var(--color-accent);
 }
 
 .nav__mobile-label {

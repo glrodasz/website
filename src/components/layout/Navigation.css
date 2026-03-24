@@ -85,6 +85,16 @@
   position: relative;
 }
 
+/* Invisible hit target: fills the gap below the trigger so :hover isn’t lost before the menu. */
+.nav__dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max(100%, 180px);
+  height: 8px;
+}
+
 .nav__dropdown-menu {
   display: none;
   position: absolute;

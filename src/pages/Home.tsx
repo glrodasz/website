@@ -154,14 +154,6 @@ const Home: React.FC = () => {
           <div className="home-hero__layout">
             <div className="home-hero__content-col">
               <div className="home-hero__text">
-                <div className="home-hero__logo">
-                  <img
-                    src="/logos/guillermorodas-light.svg"
-                    alt="Guillermo Rodas"
-                    width={293}
-                    height={71}
-                  />
-                </div>
                 <p className="home-hero__hello">Hello,</p>
                 <h1 className="home-hero__fullname">
                   <span className="home-hero__name-line home-hero__name-line--first">

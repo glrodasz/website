@@ -41,7 +41,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  -webkit-text-stroke: 3px #fff;
+  -webkit-text-stroke: 2px #000;
   paint-order: stroke fill;
 }
 

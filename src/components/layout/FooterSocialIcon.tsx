@@ -1,5 +1,16 @@
 import type { FC } from 'react';
 
+/** Footer “Follow me” on narrow viewports — display order */
+export const FOOTER_MOBILE_SOCIAL_IDS = [
+  'twitter',
+  'instagram',
+  'linkedin',
+  'twitch',
+  'youtube',
+] as const;
+
+export type FooterMobileSocialId = (typeof FOOTER_MOBILE_SOCIAL_IDS)[number];
+
 /** Minimal inline SVGs for footer — match `footerSocials` ids */
 export const FooterSocialIcon: FC<{ id: string }> = ({ id }) => {
   const common = { viewBox: '0 0 24 24' as const, 'aria-hidden': true as const };

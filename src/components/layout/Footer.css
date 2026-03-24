@@ -53,16 +53,22 @@
   font-size: 0.9rem;
 }
 
-/* Social row */
+/* Social row — column on small viewports, row from tablet up */
 .footer__social {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 32px;
   margin-bottom: 32px;
   padding-top: 32px;
   border-top: 1px solid #2e2e2e;
+}
+
+@media (min-width: 769px) {
+  .footer__social {
+    flex-direction: row;
+  }
 }
 
 .footer__social-icons {
@@ -72,6 +78,20 @@
   justify-content: center;
   gap: 12px 14px;
   max-width: 720px;
+}
+
+.footer__social-icons--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .footer__social-icons--desktop {
+    display: none;
+  }
+
+  .footer__social-icons--mobile {
+    display: flex;
+  }
 }
 
 .footer__social-label {

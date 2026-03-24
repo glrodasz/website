@@ -1,13 +1,31 @@
 import { Link } from 'react-router-dom';
-import { footerSocials } from '../../data/socials';
-import { FooterSocialIcon } from './FooterSocialIcon';
+import { footerSocials, type SocialLink } from '../../data/socials';
+import { FOOTER_MOBILE_SOCIAL_IDS, FooterSocialIcon } from './FooterSocialIcon';
 import './Footer.css';
 
 const AI_WAITLIST =
   'mailto:me@guillermorodas.com?subject=AI-First%20Programming%20Course%20Waitlist';
 
+const footerMobileSocials: SocialLink[] = FOOTER_MOBILE_SOCIAL_IDS.map((id) =>
+  footerSocials.find((s) => s.id === id)
+).filter((s): s is SocialLink => s != null);
+
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLink = (s: SocialLink, strip: 'desktop' | 'mobile') => (
+    <a
+      key={`${strip}-${s.id}`}
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="footer__social-link"
+      aria-label={s.label}
+      title={s.label}
+    >
+      <FooterSocialIcon id={s.id} />
+    </a>
+  );
 
   return (
     <footer className="footer">
@@ -60,20 +78,11 @@ const Footer: React.FC = () => {
 
         <div className="footer__social">
           <span className="footer__social-label">Follow me</span>
-          <div className="footer__social-icons">
-            {footerSocials.map((s) => (
-              <a
-                key={s.id}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__social-link"
-                aria-label={s.label}
-                title={s.label}
-              >
-                <FooterSocialIcon id={s.id} />
-              </a>
-            ))}
+          <div className="footer__social-icons footer__social-icons--desktop">
+            {footerSocials.map((s) => socialLink(s, 'desktop'))}
+          </div>
+          <div className="footer__social-icons footer__social-icons--mobile">
+            {footerMobileSocials.map((s) => socialLink(s, 'mobile'))}
           </div>
         </div>
 

@@ -165,28 +165,7 @@ const Home: React.FC = () => {
                   I help developers to improve their skills while creating quality products.
                 </p>
                 <div className="home-hero__relocation-outer" aria-label="Location">
-                  <div className="home-hero__relocation">
-                    <div className="home-hero__relocation-country">
-                      <picture className="home-hero__relocation-picture">
-                        <img src="/flags/colombia.svg" alt="" width={55} height={55} />
-                      </picture>
-                      <span className="home-hero__relocation-desc">From Colombia</span>
-                    </div>
-                    <div className="home-hero__relocation-connector">
-                      <span className="home-hero__relocation-plane" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
-                        </svg>
-                      </span>
-                    </div>
-                    <div className="home-hero__relocation-divider" aria-hidden="true" />
-                    <div className="home-hero__relocation-country">
-                      <picture className="home-hero__relocation-picture">
-                        <img src="/flags/sweden.svg" alt="" width={55} height={55} />
-                      </picture>
-                      <span className="home-hero__relocation-desc">Living in Sweden</span>
-                    </div>
-                  </div>
+
                 </div>
                 <div className="home-hero__ctas">
                   <Link to="/courses" className="btn btn-primary">Courses</Link>

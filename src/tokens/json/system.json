@@ -6,12 +6,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0.14509804546833038,
+            0.16078431904315948,
+            0.16078431904315948,
             0.16078431904315948
           ],
           "alpha": 1,
-          "hex": "#002529"
+          "hex": "#292929"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11218",
@@ -19,8 +19,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:850627f1c71fde27fdd522af3483a1090dca580a/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Gunmetal/600",
+            "targetVariableId": "VariableID:2068:64/-1:-1",
+            "targetVariableName": "Colors/Custom/Principal palette/600",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -31,12 +31,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0.4313725531101227,
-            0.47843137383461
+            0.32156863808631897,
+            0.32156863808631897,
+            0.32156863808631897
           ],
           "alpha": 1,
-          "hex": "#006E7A"
+          "hex": "#525252"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11219",
@@ -44,8 +44,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:96c95b7769e3a1794ad06eeaec5cc1ba917bab2a/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Gunmetal/500",
+            "targetVariableId": "VariableID:2068:63/-1:-1",
+            "targetVariableName": "Colors/Custom/Principal palette/500",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -56,12 +56,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.9215686321258545,
-            0.9921568632125854,
-            1
+            0.9607843160629272,
+            0.9607843160629272,
+            0.9607843160629272
           ],
           "alpha": 1,
-          "hex": "#EBFDFF"
+          "hex": "#F5F5F5"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11220",
@@ -69,8 +69,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:732ab0ae0c3120800b8490de83ec13b2ccac4134/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Gunmetal/100",
+            "targetVariableId": "VariableID:2068:52/-1:-1",
+            "targetVariableName": "Colors/Custom/Principal palette/100",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -81,12 +81,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0.14509804546833038,
+            0.16078431904315948,
+            0.16078431904315948,
             0.16078431904315948
           ],
           "alpha": 1,
-          "hex": "#002529"
+          "hex": "#292929"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11221",
@@ -94,8 +94,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:850627f1c71fde27fdd522af3483a1090dca580a/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Gunmetal/600",
+            "targetVariableId": "VariableID:2068:64/-1:-1",
+            "targetVariableName": "Colors/Custom/Principal palette/600",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -620,12 +620,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0.14509804546833038,
+            0.16078431904315948,
+            0.16078431904315948,
             0.16078431904315948
           ],
           "alpha": 1,
-          "hex": "#002529"
+          "hex": "#292929"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11242",
@@ -633,8 +633,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:850627f1c71fde27fdd522af3483a1090dca580a/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Gunmetal/600",
+            "targetVariableId": "VariableID:2068:64/-1:-1",
+            "targetVariableName": "Colors/Custom/Principal palette/600",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -1001,12 +1001,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0.4313725531101227,
-            0.47843137383461
+            0.32156863808631897,
+            0.32156863808631897,
+            0.32156863808631897
           ],
           "alpha": 1,
-          "hex": "#006E7A"
+          "hex": "#525252"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:28:11248",
@@ -1014,8 +1014,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:96c95b7769e3a1794ad06eeaec5cc1ba917bab2a/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Gunmetal/500",
+            "targetVariableId": "VariableID:2068:63/-1:-1",
+            "targetVariableName": "Colors/Custom/Principal palette/500",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }

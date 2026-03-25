@@ -374,7 +374,7 @@
   border-radius: var(--components-tokens--card-text--border-radius--default, 12px);
   overflow: hidden;
   border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
-  background-color: var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1a2430);
+  background-color: var(--system-tokens--colors--primary--high, #292929);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -387,8 +387,8 @@
   border: 2px solid var(--color-accent);
   background: linear-gradient(
     135deg,
-    var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1e1e1e) 0%,
-    var(--system-tokens--colors--backgrounds--contrast, #002529) 100%
+    var(--system-tokens--colors--primary--high, #292929) 0%,
+    var(--system-tokens--colors--backgrounds--contrast, #292929) 100%
   );
 }
 
@@ -404,7 +404,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
+  background: var(--system-tokens--colors--backgrounds--contrast, #292929);
 }
 
 .home-course-card__thumb-placeholder {
@@ -414,7 +414,7 @@
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
+  background: var(--system-tokens--colors--backgrounds--contrast, #292929);
   color: var(--color-accent);
 }
 
@@ -432,7 +432,7 @@
   padding: 4px 12px;
   border-radius: 100px;
   background-color: var(--color-accent);
-  color: var(--system-tokens--colors--backgrounds--contrast, #002529);
+  color: var(--system-tokens--colors--backgrounds--contrast, #292929);
   margin-bottom: 12px;
 }
 

@@ -41,8 +41,17 @@ const AboutLifestyle: React.FC = () => (
         {FAVORITE_BOOKS.map((b) => (
           <li key={b.href}>
             <a href={b.href} target="_blank" rel="noopener noreferrer" className="lifestyle-book-card">
-              <span className="lifestyle-book-card__title">{b.title}</span>
-              {b.author && <span className="lifestyle-book-card__author">{b.author}</span>}
+              {b.coverUrl ? (
+                <img src={b.coverUrl} alt="" className="lifestyle-card__media" loading="lazy" />
+              ) : (
+                <div className="lifestyle-card__media-placeholder" aria-hidden="true">
+                  📖
+                </div>
+              )}
+              <div className="lifestyle-book-card__meta">
+                <span className="lifestyle-book-card__title">{b.title}</span>
+                {b.author && <span className="lifestyle-book-card__author">{b.author}</span>}
+              </div>
             </a>
           </li>
         ))}
@@ -68,9 +77,9 @@ const AboutLifestyle: React.FC = () => (
           <li key={f.href}>
             <a href={f.href} target="_blank" rel="noopener noreferrer" className="lifestyle-film-card">
               {f.posterUrl ? (
-                <img src={f.posterUrl} alt="" className="lifestyle-film-card__poster" loading="lazy" />
+                <img src={f.posterUrl} alt="" className="lifestyle-card__media" loading="lazy" />
               ) : (
-                <div className="lifestyle-film-card__poster-placeholder" aria-hidden="true">▶</div>
+                <div className="lifestyle-card__media-placeholder" aria-hidden="true">▶</div>
               )}
               <span className="lifestyle-film-card__title">{f.title}</span>
             </a>

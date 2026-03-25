@@ -47,10 +47,8 @@
 .lifestyle-book-card {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: var(--components-tokens--card-text--spacing--vertical, 20px)
-    var(--components-tokens--card-text--spacing--horizontal, 20px);
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  overflow: hidden;
   border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
   background-color: var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1a2430);
   text-decoration: none;
@@ -61,6 +59,13 @@
 .lifestyle-book-card:hover {
   border-color: var(--color-accent);
   transform: translateY(-2px);
+}
+
+.lifestyle-book-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
 }
 
 .lifestyle-book-card__title {
@@ -74,6 +79,22 @@
   font-size: 0.85rem;
   color: var(--system-tokens--colors--foregrounds--contrast, #ccc);
   opacity: 0.85;
+}
+
+.lifestyle-card__media,
+.lifestyle-card__media-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
+}
+
+.lifestyle-card__media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-accent);
 }
 
 .lifestyle-film-card {
@@ -91,22 +112,6 @@
 .lifestyle-film-card:hover {
   border-color: var(--color-accent);
   transform: translateY(-2px);
-}
-
-.lifestyle-film-card__poster,
-.lifestyle-film-card__poster-placeholder {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
-}
-
-.lifestyle-film-card__poster-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: var(--color-accent);
 }
 
 .lifestyle-film-card__title {

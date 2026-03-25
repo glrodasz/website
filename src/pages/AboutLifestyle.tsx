@@ -4,11 +4,14 @@ import {
   GOODREADS_PROFILE,
   LETTERBOXD_PROFILE,
 } from '../data/lifestyle';
+import { Seo } from '../components/Seo';
+import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
 import './AboutLifestyle.css';
 
 const AboutLifestyle: React.FC = () => (
   <main className="page">
+    <Seo title={titleForPage('Lifestyle')} description={defaultDescription} path="/about/lifestyle" />
     <section className="page-hero">
       <span className="section-label">About</span>
       <h1 className="section-title">Lifestyle</h1>

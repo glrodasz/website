@@ -7,6 +7,8 @@ import {
   youtubeThumb,
 } from '../data/courses';
 import { GARAJE_CODE_PILLS, garajeWatchUrl } from '../data/garajeCodePills';
+import { Seo } from '../components/Seo';
+import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
 
 const INITIAL_TUTORIALS = 5;
@@ -21,6 +23,7 @@ const Courses: React.FC = () => {
 
   return (
     <main className="page">
+      <Seo title={titleForPage('Courses')} description={defaultDescription} path="/courses" />
       <section className="page-hero">
         <span className="section-label">Courses</span>
         <h1 className="section-title">Courses</h1>

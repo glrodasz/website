@@ -1,8 +1,11 @@
+import { Seo } from '../components/Seo';
+import { defaultDescription, titleForPage } from '../data/site';
 import { contactSocials } from '../data/socials';
 import './pages.css';
 
 const Contact: React.FC = () => (
   <main className="page">
+    <Seo title={titleForPage('Contact')} description={defaultDescription} path="/contact" />
     <section className="page-hero">
       <span className="section-label">Contact</span>
       <h1 className="section-title">Say Hello</h1>

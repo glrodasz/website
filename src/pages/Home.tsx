@@ -7,6 +7,8 @@ import {
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
+import { defaultDescription, defaultTitle, SITE_TAGLINE } from '../data/site';
+import { Seo } from '../components/Seo';
 import './Home.css';
 
 interface BlogPost {
@@ -149,6 +151,7 @@ const Home: React.FC = () => {
 
   return (
     <main className="page">
+      <Seo title={defaultTitle} description={defaultDescription} path="/" />
       <section className="home-hero">
         <div className="home-hero__inner">
           <div className="home-hero__layout">
@@ -161,9 +164,7 @@ const Home: React.FC = () => {
                   </span>
                   <span className="home-hero__name-line">Rodas</span>
                 </h1>
-                <p className="home-hero__tagline">
-                  I help developers to improve their skills while creating quality products.
-                </p>
+                <p className="home-hero__tagline">I help developers to improve their skills while creating quality products.</p>
                 <div className="home-hero__relocation-outer" aria-label="Location">
 
                 </div>

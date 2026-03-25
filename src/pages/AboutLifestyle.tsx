@@ -4,6 +4,7 @@ import {
   GOODREADS_PROFILE,
   LETTERBOXD_PROFILE,
 } from '../data/lifestyle';
+import { LifestyleMediaCard } from '../components/molecules/LifestyleMediaCard';
 import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
@@ -37,22 +38,16 @@ const AboutLifestyle: React.FC = () => (
           Goodreads profile →
         </a>
       </div>
-      <ul className="lifestyle-grid lifestyle-grid--books">
+      <ul className="lifestyle-grid">
         {FAVORITE_BOOKS.map((b) => (
           <li key={b.href}>
-            <a href={b.href} target="_blank" rel="noopener noreferrer" className="lifestyle-book-card">
-              {b.coverUrl ? (
-                <img src={b.coverUrl} alt="" className="lifestyle-card__media" loading="lazy" />
-              ) : (
-                <div className="lifestyle-card__media-placeholder" aria-hidden="true">
-                  📖
-                </div>
-              )}
-              <div className="lifestyle-book-card__meta">
-                <span className="lifestyle-book-card__title">{b.title}</span>
-                {b.author && <span className="lifestyle-book-card__author">{b.author}</span>}
-              </div>
-            </a>
+            <LifestyleMediaCard
+              href={b.href}
+              imageUrl={b.coverUrl}
+              title={b.title}
+              subtitle={b.author}
+              placeholder="📖"
+            />
           </li>
         ))}
       </ul>
@@ -72,17 +67,15 @@ const AboutLifestyle: React.FC = () => (
           Letterboxd profile →
         </a>
       </div>
-      <ul className="lifestyle-grid lifestyle-grid--films">
+      <ul className="lifestyle-grid">
         {FAVORITE_FILMS.map((f) => (
           <li key={f.href}>
-            <a href={f.href} target="_blank" rel="noopener noreferrer" className="lifestyle-film-card">
-              {f.posterUrl ? (
-                <img src={f.posterUrl} alt="" className="lifestyle-card__media" loading="lazy" />
-              ) : (
-                <div className="lifestyle-card__media-placeholder" aria-hidden="true">▶</div>
-              )}
-              <span className="lifestyle-film-card__title">{f.title}</span>
-            </a>
+            <LifestyleMediaCard
+              href={f.href}
+              imageUrl={f.posterUrl}
+              title={f.title}
+              placeholder="▶"
+            />
           </li>
         ))}
       </ul>

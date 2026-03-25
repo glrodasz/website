@@ -1,0 +1,55 @@
+.lifestyle-media-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  overflow: hidden;
+  border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
+  background-color: var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1a2430);
+  text-decoration: none;
+  color: var(--system-tokens--colors--foregrounds--contrast, #fff);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lifestyle-media-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.lifestyle-media-card__media,
+.lifestyle-media-card__media-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
+}
+
+.lifestyle-media-card__media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+.lifestyle-media-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+}
+
+.lifestyle-media-card__title {
+  font-family: 'Syne', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.lifestyle-media-card__subtitle {
+  font-size: 0.85rem;
+  color: var(--system-tokens--colors--foregrounds--contrast, #ccc);
+  opacity: 0.85;
+}

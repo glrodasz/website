@@ -1,5 +1,4 @@
 import React from 'react';
-import { MagnifyingGlass, User, EnvelopeSimple } from 'phosphor-react';
 import type { Icon as PhosphorIcon } from 'phosphor-react';
 import './InputText.css';
 

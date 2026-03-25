@@ -7,7 +7,7 @@ import {
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
-import { defaultDescription, defaultTitle, SITE_TAGLINE } from '../data/site';
+import { defaultDescription, defaultTitle } from '../data/site';
 import { Seo } from '../components/Seo';
 import './Home.css';
 

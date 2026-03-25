@@ -1,7 +1,7 @@
 /* Shared page styles */
 
 .page {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - var(--nav-height));
 }
 
 .page-hero {

@@ -25,6 +25,23 @@
 
   --max-width: 1140px;
   --spacing-section: 80px;
+
+  /* Fixed navbar — same palette as the rest of the site */
+  --nav-height: 76px;
+  --nav-bg: var(--color-bg);
+  --nav-text: var(--color-text);
+  --nav-text-muted: var(--color-text-muted);
+  --nav-border: var(--color-border);
+
+  /* Borderless “button link” nav items (not Quantum ghost — no button border) */
+  --nav-link-color: var(--color-text);
+  --nav-link-color-hover: var(--color-accent);
+  --nav-link-bg-hover: rgba(255, 255, 255, 0.08);
+  --nav-link-active-color: var(--color-accent);
+}
+
+.app-main {
+  padding-top: var(--nav-height);
 }
 
 html {

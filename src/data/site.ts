@@ -1,7 +1,7 @@
 export const SITE_NAME = 'Guillermo Rodas';
 
 export const SITE_TAGLINE =
-  'Full-stack AI JavaScript Engineer';
+  'Senior Full-stack AI JavaScript Engineer';
 
 export const defaultTitle = `${SITE_NAME} | ${SITE_TAGLINE}`;
 

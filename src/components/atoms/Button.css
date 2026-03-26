@@ -13,7 +13,7 @@
 }
 
 .qd-button:focus {
-  outline: 2px solid var(--global-tokens--colors--schemas--frozen-ribon--blue-ribon--400);
+  outline: 2px solid var(--components-tokens--button--border-color--secondary--default, #525252);
   outline-offset: 2px;
 }
 

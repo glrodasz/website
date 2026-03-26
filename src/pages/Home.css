@@ -361,7 +361,7 @@
   font-weight: 800;
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   margin: 0;
-  color: var(--system-tokens--colors--foregrounds--contrast, #fff);
+  color: var(--components-tokens--site--page--on-dark-text, #ebfdff);
 }
 
 .home-courses__grid {
@@ -373,8 +373,8 @@
 .home-course-card {
   border-radius: var(--components-tokens--card-text--border-radius--default, 12px);
   overflow: hidden;
-  border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
-  background-color: var(--system-tokens--colors--primary--high, #292929);
+  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
+  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -387,8 +387,8 @@
   border: 2px solid var(--color-accent);
   background: linear-gradient(
     135deg,
-    var(--system-tokens--colors--primary--high, #292929) 0%,
-    var(--system-tokens--colors--backgrounds--contrast, #292929) 100%
+    var(--components-tokens--site--course-card--surface-color, #292929) 0%,
+    var(--components-tokens--site--course-card--media-background-color, #292929) 100%
   );
 }
 
@@ -404,7 +404,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: var(--system-tokens--colors--backgrounds--contrast, #292929);
+  background: var(--components-tokens--site--course-card--media-background-color, #292929);
 }
 
 .home-course-card__thumb-placeholder {
@@ -414,7 +414,7 @@
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background: var(--system-tokens--colors--backgrounds--contrast, #292929);
+  background: var(--components-tokens--site--course-card--media-background-color, #292929);
   color: var(--color-accent);
 }
 
@@ -432,7 +432,7 @@
   padding: 4px 12px;
   border-radius: 100px;
   background-color: var(--color-accent);
-  color: var(--system-tokens--colors--backgrounds--contrast, #292929);
+  color: var(--components-tokens--site--course-card--text-on-accent-color, #292929);
   margin-bottom: 12px;
 }
 
@@ -442,13 +442,13 @@
   font-weight: 700;
   line-height: 1.3;
   margin: 0 0 8px;
-  color: var(--system-tokens--colors--foregrounds--contrast, #fff);
+  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
 }
 
 .home-course-card__desc {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--system-tokens--colors--foregrounds--contrast, #ccc);
+  color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
   opacity: 0.9;
   margin: 0 0 16px;
 }

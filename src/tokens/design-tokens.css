@@ -1165,4 +1165,13 @@
   --components-tokens--data-table--border-radius--desktop: 8px;
   --components-tokens--data-table--background-color--default: #FFFFFF;
   --components-tokens--data-table--border-color--default: #D1D1D1;
+
+  /* Site */
+  --components-tokens--site--page--on-dark-text: #EBFDFF;
+  --components-tokens--site--course-card--border-color: #525252;
+  --components-tokens--site--course-card--surface-color: #292929;
+  --components-tokens--site--course-card--media-background-color: #292929;
+  --components-tokens--site--course-card--text-on-accent-color: #292929;
+  --components-tokens--site--course-card--card-title-color: #EBFDFF;
+  --components-tokens--site--course-card--card-description-color: #D1D1D1;
 }

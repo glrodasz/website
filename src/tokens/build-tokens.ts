@@ -18,11 +18,13 @@ async function buildTokens() {
     const globalPath = path.join(tokensDir, 'global.json');
     const systemPath = path.join(tokensDir, 'system.json');
     const componentsPath = path.join(tokensDir, 'components.json');
+    const siteComponentsPath = path.join(tokensDir, 'site-components.json');
 
     console.log(`📖 Reading tokens from: ${tokensDir}`);
     console.log(`   - global.json`);
     console.log(`   - system.json`);
-    console.log(`   - components.json\n`);
+    console.log(`   - components.json`);
+    console.log(`   - site-components.json (merged into component layer)\n`);
 
     // Verify files exist
     if (!fs.existsSync(globalPath)) {
@@ -38,6 +40,10 @@ async function buildTokens() {
     const globalTokens = JSON.parse(fs.readFileSync(globalPath, 'utf-8'));
     const systemTokens = JSON.parse(fs.readFileSync(systemPath, 'utf-8'));
     const componentTokens = JSON.parse(fs.readFileSync(componentsPath, 'utf-8'));
+    const siteComponentTokensRaw = fs.existsSync(siteComponentsPath)
+      ? JSON.parse(fs.readFileSync(siteComponentsPath, 'utf-8'))
+      : {};
+    const siteComponentMap = parseTokens(siteComponentTokensRaw, 'components tokens', 'component');
 
     // Parse each file with appropriate level wrapper and level tag
     console.log('⚙️  Parsing design tokens...');
@@ -48,10 +54,14 @@ async function buildTokens() {
     console.log(`   ✓ System: ${Object.keys(systemMap).length} tokens`);
 
     const componentMap = parseTokens(componentTokens, 'components tokens', 'component');
-    console.log(`   ✓ Component: ${Object.keys(componentMap).length} tokens\n`);
+    console.log(`   ✓ Component: ${Object.keys(componentMap).length} tokens`);
+    if (Object.keys(siteComponentMap).length > 0) {
+      console.log(`   ✓ Site component: ${Object.keys(siteComponentMap).length} tokens`);
+    }
+    console.log('');
 
-    // Merge all token maps
-    const tokenMap = { ...globalMap, ...systemMap, ...componentMap };
+    // Merge all token maps (site tokens extend component layer without editing Figma components.json)
+    const tokenMap = { ...globalMap, ...systemMap, ...componentMap, ...siteComponentMap };
     console.log(`📊 Total tokens found: ${Object.keys(tokenMap).length}\n`);
 
     // Resolve references

@@ -6,10 +6,10 @@
   min-width: 0;
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
   overflow: hidden;
-  border: 1px solid var(--system-tokens--colors--borders--strong, #2e2e2e);
-  background-color: var(--global-tokens--colors--schemas--metal-chartreuse--gunmetal--600, #1a2430);
+  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
+  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
   text-decoration: none;
-  color: var(--system-tokens--colors--foregrounds--contrast, #fff);
+  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -23,7 +23,7 @@
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  background: var(--system-tokens--colors--backgrounds--contrast, #002529);
+  background: var(--components-tokens--site--course-card--media-background-color, #292929);
 }
 
 .lifestyle-media-card__media-placeholder {
@@ -50,6 +50,6 @@
 
 .lifestyle-media-card__subtitle {
   font-size: 0.85rem;
-  color: var(--system-tokens--colors--foregrounds--contrast, #ccc);
+  color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
   opacity: 0.85;
 }

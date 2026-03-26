@@ -1,6 +1,6 @@
 .lifestyle-intro {
   font-size: 1.1rem;
-  color: var(--system-tokens--colors--foregrounds--contrast, #cccccc);
+  color: var(--components-tokens--site--page--on-dark-text, #ebfdff);
   max-width: 680px;
   line-height: 1.7;
   margin: 0;

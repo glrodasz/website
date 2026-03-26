@@ -47,6 +47,104 @@ const STATIC_POSTS: BlogPost[] = [
   },
 ];
 
+const MRSS_NS = 'http://search.yahoo.com/mrss/';
+const RSS_CONTENT_NS = 'http://purl.org/rss/1.0/modules/content/';
+
+function normalizeCoverUrl(url: string): string {
+  if (!url) return '';
+  try {
+    return new URL(url).href;
+  } catch {
+    return url;
+  }
+}
+
+function isImageEnclosureUrl(url: string, type: string): boolean {
+  if (type.startsWith('image/')) return true;
+  if (type && !type.startsWith('image/')) return false;
+  return /\.(jpe?g|png|gif|webp|svg)(\?|$)/i.test(url);
+}
+
+function imageEnclosureCover(item: Element): string {
+  const enc = item.querySelector('enclosure');
+  if (!enc) return '';
+  const url = enc.getAttribute('url') ?? '';
+  if (!url) return '';
+  const type = enc.getAttribute('type') ?? '';
+  if (!isImageEnclosureUrl(url, type)) return '';
+  return normalizeCoverUrl(url);
+}
+
+function firstMrssThumbnail(item: Element): string {
+  const nodes = item.getElementsByTagNameNS(MRSS_NS, 'thumbnail');
+  for (let i = 0; i < nodes.length; i++) {
+    const u = nodes[i].getAttribute('url');
+    if (u) return normalizeCoverUrl(u);
+  }
+  return '';
+}
+
+function firstMrssContentImage(item: Element): string {
+  const nodes = item.getElementsByTagNameNS(MRSS_NS, 'content');
+  let fallback = '';
+  for (let i = 0; i < nodes.length; i++) {
+    const el = nodes[i];
+    const u = el.getAttribute('url') ?? '';
+    if (!u) continue;
+    const medium = el.getAttribute('medium') ?? '';
+    const type = el.getAttribute('type') ?? '';
+    if (medium === 'image' || type.startsWith('image/')) {
+      return normalizeCoverUrl(u);
+    }
+    if (!fallback) fallback = normalizeCoverUrl(u);
+  }
+  return fallback;
+}
+
+function firstImageSrcFromHtml(html: string, baseUrl: string): string {
+  if (!html.trim()) return '';
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  const img = div.querySelector('img[src]');
+  const src = img?.getAttribute('src')?.trim() ?? '';
+  if (!src) return '';
+  try {
+    return normalizeCoverUrl(new URL(src, baseUrl).href);
+  } catch {
+    return /^https?:\/\//i.test(src) ? normalizeCoverUrl(src) : '';
+  }
+}
+
+function contentEncodedHtml(item: Element): string {
+  const nodes = item.getElementsByTagNameNS(RSS_CONTENT_NS, 'encoded');
+  return nodes[0]?.textContent ?? '';
+}
+
+function anyEnclosureCover(item: Element): string {
+  const enc = item.querySelector('enclosure');
+  const url = enc?.getAttribute('url') ?? '';
+  return url ? normalizeCoverUrl(url) : '';
+}
+
+function pickCoverFromItem(item: Element, descriptionHtml: string, link: string): string {
+  let cover = imageEnclosureCover(item);
+  if (cover) return cover;
+
+  cover = firstMrssThumbnail(item);
+  if (cover) return cover;
+
+  cover = firstMrssContentImage(item);
+  if (cover) return cover;
+
+  cover = firstImageSrcFromHtml(contentEncodedHtml(item), link);
+  if (cover) return cover;
+
+  cover = firstImageSrcFromHtml(descriptionHtml, link);
+  if (cover) return cover;
+
+  return anyEnclosureCover(item);
+}
+
 function parseFeed(xmlText: string): BlogPost[] {
   const parser = new DOMParser();
   const doc = parser.parseFromString(xmlText, 'application/xml');
@@ -62,9 +160,7 @@ function parseFeed(xmlText: string): BlogPost[] {
       ? new Date(pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
       : '';
 
-    const enclosureUrl = item.querySelector('enclosure')?.getAttribute('url') ?? '';
-    const mediaContent = item.querySelector('content')?.getAttribute('url') ?? '';
-    const cover = enclosureUrl || mediaContent || '';
+    const cover = pickCoverFromItem(item, description, link);
 
     const div = document.createElement('div');
     div.innerHTML = description;
@@ -74,25 +170,41 @@ function parseFeed(xmlText: string): BlogPost[] {
   });
 }
 
-const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => (
-  <article className="post-card">
-    <a href={post.link} target="_blank" rel="noopener noreferrer">
-      {post.cover ? (
-        <img src={post.cover} alt={post.title} className="post-card__cover" loading="lazy" />
-      ) : (
-        <div className="post-card__cover-placeholder" aria-hidden="true">✍️</div>
-      )}
-      <div className="post-card__body">
-        <h3 className="post-card__title">{post.title}</h3>
-        <div className="post-card__meta">
-          {post.date && <span>{post.date}</span>}
-          <span>{post.readTime}</span>
+const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const [coverFailed, setCoverFailed] = useState(false);
+
+  useEffect(() => {
+    setCoverFailed(false);
+  }, [post.cover, post.link]);
+
+  const showCover = Boolean(post.cover) && !coverFailed;
+
+  return (
+    <article className="post-card">
+      <a href={post.link} target="_blank" rel="noopener noreferrer">
+        {showCover ? (
+          <img
+            src={post.cover}
+            alt={post.title}
+            className="post-card__cover"
+            loading="lazy"
+            onError={() => setCoverFailed(true)}
+          />
+        ) : (
+          <div className="post-card__cover-placeholder" aria-hidden="true">✍️</div>
+        )}
+        <div className="post-card__body">
+          <h3 className="post-card__title">{post.title}</h3>
+          <div className="post-card__meta">
+            {post.date && <span>{post.date}</span>}
+            <span>{post.readTime}</span>
+          </div>
+          {post.excerpt && <p className="post-card__excerpt">{post.excerpt}</p>}
         </div>
-        {post.excerpt && <p className="post-card__excerpt">{post.excerpt}</p>}
-      </div>
-    </a>
-  </article>
-);
+      </a>
+    </article>
+  );
+};
 
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>(STATIC_POSTS);

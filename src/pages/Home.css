@@ -1,13 +1,11 @@
 /* Home page styles — hero mirrors curriculum-vitae Hero.tsx */
 
 .home-hero {
-  --relocation-height: 130px;
   --header-mobile-min-height: 600px;
 
   position: relative;
   margin: 0 auto;
   min-height: var(--header-mobile-min-height);
-  margin-bottom: var(--relocation-height);
   padding: 0 24px;
   box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.2);
   background-color: #000;
@@ -29,7 +27,7 @@
   min-height: inherit;
   gap: 24px;
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 0;
 }
 
 .home-hero__content-col {

@@ -45,7 +45,7 @@ const Courses: React.FC = () => {
             Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
             who want to move fast and build better with AI.
           </p>
-          <Button variant="secondary" href={AI_FIRST_WAITLIST_MAILTO}>
+          <Button variant="primary" href={AI_FIRST_WAITLIST_MAILTO}>
             Join waitlist
           </Button>
         </div>

@@ -10,6 +10,8 @@ import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
 import './AboutLifestyle.css';
+import { ArrowRight } from 'phosphor-react';
+import { IconButton } from '../components/molecules/IconButton';
 
 const AboutLifestyle: React.FC = () => (
   <main className="page">
@@ -30,15 +32,16 @@ const AboutLifestyle: React.FC = () => (
     <section className="page-section">
       <div className="lifestyle-section-head">
         <h2 className="section-title">Favorite books</h2>
-        <Button
+        <IconButton
+          icon={<ArrowRight />}
+          iconPosition="right"
+          label="Goodreads profile" 
+          variant="secondary"
+          size="small"
           href={GOODREADS_PROFILE}
           target="_blank"
           rel="noopener noreferrer"
-          variant="secondary"
-          className="lifestyle-external"
-        >
-          Goodreads profile →
-        </Button>
+        />
       </div>
       <ul className="lifestyle-grid">
         {FAVORITE_BOOKS.map((b) => (
@@ -60,15 +63,17 @@ const AboutLifestyle: React.FC = () => (
     <section className="page-section">
       <div className="lifestyle-section-head">
         <h2 className="section-title">Favorite films</h2>
-        <Button
+        <IconButton
           href={LETTERBOXD_PROFILE}
           target="_blank"
           rel="noopener noreferrer"
           variant="secondary"
+          size="small"
           className="lifestyle-external"
-        >
-          Letterboxd profile →
-        </Button>
+          icon={<ArrowRight />}
+          iconPosition="right"
+          label="Letterboxd profile"
+        />
       </div>
       <ul className="lifestyle-grid">
         {FAVORITE_FILMS.map((f) => (

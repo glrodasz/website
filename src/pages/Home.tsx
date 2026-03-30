@@ -12,6 +12,8 @@ import { defaultDescription, defaultTitle } from '../data/site';
 import { Seo } from '../components/Seo';
 import { writingPosts, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
+import { ArrowRight } from 'phosphor-react';
+import { IconButton } from '../components/molecules/IconButton';
 
 const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const [coverFailed, setCoverFailed] = useState(false);
@@ -78,9 +80,9 @@ const Home: React.FC = () => {
 
                 </div>
                 <div className="home-hero__ctas">
-                  <Button to="/courses">Courses</Button>
-                  <Button to="/courses">AI Course</Button>
-                  <Button to="/contact" variant="secondary">Get in touch</Button>
+                  <Button to="/courses" variant="primary">AI Course</Button>
+                  <Button to="/courses" variant="secondary">Courses</Button>
+                  <Button to="/contact" variant="ghost-dark">Get in touch</Button>
                 </div>
               </div>
             </div>
@@ -111,9 +113,8 @@ const Home: React.FC = () => {
         <div className="home-courses__inner">
           <div className="home-courses__header">
             <h2 className="home-courses__title">Courses</h2>
-            <Button to="/courses" variant="secondary" size="small" className="home-courses__see-all">
-              See all courses
-            </Button>
+            <IconButton icon={<ArrowRight />} iconPosition="right" label="See all courses" variant="secondary" size="small" to="/courses">
+            </IconButton>
           </div>
           <div className="home-courses__grid">
             <article className="home-course-card home-course-card--accent">
@@ -123,7 +124,7 @@ const Home: React.FC = () => {
                 <p className="home-course-card__desc">
                   Build software with AI as your primary tool — short, focused lessons across the stack.
                 </p>
-                <Button variant="secondary" href={AI_FIRST_WAITLIST_MAILTO}>
+                <Button variant="primary" href={AI_FIRST_WAITLIST_MAILTO}>
                   Join waitlist
                 </Button>
               </div>
@@ -170,14 +171,16 @@ const Home: React.FC = () => {
         <div className="home-writing__inner">
           <div className="home-writing__header">
             <h2 className="home-writing__title">Writing</h2>
-            <Button
+            <IconButton
+              icon={<ArrowRight />}
+              iconPosition="right"
+              label="See full blog"
+              variant="secondary"
+              size="small"
               href="https://undefined.sh"
               target="_blank"
               rel="noopener noreferrer"
-              variant="secondary"
-            >
-              See full blog → undefined.sh
-            </Button>
+            />
           </div>
 
           <div className="home-writing__posts">

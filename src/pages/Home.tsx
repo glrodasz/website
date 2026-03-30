@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Button } from '../components/atoms/Button';
 import {
   AI_FIRST_WAITLIST_MAILTO,
   FREE_YOUTUBE_PLAYLISTS,
@@ -78,9 +78,9 @@ const Home: React.FC = () => {
 
                 </div>
                 <div className="home-hero__ctas">
-                  <Link to="/courses" className="btn btn-primary">Courses</Link>
-                  <Link to="/courses" className="btn btn-primary">AI Course</Link>
-                  <Link to="/contact" className="btn btn-outline">Get in touch</Link>
+                  <Button to="/courses">Courses</Button>
+                  <Button to="/courses">AI Course</Button>
+                  <Button to="/contact" variant="secondary">Get in touch</Button>
                 </div>
               </div>
             </div>
@@ -111,9 +111,9 @@ const Home: React.FC = () => {
         <div className="home-courses__inner">
           <div className="home-courses__header">
             <h2 className="home-courses__title">Courses</h2>
-            <Link to="/courses" className="btn btn-outline home-courses__see-all">
+            <Button to="/courses" variant="secondary" size="small" className="home-courses__see-all">
               See all courses
-            </Link>
+            </Button>
           </div>
           <div className="home-courses__grid">
             <article className="home-course-card home-course-card--accent">
@@ -123,9 +123,9 @@ const Home: React.FC = () => {
                 <p className="home-course-card__desc">
                   Build software with AI as your primary tool — short, focused lessons across the stack.
                 </p>
-                <a href={AI_FIRST_WAITLIST_MAILTO} className="btn btn-primary">
+                <Button variant="secondary" href={AI_FIRST_WAITLIST_MAILTO}>
                   Join waitlist
-                </a>
+                </Button>
               </div>
             </article>
             {featuredPlaylist && (
@@ -170,14 +170,14 @@ const Home: React.FC = () => {
         <div className="home-writing__inner">
           <div className="home-writing__header">
             <h2 className="home-writing__title">Writing</h2>
-            <a
+            <Button
               href="https://undefined.sh"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline"
+              variant="secondary"
             >
               See full blog → undefined.sh
-            </a>
+            </Button>
           </div>
 
           <div className="home-writing__posts">

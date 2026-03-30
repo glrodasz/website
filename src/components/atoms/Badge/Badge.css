@@ -1,0 +1,78 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  font-family: var(
+    --components-tokens--typography--styles--label--small--font-family,
+    var(--system-tokens--typography--font-family--body, sans-serif)
+  );
+  font-weight: 600;
+}
+
+.qd-badge__text {
+  line-height: inherit;
+}
+
+.qd-badge--small {
+  padding: var(--components-tokens--tag--spacing--small--vertical, 4px)
+    var(--components-tokens--tag--spacing--small--horizontal, 8px);
+  border-radius: var(--components-tokens--tag--radius--small, 100px);
+  font-size: var(--components-tokens--typography--styles--label--small--font-size, 13px);
+  line-height: var(--components-tokens--typography--styles--label--small--line-height, 17px);
+}
+
+.qd-badge--medium {
+  padding: var(--components-tokens--tag--spacing--medium--vertical, 4px)
+    var(--components-tokens--tag--spacing--medium--horizontal, 12px);
+  border-radius: var(--components-tokens--tag--radius--large, 100px);
+  font-family: var(
+    --components-tokens--typography--styles--label--large--font-family,
+    var(--system-tokens--typography--font-family--body, sans-serif)
+  );
+  font-size: var(--components-tokens--typography--styles--label--large--font-size, 16px);
+  line-height: var(--components-tokens--typography--styles--label--large--line-height, 22px);
+}
+
+.qd-badge--uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.qd-badge--discovery {
+  background-color: var(--components-tokens--tag--background-color--filled--discovery);
+  color: var(--components-tokens--tag--text-ccolor--filled--discovery);
+}
+
+.qd-badge--info {
+  background-color: var(--components-tokens--tag--background-color--filled--info);
+  color: var(--components-tokens--tag--text-ccolor--filled--info);
+}
+
+.qd-badge--success {
+  background-color: var(--components-tokens--tag--background-color--filled--success);
+  color: var(--components-tokens--tag--text-ccolor--filled--success);
+}
+
+.qd-badge--warning {
+  background-color: var(--components-tokens--tag--background-color--filled--warning);
+  color: var(--components-tokens--tag--text-ccolor--filled--warning);
+}
+
+.qd-badge--error {
+  background-color: var(--components-tokens--tag--background-color--filled--error);
+  color: var(--components-tokens--tag--text-ccolor--filled--error);
+}
+
+.qd-badge--neutral {
+  background-color: var(--components-tokens--tag--background-color--filled--neutral);
+  color: var(--components-tokens--tag--text-ccolor--filled--neutral);
+}
+
+.qd-badge--accent {
+  background-color: var(--system-tokens--colors--complementary--principal);
+  color: var(--system-tokens--colors--foregrounds--principal);
+}

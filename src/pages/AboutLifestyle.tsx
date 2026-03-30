@@ -4,6 +4,7 @@ import {
   GOODREADS_PROFILE,
   LETTERBOXD_PROFILE,
 } from '../data/lifestyle';
+import { Button } from '../components/atoms/Button';
 import { LifestyleMediaCard } from '../components/molecules/LifestyleMediaCard';
 import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
@@ -29,14 +30,15 @@ const AboutLifestyle: React.FC = () => (
     <section className="page-section">
       <div className="lifestyle-section-head">
         <h2 className="section-title">Favorite books</h2>
-        <a
+        <Button
           href={GOODREADS_PROFILE}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-outline lifestyle-external"
+          variant="secondary"
+          className="lifestyle-external"
         >
           Goodreads profile →
-        </a>
+        </Button>
       </div>
       <ul className="lifestyle-grid">
         {FAVORITE_BOOKS.map((b) => (
@@ -58,14 +60,15 @@ const AboutLifestyle: React.FC = () => (
     <section className="page-section">
       <div className="lifestyle-section-head">
         <h2 className="section-title">Favorite films</h2>
-        <a
+        <Button
           href={LETTERBOXD_PROFILE}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-outline lifestyle-external"
+          variant="secondary"
+          className="lifestyle-external"
         >
           Letterboxd profile →
-        </a>
+        </Button>
       </div>
       <ul className="lifestyle-grid">
         {FAVORITE_FILMS.map((f) => (

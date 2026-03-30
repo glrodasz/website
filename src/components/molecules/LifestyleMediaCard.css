@@ -14,7 +14,10 @@
 }
 
 .lifestyle-media-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(
+    --components-tokens--site--course-card--hover-border-color,
+    var(--system-tokens--colors--complementary--principal, #d6ff33)
+  );
   transform: translateY(-2px);
 }
 
@@ -30,26 +33,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: var(--color-accent);
+  font-size: var(--components-tokens--typography--styles--subtitle--large--font-size, 24px);
+  line-height: var(--components-tokens--typography--styles--subtitle--large--line-height, 30px);
+  color: var(
+    --components-tokens--site--course-card--media-placeholder-accent-color,
+    var(--system-tokens--colors--complementary--principal, #d6ff33)
+  );
 }
 
 .lifestyle-media-card__meta {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 12px 14px;
+  gap: var(--system-tokens--spacing--xs, 8px);
+  padding: var(--system-tokens--spacing--sm, 12px);
 }
 
 .lifestyle-media-card__title {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--font-display, Syne, Inter, sans-serif);
   font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.35;
+  font-size: var(--components-tokens--typography--styles--paragraph--small--font-size, 16px);
+  line-height: var(--components-tokens--typography--styles--paragraph--small--line-height, 22px);
 }
 
 .lifestyle-media-card__subtitle {
-  font-size: 0.85rem;
+  font-size: var(--components-tokens--typography--styles--paragraph--extra-small--font-size, 13px);
+  line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height, 17px);
   color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
   opacity: 0.85;
 }

@@ -5,6 +5,14 @@ const meta: Meta<typeof LifestyleMediaCard> = {
   title: 'Molecules/LifestyleMediaCard',
   component: LifestyleMediaCard,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Quantum-aligned link card for books/films. Uses **Site.Course-card** component tokens (surface, border, text, hover border, placeholder accent), **card-text** border radius, **typography** styles for title/subtitle/placeholder sizing, and **system** spacing for the meta block. Preview imports `index.css` so tokens and `--font-display` apply in Storybook.',
+      },
+    },
+  },
 };
 
 export default meta;

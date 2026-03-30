@@ -317,25 +317,6 @@
   margin-top: 24px;
 }
 
-/* Badge */
-.badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 4px 12px;
-  border-radius: 100px;
-  background-color: var(--color-accent);
-  color: #1a1a1a;
-}
-
-.badge--outline {
-  background-color: transparent;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-}
-
 /* Recognitions */
 .recognitions-list {
   display: flex;
@@ -491,21 +472,6 @@
 
 .btn-load-more {
   margin-top: 20px;
-  padding: 10px 24px;
-  border-radius: 100px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid var(--color-accent);
-  background: transparent;
-  color: var(--color-accent);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.btn-load-more:hover {
-  background-color: var(--color-accent);
-  color: var(--components-tokens--site--course-card--text-on-accent-color, #292929);
 }
 
 .platform-course-grid {

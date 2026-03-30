@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import { Badge } from '../components/atoms/Badge';
+import { Button } from '../components/atoms/Button';
 import {
   AI_FIRST_WAITLIST_MAILTO,
   FREE_YOUTUBE_PLAYLISTS,
@@ -33,7 +35,9 @@ const Courses: React.FC = () => {
       <section className="page-section" id="ai-first">
         <div className="featured-course-card">
           <div className="featured-course-card__header">
-            <span className="badge">Coming Soon</span>
+            <Badge variant="accent" size="small" uppercase>
+              Coming Soon
+            </Badge>
           </div>
           <h2 className="featured-course-card__title">AI-First Programming Course</h2>
           <p className="featured-course-card__description">
@@ -41,9 +45,9 @@ const Courses: React.FC = () => {
             Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
             who want to move fast and build better with AI.
           </p>
-          <a href={AI_FIRST_WAITLIST_MAILTO} className="btn btn-primary">
+          <Button variant="secondary" href={AI_FIRST_WAITLIST_MAILTO}>
             Join waitlist
-          </a>
+          </Button>
         </div>
       </section>
 
@@ -117,13 +121,14 @@ const Courses: React.FC = () => {
           ))}
         </ul>
         {hasMoreTutorials && (
-          <button
-            type="button"
+          <Button
+            variant="secondary"
+            size="small"
             className="btn-load-more"
             onClick={() => setShowAllTutorials((s) => !s)}
           >
             {showAllTutorials ? 'Show less' : 'Load more'}
-          </button>
+          </Button>
         )}
       </section>
 

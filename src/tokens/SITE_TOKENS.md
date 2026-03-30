@@ -15,6 +15,8 @@
 | `site--course-card--text-on-accent-color` | `Colors/Backgrounds/contrast` | Text on yellow accent (e.g. badge on `--color-accent`) |
 | `site--course-card--card-title-color` | `Colors/Foregrounds/contrast` | Card title on dark surface |
 | `site--course-card--card-description-color` | `Colors/Foregrounds/disabled` | Muted body line on dark cards |
+| `site--course-card--hover-border-color` | `Colors/Complementary/principal` | Card hover border (e.g. `LifestyleMediaCard`, course rows) |
+| `site--course-card--media-placeholder-accent-color` | `Colors/Complementary/principal` | Icon/emoji on empty media area |
 
 **Gradients:** Use `surface-color` and `media-background-color` for start/end stops (same system targets as today; split later if the featured card should diverge).
 
@@ -25,3 +27,5 @@ Edit **system** tokens in `system.json` for global theme shifts. To point **only
 ## Library atoms (follow-up)
 
 Quantum primitives under `src/components/atoms` and `molecules` (Tag, InputText, TextArea, NumberButton, Status, Typography, etc.) still use `--system-tokens--*` for spacing, borders, and colors where they are not yet wired to `--components-tokens--{library}--*`. Refactoring those files to the published component token names from `components.json` is a separate pass; **site** surfaces (pages + `LifestyleMediaCard`) are covered by `Site.*` above.
+
+`LifestyleMediaCard` also uses Quantum **library** tokens: `card-text` border radius, typography styles for title/subtitle/placeholder size, and system spacing for meta padding/gap. Its CSS falls back to `--system-tokens--colors--complementary--principal` if site hover/placeholder tokens are missing.

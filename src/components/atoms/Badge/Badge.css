@@ -6,14 +6,11 @@
   justify-content: center;
   box-sizing: border-box;
   border: 1px solid transparent;
-  font-family: var(
-    --components-tokens--typography--styles--label--small--font-family,
-    var(--system-tokens--typography--font-family--body, sans-serif)
-  );
-  font-weight: 600;
 }
 
-.qd-badge__text {
+/* Typography `label` sets primary text color; badge variants set color on the shell */
+.qd-badge .qd-badge__text {
+  color: inherit;
   line-height: inherit;
 }
 
@@ -21,7 +18,12 @@
   padding: var(--components-tokens--tag--spacing--small--vertical, 4px)
     var(--components-tokens--tag--spacing--small--horizontal, 8px);
   border-radius: var(--components-tokens--tag--radius--small, 100px);
+}
+
+.qd-badge--small .qd-badge__text {
+  font-family: var(--global-tokens--typography--font-family--inter), system-ui, -apple-system, sans-serif;
   font-size: var(--components-tokens--typography--styles--label--small--font-size, 13px);
+  font-weight: 500;
   line-height: var(--components-tokens--typography--styles--label--small--line-height, 17px);
 }
 
@@ -29,11 +31,12 @@
   padding: var(--components-tokens--tag--spacing--medium--vertical, 4px)
     var(--components-tokens--tag--spacing--medium--horizontal, 12px);
   border-radius: var(--components-tokens--tag--radius--large, 100px);
-  font-family: var(
-    --components-tokens--typography--styles--label--large--font-family,
-    var(--system-tokens--typography--font-family--body, sans-serif)
-  );
+}
+
+.qd-badge--medium .qd-badge__text {
+  font-family: var(--global-tokens--typography--font-family--inter), system-ui, -apple-system, sans-serif;
   font-size: var(--components-tokens--typography--styles--label--large--font-size, 16px);
+  font-weight: 500;
   line-height: var(--components-tokens--typography--styles--label--large--line-height, 22px);
 }
 
@@ -43,36 +46,43 @@
 }
 
 .qd-badge--discovery {
-  background-color: var(--components-tokens--tag--background-color--filled--discovery);
-  color: var(--components-tokens--tag--text-ccolor--filled--discovery);
+  background-color: transparent;
+  color: var(--components-tokens--tag--text-ccolor--duetone--discovery);
+  border-color: var(--components-tokens--tag--border-color--duetone--discovery);
 }
 
 .qd-badge--info {
-  background-color: var(--components-tokens--tag--background-color--filled--info);
-  color: var(--components-tokens--tag--text-ccolor--filled--info);
+  background-color: transparent;
+  color: var(--components-tokens--tag--text-ccolor--duetone--info);
+  border-color: var(--components-tokens--tag--border-color--duetone--info);
 }
 
 .qd-badge--success {
-  background-color: var(--components-tokens--tag--background-color--filled--success);
-  color: var(--components-tokens--tag--text-ccolor--filled--success);
+  background-color: transparent;
+  color: var(--components-tokens--tag--text-ccolor--duetone--success);
+  border-color: var(--components-tokens--tag--border-color--duetone--success);
 }
 
 .qd-badge--warning {
-  background-color: var(--components-tokens--tag--background-color--filled--warning);
-  color: var(--components-tokens--tag--text-ccolor--filled--warning);
+  background-color: transparent;
+  color: var(--components-tokens--tag--text-ccolor--duetone--warning);
+  border-color: var(--components-tokens--tag--border-color--duetone--warning);
 }
 
 .qd-badge--error {
-  background-color: var(--components-tokens--tag--background-color--filled--error);
-  color: var(--components-tokens--tag--text-ccolor--filled--error);
+  background-color: transparent;
+  color: var(--components-tokens--tag--text-ccolor--duetone--error);
+  border-color: var(--components-tokens--tag--border-color--duetone--error);
 }
 
 .qd-badge--neutral {
-  background-color: var(--components-tokens--tag--background-color--filled--neutral);
-  color: var(--components-tokens--tag--text-ccolor--filled--neutral);
+  background-color: transparent;
+  color: var(--components-tokens--tag--text-ccolor--duetone--neutral);
+  border-color: var(--components-tokens--tag--border-color--duetone--neutral);
 }
 
 .qd-badge--accent {
-  background-color: var(--system-tokens--colors--complementary--principal);
-  color: var(--system-tokens--colors--foregrounds--principal);
+  background-color: transparent;
+  color: var(--system-tokens--colors--complementary--principal);
+  border-color: var(--system-tokens--colors--complementary--principal);
 }

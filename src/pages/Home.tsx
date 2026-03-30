@@ -14,6 +14,7 @@ import { writingPosts, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
 import { ArrowRight } from 'phosphor-react';
 import { IconButton } from '../components/molecules/IconButton';
+import { Badge } from '../components/atoms/Badge';
 
 const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const [coverFailed, setCoverFailed] = useState(false);
@@ -119,7 +120,9 @@ const Home: React.FC = () => {
           <div className="home-courses__grid">
             <article className="home-course-card home-course-card--accent">
               <div className="home-course-card__body">
-                <span className="home-course-card__badge">Coming soon</span>
+                <div className="home-course-card__badge-container">
+                  <Badge variant="accent" size="small" uppercase>Coming soon</Badge>
+                </div>
                 <h3 className="home-course-card__name">AI-first programming</h3>
                 <p className="home-course-card__desc">
                   Build software with AI as your primary tool — short, focused lessons across the stack.

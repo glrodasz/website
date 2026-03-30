@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '../Typography';
 import './Badge.css';
 
 export type BadgeVariant =
@@ -12,7 +13,7 @@ export type BadgeVariant =
 
 export interface BadgeProps {
   /**
-   * Semantic / emphasis variant (tag component tokens + complementary accent)
+   * Semantic / emphasis variant. Renders ghost (outline): transparent fill, border and text from tag duetone tokens or complementary accent.
    */
   variant?: BadgeVariant;
   /**
@@ -47,7 +48,9 @@ export const Badge: React.FC<BadgeProps> = ({
 
   return (
     <span className={classes}>
-      <span className={`${base}__text`}>{children}</span>
+      <Typography variant="label" as="span" className={`${base}__text`}>
+        {children}
+      </Typography>
     </span>
   );
 };

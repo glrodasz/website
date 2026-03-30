@@ -421,6 +421,10 @@
     var(--components-tokens--card-text--spacing--horizontal, 24px);
 }
 
+.home-course-card__badge-container {
+  margin-bottom: 12px;
+}
+
 .home-course-card__badge {
   display: inline-block;
   font-size: 0.7rem;

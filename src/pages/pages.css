@@ -416,12 +416,28 @@
     var(--components-tokens--card-text--spacing--horizontal, 20px);
 }
 
+.playlist-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 8px;
+}
+
+.playlist-card__lang-flag {
+  font-size: 1.2em;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.08em;
+}
+
 .playlist-card__title {
   font-family: 'Syne', 'Inter', sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.35;
-  margin: 0 0 8px;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
   color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
 }
 

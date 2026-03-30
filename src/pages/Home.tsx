@@ -4,171 +4,14 @@ import {
   AI_FIRST_WAITLIST_MAILTO,
   FREE_YOUTUBE_PLAYLISTS,
   HOME_FEATURED_PLAYLIST_ID,
+  PLAYLIST_LANGUAGE_META,
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
 import { defaultDescription, defaultTitle } from '../data/site';
 import { Seo } from '../components/Seo';
+import { writingPosts, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
-
-interface BlogPost {
-  title: string;
-  link: string;
-  date: string;
-  readTime: string;
-  excerpt: string;
-  cover: string;
-}
-
-const STATIC_POSTS: BlogPost[] = [
-  {
-    title: 'Building AI-First Applications: A Practical Guide',
-    link: 'https://undefined.sh',
-    date: 'Jan 2025',
-    readTime: '8 min read',
-    excerpt: 'Exploring how to integrate AI tools and workflows into modern web development, from code generation to intelligent UI patterns.',
-    cover: '',
-  },
-  {
-    title: 'WebAuthn & Passkeys: The Future of Authentication',
-    link: 'https://undefined.sh',
-    date: 'Nov 2023',
-    readTime: '6 min read',
-    excerpt: 'A deep dive into the WebAuthn standard, why passkeys matter, and how to implement them in your web applications today.',
-    cover: '',
-  },
-  {
-    title: 'Why Every Developer Should Try Live Coding on Stream',
-    link: 'https://undefined.sh',
-    date: 'Aug 2022',
-    readTime: '5 min read',
-    excerpt: 'Live coding is one of the most authentic ways to teach programming. Here is why I started, what I learned, and how you can too.',
-    cover: '',
-  },
-];
-
-const MRSS_NS = 'http://search.yahoo.com/mrss/';
-const RSS_CONTENT_NS = 'http://purl.org/rss/1.0/modules/content/';
-
-function normalizeCoverUrl(url: string): string {
-  if (!url) return '';
-  try {
-    return new URL(url).href;
-  } catch {
-    return url;
-  }
-}
-
-function isImageEnclosureUrl(url: string, type: string): boolean {
-  if (type.startsWith('image/')) return true;
-  if (type && !type.startsWith('image/')) return false;
-  return /\.(jpe?g|png|gif|webp|svg)(\?|$)/i.test(url);
-}
-
-function imageEnclosureCover(item: Element): string {
-  const enc = item.querySelector('enclosure');
-  if (!enc) return '';
-  const url = enc.getAttribute('url') ?? '';
-  if (!url) return '';
-  const type = enc.getAttribute('type') ?? '';
-  if (!isImageEnclosureUrl(url, type)) return '';
-  return normalizeCoverUrl(url);
-}
-
-function firstMrssThumbnail(item: Element): string {
-  const nodes = item.getElementsByTagNameNS(MRSS_NS, 'thumbnail');
-  for (let i = 0; i < nodes.length; i++) {
-    const u = nodes[i].getAttribute('url');
-    if (u) return normalizeCoverUrl(u);
-  }
-  return '';
-}
-
-function firstMrssContentImage(item: Element): string {
-  const nodes = item.getElementsByTagNameNS(MRSS_NS, 'content');
-  let fallback = '';
-  for (let i = 0; i < nodes.length; i++) {
-    const el = nodes[i];
-    const u = el.getAttribute('url') ?? '';
-    if (!u) continue;
-    const medium = el.getAttribute('medium') ?? '';
-    const type = el.getAttribute('type') ?? '';
-    if (medium === 'image' || type.startsWith('image/')) {
-      return normalizeCoverUrl(u);
-    }
-    if (!fallback) fallback = normalizeCoverUrl(u);
-  }
-  return fallback;
-}
-
-function firstImageSrcFromHtml(html: string, baseUrl: string): string {
-  if (!html.trim()) return '';
-  const div = document.createElement('div');
-  div.innerHTML = html;
-  const img = div.querySelector('img[src]');
-  const src = img?.getAttribute('src')?.trim() ?? '';
-  if (!src) return '';
-  try {
-    return normalizeCoverUrl(new URL(src, baseUrl).href);
-  } catch {
-    return /^https?:\/\//i.test(src) ? normalizeCoverUrl(src) : '';
-  }
-}
-
-function contentEncodedHtml(item: Element): string {
-  const nodes = item.getElementsByTagNameNS(RSS_CONTENT_NS, 'encoded');
-  return nodes[0]?.textContent ?? '';
-}
-
-function anyEnclosureCover(item: Element): string {
-  const enc = item.querySelector('enclosure');
-  const url = enc?.getAttribute('url') ?? '';
-  return url ? normalizeCoverUrl(url) : '';
-}
-
-function pickCoverFromItem(item: Element, descriptionHtml: string, link: string): string {
-  let cover = imageEnclosureCover(item);
-  if (cover) return cover;
-
-  cover = firstMrssThumbnail(item);
-  if (cover) return cover;
-
-  cover = firstMrssContentImage(item);
-  if (cover) return cover;
-
-  cover = firstImageSrcFromHtml(contentEncodedHtml(item), link);
-  if (cover) return cover;
-
-  cover = firstImageSrcFromHtml(descriptionHtml, link);
-  if (cover) return cover;
-
-  return anyEnclosureCover(item);
-}
-
-function parseFeed(xmlText: string): BlogPost[] {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(xmlText, 'application/xml');
-  const items = Array.from(doc.querySelectorAll('item')).slice(0, 3);
-
-  return items.map((item) => {
-    const title = item.querySelector('title')?.textContent ?? '';
-    const link = item.querySelector('link')?.textContent ?? 'https://undefined.sh';
-    const pubDate = item.querySelector('pubDate')?.textContent ?? '';
-    const description = item.querySelector('description')?.textContent ?? '';
-
-    const date = pubDate
-      ? new Date(pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-      : '';
-
-    const cover = pickCoverFromItem(item, description, link);
-
-    const div = document.createElement('div');
-    div.innerHTML = description;
-    const excerpt = div.textContent?.slice(0, 160) ?? '';
-
-    return { title, link, date, readTime: '5 min read', excerpt, cover };
-  });
-}
 
 const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const [coverFailed, setCoverFailed] = useState(false);
@@ -207,8 +50,6 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 };
 
 const Home: React.FC = () => {
-  const [posts, setPosts] = useState<BlogPost[]>(STATIC_POSTS);
-  const [loadingPosts, setLoadingPosts] = useState(true);
   const [heroPhotoFailed, setHeroPhotoFailed] = useState(false);
 
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
@@ -216,50 +57,6 @@ const Home: React.FC = () => {
   const onHeroPhotoError = useCallback(() => {
     setHeroPhotoFailed(true);
   }, []);
-
-  useEffect(() => {
-    const RSS_URL = 'https://undefined.sh/rss.xml';
-    const PROXY = `https://api.allorigins.win/get?url=${encodeURIComponent(RSS_URL)}`;
-
-    const fetchPosts = async () => {
-      try {
-        const directRes = await fetch(RSS_URL, { signal: AbortSignal.timeout(5000) });
-        if (directRes.ok) {
-          const text = await directRes.text();
-          const parsed = parseFeed(text);
-          if (parsed.length > 0) {
-            setPosts(parsed);
-            return;
-          }
-        }
-      } catch {
-        // try proxy
-      }
-
-      try {
-        const proxyRes = await fetch(PROXY, { signal: AbortSignal.timeout(8000) });
-        if (proxyRes.ok) {
-          const data = await proxyRes.json();
-          const parsed = parseFeed(data.contents ?? '');
-          if (parsed.length > 0) {
-            setPosts(parsed);
-          }
-        }
-      } catch {
-        // keep static
-      } finally {
-        setLoadingPosts(false);
-      }
-    };
-
-    fetchPosts().catch(() => setLoadingPosts(false));
-  }, []);
-
-  useEffect(() => {
-    if (!loadingPosts) return;
-    const timer = setTimeout(() => setLoadingPosts(false), 10000);
-    return () => clearTimeout(timer);
-  }, [loadingPosts]);
 
   return (
     <main className="page">
@@ -349,7 +146,15 @@ const Home: React.FC = () => {
                     <div className="home-course-card__thumb-placeholder">▶</div>
                   )}
                   <div className="home-course-card__body">
-                    <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
+                    <div className="home-course-card__title-row">
+                      <span className="home-course-card__lang-flag" aria-hidden="true">
+                        {PLAYLIST_LANGUAGE_META[featuredPlaylist.language].flag}
+                      </span>
+                      <span className="sr-only">
+                        {PLAYLIST_LANGUAGE_META[featuredPlaylist.language].label}
+                      </span>
+                      <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
+                    </div>
                     <span className="home-course-card__cta">Open playlist on YouTube →</span>
                   </div>
                 </a>
@@ -375,15 +180,11 @@ const Home: React.FC = () => {
             </a>
           </div>
 
-          {loadingPosts ? (
-            <div className="home-writing__loading">Loading posts…</div>
-          ) : (
-            <div className="home-writing__posts">
-              {posts.map((post, i) => (
-                <PostCard key={i} post={post} />
-              ))}
-            </div>
-          )}
+          <div className="home-writing__posts">
+            {writingPosts.map((post, i) => (
+              <PostCard key={i} post={post} />
+            ))}
+          </div>
         </div>
       </section>
     </main>

@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "build:tokens": "tsx src/tokens/build-tokens.ts",
-    "dev": "npm run build:tokens && vite",
-    "build": "npm run build:tokens && tsc -b && vite build",
+    "build:posts": "tsx scripts/build-posts.ts",
+    "dev": "npm run build:tokens && npm run build:posts && vite",
+    "build": "npm run build:tokens && npm run build:posts && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "storybook": "npm run build:tokens && storybook dev -p 6006",
-    "build-storybook": "npm run build:tokens && storybook build"
+    "storybook": "npm run build:tokens && npm run build:posts && storybook dev -p 6006",
+    "build-storybook": "npm run build:tokens && npm run build:posts && storybook build"
   },
   "dependencies": {
     "phosphor-react": "^1.4.1",
@@ -36,6 +37,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.1.8",
+    "fast-xml-parser": "^5.5.9",
     "globals": "^16.5.0",
     "playwright": "^1.57.0",
     "storybook": "^10.1.8",

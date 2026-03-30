@@ -3,6 +3,7 @@ import {
   AI_FIRST_WAITLIST_MAILTO,
   FREE_YOUTUBE_PLAYLISTS,
   OTHER_PLATFORM_COURSES,
+  PLAYLIST_LANGUAGE_META,
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
@@ -72,7 +73,13 @@ const Courses: React.FC = () => {
                 <div className="playlist-card__img-placeholder">▶</div>
               )}
               <div className="playlist-card__body">
-                <h3 className="playlist-card__title">{pl.title}</h3>
+                <div className="playlist-card__title-row">
+                  <span className="playlist-card__lang-flag" aria-hidden="true">
+                    {PLAYLIST_LANGUAGE_META[pl.language].flag}
+                  </span>
+                  <span className="sr-only">{PLAYLIST_LANGUAGE_META[pl.language].label}</span>
+                  <h3 className="playlist-card__title">{pl.title}</h3>
+                </div>
                 <span className="playlist-card__link">Watch on YouTube →</span>
               </div>
             </a>

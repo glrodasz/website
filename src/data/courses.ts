@@ -1,9 +1,20 @@
 export const AI_FIRST_WAITLIST_MAILTO =
   'mailto:me@guillermorodas.com?subject=AI-First%20Programming%20Course%20Waitlist';
 
+export type PlaylistLanguage = 'en' | 'es';
+
+export const PLAYLIST_LANGUAGE_META: Record<
+  PlaylistLanguage,
+  { flag: string; label: string }
+> = {
+  en: { flag: '🇬🇧', label: 'English' },
+  es: { flag: '🇪🇸', label: 'Spanish' },
+};
+
 export interface YouTubePlaylistCourse {
   playlistId: string;
   title: string;
+  language: PlaylistLanguage;
   description?: string;
   /** First video in playlist — for hqdefault thumbnail */
   thumbnailVideoId?: string;
@@ -11,24 +22,28 @@ export interface YouTubePlaylistCourse {
 
 export const FREE_YOUTUBE_PLAYLISTS: YouTubePlaylistCourse[] = [
   {
+    playlistId: 'PLKBvDYynKmlWa59k8pnw-EHac2_miPagh',
+    title: 'Modern Component Library with React & Storybook',
+    language: 'en',
+    thumbnailVideoId: '21iHNxVlfvw',
+  },
+  {
+    playlistId: 'PLKBvDYynKmlXT7UUDB6fIJ_3jsG8f3JKG',
+    title: 'Sublr: Producto desde Cero',
+    language: 'es',
+    thumbnailVideoId: 'goQSwnI2nYs',
+  },
+  {
     playlistId: 'PLKBvDYynKmlV91NjrOx11ZmKDlsxBeijc',
-    title: 'RETO: Cero a Producción',
+    title: 'RETO: Cero a Producción — 1st Part',
+    language: 'es',
     thumbnailVideoId: 'zfxP2VvP_Dw',
   },
   {
     playlistId: 'PLKBvDYynKmlWHZNlkhnhTpeM-JOmNiQEZ',
-    title: 'Patreon — RETO: Cero a Producción',
+    title: 'RETO: Cero a Producción — 2nd Part',
+    language: 'es',
     thumbnailVideoId: 'bkyzKu7yreg',
-  },
-  {
-    playlistId: 'PLKBvDYynKmlXT7UUDB6fIJ_3jsG8f3JKG',
-    title: 'Patreon — Sublr: Producto desde Cero',
-    thumbnailVideoId: 'goQSwnI2nYs',
-  },
-  {
-    playlistId: 'PLKBvDYynKmlWa59k8pnw-EHac2_miPagh',
-    title: 'Modern Component Library with React & Storybook',
-    thumbnailVideoId: '21iHNxVlfvw',
   },
 ];
 

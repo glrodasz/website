@@ -82,7 +82,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="home-hero__ctas">
                   <Button to="/courses" variant="primary">AI Course</Button>
-                  <Button to="/courses" variant="secondary">Courses</Button>
+                  <Button to="/courses" variant="secondary" className="home-hero__cta-courses">Courses</Button>
                   <Button to="/contact" variant="ghost-dark">Get in touch</Button>
                 </div>
               </div>

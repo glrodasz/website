@@ -4,7 +4,6 @@ import {
   GOODREADS_PROFILE,
   LETTERBOXD_PROFILE,
 } from '../data/lifestyle';
-import { Button } from '../components/atoms/Button';
 import { LifestyleMediaCard } from '../components/molecules/LifestyleMediaCard';
 import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';

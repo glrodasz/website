@@ -71,10 +71,10 @@
   --global-tokens--colors--schemas--metal-chartreuse--chartreuse--100: #FBFFEB;
   --global-tokens--colors--schemas--metal-chartreuse--chartreuse--200: #EFFFAD;
   --global-tokens--colors--schemas--metal-chartreuse--chartreuse--300: #E2FF70;
-  --global-tokens--colors--schemas--metal-chartreuse--chartreuse--400: #D6FF33;
+  --global-tokens--colors--schemas--metal-chartreuse--chartreuse--400: #F7DF1D;
   --global-tokens--colors--schemas--metal-chartreuse--chartreuse--500: #A3CC00;
   --global-tokens--colors--schemas--metal-chartreuse--chartreuse--600: #313D00;
-  --global-tokens--colors--schemas--metal-chartreuse--chartreuse--opacity: #D6FF3326;
+  --global-tokens--colors--schemas--metal-chartreuse--chartreuse--opacity: #F7DF1D26;
   --global-tokens--colors--schemas--mauve-neon--neon-blue--100: #EBEBFF;
   --global-tokens--colors--schemas--mauve-neon--neon-blue--200: #C2C2FF;
   --global-tokens--colors--schemas--mauve-neon--neon-blue--300: #999BFF;
@@ -304,11 +304,11 @@
   --system-tokens--typography--font-size--body--scale: 1.2200000286102295px;
 
   /* Colors */
-  --system-tokens--colors--primary--principal: #002529;
-  --system-tokens--colors--primary--subtle: #006E7A;
-  --system-tokens--colors--primary--off: #EBFDFF;
-  --system-tokens--colors--primary--high: #002529;
-  --system-tokens--colors--complementary--principal: #D6FF33;
+  --system-tokens--colors--primary--principal: #292929;
+  --system-tokens--colors--primary--subtle: #525252;
+  --system-tokens--colors--primary--off: #F5F5F5;
+  --system-tokens--colors--primary--high: #292929;
+  --system-tokens--colors--complementary--principal: #F7DF1D;
   --system-tokens--colors--complementary--subtle: #A3CC00;
   --system-tokens--colors--complementary--off: #FBFFEB;
   --system-tokens--colors--complementary--high: #313D00;
@@ -328,7 +328,7 @@
   --system-tokens--colors--backgrounds--secondary: #EBFDFF;
   --system-tokens--colors--backgrounds--tertiary: #F6F6F6;
   --system-tokens--colors--backgrounds--subtle: #D1D1D1;
-  --system-tokens--colors--backgrounds--contrast: #002529;
+  --system-tokens--colors--backgrounds--contrast: #292929;
   --system-tokens--colors--backgrounds--neutral: #F6F6F6;
   --system-tokens--colors--foregrounds--principal: #002529;
   --system-tokens--colors--foregrounds--secondary: #006E7A;
@@ -339,16 +339,16 @@
   --system-tokens--colors--typography--heading: #002529;
   --system-tokens--colors--typography--paragraph: #454545;
   --system-tokens--colors--typography--highlight: #006E7A;
-  --system-tokens--colors--typography--alternative: #D6FF33;
+  --system-tokens--colors--typography--alternative: #F7DF1D;
   --system-tokens--colors--typography--contrast: #EBFDFF;
   --system-tokens--colors--typography--link: #006E7A;
   --system-tokens--colors--typography--disabled: #D1D1D1;
-  --system-tokens--colors--borders--strong: #006E7A;
+  --system-tokens--colors--borders--strong: #525252;
   --system-tokens--colors--borders--neutral: #D1D1D1;
   --system-tokens--colors--borders--disabled: #F6F6F6;
-  --system-tokens--colors--borders--alternative: #D6FF33;
+  --system-tokens--colors--borders--alternative: #F7DF1D;
   --system-tokens--colors--transparency--primary: #00252926;
-  --system-tokens--colors--transparency--complementary: #D6FF3326;
+  --system-tokens--colors--transparency--complementary: #F7DF1D26;
   --system-tokens--colors--transparency--light: #FFFFFF26;
   --system-tokens--colors--transparency--dark: #00000026;
 
@@ -394,7 +394,7 @@
   --components-tokens--icon-box--spacing--small--gap-elements: 0px;
   --components-tokens--icon-box--text-color--title: #002529;
   --components-tokens--icon-box--text-color--description: #002529;
-  --components-tokens--icon-box--icon-color--primary: #006E7A;
+  --components-tokens--icon-box--icon-color--primary: #525252;
   --components-tokens--icon-box--icon-color--neutral: #002529;
   --components-tokens--icon-box--spacing--large--gap-frames: 8px;
   --components-tokens--icon-box--spacing--small--gap-frames: 8px;
@@ -497,14 +497,14 @@
   --components-tokens--typography--styles--input-text--small--line-height: 22px;
 
   /* Button */
-  --components-tokens--button--background-color--primary--default: #002529;
-  --components-tokens--button--background-color--primary--hover: #002529;
-  --components-tokens--button--background-color--primary--acctived: #002529;
-  --components-tokens--button--background-color--primary--disabled: #EBFDFF;
-  --components-tokens--button--background-color--secondary--default: #D6FF33;
-  --components-tokens--button--background-color--secondary--hover: #D6FF33;
-  --components-tokens--button--background-color--secondary--acctived: #D6FF33;
-  --components-tokens--button--background-color--secondary--disabled: #FBFFEB;
+  --components-tokens--button--background-color--primary--default: #F7DF1D;
+  --components-tokens--button--background-color--primary--hover: #A3CC00;
+  --components-tokens--button--background-color--primary--acctived: #313D00;
+  --components-tokens--button--background-color--primary--disabled: #FBFFEB;
+  --components-tokens--button--background-color--secondary--default: #FFFFFF;
+  --components-tokens--button--background-color--secondary--hover: #F6F6F6;
+  --components-tokens--button--background-color--secondary--acctived: #F6F6F6;
+  --components-tokens--button--background-color--secondary--disabled: #F6F6F6;
   --components-tokens--button--background-color--ghost-light--default: #00252926;
   --components-tokens--button--background-color--ghost-light--hover: #00252926;
   --components-tokens--button--background-color--ghost-light--acctived: #00252926;
@@ -513,21 +513,21 @@
   --components-tokens--button--background-color--ghost-dark--hover: #00000026;
   --components-tokens--button--background-color--ghost-dark--acctived: #00000026;
   --components-tokens--button--background-color--ghost-dark--disabled: #FFFFFF26;
-  --components-tokens--button--text-color--primary--default: #EBFDFF;
-  --components-tokens--button--text-color--primary--hover: #006E7A;
-  --components-tokens--button--text-color--primary--actived: #EBFDFF;
-  --components-tokens--button--text-color--primary--disabled: #00252926;
-  --components-tokens--button--text-color--secondary--default: #313D00;
-  --components-tokens--button--text-color--secondary--hover: #A3CC00;
-  --components-tokens--button--text-color--secondary--actived: #313D00;
-  --components-tokens--button--text-color--secondary--disabled: #D6FF33;
-  --components-tokens--button--text-color--ghost-light--default: #002529;
-  --components-tokens--button--text-color--ghost-light--hover: #002529;
-  --components-tokens--button--text-color--ghost-light--actived: #002529;
+  --components-tokens--button--text-color--primary--default: #313D00;
+  --components-tokens--button--text-color--primary--hover: #313D00;
+  --components-tokens--button--text-color--primary--actived: #FBFFEB;
+  --components-tokens--button--text-color--primary--disabled: #D1D1D1;
+  --components-tokens--button--text-color--secondary--default: #262626;
+  --components-tokens--button--text-color--secondary--hover: #262626;
+  --components-tokens--button--text-color--secondary--actived: #262626;
+  --components-tokens--button--text-color--secondary--disabled: #D1D1D1;
+  --components-tokens--button--text-color--ghost-light--default: #292929;
+  --components-tokens--button--text-color--ghost-light--hover: #292929;
+  --components-tokens--button--text-color--ghost-light--actived: #292929;
   --components-tokens--button--text-color--ghost-light--disabled: #00252926;
-  --components-tokens--button--text-color--ghost-dark--default: #EBFDFF;
-  --components-tokens--button--text-color--ghost-dark--hover: #EBFDFF;
-  --components-tokens--button--text-color--ghost-dark--actived: #EBFDFF;
+  --components-tokens--button--text-color--ghost-dark--default: #F5F5F5;
+  --components-tokens--button--text-color--ghost-dark--hover: #F5F5F5;
+  --components-tokens--button--text-color--ghost-dark--actived: #F5F5F5;
   --components-tokens--button--text-color--ghost-dark--disabled: #FFFFFF26;
   --components-tokens--button--spacing--large--horizontal: 24px;
   --components-tokens--button--spacing--large--vertical: 12px;
@@ -537,13 +537,15 @@
   --components-tokens--button--spacing--small--gap: 4px;
   --components-tokens--button--sizing--icon--large: 24px;
   --components-tokens--button--sizing--icon--small: 16px;
-  --components-tokens--button--border-radius--large: 8px;
-  --components-tokens--button--border-radius--small: 8px;
-  --components-tokens--button--border-color--secondary--default: #006E7A;
-  --components-tokens--button--border-color--secondary--disabled: #D6FF33;
-  --components-tokens--button--border-color--ghost-light--default: #002529;
-  --components-tokens--button--border-color--ghost-light--disabled: #EBFDFF;
-  --components-tokens--button--border-color--ghost-dark--default: #EBFDFF;
+  --components-tokens--button--border-radius--large: 4px;
+  --components-tokens--button--border-radius--small: 4px;
+  --components-tokens--button--border-color--secondary--default: #D1D1D1;
+  --components-tokens--button--border-color--secondary--hover: #525252;
+  --components-tokens--button--border-color--secondary--acctived: #525252;
+  --components-tokens--button--border-color--secondary--disabled: #F6F6F6;
+  --components-tokens--button--border-color--ghost-light--default: #292929;
+  --components-tokens--button--border-color--ghost-light--disabled: #F5F5F5;
+  --components-tokens--button--border-color--ghost-dark--default: #F5F5F5;
   --components-tokens--button--border-color--ghost-dark--disabled: #FFFFFF26;
 
   /* Input-field */
@@ -555,8 +557,8 @@
   --components-tokens--input-field--text-color--input--placeholder: #00000026;
   --components-tokens--input-field--text-color--input--default: #5D5D5D;
   --components-tokens--input-field--text-color--message--error: #D04232;
-  --components-tokens--input-field--icon-color--default: #002529;
-  --components-tokens--input-field--icon-color--disabled: #006E7A;
+  --components-tokens--input-field--icon-color--default: #292929;
+  --components-tokens--input-field--icon-color--disabled: #525252;
   --components-tokens--input-field--spacing--large--horizontal: 24px;
   --components-tokens--input-field--spacing--large--vertical: 12px;
   --components-tokens--input-field--spacing--large--gap: 8px;
@@ -582,8 +584,8 @@
   --components-tokens--select--text-color--input--default: #5D5D5D;
   --components-tokens--select--text-color--input--disabled: #00000026;
   --components-tokens--select--text-color--message--error: #D04232;
-  --components-tokens--select--icon-color--default: #002529;
-  --components-tokens--select--icon-color--disabled: #006E7A;
+  --components-tokens--select--icon-color--default: #292929;
+  --components-tokens--select--icon-color--disabled: #525252;
   --components-tokens--select--spacing--large--horizontal: 12px;
   --components-tokens--select--spacing--large--vertical: 12px;
   --components-tokens--select--spacing--large--gap-elements: 12px;
@@ -601,14 +603,14 @@
   /* Dropdown */
   --components-tokens--dropdown--options--background-color--default: #FFFFFF;
   --components-tokens--dropdown--options--background-color--selected: #FFFFFF;
-  --components-tokens--dropdown--options--background-color--hover: #EBFDFF;
+  --components-tokens--dropdown--options--background-color--hover: #F5F5F5;
   --components-tokens--dropdown--options--text-color--default: #454545;
-  --components-tokens--dropdown--options--text-color--selected: #006E7A;
-  --components-tokens--dropdown--options--text-color--hover: #006E7A;
+  --components-tokens--dropdown--options--text-color--selected: #525252;
+  --components-tokens--dropdown--options--text-color--hover: #525252;
   --components-tokens--dropdown--options--text-color--disabled: #D1D1D1;
   --components-tokens--dropdown--options--icon-color--default: #5D5D5D;
-  --components-tokens--dropdown--options--icon-color--selected: #006E7A;
-  --components-tokens--dropdown--options--icon-color--hover: #006E7A;
+  --components-tokens--dropdown--options--icon-color--selected: #525252;
+  --components-tokens--dropdown--options--icon-color--hover: #525252;
   --components-tokens--dropdown--options--icon-color--disabled: #D1D1D1;
   --components-tokens--dropdown--options--spacing--large--horizontal: 8px;
   --components-tokens--dropdown--options--spacing--large--vertical: 4px;
@@ -638,8 +640,8 @@
   --components-tokens--radio-button--sapcing--small--gap: 4;
   --components-tokens--radio-button--text-color--unchecked: #5D5D5D;
   --components-tokens--radio-button--text-color--checked: #262626;
-  --components-tokens--radio-button--icon-color--unchecked: #006E7A;
-  --components-tokens--radio-button--icon-color--checked: #002529;
+  --components-tokens--radio-button--icon-color--unchecked: #525252;
+  --components-tokens--radio-button--icon-color--checked: #292929;
 
   /* Checkbox */
   --components-tokens--checkbox--spacing--large--gap: 4px;
@@ -648,8 +650,8 @@
   --components-tokens--checkbox--sizing--icon--small: 24px;
   --components-tokens--checkbox--text-color--unchecked: #5D5D5D;
   --components-tokens--checkbox--text-color--checked: #262626;
-  --components-tokens--checkbox--icon-color--unchecked: #006E7A;
-  --components-tokens--checkbox--icon-color--checked: #002529;
+  --components-tokens--checkbox--icon-color--unchecked: #525252;
+  --components-tokens--checkbox--icon-color--checked: #292929;
 
   /* Text-area */
   --components-tokens--text-area--background-color--default: #FFFFFF26;
@@ -673,12 +675,12 @@
   --components-tokens--text-area--border-color--error: #D04232;
 
   /* Switch */
-  --components-tokens--switch--base-color--off: #EBFDFF;
-  --components-tokens--switch--base-color--on: #002529;
-  --components-tokens--switch--base-color--disabled: #EBFDFF;
-  --components-tokens--switch--icon-color--off: #002529;
-  --components-tokens--switch--icon-color--on: #EBFDFF;
-  --components-tokens--switch--icon-color--disabled: #006E7A;
+  --components-tokens--switch--base-color--off: #F5F5F5;
+  --components-tokens--switch--base-color--on: #292929;
+  --components-tokens--switch--base-color--disabled: #F5F5F5;
+  --components-tokens--switch--icon-color--off: #292929;
+  --components-tokens--switch--icon-color--on: #F5F5F5;
+  --components-tokens--switch--icon-color--disabled: #525252;
   --components-tokens--switch--text-color--off: #454545;
   --components-tokens--switch--text-color--on: #454545;
   --components-tokens--switch--text-color--disabled: #5D5D5D;
@@ -694,8 +696,8 @@
   --components-tokens--switch--radius--small--icon: 100px;
 
   /* Progress-bar */
-  --components-tokens--progress-bar--background-color--base: #EBFDFF;
-  --components-tokens--progress-bar--background-color--progress: #002529;
+  --components-tokens--progress-bar--background-color--base: #F5F5F5;
+  --components-tokens--progress-bar--background-color--progress: #292929;
   --components-tokens--progress-bar--text-color--label: #454545;
   --components-tokens--progress-bar--spacing--large--gap: 8px;
   --components-tokens--progress-bar--spacing--small--gap: 4px;
@@ -705,31 +707,31 @@
   --components-tokens--progress-bar--radius--small: 100px;
 
   /* Tag */
-  --components-tokens--tag--background-color--filled--discovery: #002529;
+  --components-tokens--tag--background-color--filled--discovery: #292929;
   --components-tokens--tag--background-color--filled--info: #002529;
   --components-tokens--tag--background-color--filled--success: #07946B;
   --components-tokens--tag--background-color--filled--warning: #CD8901;
   --components-tokens--tag--background-color--filled--error: #D04232;
   --components-tokens--tag--background-color--filled--neutral: #454545;
-  --components-tokens--tag--background-color--duetone--discovery: #EBFDFF;
+  --components-tokens--tag--background-color--duetone--discovery: #F5F5F5;
   --components-tokens--tag--background-color--duetone--info: #EBFDFF;
   --components-tokens--tag--background-color--duetone--success: #ECFDF5;
   --components-tokens--tag--background-color--duetone--warning: #FEFCE8;
   --components-tokens--tag--background-color--duetone--error: #FDF4F3;
   --components-tokens--tag--background-color--duetone--neutral: #F6F6F6;
-  --components-tokens--tag--text-ccolor--filled--discovery: #EBFDFF;
+  --components-tokens--tag--text-ccolor--filled--discovery: #F5F5F5;
   --components-tokens--tag--text-ccolor--filled--info: #EBFDFF;
   --components-tokens--tag--text-ccolor--filled--success: #ECFDF5;
   --components-tokens--tag--text-ccolor--filled--warning: #FEFCE8;
   --components-tokens--tag--text-ccolor--filled--error: #FDF4F3;
   --components-tokens--tag--text-ccolor--filled--neutral: #F6F6F6;
-  --components-tokens--tag--text-ccolor--duetone--discovery: #002529;
+  --components-tokens--tag--text-ccolor--duetone--discovery: #292929;
   --components-tokens--tag--text-ccolor--duetone--info: #002529;
   --components-tokens--tag--text-ccolor--duetone--success: #07946B;
   --components-tokens--tag--text-ccolor--duetone--warning: #CD8901;
   --components-tokens--tag--text-ccolor--duetone--error: #D04232;
   --components-tokens--tag--text-ccolor--duetone--neutral: #262626;
-  --components-tokens--tag--border-color--duetone--discovery: #002529;
+  --components-tokens--tag--border-color--duetone--discovery: #292929;
   --components-tokens--tag--border-color--duetone--info: #002529;
   --components-tokens--tag--border-color--duetone--success: #07946B;
   --components-tokens--tag--border-color--duetone--warning: #CD8901;
@@ -770,7 +772,7 @@
 
   /* Breadcrum */
   --components-tokens--breadcrum--text-color--previous: #002529;
-  --components-tokens--breadcrum--text-color--current: #006E7A;
+  --components-tokens--breadcrum--text-color--current: #525252;
   --components-tokens--breadcrum--icon-color--default: #002529;
   --components-tokens--breadcrum--sizing--icon--large: 24px;
   --components-tokens--breadcrum--sizing--icon--small: 16px;
@@ -794,14 +796,14 @@
   --components-tokens--avatar-group--border-radius--small: 100px;
 
   /* Icon-button */
-  --components-tokens--icon-button--background-color--primary--default: #002529;
-  --components-tokens--icon-button--background-color--primary--hover: #002529;
-  --components-tokens--icon-button--background-color--primary--acctived: #002529;
-  --components-tokens--icon-button--background-color--primary--disabled: #EBFDFF;
-  --components-tokens--icon-button--background-color--secondary--default: #D6FF33;
-  --components-tokens--icon-button--background-color--secondary--hover: #D6FF33;
-  --components-tokens--icon-button--background-color--secondary--acctived: #D6FF33;
-  --components-tokens--icon-button--background-color--secondary--disabled: #FBFFEB;
+  --components-tokens--icon-button--background-color--primary--default: #F7DF1D;
+  --components-tokens--icon-button--background-color--primary--hover: #A3CC00;
+  --components-tokens--icon-button--background-color--primary--acctived: #313D00;
+  --components-tokens--icon-button--background-color--primary--disabled: #FBFFEB;
+  --components-tokens--icon-button--background-color--secondary--default: #FFFFFF;
+  --components-tokens--icon-button--background-color--secondary--hover: #F6F6F6;
+  --components-tokens--icon-button--background-color--secondary--acctived: #F6F6F6;
+  --components-tokens--icon-button--background-color--secondary--disabled: #F6F6F6;
   --components-tokens--icon-button--background-color--ghost-light--default: #00252926;
   --components-tokens--icon-button--background-color--ghost-light--hover: #00252926;
   --components-tokens--icon-button--background-color--ghost-light--acctived: #00252926;
@@ -810,21 +812,21 @@
   --components-tokens--icon-button--background-color--ghost-dark--hover: #00000026;
   --components-tokens--icon-button--background-color--ghost-dark--acctived: #00000026;
   --components-tokens--icon-button--background-color--ghost-dark--disabled: #FFFFFF26;
-  --components-tokens--icon-button--icon-color--primary--default: #EBFDFF;
-  --components-tokens--icon-button--icon-color--primary--hover: #006E7A;
-  --components-tokens--icon-button--icon-color--primary--actived: #EBFDFF;
-  --components-tokens--icon-button--icon-color--primary--disabled: #00252926;
-  --components-tokens--icon-button--icon-color--secondary--default: #313D00;
-  --components-tokens--icon-button--icon-color--secondary--hover: #A3CC00;
-  --components-tokens--icon-button--icon-color--secondary--actived: #313D00;
-  --components-tokens--icon-button--icon-color--secondary--disabled: #A3CC00;
-  --components-tokens--icon-button--icon-color--ghost-light--default: #002529;
-  --components-tokens--icon-button--icon-color--ghost-light--hover: #002529;
-  --components-tokens--icon-button--icon-color--ghost-light--actived: #002529;
+  --components-tokens--icon-button--icon-color--primary--default: #313D00;
+  --components-tokens--icon-button--icon-color--primary--hover: #313D00;
+  --components-tokens--icon-button--icon-color--primary--actived: #FBFFEB;
+  --components-tokens--icon-button--icon-color--primary--disabled: #D1D1D1;
+  --components-tokens--icon-button--icon-color--secondary--default: #262626;
+  --components-tokens--icon-button--icon-color--secondary--hover: #262626;
+  --components-tokens--icon-button--icon-color--secondary--actived: #262626;
+  --components-tokens--icon-button--icon-color--secondary--disabled: #D1D1D1;
+  --components-tokens--icon-button--icon-color--ghost-light--default: #292929;
+  --components-tokens--icon-button--icon-color--ghost-light--hover: #292929;
+  --components-tokens--icon-button--icon-color--ghost-light--actived: #292929;
   --components-tokens--icon-button--icon-color--ghost-light--disabled: #00252926;
-  --components-tokens--icon-button--icon-color--ghost-dark--default: #EBFDFF;
-  --components-tokens--icon-button--icon-color--ghost-dark--hover: #EBFDFF;
-  --components-tokens--icon-button--icon-color--ghost-dark--actived: #EBFDFF;
+  --components-tokens--icon-button--icon-color--ghost-dark--default: #F5F5F5;
+  --components-tokens--icon-button--icon-color--ghost-dark--hover: #F5F5F5;
+  --components-tokens--icon-button--icon-color--ghost-dark--actived: #F5F5F5;
   --components-tokens--icon-button--icon-color--ghost-dark--disabled: #FFFFFF26;
   --components-tokens--icon-button--spacing--large--horizontal: 8px;
   --components-tokens--icon-button--spacing--large--vertical: 8px;
@@ -832,15 +834,15 @@
   --components-tokens--icon-button--spacing--small--vertical: 4px;
   --components-tokens--icon-button--sizing--icon--large: 24px;
   --components-tokens--icon-button--sizing--icon--small: 16px;
-  --components-tokens--icon-button--border-radius--large: 8px;
+  --components-tokens--icon-button--border-radius--large: 4px;
   --components-tokens--icon-button--border-radius--small: 4px;
-  --components-tokens--icon-button--border-color--ghost-light--default: #002529;
-  --components-tokens--icon-button--border-color--ghost-light--disabled: #EBFDFF;
-  --components-tokens--icon-button--border-color--ghost-dark--default: #EBFDFF;
+  --components-tokens--icon-button--border-color--ghost-light--default: #292929;
+  --components-tokens--icon-button--border-color--ghost-light--disabled: #F5F5F5;
+  --components-tokens--icon-button--border-color--ghost-dark--default: #F5F5F5;
   --components-tokens--icon-button--border-color--ghost-dark--disabled: #FFFFFF26;
 
   /* Float-tabs */
-  --components-tokens--float-tabs--background-color--active: #002529;
+  --components-tokens--float-tabs--background-color--active: #292929;
   --components-tokens--float-tabs--background-color--default: #F6F6F6;
   --components-tokens--float-tabs--sizing--icon--large: 24px;
   --components-tokens--float-tabs--sizing--icon--small: 16px;
@@ -848,7 +850,7 @@
   --components-tokens--float-tabs--radius--item-tab--small: 8px;
   --components-tokens--float-tabs--radius--group-tabs--large: 16px;
   --components-tokens--float-tabs--radius--group-tabs--small: 12px;
-  --components-tokens--float-tabs--foreground-color--active: #EBFDFF;
+  --components-tokens--float-tabs--foreground-color--active: #F5F5F5;
   --components-tokens--float-tabs--foreground-color--default: #006E7A;
   --components-tokens--float-tabs--spacing--box-tab--large--horizontal: 32px;
   --components-tokens--float-tabs--spacing--box-tab--large--vertical: 12px;
@@ -870,7 +872,7 @@
   --components-tokens--full-tabs--text-color--default: #454545;
   --components-tokens--full-tabs--icon-color--active: #006E7A;
   --components-tokens--full-tabs--icon-color--default: #5D5D5D;
-  --components-tokens--full-tabs--border-color--active: #006E7A;
+  --components-tokens--full-tabs--border-color--active: #525252;
   --components-tokens--full-tabs--border-color--default: #00000026;
   --components-tokens--full-tabs--spacing--tab-item--large--horizontal: 4px;
   --components-tokens--full-tabs--spacing--tab-item--large--gap: 8px;
@@ -882,7 +884,7 @@
   /* Accordion */
   --components-tokens--accordion--background-color--default: #FFFFFF;
   --components-tokens--accordion--icon-color--default: #002529;
-  --components-tokens--accordion--border-color--default: #006E7A;
+  --components-tokens--accordion--border-color--default: #525252;
   --components-tokens--accordion--spacing--total-area--default--horizontal: 24px;
   --components-tokens--accordion--spacing--total-area--default--vertical: 24px;
   --components-tokens--accordion--spacing--total-area--default--gap: 24px;
@@ -919,25 +921,25 @@
   --components-tokens--check-button--spacing--small--horizontal: 12px;
   --components-tokens--check-button--spacing--small--vertical: 8px;
   --components-tokens--check-button--background-color--default: #FFFFFF;
-  --components-tokens--check-button--background-color--actived: #EBFDFF;
+  --components-tokens--check-button--background-color--actived: #F5F5F5;
   --components-tokens--check-button--background-color--disabled: #F6F6F6;
   --components-tokens--check-button--text-color--default: #454545;
   --components-tokens--check-button--text-color--actived: #006E7A;
   --components-tokens--check-button--text-color--disabled: #D1D1D1;
   --components-tokens--check-button--border-color--default: #D1D1D1;
-  --components-tokens--check-button--border-color--actived: #006E7A;
+  --components-tokens--check-button--border-color--actived: #525252;
   --components-tokens--check-button--border-color--disabled: #F6F6F6;
 
   /* Number-button */
   --components-tokens--number-button--background-color--default: #FFFFFF;
   --components-tokens--number-button--background-color--hover: #FFFFFF;
-  --components-tokens--number-button--background-color--selected: #002529;
+  --components-tokens--number-button--background-color--selected: #292929;
   --components-tokens--number-button--background-color--disabled: #FFFFFF;
   --components-tokens--number-button--text-color--default: #454545;
   --components-tokens--number-button--text-color--hover: #454545;
   --components-tokens--number-button--text-color--selected: #EBFDFF;
   --components-tokens--number-button--text-color--disabled: #D1D1D1;
-  --components-tokens--number-button--border-color--hover: #006E7A;
+  --components-tokens--number-button--border-color--hover: #525252;
   --components-tokens--number-button--spacing--large--horizontal: 8px;
   --components-tokens--number-button--spacing--large--vertical: 4px;
   --components-tokens--number-button--spacing--small--horizontal: 4px;
@@ -969,10 +971,10 @@
   --components-tokens--tooltip--spacing--gap: 8px;
   --components-tokens--tooltip--sizing--icon--default: 24px;
   --components-tokens--tooltip--border-radius--default: 4px;
-  --components-tokens--tooltip--background-color--default: #002529;
+  --components-tokens--tooltip--background-color--default: #292929;
   --components-tokens--tooltip--text-color--default: #EBFDFF;
   --components-tokens--tooltip--icon-color--default: #002529;
-  --components-tokens--tooltip--indicator-color--default: #002529;
+  --components-tokens--tooltip--indicator-color--default: #292929;
 
   /* Button-group */
   --components-tokens--button-group--spacing--large--horizontal: 8px;
@@ -991,7 +993,7 @@
   --components-tokens--heading-row--spacing--small--gap: 8px;
   --components-tokens--heading-row--sizing--icon--large: 24px;
   --components-tokens--heading-row--sizing--icon--small: 16px;
-  --components-tokens--heading-row--background-color--color: #002529;
+  --components-tokens--heading-row--background-color--color: #292929;
   --components-tokens--heading-row--background-color--neutral: #F6F6F6;
   --components-tokens--heading-row--text-color--color: #EBFDFF;
   --components-tokens--heading-row--text-color--neutral: #002529;
@@ -1005,7 +1007,7 @@
   --components-tokens--menu-label--text-color--default: #454545;
   --components-tokens--menu-label--text-color--selected: #006E7A;
   --components-tokens--menu-label--text-color--contrast: #EBFDFF;
-  --components-tokens--menu-label--text-color--contrast-actived: #D6FF33;
+  --components-tokens--menu-label--text-color--contrast-actived: #F7DF1D;
   --components-tokens--menu-label--icon-color--default: #002529;
   --components-tokens--menu-label--icon-color--selected: #006E7A;
   --components-tokens--menu-label--icon-color--contrast: #EBFDFF;
@@ -1021,7 +1023,7 @@
   --components-tokens--item-sidebar-menu--spacing--gap: 8px;
   --components-tokens--item-sidebar-menu--border-radius--default: 8px;
   --components-tokens--item-sidebar-menu--sizing--icons: 24px;
-  --components-tokens--item-sidebar-menu--background-color--default--actived: #EBFDFF;
+  --components-tokens--item-sidebar-menu--background-color--default--actived: #F5F5F5;
   --components-tokens--item-sidebar-menu--background-color--contrast--actived: #FFFFFF26;
   --components-tokens--item-sidebar-menu--icon-color--default--normal: #006E7A;
   --components-tokens--item-sidebar-menu--icon-color--default--actived: #006E7A;
@@ -1050,8 +1052,8 @@
   --components-tokens--card-image--background-color--flat: #FFFFFF;
   --components-tokens--card-image--background-color--elevation: #FFFFFF;
   --components-tokens--card-image--background-color--edge: #FFFFFF;
-  --components-tokens--card-image--background-color--contrast: #002529;
-  --components-tokens--card-image--text-color--contrast--title: #D6FF33;
+  --components-tokens--card-image--background-color--contrast: #292929;
+  --components-tokens--card-image--text-color--contrast--title: #F7DF1D;
   --components-tokens--card-image--text-color--contrast--caption: #EBFDFF;
   --components-tokens--card-image--border-color--edge: #D1D1D1;
 
@@ -1065,8 +1067,8 @@
   --components-tokens--card-icon--background-color--flat: #FFFFFF;
   --components-tokens--card-icon--background-color--elevation: #FFFFFF;
   --components-tokens--card-icon--background-color--edge: #FFFFFF;
-  --components-tokens--card-icon--background-color--contrast: #002529;
-  --components-tokens--card-icon--text-color--contrast--title: #D6FF33;
+  --components-tokens--card-icon--background-color--contrast: #292929;
+  --components-tokens--card-icon--text-color--contrast--title: #F7DF1D;
   --components-tokens--card-icon--text-color--contrast--caption: #EBFDFF;
   --components-tokens--card-icon--border-color--edge: #D1D1D1;
   --components-tokens--card-icon--icon-color--flat: #006E7A;
@@ -1082,8 +1084,8 @@
   --components-tokens--card-text--background-color--flat: #FFFFFF;
   --components-tokens--card-text--background-color--elevation: #FFFFFF;
   --components-tokens--card-text--background-color--edge: #FFFFFF;
-  --components-tokens--card-text--background-color--contrast: #002529;
-  --components-tokens--card-text--text-color--contrast--title: #D6FF33;
+  --components-tokens--card-text--background-color--contrast: #292929;
+  --components-tokens--card-text--text-color--contrast--title: #F7DF1D;
   --components-tokens--card-text--text-color--contrast--caption: #EBFDFF;
   --components-tokens--card-text--border-color--edge: #D1D1D1;
 
@@ -1099,7 +1101,7 @@
 
   /* Sidebar */
   --components-tokens--sidebar--background-color--flat: #FFFFFF;
-  --components-tokens--sidebar--background-color--colorful: #002529;
+  --components-tokens--sidebar--background-color--colorful: #292929;
   --components-tokens--sidebar--border-color--flat: #D1D1D1;
   --components-tokens--sidebar--spacing--horizontal: 24px;
   --components-tokens--sidebar--spacing--vertical: 32px;
@@ -1117,7 +1119,7 @@
 
   /* Menu-responsive */
   --components-tokens--menu-responsive--background-color--default: #FFFFFF;
-  --components-tokens--menu-responsive--background-color--contrast: #002529;
+  --components-tokens--menu-responsive--background-color--contrast: #292929;
   --components-tokens--menu-responsive--spacing--header--horizontal: 24px;
   --components-tokens--menu-responsive--spacing--header--vertical: 24px;
   --components-tokens--menu-responsive--spacing--menu--horizontal: 24px;
@@ -1126,7 +1128,7 @@
 
   /* Footer */
   --components-tokens--footer--background-color--flat: #FFFFFF;
-  --components-tokens--footer--background-color--colorful: #002529;
+  --components-tokens--footer--background-color--colorful: #292929;
   --components-tokens--footer--divider-color--flat: #D1D1D1;
   --components-tokens--footer--sizing--icon--large: 32px;
   --components-tokens--footer--sizing--icon--small: 24px;
@@ -1165,4 +1167,15 @@
   --components-tokens--data-table--border-radius--desktop: 8px;
   --components-tokens--data-table--background-color--default: #FFFFFF;
   --components-tokens--data-table--border-color--default: #D1D1D1;
+
+  /* Site */
+  --components-tokens--site--page--on-dark-text: #EBFDFF;
+  --components-tokens--site--course-card--border-color: #525252;
+  --components-tokens--site--course-card--surface-color: #292929;
+  --components-tokens--site--course-card--media-background-color: #292929;
+  --components-tokens--site--course-card--text-on-accent-color: #292929;
+  --components-tokens--site--course-card--card-title-color: #EBFDFF;
+  --components-tokens--site--course-card--card-description-color: #D1D1D1;
+  --components-tokens--site--course-card--hover-border-color: #F7DF1D;
+  --components-tokens--site--course-card--media-placeholder-accent-color: #F7DF1D;
 }

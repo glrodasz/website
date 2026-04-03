@@ -1,0 +1,175 @@
+/**
+ * Build Script: Fetch writing posts from RSS at build time
+ * Output: src/generated/writing-posts.ts
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { XMLParser } from 'fast-xml-parser';
+
+interface BlogPost {
+  title: string;
+  link: string;
+  date: string;
+  readTime: string;
+  excerpt: string;
+  cover: string;
+}
+
+const RSS_URL = 'https://undefined.sh/rss.xml';
+
+const STATIC_POSTS: BlogPost[] = [
+  {
+    title: 'Building AI-First Applications: A Practical Guide',
+    link: 'https://undefined.sh',
+    date: 'Jan 2025',
+    readTime: '8 min read',
+    excerpt: 'Exploring how to integrate AI tools and workflows into modern web development, from code generation to intelligent UI patterns.',
+    cover: '',
+  },
+  {
+    title: 'WebAuthn & Passkeys: The Future of Authentication',
+    link: 'https://undefined.sh',
+    date: 'Nov 2023',
+    readTime: '6 min read',
+    excerpt: 'A deep dive into the WebAuthn standard, why passkeys matter, and how to implement them in your web applications today.',
+    cover: '',
+  },
+  {
+    title: 'Why Every Developer Should Try Live Coding on Stream',
+    link: 'https://undefined.sh',
+    date: 'Aug 2022',
+    readTime: '5 min read',
+    excerpt: 'Live coding is one of the most authentic ways to teach programming. Here is why I started, what I learned, and how you can too.',
+    cover: '',
+  },
+];
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim();
+}
+
+function extractCover(item: Record<string, unknown>): string {
+  // enclosure with image type
+  const enclosure = item['enclosure'];
+  if (enclosure && typeof enclosure === 'object') {
+    const enc = enclosure as Record<string, string>;
+    const url = enc['@_url'] ?? '';
+    const type = enc['@_type'] ?? '';
+    if (url && (type.startsWith('image/') || /\.(jpe?g|png|gif|webp|svg)(\?|$)/i.test(url))) {
+      return url;
+    }
+  }
+
+  // media:thumbnail
+  const mediaThumbnail = item['media:thumbnail'];
+  if (mediaThumbnail && typeof mediaThumbnail === 'object') {
+    const mt = mediaThumbnail as Record<string, string>;
+    if (mt['@_url']) return mt['@_url'];
+  }
+
+  // media:content with image medium
+  const mediaContent = item['media:content'];
+  if (mediaContent && typeof mediaContent === 'object') {
+    const mc = mediaContent as Record<string, string>;
+    const url = mc['@_url'] ?? '';
+    const medium = mc['@_medium'] ?? '';
+    const type = mc['@_type'] ?? '';
+    if (url && (medium === 'image' || type.startsWith('image/'))) return url;
+  }
+
+  // first <img> in content:encoded
+  const contentEncoded = item['content:encoded'];
+  if (typeof contentEncoded === 'string') {
+    const match = contentEncoded.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (match?.[1]) return match[1];
+  }
+
+  // first <img> in description
+  const description = item['description'];
+  if (typeof description === 'string') {
+    const match = description.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (match?.[1]) return match[1];
+  }
+
+  return '';
+}
+
+async function fetchPosts(): Promise<BlogPost[]> {
+  const res = await fetch(RSS_URL, { signal: AbortSignal.timeout(15_000) });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const xml = await res.text();
+
+  const parser = new XMLParser({
+    ignoreAttributes: false,
+    attributeNamePrefix: '@_',
+    cdataPropName: '__cdata',
+    allowBooleanAttributes: true,
+  });
+
+  const feed = parser.parse(xml) as Record<string, unknown>;
+  const channel = (feed['rss'] as Record<string, unknown>)?.['channel'] as Record<string, unknown>;
+  const rawItems = channel?.['item'];
+  const items: unknown[] = Array.isArray(rawItems) ? rawItems : rawItems ? [rawItems] : [];
+
+  return items.slice(0, 3).map((raw) => {
+    const item = raw as Record<string, unknown>;
+    const title = String(item['title'] ?? '');
+    const link = String(item['link'] ?? 'https://undefined.sh');
+    const pubDate = String(item['pubDate'] ?? '');
+    const description = String(item['description'] ?? '');
+
+    const date = pubDate
+      ? new Date(pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+      : '';
+
+    const cover = extractCover(item);
+    const excerpt = stripHtml(description).slice(0, 160);
+
+    return { title, link, date, readTime: '5 min read', excerpt, cover };
+  });
+}
+
+async function main() {
+  console.log('📝 Fetching writing posts from RSS...');
+
+  let posts: BlogPost[];
+  try {
+    posts = await fetchPosts();
+    if (posts.length === 0) throw new Error('No posts in feed');
+    console.log(`✅ Fetched ${posts.length} posts`);
+  } catch (err) {
+    console.warn(`⚠️  RSS fetch failed (${err}), using static fallback`);
+    posts = STATIC_POSTS;
+  }
+
+  const outDir = path.join(process.cwd(), 'src', 'generated');
+  const outFile = path.join(outDir, 'writing-posts.ts');
+
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const content = [
+    '// Auto-generated by build:posts — do not edit manually',
+    `// Generated: ${new Date().toISOString()}`,
+    '',
+    'export interface BlogPost {',
+    '  title: string;',
+    '  link: string;',
+    '  date: string;',
+    '  readTime: string;',
+    '  excerpt: string;',
+    '  cover: string;',
+    '}',
+    '',
+    `export const writingPosts: BlogPost[] = ${JSON.stringify(posts, null, 2)};`,
+    '',
+  ].join('\n');
+
+  fs.writeFileSync(outFile, content);
+  console.log(`✅ Written to src/generated/writing-posts.ts`);
+}
+
+main().catch((err) => {
+  console.error('build:posts failed:', err);
+  process.exit(1);
+});

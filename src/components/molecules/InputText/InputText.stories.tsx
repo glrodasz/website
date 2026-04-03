@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { InputText } from './InputText';
 import { MagnifyingGlass, User, EnvelopeSimple, LockKey } from 'phosphor-react';

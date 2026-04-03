@@ -1,0 +1,170 @@
+{
+  "Site": {
+    "Page": {
+      "on-dark-text": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9215686321258545, 0.9921568632125854, 1],
+          "alpha": 1,
+          "hex": "#EBFDFF"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:page-on-dark-text",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:page-on-dark-text/-1:-1",
+            "targetVariableName": "Colors/Foregrounds/contrast",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "Course-card": {
+      "border-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.32156863808631897, 0.32156863808631897, 0.32156863808631897],
+          "alpha": 1,
+          "hex": "#525252"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-border",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-border/-1:-1",
+            "targetVariableName": "Colors/Borders/strong",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "surface-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.16078431904315948, 0.16078431904315948, 0.16078431904315948],
+          "alpha": 1,
+          "hex": "#292929"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-surface",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-surface/-1:-1",
+            "targetVariableName": "Colors/Primary/high",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "media-background-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.16078431904315948, 0.16078431904315948, 0.16078431904315948],
+          "alpha": 1,
+          "hex": "#292929"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-media-bg",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-media-bg/-1:-1",
+            "targetVariableName": "Colors/Backgrounds/contrast",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "text-on-accent-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.16078431904315948, 0.16078431904315948, 0.16078431904315948],
+          "alpha": 1,
+          "hex": "#292929"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-on-accent",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-on-accent/-1:-1",
+            "targetVariableName": "Colors/Backgrounds/contrast",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "card-title-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9215686321258545, 0.9921568632125854, 1],
+          "alpha": 1,
+          "hex": "#EBFDFF"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-title",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-card-title/-1:-1",
+            "targetVariableName": "Colors/Foregrounds/contrast",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "card-description-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.8196078538894653, 0.8196078538894653, 0.8196078538894653],
+          "alpha": 1,
+          "hex": "#D1D1D1"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-desc",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-card-desc/-1:-1",
+            "targetVariableName": "Colors/Foregrounds/disabled",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "hover-border-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
+          "alpha": 1,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-hover-border",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-card-hover-border/-1:-1",
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "media-placeholder-accent-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
+          "alpha": 1,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-placeholder-accent",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:site:course-card-placeholder-accent/-1:-1",
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@
 }
 
 .qd-button:focus {
-  outline: 2px solid var(--global-tokens--colors--schemas--frozen-ribon--blue-ribon--400);
+  outline: 2px solid var(--system-tokens--colors--borders--strong);
   outline-offset: 2px;
 }
 
@@ -65,13 +65,13 @@
 .qd-button--secondary:hover:not(.qd-button--disabled) {
   background-color: var(--components-tokens--button--background-color--secondary--hover);
   color: var(--components-tokens--button--text-color--secondary--hover);
-  border-color: var(--components-tokens--button--background-color--secondary--hover);
+  border-color: var(--components-tokens--button--border-color--secondary--hover);
 }
 
 .qd-button--secondary:active:not(.qd-button--disabled) {
   background-color: var(--components-tokens--button--background-color--secondary--acctived);
   color: var(--components-tokens--button--text-color--secondary--actived);
-  border-color: var(--components-tokens--button--background-color--secondary--acctived);
+  border-color: var(--components-tokens--button--border-color--secondary--acctived);
 }
 
 /* Ghost Light Variant */

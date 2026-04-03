@@ -21,3 +21,5 @@ export { Status } from './Status';
 export type { StatusProps } from './Status';
 export { Tag } from './Tag';
 export type { TagProps } from './Tag';
+export { Badge } from './Badge';
+export type { BadgeProps, BadgeVariant } from './Badge';

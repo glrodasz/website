@@ -1,0 +1,43 @@
+.lifestyle-intro {
+  font-size: 1.1rem;
+  color: var(--components-tokens--site--page--on-dark-text, #ebfdff);
+  max-width: 680px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.lifestyle-intro a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.lifestyle-intro a:hover {
+  text-decoration: underline;
+}
+
+.lifestyle-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.lifestyle-external {
+  flex-shrink: 0;
+}
+
+.lifestyle-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.lifestyle-grid > li {
+  min-width: 0;
+  display: flex;
+}

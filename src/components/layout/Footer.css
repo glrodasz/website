@@ -1,6 +1,6 @@
 .footer {
-  background-color: #111111;
-  border-top: 1px solid #2e2e2e;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
   padding: 60px 24px 32px;
   margin-top: auto;
 }
@@ -37,7 +37,7 @@
 }
 
 .footer__col ul li a {
-  color: #cccccc;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -49,7 +49,7 @@
 }
 
 .footer__col ul li span {
-  color: #cccccc;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
 }
 
@@ -62,7 +62,7 @@
   gap: 32px;
   margin-bottom: 32px;
   padding-top: 32px;
-  border-top: 1px solid #2e2e2e;
+  border-top: 1px solid var(--color-border);
 }
 
 @media (min-width: 769px) {
@@ -96,7 +96,7 @@
 
 .footer__social-label {
   font-size: 0.8rem;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -108,8 +108,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #2e2e2e;
-  color: #ffffff;
+  background-color: var(--color-surface-2);
+  color: var(--color-text);
   text-decoration: none;
   font-size: 1.1rem;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -117,7 +117,7 @@
 
 .footer__social-link:hover {
   background-color: var(--color-accent);
-  color: #1a1a1a;
+  color: #1a1a1a; /* always dark — ensures contrast on the golden-yellow accent */
   text-decoration: none;
 }
 
@@ -135,12 +135,12 @@
   gap: 16px;
   flex-wrap: wrap;
   padding-top: 24px;
-  border-top: 1px solid #2e2e2e;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer__copyright {
   font-size: 0.8rem;
-  color: #777777;
+  color: var(--color-text-muted);
   margin: 0;
 }
 

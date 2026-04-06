@@ -166,6 +166,10 @@
   --global-tokens--colors--support--shark--400: #5D5D5D;
   --global-tokens--colors--support--shark--500: #454545;
   --global-tokens--colors--support--shark--600: #262626;
+  --global-tokens--colors--support--shark--700: #333333;
+  --global-tokens--colors--support--shark--800: #2E2E2E;
+  --global-tokens--colors--support--shark--900: #242424;
+  --global-tokens--colors--support--shark--950: #1A1A1A;
   --global-tokens--colors--support--shark--opacity-light: #FFFFFF26;
   --global-tokens--colors--support--shark--opacity-dark: #00000026;
   --global-tokens--colors--support--shamrock--100: #ECFDF5;
@@ -259,7 +263,7 @@
   --global-tokens--typography--scale--low-contrast: 1.1200000047683716;
 
   /* ============================================================ */
-  /*  SYSTEM TOKENS                                            */
+  /*  SYSTEM TOKENS (NON-COLOR)                                */
   /* ============================================================ */
 
   /* Typography */
@@ -302,55 +306,6 @@
   --system-tokens--typography--font-size--headings--scale: 1.2200000286102295px;
   --system-tokens--typography--font-size--body--base: 13px;
   --system-tokens--typography--font-size--body--scale: 1.2200000286102295px;
-
-  /* Colors */
-  --system-tokens--colors--primary--principal: #292929;
-  --system-tokens--colors--primary--subtle: #525252;
-  --system-tokens--colors--primary--off: #F5F5F5;
-  --system-tokens--colors--primary--high: #292929;
-  --system-tokens--colors--complementary--principal: #F7DF1D;
-  --system-tokens--colors--complementary--subtle: #A3CC00;
-  --system-tokens--colors--complementary--off: #FBFFEB;
-  --system-tokens--colors--complementary--high: #313D00;
-  --system-tokens--colors--neutral--principal: #454545;
-  --system-tokens--colors--neutral--subtle: #5D5D5D;
-  --system-tokens--colors--neutral--off: #F6F6F6;
-  --system-tokens--colors--neutral--high: #262626;
-  --system-tokens--colors--info--high: #002529;
-  --system-tokens--colors--info--low: #EBFDFF;
-  --system-tokens--colors--success--high: #07946B;
-  --system-tokens--colors--success--low: #ECFDF5;
-  --system-tokens--colors--warning--high: #CD8901;
-  --system-tokens--colors--warning--low: #FEFCE8;
-  --system-tokens--colors--danger--high: #D04232;
-  --system-tokens--colors--danger--low: #FDF4F3;
-  --system-tokens--colors--backgrounds--principal: #FFFFFF;
-  --system-tokens--colors--backgrounds--secondary: #EBFDFF;
-  --system-tokens--colors--backgrounds--tertiary: #F6F6F6;
-  --system-tokens--colors--backgrounds--subtle: #D1D1D1;
-  --system-tokens--colors--backgrounds--contrast: #292929;
-  --system-tokens--colors--backgrounds--neutral: #F6F6F6;
-  --system-tokens--colors--foregrounds--principal: #002529;
-  --system-tokens--colors--foregrounds--secondary: #006E7A;
-  --system-tokens--colors--foregrounds--tertiary: #262626;
-  --system-tokens--colors--foregrounds--neutral: #5D5D5D;
-  --system-tokens--colors--foregrounds--contrast: #EBFDFF;
-  --system-tokens--colors--foregrounds--disabled: #D1D1D1;
-  --system-tokens--colors--typography--heading: #002529;
-  --system-tokens--colors--typography--paragraph: #454545;
-  --system-tokens--colors--typography--highlight: #006E7A;
-  --system-tokens--colors--typography--alternative: #F7DF1D;
-  --system-tokens--colors--typography--contrast: #EBFDFF;
-  --system-tokens--colors--typography--link: #006E7A;
-  --system-tokens--colors--typography--disabled: #D1D1D1;
-  --system-tokens--colors--borders--strong: #525252;
-  --system-tokens--colors--borders--neutral: #D1D1D1;
-  --system-tokens--colors--borders--disabled: #F6F6F6;
-  --system-tokens--colors--borders--alternative: #F7DF1D;
-  --system-tokens--colors--transparency--primary: #00252926;
-  --system-tokens--colors--transparency--complementary: #F7DF1D26;
-  --system-tokens--colors--transparency--light: #FFFFFF26;
-  --system-tokens--colors--transparency--dark: #00000026;
 
   /* Sizing */
   --system-tokens--sizing--xxs: 12px;
@@ -1178,4 +1133,82 @@
   --components-tokens--site--course-card--card-description-color: #D1D1D1;
   --components-tokens--site--course-card--hover-border-color: #F7DF1D;
   --components-tokens--site--course-card--media-placeholder-accent-color: #F7DF1D;
+}
+
+[data-theme="light"] {
+
+  /* Colors */
+  --system-tokens--colors--primary--principal: #292929;
+  --system-tokens--colors--primary--subtle: #525252;
+  --system-tokens--colors--primary--off: #F5F5F5;
+  --system-tokens--colors--primary--high: #292929;
+  --system-tokens--colors--complementary--principal: #F7DF1D;
+  --system-tokens--colors--complementary--subtle: #A3CC00;
+  --system-tokens--colors--complementary--off: #FBFFEB;
+  --system-tokens--colors--complementary--high: #313D00;
+  --system-tokens--colors--neutral--principal: #454545;
+  --system-tokens--colors--neutral--subtle: #5D5D5D;
+  --system-tokens--colors--neutral--off: #F6F6F6;
+  --system-tokens--colors--neutral--high: #262626;
+  --system-tokens--colors--info--high: #002529;
+  --system-tokens--colors--info--low: #EBFDFF;
+  --system-tokens--colors--success--high: #07946B;
+  --system-tokens--colors--success--low: #ECFDF5;
+  --system-tokens--colors--warning--high: #CD8901;
+  --system-tokens--colors--warning--low: #FEFCE8;
+  --system-tokens--colors--danger--high: #D04232;
+  --system-tokens--colors--danger--low: #FDF4F3;
+  --system-tokens--colors--backgrounds--principal: #FFFFFF;
+  --system-tokens--colors--backgrounds--secondary: #EBFDFF;
+  --system-tokens--colors--backgrounds--tertiary: #F6F6F6;
+  --system-tokens--colors--backgrounds--subtle: #D1D1D1;
+  --system-tokens--colors--backgrounds--contrast: #292929;
+  --system-tokens--colors--backgrounds--neutral: #F6F6F6;
+  --system-tokens--colors--foregrounds--principal: #002529;
+  --system-tokens--colors--foregrounds--secondary: #006E7A;
+  --system-tokens--colors--foregrounds--tertiary: #262626;
+  --system-tokens--colors--foregrounds--neutral: #5D5D5D;
+  --system-tokens--colors--foregrounds--contrast: #EBFDFF;
+  --system-tokens--colors--foregrounds--disabled: #D1D1D1;
+  --system-tokens--colors--typography--heading: #002529;
+  --system-tokens--colors--typography--paragraph: #454545;
+  --system-tokens--colors--typography--highlight: #006E7A;
+  --system-tokens--colors--typography--alternative: #F7DF1D;
+  --system-tokens--colors--typography--contrast: #EBFDFF;
+  --system-tokens--colors--typography--link: #006E7A;
+  --system-tokens--colors--typography--disabled: #D1D1D1;
+  --system-tokens--colors--borders--strong: #525252;
+  --system-tokens--colors--borders--neutral: #D1D1D1;
+  --system-tokens--colors--borders--disabled: #F6F6F6;
+  --system-tokens--colors--borders--alternative: #F7DF1D;
+  --system-tokens--colors--transparency--primary: #00252926;
+  --system-tokens--colors--transparency--complementary: #F7DF1D26;
+  --system-tokens--colors--transparency--light: #FFFFFF26;
+  --system-tokens--colors--transparency--dark: #00000026;
+}
+
+[data-theme="dark"] {
+
+  /* Colors */
+  --system-tokens--colors--typography--highlight: #F7DF1D;
+  --system-tokens--colors--typography--alternative: #F7DF1D;
+  --system-tokens--colors--borders--alternative: #F7DF1D;
+  --system-tokens--colors--backgrounds--principal: #1A1A1A;
+  --system-tokens--colors--backgrounds--secondary: #242424;
+  --system-tokens--colors--backgrounds--tertiary: #242424;
+  --system-tokens--colors--backgrounds--subtle: #333333;
+  --system-tokens--colors--backgrounds--neutral: #2E2E2E;
+  --system-tokens--colors--backgrounds--contrast: #FFFFFF;
+  --system-tokens--colors--foregrounds--principal: #FFFFFF;
+  --system-tokens--colors--foregrounds--secondary: #D1D1D1;
+  --system-tokens--colors--foregrounds--tertiary: #888888;
+  --system-tokens--colors--foregrounds--neutral: #D1D1D1;
+  --system-tokens--colors--foregrounds--contrast: #242424;
+  --system-tokens--colors--foregrounds--disabled: #454545;
+  --system-tokens--colors--typography--heading: #FFFFFF;
+  --system-tokens--colors--typography--paragraph: #D1D1D1;
+  --system-tokens--colors--typography--contrast: #242424;
+  --system-tokens--colors--borders--strong: #262626;
+  --system-tokens--colors--borders--neutral: #333333;
+  --system-tokens--colors--borders--disabled: #2E2E2E;
 }

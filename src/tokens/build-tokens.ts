@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parseTokens, resolveReferences } from './parser.js';
-import { generateCSSVariables, generateStats } from './generator.js';
+import { generateThemedCSSVariables, generateStats } from './generator.js';
 
 async function buildTokens() {
   try {
@@ -45,6 +45,15 @@ async function buildTokens() {
       : {};
     const siteComponentMap = parseTokens(siteComponentTokensRaw, 'components tokens', 'component');
 
+    // Load system-dark.json for dark mode color token overrides
+    const systemDarkPath = path.join(tokensDir, 'system-dark.json');
+    const systemDarkTokensRaw = fs.existsSync(systemDarkPath)
+      ? JSON.parse(fs.readFileSync(systemDarkPath, 'utf-8'))
+      : {};
+    console.log(`   - system-dark.json`);
+    const systemDarkMap = parseTokens(systemDarkTokensRaw, 'system tokens', 'system');
+    console.log(`   ✓ System dark: ${Object.keys(systemDarkMap).length} tokens\n`);
+
     // Parse each file with appropriate level wrapper and level tag
     console.log('⚙️  Parsing design tokens...');
     const globalMap = parseTokens(globalTokens, 'global tokens', 'global');
@@ -69,9 +78,13 @@ async function buildTokens() {
     const resolvedTokens = resolveReferences(tokenMap);
     console.log(`   ✓ Resolved ${Object.keys(resolvedTokens).length} tokens\n`);
 
-    // Generate CSS
-    console.log('🎨 Generating CSS variables...');
-    const cssContent = generateCSSVariables(resolvedTokens);
+    // Resolve dark system token references against global tokens
+    const darkTokenMap = { ...globalMap, ...systemDarkMap };
+    const resolvedDarkSystemTokens = resolveReferences(darkTokenMap);
+
+    // Generate themed CSS (system color tokens → [data-theme] blocks)
+    console.log('🎨 Generating themed CSS variables...');
+    const cssContent = generateThemedCSSVariables(resolvedTokens, resolvedDarkSystemTokens);
 
     // Get statistics
     const stats = generateStats(resolvedTokens);

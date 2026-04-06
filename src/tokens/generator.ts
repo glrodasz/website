@@ -11,6 +11,7 @@ interface ResolvedToken {
   type: string;
   resolvedValue: string;
   level: 'global' | 'system' | 'component';
+  aliasTarget?: string;
 }
 
 interface ResolvedTokenMap {
@@ -86,6 +87,9 @@ function groupByCategory(tokens: ResolvedToken[]): Map<string, ResolvedToken[]> 
  * Generate CSS variable declaration
  */
 function generateCSSVariable(token: ResolvedToken): string {
+  if (token.aliasTarget) {
+    return `  ${token.cssVarName}: var(${token.aliasTarget});`;
+  }
   const formattedValue = formatValue(token.resolvedValue, token.type, token.originalPath);
   return `  ${token.cssVarName}: ${formattedValue};`;
 }

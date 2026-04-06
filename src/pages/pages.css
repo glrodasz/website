@@ -362,15 +362,15 @@
   flex-direction: column;
   border-radius: var(--radius-card);
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .playlist-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
 }
 
@@ -378,7 +378,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: var(--color-surface-2);
+  background: var(--components-tokens--site--course-card--media-background-color);
 }
 
 .playlist-card__img-placeholder {
@@ -388,8 +388,8 @@
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background: var(--color-surface-2);
-  color: var(--color-accent);
+  background: var(--components-tokens--site--course-card--media-background-color);
+  color: var(--components-tokens--site--course-card--media-placeholder-accent-color);
 }
 
 .playlist-card__body {
@@ -419,7 +419,7 @@
   margin: 0;
   flex: 1;
   min-width: 0;
-  color: var(--color-text);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .playlist-card__link {
@@ -444,15 +444,15 @@
   gap: 16px;
   padding: 12px 16px;
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--components-tokens--site--course-card--card-title-color);
   transition: border-color 0.2s ease;
 }
 
 .tutorial-row:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
 }
 
 .tutorial-row__thumb {
@@ -461,7 +461,7 @@
   height: 68px;
   object-fit: cover;
   border-radius: 6px;
-  background: var(--color-surface-2);
+  background: var(--components-tokens--site--course-card--media-background-color);
 }
 
 .tutorial-row__title {
@@ -483,15 +483,15 @@
   flex-direction: column;
   padding: 24px;
   border-radius: var(--radius-card);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .platform-course-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
 }
 
@@ -510,12 +510,12 @@
   font-weight: 700;
   margin: 0 0 10px;
   line-height: 1.3;
-  color: var(--color-text);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .platform-course-card__desc {
   font-size: 0.88rem;
-  color: var(--color-text-muted);
+  color: var(--components-tokens--site--course-card--card-description-color);
   line-height: 1.55;
   margin: 0 0 14px;
   flex: 1;
@@ -531,10 +531,10 @@
 .featured-course-card {
   background: linear-gradient(
     135deg,
-    var(--color-surface) 0%,
-    var(--color-surface-2) 100%
+    var(--components-tokens--site--course-card--surface-color) 0%,
+    var(--components-tokens--site--course-card--media-background-color) 100%
   );
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--components-tokens--site--course-card--hover-border-color);
   border-radius: 16px;
   padding: 40px 48px;
 }
@@ -551,11 +551,11 @@
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
   margin-bottom: 16px;
-  color: var(--color-text);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .featured-course-card__description {
-  color: var(--color-text-muted);
+  color: var(--components-tokens--site--course-card--card-description-color);
   line-height: 1.7;
   max-width: 580px;
   margin-bottom: 24px;

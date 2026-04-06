@@ -6,10 +6,10 @@
   min-width: 0;
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
   overflow: hidden;
-  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
-  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   text-decoration: none;
-  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
+  color: var(--color-text);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -26,7 +26,7 @@
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  background: var(--components-tokens--site--course-card--media-background-color, #292929);
+  background: var(--color-surface-2);
 }
 
 .lifestyle-media-card__media-placeholder {
@@ -58,6 +58,6 @@
 .lifestyle-media-card__subtitle {
   font-size: var(--components-tokens--typography--styles--paragraph--extra-small--font-size, 13px);
   line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height, 17px);
-  color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
+  color: var(--color-text-muted);
   opacity: 0.85;
 }

@@ -7,7 +7,7 @@
     "build:tokens": "tsx src/tokens/build-tokens.ts",
     "build:posts": "tsx scripts/build-posts.ts",
     "dev": "npm run build:tokens && npm run build:posts && vite",
-    "build": "npm run build:tokens && npm run build:posts && tsc -b && vite build && storybook build --output-dir dist/components",
+    "build": "npm run build:tokens && npm run build:posts && tsc -b && vite build && STORYBOOK_SERVE_PATH=/components/ storybook build --output-dir dist/components",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "npm run build:tokens && npm run build:posts && storybook dev -p 6006",

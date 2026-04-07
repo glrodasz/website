@@ -1,6 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/components/(.*)", "destination": "/components/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

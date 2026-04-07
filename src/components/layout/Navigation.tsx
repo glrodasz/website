@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Navigation.css';
 import { SITE_NAME, SITE_TAGLINE } from '../../data/site';
+import { useTheme } from '../../hooks/useTheme';
 
 const navLinkBtn = 'nav__link-btn';
 
@@ -12,11 +13,28 @@ function navLinkClass(isActive: boolean) {
 const Navigation: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const closeMobile = () => {
     setMobileOpen(false);
     setAboutOpen(false);
   };
+
+  const themeLabel = theme === 'dark' ? 'Dark' : 'Light';
+  const ariaLabel = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+
+  const themeToggle = (
+    <button
+      type="button"
+      className={`nav__theme-toggle${theme === 'light' ? ' nav__theme-toggle--light' : ''}`}
+      onClick={toggleTheme}
+      aria-label={ariaLabel}
+    >
+      <span className="nav__theme-track">
+        <span className="nav__theme-knob" />
+      </span>
+    </button>
+  );
 
   return (
     <header className="site-header">
@@ -98,17 +116,8 @@ const Navigation: React.FC = () => {
             </ul>
 
             <div className="nav__theme-wrap nav__theme-wrap--desktop">
-              <button
-                type="button"
-                className="nav__theme-toggle"
-                disabled
-                aria-label="Theme (coming soon)"
-              >
-                <span className="nav__theme-track">
-                  <span className="nav__theme-knob" />
-                </span>
-              </button>
-              <span className="nav__theme-label">Light</span>
+              {themeToggle}
+              <span className="nav__theme-label">{themeLabel}</span>
             </div>
 
             <button
@@ -178,12 +187,8 @@ const Navigation: React.FC = () => {
         </NavLink>
 
         <div className="nav__theme-wrap nav__theme-wrap--mobile">
-          <button type="button" className="nav__theme-toggle" disabled aria-label="Theme (coming soon)">
-            <span className="nav__theme-track">
-              <span className="nav__theme-knob" />
-            </span>
-          </button>
-          <span className="nav__theme-label">Light</span>
+          {themeToggle}
+          <span className="nav__theme-label">{themeLabel}</span>
         </div>
       </div>
     </header>

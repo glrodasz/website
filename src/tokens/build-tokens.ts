@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parseTokens, resolveReferences } from './parser.js';
-import { generateCSSVariables, generateStats } from './generator.js';
+import { generateThemedCSSVariables, generateStats } from './generator.js';
 
 async function buildTokens() {
   try {
@@ -16,15 +16,13 @@ async function buildTokens() {
     const tokensDir = path.join(process.cwd(), 'src', 'tokens', 'json');
 
     const globalPath = path.join(tokensDir, 'global.json');
-    const systemPath = path.join(tokensDir, 'system.json');
+    const systemPath = path.join(tokensDir, 'system-light.json');
     const componentsPath = path.join(tokensDir, 'components.json');
-    const siteComponentsPath = path.join(tokensDir, 'site-components.json');
 
     console.log(`📖 Reading tokens from: ${tokensDir}`);
     console.log(`   - global.json`);
-    console.log(`   - system.json`);
-    console.log(`   - components.json`);
-    console.log(`   - site-components.json (merged into component layer)\n`);
+    console.log(`   - system-light.json`);
+    console.log(`   - components.json\n`);
 
     // Verify files exist
     if (!fs.existsSync(globalPath)) {
@@ -40,10 +38,15 @@ async function buildTokens() {
     const globalTokens = JSON.parse(fs.readFileSync(globalPath, 'utf-8'));
     const systemTokens = JSON.parse(fs.readFileSync(systemPath, 'utf-8'));
     const componentTokens = JSON.parse(fs.readFileSync(componentsPath, 'utf-8'));
-    const siteComponentTokensRaw = fs.existsSync(siteComponentsPath)
-      ? JSON.parse(fs.readFileSync(siteComponentsPath, 'utf-8'))
+
+    // Load system-dark.json for dark mode color token overrides
+    const systemDarkPath = path.join(tokensDir, 'system-dark.json');
+    const systemDarkTokensRaw = fs.existsSync(systemDarkPath)
+      ? JSON.parse(fs.readFileSync(systemDarkPath, 'utf-8'))
       : {};
-    const siteComponentMap = parseTokens(siteComponentTokensRaw, 'components tokens', 'component');
+    console.log(`   - system-dark.json`);
+    const systemDarkMap = parseTokens(systemDarkTokensRaw, 'system tokens', 'system');
+    console.log(`   ✓ System dark: ${Object.keys(systemDarkMap).length} tokens\n`);
 
     // Parse each file with appropriate level wrapper and level tag
     console.log('⚙️  Parsing design tokens...');
@@ -55,13 +58,10 @@ async function buildTokens() {
 
     const componentMap = parseTokens(componentTokens, 'components tokens', 'component');
     console.log(`   ✓ Component: ${Object.keys(componentMap).length} tokens`);
-    if (Object.keys(siteComponentMap).length > 0) {
-      console.log(`   ✓ Site component: ${Object.keys(siteComponentMap).length} tokens`);
-    }
     console.log('');
 
-    // Merge all token maps (site tokens extend component layer without editing Figma components.json)
-    const tokenMap = { ...globalMap, ...systemMap, ...componentMap, ...siteComponentMap };
+    // Merge all token maps
+    const tokenMap = { ...globalMap, ...systemMap, ...componentMap };
     console.log(`📊 Total tokens found: ${Object.keys(tokenMap).length}\n`);
 
     // Resolve references
@@ -69,9 +69,13 @@ async function buildTokens() {
     const resolvedTokens = resolveReferences(tokenMap);
     console.log(`   ✓ Resolved ${Object.keys(resolvedTokens).length} tokens\n`);
 
-    // Generate CSS
-    console.log('🎨 Generating CSS variables...');
-    const cssContent = generateCSSVariables(resolvedTokens);
+    // Resolve dark system token references against global tokens
+    const darkTokenMap = { ...globalMap, ...systemDarkMap };
+    const resolvedDarkSystemTokens = resolveReferences(darkTokenMap);
+
+    // Generate themed CSS (system color tokens → [data-theme] blocks)
+    console.log('🎨 Generating themed CSS variables...');
+    const cssContent = generateThemedCSSVariables(resolvedTokens, resolvedDarkSystemTokens);
 
     // Get statistics
     const stats = generateStats(resolvedTokens);

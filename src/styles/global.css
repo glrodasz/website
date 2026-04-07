@@ -6,15 +6,10 @@
 }
 
 :root {
-  --color-bg: #1a1a1a;
+  /* Non-theme tokens — always the same regardless of mode */
   /* Matches Quantum Colors/Complementary/principal (global Chartreuse 400) after token build */
   --golden-yellow: var(--system-tokens--colors--complementary--principal, #f7df1d);
   --color-accent: var(--golden-yellow);
-  --color-text: #ffffff;
-  --color-text-muted: #aaaaaa;
-  --color-surface: #242424;
-  --color-surface-2: #2e2e2e;
-  --color-border: #333333;
   --concrete: #f3f1f1;
 
   --font-body: 'Inter', system-ui, sans-serif;
@@ -26,19 +21,36 @@
 
   --max-width: 1140px;
   --spacing-section: 80px;
-
-  /* Fixed navbar — same palette as the rest of the site */
   --nav-height: 76px;
+
+  /* Site color aliases — resolved via system tokens which change per [data-theme] */
+  --color-bg:            var(--system-tokens--colors--backgrounds--principal);
+  --color-text:          var(--system-tokens--colors--foregrounds--principal);
+  --color-text-muted:    var(--system-tokens--colors--foregrounds--neutral);
+  --color-surface:       var(--system-tokens--colors--backgrounds--tertiary);
+  --color-surface-2:     var(--system-tokens--colors--backgrounds--neutral);
+  --color-surface-hover: var(--system-tokens--colors--backgrounds--subtle);
+  --color-border:        var(--system-tokens--colors--borders--neutral);
+
+  /* Nav aliases */
   --nav-bg: var(--color-bg);
   --nav-text: var(--color-text);
   --nav-text-muted: var(--color-text-muted);
   --nav-border: var(--color-border);
-
-  /* Borderless “button link” nav items (not Quantum ghost — no button border) */
   --nav-link-color: var(--color-text);
   --nav-link-color-hover: var(--color-accent);
-  --nav-link-bg-hover: rgba(255, 255, 255, 0.08);
   --nav-link-active-color: var(--color-accent);
+}
+
+/* Overlay/transparency colors — no direct system token equivalent */
+[data-theme=”light”] {
+  --nav-link-bg-hover: rgba(0, 0, 0, 0.06);
+  --theme-track-bg: #cccccc;
+}
+
+[data-theme=”dark”] {
+  --nav-link-bg-hover: rgba(255, 255, 255, 0.08);
+  --theme-track-bg: var(--color-surface-2);
 }
 
 .app-main {

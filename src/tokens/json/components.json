@@ -12748,6 +12748,140 @@
       }
     }
   },
+  "Site": {
+    "Page": {
+      "on-dark-text": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0, 0.1451, 0.1608],
+          "alpha": 1,
+          "hex": "#002529"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:page-on-dark-text",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "Course-card": {
+      "border-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.8196, 0.8196, 0.8196],
+          "alpha": 1,
+          "hex": "#D1D1D1"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-border",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Borders/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "surface-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9647, 0.9647, 0.9647],
+          "alpha": 1,
+          "hex": "#F6F6F6"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-surface",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "media-background-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9647, 0.9647, 0.9647],
+          "alpha": 1,
+          "hex": "#F6F6F6"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-media-bg",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "card-title-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0, 0.1451, 0.1608],
+          "alpha": 1,
+          "hex": "#002529"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-title",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "card-description-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.3647, 0.3647, 0.3647],
+          "alpha": 1,
+          "hex": "#5D5D5D"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-desc",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "hover-border-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
+          "alpha": 1,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-hover-border",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "media-placeholder-accent-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
+          "alpha": 1,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:course-card-placeholder-accent",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    }
+  },
   "$extensions": {
     "com.figma.modeName": "Mode 1"
   }

@@ -32,6 +32,7 @@ interface ResolvedToken {
   type: string;
   resolvedValue: string;
   level: 'global' | 'system' | 'component';
+  aliasTarget?: string;
 }
 
 interface ResolvedTokenMap {
@@ -230,7 +231,10 @@ export function resolveReferences(tokenMap: TokenMap): ResolvedTokenMap {
           cssVarName: generateCssVarName(path),
           type: token.type,
           resolvedValue: resolvedMap[targetPath].resolvedValue,
-          level: token.level
+          level: token.level,
+          aliasTarget: (token.level === 'component' && resolvedMap[targetPath].level === 'system')
+            ? resolvedMap[targetPath].cssVarName
+            : undefined
         };
       } else {
         console.warn(`⚠️  Could not resolve reference: ${path} -> ${token.referencePath}`);

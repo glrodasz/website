@@ -43,7 +43,7 @@
 
 .section-divider {
   border: none;
-  border-top: 1px solid #2e2e2e;
+  border-top: 1px solid var(--color-border);
   margin: 0;
 }
 
@@ -64,8 +64,8 @@
 
 /* Generic card */
 .card {
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   overflow: hidden;
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -84,17 +84,17 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background-color: #2e2e2e;
+  background-color: var(--color-surface-2);
 }
 
 .card__img-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;
-  background-color: #2e2e2e;
+  background-color: var(--color-surface-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: var(--color-text-muted);
   font-size: 0.85rem;
 }
 
@@ -107,7 +107,7 @@
   padding: 3px 10px;
   border-radius: 100px;
   background-color: var(--color-accent);
-  color: #1a1a1a;
+  color: #1a1a1a; /* always dark — ensures contrast on the golden-yellow accent */
   margin-bottom: 12px;
 }
 
@@ -121,7 +121,7 @@
 
 .card__meta {
   font-size: 0.8rem;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
   margin-bottom: 10px;
   display: flex;
   gap: 12px;
@@ -130,7 +130,7 @@
 
 .card__excerpt {
   font-size: 0.9rem;
-  color: #cccccc;
+  color: var(--color-text-muted);
   line-height: 1.6;
   margin-bottom: 16px;
   display: -webkit-box;
@@ -148,8 +148,8 @@
 }
 
 .skill-item {
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 16px 20px;
   text-align: center;
@@ -180,7 +180,7 @@
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background-color: #2e2e2e;
+  background-color: var(--color-border);
 }
 
 .timeline__item {
@@ -197,7 +197,7 @@
   height: 12px;
   border-radius: 50%;
   background-color: var(--color-accent);
-  border: 2px solid #1a1a1a;
+  border: 2px solid var(--color-bg);
 }
 
 .timeline__period {
@@ -218,7 +218,7 @@
 
 .timeline__role {
   font-size: 0.95rem;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
   margin-bottom: 12px;
 }
 
@@ -233,7 +233,7 @@
 
 .timeline__bullets li {
   font-size: 0.9rem;
-  color: #cccccc;
+  color: var(--color-text-muted);
   padding-left: 16px;
   position: relative;
 }
@@ -254,8 +254,8 @@
 }
 
 .education-item {
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 20px 24px;
 }
@@ -268,7 +268,7 @@
 
 .education-item__degree {
   font-size: 0.85rem;
-  color: #cccccc;
+  color: var(--color-text-muted);
   margin-bottom: 4px;
 }
 
@@ -289,8 +289,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 12px 20px;
 }
@@ -306,7 +306,7 @@
 
 .language-item__level {
   font-size: 0.8rem;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
 }
 
 /* CTA section */
@@ -326,8 +326,8 @@
 }
 
 .recognition-item {
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 16px 20px;
   display: flex;
@@ -342,11 +342,11 @@
 
 .recognition-item__sub {
   font-size: 0.8rem;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
 }
 
 .page-section__lead {
-  color: var(--components-tokens--site--page--on-dark-text, #ebfdff);
+  color: var(--color-text-muted);
   max-width: 640px;
   line-height: 1.6;
   margin: -8px 0 28px;
@@ -360,17 +360,17 @@
 .playlist-card {
   display: flex;
   flex-direction: column;
-  border-radius: var(--components-tokens--card-text--border-radius--default, 12px);
+  border-radius: var(--radius-card);
   overflow: hidden;
-  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
-  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .playlist-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
 }
 
@@ -378,7 +378,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: var(--components-tokens--site--course-card--media-background-color, #292929);
+  background: var(--components-tokens--site--course-card--media-background-color);
 }
 
 .playlist-card__img-placeholder {
@@ -388,8 +388,8 @@
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background: var(--components-tokens--site--course-card--media-background-color, #292929);
-  color: var(--color-accent);
+  background: var(--components-tokens--site--course-card--media-background-color);
+  color: var(--components-tokens--site--course-card--media-placeholder-accent-color);
 }
 
 .playlist-card__body {
@@ -419,7 +419,7 @@
   margin: 0;
   flex: 1;
   min-width: 0;
-  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .playlist-card__link {
@@ -444,15 +444,15 @@
   gap: 16px;
   padding: 12px 16px;
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
-  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
-  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
-  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
+  color: var(--components-tokens--site--course-card--card-title-color);
   transition: border-color 0.2s ease;
 }
 
 .tutorial-row:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
 }
 
 .tutorial-row__thumb {
@@ -461,7 +461,7 @@
   height: 68px;
   object-fit: cover;
   border-radius: 6px;
-  background: #000;
+  background: var(--components-tokens--site--course-card--media-background-color);
 }
 
 .tutorial-row__title {
@@ -481,18 +481,17 @@
 .platform-course-card {
   display: flex;
   flex-direction: column;
-  padding: var(--components-tokens--card-text--spacing--vertical, 24px)
-    var(--components-tokens--card-text--spacing--horizontal, 24px);
-  border-radius: var(--components-tokens--card-text--border-radius--default, 12px);
-  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
-  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
+  padding: 24px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .platform-course-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
 }
 
@@ -511,12 +510,12 @@
   font-weight: 700;
   margin: 0 0 10px;
   line-height: 1.3;
-  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .platform-course-card__desc {
   font-size: 0.88rem;
-  color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
+  color: var(--components-tokens--site--course-card--card-description-color);
   line-height: 1.55;
   margin: 0 0 14px;
   flex: 1;
@@ -532,10 +531,10 @@
 .featured-course-card {
   background: linear-gradient(
     135deg,
-    var(--components-tokens--site--course-card--surface-color, #292929) 0%,
-    var(--components-tokens--site--course-card--media-background-color, #292929) 100%
+    var(--components-tokens--site--course-card--surface-color) 0%,
+    var(--components-tokens--site--course-card--media-background-color) 100%
   );
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--components-tokens--site--course-card--hover-border-color);
   border-radius: 16px;
   padding: 40px 48px;
 }
@@ -552,11 +551,11 @@
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
   margin-bottom: 16px;
-  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .featured-course-card__description {
-  color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
+  color: var(--components-tokens--site--course-card--card-description-color);
   line-height: 1.7;
   max-width: 580px;
   margin-bottom: 24px;
@@ -607,7 +606,7 @@
 
 .contact-hero__lead {
   font-size: 1.1rem;
-  color: var(--components-tokens--site--page--on-dark-text, #ebfdff);
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -620,7 +619,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin: 32px 0 16px;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .contact-social-list {
@@ -678,7 +677,7 @@
 }
 
 .social-link {
-  color: #cccccc;
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -703,15 +702,15 @@
 .form-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--color-text-muted);
   letter-spacing: 0.04em;
 }
 
 .form-input {
-  background-color: #242424;
-  border: 1px solid #333333;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  color: #ffffff;
+  color: var(--color-text);
   font-family: inherit;
   font-size: 1rem;
   padding: 12px 16px;
@@ -729,8 +728,8 @@
 }
 
 .contact-success {
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 48px;
   text-align: center;

@@ -11,6 +11,7 @@ interface ResolvedToken {
   type: string;
   resolvedValue: string;
   level: 'global' | 'system' | 'component';
+  aliasTarget?: string;
 }
 
 interface ResolvedTokenMap {
@@ -86,6 +87,9 @@ function groupByCategory(tokens: ResolvedToken[]): Map<string, ResolvedToken[]> 
  * Generate CSS variable declaration
  */
 function generateCSSVariable(token: ResolvedToken): string {
+  if (token.aliasTarget) {
+    return `  ${token.cssVarName}: var(${token.aliasTarget});`;
+  }
   const formattedValue = formatValue(token.resolvedValue, token.type, token.originalPath);
   return `  ${token.cssVarName}: ${formattedValue};`;
 }
@@ -155,6 +159,90 @@ export function generateCSSVariables(resolvedTokens: ResolvedTokenMap): string {
   }
 
   css += '}\n';
+  return css;
+}
+
+/**
+ * Generate CSS variables for a theme block (used in themed output)
+ */
+function generateThemeBlock(selector: string, tokens: ResolvedToken[]): string {
+  let css = `\n${selector} {\n`;
+  const byCategory = groupByCategory(tokens);
+  for (const [category, catTokens] of byCategory) {
+    css += generateCategoryComment(category);
+    catTokens.forEach(token => {
+      css += '\n' + generateCSSVariable(token);
+    });
+    css += '\n';
+  }
+  css += '}\n';
+  return css;
+}
+
+/**
+ * Generate themed CSS variables — system color tokens go into [data-theme] blocks,
+ * everything else (global, non-color system, component) goes into :root.
+ */
+export function generateThemedCSSVariables(
+  resolvedTokens: ResolvedTokenMap,
+  resolvedDarkSystemTokens: ResolvedTokenMap
+): string {
+  const grouped = groupTokensByLevel(resolvedTokens);
+
+  const systemColorTokens = grouped.system.filter(t => t.type === 'color');
+  const systemNonColorTokens = grouped.system.filter(t => t.type !== 'color');
+
+  const darkSystemColorTokens = Object.values(resolvedDarkSystemTokens).filter(
+    t => t.level === 'system' && t.type === 'color'
+  );
+
+  let css = ':root {\n';
+
+  // Global tokens
+  if (grouped.global.length > 0) {
+    css += generateSectionHeader('GLOBAL TOKENS');
+    const globalByCategory = groupByCategory(grouped.global);
+    for (const [category, tokens] of globalByCategory) {
+      css += generateCategoryComment(category);
+      tokens.forEach(token => { css += '\n' + generateCSSVariable(token); });
+      css += '\n';
+    }
+  }
+
+  // Non-color system tokens (sizing, spacing, typography, etc.)
+  if (systemNonColorTokens.length > 0) {
+    css += generateSectionHeader('SYSTEM TOKENS (non-color)');
+    const byCategory = groupByCategory(systemNonColorTokens);
+    for (const [category, tokens] of byCategory) {
+      css += generateCategoryComment(category);
+      tokens.forEach(token => { css += '\n' + generateCSSVariable(token); });
+      css += '\n';
+    }
+  }
+
+  // Component tokens
+  if (grouped.component.length > 0) {
+    css += generateSectionHeader('COMPONENT TOKENS');
+    const componentByCategory = groupByCategory(grouped.component);
+    for (const [category, tokens] of componentByCategory) {
+      css += generateCategoryComment(category);
+      tokens.forEach(token => { css += '\n' + generateCSSVariable(token); });
+      css += '\n';
+    }
+  }
+
+  css += '}\n';
+
+  // [data-theme="light"] — light system color tokens
+  if (systemColorTokens.length > 0) {
+    css += generateThemeBlock('[data-theme="light"]', systemColorTokens);
+  }
+
+  // [data-theme="dark"] — dark system color tokens
+  if (darkSystemColorTokens.length > 0) {
+    css += generateThemeBlock('[data-theme="dark"]', darkSystemColorTokens);
+  }
+
   return css;
 }
 

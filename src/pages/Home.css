@@ -8,7 +8,7 @@
   min-height: var(--header-mobile-min-height);
   padding: 0 24px;
   box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.2);
-  background-color: #000;
+  background-color: var(--color-bg);
   overflow: hidden;
 }
 
@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  -webkit-text-stroke: 2px #000;
+  -webkit-text-stroke: 2px var(--color-bg);
   paint-order: stroke fill;
 }
 
@@ -61,7 +61,7 @@
   font-weight: 700;
   line-height: 1.1;
   margin: 0 0 4px;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .home-hero__fullname {
@@ -74,7 +74,7 @@
   font-size: clamp(2.5rem, 10vw, 3.6rem);
   font-weight: 700;
   line-height: 1;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .home-hero__name-line {
@@ -92,10 +92,10 @@
   font-size: clamp(1.15rem, 3.5vw, 2.1rem);
   line-height: 1.45;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text);
   max-width: 520px;
   margin: 0 0 20px;
-  -webkit-text-stroke: 2px #000 ;
+  -webkit-text-stroke: 2px var(--color-bg);
   paint-order: stroke fill;
 }
 
@@ -216,15 +216,15 @@
   width: 100%;
   max-width: 320px;
   aspect-ratio: 1;
-  background-color: #242424;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #555;
+  color: var(--color-text-muted);
   font-size: 0.85rem;
 }
 
@@ -287,7 +287,7 @@
   }
 
   .home-hero__fullname strong {
-    -webkit-text-stroke: 3px #000;
+    -webkit-text-stroke: 3px var(--color-bg);
     paint-order: stroke fill;
   }
 
@@ -359,7 +359,7 @@
   font-weight: 800;
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   margin: 0;
-  color: var(--components-tokens--site--page--on-dark-text, #ebfdff);
+  color: var(--color-text);
 }
 
 .home-courses__grid {
@@ -369,15 +369,15 @@
 }
 
 .home-course-card {
-  border-radius: var(--components-tokens--card-text--border-radius--default, 12px);
+  border-radius: var(--radius-card);
   overflow: hidden;
-  border: 1px solid var(--components-tokens--site--course-card--border-color, #525252);
-  background-color: var(--components-tokens--site--course-card--surface-color, #292929);
+  border: 1px solid var(--components-tokens--site--course-card--border-color);
+  background-color: var(--components-tokens--site--course-card--surface-color);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .home-course-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
 }
 
@@ -385,8 +385,8 @@
   border: 2px solid var(--color-accent);
   background: linear-gradient(
     135deg,
-    var(--components-tokens--site--course-card--surface-color, #292929) 0%,
-    var(--components-tokens--site--course-card--media-background-color, #292929) 100%
+    var(--color-surface) 0%,
+    var(--color-surface-2) 100%
   );
 }
 
@@ -402,7 +402,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: var(--components-tokens--site--course-card--media-background-color, #292929);
+  background: var(--components-tokens--site--course-card--media-background-color);
 }
 
 .home-course-card__thumb-placeholder {
@@ -412,8 +412,8 @@
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background: var(--components-tokens--site--course-card--media-background-color, #292929);
-  color: var(--color-accent);
+  background: var(--components-tokens--site--course-card--media-background-color);
+  color: var(--components-tokens--site--course-card--media-placeholder-accent-color);
 }
 
 .home-course-card__body {
@@ -434,7 +434,7 @@
   padding: 4px 12px;
   border-radius: 100px;
   background-color: var(--color-accent);
-  color: var(--components-tokens--site--course-card--text-on-accent-color, #292929);
+  color: #1a1a1a; /* always dark — ensures contrast on the golden-yellow accent */
   margin-bottom: 12px;
 }
 
@@ -458,7 +458,7 @@
   font-weight: 700;
   line-height: 1.3;
   margin: 0 0 8px;
-  color: var(--components-tokens--site--course-card--card-title-color, #ebfdff);
+  color: var(--components-tokens--site--course-card--card-title-color);
 }
 
 .home-course-card__title-row .home-course-card__name {
@@ -470,8 +470,7 @@
 .home-course-card__desc {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--components-tokens--site--course-card--card-description-color, #d1d1d1);
-  opacity: 0.9;
+  color: var(--components-tokens--site--course-card--card-description-color);
   margin: 0 0 16px;
 }
 
@@ -483,9 +482,9 @@
 
 /* Writing */
 .home-writing {
-  background-color: #111111;
-  border-top: 1px solid #2e2e2e;
-  border-bottom: 1px solid #2e2e2e;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   padding: 80px 24px;
 }
 
@@ -518,8 +517,8 @@
 }
 
 .post-card {
-  background-color: #1a1a1a;
-  border: 1px solid #2e2e2e;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   overflow: hidden;
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -544,13 +543,13 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background-color: #2e2e2e;
+  background-color: var(--color-surface-2);
 }
 
 .post-card__cover-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #2e2e2e 0%, #242424 100%);
+  background: linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -570,12 +569,12 @@
   font-weight: 700;
   line-height: 1.4;
   margin-bottom: 8px;
-  color: #ffffff;
+  color: var(--color-text);
 }
 
 .post-card__meta {
   font-size: 0.78rem;
-  color: #888;
+  color: var(--color-text-muted);
   margin-bottom: 10px;
   display: flex;
   gap: 10px;
@@ -584,7 +583,7 @@
 
 .post-card__excerpt {
   font-size: 0.875rem;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
   line-height: 1.6;
   flex: 1;
   display: -webkit-box;
@@ -596,7 +595,7 @@
 .home-writing__loading {
   text-align: center;
   padding: 40px;
-  color: #aaaaaa;
+  color: var(--color-text-muted);
 }
 
 @media (max-width: 960px) {

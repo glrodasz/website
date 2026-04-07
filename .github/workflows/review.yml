@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   deploy:
-    name: Deploy website and Storybook
+    name: Deploy website
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -18,21 +18,12 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install dependencies
         run: npm ci
-      - name: Build website
+      - name: Build
         run: npm run build
-      - name: Build storybook
-        run: npm run build-storybook
-      - name: Deploy website (preview)
+      - name: Deploy (preview)
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.WEBSITE_PROJECT_ID }}
-      - name: Deploy storybook (preview)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.STORYBOOK_PROJECT_ID }}

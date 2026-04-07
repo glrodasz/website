@@ -12,8 +12,8 @@ const config: StorybookConfig = {
   ],
   framework: '@storybook/react-vite',
   viteFinal: async (config: InlineConfig, { configType }) => {
-    if (configType === 'PRODUCTION' && process.env.STORYBOOK_SERVE_PATH) {
-      config.base = process.env.STORYBOOK_SERVE_PATH;
+    if (configType === 'PRODUCTION') {
+      config.base = '/components/';
     }
     return config;
   },

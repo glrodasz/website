@@ -1,5 +1,7 @@
 {
   "routes": [
+    { "src": "/components$", "headers": { "Location": "/components/" }, "status": 308 },
+    { "src": "/components/$", "dest": "/components/index.html" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]

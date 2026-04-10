@@ -1192,6 +1192,8 @@
   --system-tokens--colors--typography--highlight: #F7DF1D;
   --system-tokens--colors--typography--alternative: #F7DF1D;
   --system-tokens--colors--borders--alternative: #F7DF1D;
+  --system-tokens--colors--neutral--high: #262626;
+  --system-tokens--colors--neutral--principal: #454545;
   --system-tokens--colors--backgrounds--principal: #1A1A1A;
   --system-tokens--colors--backgrounds--secondary: #242424;
   --system-tokens--colors--backgrounds--tertiary: #242424;

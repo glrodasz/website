@@ -332,6 +332,32 @@
         }
       }
     },
+    "Neutral": {
+      "high": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.149, 0.149, 0.149],
+          "alpha": 1,
+          "hex": "#262626"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:dark:neutral-high"
+        }
+      },
+      "principal": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.2705, 0.2705, 0.2705],
+          "alpha": 1,
+          "hex": "#454545"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:dark:neutral-principal"
+        }
+      }
+    },
     "Complementary": {
       "principal": {
         "$type": "color",

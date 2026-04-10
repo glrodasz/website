@@ -453,7 +453,7 @@
 
   /* Button */
   --components-tokens--button--background-color--primary--default: var(--system-tokens--colors--complementary--principal);
-  --components-tokens--button--background-color--primary--hover: var(--system-tokens--colors--complementary--subtle);
+  --components-tokens--button--background-color--primary--hover: var(--system-tokens--colors--complementary--principal);
   --components-tokens--button--background-color--primary--acctived: var(--system-tokens--colors--complementary--high);
   --components-tokens--button--background-color--primary--disabled: var(--system-tokens--colors--complementary--off);
   --components-tokens--button--background-color--secondary--default: var(--system-tokens--colors--backgrounds--principal);
@@ -468,8 +468,8 @@
   --components-tokens--button--background-color--ghost-dark--hover: var(--system-tokens--colors--transparency--dark);
   --components-tokens--button--background-color--ghost-dark--acctived: var(--system-tokens--colors--transparency--dark);
   --components-tokens--button--background-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
-  --components-tokens--button--text-color--primary--default: var(--system-tokens--colors--complementary--high);
-  --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--complementary--high);
+  --components-tokens--button--text-color--primary--default: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
   --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
   --components-tokens--button--text-color--primary--disabled: var(--system-tokens--colors--foregrounds--disabled);
   --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--neutral--high);
@@ -1192,6 +1192,8 @@
   --system-tokens--colors--typography--highlight: #F7DF1D;
   --system-tokens--colors--typography--alternative: #F7DF1D;
   --system-tokens--colors--borders--alternative: #F7DF1D;
+  --system-tokens--colors--neutral--high: #262626;
+  --system-tokens--colors--neutral--principal: #454545;
   --system-tokens--colors--backgrounds--principal: #1A1A1A;
   --system-tokens--colors--backgrounds--secondary: #242424;
   --system-tokens--colors--backgrounds--tertiary: #242424;

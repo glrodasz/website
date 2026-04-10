@@ -1133,18 +1133,18 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.6392157077789307,
-              0.800000011920929,
-              0
+              0.9686274509803922,
+              0.8745098039215686,
+              0.11372549019607843
             ],
             "alpha": 1,
-            "hex": "#A3CC00"
+            "hex": "#F7DF1D"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:48:12127",
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:f024e5190068d6893e9a02cf1d79d74d8039769a/-1:-1",
-              "targetVariableName": "Colors/Complementary/subtle",
+              "targetVariableId": "VariableID:6506c8fae0bd135e47a6bb507cb9d66dd8685c8e/-1:-1",
+              "targetVariableName": "Colors/Complementary/principal",
               "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
               "targetVariableSetName": "System Tokens"
             }
@@ -1469,18 +1469,18 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.1921568661928177,
-              0.239215686917305,
-              0
+              0.14901961386203766,
+              0.14901961386203766,
+              0.14901961386203766
             ],
             "alpha": 1,
-            "hex": "#313D00"
+            "hex": "#262626"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:48:12143",
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:a934e1c5acd827e23dd843c599591439bf0d4b9a/-1:-1",
-              "targetVariableName": "Colors/Complementary/high",
+              "targetVariableId": "VariableID:d5c6d8c794cc91991a945a7a40fed8c41885423e/-1:-1",
+              "targetVariableName": "Colors/Neutral/high",
               "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
               "targetVariableSetName": "System Tokens"
             }
@@ -1491,18 +1491,18 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.1921568661928177,
-              0.239215686917305,
-              0
+              0.27058823108673096,
+              0.27058823108673096,
+              0.27058823108673096
             ],
             "alpha": 1,
-            "hex": "#313D00"
+            "hex": "#454545"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:48:12144",
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:a934e1c5acd827e23dd843c599591439bf0d4b9a/-1:-1",
-              "targetVariableName": "Colors/Complementary/high",
+              "targetVariableId": "VariableID:9b0e1f2a3c4d5e6f7a8b9c0d1e2f3a4b/-1:-1",
+              "targetVariableName": "Colors/Neutral/principal",
               "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
               "targetVariableSetName": "System Tokens"
             }

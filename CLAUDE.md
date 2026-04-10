@@ -84,13 +84,18 @@ This project implements **Quantum Design**, a component library built on a three
 
 ```
 Level 1: Global Tokens      (raw values — palettes, scale)
-              ↓ aliased by
-Level 2: System Tokens      (semantic meaning — "primary", "danger", "spacing.md")
-              ↓ aliased by
-Level 3: Component Tokens   (component usage — "button.background-color.primary.hover")
+              ↓ referenced by
+Level 2: System Tokens      (semantic aliases — "primary", "danger", "spacing.md")
+              ↓ referenced by
+Level 3: Component Tokens   (scoped to components — "button.background-color.primary.hover")
               ↓ consumed by
 CSS Component Styles        (Button.css, InputText.css, …)
 ```
+
+CSS naming convention per level:
+- **Global**: `--global-tokens--{category}--{name}`
+- **System**: `--system-tokens--{category}--{name}`
+- **Component**: `--components-tokens--{component}--{property}`
 
 #### Level 1 — Global Tokens (`global.json`)
 
@@ -429,18 +434,22 @@ export const GhostDark: Story = {
 
 ## Rules
 
-1. **Never hardcode color, spacing, radius, or typography values.** Always trace through the token hierarchy: use a component token if one exists, a system token if not, never a global token directly in CSS.
+1. **Never hardcode raw values.** No colors, spacing, radius, or typography values inline in CSS or components.
 
-2. **`design-tokens.css` is generated.** Only edit the JSON source files in `src/tokens/json/`, then run `npm run build:tokens`. Changes to `design-tokens.css` will be overwritten.
+2. **Components only consume Component tokens.** CSS files must only reference `--components-tokens--*` variables. If the token you need doesn't exist in `components.json`, add it there first — pointing to the appropriate system token. Never reach directly for `--system-tokens--*` or `--global-tokens--*` in component CSS.
 
-3. **Theme-invariant tokens must be explicit.** If a component token must stay the same color in both light and dark mode (e.g. dark text on a yellow button), add that system token to `system-dark.json` with the same value — don't rely on it being undefined.
+3. **System tokens bridge Global → Component.** System tokens give semantic meaning to raw global values. Component tokens then reference system tokens to scope them to a specific component context.
 
-4. **Component tokens reference system tokens.** Set `aliasData.targetVariableName` to the appropriate system token path (e.g. `"Colors/Neutral/high"`). Only define raw hex values in `system-dark.json` for overrides that don't have an existing global alias.
+4. **`design-tokens.css` is generated.** Only edit the JSON source files in `src/tokens/json/`, then run `npm run build:tokens`. Changes to `design-tokens.css` will be overwritten.
 
-5. **Use BEM with `qd-` prefix.** Every class starts with `qd-{component}`. Variants and states are modifiers (`--`), child elements use element syntax (`__`).
+5. **Theme-invariant tokens must be explicit.** If a component token must stay the same color in both light and dark mode (e.g. dark text on a yellow button), add that system token to `system-dark.json` with the same value — don't rely on it being undefined.
 
-6. **Place components at the right atomic level.** No skipping levels — a molecule can only use atoms, an organism can use molecules and atoms.
+6. **Component tokens reference system tokens.** Set `aliasData.targetVariableName` to the appropriate system token path (e.g. `"Colors/Neutral/high"`). Only define raw hex values in `system-dark.json` for overrides that don't have an existing global alias.
 
-7. **Every component needs a story.** Include at minimum: default state, all major variants, disabled state.
+7. **Use BEM with `qd-` prefix.** Every class starts with `qd-{component}`. Variants and states are modifiers (`--`), child elements use element syntax (`__`).
 
-8. **Export both component and interface.** Every public component exports its props type alongside the component itself.
+8. **Place components at the right atomic level.** No skipping levels — a molecule can only use atoms, an organism can use molecules and atoms.
+
+9. **Every component needs a story.** Include at minimum: default state, all major variants, disabled state.
+
+10. **Export both component and interface.** Every public component exports its props type alongside the component itself.

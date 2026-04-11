@@ -3,23 +3,23 @@
 .qd-textarea__wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--system-tokens--spacing--xs, 8px);
+  gap: var(--components-tokens--text-area--spacing--large--gap);
 }
 
 .qd-textarea__label {
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--system-tokens--colors--foregrounds--primary);
-  line-height: 1.4;
+  font-family: var(--components-tokens--text-area--typography--font-family);
+  font-size: var(--components-tokens--text-area--typography--label--font-size);
+  font-weight: var(--components-tokens--text-area--typography--label--font-weight);
+  color: var(--components-tokens--text-area--text-color--label--default);
+  line-height: var(--components-tokens--text-area--typography--label--line-height);
 }
 
 .qd-textarea__field {
-  border: 1px solid var(--system-tokens--colors--borders--neutral);
-  border-radius: var(--system-tokens--border-radius--sm);
-  background-color: var(--system-tokens--colors--backgrounds--primary);
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  color: var(--system-tokens--colors--foregrounds--primary);
+  border: 1px solid var(--components-tokens--text-area--border-color--default);
+  border-radius: var(--components-tokens--text-area--border-radius--large);
+  background-color: var(--components-tokens--text-area--background-color--default);
+  font-family: var(--components-tokens--text-area--typography--font-family);
+  color: var(--components-tokens--text-area--text-color--input--default);
   transition: all 0.2s ease-in-out;
   resize: vertical;
   width: 100%;
@@ -27,54 +27,56 @@
 
 /* Size variants */
 .qd-textarea__field--large {
-  padding: var(--system-tokens--spacing--md, 16px);
-  font-size: 16px;
-  line-height: 1.5;
+  padding: var(--components-tokens--text-area--spacing--large--vertical)
+    var(--components-tokens--text-area--spacing--large--horizontal);
+  font-size: var(--components-tokens--text-area--typography--input--large--font-size);
+  line-height: var(--components-tokens--text-area--typography--input--large--line-height);
 }
 
 .qd-textarea__field--small {
-  padding: var(--system-tokens--spacing--sm, 12px);
-  font-size: 14px;
-  line-height: 1.5;
+  padding: var(--components-tokens--text-area--spacing--small--vertical)
+    var(--components-tokens--text-area--spacing--small--horizontal);
+  font-size: var(--components-tokens--text-area--typography--input--small--font-size);
+  line-height: var(--components-tokens--text-area--typography--input--small--line-height);
 }
 
 .qd-textarea__field::placeholder {
-  color: var(--system-tokens--colors--foregrounds--disabled);
+  color: var(--components-tokens--text-area--text-color--input--placeholder);
 }
 
 /* Focus state */
 .qd-textarea__field:focus {
   outline: none;
-  border-color: var(--system-tokens--colors--primary--principal);
-  box-shadow: 0 0 0 3px var(--system-tokens--colors--primary--off);
+  border-color: var(--components-tokens--text-area--border-color--focus);
+  box-shadow: 0 0 0 3px var(--components-tokens--text-area--outline-color--focus);
 }
 
 /* Hover state */
 .qd-textarea__field:hover:not(:disabled):not(:focus) {
-  border-color: var(--system-tokens--colors--borders--strong);
+  border-color: var(--components-tokens--text-area--border-color--hover);
 }
 
 /* Error state */
 .qd-textarea__field--error {
-  border-color: var(--system-tokens--colors--danger--high);
+  border-color: var(--components-tokens--text-area--border-color--error);
 }
 
 .qd-textarea__field--error:focus {
-  border-color: var(--system-tokens--colors--danger--high);
-  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+  border-color: var(--components-tokens--text-area--border-color--error);
+  box-shadow: 0 0 0 3px var(--components-tokens--text-area--outline-color--error);
 }
 
 .qd-textarea__error-message {
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  font-size: 12px;
-  color: var(--system-tokens--colors--danger--high);
-  line-height: 1.4;
+  font-family: var(--components-tokens--text-area--typography--font-family);
+  font-size: var(--components-tokens--text-area--typography--message--font-size);
+  line-height: var(--components-tokens--text-area--typography--message--line-height);
+  color: var(--components-tokens--text-area--text-color--message--error);
 }
 
 /* Disabled state */
 .qd-textarea__field--disabled {
-  background-color: var(--system-tokens--colors--backgrounds--secondary);
-  border-color: var(--system-tokens--colors--borders--disabled);
+  background-color: var(--components-tokens--text-area--background-color--disabled);
+  border-color: var(--components-tokens--text-area--border-color--disabled);
   cursor: not-allowed;
   opacity: 0.6;
 }

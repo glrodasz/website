@@ -223,14 +223,14 @@
   --global-tokens--border-radius--100: 100px;
 
   /* Typography */
-  --global-tokens--typography--font-family--inter: Inter;
+  --global-tokens--typography--font-family--inter: 'Inter', system-ui, sans-serif;
   --global-tokens--typography--font-family--monstserrat: Montserrat;
   --global-tokens--typography--font-family--dm-sans: DM-Sans;
   --global-tokens--typography--font-family--work-sans: Work-Sans;
   --global-tokens--typography--font-family--manrope: Manrope;
   --global-tokens--typography--font-family--poppins: Poppins;
   --global-tokens--typography--font-family--space-grotesk: Space-Grotesk;
-  --global-tokens--typography--font-family--syne: Syne;
+  --global-tokens--typography--font-family--syne: 'Syne', 'Inter', sans-serif;
   --global-tokens--typography--font-family--libre-baskerville: Libre-Baskerville;
   --global-tokens--typography--font-family--space-mono: Space-Mono;
   --global-tokens--typography--font-family--roboto: Roboto;
@@ -295,9 +295,9 @@
   --system-tokens--typography--line-height--body--lg: 34px;
   --system-tokens--typography--line-height--body--xl: 48px;
   --system-tokens--typography--line-height--body--xxl: 59px;
-  --system-tokens--typography--font-family--headings: Manrope;
-  --system-tokens--typography--font-family--body: Manrope;
-  --system-tokens--typography--font-family--alternative-text: Manrope;
+  --system-tokens--typography--font-family--headings: 'Syne', 'Inter', sans-serif;
+  --system-tokens--typography--font-family--body: 'Inter', system-ui, sans-serif;
+  --system-tokens--typography--font-family--alternative-text: 'Inter', system-ui, sans-serif;
   --system-tokens--typography--font-weight--weak: Regular;
   --system-tokens--typography--font-weight--moderate: Medium;
   --system-tokens--typography--font-weight--medium: Semibold;

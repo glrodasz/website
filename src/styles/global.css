@@ -12,9 +12,6 @@
   --color-accent: var(--golden-yellow);
   --concrete: #f3f1f1;
 
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-display: 'Syne', 'Inter', sans-serif;
-
   --radius-pill: 100px;
   --radius-card: 12px;
   --radius-sm: 6px;
@@ -67,7 +64,7 @@ body {
   padding: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-body);
+  font-family: var(--system-tokens--typography--font-family--body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -76,7 +73,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+  font-family: var(--system-tokens--typography--font-family--headings);
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.5em;
@@ -116,7 +113,7 @@ ul, ol {
 }
 
 button {
-  font-family: var(--font-body);
+  font-family: var(--system-tokens--typography--font-family--body);
   cursor: pointer;
 }
 

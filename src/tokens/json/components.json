@@ -7007,7 +7007,7 @@
       }
     }
   },
-  "breadcrum": {
+  "breadcrumb": {
     "text-color": {
       "previous": {
         "$type": "color",
@@ -8608,7 +8608,7 @@
       }
     }
   },
-  "full tabs": {
+  "full-tabs": {
     "sizing": {
       "icon": {
         "large": {

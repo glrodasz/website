@@ -3,25 +3,27 @@
 .qd-tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--system-tokens--spacing--xs, 8px);
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  font-weight: 500;
-  border-radius: var(--system-tokens--border-radius--full, 100px);
+  gap: var(--components-tokens--tag--spacing--small--horizontal);
+  font-family: var(--components-tokens--tag--typography--font-family);
+  font-weight: var(--components-tokens--tag--typography--font-weight);
+  border-radius: var(--components-tokens--tag--radius--large);
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
 }
 
 /* Size variants */
 .qd-tag--large {
-  padding: var(--system-tokens--spacing--xs, 8px) var(--system-tokens--spacing--md, 16px);
-  font-size: 14px;
-  height: 32px;
+  padding: var(--components-tokens--tag--spacing--small--horizontal)
+    var(--components-tokens--tag--spacing--medium--horizontal);
+  font-size: var(--components-tokens--tag--typography--large--font-size);
+  height: var(--components-tokens--tag--sizing--large);
 }
 
 .qd-tag--small {
-  padding: var(--system-tokens--spacing--xxs, 4px) var(--system-tokens--spacing--sm, 12px);
-  font-size: 12px;
-  height: 24px;
+  padding: var(--components-tokens--tag--spacing--medium--vertical)
+    var(--components-tokens--tag--spacing--small--horizontal);
+  font-size: var(--components-tokens--tag--typography--small--font-size);
+  height: var(--components-tokens--tag--sizing--small);
 }
 
 .qd-tag__text {
@@ -37,88 +39,88 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: var(--components-tokens--tag--sizing--close);
+  height: var(--components-tokens--tag--sizing--close);
   border-radius: 50%;
   transition: background-color 0.2s ease-in-out;
 }
 
 .qd-tag__close:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--components-tokens--tag--close-background-color--filled-hover);
 }
 
 .qd-tag--outlined .qd-tag__close:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--components-tokens--tag--close-background-color--outlined-hover);
 }
 
 /* Discovery variant */
 .qd-tag--discovery.qd-tag--filled {
-  background-color: var(--system-tokens--colors--primary--principal);
-  color: var(--system-tokens--colors--foregrounds--contrast);
+  background-color: var(--components-tokens--tag--background-color--filled--discovery);
+  color: var(--components-tokens--tag--text-color--contrast);
 }
 
 .qd-tag--discovery.qd-tag--outlined {
   background-color: transparent;
-  color: var(--system-tokens--colors--primary--principal);
-  border-color: var(--system-tokens--colors--primary--principal);
+  color: var(--components-tokens--tag--text-color--discovery);
+  border-color: var(--components-tokens--tag--text-color--discovery);
 }
 
 /* Info variant */
 .qd-tag--info.qd-tag--filled {
-  background-color: var(--system-tokens--colors--info--high);
-  color: var(--system-tokens--colors--foregrounds--contrast);
+  background-color: var(--components-tokens--tag--background-color--filled--info);
+  color: var(--components-tokens--tag--text-color--contrast);
 }
 
 .qd-tag--info.qd-tag--outlined {
   background-color: transparent;
-  color: var(--system-tokens--colors--info--high);
-  border-color: var(--system-tokens--colors--info--high);
+  color: var(--components-tokens--tag--text-color--info);
+  border-color: var(--components-tokens--tag--text-color--info);
 }
 
 /* Success variant */
 .qd-tag--success.qd-tag--filled {
-  background-color: var(--system-tokens--colors--success--high);
-  color: var(--system-tokens--colors--foregrounds--contrast);
+  background-color: var(--components-tokens--tag--background-color--filled--success);
+  color: var(--components-tokens--tag--text-color--contrast);
 }
 
 .qd-tag--success.qd-tag--outlined {
   background-color: transparent;
-  color: var(--system-tokens--colors--success--high);
-  border-color: var(--system-tokens--colors--success--high);
+  color: var(--components-tokens--tag--text-color--success);
+  border-color: var(--components-tokens--tag--text-color--success);
 }
 
 /* Warning variant */
 .qd-tag--warning.qd-tag--filled {
-  background-color: var(--system-tokens--colors--warning--high);
-  color: var(--system-tokens--colors--foregrounds--contrast);
+  background-color: var(--components-tokens--tag--background-color--filled--warning);
+  color: var(--components-tokens--tag--text-color--contrast);
 }
 
 .qd-tag--warning.qd-tag--outlined {
   background-color: transparent;
-  color: var(--system-tokens--colors--warning--high);
-  border-color: var(--system-tokens--colors--warning--high);
+  color: var(--components-tokens--tag--text-color--warning);
+  border-color: var(--components-tokens--tag--text-color--warning);
 }
 
 /* Error variant */
 .qd-tag--error.qd-tag--filled {
-  background-color: var(--system-tokens--colors--danger--high);
-  color: var(--system-tokens--colors--foregrounds--contrast);
+  background-color: var(--components-tokens--tag--background-color--filled--error);
+  color: var(--components-tokens--tag--text-color--contrast);
 }
 
 .qd-tag--error.qd-tag--outlined {
   background-color: transparent;
-  color: var(--system-tokens--colors--danger--high);
-  border-color: var(--system-tokens--colors--danger--high);
+  color: var(--components-tokens--tag--text-color--error);
+  border-color: var(--components-tokens--tag--text-color--error);
 }
 
 /* Neutral variant */
 .qd-tag--neutral.qd-tag--filled {
-  background-color: var(--system-tokens--colors--neutral--principal);
-  color: var(--system-tokens--colors--foregrounds--contrast);
+  background-color: var(--components-tokens--tag--background-color--filled--neutral);
+  color: var(--components-tokens--tag--text-color--contrast);
 }
 
 .qd-tag--neutral.qd-tag--outlined {
   background-color: transparent;
-  color: var(--system-tokens--colors--neutral--principal);
-  border-color: var(--system-tokens--colors--neutral--principal);
+  color: var(--components-tokens--tag--text-color--neutral);
+  border-color: var(--components-tokens--tag--text-color--neutral);
 }

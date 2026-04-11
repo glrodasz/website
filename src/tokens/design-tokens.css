@@ -344,6 +344,123 @@
   /*  COMPONENT TOKENS                                         */
   /* ============================================================ */
 
+  /* Button */
+  --components-tokens--button--sizing--small--min-height: 36px;
+  --components-tokens--button--background-color--primary--default: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--button--background-color--primary--hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--button--background-color--primary--acctived: var(--system-tokens--colors--complementary--high);
+  --components-tokens--button--background-color--primary--disabled: var(--system-tokens--colors--complementary--off);
+  --components-tokens--button--background-color--secondary--default: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--button--background-color--secondary--hover: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--button--background-color--secondary--acctived: var(--system-tokens--colors--neutral--off);
+  --components-tokens--button--background-color--secondary--disabled: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--button--background-color--ghost-light--default: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost-light--hover: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost-light--acctived: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost-dark--default: var(--system-tokens--colors--transparency--dark);
+  --components-tokens--button--background-color--ghost-dark--hover: var(--system-tokens--colors--transparency--dark);
+  --components-tokens--button--background-color--ghost-dark--acctived: var(--system-tokens--colors--transparency--dark);
+  --components-tokens--button--background-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--button--text-color--primary--default: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
+  --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
+  --components-tokens--button--text-color--primary--disabled: var(--system-tokens--colors--foregrounds--disabled);
+  --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--secondary--disabled: var(--system-tokens--colors--foregrounds--disabled);
+  --components-tokens--button--text-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--ghost-light--hover: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--ghost-light--actived: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--text-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
+  --components-tokens--button--text-color--ghost-dark--hover: var(--system-tokens--colors--primary--off);
+  --components-tokens--button--text-color--ghost-dark--actived: var(--system-tokens--colors--primary--off);
+  --components-tokens--button--text-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--button--spacing--large--vertical: var(--system-tokens--spacing--sm);
+  --components-tokens--button--spacing--large--gap: var(--system-tokens--spacing--xs);
+  --components-tokens--button--spacing--small--horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--button--spacing--small--vertical: var(--system-tokens--spacing--xs);
+  --components-tokens--button--spacing--small--gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--button--sizing--icon--large: var(--system-tokens--sizing--sm);
+  --components-tokens--button--sizing--icon--small: var(--system-tokens--sizing--xs);
+  --components-tokens--button--sizing--large--min-height: var(--system-tokens--sizing--ml);
+  --components-tokens--button--typography--large--font-family: var(--system-tokens--typography--font-family--alternative-text);
+  --components-tokens--button--typography--large--font-weight: var(--system-tokens--typography--font-weight--medium);
+  --components-tokens--button--typography--large--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--button--typography--large--line-height: var(--system-tokens--typography--line-height--body--sm);
+  --components-tokens--button--typography--small--font-family: var(--system-tokens--typography--font-family--alternative-text);
+  --components-tokens--button--typography--small--font-weight: var(--system-tokens--typography--font-weight--medium);
+  --components-tokens--button--typography--small--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--button--typography--small--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--button--outline-color--focus: var(--system-tokens--colors--borders--strong);
+  --components-tokens--button--border-radius--large: var(--system-tokens--border-radius--xs);
+  --components-tokens--button--border-radius--small: var(--system-tokens--border-radius--xs);
+  --components-tokens--button--border-color--secondary--default: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--button--border-color--secondary--hover: var(--system-tokens--colors--borders--strong);
+  --components-tokens--button--border-color--secondary--acctived: var(--system-tokens--colors--borders--strong);
+  --components-tokens--button--border-color--secondary--disabled: var(--system-tokens--colors--borders--disabled);
+  --components-tokens--button--border-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--border-color--ghost-light--disabled: var(--system-tokens--colors--primary--off);
+  --components-tokens--button--border-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
+  --components-tokens--button--border-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+
+  /* Tag */
+  --components-tokens--tag--typography--small--font-size: 12px;
+  --components-tokens--tag--close-background-color--outlined-hover: #0000000D0d;
+  --components-tokens--tag--background-color--filled--discovery: var(--system-tokens--colors--primary--principal);
+  --components-tokens--tag--background-color--filled--info: var(--system-tokens--colors--info--high);
+  --components-tokens--tag--background-color--filled--success: var(--system-tokens--colors--success--high);
+  --components-tokens--tag--background-color--filled--warning: var(--system-tokens--colors--warning--high);
+  --components-tokens--tag--background-color--filled--error: var(--system-tokens--colors--danger--high);
+  --components-tokens--tag--background-color--filled--neutral: var(--system-tokens--colors--neutral--principal);
+  --components-tokens--tag--background-color--duetone--discovery: var(--system-tokens--colors--primary--off);
+  --components-tokens--tag--background-color--duetone--info: var(--system-tokens--colors--info--low);
+  --components-tokens--tag--background-color--duetone--success: var(--system-tokens--colors--success--low);
+  --components-tokens--tag--background-color--duetone--warning: var(--system-tokens--colors--warning--low);
+  --components-tokens--tag--background-color--duetone--error: var(--system-tokens--colors--danger--low);
+  --components-tokens--tag--background-color--duetone--neutral: var(--system-tokens--colors--neutral--off);
+  --components-tokens--tag--text-ccolor--filled--discovery: var(--system-tokens--colors--primary--off);
+  --components-tokens--tag--text-ccolor--filled--info: var(--system-tokens--colors--info--low);
+  --components-tokens--tag--text-ccolor--filled--success: var(--system-tokens--colors--success--low);
+  --components-tokens--tag--text-ccolor--filled--warning: var(--system-tokens--colors--warning--low);
+  --components-tokens--tag--text-ccolor--filled--error: var(--system-tokens--colors--danger--low);
+  --components-tokens--tag--text-ccolor--filled--neutral: var(--system-tokens--colors--neutral--off);
+  --components-tokens--tag--text-ccolor--duetone--discovery: var(--system-tokens--colors--primary--principal);
+  --components-tokens--tag--text-ccolor--duetone--info: var(--system-tokens--colors--info--high);
+  --components-tokens--tag--text-ccolor--duetone--success: var(--system-tokens--colors--success--high);
+  --components-tokens--tag--text-ccolor--duetone--warning: var(--system-tokens--colors--warning--high);
+  --components-tokens--tag--text-ccolor--duetone--error: var(--system-tokens--colors--danger--high);
+  --components-tokens--tag--text-ccolor--duetone--neutral: var(--system-tokens--colors--neutral--high);
+  --components-tokens--tag--border-color--duetone--discovery: var(--system-tokens--colors--primary--principal);
+  --components-tokens--tag--border-color--duetone--info: var(--system-tokens--colors--info--high);
+  --components-tokens--tag--border-color--duetone--success: var(--system-tokens--colors--success--high);
+  --components-tokens--tag--border-color--duetone--warning: var(--system-tokens--colors--warning--high);
+  --components-tokens--tag--border-color--duetone--error: var(--system-tokens--colors--danger--high);
+  --components-tokens--tag--border-color--duetone--neutral: var(--system-tokens--colors--neutral--high);
+  --components-tokens--tag--spacing--medium--horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--tag--spacing--medium--vertical: var(--system-tokens--spacing--xxs);
+  --components-tokens--tag--spacing--small--horizontal: var(--system-tokens--spacing--xs);
+  --components-tokens--tag--spacing--small--vertical: var(--system-tokens--spacing--xxs);
+  --components-tokens--tag--radius--large: var(--system-tokens--border-radius--full);
+  --components-tokens--tag--radius--small: var(--system-tokens--border-radius--full);
+  --components-tokens--tag--sizing--large: var(--system-tokens--sizing--md);
+  --components-tokens--tag--sizing--small: var(--system-tokens--sizing--sm);
+  --components-tokens--tag--sizing--close: var(--system-tokens--sizing--xs);
+  --components-tokens--tag--typography--font-family: var(--system-tokens--typography--font-family--alternative-text);
+  --components-tokens--tag--typography--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--tag--typography--large--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--tag--text-color--contrast: var(--system-tokens--colors--foregrounds--contrast);
+  --components-tokens--tag--text-color--discovery: var(--system-tokens--colors--primary--principal);
+  --components-tokens--tag--text-color--info: var(--system-tokens--colors--info--high);
+  --components-tokens--tag--text-color--success: var(--system-tokens--colors--success--high);
+  --components-tokens--tag--text-color--warning: var(--system-tokens--colors--warning--high);
+  --components-tokens--tag--text-color--error: var(--system-tokens--colors--danger--high);
+  --components-tokens--tag--text-color--neutral: var(--system-tokens--colors--neutral--principal);
+  --components-tokens--tag--close-background-color--filled-hover: var(--system-tokens--colors--transparency--dark);
+
   /* Icon-box */
   --components-tokens--icon-box--spacing--large--gap-elements: 0px;
   --components-tokens--icon-box--spacing--small--gap-elements: 0px;
@@ -355,6 +472,26 @@
   --components-tokens--icon-box--spacing--small--gap-frames: var(--system-tokens--spacing--xs);
   --components-tokens--icon-box--sizing--icon--large: var(--system-tokens--sizing--md);
   --components-tokens--icon-box--sizing--icon--small: var(--system-tokens--sizing--sm);
+
+  /* Status */
+  --components-tokens--status--sizing--xs: 8px;
+  --components-tokens--status--sizing--lg: var(--system-tokens--sizing--xs);
+  --components-tokens--status--sizing--sm: var(--system-tokens--sizing--xxs);
+  --components-tokens--status--background-color--success: var(--system-tokens--colors--success--high);
+  --components-tokens--status--background-color--warning: var(--system-tokens--colors--warning--high);
+  --components-tokens--status--background-color--error: var(--system-tokens--colors--danger--high);
+  --components-tokens--status--background-color--neutral: var(--system-tokens--colors--neutral--principal);
+  --components-tokens--status--size--lg: var(--system-tokens--sizing--sm);
+  --components-tokens--status--size--sm: var(--system-tokens--sizing--xs);
+  --components-tokens--status--size--xs: var(--system-tokens--sizing--xxs);
+  --components-tokens--status--fill-color--available: var(--system-tokens--colors--success--high);
+  --components-tokens--status--fill-color--sleep: var(--system-tokens--colors--warning--high);
+  --components-tokens--status--fill-color--hold: var(--system-tokens--colors--danger--high);
+  --components-tokens--status--fill-color--disabled: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--status--border-color--available: var(--system-tokens--colors--success--low);
+  --components-tokens--status--border-color--sleep: var(--system-tokens--colors--warning--low);
+  --components-tokens--status--border-color--hold: var(--system-tokens--colors--danger--low);
+  --components-tokens--status--border-color--disabled: var(--system-tokens--colors--borders--neutral);
 
   /* Menu-avatar */
   --components-tokens--menu-avatar--spacing--small--gap-text: 0px;
@@ -373,6 +510,29 @@
   --components-tokens--menu-avatar--spacing--small--vertical: var(--system-tokens--spacing--xxs);
   --components-tokens--menu-avatar--sizing--icon--large: var(--system-tokens--sizing--sm);
   --components-tokens--menu-avatar--sizing--icon--small: var(--system-tokens--sizing--xs);
+
+  /* Logo */
+  --components-tokens--logo--sizing--icon-large: 40px;
+  --components-tokens--logo--typography--quantum--letter-spacing: -0.5px;
+  --components-tokens--logo--typography--design--letter-spacing: 1px;
+  --components-tokens--logo--spacing--gap: var(--system-tokens--spacing--sm);
+  --components-tokens--logo--sizing--icon-small: var(--system-tokens--sizing--md);
+  --components-tokens--logo--border-radius--focus: var(--system-tokens--border-radius--xs);
+  --components-tokens--logo--typography--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--logo--typography--quantum--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--logo--typography--quantum--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--logo--typography--design--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--logo--typography--design--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--logo--text-color--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--logo--text-color--contrast: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--logo--outline-color--focus: var(--system-tokens--colors--primary--principal);
+
+  /* Badge */
+  --components-tokens--badge--typography--letter-spacing: 0.08px;
+  --components-tokens--badge--typography--font-family: var(--system-tokens--typography--font-family--alternative-text);
+  --components-tokens--badge--typography--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--badge--text-color--accent: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--badge--border-color--accent: var(--system-tokens--colors--complementary--principal);
 
   /* Typography */
   --components-tokens--typography--colors--headings: var(--system-tokens--colors--typography--heading);
@@ -450,58 +610,6 @@
   --components-tokens--typography--styles--input-text--small--font-weight: var(--system-tokens--typography--font-weight--moderate);
   --components-tokens--typography--styles--input-text--small--font-size: var(--system-tokens--typography--font-size--body--sm);
   --components-tokens--typography--styles--input-text--small--line-height: var(--system-tokens--typography--line-height--body--sm);
-
-  /* Button */
-  --components-tokens--button--background-color--primary--default: var(--system-tokens--colors--complementary--principal);
-  --components-tokens--button--background-color--primary--hover: var(--system-tokens--colors--complementary--principal);
-  --components-tokens--button--background-color--primary--acctived: var(--system-tokens--colors--complementary--high);
-  --components-tokens--button--background-color--primary--disabled: var(--system-tokens--colors--complementary--off);
-  --components-tokens--button--background-color--secondary--default: var(--system-tokens--colors--backgrounds--principal);
-  --components-tokens--button--background-color--secondary--hover: var(--system-tokens--colors--backgrounds--tertiary);
-  --components-tokens--button--background-color--secondary--acctived: var(--system-tokens--colors--neutral--off);
-  --components-tokens--button--background-color--secondary--disabled: var(--system-tokens--colors--backgrounds--tertiary);
-  --components-tokens--button--background-color--ghost-light--default: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-light--hover: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-light--acctived: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-dark--default: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--button--background-color--ghost-dark--hover: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--button--background-color--ghost-dark--acctived: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--button--background-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
-  --components-tokens--button--text-color--primary--default: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
-  --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
-  --components-tokens--button--text-color--primary--disabled: var(--system-tokens--colors--foregrounds--disabled);
-  --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--disabled: var(--system-tokens--colors--foregrounds--disabled);
-  --components-tokens--button--text-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--text-color--ghost-light--hover: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--text-color--ghost-light--actived: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--text-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--text-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--text-color--ghost-dark--hover: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--text-color--ghost-dark--actived: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--text-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
-  --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--md);
-  --components-tokens--button--spacing--large--vertical: var(--system-tokens--spacing--sm);
-  --components-tokens--button--spacing--large--gap: var(--system-tokens--spacing--xs);
-  --components-tokens--button--spacing--small--horizontal: var(--system-tokens--spacing--sm);
-  --components-tokens--button--spacing--small--vertical: var(--system-tokens--spacing--xs);
-  --components-tokens--button--spacing--small--gap: var(--system-tokens--spacing--xxs);
-  --components-tokens--button--sizing--icon--large: var(--system-tokens--sizing--sm);
-  --components-tokens--button--sizing--icon--small: var(--system-tokens--sizing--xs);
-  --components-tokens--button--border-radius--large: var(--system-tokens--border-radius--xs);
-  --components-tokens--button--border-radius--small: var(--system-tokens--border-radius--xs);
-  --components-tokens--button--border-color--secondary--default: var(--system-tokens--colors--borders--neutral);
-  --components-tokens--button--border-color--secondary--hover: var(--system-tokens--colors--borders--strong);
-  --components-tokens--button--border-color--secondary--acctived: var(--system-tokens--colors--borders--strong);
-  --components-tokens--button--border-color--secondary--disabled: var(--system-tokens--colors--borders--disabled);
-  --components-tokens--button--border-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--border-color--ghost-light--disabled: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--border-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--border-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
 
   /* Input-field */
   --components-tokens--input-field--background-color--default: var(--system-tokens--colors--transparency--light);
@@ -661,44 +769,6 @@
   --components-tokens--progress-bar--radius--large: var(--system-tokens--border-radius--full);
   --components-tokens--progress-bar--radius--small: var(--system-tokens--border-radius--full);
 
-  /* Tag */
-  --components-tokens--tag--background-color--filled--discovery: var(--system-tokens--colors--primary--principal);
-  --components-tokens--tag--background-color--filled--info: var(--system-tokens--colors--info--high);
-  --components-tokens--tag--background-color--filled--success: var(--system-tokens--colors--success--high);
-  --components-tokens--tag--background-color--filled--warning: var(--system-tokens--colors--warning--high);
-  --components-tokens--tag--background-color--filled--error: var(--system-tokens--colors--danger--high);
-  --components-tokens--tag--background-color--filled--neutral: var(--system-tokens--colors--neutral--principal);
-  --components-tokens--tag--background-color--duetone--discovery: var(--system-tokens--colors--primary--off);
-  --components-tokens--tag--background-color--duetone--info: var(--system-tokens--colors--info--low);
-  --components-tokens--tag--background-color--duetone--success: var(--system-tokens--colors--success--low);
-  --components-tokens--tag--background-color--duetone--warning: var(--system-tokens--colors--warning--low);
-  --components-tokens--tag--background-color--duetone--error: var(--system-tokens--colors--danger--low);
-  --components-tokens--tag--background-color--duetone--neutral: var(--system-tokens--colors--neutral--off);
-  --components-tokens--tag--text-ccolor--filled--discovery: var(--system-tokens--colors--primary--off);
-  --components-tokens--tag--text-ccolor--filled--info: var(--system-tokens--colors--info--low);
-  --components-tokens--tag--text-ccolor--filled--success: var(--system-tokens--colors--success--low);
-  --components-tokens--tag--text-ccolor--filled--warning: var(--system-tokens--colors--warning--low);
-  --components-tokens--tag--text-ccolor--filled--error: var(--system-tokens--colors--danger--low);
-  --components-tokens--tag--text-ccolor--filled--neutral: var(--system-tokens--colors--neutral--off);
-  --components-tokens--tag--text-ccolor--duetone--discovery: var(--system-tokens--colors--primary--principal);
-  --components-tokens--tag--text-ccolor--duetone--info: var(--system-tokens--colors--info--high);
-  --components-tokens--tag--text-ccolor--duetone--success: var(--system-tokens--colors--success--high);
-  --components-tokens--tag--text-ccolor--duetone--warning: var(--system-tokens--colors--warning--high);
-  --components-tokens--tag--text-ccolor--duetone--error: var(--system-tokens--colors--danger--high);
-  --components-tokens--tag--text-ccolor--duetone--neutral: var(--system-tokens--colors--neutral--high);
-  --components-tokens--tag--border-color--duetone--discovery: var(--system-tokens--colors--primary--principal);
-  --components-tokens--tag--border-color--duetone--info: var(--system-tokens--colors--info--high);
-  --components-tokens--tag--border-color--duetone--success: var(--system-tokens--colors--success--high);
-  --components-tokens--tag--border-color--duetone--warning: var(--system-tokens--colors--warning--high);
-  --components-tokens--tag--border-color--duetone--error: var(--system-tokens--colors--danger--high);
-  --components-tokens--tag--border-color--duetone--neutral: var(--system-tokens--colors--neutral--high);
-  --components-tokens--tag--spacing--medium--horizontal: var(--system-tokens--spacing--sm);
-  --components-tokens--tag--spacing--medium--vertical: var(--system-tokens--spacing--xxs);
-  --components-tokens--tag--spacing--small--horizontal: var(--system-tokens--spacing--xs);
-  --components-tokens--tag--spacing--small--vertical: var(--system-tokens--spacing--xxs);
-  --components-tokens--tag--radius--large: var(--system-tokens--border-radius--full);
-  --components-tokens--tag--radius--small: var(--system-tokens--border-radius--full);
-
   /* Alert */
   --components-tokens--alert--background-color--info: var(--system-tokens--colors--info--low);
   --components-tokens--alert--background-color--success: var(--system-tokens--colors--success--low);
@@ -724,6 +794,16 @@
   --components-tokens--alert--sizing--icon--small: var(--system-tokens--sizing--xs);
   --components-tokens--alert--border-radius--large: var(--system-tokens--border-radius--sm);
   --components-tokens--alert--border-radius--small: var(--system-tokens--border-radius--xs);
+
+  /* Icon */
+  --components-tokens--icon--sizing--xxs: var(--system-tokens--sizing--xxs);
+  --components-tokens--icon--sizing--xs: var(--system-tokens--sizing--xs);
+  --components-tokens--icon--sizing--sm: var(--system-tokens--sizing--sm);
+  --components-tokens--icon--sizing--md: var(--system-tokens--sizing--md);
+  --components-tokens--icon--sizing--ml: var(--system-tokens--sizing--ml);
+  --components-tokens--icon--sizing--lg: var(--system-tokens--sizing--lg);
+  --components-tokens--icon--sizing--xl: var(--system-tokens--sizing--xl);
+  --components-tokens--icon--sizing--xxl: var(--system-tokens--sizing--xxl);
 
   /* Breadcrum */
   --components-tokens--breadcrum--text-color--previous: var(--system-tokens--colors--typography--heading);
@@ -856,19 +936,6 @@
   --components-tokens--accordion--sizing--icon--small: var(--system-tokens--sizing--xs);
   --components-tokens--accordion--radius--default: var(--system-tokens--border-radius--sm);
   --components-tokens--accordion--radius--small: var(--system-tokens--border-radius--xs);
-
-  /* Status */
-  --components-tokens--status--size--lg: var(--system-tokens--sizing--sm);
-  --components-tokens--status--size--sm: var(--system-tokens--sizing--xs);
-  --components-tokens--status--size--xs: var(--system-tokens--sizing--xxs);
-  --components-tokens--status--fill-color--available: var(--system-tokens--colors--success--high);
-  --components-tokens--status--fill-color--sleep: var(--system-tokens--colors--warning--high);
-  --components-tokens--status--fill-color--hold: var(--system-tokens--colors--danger--high);
-  --components-tokens--status--fill-color--disabled: var(--system-tokens--colors--foregrounds--neutral);
-  --components-tokens--status--border-color--available: var(--system-tokens--colors--success--low);
-  --components-tokens--status--border-color--sleep: var(--system-tokens--colors--warning--low);
-  --components-tokens--status--border-color--hold: var(--system-tokens--colors--danger--low);
-  --components-tokens--status--border-color--disabled: var(--system-tokens--colors--borders--neutral);
 
   /* Check-button */
   --components-tokens--check-button--spacing--large--horizontal: var(--system-tokens--spacing--md);

@@ -3,8 +3,8 @@
 .qd-logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--system-tokens--spacing--sm, 12px);
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  gap: var(--components-tokens--logo--spacing--gap);
+  font-family: var(--components-tokens--logo--typography--font-family);
   border: none;
   background: none;
   padding: 0;
@@ -21,9 +21,9 @@
 }
 
 .qd-logo--clickable:focus {
-  outline: 2px solid var(--system-tokens--colors--primary--principal);
+  outline: 2px solid var(--components-tokens--logo--outline-color--focus);
   outline-offset: 4px;
-  border-radius: 4px;
+  border-radius: var(--components-tokens--logo--border-radius--focus);
 }
 
 /* Logo icon/mark */
@@ -32,13 +32,13 @@
 }
 
 .qd-logo--large .qd-logo__icon {
-  width: 40px;
-  height: 40px;
+  width: var(--components-tokens--logo--sizing--icon-large);
+  height: var(--components-tokens--logo--sizing--icon-large);
 }
 
 .qd-logo--small .qd-logo__icon {
-  width: 32px;
-  height: 32px;
+  width: var(--components-tokens--logo--sizing--icon-small);
+  height: var(--components-tokens--logo--sizing--icon-small);
 }
 
 /* Logo text */
@@ -49,24 +49,24 @@
 }
 
 .qd-logo__text-quantum {
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: -0.5px;
+  font-size: var(--components-tokens--logo--typography--quantum--font-size);
+  font-weight: var(--components-tokens--logo--typography--quantum--font-weight);
+  letter-spacing: var(--components-tokens--logo--typography--quantum--letter-spacing);
 }
 
 .qd-logo__text-design {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: var(--components-tokens--logo--typography--design--font-size);
+  font-weight: var(--components-tokens--logo--typography--design--font-weight);
+  letter-spacing: var(--components-tokens--logo--typography--design--letter-spacing);
 }
 
 /* Color variants */
 .qd-logo--default {
-  color: var(--system-tokens--colors--primary--principal);
+  color: var(--components-tokens--logo--text-color--default);
 }
 
 .qd-logo--contrast {
-  color: var(--system-tokens--colors--complementary--principal);
+  color: var(--components-tokens--logo--text-color--contrast);
 }
 
 /* SVG elements color inheritance */

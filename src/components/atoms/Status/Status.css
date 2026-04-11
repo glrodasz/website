@@ -8,33 +8,33 @@
 
 /* Size variants */
 .qd-status--lg {
-  width: 16px;
-  height: 16px;
+  width: var(--components-tokens--status--sizing--lg);
+  height: var(--components-tokens--status--sizing--lg);
 }
 
 .qd-status--sm {
-  width: 12px;
-  height: 12px;
+  width: var(--components-tokens--status--sizing--sm);
+  height: var(--components-tokens--status--sizing--sm);
 }
 
 .qd-status--xs {
-  width: 8px;
-  height: 8px;
+  width: var(--components-tokens--status--sizing--xs);
+  height: var(--components-tokens--status--sizing--xs);
 }
 
 /* Variant colors */
 .qd-status--success {
-  background-color: var(--system-tokens--colors--success--high);
+  background-color: var(--components-tokens--status--background-color--success);
 }
 
 .qd-status--warning {
-  background-color: var(--system-tokens--colors--warning--high);
+  background-color: var(--components-tokens--status--background-color--warning);
 }
 
 .qd-status--error {
-  background-color: var(--system-tokens--colors--danger--high);
+  background-color: var(--components-tokens--status--background-color--error);
 }
 
 .qd-status--neutral {
-  background-color: var(--system-tokens--colors--neutral--principal);
+  background-color: var(--components-tokens--status--background-color--neutral);
 }

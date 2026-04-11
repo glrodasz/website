@@ -511,6 +511,127 @@
   --components-tokens--menu-avatar--sizing--icon--large: var(--system-tokens--sizing--sm);
   --components-tokens--menu-avatar--sizing--icon--small: var(--system-tokens--sizing--xs);
 
+  /* Nav-bar */
+  --components-tokens--nav-bar--sizing--height: 72px;
+  --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
+  --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;
+  --components-tokens--nav-bar--sizing--max-width: 1140px;
+  --components-tokens--nav-bar--spacing--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--nav-bar--spacing--vertical: var(--system-tokens--spacing--md);
+  --components-tokens--nav-bar--spacing--gap-menu-items: var(--system-tokens--spacing--ml);
+  --components-tokens--nav-bar--spacing--gap-buttons-zone: var(--system-tokens--spacing--sm);
+  --components-tokens--nav-bar--spacing--link-horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--nav-bar--spacing--link-vertical: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--brand-gap: var(--system-tokens--spacing--sm);
+  --components-tokens--nav-bar--spacing--inner-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--cluster-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--theme-wrap-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--dropdown-padding: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--dropdown-item-vertical: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--dropdown-item-horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--nav-bar--spacing--dropdown-offset: var(--system-tokens--spacing--xs);
+  --components-tokens--nav-bar--spacing--mobile-padding-horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--nav-bar--spacing--mobile-padding-vertical: var(--system-tokens--spacing--sm);
+  --components-tokens--nav-bar--spacing--mobile-gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--nav-bar--background-color--default: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--nav-bar--background-color--dropdown: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--nav-bar--background-color--link-hover: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--nav-bar--background-color--theme-track: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--nav-bar--background-color--theme-knob: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--nav-bar--text-color--brand: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--nav-bar--text-color--tagline: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--nav-bar--text-color--link-default: var(--system-tokens--colors--foregrounds--tertiary);
+  --components-tokens--nav-bar--text-color--link-hover: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--nav-bar--text-color--link-active: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--nav-bar--text-color--dropdown-default: var(--system-tokens--colors--foregrounds--tertiary);
+  --components-tokens--nav-bar--text-color--dropdown-hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--nav-bar--text-color--hamburger: var(--system-tokens--colors--foregrounds--tertiary);
+  --components-tokens--nav-bar--text-color--theme-label: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--nav-bar--border-color--default: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--nav-bar--border-color--dropdown: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--nav-bar--outline-color--focus: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--nav-bar--border-radius--link: var(--system-tokens--border-radius--sm);
+  --components-tokens--nav-bar--border-radius--dropdown: var(--system-tokens--border-radius--md);
+  --components-tokens--nav-bar--border-radius--dropdown-item: var(--system-tokens--border-radius--sm);
+  --components-tokens--nav-bar--border-radius--theme-track: var(--system-tokens--border-radius--full);
+  --components-tokens--nav-bar--sizing--brand-mark: var(--system-tokens--sizing--ml);
+  --components-tokens--nav-bar--sizing--hamburger: var(--system-tokens--sizing--md);
+  --components-tokens--nav-bar--sizing--theme-track-width: var(--system-tokens--sizing--ml);
+  --components-tokens--nav-bar--sizing--theme-track-height: var(--system-tokens--sizing--sm);
+  --components-tokens--nav-bar--sizing--theme-knob: var(--system-tokens--sizing--xs);
+  --components-tokens--nav-bar--typography--font-family: var(--system-tokens--typography--font-family--body);
+  --components-tokens--nav-bar--typography--brand-name--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--nav-bar--typography--brand-name--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--nav-bar--typography--brand-name--line-height: var(--system-tokens--typography--line-height--body--sm);
+  --components-tokens--nav-bar--typography--brand-name--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--nav-bar--typography--brand-tagline--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--nav-bar--typography--brand-tagline--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--nav-bar--typography--brand-tagline--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--nav-bar--typography--link--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--nav-bar--typography--link--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--nav-bar--typography--link--font-weight: var(--system-tokens--typography--font-weight--medium);
+  --components-tokens--nav-bar--typography--link-active--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--nav-bar--typography--dropdown-item--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--nav-bar--typography--dropdown-item--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--nav-bar--typography--dropdown-item--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--nav-bar--typography--theme-label--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--nav-bar--typography--theme-label--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--nav-bar--typography--theme-label--font-weight: var(--system-tokens--typography--font-weight--moderate);
+
+  /* Footer */
+  --components-tokens--footer--sizing--max-width: 1140px;
+  --components-tokens--footer--typography--col-title--tracking: 0.08em;
+  --components-tokens--footer--background-color--flat: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--footer--background-color--colorful: var(--system-tokens--colors--backgrounds--contrast);
+  --components-tokens--footer--divider-color--flat: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--footer--sizing--icon--large: var(--system-tokens--sizing--md);
+  --components-tokens--footer--sizing--icon--small: var(--system-tokens--sizing--sm);
+  --components-tokens--footer--spacing--large--horizontal: var(--system-tokens--spacing--ml);
+  --components-tokens--footer--spacing--large--vertical: var(--system-tokens--spacing--lm);
+  --components-tokens--footer--spacing--large--gap-blocks: var(--system-tokens--spacing--ml);
+  --components-tokens--footer--spacing--large--gap-menu-items: var(--system-tokens--spacing--lm);
+  --components-tokens--footer--spacing--large--gap-social-media-items: var(--system-tokens--spacing--md);
+  --components-tokens--footer--spacing--responsive--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--footer--spacing--responsive--vertical: var(--system-tokens--spacing--ml);
+  --components-tokens--footer--spacing--responsive--gap-blocks: var(--system-tokens--spacing--ml);
+  --components-tokens--footer--spacing--responsive--gap-menu-items: var(--system-tokens--spacing--md);
+  --components-tokens--footer--spacing--responsive--gap-social-media-items: var(--system-tokens--spacing--sm);
+  --components-tokens--footer--spacing--grid-gap: var(--system-tokens--spacing--ml);
+  --components-tokens--footer--spacing--grid-gap-mobile: var(--system-tokens--spacing--md);
+  --components-tokens--footer--spacing--col-item-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--footer--spacing--title-gap: var(--system-tokens--spacing--sm);
+  --components-tokens--footer--spacing--social-gap: var(--system-tokens--spacing--sm);
+  --components-tokens--footer--spacing--bottom-gap: var(--system-tokens--spacing--sm);
+  --components-tokens--footer--spacing--padding-top: var(--system-tokens--spacing--lm);
+  --components-tokens--footer--spacing--padding-bottom: var(--system-tokens--spacing--ml);
+  --components-tokens--footer--spacing--padding-horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--footer--text-color--default: var(--system-tokens--colors--foregrounds--tertiary);
+  --components-tokens--footer--text-color--muted: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--footer--text-color--accent: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--footer--text-color--link-default: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--footer--text-color--link-hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--footer--text-color--on-accent: var(--system-tokens--colors--typography--heading);
+  --components-tokens--footer--social-icon--background-color--default: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--footer--social-icon--background-color--hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--footer--social-icon--text-color--default: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--footer--social-icon--text-color--hover: var(--system-tokens--colors--typography--heading);
+  --components-tokens--footer--social-icon--sizing--button: var(--system-tokens--sizing--ml);
+  --components-tokens--footer--social-icon--sizing--icon: var(--system-tokens--sizing--xs);
+  --components-tokens--footer--social-icon--border-radius: var(--system-tokens--border-radius--full);
+  --components-tokens--footer--typography--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--footer--typography--col-title--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--footer--typography--col-title--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--footer--typography--col-title--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--footer--typography--link--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--footer--typography--link--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--footer--typography--link--font-weight: var(--system-tokens--typography--font-weight--weak);
+  --components-tokens--footer--typography--copyright--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--footer--typography--copyright--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--footer--typography--copyright--font-weight: var(--system-tokens--typography--font-weight--weak);
+  --components-tokens--footer--typography--logo--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--footer--typography--logo--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--footer--typography--logo--font-weight: var(--system-tokens--typography--font-weight--strong);
+
   /* Logo */
   --components-tokens--logo--sizing--icon-large: 40px;
   --components-tokens--logo--typography--quantum--letter-spacing: -0.5px;
@@ -1184,12 +1305,6 @@
   --components-tokens--sidebar--divider-color--flat: var(--system-tokens--colors--borders--neutral);
   --components-tokens--sidebar--divider-color--colorful: var(--system-tokens--colors--transparency--light);
 
-  /* Nav-bar */
-  --components-tokens--nav-bar--spacing--horizontal: var(--system-tokens--spacing--md);
-  --components-tokens--nav-bar--spacing--vertical: var(--system-tokens--spacing--md);
-  --components-tokens--nav-bar--spacing--gap-menu-items: var(--system-tokens--spacing--ml);
-  --components-tokens--nav-bar--spacing--gap-buttons-zone: var(--system-tokens--spacing--sm);
-
   /* Menu-responsive */
   --components-tokens--menu-responsive--background-color--default: var(--system-tokens--colors--backgrounds--principal);
   --components-tokens--menu-responsive--background-color--contrast: var(--system-tokens--colors--backgrounds--contrast);
@@ -1198,23 +1313,6 @@
   --components-tokens--menu-responsive--spacing--menu--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--menu-responsive--spacing--menu--vertical: var(--system-tokens--spacing--ml);
   --components-tokens--menu-responsive--spacing--menu--gap-menu-items: var(--system-tokens--spacing--md);
-
-  /* Footer */
-  --components-tokens--footer--background-color--flat: var(--system-tokens--colors--backgrounds--principal);
-  --components-tokens--footer--background-color--colorful: var(--system-tokens--colors--backgrounds--contrast);
-  --components-tokens--footer--divider-color--flat: var(--system-tokens--colors--borders--neutral);
-  --components-tokens--footer--sizing--icon--large: var(--system-tokens--sizing--md);
-  --components-tokens--footer--sizing--icon--small: var(--system-tokens--sizing--sm);
-  --components-tokens--footer--spacing--large--horizontal: var(--system-tokens--spacing--ml);
-  --components-tokens--footer--spacing--large--vertical: var(--system-tokens--spacing--lm);
-  --components-tokens--footer--spacing--large--gap-blocks: var(--system-tokens--spacing--ml);
-  --components-tokens--footer--spacing--large--gap-menu-items: var(--system-tokens--spacing--lm);
-  --components-tokens--footer--spacing--large--gap-social-media-items: var(--system-tokens--spacing--md);
-  --components-tokens--footer--spacing--responsive--horizontal: var(--system-tokens--spacing--md);
-  --components-tokens--footer--spacing--responsive--vertical: var(--system-tokens--spacing--ml);
-  --components-tokens--footer--spacing--responsive--gap-blocks: var(--system-tokens--spacing--ml);
-  --components-tokens--footer--spacing--responsive--gap-menu-items: var(--system-tokens--spacing--md);
-  --components-tokens--footer--spacing--responsive--gap-social-media-items: var(--system-tokens--spacing--sm);
 
   /* Alert-dialog-img */
   --components-tokens--alert-dialog-img--spacing--horizontal: var(--system-tokens--spacing--md);

@@ -13270,6 +13270,775 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "link-horizontal": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-vertical": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "brand-gap": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "inner-gap": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "cluster-gap": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-wrap-gap": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-padding": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-item-vertical": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-item-horizontal": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-offset": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "mobile-padding-horizontal": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "mobile-padding-vertical": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "mobile-gap": {
+        "$type": "number",
+        "$value": 4,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xxs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "background-color": {
+      "default": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "alpha": 1.0,
+          "hex": "#FFFFFF"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "alpha": 1.0,
+          "hex": "#FFFFFF"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9647058823529412,
+            0.9647058823529412,
+            0.9647058823529412
+          ],
+          "alpha": 1.0,
+          "hex": "#F6F6F6"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-track": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9647058823529412,
+            0.9647058823529412,
+            0.9647058823529412
+          ],
+          "alpha": 1.0,
+          "hex": "#F6F6F6"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-knob": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "alpha": 1.0,
+          "hex": "#FFFFFF"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "text-color": {
+      "brand": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1.0,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "tagline": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.36470588235294116,
+            0.36470588235294116,
+            0.36470588235294116
+          ],
+          "alpha": 1.0,
+          "hex": "#5D5D5D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-default": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.27058823529411763,
+            0.27058823529411763,
+            0.27058823529411763
+          ],
+          "alpha": 1.0,
+          "hex": "#454545"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0,
+            0.1450980392156863,
+            0.1607843137254902
+          ],
+          "alpha": 1.0,
+          "hex": "#002529"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-active": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1.0,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-default": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.27058823529411763,
+            0.27058823529411763,
+            0.27058823529411763
+          ],
+          "alpha": 1.0,
+          "hex": "#454545"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1.0,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "hamburger": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.27058823529411763,
+            0.27058823529411763,
+            0.27058823529411763
+          ],
+          "alpha": 1.0,
+          "hex": "#454545"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-label": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.36470588235294116,
+            0.36470588235294116,
+            0.36470588235294116
+          ],
+          "alpha": 1.0,
+          "hex": "#5D5D5D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "border-color": {
+      "default": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8196078431372549,
+            0.8196078431372549,
+            0.8196078431372549
+          ],
+          "alpha": 1.0,
+          "hex": "#D1D1D1"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Borders/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8196078431372549,
+            0.8196078431372549,
+            0.8196078431372549
+          ],
+          "alpha": 1.0,
+          "hex": "#D1D1D1"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Borders/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "outline-color": {
+      "focus": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1.0,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "border-radius": {
+      "link": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-item": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-track": {
+        "$type": "number",
+        "$value": 100,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/full",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "sizing": {
+      "height": {
+        "$type": "number",
+        "$value": 72,
+        "$extensions": {}
+      },
+      "brand-mark": {
+        "$type": "number",
+        "$value": 48,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Sizing/ml",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "hamburger": {
+        "$type": "number",
+        "$value": 32,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Sizing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "hamburger-bar": {
+        "$type": "number",
+        "$value": 2,
+        "$extensions": {}
+      },
+      "theme-track-width": {
+        "$type": "number",
+        "$value": 48,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Sizing/ml",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-track-height": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Sizing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-knob": {
+        "$type": "number",
+        "$value": 16,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Sizing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "dropdown-min-width": {
+        "$type": "number",
+        "$value": 200,
+        "$extensions": {}
+      },
+      "max-width": {
+        "$type": "number",
+        "$value": 1140,
+        "$extensions": {}
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$type": "string",
+        "$value": "Manrope",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Typography/Font-family/Body",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "brand-name": {
+        "font-family": {
+          "$type": "string",
+          "$value": "Manrope",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-family/Headings",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 22,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "brand-tagline": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Medium",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Moderate",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "link": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Semibold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Medium",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "link-active": {
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "dropdown-item": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Medium",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Moderate",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "theme-label": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Medium",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Moderate",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
       }
     }
   },
@@ -13491,6 +14260,11 @@
             }
           }
         }
+      },
+      "max-width": {
+        "$type": "number",
+        "$value": 1140,
+        "$extensions": {}
       }
     },
     "spacing": {
@@ -13623,6 +14397,471 @@
               "targetVariableId": "VariableID:0e6fb280771fa44a464397991827752852fab648/-1:-1",
               "targetVariableName": "Spacing/sm",
               "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "grid-gap": {
+        "$type": "number",
+        "$value": 32,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/ml",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "grid-gap-mobile": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "col-item-gap": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "title-gap": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "social-gap": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "bottom-gap": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "padding-top": {
+        "$type": "number",
+        "$value": 48,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/lm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "padding-bottom": {
+        "$type": "number",
+        "$value": 32,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/ml",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "padding-horizontal": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "text-color": {
+      "default": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.27058823529411763,
+            0.27058823529411763,
+            0.27058823529411763
+          ],
+          "alpha": 1.0,
+          "hex": "#454545"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "muted": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.36470588235294116,
+            0.36470588235294116,
+            0.36470588235294116
+          ],
+          "alpha": 1.0,
+          "hex": "#5D5D5D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "accent": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1.0,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-default": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.36470588235294116,
+            0.36470588235294116,
+            0.36470588235294116
+          ],
+          "alpha": 1.0,
+          "hex": "#5D5D5D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "link-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1.0,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "on-accent": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0,
+            0.1450980392156863,
+            0.1607843137254902
+          ],
+          "alpha": 1.0,
+          "hex": "#002529"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Typography/Heading",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "social-icon": {
+      "background-color": {
+        "default": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9647058823529412,
+              0.9647058823529412,
+              0.9647058823529412
+            ],
+            "alpha": 1.0,
+            "hex": "#F6F6F6"
+          },
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Colors/Backgrounds/tertiary",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "hover": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9686274509803922,
+              0.8745098039215686,
+              0.11372549019607843
+            ],
+            "alpha": 1.0,
+            "hex": "#F7DF1D"
+          },
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Colors/Complementary/principal",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "text-color": {
+        "default": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0,
+              0.1450980392156863,
+              0.1607843137254902
+            ],
+            "alpha": 1.0,
+            "hex": "#002529"
+          },
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Colors/Foregrounds/principal",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "hover": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0,
+              0.1450980392156863,
+              0.1607843137254902
+            ],
+            "alpha": 1.0,
+            "hex": "#002529"
+          },
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Colors/Typography/Heading",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "sizing": {
+        "button": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Sizing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "icon": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Sizing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "border-radius": {
+        "$type": "number",
+        "$value": 100,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/full",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$type": "string",
+        "$value": "Manrope",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Typography/Font-family/Headings",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "col-title": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "tracking": {
+          "$type": "string",
+          "$value": "0.08em",
+          "$extensions": {}
+        }
+      },
+      "link": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Regular",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Weak",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "copyright": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Regular",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Weak",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "logo": {
+        "font-size": {
+          "$type": "number",
+          "$value": 13,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
               "targetVariableSetName": "System Tokens"
             }
           }

@@ -17,17 +17,17 @@ export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
   subtitle,
   placeholder,
 }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="lifestyle-media-card">
+  <a href={href} target="_blank" rel="noopener noreferrer" className="qd-lifestyle-media-card">
     {imageUrl ? (
-      <img src={imageUrl} alt="" className="lifestyle-media-card__media" loading="lazy" />
+      <img src={imageUrl} alt="" className="qd-lifestyle-media-card__media" loading="lazy" />
     ) : (
-      <div className="lifestyle-media-card__media-placeholder" aria-hidden="true">
+      <div className="qd-lifestyle-media-card__media-placeholder" aria-hidden="true">
         {placeholder}
       </div>
     )}
-    <div className="lifestyle-media-card__meta">
-      <span className="lifestyle-media-card__title">{title}</span>
-      {subtitle ? <span className="lifestyle-media-card__subtitle">{subtitle}</span> : null}
+    <div className="qd-lifestyle-media-card__meta">
+      <span className="qd-lifestyle-media-card__title">{title}</span>
+      {subtitle ? <span className="qd-lifestyle-media-card__subtitle">{subtitle}</span> : null}
     </div>
   </a>
 );

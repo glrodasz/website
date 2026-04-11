@@ -1250,6 +1250,8 @@
   --components-tokens--site--course-card--card-description-color: var(--system-tokens--colors--foregrounds--neutral);
   --components-tokens--site--course-card--hover-border-color: var(--system-tokens--colors--complementary--principal);
   --components-tokens--site--course-card--media-placeholder-accent-color: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--course-card--meta-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--site--course-card--meta-padding: var(--system-tokens--spacing--sm);
 }
 
 [data-theme="light"] {

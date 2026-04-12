@@ -425,7 +425,7 @@
 .playlist-card__link {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--system-tokens--colors--complementary--subtle);
 }
 
 /* Garaje tutorial rows */
@@ -500,7 +500,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-accent);
+  color: var(--system-tokens--colors--complementary--subtle);
   margin-bottom: 8px;
 }
 
@@ -524,7 +524,7 @@
 .platform-course-card__cta {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--system-tokens--colors--complementary--subtle);
 }
 
 /* Featured course card */

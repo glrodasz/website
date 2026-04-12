@@ -133,12 +133,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.6392157077789307,
-            0.800000011920929,
+            0.1921568661928177,
+            0.239215686917305,
             0
           ],
           "alpha": 1,
-          "hex": "#A3CC00"
+          "hex": "#313D00"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11223",
@@ -146,8 +146,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:bd5689dbfa242643115b641b19654fae8c0b60b3/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Chartreuse/500",
+            "targetVariableId": "VariableID:a5266ae4ef7a38f00487a7aacdb43067f4dd1ed0/-1:-1",
+            "targetVariableName": "Colors/Schemas/Metal chartreuse/Chartreuse/600",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }

@@ -15602,16 +15602,37 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.9686274509803922,
-            0.8745098039215686,
-            0.11372549019607843
+            0.1921568661928177,
+            0.239215686917305,
+            0
           ],
           "alpha": 1,
-          "hex": "#F7DF1D"
+          "hex": "#313D00"
         },
         "$extensions": {
           "com.figma.aliasData": {
-            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableName": "Colors/Complementary/subtle",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      }
+    },
+    "background-color": {
+      "accent": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9843137264251709,
+            1,
+            0.9215686321258545
+          ],
+          "alpha": 1,
+          "hex": "#FBFFEB"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/off",
             "targetVariableSetName": "System Tokens"
           }
         }

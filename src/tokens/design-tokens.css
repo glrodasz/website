@@ -653,7 +653,8 @@
   --components-tokens--badge--typography--font-family: var(--system-tokens--typography--font-family--alternative-text);
   --components-tokens--badge--typography--font-weight: var(--system-tokens--typography--font-weight--moderate);
   --components-tokens--badge--text-color--accent: var(--system-tokens--colors--complementary--subtle);
-  --components-tokens--badge--border-color--accent: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--badge--border-color--accent: var(--system-tokens--colors--complementary--subtle);
+  --components-tokens--badge--background-color--accent: var(--system-tokens--colors--complementary--off);
 
   /* Typography */
   --components-tokens--typography--colors--headings: var(--system-tokens--colors--typography--heading);

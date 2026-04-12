@@ -82,7 +82,7 @@
 }
 
 .qd-badge--accent {
-  background-color: transparent;
+  background-color: var(--components-tokens--badge--background-color--accent);
   color: var(--components-tokens--badge--text-color--accent);
   border-color: var(--components-tokens--badge--border-color--accent);
 }

@@ -5,7 +5,7 @@
   border: none;
   margin: 0;
   cursor: pointer;
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  font-family: var(--components-tokens--check-button--typography--font-family);
   transition: all 0.2s ease-in-out;
 
   /* Base styles */
@@ -16,20 +16,20 @@
   flex-shrink: 0;
 
   /* Default state colors */
-  background-color: var(--system-tokens--colors--backgrounds--secondary);
-  color: var(--system-tokens--colors--foregrounds--primary);
-  border: 2px solid var(--system-tokens--colors--borders--neutral);
+  background-color: var(--components-tokens--check-button--background-color--default);
+  color: var(--components-tokens--check-button--text-color--default);
+  border: 2px solid var(--components-tokens--check-button--border-color--default);
 }
 
 /* Size variants */
 .qd-check-button--large {
-  width: var(--system-tokens--sizing--ml, 48px);
-  height: var(--system-tokens--sizing--ml, 48px);
+  width: var(--components-tokens--check-button--sizing--large);
+  height: var(--components-tokens--check-button--sizing--large);
 }
 
 .qd-check-button--small {
-  width: var(--system-tokens--sizing--md, 32px);
-  height: var(--system-tokens--sizing--md, 32px);
+  width: var(--components-tokens--check-button--sizing--small);
+  height: var(--components-tokens--check-button--sizing--small);
 }
 
 /* Checkmark icon */
@@ -43,38 +43,38 @@
 
 /* Label (if provided) */
 .qd-check-button__label {
-  margin-left: var(--system-tokens--spacing--xs, 8px);
+  margin-left: var(--components-tokens--check-button--spacing--label-gap);
 }
 
 /* Hover state */
 .qd-check-button:hover:not(.qd-check-button--disabled):not(.qd-check-button--active) {
-  background-color: var(--system-tokens--colors--backgrounds--tertiary);
-  border-color: var(--system-tokens--colors--primary--subtle);
+  background-color: var(--components-tokens--check-button--background-color--hover);
+  border-color: var(--components-tokens--check-button--border-color--hover);
 }
 
 /* Focus state */
 .qd-check-button:focus {
-  outline: 2px solid var(--system-tokens--colors--primary--principal);
+  outline: 2px solid var(--components-tokens--check-button--outline-color--focus);
   outline-offset: 2px;
 }
 
 /* Active/completed state */
 .qd-check-button--active {
-  background-color: var(--system-tokens--colors--success--high);
-  color: var(--system-tokens--colors--foregrounds--contrast);
-  border-color: var(--system-tokens--colors--success--high);
+  background-color: var(--components-tokens--check-button--background-color--actived);
+  color: var(--components-tokens--check-button--text-color--actived);
+  border-color: var(--components-tokens--check-button--border-color--actived);
 }
 
 .qd-check-button--active:hover:not(.qd-check-button--disabled) {
-  background-color: var(--system-tokens--colors--success--principal);
-  border-color: var(--system-tokens--colors--success--principal);
+  background-color: var(--components-tokens--check-button--background-color--actived-hover);
+  border-color: var(--components-tokens--check-button--border-color--actived-hover);
 }
 
 /* Disabled state */
 .qd-check-button--disabled {
   cursor: not-allowed;
   opacity: 0.5;
-  background-color: var(--system-tokens--colors--backgrounds--secondary);
-  color: var(--system-tokens--colors--foregrounds--disabled);
-  border-color: var(--system-tokens--colors--borders--disabled);
+  background-color: var(--components-tokens--check-button--background-color--disabled);
+  color: var(--components-tokens--check-button--text-color--disabled);
+  border-color: var(--components-tokens--check-button--border-color--disabled);
 }

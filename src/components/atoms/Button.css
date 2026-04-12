@@ -5,15 +5,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 500;
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .qd-button:focus {
-  outline: 2px solid var(--system-tokens--colors--borders--strong);
+  outline: 2px solid var(--components-tokens--button--outline-color--focus);
   outline-offset: 2px;
 }
 
@@ -21,18 +19,22 @@
 .qd-button--large {
   gap: var(--components-tokens--button--spacing--large--gap);
   padding: var(--components-tokens--button--spacing--large--vertical) var(--components-tokens--button--spacing--large--horizontal);
-  font-size: 16px;
-  line-height: 24px;
-  min-height: 48px;
+  font-family: var(--components-tokens--button--typography--large--font-family);
+  font-weight: var(--components-tokens--button--typography--large--font-weight);
+  font-size: var(--components-tokens--button--typography--large--font-size);
+  line-height: var(--components-tokens--button--typography--large--line-height);
+  min-height: var(--components-tokens--button--sizing--large--min-height);
   border-radius: var(--components-tokens--button--border-radius--large);
 }
 
 .qd-button--small {
   gap: var(--components-tokens--button--spacing--small--gap);
   padding: var(--components-tokens--button--spacing--small--vertical) var(--components-tokens--button--spacing--small--horizontal);
-  font-size: 14px;
-  line-height: 20px;
-  min-height: 36px;
+  font-family: var(--components-tokens--button--typography--small--font-family);
+  font-weight: var(--components-tokens--button--typography--small--font-weight);
+  font-size: var(--components-tokens--button--typography--small--font-size);
+  line-height: var(--components-tokens--button--typography--small--line-height);
+  min-height: var(--components-tokens--button--sizing--small--min-height);
   border-radius: var(--components-tokens--button--border-radius--small);
 }
 

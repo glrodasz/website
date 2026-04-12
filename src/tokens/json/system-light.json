@@ -1642,7 +1642,7 @@
     "Font-family": {
       "Headings": {
         "$type": "string",
-        "$value": "Manrope",
+        "$value": "'Syne', 'Inter', sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2077:1525",
@@ -1650,8 +1650,8 @@
             "FONT_FAMILY"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:557dd05d6a09dbd6b955602013a72d55199a381f/-1:-1",
-            "targetVariableName": "Typography/Font-family/Manrope",
+            "targetVariableId": "VariableID:2071:93",
+            "targetVariableName": "Typography/Font-family/Syne",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -1659,7 +1659,7 @@
       },
       "Body": {
         "$type": "string",
-        "$value": "Manrope",
+        "$value": "'Inter', system-ui, sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2077:1526",
@@ -1667,8 +1667,8 @@
             "FONT_FAMILY"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:557dd05d6a09dbd6b955602013a72d55199a381f/-1:-1",
-            "targetVariableName": "Typography/Font-family/Manrope",
+            "targetVariableId": "VariableID:2071:82",
+            "targetVariableName": "Typography/Font-family/Inter",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -1676,7 +1676,7 @@
       },
       "Alternative text": {
         "$type": "string",
-        "$value": "Manrope",
+        "$value": "'Inter', system-ui, sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2077:1527",
@@ -1684,8 +1684,8 @@
             "FONT_FAMILY"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:557dd05d6a09dbd6b955602013a72d55199a381f/-1:-1",
-            "targetVariableName": "Typography/Font-family/Manrope",
+            "targetVariableId": "VariableID:2071:82",
+            "targetVariableName": "Typography/Font-family/Inter",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }

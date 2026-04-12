@@ -3,61 +3,67 @@
 .qd-input-text__wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--system-tokens--spacing--xs, 8px);
+  gap: var(--components-tokens--input-field--spacing--large--gap);
 }
 
 .qd-input-text__label {
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--system-tokens--colors--foregrounds--primary);
-  line-height: 1.4;
+  font-family: var(--components-tokens--input-field--typography--font-family);
+  font-size: var(--components-tokens--input-field--typography--label--font-size);
+  font-weight: var(--components-tokens--input-field--typography--label--font-weight);
+  color: var(--components-tokens--input-field--text-color--label--default);
+  line-height: var(--components-tokens--input-field--typography--label--line-height);
 }
 
 .qd-input-text__container {
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid var(--system-tokens--colors--borders--neutral);
-  border-radius: var(--system-tokens--border-radius--sm);
-  background-color: var(--system-tokens--colors--backgrounds--primary);
+  border: 1px solid var(--components-tokens--input-field--border-color--default);
+  border-radius: var(--components-tokens--input-field--border-radius--large);
+  background-color: var(--components-tokens--input-field--background-color--default);
   transition: all 0.2s ease-in-out;
 }
 
 /* Size variants */
 .qd-input-text__container--large {
-  height: 48px;
-  padding: 0 var(--system-tokens--spacing--md, 16px);
+  height: var(--components-tokens--input-field--sizing--large);
+  padding: 0 var(--components-tokens--input-field--spacing--large--horizontal);
 }
 
 .qd-input-text__container--small {
-  height: 40px;
-  padding: 0 var(--system-tokens--spacing--sm, 12px);
+  height: var(--components-tokens--input-field--sizing--small);
+  padding: 0 var(--components-tokens--input-field--spacing--small--horizontal);
 }
 
 /* Container with icon */
 .qd-input-text__container--with-icon.qd-input-text__container--large {
-  padding-left: var(--system-tokens--spacing--ml, 48px);
+  padding-left: calc(
+    var(--components-tokens--input-field--spacing--large--horizontal) * 2 +
+      var(--components-tokens--input-field--sizing--icon--large)
+  );
 }
 
 .qd-input-text__container--with-icon.qd-input-text__container--small {
-  padding-left: var(--system-tokens--spacing--lg, 40px);
+  padding-left: calc(
+    var(--components-tokens--input-field--spacing--small--horizontal) * 2 +
+      var(--components-tokens--input-field--sizing--icon--small)
+  );
 }
 
 /* Icon */
 .qd-input-text__icon {
   position: absolute;
-  left: var(--system-tokens--spacing--md, 16px);
-  width: 20px;
-  height: 20px;
-  color: var(--system-tokens--colors--foregrounds--secondary);
+  left: var(--components-tokens--input-field--spacing--large--horizontal);
+  width: var(--components-tokens--input-field--sizing--icon--large);
+  height: var(--components-tokens--input-field--sizing--icon--large);
+  color: var(--components-tokens--input-field--icon-color--default);
   pointer-events: none;
 }
 
 .qd-input-text__container--small .qd-input-text__icon {
-  left: var(--system-tokens--spacing--sm, 12px);
-  width: 16px;
-  height: 16px;
+  left: var(--components-tokens--input-field--spacing--small--horizontal);
+  width: var(--components-tokens--input-field--sizing--icon--small);
+  height: var(--components-tokens--input-field--sizing--icon--small);
 }
 
 /* Input field */
@@ -66,52 +72,54 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  font-size: 16px;
-  color: var(--system-tokens--colors--foregrounds--primary);
+  font-family: var(--components-tokens--input-field--typography--font-family);
+  font-size: var(--components-tokens--input-field--typography--input--large--font-size);
+  line-height: var(--components-tokens--input-field--typography--input--large--line-height);
+  color: var(--components-tokens--input-field--text-color--input--default);
   width: 100%;
 }
 
 .qd-input-text__container--small .qd-input-text__input {
-  font-size: 14px;
+  font-size: var(--components-tokens--input-field--typography--input--small--font-size);
+  line-height: var(--components-tokens--input-field--typography--input--small--line-height);
 }
 
 .qd-input-text__input::placeholder {
-  color: var(--system-tokens--colors--foregrounds--disabled);
+  color: var(--components-tokens--input-field--text-color--input--placeholder);
 }
 
 /* Focus state */
 .qd-input-text__container:focus-within {
-  border-color: var(--system-tokens--colors--primary--principal);
-  box-shadow: 0 0 0 3px var(--system-tokens--colors--primary--off);
+  border-color: var(--components-tokens--input-field--border-color--focus);
+  box-shadow: 0 0 0 3px var(--components-tokens--input-field--outline-color--focus);
 }
 
 /* Hover state */
 .qd-input-text__container:hover:not(.qd-input-text__container--disabled):not(:focus-within) {
-  border-color: var(--system-tokens--colors--borders--strong);
+  border-color: var(--components-tokens--input-field--border-color--hover);
 }
 
 /* Error state */
 .qd-input-text__container--error {
-  border-color: var(--system-tokens--colors--danger--high);
+  border-color: var(--components-tokens--input-field--border-color--error);
 }
 
 .qd-input-text__container--error:focus-within {
-  border-color: var(--system-tokens--colors--danger--high);
-  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+  border-color: var(--components-tokens--input-field--border-color--error);
+  box-shadow: 0 0 0 3px var(--components-tokens--input-field--outline-color--error);
 }
 
 .qd-input-text__error-message {
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
-  font-size: 12px;
-  color: var(--system-tokens--colors--danger--high);
-  line-height: 1.4;
+  font-family: var(--components-tokens--input-field--typography--font-family);
+  font-size: var(--components-tokens--input-field--typography--message--font-size);
+  line-height: var(--components-tokens--input-field--typography--message--line-height);
+  color: var(--components-tokens--input-field--text-color--message--error);
 }
 
 /* Disabled state */
 .qd-input-text__container--disabled {
-  background-color: var(--system-tokens--colors--backgrounds--secondary);
-  border-color: var(--system-tokens--colors--borders--disabled);
+  background-color: var(--components-tokens--input-field--background-color--disabled);
+  border-color: var(--components-tokens--input-field--border-color--disabled);
   cursor: not-allowed;
   opacity: 0.6;
 }

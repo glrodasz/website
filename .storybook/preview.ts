@@ -1,7 +1,29 @@
-import type { Preview } from '@storybook/react-vite'
+import type { Preview, Decorator } from '@storybook/react-vite'
 import '../src/index.css'
 
+const withQuantumTheme: Decorator = (Story, context) => {
+  const theme = (context.globals.theme as 'light' | 'dark') ?? 'light';
+  document.documentElement.dataset.theme = theme;
+  return Story();
+};
+
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: 'Quantum Design theme',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: 'Light', icon: 'sun' },
+          { value: 'dark', title: 'Dark', icon: 'moon' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  decorators: [withQuantumTheme],
   parameters: {
     controls: {
       matchers: {

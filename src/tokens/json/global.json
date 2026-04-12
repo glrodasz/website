@@ -3236,7 +3236,7 @@
     "Font-family": {
       "Inter": {
         "$type": "string",
-        "$value": "Inter",
+        "$value": "'Inter', system-ui, sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2071:82",
@@ -3313,7 +3313,7 @@
       },
       "Syne": {
         "$type": "string",
-        "$value": "Syne",
+        "$value": "'Syne', 'Inter', sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2071:93",

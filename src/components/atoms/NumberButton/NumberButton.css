@@ -5,66 +5,67 @@
   border: none;
   margin: 0;
   cursor: pointer;
-  font-family: var(--system-tokens--typography--font-family--primary, sans-serif);
+  font-family: var(--components-tokens--number-button--typography--font-family);
+  font-weight: var(--components-tokens--number-button--typography--font-weight);
   transition: all 0.2s ease-in-out;
 
   /* Base styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--system-tokens--border-radius--sm);
-  font-weight: 500;
+  border-radius: var(--components-tokens--number-button--border-radius--large);
 
-  /* Default state colors - using system tokens as fallback */
-  background-color: var(--system-tokens--colors--backgrounds--secondary);
-  color: var(--system-tokens--colors--foregrounds--primary);
-  border: 1px solid var(--system-tokens--colors--borders--neutral);
+  /* Default state colors */
+  background-color: var(--components-tokens--number-button--background-color--default);
+  color: var(--components-tokens--number-button--text-color--default);
+  border: 1px solid var(--components-tokens--number-button--border-color--default);
 }
 
 /* Size variants */
 .qd-number-button--large {
-  min-width: var(--system-tokens--sizing--ml, 48px);
-  height: var(--system-tokens--sizing--ml, 48px);
-  padding: var(--system-tokens--spacing--sm, 12px);
-  font-size: 16px;
+  min-width: var(--components-tokens--number-button--sizing--large);
+  height: var(--components-tokens--number-button--sizing--large);
+  padding: var(--components-tokens--number-button--padding--large);
+  font-size: var(--components-tokens--number-button--typography--large--font-size);
 }
 
 .qd-number-button--small {
-  min-width: var(--system-tokens--sizing--md, 32px);
-  height: var(--system-tokens--sizing--md, 32px);
-  padding: var(--system-tokens--spacing--xs, 8px);
-  font-size: 14px;
+  min-width: var(--components-tokens--number-button--sizing--small);
+  height: var(--components-tokens--number-button--sizing--small);
+  padding: var(--components-tokens--number-button--padding--small);
+  font-size: var(--components-tokens--number-button--typography--small--font-size);
 }
 
 /* Hover state */
 .qd-number-button:hover:not(.qd-number-button--disabled):not(.qd-number-button--selected) {
-  background-color: var(--system-tokens--colors--backgrounds--tertiary);
-  border-color: var(--system-tokens--colors--primary--subtle);
+  background-color: var(--components-tokens--number-button--background-color--hover);
+  color: var(--components-tokens--number-button--text-color--hover);
+  border-color: var(--components-tokens--number-button--border-color--hover);
 }
 
 /* Focus state */
 .qd-number-button:focus {
-  outline: 2px solid var(--system-tokens--colors--primary--principal);
+  outline: 2px solid var(--components-tokens--number-button--outline-color--focus);
   outline-offset: 2px;
 }
 
 /* Selected state */
 .qd-number-button--selected {
-  background-color: var(--system-tokens--colors--primary--principal);
-  color: var(--system-tokens--colors--foregrounds--contrast);
-  border-color: var(--system-tokens--colors--primary--principal);
+  background-color: var(--components-tokens--number-button--background-color--selected);
+  color: var(--components-tokens--number-button--text-color--selected);
+  border-color: var(--components-tokens--number-button--border-color--selected);
 }
 
 .qd-number-button--selected:hover:not(.qd-number-button--disabled) {
-  background-color: var(--system-tokens--colors--primary--high);
-  border-color: var(--system-tokens--colors--primary--high);
+  background-color: var(--components-tokens--number-button--background-color--selected-hover);
+  border-color: var(--components-tokens--number-button--border-color--selected-hover);
 }
 
 /* Disabled state */
 .qd-number-button--disabled {
   cursor: not-allowed;
   opacity: 0.5;
-  background-color: var(--system-tokens--colors--backgrounds--secondary);
-  color: var(--system-tokens--colors--foregrounds--disabled);
-  border-color: var(--system-tokens--colors--borders--disabled);
+  background-color: var(--components-tokens--number-button--background-color--disabled);
+  color: var(--components-tokens--number-button--text-color--disabled);
+  border-color: var(--components-tokens--number-button--border-color--disabled);
 }

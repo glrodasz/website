@@ -15,34 +15,34 @@
 }
 
 .qd-badge--small {
-  padding: var(--components-tokens--tag--spacing--small--vertical, 4px)
-    var(--components-tokens--tag--spacing--small--horizontal, 8px);
-  border-radius: var(--components-tokens--tag--radius--small, 100px);
+  padding: var(--components-tokens--tag--spacing--small--vertical)
+    var(--components-tokens--tag--spacing--small--horizontal);
+  border-radius: var(--components-tokens--tag--radius--small);
 }
 
 .qd-badge--small .qd-badge__text {
-  font-family: var(--global-tokens--typography--font-family--inter), system-ui, -apple-system, sans-serif;
-  font-size: var(--components-tokens--typography--styles--label--small--font-size, 13px);
-  font-weight: 500;
-  line-height: var(--components-tokens--typography--styles--label--small--line-height, 17px);
+  font-family: var(--components-tokens--badge--typography--font-family);
+  font-size: var(--components-tokens--typography--styles--label--small--font-size);
+  font-weight: var(--components-tokens--badge--typography--font-weight);
+  line-height: var(--components-tokens--typography--styles--label--small--line-height);
 }
 
 .qd-badge--medium {
-  padding: var(--components-tokens--tag--spacing--medium--vertical, 4px)
-    var(--components-tokens--tag--spacing--medium--horizontal, 12px);
-  border-radius: var(--components-tokens--tag--radius--large, 100px);
+  padding: var(--components-tokens--tag--spacing--medium--vertical)
+    var(--components-tokens--tag--spacing--medium--horizontal);
+  border-radius: var(--components-tokens--tag--radius--large);
 }
 
 .qd-badge--medium .qd-badge__text {
-  font-family: var(--global-tokens--typography--font-family--inter), system-ui, -apple-system, sans-serif;
-  font-size: var(--components-tokens--typography--styles--label--large--font-size, 16px);
-  font-weight: 500;
-  line-height: var(--components-tokens--typography--styles--label--large--line-height, 22px);
+  font-family: var(--components-tokens--badge--typography--font-family);
+  font-size: var(--components-tokens--typography--styles--label--large--font-size);
+  font-weight: var(--components-tokens--badge--typography--font-weight);
+  line-height: var(--components-tokens--typography--styles--label--large--line-height);
 }
 
 .qd-badge--uppercase {
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--components-tokens--badge--typography--letter-spacing);
 }
 
 .qd-badge--discovery {
@@ -83,6 +83,6 @@
 
 .qd-badge--accent {
   background-color: transparent;
-  color: var(--system-tokens--colors--complementary--principal);
-  border-color: var(--system-tokens--colors--complementary--principal);
+  color: var(--components-tokens--badge--text-color--accent);
+  border-color: var(--components-tokens--badge--border-color--accent);
 }

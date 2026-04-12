@@ -7,43 +7,43 @@
   flex-shrink: 0;
 }
 
-/* Size variants using system sizing tokens */
+/* Size variants using icon sizing tokens */
 .qd-icon--xxs {
-  width: var(--system-tokens--sizing--xxs);
-  height: var(--system-tokens--sizing--xxs);
+  width: var(--components-tokens--icon--sizing--xxs);
+  height: var(--components-tokens--icon--sizing--xxs);
 }
 
 .qd-icon--xs {
-  width: var(--system-tokens--sizing--xs);
-  height: var(--system-tokens--sizing--xs);
+  width: var(--components-tokens--icon--sizing--xs);
+  height: var(--components-tokens--icon--sizing--xs);
 }
 
 .qd-icon--sm {
-  width: var(--system-tokens--sizing--sm);
-  height: var(--system-tokens--sizing--sm);
+  width: var(--components-tokens--icon--sizing--sm);
+  height: var(--components-tokens--icon--sizing--sm);
 }
 
 .qd-icon--md {
-  width: var(--system-tokens--sizing--md);
-  height: var(--system-tokens--sizing--md);
+  width: var(--components-tokens--icon--sizing--md);
+  height: var(--components-tokens--icon--sizing--md);
 }
 
 .qd-icon--ml {
-  width: var(--system-tokens--sizing--ml);
-  height: var(--system-tokens--sizing--ml);
+  width: var(--components-tokens--icon--sizing--ml);
+  height: var(--components-tokens--icon--sizing--ml);
 }
 
 .qd-icon--lg {
-  width: var(--system-tokens--sizing--lg);
-  height: var(--system-tokens--sizing--lg);
+  width: var(--components-tokens--icon--sizing--lg);
+  height: var(--components-tokens--icon--sizing--lg);
 }
 
 .qd-icon--xl {
-  width: var(--system-tokens--sizing--xl);
-  height: var(--system-tokens--sizing--xl);
+  width: var(--components-tokens--icon--sizing--xl);
+  height: var(--components-tokens--icon--sizing--xl);
 }
 
 .qd-icon--xxl {
-  width: var(--system-tokens--sizing--xxl);
-  height: var(--system-tokens--sizing--xxl);
+  width: var(--components-tokens--icon--sizing--xxl);
+  height: var(--components-tokens--icon--sizing--xxl);
 }

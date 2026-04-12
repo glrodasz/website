@@ -3,8 +3,8 @@
 /* Typography Base */
 .qd-typography {
   margin: 0;
-  font-family: var(--global-tokens--typography--font-family--inter), system-ui, -apple-system, sans-serif;
-  color: var(--system-tokens--colors--primary--principal);
+  font-family: var(--components-tokens--typography--styles--paragraph--large--font-family);
+  color: var(--components-tokens--typography--colors--headings);
 }
 
 /* Display Text */
@@ -51,18 +51,18 @@
 
 /* Label Text */
 .qd-typography--label {
-  font-family: var(--global-tokens--typography--font-family--inter);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+  font-family: var(--components-tokens--typography--styles--label--large--font-family);
+  font-size: var(--components-tokens--typography--styles--label--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--label--large--font-weight);
+  line-height: var(--components-tokens--typography--styles--label--large--line-height);
 }
 
 /* Button Text */
 .qd-typography--button {
-  font-family: var(--global-tokens--typography--font-family--inter);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
+  font-family: var(--components-tokens--typography--styles--text-button--large--font-family);
+  font-size: var(--components-tokens--typography--styles--text-button--large--font-size);
+  font-weight: var(--components-tokens--typography--styles--text-button--large--font-weight);
+  line-height: var(--components-tokens--typography--styles--text-button--large--line-height);
   letter-spacing: 0.01em;
 }
 

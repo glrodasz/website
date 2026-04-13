@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from '../../../hooks/useTheme';
 import { Navigation } from './Navigation';
 
 const meta: Meta<typeof Navigation> = {
@@ -11,11 +12,13 @@ const meta: Meta<typeof Navigation> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <div style={{ minHeight: 400 }}>
-          <Story />
-        </div>
-      </MemoryRouter>
+      <ThemeProvider>
+        <MemoryRouter>
+          <div style={{ minHeight: 400 }}>
+            <Story />
+          </div>
+        </MemoryRouter>
+      </ThemeProvider>
     ),
   ],
 };

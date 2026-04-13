@@ -61,6 +61,9 @@ export interface PlatformCourse {
   platform: string;
   href: string;
   description?: string;
+  logoSrc?: string;
+  /** When set, used instead of logoSrc in dark mode */
+  logoSrcDark?: string;
 }
 
 export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
@@ -70,6 +73,8 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     platform: 'Código Facilito',
     href: 'https://codigofacilito.com/cursos/nodejs-profesional',
     description: 'Professional Node.js on Código Facilito.',
+    logoSrc: '/logos/codigofacilito.png',
+    logoSrcDark: '/logos/codigofacilito-light.png',
   },
   {
     id: 'platzi-oauth',
@@ -77,6 +82,7 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     platform: 'Platzi',
     href: 'https://platzi.com/cursos/oauth/?utm_content=glrodasz&utm_source=affiliates&utm_medium=organic&utm_campaign=teacher_afiliados_glrodasz',
     description: 'Authentication flows, JWT, and production patterns.',
+    logoSrc: '/logos/platzi.svg',
   },
   {
     id: 'platzi-auth0',
@@ -84,5 +90,6 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     platform: 'Platzi',
     href: 'https://platzi.com/cursos/auth0/?utm_content=glrodasz&utm_source=affiliates&utm_medium=organic&utm_campaign=teacher_afiliados_glrodasz',
     description: 'Universal Login, social connections, APIs, and Auth0 in production.',
+    logoSrc: '/logos/platzi.svg',
   },
 ];

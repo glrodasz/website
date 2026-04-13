@@ -15142,6 +15142,26 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "logo-height": {
+        "$type": "number",
+        "$value": 32,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Sizing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "logo-margin-bottom": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
       }
     }
   },

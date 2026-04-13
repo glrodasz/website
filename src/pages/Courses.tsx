@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
@@ -17,6 +18,7 @@ import './pages.css';
 const INITIAL_TUTORIALS = 5;
 
 const Courses: React.FC = () => {
+  const { theme } = useTheme();
   const [showAllTutorials, setShowAllTutorials] = useState(false);
   const visibleTutorials = useMemo(
     () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),
@@ -143,6 +145,16 @@ const Courses: React.FC = () => {
               rel="noopener noreferrer"
               className="platform-course-card"
             >
+              {c.logoSrc && (
+                <img
+                  src={
+                    theme === 'dark' && c.logoSrcDark ? c.logoSrcDark : c.logoSrc
+                  }
+                  alt={c.platform}
+                  className="platform-course-card__logo"
+                  loading="lazy"
+                />
+              )}
               <span className="platform-course-card__platform">{c.platform}</span>
               <h3 className="platform-course-card__title">{c.title}</h3>
               {c.description && <p className="platform-course-card__desc">{c.description}</p>}

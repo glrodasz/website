@@ -366,9 +366,9 @@
   --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
   --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
   --components-tokens--button--text-color--primary--disabled: var(--system-tokens--colors--foregrounds--disabled);
-  --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--button--text-color--secondary--disabled: var(--system-tokens--colors--foregrounds--disabled);
   --components-tokens--button--text-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--ghost-light--hover: var(--system-tokens--colors--primary--principal);
@@ -398,7 +398,7 @@
   --components-tokens--button--outline-color--focus: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-radius--large: var(--system-tokens--border-radius--xs);
   --components-tokens--button--border-radius--small: var(--system-tokens--border-radius--xs);
-  --components-tokens--button--border-color--secondary--default: var(--system-tokens--colors--borders--strong);
+  --components-tokens--button--border-color--secondary--default: var(--system-tokens--colors--foregrounds--neutral);
   --components-tokens--button--border-color--secondary--hover: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-color--secondary--acctived: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-color--secondary--disabled: var(--system-tokens--colors--borders--disabled);

@@ -6,7 +6,7 @@ export interface ButtonProps {
   /**
    * Button variant based on Quantum Design system
    */
-  variant?: 'primary' | 'secondary' | 'ghost-light' | 'ghost-dark';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   /**
    * Button size
    */

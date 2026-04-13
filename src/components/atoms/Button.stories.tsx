@@ -11,7 +11,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'ghost-light', 'ghost-dark'],
+      options: ['primary', 'secondary', 'tertiary'],
       description: 'Button visual variant based on Quantum Design system',
     },
     size: {
@@ -64,43 +64,20 @@ export const SecondarySmall: Story = {
   },
 };
 
-// Ghost Light variant stories
-export const GhostLightLarge: Story = {
+// Tertiary variant stories
+export const TertiaryLarge: Story = {
   args: {
-    variant: 'ghost-light',
+    variant: 'tertiary',
     size: 'large',
-    children: 'Ghost Light Button',
+    children: 'Tertiary Button',
   },
 };
 
-export const GhostLightSmall: Story = {
+export const TertiarySmall: Story = {
   args: {
-    variant: 'ghost-light',
+    variant: 'tertiary',
     size: 'small',
-    children: 'Ghost Light Button',
-  },
-};
-
-// Ghost Dark variant stories (with dark background)
-export const GhostDarkLarge: Story = {
-  args: {
-    variant: 'ghost-dark',
-    size: 'large',
-    children: 'Ghost Dark Button',
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};
-
-export const GhostDarkSmall: Story = {
-  args: {
-    variant: 'ghost-dark',
-    size: 'small',
-    children: 'Ghost Dark Button',
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
+    children: 'Tertiary Button',
   },
 };
 
@@ -130,17 +107,17 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', gap: '16px' }}>
         <Button variant="primary" size="large">Primary</Button>
         <Button variant="secondary" size="large">Secondary</Button>
-        <Button variant="ghost-light" size="large">Ghost Light</Button>
+        <Button variant="tertiary" size="large">Tertiary</Button>
       </div>
       <div style={{ display: 'flex', gap: '16px' }}>
         <Button variant="primary" size="small">Primary Small</Button>
         <Button variant="secondary" size="small">Secondary Small</Button>
-        <Button variant="ghost-light" size="small">Ghost Small</Button>
+        <Button variant="tertiary" size="small">Tertiary Small</Button>
       </div>
       <div style={{ display: 'flex', gap: '16px' }}>
         <Button variant="primary" disabled>Disabled</Button>
         <Button variant="secondary" disabled>Disabled</Button>
-        <Button variant="ghost-light" disabled>Disabled</Button>
+        <Button variant="tertiary" disabled>Disabled</Button>
       </div>
     </div>
   ),

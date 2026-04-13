@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Button } from '../components/atoms/Button';
 import {
   AI_FIRST_WAITLIST_MAILTO,
@@ -18,10 +18,6 @@ import { Badge } from '../components/atoms/Badge';
 
 const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const [coverFailed, setCoverFailed] = useState(false);
-
-  useEffect(() => {
-    setCoverFailed(false);
-  }, [post.cover, post.link]);
 
   const showCover = Boolean(post.cover) && !coverFailed;
 
@@ -83,7 +79,7 @@ const Home: React.FC = () => {
                 <div className="home-hero__ctas">
                   <Button to="/courses" variant="primary">AI Course</Button>
                   <Button to="/courses" variant="secondary" className="home-hero__cta-courses">Courses</Button>
-                  <Button to="/contact" variant="ghost-dark">Get in touch</Button>
+                  <Button to="/contact" variant="tertiary">Get in touch</Button>
                 </div>
               </div>
             </div>
@@ -187,8 +183,8 @@ const Home: React.FC = () => {
           </div>
 
           <div className="home-writing__posts">
-            {writingPosts.map((post, i) => (
-              <PostCard key={i} post={post} />
+            {writingPosts.map((post) => (
+              <PostCard key={`${post.link}|${post.cover ?? ''}`} post={post} />
             ))}
           </div>
         </div>

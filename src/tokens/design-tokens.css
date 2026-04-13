@@ -354,14 +354,10 @@
   --components-tokens--button--background-color--secondary--hover: var(--system-tokens--colors--backgrounds--tertiary);
   --components-tokens--button--background-color--secondary--acctived: var(--system-tokens--colors--neutral--off);
   --components-tokens--button--background-color--secondary--disabled: var(--system-tokens--colors--backgrounds--tertiary);
-  --components-tokens--button--background-color--ghost-light--default: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-light--hover: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-light--acctived: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--background-color--ghost-dark--default: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--button--background-color--ghost-dark--hover: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--button--background-color--ghost-dark--acctived: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--button--background-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--button--background-color--tertiary--default: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--tertiary--hover: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--tertiary--acctived: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--tertiary--disabled: var(--system-tokens--colors--transparency--primary);
   --components-tokens--button--text-color--primary--default: var(--system-tokens--colors--neutral--high);
   --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
   --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
@@ -370,14 +366,10 @@
   --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--button--text-color--secondary--disabled: var(--system-tokens--colors--foregrounds--disabled);
-  --components-tokens--button--text-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--text-color--ghost-light--hover: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--text-color--ghost-light--actived: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--text-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--text-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--text-color--ghost-dark--hover: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--text-color--ghost-dark--actived: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--text-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--button--text-color--tertiary--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--tertiary--hover: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--tertiary--actived: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--tertiary--disabled: var(--system-tokens--colors--transparency--primary);
   --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--button--spacing--large--vertical: var(--system-tokens--spacing--sm);
   --components-tokens--button--spacing--large--gap: var(--system-tokens--spacing--xs);
@@ -402,10 +394,8 @@
   --components-tokens--button--border-color--secondary--hover: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-color--secondary--acctived: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-color--secondary--disabled: var(--system-tokens--colors--borders--disabled);
-  --components-tokens--button--border-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
-  --components-tokens--button--border-color--ghost-light--disabled: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--border-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
-  --components-tokens--button--border-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--button--border-color--tertiary--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--border-color--tertiary--disabled: var(--system-tokens--colors--primary--off);
 
   /* Tag */
   --components-tokens--tag--typography--small--font-size: 12px;

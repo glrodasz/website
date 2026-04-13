@@ -145,6 +145,14 @@ const Courses: React.FC = () => {
               rel="noopener noreferrer"
               className="platform-course-card"
             >
+              {c.logoSrc && (
+                <img
+                  src={c.logoSrc}
+                  alt={c.platform}
+                  className="platform-course-card__logo"
+                  loading="lazy"
+                />
+              )}
               <span className="platform-course-card__platform">{c.platform}</span>
               <h3 className="platform-course-card__title">{c.title}</h3>
               {c.description && <p className="platform-course-card__desc">{c.description}</p>}

@@ -495,6 +495,13 @@
   transform: translateY(-2px);
 }
 
+.platform-course-card__logo {
+  height: var(--components-tokens--site--course-card--logo-height);
+  width: auto;
+  object-fit: contain;
+  margin-bottom: var(--components-tokens--site--course-card--logo-margin-bottom);
+}
+
 .platform-course-card__platform {
   font-size: 0.72rem;
   font-weight: 700;

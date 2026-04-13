@@ -65,6 +65,8 @@ export interface PlatformCourse {
   href: string;
   description?: string;
   logoSrc?: string;
+  /** When set, used instead of logoSrc in dark mode */
+  logoSrcDark?: string;
 }
 
 export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
@@ -74,7 +76,8 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     platform: 'Código Facilito',
     href: 'https://codigofacilito.com/cursos/nodejs-profesional',
     description: 'Professional Node.js on Código Facilito.',
-    logoSrc: '/logos/codigofacilito.svg',
+    logoSrc: '/logos/codigofacilito.png',
+    logoSrcDark: '/logos/codigofacilito-light.png',
   },
   {
     id: 'platzi-oauth',

@@ -1,8 +1,21 @@
-import { useState, useEffect } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
 
 type Theme = 'dark' | 'light';
 
 const STORAGE_KEY = 'theme';
+
+const ThemeContext = createContext<{
+  theme: Theme;
+  toggleTheme: () => void;
+} | null>(null);
 
 function getSystemTheme(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -18,7 +31,7 @@ function getInitialTheme(): Theme {
   return getSystemTheme();
 }
 
-export function useTheme() {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   // useState(fn) — fn runs once synchronously before first render,
   // so the initial theme is always correct (no flash).
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
@@ -43,7 +56,7 @@ export function useTheme() {
     return () => mql.removeEventListener('change', handleChange);
   }, []);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((prev) => {
       const next: Theme = prev === 'dark' ? 'light' : 'dark';
       try {
@@ -53,7 +66,17 @@ export function useTheme() {
       }
       return next;
     });
-  };
+  }, []);
 
-  return { theme, toggleTheme };
+  const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+}
+
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+  return ctx;
 }

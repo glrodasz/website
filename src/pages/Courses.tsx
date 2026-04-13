@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
 import {
@@ -17,6 +18,7 @@ import './pages.css';
 const INITIAL_TUTORIALS = 5;
 
 const Courses: React.FC = () => {
+  const { theme } = useTheme();
   const [showAllTutorials, setShowAllTutorials] = useState(false);
   const visibleTutorials = useMemo(
     () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),
@@ -147,7 +149,9 @@ const Courses: React.FC = () => {
             >
               {c.logoSrc && (
                 <img
-                  src={c.logoSrc}
+                  src={
+                    theme === 'dark' && c.logoSrcDark ? c.logoSrcDark : c.logoSrc
+                  }
                   alt={c.platform}
                   className="platform-course-card__logo"
                   loading="lazy"

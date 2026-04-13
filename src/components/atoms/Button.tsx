@@ -47,6 +47,10 @@ export interface ButtonProps {
    * Anchor rel attribute
    */
   rel?: string;
+  /**
+   * Native button type (ignored for link variants)
+   */
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -61,6 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
   href,
   target,
   rel,
+  type = 'button',
 }) => {
   const classNames = [
     'qd-button',
@@ -100,7 +105,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={classNames}
       disabled={disabled}
       onClick={onClick}
-      type="button"
+      type={type}
     >
       {content}
     </button>

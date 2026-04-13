@@ -1,0 +1,30 @@
+@import '../../../tokens/design-tokens.css';
+
+.qd-waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--components-tokens--input-field--spacing--large--vertical);
+  max-width: 420px;
+}
+
+.qd-waitlist-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--components-tokens--input-field--spacing--large--vertical);
+}
+
+.qd-waitlist-form__submit {
+  display: flex;
+}
+
+.qd-waitlist-form__error-message {
+  margin: 0;
+  font-size: var(--components-tokens--input-field--typography--message--font-size);
+  color: var(--components-tokens--input-field--text-color--message--error);
+}
+
+.qd-waitlist-form__success-message {
+  margin: 0;
+  font-size: var(--components-tokens--input-field--typography--label--font-size);
+  color: var(--components-tokens--input-field--text-color--label--default);
+}

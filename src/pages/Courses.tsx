@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
+import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import {
-  AI_FIRST_WAITLIST_MAILTO,
   FREE_YOUTUBE_PLAYLISTS,
   OTHER_PLATFORM_COURSES,
   PLAYLIST_LANGUAGE_META,
@@ -45,9 +45,7 @@ const Courses: React.FC = () => {
             Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
             who want to move fast and build better with AI.
           </p>
-          <Button variant="primary" href={AI_FIRST_WAITLIST_MAILTO}>
-            Join waitlist
-          </Button>
+          <WaitlistForm />
         </div>
       </section>
 

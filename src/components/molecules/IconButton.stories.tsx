@@ -30,7 +30,7 @@ const meta: Meta<typeof IconButton> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'ghost-light', 'ghost-dark'],
+      options: ['primary', 'secondary', 'tertiary'],
       description: 'Button visual variant',
     },
     size: {
@@ -96,27 +96,14 @@ export const SecondarySmall: Story = {
   },
 };
 
-// Ghost variants
-export const GhostLight: Story = {
+// Tertiary variant
+export const Tertiary: Story = {
   args: {
-    variant: 'ghost-light',
+    variant: 'tertiary',
     size: 'large',
     icon: <ArrowIcon />,
     label: 'Go Back',
     iconPosition: 'left',
-  },
-};
-
-export const GhostDark: Story = {
-  args: {
-    variant: 'ghost-dark',
-    size: 'large',
-    icon: <ArrowIcon />,
-    label: 'Next Step',
-    iconPosition: 'right',
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
   },
 };
 
@@ -160,16 +147,17 @@ export const AllVariants: Story = {
       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <IconButton variant="primary" size="large" icon={<CheckIcon />} label="Primary" />
         <IconButton variant="secondary" size="large" icon={<PlusIcon />} label="Secondary" />
-        <IconButton variant="ghost-light" size="large" icon={<ArrowIcon />} label="Ghost Light" />
+        <IconButton variant="tertiary" size="large" icon={<ArrowIcon />} label="Tertiary" />
       </div>
       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <IconButton variant="primary" size="small" icon={<CheckIcon />} label="Small" />
         <IconButton variant="secondary" size="small" icon={<PlusIcon />} label="Small" />
-        <IconButton variant="ghost-light" size="small" icon={<ArrowIcon />} label="Small" />
+        <IconButton variant="tertiary" size="small" icon={<ArrowIcon />} label="Small" />
       </div>
       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <IconButton variant="primary" disabled icon={<CheckIcon />} label="Disabled" />
         <IconButton variant="secondary" disabled icon={<PlusIcon />} label="Disabled" />
+        <IconButton variant="tertiary" disabled icon={<ArrowIcon />} label="Disabled" />
       </div>
     </div>
   ),

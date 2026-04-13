@@ -76,42 +76,23 @@
   border-color: var(--components-tokens--button--border-color--secondary--acctived);
 }
 
-/* Ghost Light Variant */
-.qd-button--ghost-light {
-  background-color: var(--components-tokens--button--background-color--ghost-light--default);
-  color: var(--components-tokens--button--text-color--ghost-light--default);
-  border-color: var(--components-tokens--button--border-color--ghost-light--default);
+/* Tertiary Variant */
+.qd-button--tertiary {
+  background-color: var(--components-tokens--button--background-color--tertiary--default);
+  color: var(--components-tokens--button--text-color--tertiary--default);
+  border-color: var(--components-tokens--button--border-color--tertiary--default);
 }
 
-.qd-button--ghost-light:hover:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--ghost-light--hover);
-  color: var(--components-tokens--button--text-color--ghost-light--hover);
-  border-color: var(--components-tokens--button--border-color--ghost-light--default);
+.qd-button--tertiary:hover:not(.qd-button--disabled) {
+  background-color: var(--components-tokens--button--background-color--tertiary--hover);
+  color: var(--components-tokens--button--text-color--tertiary--hover);
+  border-color: var(--components-tokens--button--border-color--tertiary--default);
 }
 
-.qd-button--ghost-light:active:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--ghost-light--acctived);
-  color: var(--components-tokens--button--text-color--ghost-light--actived);
-  border-color: var(--components-tokens--button--border-color--ghost-light--default);
-}
-
-/* Ghost Dark Variant */
-.qd-button--ghost-dark {
-  background-color: var(--components-tokens--button--background-color--ghost-dark--default);
-  color: var(--components-tokens--button--text-color--ghost-dark--default);
-  border-color: var(--components-tokens--button--border-color--ghost-dark--default);
-}
-
-.qd-button--ghost-dark:hover:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--ghost-dark--hover);
-  color: var(--components-tokens--button--text-color--ghost-dark--hover);
-  border-color: var(--components-tokens--button--border-color--ghost-dark--default);
-}
-
-.qd-button--ghost-dark:active:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--ghost-dark--acctived);
-  color: var(--components-tokens--button--text-color--ghost-dark--actived);
-  border-color: var(--components-tokens--button--border-color--ghost-dark--default);
+.qd-button--tertiary:active:not(.qd-button--disabled) {
+  background-color: var(--components-tokens--button--background-color--tertiary--acctived);
+  color: var(--components-tokens--button--text-color--tertiary--actived);
+  border-color: var(--components-tokens--button--border-color--tertiary--default);
 }
 
 /* Disabled State */

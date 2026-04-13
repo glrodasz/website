@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Button } from '../components/atoms/Button';
+import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import {
-  AI_FIRST_WAITLIST_MAILTO,
   FREE_YOUTUBE_PLAYLISTS,
   HOME_FEATURED_PLAYLIST_ID,
   PLAYLIST_LANGUAGE_META,
@@ -127,9 +127,7 @@ const Home: React.FC = () => {
                 <p className="home-course-card__desc">
                   Build software with AI as your primary tool — short, focused lessons across the stack.
                 </p>
-                <Button variant="primary" href={AI_FIRST_WAITLIST_MAILTO}>
-                  Join waitlist
-                </Button>
+                <WaitlistForm />
               </div>
             </article>
             {featuredPlaylist && (

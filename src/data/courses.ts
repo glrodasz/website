@@ -1,6 +1,3 @@
-export const AI_FIRST_WAITLIST_MAILTO =
-  'mailto:me@guillermorodas.com?subject=AI-First%20Programming%20Course%20Waitlist';
-
 export type PlaylistLanguage = 'en' | 'es';
 
 export const PLAYLIST_LANGUAGE_META: Record<

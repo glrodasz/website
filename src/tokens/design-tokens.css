@@ -366,9 +366,9 @@
   --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
   --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
   --components-tokens--button--text-color--primary--disabled: var(--system-tokens--colors--foregrounds--disabled);
-  --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--neutral--high);
-  --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--neutral--high);
+  --components-tokens--button--text-color--secondary--default: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--button--text-color--secondary--hover: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--button--text-color--secondary--actived: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--button--text-color--secondary--disabled: var(--system-tokens--colors--foregrounds--disabled);
   --components-tokens--button--text-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--ghost-light--hover: var(--system-tokens--colors--primary--principal);
@@ -398,7 +398,7 @@
   --components-tokens--button--outline-color--focus: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-radius--large: var(--system-tokens--border-radius--xs);
   --components-tokens--button--border-radius--small: var(--system-tokens--border-radius--xs);
-  --components-tokens--button--border-color--secondary--default: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--button--border-color--secondary--default: var(--system-tokens--colors--foregrounds--neutral);
   --components-tokens--button--border-color--secondary--hover: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-color--secondary--acctived: var(--system-tokens--colors--borders--strong);
   --components-tokens--button--border-color--secondary--disabled: var(--system-tokens--colors--borders--disabled);
@@ -652,8 +652,9 @@
   --components-tokens--badge--typography--letter-spacing: 0.08px;
   --components-tokens--badge--typography--font-family: var(--system-tokens--typography--font-family--alternative-text);
   --components-tokens--badge--typography--font-weight: var(--system-tokens--typography--font-weight--moderate);
-  --components-tokens--badge--text-color--accent: var(--system-tokens--colors--complementary--principal);
-  --components-tokens--badge--border-color--accent: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--badge--text-color--accent: var(--system-tokens--colors--complementary--subtle);
+  --components-tokens--badge--border-color--accent: var(--system-tokens--colors--complementary--subtle);
+  --components-tokens--badge--background-color--accent: var(--system-tokens--colors--complementary--off);
 
   /* Typography */
   --components-tokens--typography--colors--headings: var(--system-tokens--colors--typography--heading);
@@ -1360,7 +1361,7 @@
   --system-tokens--colors--primary--off: #F5F5F5;
   --system-tokens--colors--primary--high: #292929;
   --system-tokens--colors--complementary--principal: #F7DF1D;
-  --system-tokens--colors--complementary--subtle: #A3CC00;
+  --system-tokens--colors--complementary--subtle: #313D00;
   --system-tokens--colors--complementary--off: #FBFFEB;
   --system-tokens--colors--complementary--high: #313D00;
   --system-tokens--colors--neutral--principal: #454545;

@@ -17,13 +17,13 @@ export const FAVORITE_BOOKS: FavoriteBook[] = [
   {
     title: 'Immune',
     author: 'Philipp Dettmer',
-    href: 'https://www.goodreads.com/book/show/57693140-immune',
+    href: 'https://www.goodreads.com/book/show/57423646-immune',
     coverUrl: '/images/covers/books/immune.webp',
   },
   {
     title: 'Building a Second Brain',
     author: 'Tiago Forte',
-    href: 'https://www.goodreads.com/book/show/58416978-building-a-second-brain',
+    href: 'https://www.goodreads.com/book/show/59616977-building-a-second-brain',
     coverUrl: '/images/covers/books/building-a-second-brain.webp',
   },
   {
@@ -41,7 +41,7 @@ export const FAVORITE_BOOKS: FavoriteBook[] = [
   {
     title: 'Thanks for the Feedback',
     author: 'Douglas Stone',
-    href: 'https://www.goodreads.com/book/show/18158600-thanks-for-the-feedback',
+    href: 'https://www.goodreads.com/book/show/18114120-thanks-for-the-feedback',
     coverUrl: '/images/covers/books/thanks-for-the-feedback.webp',
   },
 ];

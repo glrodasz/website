@@ -6,22 +6,23 @@
 
 import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import type { GraphNode, NodeLevel } from '../../../tokens/graph-builder';
+import type { GraphNode, NodeLevel, ThemeMode } from '../../../tokens/graph-builder';
 import type { NodePosition } from './layout';
 
 const LEVEL_FALLBACK_COLOR: Record<NodeLevel, string> = {
   'global': '#9aa0a6',
-  'system-light': '#d0d5dc',
-  'system-dark': '#3a3f47',
+  'system': '#cbd5e1',
   'component': '#e5e7eb',
 };
 
 const HIGHLIGHT_COLOR = new THREE.Color('#ffd400');
 const DIMMED_COLOR = new THREE.Color('#1a1a1a');
 
-function resolveNodeColor(node: GraphNode): THREE.Color {
-  if (node.type === 'color' && /^#[0-9a-fA-F]{6,8}$/.test(node.resolvedValue)) {
-    return new THREE.Color(node.resolvedValue.slice(0, 7));
+function resolveNodeColor(node: GraphNode, theme: ThemeMode): THREE.Color {
+  const themedValue =
+    theme === 'dark' && node.resolvedValueDark ? node.resolvedValueDark : node.resolvedValue;
+  if (node.type === 'color' && /^#[0-9a-fA-F]{6,8}$/.test(themedValue)) {
+    return new THREE.Color(themedValue.slice(0, 7));
   }
   return new THREE.Color(LEVEL_FALLBACK_COLOR[node.level]);
 }
@@ -31,16 +32,17 @@ interface TokenNodesProps {
   positions: Map<string, NodePosition>;
   seedIds: Set<string> | null;
   relatedIds: Set<string> | null;
+  theme: ThemeMode;
   onHover: (node: GraphNode | null) => void;
 }
 
-export function TokenNodes({ nodes, positions, seedIds, relatedIds, onHover }: TokenNodesProps) {
+export function TokenNodes({ nodes, positions, seedIds, relatedIds, theme, onHover }: TokenNodesProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
 
   const { baseColors, count } = useMemo(() => {
-    const colors = nodes.map(resolveNodeColor);
+    const colors = nodes.map((n) => resolveNodeColor(n, theme));
     return { baseColors: colors, count: Math.max(nodes.length, 1) };
-  }, [nodes]);
+  }, [nodes, theme]);
 
   // Set initial positions once.
   useEffect(() => {

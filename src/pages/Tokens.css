@@ -106,6 +106,45 @@
   color: #94a3b8;
 }
 
+.tokens-page__stats-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 10.5px;
+  color: #64748b;
+}
+
+.tokens-page__theme-switch {
+  display: inline-flex;
+  margin-top: 4px;
+  padding: 2px;
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  gap: 2px;
+}
+
+.tokens-page__theme-option {
+  padding: 5px 14px;
+  background: transparent;
+  color: #94a3b8;
+  border: 0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.tokens-page__theme-option:hover:not(.tokens-page__theme-option--active) {
+  color: #e2e8f0;
+}
+
+.tokens-page__theme-option--active {
+  background: #1e293b;
+  color: #f1f5f9;
+  box-shadow: inset 0 0 0 1px #334155;
+}
+
 .tokens-page__bulk {
   display: inline-flex;
   align-items: center;

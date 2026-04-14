@@ -62,8 +62,7 @@ export default function Tokens() {
   const [enabledCategories, setEnabledCategories] = useState<Set<string>>(
     () => new Set(graph.categories),
   );
-  const [showSystemLight, setShowSystemLight] = useState(true);
-  const [showSystemDark, setShowSystemDark] = useState(true);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [focusedComponent, setFocusedComponent] = useState<string | null>(null);
   const [componentQuery, setComponentQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -71,8 +70,7 @@ export default function Tokens() {
   const filters: TokenTreeFilters = {
     enabledComponents,
     enabledCategories,
-    showSystemLight,
-    showSystemDark,
+    theme,
     focusedComponent,
   };
 
@@ -132,30 +130,42 @@ export default function Tokens() {
 
         <section className="tokens-page__stats">
           <div><strong>{graph.stats.global}</strong> global</div>
-          <div><strong>{graph.stats.systemLight}</strong> system (light)</div>
-          <div><strong>{graph.stats.systemDark}</strong> system (dark overrides)</div>
+          <div>
+            <strong>{graph.stats.system}</strong> system
+            <span className="tokens-page__stats-note">
+              ({graph.stats.systemDarkOverrides} overridden in dark)
+            </span>
+          </div>
           <div><strong>{graph.stats.component}</strong> component</div>
           <div><strong>{graph.stats.edges}</strong> references</div>
         </section>
 
         <section className="tokens-page__filter-group">
-          <h2 className="tokens-page__filter-title">Layers</h2>
-          <label className="tokens-filter-row tokens-filter-row--simple">
-            <input
-              type="checkbox"
-              checked={showSystemLight}
-              onChange={() => setShowSystemLight((v) => !v)}
-            />
-            <span className="tokens-filter-row__label">System · light</span>
-          </label>
-          <label className="tokens-filter-row tokens-filter-row--simple">
-            <input
-              type="checkbox"
-              checked={showSystemDark}
-              onChange={() => setShowSystemDark((v) => !v)}
-            />
-            <span className="tokens-filter-row__label">System · dark overrides</span>
-          </label>
+          <h2 className="tokens-page__filter-title">Theme</h2>
+          <div
+            className="tokens-page__theme-switch"
+            role="radiogroup"
+            aria-label="Preview theme"
+          >
+            <button
+              type="button"
+              role="radio"
+              aria-checked={theme === 'light'}
+              className={`tokens-page__theme-option${theme === 'light' ? ' tokens-page__theme-option--active' : ''}`}
+              onClick={() => setTheme('light')}
+            >
+              Light
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={theme === 'dark'}
+              className={`tokens-page__theme-option${theme === 'dark' ? ' tokens-page__theme-option--active' : ''}`}
+              onClick={() => setTheme('dark')}
+            >
+              Dark
+            </button>
+          </div>
         </section>
 
         <section className="tokens-page__filter-group">

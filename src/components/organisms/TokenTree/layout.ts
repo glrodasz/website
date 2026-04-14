@@ -15,10 +15,9 @@ export interface NodePosition {
 }
 
 export const LAYER_X: Record<NodeLevel, number> = {
-  'global': -26,
-  'system-light': -9,
-  'system-dark': 4,
-  'component': 20,
+  'global': -22,
+  'system': 0,
+  'component': 22,
 };
 
 const Y_STEP = 0.55;
@@ -30,7 +29,7 @@ export function computeLayout(nodes: GraphNode[]): Map<string, NodePosition> {
   // Bucket by (level, group-key) where group-key = category for global/system,
   // componentName for component.
   const byLevel = new Map<NodeLevel, Map<string, GraphNode[]>>();
-  for (const level of ['global', 'system-light', 'system-dark', 'component'] as NodeLevel[]) {
+  for (const level of ['global', 'system', 'component'] as NodeLevel[]) {
     byLevel.set(level, new Map());
   }
 

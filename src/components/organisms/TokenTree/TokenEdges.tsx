@@ -1,57 +1,64 @@
 /**
  * Renders all graph edges as line segments using a single BufferGeometry per
- * edge kind.
+ * edge kind. Edges tagged 'light' or 'dark' are only drawn in that theme; 'both' always draws.
  */
 
 import { useMemo } from 'react';
 import * as THREE from 'three';
-import type { GraphEdge, EdgeKind } from '../../../tokens/graph-builder';
+import type { GraphEdge, EdgeKind, ThemeMode } from '../../../tokens/graph-builder';
 import type { NodePosition } from './layout';
 
 const EDGE_COLORS: Record<EdgeKind, string> = {
-  'system-light-global': '#e5e7eb',
-  'system-dark-global': '#6b7280',
+  'system-global': '#e5e7eb',
   'component-system': '#7dd3fc',
 };
+
+function edgeMatchesTheme(edge: GraphEdge, theme: ThemeMode): boolean {
+  return edge.mode === 'both' || edge.mode === theme;
+}
 
 interface TokenEdgesProps {
   edges: GraphEdge[];
   positions: Map<string, NodePosition>;
   visibleNodeIds: Set<string>;
+  theme: ThemeMode;
   highlightEdgeIndices: Set<number> | null;
 }
 
-export function TokenEdges({ edges, positions, visibleNodeIds, highlightEdgeIndices }: TokenEdgesProps) {
+export function TokenEdges({
+  edges,
+  positions,
+  visibleNodeIds,
+  theme,
+  highlightEdgeIndices,
+}: TokenEdgesProps) {
   const byKind = useMemo(() => {
-    const groups: Record<EdgeKind, { vertices: number[]; edgeIndexToGlobal: number[] }> = {
-      'system-light-global': { vertices: [], edgeIndexToGlobal: [] },
-      'system-dark-global': { vertices: [], edgeIndexToGlobal: [] },
-      'component-system': { vertices: [], edgeIndexToGlobal: [] },
+    const groups: Record<EdgeKind, number[]> = {
+      'system-global': [],
+      'component-system': [],
     };
 
-    edges.forEach((edge, globalIdx) => {
+    edges.forEach((edge) => {
+      if (!edgeMatchesTheme(edge, theme)) return;
       if (!visibleNodeIds.has(edge.from) || !visibleNodeIds.has(edge.to)) return;
       const fromPos = positions.get(edge.from);
       const toPos = positions.get(edge.to);
       if (!fromPos || !toPos) return;
-      const g = groups[edge.kind];
-      g.vertices.push(fromPos.x, fromPos.y, fromPos.z, toPos.x, toPos.y, toPos.z);
-      g.edgeIndexToGlobal.push(globalIdx);
+      groups[edge.kind].push(fromPos.x, fromPos.y, fromPos.z, toPos.x, toPos.y, toPos.z);
     });
 
     return groups;
-  }, [edges, positions, visibleNodeIds]);
+  }, [edges, positions, visibleNodeIds, theme]);
 
   const dimmed = highlightEdgeIndices != null;
 
   return (
     <group>
       {(Object.keys(byKind) as EdgeKind[]).map((kind) => {
-        const data = byKind[kind];
-        if (data.vertices.length === 0) return null;
-        const arr = new Float32Array(data.vertices);
+        const verts = byKind[kind];
+        if (verts.length === 0) return null;
         const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(verts), 3));
         return (
           <lineSegments key={`base-${kind}`} geometry={geometry}>
             <lineBasicMaterial
@@ -68,6 +75,7 @@ export function TokenEdges({ edges, positions, visibleNodeIds, highlightEdgeIndi
           edges={edges}
           positions={positions}
           indices={highlightEdgeIndices}
+          theme={theme}
         />
       )}
     </group>
@@ -78,26 +86,28 @@ function HighlightedEdges({
   edges,
   positions,
   indices,
+  theme,
 }: {
   edges: GraphEdge[];
   positions: Map<string, NodePosition>;
   indices: Set<number>;
+  theme: ThemeMode;
 }) {
   const geometries = useMemo(() => {
     const byKind: Record<EdgeKind, number[]> = {
-      'system-light-global': [],
-      'system-dark-global': [],
+      'system-global': [],
       'component-system': [],
     };
     indices.forEach((i) => {
       const edge = edges[i];
+      if (!edgeMatchesTheme(edge, theme)) return;
       const fromPos = positions.get(edge.from);
       const toPos = positions.get(edge.to);
       if (!fromPos || !toPos) return;
       byKind[edge.kind].push(fromPos.x, fromPos.y, fromPos.z, toPos.x, toPos.y, toPos.z);
     });
     return byKind;
-  }, [edges, positions, indices]);
+  }, [edges, positions, indices, theme]);
 
   return (
     <>

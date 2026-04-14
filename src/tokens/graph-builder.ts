@@ -3,6 +3,12 @@
  *
  * Reuses the W3C DTCG parser used by the CSS token build so the 3D graph
  * always reflects the same source-of-truth as design-tokens.css.
+ *
+ * The graph is modeled as three layers: global → system → component.
+ * System tokens are single nodes that carry both light and dark values; the
+ * dark value (plus dark reference target) only exists when system-dark.json
+ * overrides that token. The consumer picks a theme and we render the matching
+ * color + edge set.
  */
 
 import globalJson from './json/global.json';
@@ -17,7 +23,9 @@ import {
   type TokenMap,
 } from './parser';
 
-export type NodeLevel = 'global' | 'system-light' | 'system-dark' | 'component';
+export type NodeLevel = 'global' | 'system' | 'component';
+export type ThemeMode = 'light' | 'dark';
+export type EdgeMode = 'both' | 'light' | 'dark';
 
 export interface GraphNode {
   id: string;
@@ -26,17 +34,21 @@ export interface GraphNode {
   componentName?: string;
   cssVarName: string;
   type: string;
+  /** Resolved value in light mode (also used for globals and components). */
   resolvedValue: string;
+  /** Resolved value in dark mode — only set for system tokens overridden in system-dark.json. */
+  resolvedValueDark?: string;
   displayLabel: string;
   path: string;
 }
 
-export type EdgeKind = 'system-light-global' | 'system-dark-global' | 'component-system';
+export type EdgeKind = 'system-global' | 'component-system';
 
 export interface GraphEdge {
   from: string;
   to: string;
   kind: EdgeKind;
+  mode: EdgeMode;
 }
 
 export interface TokenGraph {
@@ -47,8 +59,8 @@ export interface TokenGraph {
   categories: string[];
   stats: {
     global: number;
-    systemLight: number;
-    systemDark: number;
+    system: number;
+    systemDarkOverrides: number;
     component: number;
     edges: number;
   };
@@ -69,30 +81,47 @@ function labelFromPath(path: string): string {
   return parts.slice(-2).join('.');
 }
 
+/**
+ * Resolves an appearance (value + reference target) for a system token under
+ * a specific theme, using the provided raw map.
+ */
+function resolveSystemAppearance(
+  systemPath: string,
+  rawMap: TokenMap,
+  nameToPath: Map<string, string>,
+  resolved: ReturnType<typeof resolveReferences>,
+): { value?: string; globalTargetPath?: string } {
+  const token = rawMap[systemPath];
+  if (!token) return {};
+  const r = resolved[systemPath];
+  const value = r?.resolvedValue;
+  let globalTargetPath: string | undefined;
+  if (token.isReference && token.referencePath) {
+    globalTargetPath = findReferencedPath(token.referencePath, nameToPath, resolved);
+  }
+  return { value, globalTargetPath };
+}
+
 export function buildTokenGraph(): TokenGraph {
   const globalMap = parseTokens(globalJson, 'global tokens', 'global');
   const systemLightMap = parseTokens(systemLightJson, 'system tokens', 'system');
-  const systemDarkRawMap = parseTokens(systemDarkJson, 'system tokens', 'system');
+  const systemDarkMap = parseTokens(systemDarkJson, 'system tokens', 'system');
   const componentMap = parseTokens(componentsJson, 'components tokens', 'component');
 
-  // Unified map for resolving CSS vars + values. system-light wins on conflicts
-  // over dark (dark is an overlay).
-  const unifiedMap: TokenMap = {
-    ...globalMap,
-    ...systemLightMap,
-    ...componentMap,
-  };
-  const resolved = resolveReferences(unifiedMap);
-  const nameToPath = buildNameToPathMap(unifiedMap);
+  // Light-mode resolution space: globals + light system + components.
+  const lightSpace: TokenMap = { ...globalMap, ...systemLightMap, ...componentMap };
+  const lightResolved = resolveReferences(lightSpace);
+  const lightNameToPath = buildNameToPathMap(lightSpace);
 
-  // For dark tokens: build an independent resolution against globals only.
-  const darkResolutionMap: TokenMap = { ...globalMap, ...systemDarkRawMap };
-  const resolvedDark = resolveReferences(darkResolutionMap);
-  const darkNameToPath = buildNameToPathMap(darkResolutionMap);
+  // Dark-mode resolution space: globals + dark system overrides.
+  const darkSpace: TokenMap = { ...globalMap, ...systemDarkMap };
+  const darkResolved = resolveReferences(darkSpace);
+  const darkNameToPath = buildNameToPathMap(darkSpace);
 
   const nodes: GraphNode[] = [];
   const nodesById = new Map<string, GraphNode>();
   const edges: GraphEdge[] = [];
+  let systemDarkOverrides = 0;
 
   const pushNode = (node: GraphNode) => {
     if (!nodesById.has(node.id)) {
@@ -103,7 +132,7 @@ export function buildTokenGraph(): TokenGraph {
 
   // --- Global nodes ---
   for (const path in globalMap) {
-    const r = resolved[path];
+    const r = lightResolved[path];
     if (!r) continue;
     pushNode({
       id: `global::${path}`,
@@ -117,67 +146,71 @@ export function buildTokenGraph(): TokenGraph {
     });
   }
 
-  // --- System-light nodes + edges to globals ---
+  // --- System nodes + edges (one node per path; capture light + dark values) ---
   for (const path in systemLightMap) {
-    const r = resolved[path];
-    if (!r) continue;
-    const nodeId = `system-light::${path}`;
+    const lightAppearance = resolveSystemAppearance(path, systemLightMap, lightNameToPath, lightResolved);
+    const darkAppearance = systemDarkMap[path]
+      ? resolveSystemAppearance(path, systemDarkMap, darkNameToPath, darkResolved)
+      : undefined;
+
+    const nodeId = `system::${path}`;
     pushNode({
       id: nodeId,
-      level: 'system-light',
+      level: 'system',
       category: categoryFromPath(path),
-      cssVarName: r.cssVarName,
-      type: r.type,
-      resolvedValue: r.resolvedValue,
+      cssVarName: lightResolved[path]?.cssVarName ?? '',
+      type: lightResolved[path]?.type ?? 'unknown',
+      resolvedValue: lightAppearance.value ?? '',
+      resolvedValueDark: darkAppearance?.value,
       displayLabel: labelFromPath(path),
       path,
     });
 
-    const raw = systemLightMap[path];
-    if (raw.isReference && raw.referencePath) {
-      const targetPath = findReferencedPath(raw.referencePath, nameToPath, resolved);
-      if (targetPath && globalMap[targetPath]) {
+    if (darkAppearance) systemDarkOverrides++;
+
+    const lightTarget = lightAppearance.globalTargetPath;
+    const darkTarget = darkAppearance?.globalTargetPath;
+
+    if (lightTarget && globalMap[lightTarget]) {
+      if (!darkAppearance) {
+        // Light-only system token — reference applies in both themes.
         edges.push({
           from: nodeId,
-          to: `global::${targetPath}`,
-          kind: 'system-light-global',
+          to: `global::${lightTarget}`,
+          kind: 'system-global',
+          mode: 'both',
+        });
+      } else if (lightTarget === darkTarget) {
+        // Dark override resolves to the same global — still a single edge.
+        edges.push({
+          from: nodeId,
+          to: `global::${lightTarget}`,
+          kind: 'system-global',
+          mode: 'both',
+        });
+      } else {
+        edges.push({
+          from: nodeId,
+          to: `global::${lightTarget}`,
+          kind: 'system-global',
+          mode: 'light',
         });
       }
     }
-  }
 
-  // --- System-dark nodes + edges to globals ---
-  for (const path in systemDarkRawMap) {
-    const r = resolvedDark[path];
-    if (!r) continue;
-    const nodeId = `system-dark::${path}`;
-    pushNode({
-      id: nodeId,
-      level: 'system-dark',
-      category: categoryFromPath(path),
-      cssVarName: r.cssVarName,
-      type: r.type,
-      resolvedValue: r.resolvedValue,
-      displayLabel: labelFromPath(path),
-      path,
-    });
-
-    const raw = systemDarkRawMap[path];
-    if (raw.isReference && raw.referencePath) {
-      const targetPath = findReferencedPath(raw.referencePath, darkNameToPath, resolvedDark);
-      if (targetPath && globalMap[targetPath]) {
-        edges.push({
-          from: nodeId,
-          to: `global::${targetPath}`,
-          kind: 'system-dark-global',
-        });
-      }
+    if (darkTarget && darkTarget !== lightTarget && globalMap[darkTarget]) {
+      edges.push({
+        from: nodeId,
+        to: `global::${darkTarget}`,
+        kind: 'system-global',
+        mode: 'dark',
+      });
     }
   }
 
-  // --- Component nodes + edges to system-light ---
+  // --- Component nodes + edges to system ---
   for (const path in componentMap) {
-    const r = resolved[path];
+    const r = lightResolved[path];
     if (!r) continue;
     const componentName = componentNameFromPath(path);
     const nodeId = `component::${path}`;
@@ -195,18 +228,18 @@ export function buildTokenGraph(): TokenGraph {
 
     const raw = componentMap[path];
     if (raw.isReference && raw.referencePath) {
-      const targetPath = findReferencedPath(raw.referencePath, nameToPath, resolved);
+      const targetPath = findReferencedPath(raw.referencePath, lightNameToPath, lightResolved);
       if (targetPath && systemLightMap[targetPath]) {
         edges.push({
           from: nodeId,
-          to: `system-light::${targetPath}`,
+          to: `system::${targetPath}`,
           kind: 'component-system',
+          mode: 'both',
         });
       }
     }
   }
 
-  // Sorted unique component names + categories.
   const componentNames = [
     ...new Set(nodes.filter(n => n.level === 'component').map(n => n.componentName!)),
   ].sort();
@@ -214,15 +247,15 @@ export function buildTokenGraph(): TokenGraph {
   const categories = [
     ...new Set(
       nodes
-        .filter(n => n.level === 'global' || n.level === 'system-light' || n.level === 'system-dark')
+        .filter(n => n.level === 'global' || n.level === 'system')
         .map(n => n.category),
     ),
   ].sort();
 
   const stats = {
     global: nodes.filter(n => n.level === 'global').length,
-    systemLight: nodes.filter(n => n.level === 'system-light').length,
-    systemDark: nodes.filter(n => n.level === 'system-dark').length,
+    system: nodes.filter(n => n.level === 'system').length,
+    systemDarkOverrides,
     component: nodes.filter(n => n.level === 'component').length,
     edges: edges.length,
   };

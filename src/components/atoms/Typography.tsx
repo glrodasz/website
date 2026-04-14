@@ -42,7 +42,11 @@ export const Typography: React.FC<TypographyProps> = ({
     button: 'span',
   };
 
-  const Element = (as || defaultElement[variant] || 'p') as React.ElementType;
+  const Element = (as || defaultElement[variant] || 'p') as React.ElementType<{
+    className?: string;
+    style?: React.CSSProperties;
+    children?: React.ReactNode;
+  }>;
   const classNames = ['qd-typography', `qd-typography--${variant}`, className]
     .filter(Boolean)
     .join(' ');

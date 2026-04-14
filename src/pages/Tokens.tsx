@@ -32,8 +32,28 @@ export default function Tokens() {
   const allComponentsOn = enabledComponents.size === graph.componentNames.length;
   const allCategoriesOn = enabledCategories.size === graph.categories.length;
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <div className="tokens-page">
+    <div className={`tokens-page${sidebarOpen ? ' tokens-page--sidebar-open' : ''}`}>
+      <button
+        type="button"
+        className="tokens-page__sidebar-toggle"
+        onClick={() => setSidebarOpen((v) => !v)}
+        aria-label={sidebarOpen ? 'Close filters' : 'Open filters'}
+        aria-expanded={sidebarOpen}
+      >
+        {sidebarOpen ? '✕' : '☰ Filters'}
+      </button>
+
+      {sidebarOpen && (
+        <div
+          className="tokens-page__backdrop"
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       <aside className="tokens-page__sidebar">
         <header className="tokens-page__header">
           <h1 className="tokens-page__title">Token Reference Tree</h1>

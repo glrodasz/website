@@ -3,6 +3,56 @@ import { buildTokenGraph } from '../tokens/graph-builder';
 import { TokenTree, type TokenTreeFilters } from '../components/organisms/TokenTree';
 import './Tokens.css';
 
+type SetStringSetter = (s: Set<string>) => void;
+
+interface FilterRowProps {
+  name: string;
+  checked: boolean;
+  focused?: boolean;
+  onToggleCheck: () => void;
+  onOnly: () => void;
+  onSelectLabel?: () => void;
+}
+
+/**
+ * Datadog-style filter row:
+ * - Checkbox on the left controls visibility
+ * - Label is clickable when onSelectLabel is provided (focus chain)
+ * - Hover reveals an inline "only" action to exclusively select this item
+ */
+function FilterRow({ name, checked, focused, onToggleCheck, onOnly, onSelectLabel }: FilterRowProps) {
+  return (
+    <div className={`tokens-filter-row${focused ? ' tokens-filter-row--focused' : ''}`}>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onToggleCheck}
+        aria-label={`Show ${name}`}
+      />
+      {onSelectLabel ? (
+        <button
+          type="button"
+          className="tokens-filter-row__label tokens-filter-row__label--clickable"
+          onClick={onSelectLabel}
+          title="Focus this component's reference chain"
+        >
+          {name}
+        </button>
+      ) : (
+        <span className="tokens-filter-row__label">{name}</span>
+      )}
+      <button
+        type="button"
+        className="tokens-filter-row__only"
+        onClick={onOnly}
+        title={`Select only ${name}`}
+      >
+        only
+      </button>
+    </div>
+  );
+}
+
 export default function Tokens() {
   const graph = useMemo(() => buildTokenGraph(), []);
 
@@ -14,25 +64,30 @@ export default function Tokens() {
   );
   const [showSystemLight, setShowSystemLight] = useState(true);
   const [showSystemDark, setShowSystemDark] = useState(true);
+  const [focusedComponent, setFocusedComponent] = useState<string | null>(null);
+  const [componentQuery, setComponentQuery] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const filters: TokenTreeFilters = {
     enabledComponents,
     enabledCategories,
     showSystemLight,
     showSystemDark,
+    focusedComponent,
   };
 
-  const toggle = (set: Set<string>, key: string, setter: (s: Set<string>) => void) => {
+  const toggleIn = (set: Set<string>, key: string, setter: SetStringSetter) => {
     const next = new Set(set);
     if (next.has(key)) next.delete(key);
     else next.add(key);
     setter(next);
   };
 
-  const allComponentsOn = enabledComponents.size === graph.componentNames.length;
-  const allCategoriesOn = enabledCategories.size === graph.categories.length;
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const filteredComponentNames = useMemo(() => {
+    const q = componentQuery.trim().toLowerCase();
+    if (!q) return graph.componentNames;
+    return graph.componentNames.filter((n) => n.toLowerCase().includes(q));
+  }, [componentQuery, graph.componentNames]);
 
   return (
     <div className={`tokens-page${sidebarOpen ? ' tokens-page--sidebar-open' : ''}`}>
@@ -59,9 +114,21 @@ export default function Tokens() {
           <h1 className="tokens-page__title">Token Reference Tree</h1>
           <p className="tokens-page__description">
             Interactive view of the three-level design token hierarchy. Drag to orbit,
-            scroll to zoom, hover a node to inspect its references.
+            scroll to zoom, hover a node to inspect its references. Click a component
+            name below to highlight its reference chain across all layers.
           </p>
         </header>
+
+        {focusedComponent && (
+          <div className="tokens-focus-banner">
+            <span>
+              Focused on <strong>{focusedComponent}</strong>
+            </span>
+            <button type="button" onClick={() => setFocusedComponent(null)}>
+              clear
+            </button>
+          </div>
+        )}
 
         <section className="tokens-page__stats">
           <div><strong>{graph.stats.global}</strong> global</div>
@@ -73,74 +140,95 @@ export default function Tokens() {
 
         <section className="tokens-page__filter-group">
           <h2 className="tokens-page__filter-title">Layers</h2>
-          <label className="tokens-page__filter-row">
+          <label className="tokens-filter-row tokens-filter-row--simple">
             <input
               type="checkbox"
               checked={showSystemLight}
-              onChange={() => setShowSystemLight(v => !v)}
+              onChange={() => setShowSystemLight((v) => !v)}
             />
-            System · light
+            <span className="tokens-filter-row__label">System · light</span>
           </label>
-          <label className="tokens-page__filter-row">
+          <label className="tokens-filter-row tokens-filter-row--simple">
             <input
               type="checkbox"
               checked={showSystemDark}
-              onChange={() => setShowSystemDark(v => !v)}
+              onChange={() => setShowSystemDark((v) => !v)}
             />
-            System · dark overrides
+            <span className="tokens-filter-row__label">System · dark overrides</span>
           </label>
         </section>
 
         <section className="tokens-page__filter-group">
           <div className="tokens-page__filter-head">
             <h2 className="tokens-page__filter-title">Categories</h2>
-            <button
-              type="button"
-              onClick={() =>
-                setEnabledCategories(
-                  allCategoriesOn ? new Set() : new Set(graph.categories),
-                )
-              }
-            >
-              {allCategoriesOn ? 'none' : 'all'}
-            </button>
+            <div className="tokens-page__bulk">
+              <button type="button" onClick={() => setEnabledCategories(new Set(graph.categories))}>
+                all
+              </button>
+              <span aria-hidden="true">·</span>
+              <button type="button" onClick={() => setEnabledCategories(new Set())}>
+                none
+              </button>
+            </div>
           </div>
           {graph.categories.map((cat) => (
-            <label key={cat} className="tokens-page__filter-row">
-              <input
-                type="checkbox"
-                checked={enabledCategories.has(cat)}
-                onChange={() => toggle(enabledCategories, cat, setEnabledCategories)}
-              />
-              {cat}
-            </label>
+            <FilterRow
+              key={cat}
+              name={cat}
+              checked={enabledCategories.has(cat)}
+              onToggleCheck={() => toggleIn(enabledCategories, cat, setEnabledCategories)}
+              onOnly={() => setEnabledCategories(new Set([cat]))}
+            />
           ))}
         </section>
 
         <section className="tokens-page__filter-group">
           <div className="tokens-page__filter-head">
             <h2 className="tokens-page__filter-title">Components</h2>
-            <button
-              type="button"
-              onClick={() =>
-                setEnabledComponents(
-                  allComponentsOn ? new Set() : new Set(graph.componentNames),
-                )
-              }
-            >
-              {allComponentsOn ? 'none' : 'all'}
-            </button>
+            <div className="tokens-page__bulk">
+              <button
+                type="button"
+                onClick={() => setEnabledComponents(new Set(graph.componentNames))}
+              >
+                all
+              </button>
+              <span aria-hidden="true">·</span>
+              <button type="button" onClick={() => setEnabledComponents(new Set())}>
+                none
+              </button>
+            </div>
           </div>
+
+          <input
+            type="search"
+            className="tokens-page__search"
+            value={componentQuery}
+            onChange={(e) => setComponentQuery(e.target.value)}
+            placeholder={`Filter ${graph.componentNames.length} components…`}
+            aria-label="Filter components by name"
+          />
+
           <div className="tokens-page__filter-list">
-            {graph.componentNames.map((name) => (
-              <label key={name} className="tokens-page__filter-row">
-                <input
-                  type="checkbox"
-                  checked={enabledComponents.has(name)}
-                  onChange={() => toggle(enabledComponents, name, setEnabledComponents)}
-                />
-                {name}
-              </label>
+            {filteredComponentNames.length === 0 && (
+              <div className="tokens-page__empty">No components match “{componentQuery}”.</div>
+            )}
+            {filteredComponentNames.map((name) => (
+              <FilterRow
+                key={name}
+                name={name}
+                checked={enabledComponents.has(name)}
+                focused={focusedComponent === name}
+                onToggleCheck={() =>
+                  toggleIn(enabledComponents, name, setEnabledComponents)
+                }
+                onOnly={() => {
+                  setEnabledComponents(new Set([name]));
+                  setFocusedComponent(name);
+                }}
+                onSelectLabel={() =>
+                  setFocusedComponent((current) => (current === name ? null : name))
+                }
+              />
             ))}
           </div>
         </section>

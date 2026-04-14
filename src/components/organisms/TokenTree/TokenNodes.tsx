@@ -29,12 +29,12 @@ function resolveNodeColor(node: GraphNode): THREE.Color {
 interface TokenNodesProps {
   nodes: GraphNode[];
   positions: Map<string, NodePosition>;
-  hoveredId: string | null;
+  seedIds: Set<string> | null;
   relatedIds: Set<string> | null;
   onHover: (node: GraphNode | null) => void;
 }
 
-export function TokenNodes({ nodes, positions, hoveredId, relatedIds, onHover }: TokenNodesProps) {
+export function TokenNodes({ nodes, positions, seedIds, relatedIds, onHover }: TokenNodesProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
 
   const { baseColors, count } = useMemo(() => {
@@ -58,15 +58,16 @@ export function TokenNodes({ nodes, positions, hoveredId, relatedIds, onHover }:
     mesh.instanceMatrix.needsUpdate = true;
   }, [nodes, positions]);
 
-  // Update colors based on hover state.
+  // Update colors based on hover / focus state.
   useEffect(() => {
     const mesh = meshRef.current;
     if (!mesh) return;
+    const hasHighlight = Boolean(seedIds && seedIds.size > 0);
     nodes.forEach((node, i) => {
       let c: THREE.Color;
-      if (!hoveredId) {
+      if (!hasHighlight) {
         c = baseColors[i];
-      } else if (node.id === hoveredId) {
+      } else if (seedIds!.has(node.id)) {
         c = HIGHLIGHT_COLOR;
       } else if (relatedIds?.has(node.id)) {
         c = baseColors[i];
@@ -76,7 +77,7 @@ export function TokenNodes({ nodes, positions, hoveredId, relatedIds, onHover }:
       mesh.setColorAt(i, c);
     });
     if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
-  }, [nodes, baseColors, hoveredId, relatedIds]);
+  }, [nodes, baseColors, seedIds, relatedIds]);
 
   if (nodes.length === 0) return null;
 

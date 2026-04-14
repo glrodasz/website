@@ -15,6 +15,7 @@ export interface TokenTreeFilters {
   enabledCategories: Set<string>;
   showSystemLight: boolean;
   showSystemDark: boolean;
+  focusedComponent: string | null;
 }
 
 interface TokenTreeProps {
@@ -50,29 +51,49 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
   const [hovered, setHovered] = useState<GraphNode | null>(null);
   const hoveredId = hovered?.id ?? null;
 
-  // Compute related edges + nodes for hover highlight.
-  const { relatedNodeIds, highlightEdgeIndices } = useMemo(() => {
-    if (!hoveredId) return { relatedNodeIds: null, highlightEdgeIndices: null };
-    const nodeIds = new Set<string>([hoveredId]);
+  /**
+   * Walks the graph two hops from a seed set so that
+   * component → system-light → global chains are highlighted at once.
+   */
+  const expandChain = (seed: Set<string>): {
+    nodeIds: Set<string>;
+    edgeIdxs: Set<number>;
+  } => {
+    const nodeIds = new Set(seed);
     const edgeIdxs = new Set<number>();
-    graph.edges.forEach((e, i) => {
-      if (e.from === hoveredId || e.to === hoveredId) {
-        edgeIdxs.add(i);
-        nodeIds.add(e.from);
-        nodeIds.add(e.to);
-      }
-    });
-    // Walk one additional hop so component→system→global is visible at once.
-    const firstNeighbors = new Set(nodeIds);
-    graph.edges.forEach((e, i) => {
-      if (firstNeighbors.has(e.from) || firstNeighbors.has(e.to)) {
-        edgeIdxs.add(i);
-        nodeIds.add(e.from);
-        nodeIds.add(e.to);
-      }
-    });
-    return { relatedNodeIds: nodeIds, highlightEdgeIndices: edgeIdxs };
-  }, [hoveredId, graph.edges]);
+    for (let hop = 0; hop < 2; hop++) {
+      const frontier = new Set(nodeIds);
+      graph.edges.forEach((e, i) => {
+        if (frontier.has(e.from) || frontier.has(e.to)) {
+          edgeIdxs.add(i);
+          nodeIds.add(e.from);
+          nodeIds.add(e.to);
+        }
+      });
+    }
+    return { nodeIds, edgeIdxs };
+  };
+
+  // Hover always wins over focus; fall back to component focus if set.
+  const { seedIds, relatedNodeIds, highlightEdgeIndices } = useMemo(() => {
+    if (hoveredId) {
+      const seed = new Set([hoveredId]);
+      const { nodeIds, edgeIdxs } = expandChain(seed);
+      return { seedIds: seed, relatedNodeIds: nodeIds, highlightEdgeIndices: edgeIdxs };
+    }
+    if (filters.focusedComponent) {
+      const seed = new Set(
+        graph.nodes
+          .filter((n) => n.level === 'component' && n.componentName === filters.focusedComponent)
+          .map((n) => n.id),
+      );
+      if (seed.size === 0) return { seedIds: null, relatedNodeIds: null, highlightEdgeIndices: null };
+      const { nodeIds, edgeIdxs } = expandChain(seed);
+      return { seedIds: seed, relatedNodeIds: nodeIds, highlightEdgeIndices: edgeIdxs };
+    }
+    return { seedIds: null, relatedNodeIds: null, highlightEdgeIndices: null };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hoveredId, filters.focusedComponent, graph.edges, graph.nodes]);
 
   return (
     <Canvas camera={{ position: [0, 6, 45], fov: 50 }} style={{ background: '#0b1018' }}>
@@ -118,7 +139,7 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
       <TokenNodes
         nodes={visibleNodes}
         positions={positions}
-        hoveredId={hoveredId}
+        seedIds={seedIds}
         relatedIds={relatedNodeIds}
         onHover={setHovered}
       />

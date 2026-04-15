@@ -75,6 +75,7 @@ export function TokenEdges({
           edges={edges}
           positions={positions}
           indices={highlightEdgeIndices}
+          visibleNodeIds={visibleNodeIds}
           theme={theme}
         />
       )}
@@ -86,11 +87,13 @@ function HighlightedEdges({
   edges,
   positions,
   indices,
+  visibleNodeIds,
   theme,
 }: {
   edges: GraphEdge[];
   positions: Map<string, NodePosition>;
   indices: Set<number>;
+  visibleNodeIds: Set<string>;
   theme: ThemeMode;
 }) {
   const geometries = useMemo(() => {
@@ -101,13 +104,14 @@ function HighlightedEdges({
     indices.forEach((i) => {
       const edge = edges[i];
       if (!edgeMatchesTheme(edge, theme)) return;
+      if (!visibleNodeIds.has(edge.from) || !visibleNodeIds.has(edge.to)) return;
       const fromPos = positions.get(edge.from);
       const toPos = positions.get(edge.to);
       if (!fromPos || !toPos) return;
       byKind[edge.kind].push(fromPos.x, fromPos.y, fromPos.z, toPos.x, toPos.y, toPos.z);
     });
     return byKind;
-  }, [edges, positions, indices, theme]);
+  }, [edges, positions, indices, visibleNodeIds, theme]);
 
   return (
     <>

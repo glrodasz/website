@@ -57,8 +57,11 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
   const hoveredId = hovered?.id ?? null;
 
   /**
-   * Walks the graph two hops from a seed set so that
-   * component → system → global chains are highlighted at once.
+   * Walks outgoing references from a seed set (consumer → target).
+   * Component → system → global is a two-hop forward walk; we deliberately do
+   * NOT walk edges backward so that focusing a single component does not drag
+   * in every other component that happens to share a system token.
+   *
    * Only follows edges visible in the current theme.
    */
   const expandChain = (seed: Set<string>): {
@@ -67,16 +70,21 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
   } => {
     const nodeIds = new Set(seed);
     const edgeIdxs = new Set<number>();
+    let frontier: Set<string> = new Set(seed);
     for (let hop = 0; hop < 2; hop++) {
-      const frontier = new Set(nodeIds);
+      const nextFrontier = new Set<string>();
       graph.edges.forEach((e, i) => {
         if (e.mode !== 'both' && e.mode !== filters.theme) return;
-        if (frontier.has(e.from) || frontier.has(e.to)) {
+        if (frontier.has(e.from)) {
           edgeIdxs.add(i);
-          nodeIds.add(e.from);
-          nodeIds.add(e.to);
+          if (!nodeIds.has(e.to)) {
+            nodeIds.add(e.to);
+            nextFrontier.add(e.to);
+          }
         }
       });
+      frontier = nextFrontier;
+      if (frontier.size === 0) break;
     }
     return { nodeIds, edgeIdxs };
   };

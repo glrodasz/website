@@ -2,9 +2,10 @@
  * Main 3D visualization canvas for the token reference tree.
  */
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
+import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import type { GraphNode, ThemeMode, TokenGraph } from '../../../tokens/graph-builder';
 import { computeLayout, computeGroupLabels, LAYER_X } from './layout';
 import { TokenNodes } from './TokenNodes';
@@ -40,6 +41,8 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
     () => computeGroupLabels(graph.nodes, positions),
     [graph.nodes, positions],
   );
+
+  const controlsRef = useRef<OrbitControlsImpl>(null);
 
   const visibleNodes = useMemo(() => {
     return graph.nodes.filter((n) => {
@@ -102,10 +105,11 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
   const layerLabels = layerLabelsFor(filters.theme);
 
   return (
-    <Canvas camera={{ position: [0, 6, 45], fov: 50 }} style={{ background }}>
+    <div className="token-tree">
+      <Canvas camera={{ position: [0, 6, 45], fov: 50 }} style={{ background }}>
       <ambientLight intensity={0.7} />
       <directionalLight position={[10, 20, 10]} intensity={0.8} />
-      <OrbitControls makeDefault enableDamping dampingFactor={0.08} />
+      <OrbitControls ref={controlsRef} makeDefault enableDamping dampingFactor={0.08} />
 
       {layerLabels.map((l) => (
         <Text
@@ -164,6 +168,16 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
         </Html>
       )}
     </Canvas>
+      <button
+        type="button"
+        className="token-tree__recenter"
+        onClick={() => controlsRef.current?.reset()}
+        aria-label="Recenter camera"
+        title="Recenter camera"
+      >
+        ⌖
+      </button>
+    </div>
   );
 }
 

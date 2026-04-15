@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './hooks/useTheme';
 import Navigation from './components/organisms/Navigation';
@@ -8,6 +9,9 @@ import AboutHistory from './pages/AboutHistory';
 import AboutLifestyle from './pages/AboutLifestyle';
 import Courses from './pages/Courses';
 import Contact from './pages/Contact';
+
+// Heavy 3D visualization — lazy-loaded so it doesn't bloat the main bundle.
+const Tokens = lazy(() => import('./pages/Tokens'));
 
 function App() {
   return (
@@ -22,6 +26,14 @@ function App() {
             <Route path="/about/lifestyle" element={<AboutLifestyle />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/tokens"
+              element={
+                <Suspense fallback={null}>
+                  <Tokens />
+                </Suspense>
+              }
+            />
           </Routes>
         </main>
         <Footer />

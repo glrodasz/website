@@ -13,7 +13,7 @@ interface ColorValue {
   hex: string;
 }
 
-interface ParsedToken {
+export interface ParsedToken {
   type: string;
   value: string | number;
   extensions?: any;
@@ -22,11 +22,11 @@ interface ParsedToken {
   referencePath?: string;
 }
 
-interface TokenMap {
+export interface TokenMap {
   [path: string]: ParsedToken;
 }
 
-interface ResolvedToken {
+export interface ResolvedToken {
   originalPath: string;
   cssVarName: string;
   type: string;
@@ -35,7 +35,7 @@ interface ResolvedToken {
   aliasTarget?: string;
 }
 
-interface ResolvedTokenMap {
+export interface ResolvedTokenMap {
   [path: string]: ResolvedToken;
 }
 
@@ -130,7 +130,7 @@ export function parseTokens(
  * Build a mapping of Figma variable names to internal paths
  * for resolving aliasData references
  */
-function buildNameToPathMap(tokenMap: TokenMap): Map<string, string> {
+export function buildNameToPathMap(tokenMap: TokenMap): Map<string, string> {
   const nameToPath = new Map<string, string>();
 
   for (const path in tokenMap) {
@@ -162,7 +162,7 @@ function buildNameToPathMap(tokenMap: TokenMap): Map<string, string> {
  * Find the target path for a Figma reference
  * Tries multiple strategies to locate the referenced token
  */
-function findReferencedPath(
+export function findReferencedPath(
   referencePath: string,
   nameToPath: Map<string, string>,
   resolvedMap: ResolvedTokenMap

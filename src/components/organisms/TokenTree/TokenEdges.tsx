@@ -23,6 +23,7 @@ interface TokenEdgesProps {
   visibleNodeIds: Set<string>;
   theme: ThemeMode;
   highlightEdgeIndices: Set<number> | null;
+  isolated?: boolean;
 }
 
 export function TokenEdges({
@@ -31,6 +32,7 @@ export function TokenEdges({
   visibleNodeIds,
   theme,
   highlightEdgeIndices,
+  isolated = false,
 }: TokenEdgesProps) {
   const byKind = useMemo(() => {
     const groups: Record<EdgeKind, number[]> = {
@@ -54,7 +56,7 @@ export function TokenEdges({
 
   return (
     <group>
-      {(Object.keys(byKind) as EdgeKind[]).map((kind) => {
+      {!isolated && (Object.keys(byKind) as EdgeKind[]).map((kind) => {
         const verts = byKind[kind];
         if (verts.length === 0) return null;
         const geometry = new THREE.BufferGeometry();

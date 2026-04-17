@@ -11,6 +11,7 @@ import type { GraphNode, ThemeMode, TokenGraph } from '../../../tokens/graph-bui
 import { computeLayout, computeLayout2D, computeIsolatedLayout, computeGroupLabels, LAYER_X } from './layout';
 import { TokenNodes } from './TokenNodes';
 import { TokenEdges } from './TokenEdges';
+import { TokenLabels } from './TokenLabels';
 
 export interface TokenTreeFilters {
   enabledComponents: Set<string>;
@@ -198,6 +199,13 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
         relatedIds={isolated ? null : relatedNodeIds}
         theme={filters.theme}
         onHover={setHovered}
+      />
+
+      <TokenLabels
+        nodes={visibleNodes}
+        positions={positions}
+        isolated={isolated}
+        theme={filters.theme}
       />
 
       {hovered && (

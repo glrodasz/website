@@ -2,20 +2,23 @@
  * Main 3D visualization canvas for the token reference tree.
  */
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import type { GraphNode, ThemeMode, TokenGraph } from '../../../tokens/graph-builder';
-import { computeLayout, computeGroupLabels, LAYER_X } from './layout';
+import { computeLayout, computeLayout2D, computeIsolatedLayout, computeGroupLabels, LAYER_X } from './layout';
 import { TokenNodes } from './TokenNodes';
 import { TokenEdges } from './TokenEdges';
+import { TokenLabels } from './TokenLabels';
 
 export interface TokenTreeFilters {
   enabledComponents: Set<string>;
   enabledCategories: Set<string>;
   theme: ThemeMode;
   focusedComponent: string | null;
+  viewMode: '2d' | '3d';
 }
 
 interface TokenTreeProps {
@@ -36,22 +39,7 @@ function layerLabelsFor(theme: ThemeMode) {
 }
 
 export function TokenTree({ graph, filters }: TokenTreeProps) {
-  const positions = useMemo(() => computeLayout(graph.nodes), [graph.nodes]);
-  const groupLabels = useMemo(
-    () => computeGroupLabels(graph.nodes, positions),
-    [graph.nodes, positions],
-  );
-
   const controlsRef = useRef<OrbitControlsImpl>(null);
-
-  const visibleNodes = useMemo(() => {
-    return graph.nodes.filter((n) => {
-      if (n.level === 'component') return filters.enabledComponents.has(n.componentName ?? '');
-      return filters.enabledCategories.has(n.category); // global + system
-    });
-  }, [graph.nodes, filters]);
-
-  const visibleNodeIds = useMemo(() => new Set(visibleNodes.map((n) => n.id)), [visibleNodes]);
 
   const [hovered, setHovered] = useState<GraphNode | null>(null);
   const hoveredId = hovered?.id ?? null;
@@ -109,15 +97,65 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoveredId, filters.focusedComponent, filters.theme, graph.edges, graph.nodes]);
 
+  // Isolate mode: component is focused and chain has nodes.
+  const chainNodes = useMemo(
+    () => (relatedNodeIds ? graph.nodes.filter((n) => relatedNodeIds.has(n.id)) : []),
+    [graph.nodes, relatedNodeIds],
+  );
+  const isolated = filters.focusedComponent !== null && chainNodes.length > 0;
+
+  const positions = useMemo(() => {
+    if (isolated) return computeIsolatedLayout(chainNodes);
+    if (filters.viewMode === '2d') return computeLayout2D(graph.nodes);
+    return computeLayout(graph.nodes);
+  }, [graph.nodes, filters.viewMode, isolated, chainNodes]);
+
+  const visibleNodes = useMemo(() => {
+    if (isolated) return chainNodes;
+    return graph.nodes.filter((n) => {
+      if (n.level === 'component') return filters.enabledComponents.has(n.componentName ?? '');
+      return filters.enabledCategories.has(n.category);
+    });
+  }, [graph.nodes, filters, isolated, chainNodes]);
+
+  const visibleNodeIds = useMemo(() => new Set(visibleNodes.map((n) => n.id)), [visibleNodes]);
+
+  const groupLabels = useMemo(
+    () => computeGroupLabels(visibleNodes, positions),
+    [visibleNodes, positions],
+  );
+
+  // Reset camera when viewMode changes or when entering/leaving isolate mode.
+  useEffect(() => {
+    const ctrl = controlsRef.current;
+    if (!ctrl) return;
+    const cam = ctrl.object as THREE.PerspectiveCamera;
+    if (filters.viewMode === '2d') {
+      cam.position.set(0, 0, 80);
+    } else {
+      cam.position.set(0, 6, 45);
+    }
+    cam.lookAt(0, 0, 0);
+    ctrl.target.set(0, 0, 0);
+    ctrl.update();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters.viewMode, isolated]);
+
   const background = filters.theme === 'dark' ? '#0b1018' : '#f1f5f9';
   const layerLabels = layerLabelsFor(filters.theme);
 
   return (
     <div className="token-tree">
-      <Canvas camera={{ position: [0, 6, 45], fov: 50 }} style={{ background }}>
+      <Canvas camera={{ position: [0, 0, 80], fov: 50 }} style={{ background }}>
       <ambientLight intensity={0.7} />
       <directionalLight position={[10, 20, 10]} intensity={0.8} />
-      <OrbitControls ref={controlsRef} makeDefault enableDamping dampingFactor={0.08} />
+      <OrbitControls
+        ref={controlsRef}
+        makeDefault
+        enableDamping
+        dampingFactor={0.08}
+        enableRotate={filters.viewMode === '3d'}
+      />
 
       {layerLabels.map((l) => (
         <Text
@@ -151,15 +189,23 @@ export function TokenTree({ graph, filters }: TokenTreeProps) {
         visibleNodeIds={visibleNodeIds}
         theme={filters.theme}
         highlightEdgeIndices={highlightEdgeIndices}
+        isolated={isolated}
       />
 
       <TokenNodes
         nodes={visibleNodes}
         positions={positions}
-        seedIds={seedIds}
-        relatedIds={relatedNodeIds}
+        seedIds={isolated ? null : seedIds}
+        relatedIds={isolated ? null : relatedNodeIds}
         theme={filters.theme}
         onHover={setHovered}
+      />
+
+      <TokenLabels
+        nodes={visibleNodes}
+        positions={positions}
+        isolated={isolated}
+        theme={filters.theme}
       />
 
       {hovered && (

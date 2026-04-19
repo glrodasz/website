@@ -63,6 +63,7 @@ export default function Tokens() {
     () => new Set(graph.categories),
   );
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
   const [focusedComponent, setFocusedComponent] = useState<string | null>(null);
   const [componentQuery, setComponentQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -72,6 +73,7 @@ export default function Tokens() {
     enabledCategories,
     theme,
     focusedComponent,
+    viewMode,
   };
 
   const toggleIn = (set: Set<string>, key: string, setter: SetStringSetter) => {
@@ -138,6 +140,34 @@ export default function Tokens() {
           </div>
           <div><strong>{graph.stats.component}</strong> component</div>
           <div><strong>{graph.stats.edges}</strong> references</div>
+        </section>
+
+        <section className="tokens-page__filter-group">
+          <h2 className="tokens-page__filter-title">View</h2>
+          <div
+            className="tokens-page__theme-switch"
+            role="radiogroup"
+            aria-label="View mode"
+          >
+            <button
+              type="button"
+              role="radio"
+              aria-checked={viewMode === '2d'}
+              className={`tokens-page__theme-option${viewMode === '2d' ? ' tokens-page__theme-option--active' : ''}`}
+              onClick={() => setViewMode('2d')}
+            >
+              2D
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={viewMode === '3d'}
+              className={`tokens-page__theme-option${viewMode === '3d' ? ' tokens-page__theme-option--active' : ''}`}
+              onClick={() => setViewMode('3d')}
+            >
+              3D
+            </button>
+          </div>
         </section>
 
         <section className="tokens-page__filter-group">

@@ -1,9 +1,9 @@
 /**
  * Layout algorithm for the token tree 3D graph.
  *
- * Four X-axis layers: global | system-light | system-dark | component.
- * Within each layer, nodes are grouped by category (component name for the
- * component layer), with categories stacked along Z and tokens stacked along Y.
+ * Three X-axis layers: global | system | component.
+ * Within each layer, nodes are grouped by type (colors, spacing, border-radius,
+ * background-color, etc.) with gaps between groups.
  */
 
 import type { GraphNode, NodeLevel } from '../../../tokens/graph-builder';
@@ -20,26 +20,39 @@ export const LAYER_X: Record<NodeLevel, number> = {
   'component': 22,
 };
 
+/**
+ * Returns a semantic type key used to group tokens within each layer.
+ * Global/System: category (2nd path segment — "colors", "spacing", etc.)
+ * Component: property type (3rd path segment — "background-color", "text-color", etc.)
+ */
+export function tokenGroupKey(node: GraphNode): string {
+  if (node.level === 'component') {
+    const parts = node.path.split('.');
+    return parts[2] ?? 'other';
+  }
+  return node.category;
+}
+
+function bucketByLevelAndGroup(nodes: GraphNode[]): Map<NodeLevel, Map<string, GraphNode[]>> {
+  const byLevel = new Map<NodeLevel, Map<string, GraphNode[]>>();
+  for (const level of ['global', 'system', 'component'] as NodeLevel[]) {
+    byLevel.set(level, new Map());
+  }
+  for (const node of nodes) {
+    const key = tokenGroupKey(node);
+    const levelMap = byLevel.get(node.level)!;
+    if (!levelMap.has(key)) levelMap.set(key, []);
+    levelMap.get(key)!.push(node);
+  }
+  return byLevel;
+}
+
 const Y_STEP = 0.55;
 const Z_STEP = 4.5;
 
 export function computeLayout(nodes: GraphNode[]): Map<string, NodePosition> {
   const positions = new Map<string, NodePosition>();
-
-  // Bucket by (level, group-key) where group-key = category for global/system,
-  // componentName for component.
-  const byLevel = new Map<NodeLevel, Map<string, GraphNode[]>>();
-  for (const level of ['global', 'system', 'component'] as NodeLevel[]) {
-    byLevel.set(level, new Map());
-  }
-
-  for (const node of nodes) {
-    const groupKey =
-      node.level === 'component' ? (node.componentName ?? 'misc') : node.category;
-    const levelMap = byLevel.get(node.level)!;
-    if (!levelMap.has(groupKey)) levelMap.set(groupKey, []);
-    levelMap.get(groupKey)!.push(node);
-  }
+  const byLevel = bucketByLevelAndGroup(nodes);
 
   for (const [level, groups] of byLevel.entries()) {
     const groupKeys = [...groups.keys()].sort();
@@ -71,9 +84,88 @@ export interface GroupLabel {
   position: NodePosition;
 }
 
+const Y_STEP_2D = 0.55;
+const CATEGORY_GAP_2D = 1.8;
+
 /**
- * Returns one label per (level, group) placed above the tallest member so the
- * visualization is legible without drawing text for every node.
+ * 2D layout: all nodes in the X-Y plane (Z=0). Type groups are stacked
+ * vertically with a gap between them so the graph reads clearly straight-on.
+ */
+export function computeLayout2D(nodes: GraphNode[]): Map<string, NodePosition> {
+  const positions = new Map<string, NodePosition>();
+  const byLevel = bucketByLevelAndGroup(nodes);
+
+  for (const [level, groups] of byLevel.entries()) {
+    const groupKeys = [...groups.keys()].sort();
+
+    let totalHeight = 0;
+    groupKeys.forEach((key, gi) => {
+      totalHeight += groups.get(key)!.length * Y_STEP_2D;
+      if (gi < groupKeys.length - 1) totalHeight += CATEGORY_GAP_2D;
+    });
+
+    let currentY = totalHeight / 2;
+
+    groupKeys.forEach((groupKey, gi) => {
+      const members = groups.get(groupKey)!;
+      members.sort((a, b) => a.path.localeCompare(b.path));
+      members.forEach((node, mi) => {
+        positions.set(node.id, {
+          x: LAYER_X[level],
+          y: currentY - mi * Y_STEP_2D,
+          z: 0,
+        });
+      });
+      currentY -= members.length * Y_STEP_2D;
+      if (gi < groupKeys.length - 1) currentY -= CATEGORY_GAP_2D;
+    });
+  }
+
+  return positions;
+}
+
+const Y_STEP_ISOLATED = 1.4;
+const ISOLATED_GROUP_GAP = 2.4;
+
+/**
+ * Isolated layout: used when a single component is focused. Chain nodes
+ * are grouped by token type within each layer, with generous spacing.
+ */
+export function computeIsolatedLayout(chainNodes: GraphNode[]): Map<string, NodePosition> {
+  const positions = new Map<string, NodePosition>();
+  const byLevel = bucketByLevelAndGroup(chainNodes);
+
+  for (const [level, groups] of byLevel.entries()) {
+    const groupKeys = [...groups.keys()].sort();
+
+    let totalHeight = 0;
+    groupKeys.forEach((key, gi) => {
+      totalHeight += groups.get(key)!.length * Y_STEP_ISOLATED;
+      if (gi < groupKeys.length - 1) totalHeight += ISOLATED_GROUP_GAP;
+    });
+
+    let currentY = totalHeight / 2;
+
+    groupKeys.forEach((groupKey, gi) => {
+      const members = groups.get(groupKey)!;
+      members.sort((a, b) => a.path.localeCompare(b.path));
+      members.forEach((node, mi) => {
+        positions.set(node.id, {
+          x: LAYER_X[level],
+          y: currentY - mi * Y_STEP_ISOLATED,
+          z: 0,
+        });
+      });
+      currentY -= members.length * Y_STEP_ISOLATED;
+      if (gi < groupKeys.length - 1) currentY -= ISOLATED_GROUP_GAP;
+    });
+  }
+
+  return positions;
+}
+
+/**
+ * Returns one label per (level, group) placed above the tallest member.
  */
 export function computeGroupLabels(
   nodes: GraphNode[],
@@ -81,16 +173,15 @@ export function computeGroupLabels(
 ): GroupLabel[] {
   const labels = new Map<string, GroupLabel>();
   for (const node of nodes) {
-    const groupKey =
-      node.level === 'component' ? (node.componentName ?? 'misc') : node.category;
-    const key = `${node.level}::${groupKey}`;
+    const gk = tokenGroupKey(node);
+    const key = `${node.level}::${gk}`;
     const p = positions.get(node.id);
     if (!p) continue;
     const existing = labels.get(key);
     if (!existing || p.y > existing.position.y) {
       labels.set(key, {
         level: node.level,
-        key: groupKey,
+        key: gk,
         position: { x: p.x, y: p.y + 1.2, z: p.z },
       });
     }

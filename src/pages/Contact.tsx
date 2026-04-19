@@ -1,3 +1,4 @@
+import { Briefcase, HandWaving, Rocket } from 'phosphor-react';
 import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
@@ -17,59 +18,74 @@ const Contact: React.FC = () => (
       <div className="contact-intents">
 
         <div className="contact-intent">
-          <span className="contact-intent__label">Just saying hi?</span>
-          <p className="contact-intent__body">
-            Drop a quick hello or ask any question — I&apos;m always happy to hear from you. Slide into my DMs on Twitter&nbsp;/&nbsp;X or Instagram.
-          </p>
-          <div className="contact-intent__links">
-            <a
-              href="https://x.com/guillermorodas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-intent__link"
-            >
-              Twitter&nbsp;/&nbsp;X
-            </a>
-            <a
-              href="https://instagram.com/_guillermorodas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-intent__link"
-            >
-              Instagram
-            </a>
+          <div className="contact-intent__icon" aria-hidden="true">
+            <HandWaving size={28} weight="regular" />
+          </div>
+          <div className="contact-intent__content">
+            <span className="contact-intent__label">Just saying hi?</span>
+            <p className="contact-intent__body">
+              Drop a quick hello or ask any question — I&apos;m always happy to hear from you. Slide into my DMs on Twitter&nbsp;/&nbsp;X or Instagram.
+            </p>
+            <div className="contact-intent__links">
+              <a
+                href="https://x.com/guillermorodas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-intent__link"
+              >
+                Twitter&nbsp;/&nbsp;X
+              </a>
+              <a
+                href="https://instagram.com/_guillermorodas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-intent__link"
+              >
+                Instagram
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="contact-intent">
-          <span className="contact-intent__label">Want to work on something together?</span>
-          <p className="contact-intent__body">
-            I&apos;ve worked with several startups and I do entrepreneurship myself — so I know the difference between a bare idea and a real project. If you have more than just a concept and a solid deal to offer, write me directly.
-          </p>
-          <div className="contact-intent__links">
-            <a
-              href="mailto:me@guillermorodas.com"
-              className="contact-intent__link"
-            >
-              me@guillermorodas.com
-            </a>
+          <div className="contact-intent__icon" aria-hidden="true">
+            <Rocket size={28} weight="regular" />
+          </div>
+          <div className="contact-intent__content">
+            <span className="contact-intent__label">Want to work on something together?</span>
+            <p className="contact-intent__body">
+              I&apos;ve worked with several startups and I do entrepreneurship myself — so I know the difference between a bare idea and a real project. If you have more than just a concept and a solid deal to offer, write me directly.
+            </p>
+            <div className="contact-intent__links">
+              <a
+                href="mailto:me@guillermorodas.com"
+                className="contact-intent__link"
+              >
+                me@guillermorodas.com
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="contact-intent">
-          <span className="contact-intent__label">Job offer or career advice?</span>
-          <p className="contact-intent__body">
-            LinkedIn is the right place for professional conversations. Write me directly there.
-          </p>
-          <div className="contact-intent__links">
-            <a
-              href="https://linkedin.com/in/guillermorodas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-intent__link"
-            >
-              LinkedIn
-            </a>
+          <div className="contact-intent__icon" aria-hidden="true">
+            <Briefcase size={28} weight="regular" />
+          </div>
+          <div className="contact-intent__content">
+            <span className="contact-intent__label">Job offer or career advice?</span>
+            <p className="contact-intent__body">
+              LinkedIn is the right place for professional conversations. Write me directly there.
+            </p>
+            <div className="contact-intent__links">
+              <a
+                href="https://linkedin.com/in/guillermorodas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-intent__link"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
 

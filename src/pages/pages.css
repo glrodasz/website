@@ -631,12 +631,26 @@
 }
 
 .contact-intent {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
   padding: 32px 0;
   border-bottom: 1px solid var(--color-border);
 }
 
 .contact-intent:first-child {
   border-top: 1px solid var(--color-border);
+}
+
+.contact-intent__icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  padding-top: 2px;
+}
+
+.contact-intent__content {
+  flex: 1;
+  min-width: 0;
 }
 
 .contact-intent__label {

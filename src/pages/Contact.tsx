@@ -1,4 +1,5 @@
-import { Briefcase, HandWaving, Rocket } from 'phosphor-react';
+import { Briefcase, EnvelopeSimple, HandWaving, Rocket } from 'phosphor-react';
+import { FooterSocialIcon } from '../components/molecules/FooterSocialIcon/FooterSocialIcon';
 import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
@@ -33,6 +34,7 @@ const Contact: React.FC = () => (
                 rel="noopener noreferrer"
                 className="contact-intent__link"
               >
+                <FooterSocialIcon id="twitter" />
                 Twitter&nbsp;/&nbsp;X
               </a>
               <a
@@ -41,6 +43,7 @@ const Contact: React.FC = () => (
                 rel="noopener noreferrer"
                 className="contact-intent__link"
               >
+                <FooterSocialIcon id="instagram" />
                 Instagram
               </a>
             </div>
@@ -61,6 +64,7 @@ const Contact: React.FC = () => (
                 href="mailto:me@guillermorodas.com"
                 className="contact-intent__link"
               >
+                <EnvelopeSimple size={16} weight="regular" />
                 me@guillermorodas.com
               </a>
             </div>
@@ -83,6 +87,7 @@ const Contact: React.FC = () => (
                 rel="noopener noreferrer"
                 className="contact-intent__link"
               >
+                <FooterSocialIcon id="linkedin" />
                 LinkedIn
               </a>
             </div>

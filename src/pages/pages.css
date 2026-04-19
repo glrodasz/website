@@ -677,18 +677,24 @@
 }
 
 .contact-intent__link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.contact-intent__link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .contact-intent__link:hover {
-  border-bottom-color: var(--color-accent);
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 /* Language note */

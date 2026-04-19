@@ -621,6 +621,90 @@
   max-width: 480px;
 }
 
+/* Intent-based contact layout */
+.contact-intents {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.contact-intent {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-intent:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-intent__label {
+  display: block;
+  font-family: 'Syne', 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.contact-intent__body {
+  font-size: 0.97rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0 0 20px;
+  max-width: 520px;
+}
+
+.contact-intent__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.contact-intent__link {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-intent__link:hover {
+  border-bottom-color: var(--color-accent);
+  opacity: 0.85;
+}
+
+/* Language note */
+.contact-language-note {
+  max-width: 640px;
+  padding: 20px 24px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card, 10px);
+  border: 1px solid var(--color-border);
+}
+
+.contact-language-note__text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-language-note__link {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.contact-language-note__link:hover {
+  color: var(--color-accent);
+}
+
 .contact-simple__subtitle {
   font-family: 'Syne', 'Inter', sans-serif;
   font-size: 1.25rem;

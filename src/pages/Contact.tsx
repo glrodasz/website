@@ -25,7 +25,7 @@ const Contact: React.FC = () => (
           <div className="contact-intent__content">
             <span className="contact-intent__label">Just saying hi?</span>
             <p className="contact-intent__body">
-              Drop a quick hello or ask any question — I&apos;m always happy to hear from you. Slide into my DMs on Twitter&nbsp;/&nbsp;X or Instagram.
+              Drop a quick hello or ask any question — I&apos;m always happy to hear from you. Slide into my DMs on Twitter or Instagram.
             </p>
             <div className="contact-intent__links">
               <a
@@ -35,7 +35,7 @@ const Contact: React.FC = () => (
                 className="contact-intent__link"
               >
                 <FooterSocialIcon id="twitter" />
-                Twitter&nbsp;/&nbsp;X
+                Twitter
               </a>
               <a
                 href="https://instagram.com/_guillermorodas"
@@ -100,18 +100,22 @@ const Contact: React.FC = () => (
         <p className="contact-language-note__text">
           I write in Spanish on{' '}
           <a href="https://x.com/guillermorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
-            Twitter&nbsp;/&nbsp;X
+            <FooterSocialIcon id="twitter" />
+            Twitter
           </a>
           . If you&apos;d rather follow me in English, you&apos;ll find me on{' '}
           <a href="https://bsky.app/profile/guillermorodas.com" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+            <FooterSocialIcon id="bluesky" />
             Bluesky
           </a>
           ,{' '}
           <a href="https://threads.net/@_guillermorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+            <FooterSocialIcon id="threads" />
             Threads
           </a>
           , or{' '}
           <a href="https://mastodon.cloud/@guillermorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+            <FooterSocialIcon id="mastodon" />
             Mastodon
           </a>
           .

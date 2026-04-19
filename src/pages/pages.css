@@ -714,11 +714,20 @@
 }
 
 .contact-language-note__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: var(--color-text-muted);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
+}
+
+.contact-language-note__link svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 .contact-language-note__link:hover {

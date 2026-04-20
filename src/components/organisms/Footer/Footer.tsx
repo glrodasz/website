@@ -14,9 +14,6 @@ export interface FooterProps {
   socials?: SocialLink[];
 }
 
-const AI_WAITLIST =
-  'mailto:me@guillermorodas.com?subject=AI-First%20Programming%20Course%20Waitlist';
-
 export const Footer: FC<FooterProps> = ({
   year = new Date().getFullYear(),
   socials = footerSocials,
@@ -71,7 +68,7 @@ export const Footer: FC<FooterProps> = ({
                 <Link to="/courses">All courses</Link>
               </li>
               <li>
-                <a href={AI_WAITLIST}>AI-First — join waitlist</a>
+                <Link to="/courses#ai-first">AI-First — join waitlist</Link>
               </li>
             </ul>
           </div>

@@ -568,6 +568,21 @@
   margin-bottom: 24px;
 }
 
+@keyframes highlight-course-card {
+  0%, 40% {
+    outline: 3px solid var(--components-tokens--site--course-card--hover-border-color);
+    outline-offset: 6px;
+  }
+  100% {
+    outline: 3px solid transparent;
+    outline-offset: 6px;
+  }
+}
+
+#ai-first:target .featured-course-card {
+  animation: highlight-course-card 2s ease-out forwards;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .card-grid--3 {

@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
@@ -19,7 +20,16 @@ const INITIAL_TUTORIALS = 5;
 
 const Courses: React.FC = () => {
   const { theme } = useTheme();
+  const location = useLocation();
   const [showAllTutorials, setShowAllTutorials] = useState(false);
+
+  useEffect(() => {
+    if (location.hash === '#ai-first') {
+      const section = document.getElementById('ai-first');
+      section?.scrollIntoView({ behavior: 'smooth' });
+      section?.querySelector<HTMLInputElement>('input')?.focus();
+    }
+  }, [location.hash]);
   const visibleTutorials = useMemo(
     () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),
     [showAllTutorials],

@@ -15163,6 +15163,986 @@
           }
         }
       }
+    },
+    "Page-layout": {
+      "spacing": {
+        "hero-top": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "hero-bottom": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "hero-top-mobile": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "hero-bottom-mobile": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "section-vertical": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "section-horizontal": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "label-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "title-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Card-grid": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Card": {
+      "spacing": {
+        "body": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "tag-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "title-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "meta-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "meta-gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "excerpt-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Skills-grid": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "top": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "item": {
+        "border-radius": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Border radius/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-vertical": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "name-bottom": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Timeline": {
+      "spacing": {
+        "padding-left": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "top": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "line-offset": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "item-bottom": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "period-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "role-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "bullets-gap": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "bullet-left": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Education-grid": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "top": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "item": {
+        "border-radius": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Border radius/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "field-bottom": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Languages-list": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "top": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "item": {
+        "border-radius": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Border radius/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-vertical": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "gap": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Cta-group": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "top": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Recognitions-list": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "top": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "item": {
+        "border-radius": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Border radius/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-vertical": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Lead": {
+      "spacing": {
+        "bottom": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Playlist-card": {
+      "spacing": {
+        "grid-top": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "title-row-gap": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "title-row-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Tutorial": {
+      "spacing": {
+        "list-gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "row-gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "row-padding": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Course-section": {
+      "spacing": {
+        "load-more-top": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "grid-top": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "platform-card": {
+        "padding": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "platform-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "title-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "desc-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "featured": {
+        "border-radius": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Border radius/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "header-gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "header-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "title-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "desc-bottom": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
+    },
+    "Contact": {
+      "spacing": {
+        "intents-bottom": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-gap": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-padding": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-label-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-body-bottom": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-links-gap-y": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-links-gap-x": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "intent-icon-gap": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "language-note-padding": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "language-note-link-gap": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "subtitle-top": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "subtitle-bottom": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "social-list-gap": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "social-link-padding": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "layout-gap": {
+          "$type": "number",
+          "$value": 64,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lg",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "layout-gap-mobile": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "email-bottom": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "social-gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "form-gap": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "form-field-gap": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "form-input-padding": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "success-padding": {
+          "$type": "number",
+          "$value": 48,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "success-gap": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "form-input": {
+        "border-radius": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Border radius/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
     }
   },
   "logo": {

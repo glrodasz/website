@@ -436,7 +436,7 @@ export const GhostDark: Story = {
 
 1. **Never hardcode raw values.** No colors, spacing, radius, or typography values inline in CSS or components.
 
-2. **Components only consume Component tokens.** CSS files must only reference `--components-tokens--*` variables. If the token you need doesn't exist in `components.json`, add it there first — pointing to the appropriate system token. Never reach directly for `--system-tokens--*` or `--global-tokens--*` in component CSS.
+2. **All CSS uses Component tokens exclusively — no exceptions.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via `aliasData.targetVariableName`. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**.
 
 3. **System tokens bridge Global → Component.** System tokens give semantic meaning to raw global values. Component tokens then reference system tokens to scope them to a specific component context.
 

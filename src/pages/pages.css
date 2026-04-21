@@ -602,6 +602,11 @@
 }
 
 @media (max-width: 640px) {
+  .page-hero {
+    padding-top: var(--components-tokens--site--page-layout--spacing--hero-top-mobile);
+    padding-bottom: var(--components-tokens--site--page-layout--spacing--hero-bottom-mobile);
+  }
+
   .page-hero,
   .page-section {
     padding-left: var(--components-tokens--site--page-layout--spacing--section-horizontal);

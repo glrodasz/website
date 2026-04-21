@@ -1345,6 +1345,8 @@
   --components-tokens--site--course-card--logo-margin-bottom: var(--system-tokens--spacing--xs);
   --components-tokens--site--page-layout--spacing--hero-top: var(--system-tokens--spacing--lm);
   --components-tokens--site--page-layout--spacing--hero-bottom: var(--system-tokens--spacing--ml);
+  --components-tokens--site--page-layout--spacing--hero-top-mobile: var(--system-tokens--spacing--md);
+  --components-tokens--site--page-layout--spacing--hero-bottom-mobile: var(--system-tokens--spacing--sm);
   --components-tokens--site--page-layout--spacing--section-vertical: var(--system-tokens--spacing--ml);
   --components-tokens--site--page-layout--spacing--section-horizontal: var(--system-tokens--spacing--md);
   --components-tokens--site--page-layout--spacing--label-bottom: var(--system-tokens--spacing--sm);

@@ -24,12 +24,14 @@ const Courses: React.FC = () => {
   const [showAllTutorials, setShowAllTutorials] = useState(false);
 
   useEffect(() => {
-    if (location.hash === '#ai-first') {
-      const section = document.getElementById('ai-first');
-      section?.scrollIntoView({ behavior: 'smooth' });
+    if (location.hash !== '#ai-first') return;
+    const section = document.getElementById('ai-first');
+    section?.scrollIntoView({ behavior: 'smooth' });
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile) {
       section?.querySelector<HTMLInputElement>('input')?.focus();
     }
-  }, [location.hash]);
+  }, [location.key, location.hash]);
   const visibleTutorials = useMemo(
     () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),
     [showAllTutorials],

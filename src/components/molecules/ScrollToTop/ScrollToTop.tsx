@@ -11,11 +11,12 @@ export interface ScrollToTopProps {
  * React Router does not do this by default.
  */
 export const ScrollToTop: FC<ScrollToTopProps> = ({ behavior = 'instant' }) => {
-  const { pathname, search } = useLocation();
+  const { pathname, search, hash } = useLocation();
 
   useEffect(() => {
+    if (hash) return;
     window.scrollTo({ top: 0, left: 0, behavior });
-  }, [pathname, search, behavior]);
+  }, [pathname, search, hash, behavior]);
 
   return null;
 };

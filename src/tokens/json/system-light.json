@@ -6,12 +6,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.16078431904315948,
-            0.16078431904315948,
-            0.16078431904315948
+            0.8039215803146362,
+            0.5372549295425415,
+            0.003921568859368563
           ],
           "alpha": 1,
-          "hex": "#292929"
+          "hex": "#CD8901"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11218",
@@ -19,8 +19,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:2068:64/-1:-1",
-            "targetVariableName": "Colors/Custom/Principal palette/600",
+            "targetVariableId": "VariableID:7b1be5fb8e0c8a1fbc2f23b4c9709c527516f0bb/-1:-1",
+            "targetVariableName": "Colors/Support/Supernova/400",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }

@@ -108,12 +108,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.9686274509803922,
-            0.8745098039215686,
-            0.11372549019607843
+            0.929411768913269,
+            0.7019608020782471,
+            0.019607843831181526
           ],
           "alpha": 1,
-          "hex": "#F7DF1D"
+          "hex": "#EDB305"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:27:11222",
@@ -121,8 +121,8 @@
             "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:66c7ac8c033ebbf25e847112fa5f41cddd6c82bb/-1:-1",
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Chartreuse/400",
+            "targetVariableId": "VariableID:17:9497/-1:-1",
+            "targetVariableName": "Colors/Support/Supernova/300",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }

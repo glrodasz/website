@@ -48,6 +48,33 @@
   max-width: 680px;
 }
 
+.home-hero__promo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+  color: var(--color-text);
+  font-family: 'Lato', 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.home-hero__promo-pill:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+}
+
+.home-hero__promo-arrow {
+  font-size: 1.1em;
+  opacity: 0.6;
+}
+
 .home-hero__headline {
   font-family: 'Hind', 'Inter', sans-serif;
   font-size: clamp(2.2rem, 7vw, 3.6rem);

@@ -1439,11 +1439,11 @@
 [data-theme="light"] {
 
   /* Colors */
-  --system-tokens--colors--primary--principal: #CD8901;
+  --system-tokens--colors--primary--principal: #292929;
   --system-tokens--colors--primary--subtle: #525252;
   --system-tokens--colors--primary--off: #F5F5F5;
   --system-tokens--colors--primary--high: #292929;
-  --system-tokens--colors--complementary--principal: #F7DF1D;
+  --system-tokens--colors--complementary--principal: #CD8901;
   --system-tokens--colors--complementary--subtle: #313D00;
   --system-tokens--colors--complementary--off: #FBFFEB;
   --system-tokens--colors--complementary--high: #313D00;

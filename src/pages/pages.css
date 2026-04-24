@@ -40,7 +40,7 @@
 }
 
 .section-title {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-weight: 800;
   margin-bottom: var(--components-tokens--site--page-layout--spacing--title-bottom);
 }
@@ -116,7 +116,7 @@
 }
 
 .card__title {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: var(--components-tokens--site--card--spacing--title-bottom);
@@ -215,7 +215,7 @@
 }
 
 .timeline__company {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 2px;
@@ -419,7 +419,7 @@
 }
 
 .playlist-card__title {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.35;
@@ -519,7 +519,7 @@
 }
 
 .platform-course-card__title {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 var(--components-tokens--site--course-section--platform-card--title-bottom);
@@ -561,7 +561,7 @@
 }
 
 .featured-course-card__title {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
   margin-bottom: var(--components-tokens--site--course-section--featured--title-bottom);
@@ -682,7 +682,7 @@
 
 .contact-intent__label {
   display: block;
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -763,7 +763,7 @@
 }
 
 .contact-simple__subtitle {
-  font-family: 'Syne', 'Inter', sans-serif;
+  font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.25rem;
   font-weight: 700;
   margin: var(--components-tokens--site--contact--spacing--subtitle-top) 0

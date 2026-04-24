@@ -437,13 +437,13 @@
         "Large": {
           "Font-family": {
             "$type": "string",
-            "$value": "Manrope",
+            "$value": "'Inter', system-ui, sans-serif",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.variableId": "VariableID:2079:1618",
               "com.figma.aliasData": {
-                "targetVariableId": "VariableID:1d61edba4f2d891fc13a90e9393f53f3f845be83/-1:-1",
-                "targetVariableName": "Typography/Font-family/Headings",
+                "targetVariableId": "VariableID:625e98dd48df059db6e92c799c6926bd174d1a97/-1:-1",
+                "targetVariableName": "Typography/Font-family/Body",
                 "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
                 "targetVariableSetName": "System Tokens"
               }
@@ -493,13 +493,13 @@
         "Small": {
           "Font-family": {
             "$type": "string",
-            "$value": "Manrope",
+            "$value": "'Inter', system-ui, sans-serif",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.variableId": "VariableID:2079:1622",
               "com.figma.aliasData": {
-                "targetVariableId": "VariableID:1d61edba4f2d891fc13a90e9393f53f3f845be83/-1:-1",
-                "targetVariableName": "Typography/Font-family/Headings",
+                "targetVariableId": "VariableID:625e98dd48df059db6e92c799c6926bd174d1a97/-1:-1",
+                "targetVariableName": "Typography/Font-family/Body",
                 "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
                 "targetVariableSetName": "System Tokens"
               }
@@ -13461,6 +13461,25 @@
         }
       },
       "dropdown": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8196078431372549,
+            0.8196078431372549,
+            0.8196078431372549
+          ],
+          "alpha": 1.0,
+          "hex": "#D1D1D1"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Borders/neutral",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "theme-track": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",

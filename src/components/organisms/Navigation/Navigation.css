@@ -241,8 +241,9 @@ button.qd-navigation__link-btn:focus-visible {
   height: var(--components-tokens--nav-bar--sizing--theme-track-height);
   border-radius: var(--components-tokens--nav-bar--border-radius--theme-track);
   background-color: var(--components-tokens--nav-bar--background-color--theme-track);
+  border: 1px solid var(--components-tokens--nav-bar--border-color--theme-track);
   position: relative;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .qd-navigation__theme-knob {

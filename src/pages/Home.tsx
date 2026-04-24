@@ -64,7 +64,7 @@ const Home: React.FC = () => {
           <div className="home-hero__layout">
             <div className="home-hero__content-col">
               <div className="home-hero__text">
-                <a href="/courses" className="home-hero__promo-pill">
+                <a href="/courses#ai-first" className="home-hero__promo-pill">
                   <span className="home-hero__promo-icon" aria-hidden="true">⚡</span>
                   AI-first programming course
                   <span className="home-hero__promo-arrow" aria-hidden="true">›</span>

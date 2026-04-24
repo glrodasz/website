@@ -14999,6 +14999,26 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "placeholder-text": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2706,
+            0.2706,
+            0.2706
+          ],
+          "alpha": 1,
+          "hex": "#454545"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:page-placeholder-text",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Typography/Paragraph",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
       }
     },
     "Course-card": {

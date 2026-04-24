@@ -98,7 +98,7 @@ const Home: React.FC = () => {
                 </div>
                 <h3 className="home-course-card__name">AI-first programming</h3>
                 <p className="home-course-card__desc">
-                  Build software with AI as your primary tool — short, focused lessons across the stack.
+                  Build software with AI as your primary tool, short, focused lessons across the stack.
                 </p>
                 <WaitlistForm />
               </div>

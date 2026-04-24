@@ -1,12 +1,12 @@
 export const SITE_NAME = 'Guillermo Rodas';
 
 export const SITE_TAGLINE =
-  'Senior Full-stack AI JavaScript Engineer';
+  'Senior Full-stack AI Engineer';
 
 export const HERO_HEADLINE = 'Tech partner for big companies';
 
 export const HERO_DESCRIPTION =
-  "Hi, I'm Guillermo Rodas — AI developer for companies and community lead helping developers level up while shipping quality products.";
+  "Hi, I'm Guillermo Rodas, AI developer for companies and community lead helping developers level up while shipping quality products.";
 
 export const defaultTitle = `${SITE_NAME} | ${SITE_TAGLINE}`;
 

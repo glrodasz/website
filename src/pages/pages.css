@@ -45,6 +45,13 @@
   margin-bottom: var(--components-tokens--site--page-layout--spacing--title-bottom);
 }
 
+.about-placeholder__text {
+  color: var(--components-tokens--site--page--placeholder-text);
+  max-width: 640px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
 .section-divider {
   border: none;
   border-top: 1px solid var(--color-border);

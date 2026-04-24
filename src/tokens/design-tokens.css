@@ -1335,6 +1335,7 @@
 
   /* Site */
   --components-tokens--site--page--on-dark-text: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--site--page--placeholder-text: var(--system-tokens--colors--typography--paragraph);
   --components-tokens--site--course-card--border-color: var(--system-tokens--colors--borders--neutral);
   --components-tokens--site--course-card--surface-color: var(--system-tokens--colors--backgrounds--tertiary);
   --components-tokens--site--course-card--media-background-color: var(--system-tokens--colors--backgrounds--neutral);

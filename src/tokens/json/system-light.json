@@ -1642,7 +1642,7 @@
     "Font-family": {
       "Headings": {
         "$type": "string",
-        "$value": "'Syne', 'Inter', sans-serif",
+        "$value": "'DM Sans', 'Inter', sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2077:1525",
@@ -1650,8 +1650,8 @@
             "FONT_FAMILY"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:2071:93",
-            "targetVariableName": "Typography/Font-family/Syne",
+            "targetVariableId": "VariableID:2071:84",
+            "targetVariableName": "Typography/Font-family/DM-Sans",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }
@@ -1686,6 +1686,23 @@
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:2071:82",
             "targetVariableName": "Typography/Font-family/Inter",
+            "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
+            "targetVariableSetName": "Global Tokens"
+          }
+        }
+      },
+      "Code": {
+        "$type": "string",
+        "$value": "'JetBrains Mono', monospace",
+        "$extensions": {
+          "com.figma.type": "string",
+          "com.figma.variableId": "VariableID:2077:1530",
+          "com.figma.scopes": [
+            "FONT_FAMILY"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:2071:102",
+            "targetVariableName": "Typography/Font-family/JetBrains Mono",
             "targetVariableSetId": "VariableCollectionId:1d3761868c240a479b76816c19aca0adeb3667ba/-1:-1",
             "targetVariableSetName": "Global Tokens"
           }

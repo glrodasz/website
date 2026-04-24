@@ -3258,10 +3258,21 @@
       },
       "DM-Sans": {
         "$type": "string",
-        "$value": "DM-Sans",
+        "$value": "'DM Sans', 'Inter', sans-serif",
         "$extensions": {
           "com.figma.type": "string",
           "com.figma.variableId": "VariableID:2071:84",
+          "com.figma.scopes": [
+            "FONT_FAMILY"
+          ]
+        }
+      },
+      "JetBrains Mono": {
+        "$type": "string",
+        "$value": "'JetBrains Mono', monospace",
+        "$extensions": {
+          "com.figma.type": "string",
+          "com.figma.variableId": "VariableID:2071:102",
           "com.figma.scopes": [
             "FONT_FAMILY"
           ]

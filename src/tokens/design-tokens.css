@@ -225,7 +225,8 @@
   /* Typography */
   --global-tokens--typography--font-family--inter: 'Inter', system-ui, sans-serif;
   --global-tokens--typography--font-family--monstserrat: Montserrat;
-  --global-tokens--typography--font-family--dm-sans: DM-Sans;
+  --global-tokens--typography--font-family--dm-sans: 'DM Sans', 'Inter', sans-serif;
+  --global-tokens--typography--font-family--jetbrains-mono: 'JetBrains Mono', monospace;
   --global-tokens--typography--font-family--work-sans: Work-Sans;
   --global-tokens--typography--font-family--manrope: Manrope;
   --global-tokens--typography--font-family--poppins: Poppins;
@@ -295,9 +296,10 @@
   --system-tokens--typography--line-height--body--lg: 34px;
   --system-tokens--typography--line-height--body--xl: 48px;
   --system-tokens--typography--line-height--body--xxl: 59px;
-  --system-tokens--typography--font-family--headings: 'Syne', 'Inter', sans-serif;
+  --system-tokens--typography--font-family--headings: 'DM Sans', 'Inter', sans-serif;
   --system-tokens--typography--font-family--body: 'Inter', system-ui, sans-serif;
   --system-tokens--typography--font-family--alternative-text: 'Inter', system-ui, sans-serif;
+  --system-tokens--typography--font-family--code: 'JetBrains Mono', monospace;
   --system-tokens--typography--font-weight--weak: Regular;
   --system-tokens--typography--font-weight--moderate: Medium;
   --system-tokens--typography--font-weight--medium: Semibold;
@@ -539,6 +541,7 @@
   --components-tokens--nav-bar--text-color--theme-label: var(--system-tokens--colors--foregrounds--neutral);
   --components-tokens--nav-bar--border-color--default: var(--system-tokens--colors--borders--neutral);
   --components-tokens--nav-bar--border-color--dropdown: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--nav-bar--border-color--theme-track: var(--system-tokens--colors--borders--neutral);
   --components-tokens--nav-bar--outline-color--focus: var(--system-tokens--colors--complementary--principal);
   --components-tokens--nav-bar--border-radius--link: var(--system-tokens--border-radius--sm);
   --components-tokens--nav-bar--border-radius--dropdown: var(--system-tokens--border-radius--md);
@@ -675,11 +678,11 @@
   --components-tokens--typography--styles--title--small--font-weight: var(--system-tokens--typography--font-weight--strong);
   --components-tokens--typography--styles--title--small--font-size: var(--system-tokens--typography--font-size--headings--sm);
   --components-tokens--typography--styles--title--small--line-height: var(--system-tokens--typography--line-height--headings--sm);
-  --components-tokens--typography--styles--subtitle--large--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--typography--styles--subtitle--large--font-family: var(--system-tokens--typography--font-family--body);
   --components-tokens--typography--styles--subtitle--large--font-weight: var(--system-tokens--typography--font-weight--strong);
   --components-tokens--typography--styles--subtitle--large--font-size: var(--system-tokens--typography--font-size--headings--xs);
   --components-tokens--typography--styles--subtitle--large--line-height: var(--system-tokens--typography--line-height--headings--xs);
-  --components-tokens--typography--styles--subtitle--small--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--typography--styles--subtitle--small--font-family: var(--system-tokens--typography--font-family--body);
   --components-tokens--typography--styles--subtitle--small--font-weight: var(--system-tokens--typography--font-weight--strong);
   --components-tokens--typography--styles--subtitle--small--font-size: var(--system-tokens--typography--font-size--headings--xxs);
   --components-tokens--typography--styles--subtitle--small--line-height: var(--system-tokens--typography--line-height--headings--xxs);

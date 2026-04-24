@@ -1,5 +1,5 @@
 @import '../tokens/design-tokens.css';
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@600;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -115,6 +115,10 @@ ul, ol {
 button {
   font-family: var(--system-tokens--typography--font-family--body);
   cursor: pointer;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--system-tokens--typography--font-family--code);
 }
 
 .container {

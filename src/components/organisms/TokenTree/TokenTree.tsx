@@ -2,11 +2,10 @@
  * Main 3D visualization canvas for the token reference tree.
  */
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { type ComponentRef, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
-import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import type { GraphNode, ThemeMode, TokenGraph } from '../../../tokens/graph-builder';
 import { computeLayout, computeLayout2D, computeIsolatedLayout, computeGroupLabels, LAYER_X } from './layout';
 import { TokenNodes } from './TokenNodes';
@@ -39,7 +38,7 @@ function layerLabelsFor(theme: ThemeMode) {
 }
 
 export function TokenTree({ graph, filters }: TokenTreeProps) {
-  const controlsRef = useRef<OrbitControlsImpl>(null);
+  const controlsRef = useRef<ComponentRef<typeof OrbitControls>>(null);
 
   const [hovered, setHovered] = useState<GraphNode | null>(null);
   const hoveredId = hovered?.id ?? null;

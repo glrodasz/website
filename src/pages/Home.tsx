@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import {
@@ -8,7 +8,12 @@ import {
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
-import { defaultDescription, defaultTitle } from '../data/site';
+import {
+  defaultDescription,
+  defaultTitle,
+  HERO_HEADLINE,
+  HERO_DESCRIPTION,
+} from '../data/site';
 import { Seo } from '../components/Seo';
 import { writingPosts, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
@@ -49,13 +54,7 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 };
 
 const Home: React.FC = () => {
-  const [heroPhotoFailed, setHeroPhotoFailed] = useState(false);
-
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
-
-  const onHeroPhotoError = useCallback(() => {
-    setHeroPhotoFailed(true);
-  }, []);
 
   return (
     <main className="page">
@@ -65,40 +64,18 @@ const Home: React.FC = () => {
           <div className="home-hero__layout">
             <div className="home-hero__content-col">
               <div className="home-hero__text">
-                <p className="home-hero__hello">Hello,</p>
-                <h1 className="home-hero__fullname">
-                  <span className="home-hero__name-line home-hero__name-line--first">
-                    I&apos;m <strong>Guillermo</strong>
-                  </span>
-                  <span className="home-hero__name-line">Rodas</span>
-                </h1>
-                <p className="home-hero__tagline">I help developers to improve their skills while creating quality products.</p>
-                <div className="home-hero__relocation-outer" aria-label="Location">
-
-                </div>
+                <a href="/courses#ai-first" className="home-hero__promo-pill">
+                  <span className="home-hero__promo-icon" aria-hidden="true">⚡</span>
+                  AI-first programming course
+                  <span className="home-hero__promo-arrow" aria-hidden="true">›</span>
+                </a>
+                <h1 className="home-hero__headline">{HERO_HEADLINE}</h1>
+                <p className="home-hero__description">{HERO_DESCRIPTION}</p>
                 <div className="home-hero__ctas">
-                  <Button to="/courses" variant="primary">AI Course</Button>
-                  <Button to="/courses" variant="secondary" className="home-hero__cta-courses">Courses</Button>
-                  <Button to="/contact" variant="tertiary">Get in touch</Button>
+                  <Button to="/courses" variant="primary">Courses</Button>
+                  <Button to="/contact" variant="secondary">Get in touch</Button>
                 </div>
               </div>
-            </div>
-            <div className="home-hero__photo-col">
-              {!heroPhotoFailed ? (
-                <img
-                  className="home-hero__photo"
-                  src="/images/guillermo-rodas.png"
-                  alt="Guillermo Rodas"
-                  width={800}
-                  height={800}
-                  onError={onHeroPhotoError}
-                />
-              ) : (
-                <div className="home-hero__photo-placeholder">
-                  <span className="home-hero__photo-placeholder-icon" aria-hidden="true">👤</span>
-                  <span>Photo coming soon</span>
-                </div>
-              )}
             </div>
           </div>
         </div>

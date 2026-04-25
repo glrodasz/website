@@ -1438,6 +1438,25 @@
   --components-tokens--site--contact--spacing--success-padding: var(--system-tokens--spacing--lm);
   --components-tokens--site--contact--spacing--success-gap: var(--system-tokens--spacing--sm);
   --components-tokens--site--contact--form-input--border-radius: var(--system-tokens--border-radius--sm);
+
+  /* Markdown */
+  --components-tokens--markdown--font-family--heading: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--markdown--font-family--code: var(--system-tokens--typography--font-family--code);
+  --components-tokens--markdown--font-size--heading: var(--system-tokens--typography--font-size--headings--xs);
+  --components-tokens--markdown--font-size--body: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--markdown--font-size--lead: var(--system-tokens--typography--font-size--body--md);
+  --components-tokens--markdown--color--heading: var(--system-tokens--colors--typography--heading);
+  --components-tokens--markdown--color--paragraph: var(--system-tokens--colors--typography--paragraph);
+  --components-tokens--markdown--color--strong: var(--system-tokens--colors--typography--heading);
+  --components-tokens--markdown--color--link: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--markdown--color--code-foreground: var(--system-tokens--colors--typography--heading);
+  --components-tokens--markdown--color--code-background: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--markdown--color--code-border: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--markdown--spacing--heading-top: var(--system-tokens--spacing--lm);
+  --components-tokens--markdown--spacing--heading-bottom: var(--system-tokens--spacing--sm);
+  --components-tokens--markdown--spacing--paragraph-bottom: var(--system-tokens--spacing--sm);
+  --components-tokens--markdown--spacing--lead-bottom: var(--system-tokens--spacing--md);
+  --components-tokens--markdown--border-radius--code: var(--system-tokens--border-radius--xs);
 }
 
 [data-theme="light"] {

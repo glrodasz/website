@@ -13,6 +13,10 @@ dist-ssr
 storybook-static
 *.local
 
+# This project uses pnpm (see pnpm-lock.yaml). npm/yarn lockfiles must not be committed.
+package-lock.json
+yarn.lock
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

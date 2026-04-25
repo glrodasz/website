@@ -1,4 +1,4 @@
-My career has been shaped by curiosity, self-learning, and the habit of building things before I felt fully ready. I started by modifying Blogger templates as a teenager, then moved through university, Java, full-stack JavaScript, developer communities, agencies, startups, and international teams. Across all those stages, the pattern has been the same: I learn by experimenting, sharing, and building with others.
+> My career has been shaped by curiosity, self-learning, and the habit of building things before I felt fully ready. I started by modifying Blogger templates as a teenager, then moved through university, Java, full-stack JavaScript, developer communities, agencies, startups, and international teams. Across all those stages, the pattern has been the same: I learn by experimenting, sharing, and building with others.
 
 ## Early Experiments with Tech at School
 

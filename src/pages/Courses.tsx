@@ -4,6 +4,7 @@ import { useTheme } from '../hooks/useTheme';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
+import { CourseBackground } from '../components/organisms/CourseBackground';
 import {
   FREE_YOUTUBE_PLAYLISTS,
   OTHER_PLATFORM_COURSES,
@@ -45,18 +46,21 @@ const Courses: React.FC = () => {
 
       <section className="page-section" id="ai-first">
         <div className="featured-course-card">
-          <div className="featured-course-card__header">
-            <Badge variant="accent" size="small" uppercase>
-              Coming Soon
-            </Badge>
+          <CourseBackground theme={theme} />
+          <div className="featured-course-card__content">
+            <div className="featured-course-card__header">
+              <Badge variant="accent" size="small" uppercase>
+                Coming Soon
+              </Badge>
+            </div>
+            <h2 className="featured-course-card__title">AI-First Programming Course</h2>
+            <p className="featured-course-card__description">
+              Learn to build software using AI as your primary tool. Covers JavaScript/TypeScript,
+              Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
+              who want to move fast and build better with AI.
+            </p>
+            <WaitlistForm />
           </div>
-          <h2 className="featured-course-card__title">AI-First Programming Course</h2>
-          <p className="featured-course-card__description">
-            Learn to build software using AI as your primary tool. Covers JavaScript/TypeScript,
-            Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
-            who want to move fast and build better with AI.
-          </p>
-          <WaitlistForm />
         </div>
       </section>
 

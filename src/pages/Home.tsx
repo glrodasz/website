@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
+import { CourseBackground } from '../components/organisms/CourseBackground';
 import {
   FREE_YOUTUBE_PLAYLISTS,
   HOME_FEATURED_PLAYLIST_ID,
@@ -54,6 +56,7 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 };
 
 const Home: React.FC = () => {
+  const { theme } = useTheme();
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
 
   return (
@@ -92,6 +95,7 @@ const Home: React.FC = () => {
           </div>
           <div className="home-courses__grid">
             <article className="home-course-card home-course-card--accent">
+              <CourseBackground theme={theme} />
               <div className="home-course-card__body">
                 <div className="home-course-card__badge-container">
                   <Badge variant="accent" size="small" uppercase>Coming soon</Badge>

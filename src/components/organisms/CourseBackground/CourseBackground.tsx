@@ -19,7 +19,7 @@ const SIGNAL_TRAVEL_MS = 480;   // time for a signal to cross one layer
 const NEURON_FLASH_MS  = 720;   // duration of the neuron glow
 
 // — Connection opacity ——————————————————————————————
-const CONN_OPACITY = { dark: 0.10, light: 0.16 } as const;
+const CONN_OPACITY = { dark: 0.10, light: 0.38 } as const;
 
 // Quick-rise / slow-decay envelope for the neuron flash
 function flashEase(t: number): number {

@@ -1,8 +1,9 @@
 .course-background {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: -50%;
+  left: 0;
+  width: 150%;
+  height: 200%;
   display: block;
   pointer-events: none;
   z-index: 0;

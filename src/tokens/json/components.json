@@ -16470,6 +16470,16 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "body": {
+        "$type": "string",
+        "$value": "Inter",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Typography/Font-family/Body",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
       }
     },
     "font-size": {

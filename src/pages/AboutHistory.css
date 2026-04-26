@@ -31,6 +31,7 @@
 }
 
 .history-bio blockquote p {
+  font-family: var(--components-tokens--markdown--font-family--body);
   font-size: var(--components-tokens--markdown--font-size--lead);
   line-height: 1.7;
   margin: 0;

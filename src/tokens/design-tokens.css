@@ -1442,6 +1442,7 @@
   /* Markdown */
   --components-tokens--markdown--font-family--heading: var(--system-tokens--typography--font-family--headings);
   --components-tokens--markdown--font-family--code: var(--system-tokens--typography--font-family--code);
+  --components-tokens--markdown--font-family--body: var(--system-tokens--typography--font-family--body);
   --components-tokens--markdown--font-size--heading: var(--system-tokens--typography--font-size--headings--xs);
   --components-tokens--markdown--font-size--body: var(--system-tokens--typography--font-size--body--sm);
   --components-tokens--markdown--font-size--lead: var(--system-tokens--typography--font-size--body--md);

@@ -192,6 +192,7 @@
 }
 
 .home-course-card--accent {
+  position: relative;
   border: 2px solid var(--color-accent);
   background: linear-gradient(
     135deg,
@@ -227,6 +228,8 @@
 }
 
 .home-course-card__body {
+  position: relative;
+  z-index: 1;
   padding: var(--components-tokens--card-text--spacing--vertical, 24px)
     var(--components-tokens--card-text--spacing--horizontal, 24px);
 }

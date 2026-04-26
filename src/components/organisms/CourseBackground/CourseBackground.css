@@ -1,0 +1,14 @@
+.course-background {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 150%;
+  height: 200%;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+  /* Fade the canvas out on the left so it never competes with the card text.
+     Transparent from 0 → 30 %, then blends in from 30 → 55 %, fully opaque after. */
+  mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 55%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 55%);
+}

@@ -1452,13 +1452,14 @@
   --components-tokens--markdown--color--code-foreground: var(--system-tokens--colors--typography--heading);
   --components-tokens--markdown--color--code-background: var(--system-tokens--colors--backgrounds--tertiary);
   --components-tokens--markdown--color--code-border: var(--system-tokens--colors--borders--neutral);
-  --components-tokens--markdown--color--quote-background: var(--system-tokens--colors--backgrounds--secondary);
+  --components-tokens--markdown--color--quote-background: var(--system-tokens--colors--backgrounds--tertiary);
   --components-tokens--markdown--color--quote-border: var(--system-tokens--colors--complementary--principal);
   --components-tokens--markdown--spacing--heading-top: var(--system-tokens--spacing--lm);
   --components-tokens--markdown--spacing--heading-bottom: var(--system-tokens--spacing--sm);
   --components-tokens--markdown--spacing--paragraph-bottom: var(--system-tokens--spacing--sm);
   --components-tokens--markdown--spacing--lead-bottom: var(--system-tokens--spacing--md);
-  --components-tokens--markdown--spacing--quote-padding-vertical: var(--system-tokens--spacing--sm);
+  --components-tokens--markdown--spacing--quote-padding-top: var(--system-tokens--spacing--md);
+  --components-tokens--markdown--spacing--quote-padding-bottom: var(--system-tokens--spacing--xs);
   --components-tokens--markdown--spacing--quote-padding-horizontal: var(--system-tokens--spacing--md);
   --components-tokens--markdown--border-radius--code: var(--system-tokens--border-radius--xs);
   --components-tokens--markdown--border-radius--quote: var(--system-tokens--border-radius--xs);

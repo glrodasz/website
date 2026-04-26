@@ -23,13 +23,12 @@
   font-size: var(--components-tokens--markdown--font-size--lead);
   line-height: 1.7;
   margin-bottom: var(--components-tokens--markdown--spacing--lead-bottom);
-  padding: var(--components-tokens--markdown--spacing--quote-padding-vertical)
-           var(--components-tokens--markdown--spacing--quote-padding-horizontal);
-  border-left: 3px solid var(--components-tokens--markdown--color--quote-border);
+  margin-left: 0;
+  padding: var(--components-tokens--markdown--spacing--quote-padding-top)
+           var(--components-tokens--markdown--spacing--quote-padding-horizontal)
+           var(--components-tokens--markdown--spacing--quote-padding-bottom);
+  border-left: 5px solid var(--components-tokens--markdown--color--quote-border);
   background-color: var(--components-tokens--markdown--color--quote-background);
-  border-radius: 0 var(--components-tokens--markdown--border-radius--quote)
-                   var(--components-tokens--markdown--border-radius--quote) 0;
-  text-align: left;
 }
 
 .history-bio a {

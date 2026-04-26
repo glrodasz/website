@@ -16643,16 +16643,16 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.9215686321258545,
-            0.9921568632125854,
-            1
+            0.9647058844566345,
+            0.9647058844566345,
+            0.9647058844566345
           ],
           "alpha": 1,
-          "hex": "#EBFDFF"
+          "hex": "#F6F6F6"
         },
         "$extensions": {
           "com.figma.aliasData": {
-            "targetVariableName": "Colors/Backgrounds/secondary",
+            "targetVariableName": "Colors/Backgrounds/tertiary",
             "targetVariableSetName": "System Tokens"
           }
         }
@@ -16718,12 +16718,22 @@
           }
         }
       },
-      "quote-padding-vertical": {
+      "quote-padding-top": {
         "$type": "number",
-        "$value": 12,
+        "$value": 24,
         "$extensions": {
           "com.figma.aliasData": {
-            "targetVariableName": "Spacing/sm",
+            "targetVariableName": "Spacing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "quote-padding-bottom": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
             "targetVariableSetName": "System Tokens"
           }
         }

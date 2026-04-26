@@ -19,16 +19,21 @@
   margin: 0 0 var(--components-tokens--markdown--spacing--paragraph-bottom);
 }
 
-.history-bio > p:first-child {
-  font-size: var(--components-tokens--markdown--font-size--lead);
-  line-height: 1.7;
-  margin-bottom: var(--components-tokens--markdown--spacing--lead-bottom);
+.history-bio blockquote {
   margin-left: 0;
+  margin-right: 0;
+  margin-bottom: var(--components-tokens--markdown--spacing--lead-bottom);
   padding: var(--components-tokens--markdown--spacing--quote-padding-top)
            var(--components-tokens--markdown--spacing--quote-padding-horizontal)
            var(--components-tokens--markdown--spacing--quote-padding-bottom);
   border-left: 5px solid var(--components-tokens--markdown--color--quote-border);
   background-color: var(--components-tokens--markdown--color--quote-background);
+}
+
+.history-bio blockquote p {
+  font-size: var(--components-tokens--markdown--font-size--lead);
+  line-height: 1.7;
+  margin: 0;
 }
 
 .history-bio a {

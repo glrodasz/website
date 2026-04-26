@@ -1,7 +1,3 @@
-.history-bio {
-  max-width: 720px;
-}
-
 .history-bio h2 {
   font-family: var(--components-tokens--markdown--font-family--heading);
   font-size: var(--components-tokens--markdown--font-size--heading);
@@ -27,6 +23,13 @@
   font-size: var(--components-tokens--markdown--font-size--lead);
   line-height: 1.7;
   margin-bottom: var(--components-tokens--markdown--spacing--lead-bottom);
+  padding: var(--components-tokens--markdown--spacing--quote-padding-vertical)
+           var(--components-tokens--markdown--spacing--quote-padding-horizontal);
+  border-left: 3px solid var(--components-tokens--markdown--color--quote-border);
+  background-color: var(--components-tokens--markdown--color--quote-background);
+  border-radius: 0 var(--components-tokens--markdown--border-radius--quote)
+                   var(--components-tokens--markdown--border-radius--quote) 0;
+  text-align: left;
 }
 
 .history-bio a {

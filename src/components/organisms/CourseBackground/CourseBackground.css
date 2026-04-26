@@ -11,4 +11,5 @@
      Transparent from 0 → 30 %, then blends in from 30 → 55 %, fully opaque after. */
   mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 55%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 55%);
+  filter: blur(2px);
 }

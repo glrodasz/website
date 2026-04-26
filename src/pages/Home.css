@@ -201,6 +201,13 @@
   );
 }
 
+.home-course-card--accent::before {
+  background: linear-gradient(180deg, var(--color-surface), 35%, var(--color-surface), 45%, transparent);
+  z-index: 1;
+  content: "";
+  opacity: 0.8;
+}
+
 .home-course-card__link {
   text-decoration: none;
   color: inherit;

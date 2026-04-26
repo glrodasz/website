@@ -16470,6 +16470,16 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "body": {
+        "$type": "string",
+        "$value": "Inter",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Typography/Font-family/Body",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
       }
     },
     "font-size": {
@@ -16637,6 +16647,44 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "quote-background": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9647058844566345,
+            0.9647058844566345,
+            0.9647058844566345
+          ],
+          "alpha": 1,
+          "hex": "#F6F6F6"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/tertiary",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "quote-border": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9686274509803922,
+            0.8745098039215686,
+            0.11372549019607843
+          ],
+          "alpha": 1,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Complementary/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
       }
     },
     "spacing": {
@@ -16679,10 +16727,50 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "quote-padding-top": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "quote-padding-bottom": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "quote-padding-horizontal": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Spacing/md",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
       }
     },
     "border-radius": {
       "code": {
+        "$type": "number",
+        "$value": 4,
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/xs",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "quote": {
         "$type": "number",
         "$value": 4,
         "$extensions": {

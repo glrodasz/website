@@ -6,105 +6,49 @@ export interface CourseBackgroundProps {
   theme?: 'light' | 'dark';
 }
 
-const OPACITY = {
-  dark:  { node: 0.88, line: 0.30, dust: 0.55 },
-  light: { node: 0.60, line: 0.18, dust: 0.35 },
-} as const;
+// — Network layout —————————————————————————————————
+const LAYERS = [3, 6, 8, 8, 6, 3];   // neurons per layer
+const LAYER_SPACING = 10;             // horizontal gap between layers
+const NEURON_V_SPACING = 4.5;         // vertical gap between neurons
+const NEURON_RADIUS = 0.42;
+const SIGNAL_RADIUS = 0.30;
 
-function readTokenColor(varName: string): THREE.Color {
-  const raw = getComputedStyle(document.documentElement)
-    .getPropertyValue(varName)
-    .trim();
-  try {
-    return new THREE.Color(raw);
-  } catch {
-    return new THREE.Color(0xf7df1d);
-  }
+// — Timing —————————————————————————————————————————
+const WAVE_INTERVAL_MS = 2400;  // new activation wave every ~2.4 s
+const SIGNAL_TRAVEL_MS = 480;   // time for a signal to cross one layer
+const NEURON_FLASH_MS  = 720;   // duration of the neuron glow
+
+// — Connection opacity ——————————————————————————————
+const CONN_OPACITY = { dark: 0.10, light: 0.16 } as const;
+
+// Quick-rise / slow-decay envelope for the neuron flash
+function flashEase(t: number): number {
+  if (t <= 0 || t >= 1) return 0;
+  return t < 0.2 ? t / 0.2 : 1 - (t - 0.2) / 0.8;
 }
 
-function buildGroup(theme: 'light' | 'dark'): THREE.Group {
-  // Read particle color from the design token system.
-  // --components-tokens--site--course-card--hover-border-color resolves to
-  // the complementary principal (yellow in dark, amber in light).
-  const color = readTokenColor('--components-tokens--site--course-card--hover-border-color');
-  const op = OPACITY[theme];
-  const group = new THREE.Group();
+function pickRandom<T>(arr: T[], n: number): T[] {
+  return [...arr].sort(() => Math.random() - 0.5).slice(0, n);
+}
 
-  // — Node particles: 55 points arranged along a wave ribbon —
-  const NODE_COUNT = 55;
-  const nodePos = new Float32Array(NODE_COUNT * 3);
+interface NeuronData {
+  mesh: THREE.Mesh;
+  mat:  THREE.MeshBasicMaterial;
+  pos:  THREE.Vector3;   // world-space snapshot (neurons never move)
+  activeAt: number;      // performance.now() when last activated, -Inf = idle
+}
 
-  for (let i = 0; i < NODE_COUNT; i++) {
-    const t = i / NODE_COUNT;
-    // Wave ribbon path: S-curve flowing bottom-left → top-right
-    const px = (t - 0.1) * 88 - 14;
-    const py = Math.sin(t * Math.PI * 2.5) * 16 - (t - 0.55) * 14;
-    const pz = Math.cos(t * Math.PI * 2.0) * 13;
-    const spread = 9;
-    nodePos[i * 3]     = px + (Math.random() - 0.5) * spread;
-    nodePos[i * 3 + 1] = py + (Math.random() - 0.5) * spread;
-    nodePos[i * 3 + 2] = pz + (Math.random() - 0.5) * spread * 0.55;
-  }
+interface SignalData {
+  mesh:      THREE.Mesh;
+  mat:       THREE.MeshBasicMaterial;
+  from:      THREE.Vector3;
+  to:        THREE.Vector3;
+  startTime: number;
+}
 
-  const nodeGeom = new THREE.BufferGeometry();
-  nodeGeom.setAttribute('position', new THREE.BufferAttribute(nodePos, 3));
-  const nodeMat = new THREE.PointsMaterial({
-    color,
-    size: 1.9,
-    transparent: true,
-    opacity: op.node,
-    sizeAttenuation: true,
-    depthWrite: false,
-  });
-  group.add(new THREE.Points(nodeGeom, nodeMat));
-
-  // — Lines between nearby node particles —
-  const MAX_DIST = 17;
-  const lineVerts: number[] = [];
-  for (let i = 0; i < NODE_COUNT; i++) {
-    for (let j = i + 1; j < NODE_COUNT; j++) {
-      const dx = nodePos[i * 3]     - nodePos[j * 3];
-      const dy = nodePos[i * 3 + 1] - nodePos[j * 3 + 1];
-      const dz = nodePos[i * 3 + 2] - nodePos[j * 3 + 2];
-      if (dx * dx + dy * dy + dz * dz < MAX_DIST * MAX_DIST) {
-        lineVerts.push(
-          nodePos[i * 3], nodePos[i * 3 + 1], nodePos[i * 3 + 2],
-          nodePos[j * 3], nodePos[j * 3 + 1], nodePos[j * 3 + 2],
-        );
-      }
-    }
-  }
-  const lineGeom = new THREE.BufferGeometry();
-  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
-  const lineMat = new THREE.LineBasicMaterial({
-    color,
-    transparent: true,
-    opacity: op.line,
-    depthWrite: false,
-  });
-  group.add(new THREE.LineSegments(lineGeom, lineMat));
-
-  // — Dust particles: 110 smaller points scattered in the same volume —
-  const DUST_COUNT = 110;
-  const dustPos = new Float32Array(DUST_COUNT * 3);
-  for (let i = 0; i < DUST_COUNT; i++) {
-    dustPos[i * 3]     = (Math.random() - 0.1) * 95 - 12;
-    dustPos[i * 3 + 1] = (Math.random() - 0.5) * 48;
-    dustPos[i * 3 + 2] = (Math.random() - 0.5) * 38;
-  }
-  const dustGeom = new THREE.BufferGeometry();
-  dustGeom.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
-  const dustMat = new THREE.PointsMaterial({
-    color,
-    size: 0.55,
-    transparent: true,
-    opacity: op.dust,
-    sizeAttenuation: true,
-    depthWrite: false,
-  });
-  group.add(new THREE.Points(dustGeom, dustMat));
-
-  return group;
+interface ScheduledEvent {
+  fireAt: number;
+  fn: () => void;
 }
 
 export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dark' }) => {
@@ -114,21 +58,135 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dar
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    // — Renderer ——————————————————————————————————
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-    camera.position.set(-2, 4, 68);
-    camera.lookAt(22, 0, 0);
 
-    const group = buildGroup(theme);
-    // Anchor the particle cluster to the right half of the card so the left
-    // side stays clear for the text content.
-    group.position.x = 14;
+    // Camera sits slightly left of centre and looks rightward so the network
+    // occupies the right half of the canvas naturally.
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 1000);
+    camera.position.set(-2, 0, 64);
+    camera.lookAt(24, 0, 0);
+
+    const group = new THREE.Group();
+    group.position.x = 8; // push network into the right half
     scene.add(group);
 
+    // — Design-token colour (yellow in dark, amber in light) ——
+    const rawColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--components-tokens--site--course-card--hover-border-color')
+      .trim();
+    const ACTIVE_COLOR = new THREE.Color(rawColor || '#f7df1d');
+    const IDLE_COLOR   = ACTIVE_COLOR.clone().multiplyScalar(0.12);
+
+    // — Neurons ———————————————————————————————————
+    const neuronGeom = new THREE.SphereGeometry(NEURON_RADIUS, 10, 10);
+    const neurons: NeuronData[][] = LAYERS.map((count, l) =>
+      Array.from({ length: count }, (_, n) => {
+        const mat  = new THREE.MeshBasicMaterial({ color: IDLE_COLOR.clone() });
+        const mesh = new THREE.Mesh(neuronGeom, mat);
+        mesh.position.set(
+          l * LAYER_SPACING,
+          (n - (count - 1) / 2) * NEURON_V_SPACING,
+          (Math.random() - 0.5) * 7,
+        );
+        group.add(mesh);
+        return { mesh, mat, pos: mesh.position.clone(), activeAt: -Infinity };
+      }),
+    );
+
+    // — Connections (single static geometry) ————————
+    const connVerts: number[] = [];
+    for (let l = 0; l < LAYERS.length - 1; l++) {
+      for (const a of neurons[l]) {
+        for (const b of neurons[l + 1]) {
+          connVerts.push(a.pos.x, a.pos.y, a.pos.z, b.pos.x, b.pos.y, b.pos.z);
+        }
+      }
+    }
+    const connGeom = new THREE.BufferGeometry();
+    connGeom.setAttribute(
+      'position',
+      new THREE.BufferAttribute(new Float32Array(connVerts), 3),
+    );
+    const connMat = new THREE.LineBasicMaterial({
+      color: ACTIVE_COLOR,
+      transparent: true,
+      opacity: CONN_OPACITY[theme],
+    });
+    group.add(new THREE.LineSegments(connGeom, connMat));
+
+    // — Signal sphere pool ——————————————————————
+    const POOL_SIZE = 24;
+    const signalGeom = new THREE.SphereGeometry(SIGNAL_RADIUS, 6, 6);
+    const pool: SignalData[] = Array.from({ length: POOL_SIZE }, () => {
+      const mat  = new THREE.MeshBasicMaterial({ color: ACTIVE_COLOR.clone(), transparent: true, opacity: 0 });
+      const mesh = new THREE.Mesh(signalGeom, mat);
+      mesh.visible = false;
+      group.add(mesh);
+      return { mesh, mat, from: new THREE.Vector3(), to: new THREE.Vector3(), startTime: -Infinity };
+    });
+    let activeSignals: SignalData[] = [];
+
+    function spawnSignal(from: THREE.Vector3, to: THREE.Vector3) {
+      const sig = pool.find(s => !s.mesh.visible);
+      if (!sig) return;
+      sig.from.copy(from);
+      sig.to.copy(to);
+      sig.startTime = performance.now();
+      sig.mesh.position.copy(from);
+      sig.mesh.visible = true;
+      sig.mat.opacity = 1;
+      activeSignals.push(sig);
+    }
+
+    // — Time-based event queue (avoids dangling setTimeout on unmount) —
+    const queue: ScheduledEvent[] = [];
+    function schedule(delayMs: number, fn: () => void) {
+      queue.push({ fireAt: performance.now() + delayMs, fn });
+    }
+
+    // — Activation wave —————————————————————————
+    let lastWaveTime = -Infinity;
+
+    function triggerWave() {
+      lastWaveTime = performance.now();
+
+      // Build the full propagation path upfront so we can schedule everything
+      // without needing to track mid-wave state.
+      let prevActive = pickRandom(neurons[0], Math.random() < 0.5 ? 2 : 1);
+
+      // Activate layer 0 immediately
+      prevActive.forEach(n => schedule(0, () => { n.activeAt = performance.now(); }));
+
+      for (let l = 1; l < LAYERS.length; l++) {
+        const sigDelay  = (l - 1) * SIGNAL_TRAVEL_MS; // signals leave when source activates
+        const nodeDelay = l * SIGNAL_TRAVEL_MS;         // targets activate when signal arrives
+
+        const sources = prevActive;
+        const targets = pickRandom(
+          neurons[l],
+          Math.min(Math.floor(Math.random() * 3) + 2, neurons[l].length),
+        );
+
+        // Spawn signals: each source sends to 1-2 of the chosen targets
+        sources.forEach(src => {
+          pickRandom(targets, Math.min(2, targets.length)).forEach(tgt => {
+            schedule(sigDelay, () => spawnSignal(src.pos, tgt.pos));
+          });
+        });
+
+        // Activate target neurons when signals arrive
+        targets.forEach(tgt => schedule(nodeDelay, () => { tgt.activeAt = performance.now(); }));
+
+        prevActive = targets;
+      }
+    }
+
+    // — Resize ——————————————————————————————————
     function resize() {
       const w = canvas!.clientWidth;
       const h = canvas!.clientHeight;
@@ -137,24 +195,60 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dar
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     }
-
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
     resize();
 
+    // — Animation loop ——————————————————————————
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let animId: number;
-    const start = performance.now();
 
     function animate() {
       animId = requestAnimationFrame(animate);
+      const now = performance.now();
+
       if (!prefersReduced) {
-        const t = (performance.now() - start) * 0.001;
-        // Oscillate ±30° on Y (~35 s period) so particles never swing past
-        // 90° and create an empty right side. Subtle X wobble for depth.
-        group.rotation.y = Math.sin(t * 0.18) * 0.52;
-        group.rotation.x = Math.sin(t * 0.27) * 0.07;
+        // Flush due events
+        for (let i = queue.length - 1; i >= 0; i--) {
+          if (now >= queue[i].fireAt) {
+            queue[i].fn();
+            queue.splice(i, 1);
+          }
+        }
+
+        // Trigger a new wave once the previous one has had time to clear
+        if (now - lastWaveTime > WAVE_INTERVAL_MS) triggerWave();
+
+        // Update neuron flash
+        for (const layer of neurons) {
+          for (const n of layer) {
+            if (n.activeAt === -Infinity) continue;
+            const t = (now - n.activeAt) / NEURON_FLASH_MS;
+            if (t >= 1) {
+              n.mat.color.copy(IDLE_COLOR);
+              n.mesh.scale.setScalar(1);
+              n.activeAt = -Infinity;
+            } else {
+              const intensity = flashEase(t);
+              n.mat.color.copy(IDLE_COLOR).lerp(ACTIVE_COLOR, intensity);
+              n.mesh.scale.setScalar(1 + intensity * 0.7);
+            }
+          }
+        }
+
+        // Update travelling signals
+        activeSignals = activeSignals.filter(sig => {
+          const t = Math.min((now - sig.startTime) / SIGNAL_TRAVEL_MS, 1);
+          sig.mesh.position.lerpVectors(sig.from, sig.to, t);
+          sig.mat.opacity = 1 - t * t; // fade out as it arrives
+          if (t >= 1) {
+            sig.mesh.visible = false;
+            return false;
+          }
+          return true;
+        });
       }
+
       renderer.render(scene, camera);
     }
 
@@ -164,16 +258,11 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dar
       cancelAnimationFrame(animId);
       ro.disconnect();
       renderer.dispose();
+      neuronGeom.dispose();
+      signalGeom.dispose();
+      connGeom.dispose();
     };
-  // Rebuild the scene when the theme changes so colors update.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="course-background"
-      aria-hidden="true"
-    />
-  );
+  return <canvas ref={canvasRef} className="course-background" aria-hidden="true" />;
 };

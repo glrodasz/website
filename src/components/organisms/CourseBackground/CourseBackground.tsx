@@ -120,10 +120,13 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dar
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-    camera.position.set(8, 4, 68);
-    camera.lookAt(18, 0, 0);
+    camera.position.set(-2, 4, 68);
+    camera.lookAt(22, 0, 0);
 
     const group = buildGroup(theme);
+    // Anchor the particle cluster to the right half of the card so the left
+    // side stays clear for the text content.
+    group.position.x = 14;
     scene.add(group);
 
     function resize() {
@@ -147,9 +150,10 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dar
       animId = requestAnimationFrame(animate);
       if (!prefersReduced) {
         const t = (performance.now() - start) * 0.001;
-        // Very slow Y-axis rotation (~2.5 min/revolution) + subtle X wobble
-        group.rotation.y = t * 0.040;
-        group.rotation.x = Math.sin(t * 0.18) * 0.055;
+        // Oscillate ±30° on Y (~35 s period) so particles never swing past
+        // 90° and create an empty right side. Subtle X wobble for depth.
+        group.rotation.y = Math.sin(t * 0.18) * 0.52;
+        group.rotation.x = Math.sin(t * 0.27) * 0.07;
       }
       renderer.render(scene, camera);
     }

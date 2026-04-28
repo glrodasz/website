@@ -437,6 +437,7 @@
   .home-hero__ctas {
     flex-direction: column;
     width: 100%;
+    max-width: 560px;
   }
 
   .home-hero__ctas .qd-button {

@@ -1,4 +1,4 @@
-import { useState, type FC } from 'react';
+import { useState, useEffect, type FC } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
@@ -27,13 +27,25 @@ export const Navigation: FC<NavigationProps> = ({
   brandMarkSrc = '/favicon.svg',
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  const closeMobile = () => {
-    setMobileOpen(false);
-    setAboutOpen(false);
-  };
+  const closeMobile = () => setMobileOpen(false);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMobile();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [mobileOpen]);
 
   const themeLabel = theme === 'dark' ? 'Dark' : 'Light';
   const ariaLabel = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
@@ -169,87 +181,169 @@ export const Navigation: FC<NavigationProps> = ({
         </div>
       </nav>
 
+      {/* Fullscreen overlay menu */}
       <div
         className={[
-          'qd-navigation__mobile',
-          mobileOpen && 'qd-navigation__mobile--open',
+          'qd-navigation__overlay',
+          mobileOpen && 'qd-navigation__overlay--open',
         ]
           .filter(Boolean)
           .join(' ')}
+        aria-hidden={!mobileOpen}
       >
-        <NavLink
-          to="/"
-          className={`${navLinkBtn} qd-navigation__mobile-link`}
-          onClick={closeMobile}
-          end
-        >
-          Home
-        </NavLink>
-
-        <div className="qd-navigation__mobile-about">
+        {/* Overlay header: brand + close button */}
+        <div className="qd-navigation__overlay-header">
+          <Link to="/" className="qd-navigation__brand" onClick={closeMobile}>
+            <img
+              className="qd-navigation__brand-mark"
+              src={brandMarkSrc}
+              alt=""
+              width={48}
+              height={48}
+            />
+            <span className="qd-navigation__brand-text">
+              <span className="qd-navigation__brand-name">{siteName}</span>
+              <span className="qd-navigation__brand-tagline">{siteTagline}</span>
+            </span>
+          </Link>
           <button
             type="button"
-            className={`${navLinkBtn} qd-navigation__mobile-link qd-navigation__mobile-about-btn`}
-            onClick={() => setAboutOpen((v) => !v)}
-            aria-expanded={aboutOpen}
+            className="qd-navigation__overlay-close"
+            onClick={closeMobile}
+            aria-label="Close menu"
           >
-            About
-            <span
-              className={[
-                'qd-navigation__chevron',
-                'qd-navigation__chevron--mobile',
-                aboutOpen && 'qd-navigation__chevron--mobile-open',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              aria-hidden
-            />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
           </button>
-          {aboutOpen && (
-            <div className="qd-navigation__mobile-sub">
-              <a
-                className="qd-navigation__dropdown-item"
-                href="https://vitae.guillermorodas.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMobile}
-              >
-                Professional
-              </a>
-              <NavLink
-                to="/about/history"
-                className="qd-navigation__dropdown-item"
-                onClick={closeMobile}
-              >
-                My History
-              </NavLink>
-              <NavLink
-                to="/about/lifestyle"
-                className="qd-navigation__dropdown-item"
-                onClick={closeMobile}
-              >
-                Lifestyle
-              </NavLink>
-            </div>
-          )}
         </div>
 
+        {/* 2-column grid: HOME | ABOUT */}
+        <div className="qd-navigation__overlay-grid">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              [
+                'qd-navigation__overlay-cell',
+                'qd-navigation__overlay-cell--home',
+                isActive && 'qd-navigation__overlay-cell--active',
+              ]
+                .filter(Boolean)
+                .join(' ')
+            }
+            onClick={closeMobile}
+            end
+          >
+            <span className="qd-navigation__overlay-num" aria-hidden="true">01</span>
+            <span className="qd-navigation__overlay-item-name">
+              HOME
+              <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+            </span>
+          </NavLink>
+
+          <div className="qd-navigation__overlay-cell qd-navigation__overlay-cell--about">
+            <span className="qd-navigation__overlay-num" aria-hidden="true">02</span>
+            <span className="qd-navigation__overlay-section-label">ABOUT —</span>
+            <ul className="qd-navigation__overlay-sub-list">
+              <li>
+                <a
+                  className="qd-navigation__overlay-sub-link"
+                  href="https://vitae.guillermorodas.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobile}
+                >
+                  <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
+                  Professional
+                  <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+                </a>
+              </li>
+              <li>
+                <NavLink
+                  to="/about/history"
+                  className={({ isActive }) =>
+                    [
+                      'qd-navigation__overlay-sub-link',
+                      isActive && 'qd-navigation__overlay-sub-link--active',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')
+                  }
+                  onClick={closeMobile}
+                >
+                  <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
+                  My History
+                  <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about/lifestyle"
+                  className={({ isActive }) =>
+                    [
+                      'qd-navigation__overlay-sub-link',
+                      isActive && 'qd-navigation__overlay-sub-link--active',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')
+                  }
+                  onClick={closeMobile}
+                >
+                  <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
+                  Lifestyle
+                  <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Full-width rows */}
         <NavLink
           to="/courses"
-          className={`${navLinkBtn} qd-navigation__mobile-link`}
+          className={({ isActive }) =>
+            [
+              'qd-navigation__overlay-row',
+              isActive && 'qd-navigation__overlay-row--active',
+            ]
+              .filter(Boolean)
+              .join(' ')
+          }
           onClick={closeMobile}
         >
-          Courses
-        </NavLink>
-        <NavLink
-          to="/contact"
-          className={`${navLinkBtn} qd-navigation__mobile-link`}
-          onClick={closeMobile}
-        >
-          Contact
+          <span className="qd-navigation__overlay-num" aria-hidden="true">03</span>
+          <span className="qd-navigation__overlay-item-name">
+            COURSES
+            <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+          </span>
         </NavLink>
 
-        <div className="qd-navigation__theme-wrap qd-navigation__theme-wrap--mobile">
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            [
+              'qd-navigation__overlay-row',
+              isActive && 'qd-navigation__overlay-row--active',
+            ]
+              .filter(Boolean)
+              .join(' ')
+          }
+          onClick={closeMobile}
+        >
+          <span className="qd-navigation__overlay-num" aria-hidden="true">04</span>
+          <span className="qd-navigation__overlay-item-name">
+            CONTACT
+            <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+          </span>
+        </NavLink>
+
+        {/* Theme toggle */}
+        <div className="qd-navigation__theme-wrap qd-navigation__theme-wrap--overlay">
           {themeToggle}
           <span className="qd-navigation__theme-label">{themeLabel}</span>
         </div>

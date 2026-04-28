@@ -309,64 +309,215 @@ button.qd-navigation__link-btn:focus-visible {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile menu */
-.qd-navigation__mobile {
-  display: none;
+/* ── Fullscreen overlay ───────────────────────────────────── */
+
+.qd-navigation__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
   flex-direction: column;
   background-color: var(--components-tokens--nav-bar--background-color--default);
-  border-bottom: 1px solid var(--components-tokens--nav-bar--border-color--default);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.qd-navigation__overlay--open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.3s ease, visibility 0s linear 0s;
+}
+
+.qd-navigation__overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: var(--components-tokens--nav-bar--spacing--mobile-padding-vertical)
     var(--components-tokens--nav-bar--spacing--mobile-padding-horizontal);
-  gap: var(--components-tokens--nav-bar--spacing--mobile-gap);
+  border-bottom: 1px solid var(--components-tokens--nav-bar--border-color--default);
+  flex-shrink: 0;
 }
 
-.qd-navigation__mobile--open {
-  display: flex;
-}
-
-.qd-navigation__mobile-link {
-  width: 100%;
+.qd-navigation__overlay-close {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--components-tokens--nav-bar--text-color--link-default);
+  flex-shrink: 0;
+  transition: color 0.15s ease;
 }
 
-.qd-navigation__mobile-about {
+.qd-navigation__overlay-close:hover {
+  color: var(--components-tokens--nav-bar--text-color--link-hover);
+}
+
+.qd-navigation__overlay-close:focus-visible {
+  outline: 2px solid var(--components-tokens--nav-bar--outline-color--focus);
+  outline-offset: 2px;
+  border-radius: var(--components-tokens--nav-bar--border-radius--link);
+}
+
+/* Grid: HOME | ABOUT */
+.qd-navigation__overlay-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--components-tokens--nav-bar--border-color--default);
+}
+
+.qd-navigation__overlay-cell {
   display: flex;
   flex-direction: column;
-  gap: var(--components-tokens--nav-bar--spacing--mobile-gap);
+  gap: var(--components-tokens--nav-bar--spacing--cluster-gap);
+  padding: var(--components-tokens--nav-bar--spacing--mobile-padding-horizontal);
+  border-right: 1px solid var(--components-tokens--nav-bar--border-color--default);
+  text-decoration: none;
 }
 
-.qd-navigation__mobile-about-btn {
-  width: 100%;
-  justify-content: center;
+.qd-navigation__overlay-cell:last-child {
+  border-right: none;
+}
+
+/* Numbered labels (01, 02, 03, 04) */
+.qd-navigation__overlay-num {
+  display: block;
+  font-family: var(--components-tokens--nav-bar--typography--font-family);
+  font-size: var(--components-tokens--nav-bar--typography--link--font-size);
+  font-weight: var(--components-tokens--nav-bar--typography--link-active--font-weight);
+  color: var(--components-tokens--nav-bar--text-color--brand);
+  line-height: 1;
+}
+
+/* Item names: HOME, COURSES, CONTACT */
+.qd-navigation__overlay-item-name {
+  display: flex;
+  align-items: center;
+  gap: var(--components-tokens--nav-bar--spacing--cluster-gap);
+  font-family: var(--components-tokens--nav-bar--typography--font-family);
+  font-size: var(--components-tokens--nav-bar--typography--mobile-item--font-size);
+  font-weight: var(--components-tokens--nav-bar--typography--mobile-item--font-weight);
+  color: var(--components-tokens--nav-bar--text-color--link-default);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+}
+
+a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
+  color: var(--components-tokens--nav-bar--text-color--link-hover);
+}
+
+.qd-navigation__overlay-cell--active .qd-navigation__overlay-item-name {
+  color: var(--components-tokens--nav-bar--text-color--link-active);
+}
+
+/* ABOUT section label (non-interactive) */
+.qd-navigation__overlay-section-label {
+  display: block;
+  font-family: var(--components-tokens--nav-bar--typography--font-family);
+  font-size: var(--components-tokens--nav-bar--typography--mobile-item--font-size);
+  font-weight: var(--components-tokens--nav-bar--typography--mobile-item--font-weight);
+  color: var(--components-tokens--nav-bar--text-color--tagline);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  user-select: none;
+}
+
+/* About sub-items list */
+.qd-navigation__overlay-sub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--components-tokens--nav-bar--spacing--cluster-gap);
+}
+
+.qd-navigation__overlay-sub-link {
+  display: flex;
+  align-items: center;
   gap: 6px;
+  text-decoration: none;
+  font-family: var(--components-tokens--nav-bar--typography--font-family);
+  font-size: var(--components-tokens--nav-bar--typography--mobile-sub-item--font-size);
+  font-weight: var(--components-tokens--nav-bar--typography--mobile-sub-item--font-weight);
+  color: var(--components-tokens--nav-bar--text-color--link-default);
+  line-height: 1.4;
+  transition: color 0.15s ease;
 }
 
-.qd-navigation__chevron--mobile {
-  border-top-color: currentColor;
+.qd-navigation__overlay-sub-link:hover {
+  color: var(--components-tokens--nav-bar--text-color--link-hover);
+  text-decoration: none;
 }
 
-.qd-navigation__chevron--mobile-open {
-  transform: rotate(180deg);
+.qd-navigation__overlay-sub-link--active {
+  color: var(--components-tokens--nav-bar--text-color--link-active);
+  font-weight: var(--components-tokens--nav-bar--typography--link-active--font-weight);
 }
 
-.qd-navigation__mobile-sub {
+.qd-navigation__overlay-sub-link:focus-visible {
+  outline: 2px solid var(--components-tokens--nav-bar--outline-color--focus);
+  outline-offset: 2px;
+  border-radius: var(--components-tokens--nav-bar--border-radius--link);
+}
+
+.qd-navigation__overlay-bullet {
+  flex-shrink: 0;
+  color: var(--components-tokens--nav-bar--text-color--brand);
+}
+
+.qd-navigation__overlay-arrow {
+  display: inline-block;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Full-width rows: COURSES, CONTACT */
+.qd-navigation__overlay-row {
   display: flex;
-  flex-direction: column;
-  gap: var(--components-tokens--nav-bar--spacing--mobile-gap);
-  padding-left: var(--components-tokens--nav-bar--spacing--cluster-gap);
-  margin-top: 2px;
+  align-items: center;
+  gap: var(--components-tokens--nav-bar--spacing--mobile-padding-horizontal);
+  padding: var(--components-tokens--nav-bar--spacing--mobile-padding-horizontal);
+  border-bottom: 1px solid var(--components-tokens--nav-bar--border-color--default);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
 }
 
-.qd-navigation__mobile-sub .qd-navigation__dropdown-item {
-  text-align: center;
+.qd-navigation__overlay-row:hover {
+  background-color: var(--components-tokens--nav-bar--background-color--link-hover);
 }
 
-.qd-navigation__theme-wrap--mobile {
-  display: none;
-  justify-content: center;
-  margin-top: var(--components-tokens--nav-bar--spacing--cluster-gap);
-  padding-top: var(--components-tokens--nav-bar--spacing--mobile-padding-vertical);
+.qd-navigation__overlay-row--active .qd-navigation__overlay-item-name {
+  color: var(--components-tokens--nav-bar--text-color--link-active);
+}
+
+.qd-navigation__overlay-row .qd-navigation__overlay-item-name {
+  flex: 1;
+}
+
+/* Theme toggle at bottom of overlay */
+.qd-navigation__theme-wrap--overlay {
+  display: flex;
+  align-items: center;
+  gap: var(--components-tokens--nav-bar--spacing--theme-wrap-gap);
+  padding: var(--components-tokens--nav-bar--spacing--mobile-padding-vertical)
+    var(--components-tokens--nav-bar--spacing--mobile-padding-horizontal);
+  margin-top: auto;
   border-top: 1px solid var(--components-tokens--nav-bar--border-color--default);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Prevent overlay from appearing on desktop regardless of state */
+@media (min-width: 769px) {
+  .qd-navigation__overlay {
+    display: none !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -380,9 +531,5 @@ button.qd-navigation__link-btn:focus-visible {
 
   .qd-navigation__theme-wrap--desktop {
     display: none;
-  }
-
-  .qd-navigation__theme-wrap--mobile {
-    display: flex;
   }
 }

@@ -570,6 +570,10 @@
   --components-tokens--nav-bar--typography--theme-label--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--nav-bar--typography--theme-label--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--nav-bar--typography--theme-label--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--nav-bar--typography--mobile-item--font-size: var(--system-tokens--typography--font-size--body--lg);
+  --components-tokens--nav-bar--typography--mobile-item--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--nav-bar--typography--mobile-sub-item--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--nav-bar--typography--mobile-sub-item--font-weight: var(--system-tokens--typography--font-weight--medium);
 
   /* Footer */
   --components-tokens--footer--sizing--max-width: 1140px;

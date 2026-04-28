@@ -13826,6 +13826,50 @@
             }
           }
         }
+      },
+      "mobile-item": {
+        "font-size": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/lg",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "mobile-sub-item": {
+        "font-size": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Semibold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Medium",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
       }
     }
   },

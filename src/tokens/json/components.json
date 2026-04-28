@@ -13658,10 +13658,10 @@
         },
         "font-size": {
           "$type": "number",
-          "$value": 16,
+          "$value": 19,
           "$extensions": {
             "com.figma.aliasData": {
-              "targetVariableName": "Typography/font-size/Body/sm",
+              "targetVariableName": "Typography/font-size/Body/md",
               "targetVariableSetName": "System Tokens"
             }
           }
@@ -13685,6 +13685,11 @@
               "targetVariableSetName": "System Tokens"
             }
           }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 2,
+          "$extensions": {}
         }
       },
       "brand-tagline": {

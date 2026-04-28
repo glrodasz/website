@@ -59,6 +59,7 @@
   font-weight: var(--components-tokens--nav-bar--typography--brand-name--font-weight);
   font-size: var(--components-tokens--nav-bar--typography--brand-name--font-size);
   line-height: var(--components-tokens--nav-bar--typography--brand-name--line-height);
+  letter-spacing: var(--components-tokens--nav-bar--typography--brand-name--letter-spacing);
   color: var(--components-tokens--nav-bar--text-color--brand);
 }
 

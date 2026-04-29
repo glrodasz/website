@@ -372,10 +372,10 @@
   --components-tokens--button--text-color--tertiary--hover: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--tertiary--actived: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--tertiary--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--ml);
   --components-tokens--button--spacing--large--vertical: var(--system-tokens--spacing--sm);
   --components-tokens--button--spacing--large--gap: var(--system-tokens--spacing--xs);
-  --components-tokens--button--spacing--small--horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--button--spacing--small--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--button--spacing--small--vertical: var(--system-tokens--spacing--xs);
   --components-tokens--button--spacing--small--gap: var(--system-tokens--spacing--xxs);
   --components-tokens--button--sizing--icon--large: var(--system-tokens--sizing--sm);
@@ -508,6 +508,7 @@
   --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
   --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;
   --components-tokens--nav-bar--sizing--max-width: 1140px;
+  --components-tokens--nav-bar--typography--brand-name--letter-spacing: 2px;
   --components-tokens--nav-bar--spacing--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--nav-bar--spacing--vertical: var(--system-tokens--spacing--md);
   --components-tokens--nav-bar--spacing--gap-menu-items: var(--system-tokens--spacing--ml);
@@ -554,7 +555,7 @@
   --components-tokens--nav-bar--sizing--theme-knob: var(--system-tokens--sizing--xs);
   --components-tokens--nav-bar--typography--font-family: var(--system-tokens--typography--font-family--body);
   --components-tokens--nav-bar--typography--brand-name--font-family: var(--system-tokens--typography--font-family--headings);
-  --components-tokens--nav-bar--typography--brand-name--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--nav-bar--typography--brand-name--font-size: var(--system-tokens--typography--font-size--body--md);
   --components-tokens--nav-bar--typography--brand-name--line-height: var(--system-tokens--typography--line-height--body--sm);
   --components-tokens--nav-bar--typography--brand-name--font-weight: var(--system-tokens--typography--font-weight--strong);
   --components-tokens--nav-bar--typography--brand-tagline--font-size: var(--system-tokens--typography--font-size--body--xs);
@@ -570,6 +571,10 @@
   --components-tokens--nav-bar--typography--theme-label--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--nav-bar--typography--theme-label--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--nav-bar--typography--theme-label--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--nav-bar--typography--mobile-item--font-size: var(--system-tokens--typography--font-size--body--lg);
+  --components-tokens--nav-bar--typography--mobile-item--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--nav-bar--typography--mobile-sub-item--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--nav-bar--typography--mobile-sub-item--font-weight: var(--system-tokens--typography--font-weight--medium);
 
   /* Footer */
   --components-tokens--footer--sizing--max-width: 1140px;

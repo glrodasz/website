@@ -434,6 +434,17 @@
     padding-right: 16px;
   }
 
+  .home-hero__ctas {
+    flex-direction: column;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .home-hero__ctas .qd-button {
+    width: 100%;
+    justify-content: center;
+  }
+
   .home-courses {
     padding: 48px 16px;
   }

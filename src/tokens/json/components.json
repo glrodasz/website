@@ -1646,12 +1646,12 @@
       "large": {
         "horizontal": {
           "$type": "number",
-          "$value": 24,
+          "$value": 32,
           "$extensions": {
             "com.figma.variableId": "VariableID:48:12170",
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:b0ff93b6dc74436af0859d12430b0bc59d115050/-1:-1",
-              "targetVariableName": "Spacing/md",
+              "targetVariableName": "Spacing/ml",
               "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
               "targetVariableSetName": "System Tokens"
             }
@@ -1687,12 +1687,12 @@
       "small": {
         "horizontal": {
           "$type": "number",
-          "$value": 12,
+          "$value": 24,
           "$extensions": {
             "com.figma.variableId": "VariableID:48:12176",
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:0e6fb280771fa44a464397991827752852fab648/-1:-1",
-              "targetVariableName": "Spacing/sm",
+              "targetVariableName": "Spacing/md",
               "targetVariableSetId": "VariableCollectionId:e95b76c798ef42e964288bb1805a7f472d65360f/-1:-1",
               "targetVariableSetName": "System Tokens"
             }
@@ -13658,10 +13658,10 @@
         },
         "font-size": {
           "$type": "number",
-          "$value": 16,
+          "$value": 19,
           "$extensions": {
             "com.figma.aliasData": {
-              "targetVariableName": "Typography/font-size/Body/sm",
+              "targetVariableName": "Typography/font-size/Body/md",
               "targetVariableSetName": "System Tokens"
             }
           }
@@ -13685,6 +13685,11 @@
               "targetVariableSetName": "System Tokens"
             }
           }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 2,
+          "$extensions": {}
         }
       },
       "brand-tagline": {
@@ -13822,6 +13827,50 @@
           "$extensions": {
             "com.figma.aliasData": {
               "targetVariableName": "Typography/Font-weight/Moderate",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "mobile-item": {
+        "font-size": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/lg",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "mobile-sub-item": {
+        "font-size": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Semibold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Medium",
               "targetVariableSetName": "System Tokens"
             }
           }

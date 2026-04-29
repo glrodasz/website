@@ -34,6 +34,10 @@
     max-width: 100%;
   }
 
+  .qd-waitlist-form__name-field {
+    display: none;
+  }
+
   .qd-waitlist-form__submit .qd-button {
     width: 100%;
     justify-content: center;

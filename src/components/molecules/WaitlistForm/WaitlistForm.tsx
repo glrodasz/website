@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../../atoms/Button';
 import { InputText } from '../InputText';
 import './WaitlistForm.css';
@@ -17,6 +17,7 @@ export interface WaitlistFormProps {
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MOBILE_BREAKPOINT = '(max-width: 640px)';
 
 export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   endpoint = '/api/subscribe',
@@ -24,11 +25,19 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   submitLabel = 'Join waitlist',
   successMessage = "You're on the list — I'll email you when the course opens.",
 }) => {
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_BREAKPOINT).matches);
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [fieldError, setFieldError] = useState<'firstName' | 'email' | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_BREAKPOINT);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const classNames = [
     'qd-waitlist-form',
@@ -52,7 +61,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
     const trimmedFirstName = firstName.trim();
     const trimmedEmail = email.trim();
 
-    if (!trimmedFirstName) {
+    if (!isMobile && !trimmedFirstName) {
       setFieldError('firstName');
       setErrorMessage('Please enter your first name.');
       return;
@@ -71,7 +80,10 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ firstName: trimmedFirstName, email: trimmedEmail }),
+        body: JSON.stringify({
+          ...(!isMobile && { firstName: trimmedFirstName }),
+          email: trimmedEmail,
+        }),
       });
 
       const data = (await response.json().catch(() => ({}))) as {
@@ -97,16 +109,18 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   return (
     <form className={classNames} onSubmit={handleSubmit} noValidate>
       <div className="qd-waitlist-form__fields">
-        <InputText
-          label="First name"
-          placeholder="Ada"
-          type="text"
-          autoComplete="given-name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          disabled={isSubmitting}
-          error={fieldError === 'firstName'}
-        />
+        <div className="qd-waitlist-form__name-field">
+          <InputText
+            label="First name"
+            placeholder="Ada"
+            type="text"
+            autoComplete="given-name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            disabled={isSubmitting}
+            error={fieldError === 'firstName'}
+          />
+        </div>
         <InputText
           label="Email"
           placeholder="you@example.com"

@@ -155,6 +155,16 @@ export const Navigation: FC<NavigationProps> = ({
         </div>
       </nav>
 
+      {/* Backdrop blur layer */}
+      <div
+        className={[
+          'qd-navigation__backdrop',
+          mobileOpen && 'qd-navigation__backdrop--open',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+      />
+
       {/* Fullscreen overlay menu */}
       <div
         className={[

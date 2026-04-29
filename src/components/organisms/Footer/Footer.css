@@ -55,6 +55,12 @@
   text-decoration: none;
 }
 
+.qd-footer__col ul li a:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+
 .qd-footer__col ul li span {
   color: var(--components-tokens--footer--text-color--link-default);
   font-size: var(--components-tokens--footer--typography--link--font-size);
@@ -125,6 +131,12 @@
   text-decoration: none;
 }
 
+.qd-footer__social-link:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+
 .qd-footer__social-link svg {
   width: var(--components-tokens--footer--sizing--icon--small);
   height: var(--components-tokens--footer--sizing--icon--small);
@@ -160,6 +172,12 @@
 .qd-footer__logo:hover {
   opacity: 0.8;
   text-decoration: none;
+}
+
+.qd-footer__logo:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
 @media (max-width: 900px) {

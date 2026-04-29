@@ -885,10 +885,16 @@
   font-size: 1rem;
   padding: var(--components-tokens--site--contact--spacing--form-input-padding);
   transition: border-color 0.2s ease;
-  outline: none;
 }
 
 .form-input:focus {
+  border-color: var(--color-accent);
+}
+
+.form-input:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
   border-color: var(--color-accent);
 }
 

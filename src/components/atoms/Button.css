@@ -10,9 +10,10 @@
   transition: all 0.2s ease-in-out;
 }
 
-.qd-button:focus {
-  outline: 2px solid var(--components-tokens--button--outline-color--focus);
-  outline-offset: 2px;
+.qd-button:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--button--outline-color--focus);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
 /* Size Variants */

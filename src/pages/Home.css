@@ -214,6 +214,13 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: var(--radius-card);
+}
+
+.home-course-card__link:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
 .home-course-card__thumb {
@@ -357,6 +364,13 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: 12px;
+}
+
+.post-card a:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
 .post-card__cover {

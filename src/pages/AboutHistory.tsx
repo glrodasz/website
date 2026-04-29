@@ -14,7 +14,7 @@ const markdownComponents = {
 };
 
 const AboutHistory: React.FC = () => (
-  <main className="page">
+  <div className="page">
     <Seo title={titleForPage('My History')} description={defaultDescription} path="/about/history" />
 
     <section className="page-hero">
@@ -27,7 +27,7 @@ const AboutHistory: React.FC = () => (
     <section className="page-section history-bio">
       <ReactMarkdown components={markdownComponents}>{historyMarkdown}</ReactMarkdown>
     </section>
-  </main>
+  </div>
 );
 
 export default AboutHistory;

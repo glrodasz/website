@@ -60,7 +60,7 @@ const Home: React.FC = () => {
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
 
   return (
-    <main className="page">
+    <div className="page">
       <Seo title={defaultTitle} description={defaultDescription} path="/" />
       <section className="home-hero">
         <div className="home-hero__inner">
@@ -168,7 +168,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 

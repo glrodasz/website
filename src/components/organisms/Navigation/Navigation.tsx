@@ -93,56 +93,28 @@ export const Navigation: FC<NavigationProps> = ({
                   Home
                 </NavLink>
               </li>
-              <li className="qd-navigation__dropdown">
-                <button
-                  type="button"
-                  className={`${navLinkBtn} qd-navigation__dropdown-btn`}
+              <li className="qd-navigation__about-group">
+                <span className="qd-navigation__about-label">About</span>
+                <a
+                  className={navLinkBtn}
+                  href="https://vitae.guillermorodas.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  About
-                  <span className="qd-navigation__chevron" aria-hidden />
-                </button>
-                <ul className="qd-navigation__dropdown-menu">
-                  <li>
-                    <a
-                      className="qd-navigation__dropdown-item"
-                      href="https://vitae.guillermorodas.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Professional
-                    </a>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/about/history"
-                      className={({ isActive }) =>
-                        [
-                          'qd-navigation__dropdown-item',
-                          isActive && 'qd-navigation__dropdown-item--active',
-                        ]
-                          .filter(Boolean)
-                          .join(' ')
-                      }
-                    >
-                      My History
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/about/lifestyle"
-                      className={({ isActive }) =>
-                        [
-                          'qd-navigation__dropdown-item',
-                          isActive && 'qd-navigation__dropdown-item--active',
-                        ]
-                          .filter(Boolean)
-                          .join(' ')
-                      }
-                    >
-                      Lifestyle
-                    </NavLink>
-                  </li>
-                </ul>
+                  Professional
+                </a>
+                <NavLink
+                  to="/about/history"
+                  className={({ isActive }) => navLinkClass(isActive)}
+                >
+                  My History
+                </NavLink>
+                <NavLink
+                  to="/about/lifestyle"
+                  className={({ isActive }) => navLinkClass(isActive)}
+                >
+                  Lifestyle
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/courses" className={({ isActive }) => navLinkClass(isActive)}>

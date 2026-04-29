@@ -27,8 +27,12 @@ const Courses: React.FC = () => {
   useEffect(() => {
     if (location.hash !== '#ai-first') return;
     const section = document.getElementById('ai-first');
-    section?.scrollIntoView({ behavior: 'smooth' });
-    section?.querySelector<HTMLInputElement>('input')?.focus();
+    if (!section) return;
+    const nav = document.querySelector<HTMLElement>('.qd-navigation');
+    const navHeight = nav?.offsetHeight ?? 0;
+    const top = section.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
+    section.querySelector<HTMLInputElement>('input')?.focus();
   }, [location.key, location.hash]);
   const visibleTutorials = useMemo(
     () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),

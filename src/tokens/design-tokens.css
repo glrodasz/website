@@ -372,10 +372,10 @@
   --components-tokens--button--text-color--tertiary--hover: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--tertiary--actived: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--tertiary--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--ml);
   --components-tokens--button--spacing--large--vertical: var(--system-tokens--spacing--sm);
   --components-tokens--button--spacing--large--gap: var(--system-tokens--spacing--xs);
-  --components-tokens--button--spacing--small--horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--button--spacing--small--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--button--spacing--small--vertical: var(--system-tokens--spacing--xs);
   --components-tokens--button--spacing--small--gap: var(--system-tokens--spacing--xxs);
   --components-tokens--button--sizing--icon--large: var(--system-tokens--sizing--sm);

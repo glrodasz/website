@@ -17,9 +17,12 @@ function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <ScrollToTop />
         <Navigation />
-        <main className="app-main">
+        <main id="main-content" className="app-main" tabIndex={-1}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about/history" element={<AboutHistory />} />

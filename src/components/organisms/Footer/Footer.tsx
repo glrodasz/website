@@ -41,7 +41,7 @@ export const Footer: FC<FooterProps> = ({
       <div className="qd-footer__inner">
         <div className="qd-footer__grid">
           <div className="qd-footer__col">
-            <p className="qd-footer__col-title">About me</p>
+            <h2 className="qd-footer__col-title">About me</h2>
             <ul>
               <li>
                 <a
@@ -62,7 +62,7 @@ export const Footer: FC<FooterProps> = ({
           </div>
 
           <div className="qd-footer__col">
-            <p className="qd-footer__col-title">Courses</p>
+            <h2 className="qd-footer__col-title">Courses</h2>
             <ul>
               <li>
                 <Link to="/courses">All courses</Link>
@@ -74,7 +74,7 @@ export const Footer: FC<FooterProps> = ({
           </div>
 
           <div className="qd-footer__col">
-            <p className="qd-footer__col-title">Content</p>
+            <h2 className="qd-footer__col-title">Content</h2>
             <ul>
               <li>
                 <a href="https://undefined.sh" target="_blank" rel="noopener noreferrer">
@@ -85,7 +85,7 @@ export const Footer: FC<FooterProps> = ({
           </div>
 
           <div className="qd-footer__col">
-            <p className="qd-footer__col-title">Contact</p>
+            <h2 className="qd-footer__col-title">Contact</h2>
             <ul>
               <li>
                 <a href="mailto:me@guillermorodas.com">me@guillermorodas.com</a>

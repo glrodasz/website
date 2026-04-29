@@ -100,6 +100,38 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Default keyboard focus ring — applies to anything that doesn't override it.
+   Theme-aware via --system-tokens--colors--borders--focus (blue in light, yellow in dark).
+   Modern browsers make `outline` follow the element's existing border-radius, so we
+   don't override it here. */
+:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+
+/* Skip-link: hidden until keyboard-focused, then appears at top-left. */
+.skip-to-content {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 2px solid var(--components-tokens--site--focus-ring--outline-color);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 1000;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  transform: translateY(0);
+}
+
 img {
   max-width: 100%;
   height: auto;

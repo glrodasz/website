@@ -354,6 +354,22 @@
         "$extensions": {
           "com.figma.variableId": "VariableID:dark:borders-alternative"
         }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.9686, 0.8745, 0.1137],
+          "alpha": 1,
+          "hex": "#F7DF1D"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:dark:borders-focus",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Schemas/Metal chartreuse/Chartreuse/400",
+            "targetVariableSetName": "Global Tokens"
+          }
+        }
       }
     },
     "Neutral": {

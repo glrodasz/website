@@ -1,4 +1,4 @@
-import { defaultDescription } from '../data/site';
+import { defaultDescription, SITE_NAME } from '../data/site';
 
 function normalizeBase(url: string): string {
   return url.replace(/\/$/, '');
@@ -26,7 +26,7 @@ export function Seo({ title, description, path = '/' }: SeoProps) {
     typeof baseRaw === 'string' && baseRaw.length > 0 ? normalizeBase(baseRaw) : '';
   const canonical = base ? joinUrl(base, path) : undefined;
   const desc = description ?? defaultDescription;
-  const ogImage = base ? `${base}/images/guillermo-rodas.png` : undefined;
+  const ogImage = base ? `${base}/og/og-default.png` : undefined;
 
   return (
     <>
@@ -37,8 +37,11 @@ export function Seo({ title, description, path = '/' }: SeoProps) {
       <meta property="og:description" content={desc} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content={SITE_NAME} />
       {canonical ? <meta property="og:url" content={canonical} /> : null}
       {ogImage ? <meta property="og:image" content={ogImage} /> : null}
+      {ogImage ? <meta property="og:image:width" content="1200" /> : null}
+      {ogImage ? <meta property="og:image:height" content="630" /> : null}
       <meta
         name="twitter:card"
         content={ogImage ? 'summary_large_image' : 'summary'}

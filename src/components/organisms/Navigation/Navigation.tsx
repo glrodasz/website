@@ -1,5 +1,6 @@
 import { useState, useEffect, type FC } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { ArrowSquareOut } from 'phosphor-react';
 import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import './Navigation.css';
@@ -102,6 +103,7 @@ export const Navigation: FC<NavigationProps> = ({
                   rel="noopener noreferrer"
                 >
                   Professional
+                  <ArrowSquareOut size={12} weight="regular" aria-hidden />
                 </a>
                 <NavLink
                   to="/about/history"
@@ -232,6 +234,7 @@ export const Navigation: FC<NavigationProps> = ({
                 >
                   <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
                   Professional
+                  <ArrowSquareOut size={14} weight="regular" aria-hidden />
                   <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
                 </a>
               </li>

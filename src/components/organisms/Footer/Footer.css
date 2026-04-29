@@ -23,12 +23,14 @@
 }
 
 .qd-footer__col-title {
+  font-family: inherit;
   font-size: var(--components-tokens--footer--typography--col-title--font-size);
   line-height: var(--components-tokens--footer--typography--col-title--line-height);
   font-weight: var(--components-tokens--footer--typography--col-title--font-weight);
   color: var(--components-tokens--footer--text-color--accent);
   text-transform: uppercase;
   letter-spacing: var(--components-tokens--footer--typography--col-title--tracking);
+  margin-top: 0;
   margin-bottom: var(--components-tokens--footer--spacing--title-gap);
 }
 

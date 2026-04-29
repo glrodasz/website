@@ -34,7 +34,7 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
         {showCover ? (
           <img
             src={post.cover}
-            alt={post.title}
+            alt=""
             className="post-card__cover"
             loading="lazy"
             onError={() => setCoverFailed(true)}

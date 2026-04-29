@@ -143,15 +143,17 @@ button.qd-navigation__link-btn:focus-visible {
 
 .qd-navigation__about-label {
   font-family: var(--components-tokens--nav-bar--typography--font-family);
-  font-size: var(--components-tokens--nav-bar--typography--brand-tagline--font-size);
-  font-weight: var(--components-tokens--nav-bar--typography--brand-tagline--font-weight);
+  font-size: var(--components-tokens--nav-bar--typography--about-label--font-size);
+  font-weight: var(--components-tokens--nav-bar--typography--about-label--font-weight);
+  line-height: var(--components-tokens--nav-bar--typography--about-label--line-height);
   color: var(--components-tokens--nav-bar--text-color--tagline);
   padding: var(--components-tokens--nav-bar--spacing--link-vertical)
     var(--components-tokens--nav-bar--spacing--link-horizontal);
   border-right: 1px solid var(--components-tokens--nav-bar--border-color--default);
   white-space: nowrap;
   user-select: none;
-  line-height: var(--components-tokens--nav-bar--typography--link--line-height);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* Theme toggle */

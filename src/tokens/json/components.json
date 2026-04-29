@@ -13724,6 +13724,33 @@
           }
         }
       },
+      "about-label": {
+        "font-size": {
+          "$type": "number",
+          "$value": 11,
+          "$extensions": {}
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 17,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Line-height/Body/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "string",
+          "$value": "Bold",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Strong",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
       "link": {
         "font-size": {
           "$type": "number",

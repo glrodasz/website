@@ -509,6 +509,7 @@
   --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;
   --components-tokens--nav-bar--sizing--max-width: 1140px;
   --components-tokens--nav-bar--typography--brand-name--letter-spacing: 2px;
+  --components-tokens--nav-bar--typography--about-label--font-size: 11px;
   --components-tokens--nav-bar--spacing--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--nav-bar--spacing--vertical: var(--system-tokens--spacing--md);
   --components-tokens--nav-bar--spacing--gap-menu-items: var(--system-tokens--spacing--ml);
@@ -561,6 +562,8 @@
   --components-tokens--nav-bar--typography--brand-tagline--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--nav-bar--typography--brand-tagline--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--nav-bar--typography--brand-tagline--font-weight: var(--system-tokens--typography--font-weight--moderate);
+  --components-tokens--nav-bar--typography--about-label--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--nav-bar--typography--about-label--font-weight: var(--system-tokens--typography--font-weight--strong);
   --components-tokens--nav-bar--typography--link--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--nav-bar--typography--link--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--nav-bar--typography--link--font-weight: var(--system-tokens--typography--font-weight--medium);

@@ -39,12 +39,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     !email ||
     email.length > MAX_FIELD_LENGTH ||
     !EMAIL_REGEX.test(email) ||
-    !firstName ||
     firstName.length > MAX_FIELD_LENGTH
   ) {
     return res
       .status(400)
-      .json({ ok: false, message: 'Please provide a valid name and email.' });
+      .json({ ok: false, message: 'Please provide a valid email.' });
   }
 
   try {
@@ -57,7 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
       body: JSON.stringify({
         email,
-        attributes: { FIRSTNAME: firstName },
+        ...(firstName && { attributes: { FIRSTNAME: firstName } }),
         listIds: [listId],
         updateEnabled: true,
       }),

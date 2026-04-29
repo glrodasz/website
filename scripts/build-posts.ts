@@ -18,32 +18,6 @@ interface BlogPost {
 
 const RSS_URL = 'https://undefined.sh/rss.xml';
 
-const STATIC_POSTS: BlogPost[] = [
-  {
-    title: 'Building AI-First Applications: A Practical Guide',
-    link: 'https://undefined.sh',
-    date: 'Jan 2025',
-    readTime: '8 min read',
-    excerpt: 'Exploring how to integrate AI tools and workflows into modern web development, from code generation to intelligent UI patterns.',
-    cover: '',
-  },
-  {
-    title: 'WebAuthn & Passkeys: The Future of Authentication',
-    link: 'https://undefined.sh',
-    date: 'Nov 2023',
-    readTime: '6 min read',
-    excerpt: 'A deep dive into the WebAuthn standard, why passkeys matter, and how to implement them in your web applications today.',
-    cover: '',
-  },
-  {
-    title: 'Why Every Developer Should Try Live Coding on Stream',
-    link: 'https://undefined.sh',
-    date: 'Aug 2022',
-    readTime: '5 min read',
-    excerpt: 'Live coding is one of the most authentic ways to teach programming. Here is why I started, what I learned, and how you can too.',
-    cover: '',
-  },
-];
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim();
@@ -139,8 +113,8 @@ async function main() {
     if (posts.length === 0) throw new Error('No posts in feed');
     console.log(`✅ Fetched ${posts.length} posts`);
   } catch (err) {
-    console.warn(`⚠️  RSS fetch failed (${err}), using static fallback`);
-    posts = STATIC_POSTS;
+    console.error(`❌ RSS fetch failed (${err}). Skipping file update.`);
+    return;
   }
 
   const outDir = path.join(process.cwd(), 'src', 'generated');

@@ -245,6 +245,25 @@ button.qd-navigation__link-btn:focus-visible {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* ── Backdrop blur ────────────────────────────────────────── */
+
+.qd-navigation__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease 0.3s, visibility 0s linear 0.5s;
+}
+
+.qd-navigation__backdrop--open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease, visibility 0s linear 0s;
+}
+
 /* ── Fullscreen overlay ───────────────────────────────────── */
 
 .qd-navigation__overlay {
@@ -264,7 +283,7 @@ button.qd-navigation__link-btn:focus-visible {
 .qd-navigation__overlay--open {
   transform: translateX(0);
   visibility: visible;
-  transition: transform 0.3s ease, visibility 0s linear 0s;
+  transition: transform 0.3s ease 0.2s, visibility 0s linear 0s;
 }
 
 .qd-navigation__overlay-header {
@@ -449,9 +468,13 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 
 /* ── Responsive ──────────────────────────────────────────── */
 
-/* Prevent overlay from appearing on desktop regardless of state */
+/* Prevent overlay and backdrop from appearing on desktop regardless of state */
 @media (min-width: 769px) {
   .qd-navigation__overlay {
+    display: none !important;
+  }
+
+  .qd-navigation__backdrop {
     display: none !important;
   }
 }

@@ -135,18 +135,20 @@ button.qd-navigation__link-btn:focus-visible {
 .qd-navigation__about-group {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0;
+  border: 1px solid var(--components-tokens--nav-bar--border-color--default);
+  border-radius: var(--components-tokens--nav-bar--border-radius--link);
+  overflow: hidden;
 }
 
 .qd-navigation__about-label {
   font-family: var(--components-tokens--nav-bar--typography--font-family);
-  font-size: var(--components-tokens--nav-bar--typography--link--font-size);
+  font-size: var(--components-tokens--nav-bar--typography--brand-tagline--font-size);
   font-weight: var(--components-tokens--nav-bar--typography--brand-tagline--font-weight);
   color: var(--components-tokens--nav-bar--text-color--tagline);
   padding: var(--components-tokens--nav-bar--spacing--link-vertical)
     var(--components-tokens--nav-bar--spacing--link-horizontal);
   border-right: 1px solid var(--components-tokens--nav-bar--border-color--default);
-  margin-right: 2px;
   white-space: nowrap;
   user-select: none;
   line-height: var(--components-tokens--nav-bar--typography--link--line-height);

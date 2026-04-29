@@ -2654,6 +2654,18 @@
             }
           }
         }
+      },
+      "mobile-min": {
+        "font-size": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/font-size/Body/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
       }
     }
   },

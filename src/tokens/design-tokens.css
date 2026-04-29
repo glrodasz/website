@@ -772,6 +772,7 @@
   --components-tokens--input-field--typography--input--small--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--input-field--typography--message--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--input-field--typography--message--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--input-field--typography--mobile-min--font-size: var(--system-tokens--typography--font-size--body--sm);
 
   /* Select */
   --components-tokens--select--background-color--close: var(--system-tokens--colors--backgrounds--principal);

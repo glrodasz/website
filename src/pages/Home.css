@@ -217,10 +217,18 @@
   border-radius: var(--radius-card);
 }
 
-.home-course-card__link:focus-visible {
+/* The card has overflow:hidden, so an outline drawn on the inner anchor gets
+   clipped. Move the focus ring to the parent — its outline paints outside
+   its own border box and isn't subject to the parent's overflow.
+   Using :has(...:focus-visible) so the ring only shows on keyboard focus. */
+.home-course-card:has(.home-course-card__link:focus-visible) {
   outline: var(--components-tokens--site--focus-ring--outline-width) solid
            var(--components-tokens--site--focus-ring--outline-color);
   outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+
+.home-course-card__link:focus-visible {
+  outline: none;
 }
 
 .home-course-card__thumb {
@@ -367,10 +375,14 @@
   border-radius: 12px;
 }
 
-.post-card a:focus-visible {
+.post-card:has(a:focus-visible) {
   outline: var(--components-tokens--site--focus-ring--outline-width) solid
            var(--components-tokens--site--focus-ring--outline-color);
   outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+
+.post-card a:focus-visible {
+  outline: none;
 }
 
 .post-card__cover {

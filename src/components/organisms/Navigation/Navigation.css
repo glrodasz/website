@@ -132,6 +132,14 @@ button.qd-navigation__link-btn:focus-visible {
   outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
+/* Inside the About pill, outline-offset:2px would extend beyond the pill's
+   overflow:hidden boundary and get clipped. Use a negative offset so the
+   ring is drawn inside the link box. */
+.qd-navigation__about-group a.qd-navigation__link-btn:focus-visible,
+.qd-navigation__about-group button.qd-navigation__link-btn:focus-visible {
+  outline-offset: -2px;
+}
+
 /* About inline group (desktop) */
 .qd-navigation__about-group {
   display: flex;

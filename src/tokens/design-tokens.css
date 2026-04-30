@@ -742,6 +742,14 @@
   --components-tokens--site--contact--form-input--border-radius: var(--system-tokens--border-radius--sm);
   --components-tokens--site--focus-ring--outline-color: var(--system-tokens--colors--borders--focus);
   --components-tokens--site--focus-ring--border-radius: var(--system-tokens--border-radius--xs);
+  --components-tokens--site--skip-link--spacing--top: var(--system-tokens--spacing--xs);
+  --components-tokens--site--skip-link--spacing--left: var(--system-tokens--spacing--xs);
+  --components-tokens--site--skip-link--spacing--padding-vertical: var(--system-tokens--spacing--xs);
+  --components-tokens--site--skip-link--spacing--padding-horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--site--skip-link--background-color: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--site--skip-link--text-color: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--site--skip-link--border-radius: var(--system-tokens--border-radius--sm);
+  --components-tokens--site--skip-link--typography--font-weight: var(--system-tokens--typography--font-weight--medium);
 
   /* Logo */
   --components-tokens--logo--sizing--icon-large: 40px;

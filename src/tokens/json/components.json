@@ -16305,6 +16305,111 @@
           }
         }
       }
+    },
+    "Skip-link": {
+      "spacing": {
+        "top": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:site:skip-link-top",
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "left": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:site:skip-link-left",
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-vertical": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:site:skip-link-padding-vertical",
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:site:skip-link-padding-horizontal",
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      },
+      "background-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [1, 1, 1],
+          "alpha": 1,
+          "hex": "#FFFFFF"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:skip-link-background-color",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Backgrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "text-color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.149, 0.149, 0.149],
+          "alpha": 1,
+          "hex": "#262626"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:skip-link-text-color",
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Foregrounds/principal",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "border-radius": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:site:skip-link-border-radius",
+          "com.figma.aliasData": {
+            "targetVariableName": "Border radius/sm",
+            "targetVariableSetName": "System Tokens"
+          }
+        }
+      },
+      "typography": {
+        "font-weight": {
+          "$type": "string",
+          "$value": "Semibold",
+          "$extensions": {
+            "com.figma.type": "string",
+            "com.figma.variableId": "VariableID:site:skip-link-font-weight",
+            "com.figma.aliasData": {
+              "targetVariableName": "Typography/Font-weight/Medium",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        }
+      }
     }
   },
   "logo": {

@@ -113,21 +113,22 @@ a:hover {
 /* Skip-link: hidden until keyboard-focused, then appears at top-left. */
 .skip-to-content {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  padding: 8px 16px;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border: 2px solid var(--components-tokens--site--focus-ring--outline-color);
-  border-radius: var(--radius-sm);
-  font-weight: 600;
+  top: var(--components-tokens--site--skip-link--spacing--top);
+  left: var(--components-tokens--site--skip-link--spacing--left);
+  padding: var(--components-tokens--site--skip-link--spacing--padding-vertical)
+           var(--components-tokens--site--skip-link--spacing--padding-horizontal);
+  background-color: var(--components-tokens--site--skip-link--background-color);
+  color: var(--components-tokens--site--skip-link--text-color);
+  border: var(--components-tokens--site--focus-ring--outline-width) solid
+          var(--components-tokens--site--focus-ring--outline-color);
+  border-radius: var(--components-tokens--site--skip-link--border-radius);
+  font-weight: var(--components-tokens--site--skip-link--typography--font-weight);
   text-decoration: none;
   z-index: 1000;
   transform: translateY(-200%);
   transition: transform 0.15s ease;
 }
 
-.skip-to-content:focus,
 .skip-to-content:focus-visible {
   transform: translateY(0);
 }

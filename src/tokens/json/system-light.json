@@ -1095,6 +1095,29 @@
             "targetVariableSetName": "Global Tokens"
           }
         }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.250980406999588,
+            0.7215686440467834
+          ],
+          "alpha": 1,
+          "hex": "#0040B8"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:29:11252",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableName": "Colors/Schemas/Frozen ribon/Blue Ribon/500",
+            "targetVariableSetName": "Global Tokens"
+          }
+        }
       }
     },
     "Transparency": {

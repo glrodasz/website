@@ -324,7 +324,8 @@ export function formatValue(value: string, type: string, path: string = ''): str
           pathLower.includes('sizing') ||
           pathLower.includes('radius') ||
           pathLower.includes('width') ||
-          pathLower.includes('height')) {
+          pathLower.includes('height') ||
+          pathLower.includes('offset')) {
         return `${numValue}px`;
       }
       // Keep as number for weights, opacity, etc.

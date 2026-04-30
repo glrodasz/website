@@ -45,7 +45,7 @@
 }
 
 /* Focus state */
-.qd-textarea__field:focus {
+.qd-textarea__field:focus-visible {
   outline: none;
   border-color: var(--components-tokens--text-area--border-color--focus);
   box-shadow: 0 0 0 3px var(--components-tokens--text-area--outline-color--focus);

@@ -41,7 +41,7 @@ const Courses: React.FC = () => {
   const hasMoreTutorials = GARAJE_CODE_PILLS.length > INITIAL_TUTORIALS;
 
   return (
-    <main className="page">
+    <div className="page">
       <Seo title={titleForPage('Courses')} description={defaultDescription} path="/courses" />
       <section className="page-hero">
         <span className="section-label">Courses</span>
@@ -180,7 +180,7 @@ const Courses: React.FC = () => {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 

@@ -13,7 +13,7 @@ import { ArrowRight } from 'phosphor-react';
 import { IconButton } from '../components/molecules/IconButton';
 
 const AboutLifestyle: React.FC = () => (
-  <main className="page">
+  <div className="page">
     <Seo title={titleForPage('Lifestyle')} description={defaultDescription} path="/about/lifestyle" />
     <section className="page-hero">
       <span className="section-label">About</span>
@@ -87,7 +87,7 @@ const AboutLifestyle: React.FC = () => (
         ))}
       </ul>
     </section>
-  </main>
+  </div>
 );
 
 export default AboutLifestyle;

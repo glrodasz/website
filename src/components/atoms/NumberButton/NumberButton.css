@@ -44,9 +44,10 @@
 }
 
 /* Focus state */
-.qd-number-button:focus {
-  outline: 2px solid var(--components-tokens--number-button--outline-color--focus);
-  outline-offset: 2px;
+.qd-number-button:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--number-button--outline-color--focus);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
 /* Selected state */

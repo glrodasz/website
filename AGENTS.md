@@ -81,3 +81,52 @@ CSS file  →  --components-tokens--*  →  --system-tokens--*  →  --global-to
 - **BEM with `qd-` prefix** for all component classes.
 - **`system-dark.json`** only needs tokens whose values differ in dark mode.
 - Run `npm run build:tokens` after every change to the JSON token files.
+
+## Keyboard Focus — Required for Every Interactive Element
+
+Every interactive element (`<button>`, `<a>`, form input, custom widget with
+`role="button"`, etc.) must show a clear focus ring on **keyboard** focus.
+
+The site provides a global `:focus-visible` rule in `src/styles/global.css`
+that paints the ring on any focusable element that doesn't override it.
+Component-level overrides exist where the default ring color would clash
+with the element's own background.
+
+### Default ring — use the shared `Site/focus-ring` tokens
+
+```css
+.my-component:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+```
+
+The `Site/focus-ring/outline-color` token aliases to `Colors/Borders/focus`,
+which resolves to:
+
+| Theme | Hex | Notes |
+|---|---|---|
+| Light | `#0040B8` (Frozen ribon / Blue Ribon 500) | WCAG AA on white & yellow |
+| Dark | `#F7DF1D` (Metal chartreuse / Chartreuse 400) | WCAG AAA on near-black |
+
+### Rules
+
+1. **Always use `:focus-visible`**, never plain `:focus`. The plain pseudo
+   shows the ring on mouse click too, which the design doesn't want.
+2. **Never write `outline: none`** without an alternative indicator. If you
+   must remove the outline (e.g. on form inputs styled via `box-shadow`),
+   apply the ring through `box-shadow` or `border-color` using the same
+   focus token: `Colors/Borders/focus` →
+   `--system-tokens--colors--borders--focus`.
+3. **The focus color is theme-aware.** Both modes pass WCAG AA — never
+   override with a hardcoded hex.
+4. **Do not hardcode the ring width or color in CSS.** Always go through
+   `--components-tokens--site--focus-ring--*`. If a component needs a
+   different color for contrast reasons, add a component-scoped token
+   (e.g. `button.outline-color.focus`) aliased to `Colors/Borders/focus`
+   in `components.json` — never raw hex.
+5. **Skip-link is required.** `App.tsx` ships a `.skip-to-content` link
+   that is hidden until keyboard-focused; do not remove it. The `<main>`
+   landmark must keep `id="main-content"` and `tabIndex={-1}` so the
+   link can target it.

@@ -5,7 +5,7 @@ import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
 
 const Contact: React.FC = () => (
-  <main className="page">
+  <div className="page">
     <Seo title={titleForPage('Contact')} description={defaultDescription} path="/contact" />
     <section className="page-hero">
       <span className="section-label">Contact</span>
@@ -122,7 +122,7 @@ const Contact: React.FC = () => (
         </p>
       </aside>
     </section>
-  </main>
+  </div>
 );
 
 export default Contact;

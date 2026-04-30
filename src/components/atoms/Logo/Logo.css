@@ -20,9 +20,10 @@
   opacity: 0.8;
 }
 
-.qd-logo--clickable:focus {
-  outline: 2px solid var(--components-tokens--logo--outline-color--focus);
-  outline-offset: 4px;
+.qd-logo--clickable:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--logo--outline-color--focus);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
   border-radius: var(--components-tokens--logo--border-radius--focus);
 }
 

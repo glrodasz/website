@@ -13180,6 +13180,10 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "bar-horizontal-mobile": {
+        "$type": "number",
+        "$value": 0
       }
     },
     "background-color": {
@@ -15315,10 +15319,10 @@
         },
         "hero-top-mobile": {
           "$type": "number",
-          "$value": 24,
+          "$value": 8,
           "$extensions": {
             "com.figma.aliasData": {
-              "targetVariableName": "Spacing/md",
+              "targetVariableName": "Spacing/xs",
               "targetVariableSetName": "System Tokens"
             }
           }

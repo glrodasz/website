@@ -506,6 +506,10 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 }
 
 @media (max-width: 768px) {
+  .qd-navigation__bar {
+    padding: 0 var(--components-tokens--nav-bar--spacing--bar-horizontal-mobile);
+  }
+
   .qd-navigation__links {
     display: none;
   }

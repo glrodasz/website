@@ -504,6 +504,7 @@
   --components-tokens--menu-avatar--sizing--icon--small: var(--system-tokens--sizing--xs);
 
   /* Nav-bar */
+  --components-tokens--nav-bar--spacing--bar-horizontal-mobile: 0px;
   --components-tokens--nav-bar--sizing--height: 72px;
   --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
   --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;
@@ -651,7 +652,7 @@
   --components-tokens--site--course-card--logo-margin-bottom: var(--system-tokens--spacing--xs);
   --components-tokens--site--page-layout--spacing--hero-top: var(--system-tokens--spacing--lm);
   --components-tokens--site--page-layout--spacing--hero-bottom: var(--system-tokens--spacing--ml);
-  --components-tokens--site--page-layout--spacing--hero-top-mobile: var(--system-tokens--spacing--md);
+  --components-tokens--site--page-layout--spacing--hero-top-mobile: var(--system-tokens--spacing--xs);
   --components-tokens--site--page-layout--spacing--hero-bottom-mobile: var(--system-tokens--spacing--sm);
   --components-tokens--site--page-layout--spacing--section-vertical: var(--system-tokens--spacing--ml);
   --components-tokens--site--page-layout--spacing--section-horizontal: var(--system-tokens--spacing--md);

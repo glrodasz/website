@@ -504,6 +504,7 @@
   --components-tokens--menu-avatar--sizing--icon--small: var(--system-tokens--sizing--xs);
 
   /* Nav-bar */
+  --components-tokens--nav-bar--spacing--bar-horizontal-mobile: 0px;
   --components-tokens--nav-bar--sizing--height: 72px;
   --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
   --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;

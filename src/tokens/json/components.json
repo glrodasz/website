@@ -13180,6 +13180,10 @@
             "targetVariableSetName": "System Tokens"
           }
         }
+      },
+      "bar-horizontal-mobile": {
+        "$type": "number",
+        "$value": 0
       }
     },
     "background-color": {

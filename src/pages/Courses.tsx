@@ -139,7 +139,7 @@ const Courses: React.FC = () => {
         </ul>
         {hasMoreTutorials && (
           <Button
-            variant="secondary"
+            variant="tertiary"
             size="small"
             className="btn-load-more"
             onClick={() => setShowAllTutorials((s) => !s)}

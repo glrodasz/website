@@ -655,19 +655,9 @@
     grid-template-columns: 1fr;
   }
 
-  .tutorial-list {
-    margin-left: calc(-1 * var(--components-tokens--site--page-layout--spacing--section-horizontal));
-    margin-right: calc(-1 * var(--components-tokens--site--page-layout--spacing--section-horizontal));
-  }
-
   .tutorial-row {
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   .tutorial-row__thumb {
@@ -675,10 +665,6 @@
     max-width: none;
     height: auto;
     aspect-ratio: 16 / 9;
-  }
-
-  .tutorial-row__title {
-    padding: 0 var(--components-tokens--site--page-layout--spacing--section-horizontal);
   }
 }
 

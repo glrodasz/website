@@ -81,6 +81,11 @@ export const Footer: FC<FooterProps> = ({
                   Blog → undefined.sh
                 </a>
               </li>
+              <li>
+                <a href="https://undefined.academy" target="_blank" rel="noopener noreferrer">
+                  Bootcamp → undefined.academy
+                </a>
+              </li>
             </ul>
           </div>
 

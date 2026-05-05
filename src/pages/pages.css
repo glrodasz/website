@@ -448,9 +448,15 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--components-tokens--site--tutorial--spacing--list-gap);
+}
+
+@media (max-width: 768px) {
+  .tutorial-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .tutorial-row {

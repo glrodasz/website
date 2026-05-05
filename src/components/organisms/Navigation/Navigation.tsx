@@ -119,6 +119,28 @@ export const Navigation: FC<NavigationProps> = ({
                 </NavLink>
               </li>
               <li>
+                <a
+                  className={navLinkBtn}
+                  href="https://undefined.sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Blog
+                  <ArrowSquareOut size={12} weight="regular" aria-hidden />
+                </a>
+              </li>
+              <li>
+                <a
+                  className={navLinkBtn}
+                  href="https://undefined.academy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Bootcamp
+                  <ArrowSquareOut size={12} weight="regular" aria-hidden />
+                </a>
+              </li>
+              <li>
                 <NavLink to="/courses" className={({ isActive }) => navLinkClass(isActive)}>
                   Courses
                 </NavLink>
@@ -289,6 +311,36 @@ export const Navigation: FC<NavigationProps> = ({
         </div>
 
         {/* Full-width rows */}
+        <a
+          className="qd-navigation__overlay-row"
+          href="https://undefined.sh"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={closeMobile}
+        >
+          <span className="qd-navigation__overlay-num" aria-hidden="true">03</span>
+          <span className="qd-navigation__overlay-item-name">
+            BLOG
+            <ArrowSquareOut size={16} weight="regular" aria-hidden />
+            <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+          </span>
+        </a>
+
+        <a
+          className="qd-navigation__overlay-row"
+          href="https://undefined.academy"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={closeMobile}
+        >
+          <span className="qd-navigation__overlay-num" aria-hidden="true">04</span>
+          <span className="qd-navigation__overlay-item-name">
+            BOOTCAMP
+            <ArrowSquareOut size={16} weight="regular" aria-hidden />
+            <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+          </span>
+        </a>
+
         <NavLink
           to="/courses"
           className={({ isActive }) =>
@@ -301,7 +353,7 @@ export const Navigation: FC<NavigationProps> = ({
           }
           onClick={closeMobile}
         >
-          <span className="qd-navigation__overlay-num" aria-hidden="true">03</span>
+          <span className="qd-navigation__overlay-num" aria-hidden="true">05</span>
           <span className="qd-navigation__overlay-item-name">
             COURSES
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
@@ -320,7 +372,7 @@ export const Navigation: FC<NavigationProps> = ({
           }
           onClick={closeMobile}
         >
-          <span className="qd-navigation__overlay-num" aria-hidden="true">04</span>
+          <span className="qd-navigation__overlay-num" aria-hidden="true">06</span>
           <span className="qd-navigation__overlay-item-name">
             CONTACT
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>

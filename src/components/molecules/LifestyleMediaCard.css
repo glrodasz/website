@@ -51,10 +51,10 @@
 }
 
 .qd-lifestyle-media-card__title {
-  font-family: var(--components-tokens--typography--styles--title--small--font-family);
-  font-weight: var(--components-tokens--typography--styles--title--small--font-weight);
-  font-size: var(--components-tokens--typography--styles--paragraph--small--font-size);
-  line-height: var(--components-tokens--typography--styles--paragraph--small--line-height);
+  font-family: var(--components-tokens--typography--styles--subtitle--small--font-family);
+  font-weight: var(--components-tokens--typography--styles--subtitle--small--font-weight);
+  font-size: var(--components-tokens--typography--styles--subtitle--small--font-size);
+  line-height: var(--components-tokens--typography--styles--subtitle--small--line-height);
 }
 
 .qd-lifestyle-media-card__subtitle {

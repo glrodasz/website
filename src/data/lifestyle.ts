@@ -49,7 +49,7 @@ export const FAVORITE_BOOKS: FavoriteBook[] = [
     author: 'Douglas Stone',
     href: 'https://www.goodreads.com/book/show/18114120-thanks-for-the-feedback',
     coverUrl: '/images/covers/books/thanks-for-the-feedback.webp',
-    summary: 'People are complicated — this book explains why feedback is so hard to give and receive, and equips you with tools that help in both professional and personal relationships.',
+    summary: 'People are complicated, this book explains why feedback is so hard to give and receive, and equips you with tools that help in both professional and personal relationships.',
   },
 ];
 
@@ -61,7 +61,7 @@ export const FAVORITE_FILMS: FavoriteFilm[] = [
     title: 'Memento',
     href: 'https://letterboxd.com/film/memento/',
     posterUrl: '/images/covers/films/memento.webp',
-    summary: 'My all-time favorite. The director puts you inside the protagonist\'s mind in a way that feels genuinely disorienting — in the best possible sense. A 10/10 experience.',
+    summary: 'My all-time favorite. The director puts you inside the protagonist\'s mind in a way that feels genuinely disorienting, in the best possible sense. A 10/10 experience.',
   },
   {
     title: 'Enemy',
@@ -73,7 +73,7 @@ export const FAVORITE_FILMS: FavoriteFilm[] = [
     title: 'Donnie Darko',
     href: 'https://letterboxd.com/film/donnie-darko/',
     posterUrl: '/images/covers/films/donnie-darko.webp',
-    summary: 'A layered meditation on time that rewards repeat viewing. Strange, thought-provoking, and oddly compelling — it never gets old.',
+    summary: 'A layered meditation on time that rewards repeat viewing. Strange, thought-provoking, and oddly compelling, it never gets old.',
   },
   {
     title: 'The Rescue',

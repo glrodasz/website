@@ -29,6 +29,9 @@ export const Navigation: FC<NavigationProps> = ({
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [isAboutCollapsed, setIsAboutCollapsed] = useState(
+    () => window.matchMedia('(max-width: 1169px)').matches
+  );
   const aboutRef = useRef<HTMLLIElement>(null);
   const { theme, toggleTheme } = useTheme();
 
@@ -67,6 +70,16 @@ export const Navigation: FC<NavigationProps> = ({
       document.removeEventListener('mousedown', onClickOutside);
     };
   }, [aboutOpen]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1169px)');
+    const onChange = (e: MediaQueryListEvent) => {
+      setIsAboutCollapsed(e.matches);
+      if (!e.matches) setAboutOpen(false);
+    };
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   const themeLabel = theme === 'dark' ? 'Dark' : 'Light';
   const ariaLabel = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
@@ -114,97 +127,104 @@ export const Navigation: FC<NavigationProps> = ({
                   Home
                 </NavLink>
               </li>
-              <li className="qd-navigation__about-item" ref={aboutRef}>
-                {/* Expanded pill group — visible ≥1170px */}
+              <li
+                className={[
+                  'qd-navigation__about-item',
+                  isAboutCollapsed && 'qd-navigation__about-item--collapsed',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                ref={aboutRef}
+              >
+                {/* Single morphing pill — animates between expanded and collapsed */}
                 <div className="qd-navigation__about-group">
-                  <span className="qd-navigation__about-label">About</span>
-                  <a
-                    className={navLinkBtn}
-                    href="https://vitae.guillermorodas.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Professional
-                    <ArrowSquareOut size={12} weight="regular" aria-hidden />
-                  </a>
-                  <NavLink
-                    to="/about/history"
-                    className={({ isActive }) => navLinkClass(isActive)}
-                  >
-                    My History
-                  </NavLink>
-                  <NavLink
-                    to="/about/lifestyle"
-                    className={({ isActive }) => navLinkClass(isActive)}
-                  >
-                    Lifestyle
-                  </NavLink>
-                </div>
-
-                {/* Collapsed dropdown button — visible 769px–1169px */}
-                <div className="qd-navigation__about-collapsed">
                   <button
                     type="button"
-                    className={[
-                      navLinkBtn,
-                      'qd-navigation__about-toggle',
-                      aboutOpen && 'qd-navigation__about-toggle--open',
-                    ]
-                      .filter(Boolean)
-                      .join(' ')}
-                    onClick={() => setAboutOpen((v) => !v)}
-                    aria-expanded={aboutOpen}
-                    aria-haspopup="true"
+                    className="qd-navigation__about-label"
+                    onClick={() => isAboutCollapsed && setAboutOpen((v) => !v)}
+                    tabIndex={isAboutCollapsed ? 0 : -1}
+                    aria-expanded={isAboutCollapsed ? aboutOpen : undefined}
+                    aria-haspopup={isAboutCollapsed ? 'true' : undefined}
                   >
                     About
-                    <CaretDown size={12} weight="bold" aria-hidden />
+                    <span className="qd-navigation__about-caret" aria-hidden="true">
+                      <CaretDown size={12} weight="bold" />
+                    </span>
                   </button>
-                  {aboutOpen && (
-                    <div className="qd-navigation__about-dropdown" role="menu">
-                      <a
-                        className="qd-navigation__about-dropdown-link"
-                        href="https://vitae.guillermorodas.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setAboutOpen(false)}
-                        role="menuitem"
-                      >
-                        Professional
-                        <ArrowSquareOut size={12} weight="regular" aria-hidden />
-                      </a>
-                      <NavLink
-                        to="/about/history"
-                        className={({ isActive }) =>
-                          [
-                            'qd-navigation__about-dropdown-link',
-                            isActive && 'qd-navigation__about-dropdown-link--active',
-                          ]
-                            .filter(Boolean)
-                            .join(' ')
-                        }
-                        onClick={() => setAboutOpen(false)}
-                        role="menuitem"
-                      >
-                        My History
-                      </NavLink>
-                      <NavLink
-                        to="/about/lifestyle"
-                        className={({ isActive }) =>
-                          [
-                            'qd-navigation__about-dropdown-link',
-                            isActive && 'qd-navigation__about-dropdown-link--active',
-                          ]
-                            .filter(Boolean)
-                            .join(' ')
-                        }
-                        onClick={() => setAboutOpen(false)}
-                        role="menuitem"
-                      >
-                        Lifestyle
-                      </NavLink>
-                    </div>
-                  )}
+                  <div className="qd-navigation__about-sublinks">
+                    <a
+                      className={navLinkBtn}
+                      href="https://vitae.guillermorodas.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={isAboutCollapsed ? -1 : 0}
+                    >
+                      Professional
+                      <ArrowSquareOut size={12} weight="regular" aria-hidden />
+                    </a>
+                    <NavLink
+                      to="/about/history"
+                      className={({ isActive }) => navLinkClass(isActive)}
+                      tabIndex={isAboutCollapsed ? -1 : 0}
+                    >
+                      My History
+                    </NavLink>
+                    <NavLink
+                      to="/about/lifestyle"
+                      className={({ isActive }) => navLinkClass(isActive)}
+                      tabIndex={isAboutCollapsed ? -1 : 0}
+                    >
+                      Lifestyle
+                    </NavLink>
+                  </div>
                 </div>
+
+                {/* Dropdown — appears below the pill when collapsed and open */}
+                {isAboutCollapsed && aboutOpen && (
+                  <div className="qd-navigation__about-dropdown" role="menu">
+                    <a
+                      className="qd-navigation__about-dropdown-link"
+                      href="https://vitae.guillermorodas.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setAboutOpen(false)}
+                      role="menuitem"
+                    >
+                      Professional
+                      <ArrowSquareOut size={12} weight="regular" aria-hidden />
+                    </a>
+                    <NavLink
+                      to="/about/history"
+                      className={({ isActive }) =>
+                        [
+                          'qd-navigation__about-dropdown-link',
+                          isActive && 'qd-navigation__about-dropdown-link--active',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')
+                      }
+                      onClick={() => setAboutOpen(false)}
+                      role="menuitem"
+                    >
+                      My History
+                    </NavLink>
+                    <NavLink
+                      to="/about/lifestyle"
+                      className={({ isActive }) =>
+                        [
+                          'qd-navigation__about-dropdown-link',
+                          isActive && 'qd-navigation__about-dropdown-link--active',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')
+                      }
+                      onClick={() => setAboutOpen(false)}
+                      role="menuitem"
+                    >
+                      Lifestyle
+                    </NavLink>
+                  </div>
+                )}
               </li>
               <li>
                 <a

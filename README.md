@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Guillermo Rodas — Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal website for Guillermo Rodas, Senior Full-stack AI Engineer and community lead helping developers level up while shipping quality software.
 
-Currently, two official plugins are available:
+## Pages
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Home
 
-## React Compiler
+Landing page with a hero introducing Guillermo's focus as a tech partner for big companies. Features a preview of the latest course and recent writing posts.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Courses
 
-## Expanding the ESLint configuration
+- **AI-First Programming** — upcoming paid course teaching developers how to build software with AI as the primary tool, covering JavaScript/TypeScript, Python, Go, and Rust through short focused video lessons. A waitlist form is available.
+- **Free courses** — full YouTube playlists, no paywall.
+- **Tutorials** — Garaje Code Pills, short practical videos published on YouTube.
+- **Courses on other platforms** — curated list of courses published on third-party platforms.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Writing
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Links to articles published on [undefined.sh](https://undefined.sh), Guillermo's blog.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### About — My History
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Guillermo's career story: from modifying Blogger templates as a teenager, through university, Java, full-stack JavaScript, developer communities, agencies, startups, and international teams. Written in long-form Markdown.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### About — Lifestyle
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+A curated selection of favorite books and films, with links to Guillermo's profiles on Goodreads and Letterboxd.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Contact
+
+Guidance on the right channel depending on what you have in mind:
+
+- **Casual hello** → Twitter or Instagram
+- **Collaboration or project** → email
+- **Job offer or career advice** → LinkedIn
+
+Also notes that Guillermo writes in Spanish on Twitter and in English on Bluesky, Threads, and Mastodon.

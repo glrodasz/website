@@ -208,7 +208,8 @@
   opacity: 0.8;
 }
 
-.home-course-card__link {
+.home-course-card__link,
+.home-course-card__link:hover {
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -366,7 +367,8 @@
   transform: translateY(-2px);
 }
 
-.post-card a {
+.post-card a,
+.post-card a:hover {
   text-decoration: none;
   color: inherit;
   display: flex;

@@ -6,6 +6,7 @@ export interface LifestyleMediaCardProps {
   imageUrl?: string;
   title: string;
   subtitle?: string;
+  summary?: string;
   /** Shown when `imageUrl` is missing or fails to load (e.g. ▶ or 📖). */
   placeholder: string;
 }
@@ -15,6 +16,7 @@ export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
   imageUrl,
   title,
   subtitle,
+  summary,
   placeholder,
 }) => {
   const [imgError, setImgError] = useState(false);
@@ -38,6 +40,7 @@ export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
       <div className="qd-lifestyle-media-card__meta">
         <span className="qd-lifestyle-media-card__title">{title}</span>
         {subtitle ? <span className="qd-lifestyle-media-card__subtitle">{subtitle}</span> : null}
+        {summary ? <p className="qd-lifestyle-media-card__summary">{summary}</p> : null}
       </div>
     </a>
   );

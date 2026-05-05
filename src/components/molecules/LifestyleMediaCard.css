@@ -28,8 +28,9 @@
 .qd-lifestyle-media-card__media,
 .qd-lifestyle-media-card__media-placeholder {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: top;
   background: var(--components-tokens--site--course-card--media-background-color);
 }
 

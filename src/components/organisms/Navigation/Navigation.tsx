@@ -1,6 +1,6 @@
-import { useState, useEffect, type FC } from 'react';
+import { useState, useEffect, useRef, type FC } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { ArrowSquareOut } from 'phosphor-react';
+import { ArrowSquareOut, CaretDown } from 'phosphor-react';
 import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import './Navigation.css';
@@ -28,6 +28,11 @@ export const Navigation: FC<NavigationProps> = ({
   brandMarkSrc = '/favicon.svg',
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [isAboutCollapsed, setIsAboutCollapsed] = useState(
+    () => window.matchMedia('(max-width: 1169px)').matches
+  );
+  const aboutRef = useRef<HTMLLIElement>(null);
   const { theme, toggleTheme } = useTheme();
 
   const closeMobile = () => setMobileOpen(false);
@@ -47,6 +52,34 @@ export const Navigation: FC<NavigationProps> = ({
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!aboutOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setAboutOpen(false);
+    };
+    const onClickOutside = (e: MouseEvent) => {
+      if (aboutRef.current && !aboutRef.current.contains(e.target as Node)) {
+        setAboutOpen(false);
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClickOutside);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClickOutside);
+    };
+  }, [aboutOpen]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1169px)');
+    const onChange = (e: MediaQueryListEvent) => {
+      setIsAboutCollapsed(e.matches);
+      if (!e.matches) setAboutOpen(false);
+    };
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   const themeLabel = theme === 'dark' ? 'Dark' : 'Light';
   const ariaLabel = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
@@ -94,29 +127,104 @@ export const Navigation: FC<NavigationProps> = ({
                   Home
                 </NavLink>
               </li>
-              <li className="qd-navigation__about-group">
-                <span className="qd-navigation__about-label">About</span>
-                <a
-                  className={navLinkBtn}
-                  href="https://vitae.guillermorodas.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Professional
-                  <ArrowSquareOut size={12} weight="regular" aria-hidden />
-                </a>
-                <NavLink
-                  to="/about/history"
-                  className={({ isActive }) => navLinkClass(isActive)}
-                >
-                  My History
-                </NavLink>
-                <NavLink
-                  to="/about/lifestyle"
-                  className={({ isActive }) => navLinkClass(isActive)}
-                >
-                  Lifestyle
-                </NavLink>
+              <li
+                className={[
+                  'qd-navigation__about-item',
+                  isAboutCollapsed && 'qd-navigation__about-item--collapsed',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                ref={aboutRef}
+              >
+                {/* Single morphing pill — animates between expanded and collapsed */}
+                <div className="qd-navigation__about-group">
+                  <button
+                    type="button"
+                    className="qd-navigation__about-label"
+                    onClick={() => isAboutCollapsed && setAboutOpen((v) => !v)}
+                    tabIndex={isAboutCollapsed ? 0 : -1}
+                    aria-expanded={isAboutCollapsed ? aboutOpen : undefined}
+                    aria-haspopup={isAboutCollapsed ? 'true' : undefined}
+                  >
+                    About
+                    <span className="qd-navigation__about-caret" aria-hidden="true">
+                      <CaretDown size={12} weight="bold" />
+                    </span>
+                  </button>
+                  <div className="qd-navigation__about-sublinks">
+                    <a
+                      className={navLinkBtn}
+                      href="https://vitae.guillermorodas.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={isAboutCollapsed ? -1 : 0}
+                    >
+                      Professional
+                      <ArrowSquareOut size={12} weight="regular" aria-hidden />
+                    </a>
+                    <NavLink
+                      to="/about/history"
+                      className={({ isActive }) => navLinkClass(isActive)}
+                      tabIndex={isAboutCollapsed ? -1 : 0}
+                    >
+                      My History
+                    </NavLink>
+                    <NavLink
+                      to="/about/lifestyle"
+                      className={({ isActive }) => navLinkClass(isActive)}
+                      tabIndex={isAboutCollapsed ? -1 : 0}
+                    >
+                      Lifestyle
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* Dropdown — appears below the pill when collapsed and open */}
+                {isAboutCollapsed && aboutOpen && (
+                  <div className="qd-navigation__about-dropdown" role="menu">
+                    <a
+                      className="qd-navigation__about-dropdown-link"
+                      href="https://vitae.guillermorodas.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setAboutOpen(false)}
+                      role="menuitem"
+                    >
+                      Professional
+                      <ArrowSquareOut size={12} weight="regular" aria-hidden />
+                    </a>
+                    <NavLink
+                      to="/about/history"
+                      className={({ isActive }) =>
+                        [
+                          'qd-navigation__about-dropdown-link',
+                          isActive && 'qd-navigation__about-dropdown-link--active',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')
+                      }
+                      onClick={() => setAboutOpen(false)}
+                      role="menuitem"
+                    >
+                      My History
+                    </NavLink>
+                    <NavLink
+                      to="/about/lifestyle"
+                      className={({ isActive }) =>
+                        [
+                          'qd-navigation__about-dropdown-link',
+                          isActive && 'qd-navigation__about-dropdown-link--active',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')
+                      }
+                      onClick={() => setAboutOpen(false)}
+                      role="menuitem"
+                    >
+                      Lifestyle
+                    </NavLink>
+                  </div>
+                )}
               </li>
               <li>
                 <a

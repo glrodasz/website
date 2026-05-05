@@ -132,15 +132,18 @@ button.qd-navigation__link-btn:focus-visible {
   outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
-/* Inside the About pill, outline-offset:2px would extend beyond the pill's
-   overflow:hidden boundary and get clipped. Use a negative offset so the
-   ring is drawn inside the link box. */
+/* Inside the About pill, use an inset ring to avoid overflow:hidden clipping */
 .qd-navigation__about-group a.qd-navigation__link-btn:focus-visible,
 .qd-navigation__about-group button.qd-navigation__link-btn:focus-visible {
   outline-offset: -2px;
 }
 
-/* About inline group (desktop) */
+/* About item — position context for the dropdown */
+.qd-navigation__about-item {
+  position: relative;
+}
+
+/* Single morphing pill */
 .qd-navigation__about-group {
   display: flex;
   align-items: center;
@@ -150,12 +153,23 @@ button.qd-navigation__link-btn:focus-visible {
   overflow: hidden;
 }
 
+/* Label — doubles as dropdown trigger when collapsed */
 .qd-navigation__about-label {
+  /* reset <button> defaults */
+  background: none;
+  border: none;
+  margin: 0;
+  /* layout */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* typography */
   font-family: var(--components-tokens--nav-bar--typography--font-family);
   font-size: var(--components-tokens--nav-bar--typography--about-label--font-size);
   font-weight: var(--components-tokens--nav-bar--typography--about-label--font-weight);
   line-height: var(--components-tokens--nav-bar--typography--about-label--line-height);
   color: var(--components-tokens--nav-bar--text-color--tagline);
+  /* spacing & border */
   padding: var(--components-tokens--nav-bar--spacing--link-vertical)
     var(--components-tokens--nav-bar--spacing--link-horizontal);
   border-right: 1px solid var(--components-tokens--nav-bar--border-color--default);
@@ -163,6 +177,109 @@ button.qd-navigation__link-btn:focus-visible {
   user-select: none;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  cursor: default;
+  transition: border-right-color 0.35s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.qd-navigation__about-label:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--nav-bar--outline-color--focus);
+  outline-offset: -2px;
+}
+
+/* Caret — hidden in expanded state, slides in when collapsed */
+.qd-navigation__about-caret {
+  display: flex;
+  align-items: center;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  /* delay so caret appears after the links have started collapsing */
+  transition: max-width 0.25s ease 0.15s, opacity 0.2s ease 0.15s;
+}
+
+/* Sub-links container — collapses from right to left */
+.qd-navigation__about-sublinks {
+  display: flex;
+  align-items: center;
+  max-width: 520px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-width 0.35s ease, opacity 0.25s ease;
+}
+
+/* ── Collapsed state — driven by JS matchMedia ────────────── */
+
+.qd-navigation__about-item--collapsed .qd-navigation__about-label {
+  cursor: pointer;
+  /* separator border fades as links collapse */
+  border-right-color: transparent;
+}
+
+.qd-navigation__about-item--collapsed .qd-navigation__about-label:hover {
+  color: var(--components-tokens--nav-bar--text-color--link-hover);
+  background-color: var(--components-tokens--nav-bar--background-color--link-hover);
+}
+
+.qd-navigation__about-item--collapsed .qd-navigation__about-caret {
+  max-width: 20px;
+  opacity: 1;
+  /* no delay on expand — caret slides out immediately */
+  transition: max-width 0.25s ease, opacity 0.2s ease;
+}
+
+.qd-navigation__about-item--collapsed .qd-navigation__about-sublinks {
+  max-width: 0;
+  opacity: 0;
+}
+
+/* Dropdown */
+.qd-navigation__about-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  background-color: var(--components-tokens--nav-bar--background-color--default);
+  border: 1px solid var(--components-tokens--nav-bar--border-color--default);
+  border-radius: var(--components-tokens--nav-bar--border-radius--link);
+  padding: 4px 0;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.qd-navigation__about-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: var(--components-tokens--nav-bar--spacing--link-vertical)
+    var(--components-tokens--nav-bar--spacing--link-horizontal);
+  font-family: var(--components-tokens--nav-bar--typography--font-family);
+  font-size: var(--components-tokens--nav-bar--typography--link--font-size);
+  font-weight: var(--components-tokens--nav-bar--typography--link--font-weight);
+  line-height: var(--components-tokens--nav-bar--typography--link--line-height);
+  color: var(--components-tokens--nav-bar--text-color--link-default);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.qd-navigation__about-dropdown-link:hover {
+  color: var(--components-tokens--nav-bar--text-color--link-hover);
+  background-color: var(--components-tokens--nav-bar--background-color--link-hover);
+  text-decoration: none;
+}
+
+.qd-navigation__about-dropdown-link:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--nav-bar--outline-color--focus);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}
+
+.qd-navigation__about-dropdown-link--active {
+  color: var(--components-tokens--nav-bar--text-color--link-active);
+  font-weight: var(--components-tokens--nav-bar--typography--link-active--font-weight);
 }
 
 /* Theme toggle */
@@ -495,7 +612,7 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 /* ── Responsive ──────────────────────────────────────────── */
 
 /* Prevent overlay and backdrop from appearing on desktop regardless of state */
-@media (min-width: 769px) {
+@media (min-width: 901px) {
   .qd-navigation__overlay {
     display: none !important;
   }
@@ -505,7 +622,7 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .qd-navigation__links {
     display: none;
   }

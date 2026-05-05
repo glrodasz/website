@@ -49,7 +49,6 @@ const AboutLifestyle: React.FC = () => (
               href={b.href}
               imageUrl={b.coverUrl}
               title={b.title}
-              subtitle={b.author}
               summary={b.summary}
               placeholder="📖"
             />

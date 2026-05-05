@@ -18,6 +18,11 @@
 .qd-lifestyle-media-card:hover {
   border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.qd-lifestyle-media-card:hover * {
+  text-decoration: none;
 }
 
 .qd-lifestyle-media-card__media,

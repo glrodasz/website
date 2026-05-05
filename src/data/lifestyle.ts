@@ -85,7 +85,7 @@ export const FAVORITE_FILMS: FavoriteFilm[] = [
     title: 'Oldboy',
     href: 'https://letterboxd.com/film/oldboy/',
     posterUrl: '/images/covers/films/oldboy.webp',
-    summary: 'A masterclass in Korean cinema. A gripping story that builds at exactly the right pace — if you appreciate films that develop slowly but reward your patience, this is it.',
+    summary: 'A masterclass in Korean cinema. A gripping story that builds at exactly the right pace, if you appreciate films that develop slowly but reward your patience, this is it.',
   },
 ];
 

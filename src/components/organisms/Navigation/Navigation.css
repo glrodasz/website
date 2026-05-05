@@ -612,7 +612,7 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 /* ── Responsive ──────────────────────────────────────────── */
 
 /* Prevent overlay and backdrop from appearing on desktop regardless of state */
-@media (min-width: 769px) {
+@media (min-width: 901px) {
   .qd-navigation__overlay {
     display: none !important;
   }
@@ -622,7 +622,7 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .qd-navigation__links {
     display: none;
   }

@@ -17,7 +17,7 @@ import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
 import './pages.css';
 
-const INITIAL_TUTORIALS = 5;
+const INITIAL_TUTORIALS = 6;
 
 const Courses: React.FC = () => {
   const { theme } = useTheme();

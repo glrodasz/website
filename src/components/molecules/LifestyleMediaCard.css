@@ -56,3 +56,10 @@
   line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height);
   color: var(--components-tokens--site--course-card--card-description-color);
 }
+
+.qd-lifestyle-media-card__summary {
+  margin: 0;
+  font-size: var(--components-tokens--typography--styles--paragraph--extra-small--font-size);
+  line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height);
+  color: var(--components-tokens--site--course-card--card-description-color);
+}

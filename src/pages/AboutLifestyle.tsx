@@ -50,6 +50,7 @@ const AboutLifestyle: React.FC = () => (
               imageUrl={b.coverUrl}
               title={b.title}
               subtitle={b.author}
+              summary={b.summary}
               placeholder="📖"
             />
           </li>
@@ -81,6 +82,7 @@ const AboutLifestyle: React.FC = () => (
               href={f.href}
               imageUrl={f.posterUrl}
               title={f.title}
+              summary={f.summary}
               placeholder="▶"
             />
           </li>

@@ -34,6 +34,13 @@
   background: var(--components-tokens--site--course-card--media-background-color);
 }
 
+@media (min-width: 640px) {
+  .qd-lifestyle-media-card__media,
+  .qd-lifestyle-media-card__media-placeholder {
+    aspect-ratio: 3 / 4;
+  }
+}
+
 .qd-lifestyle-media-card__media-placeholder {
   display: flex;
   align-items: center;
@@ -55,6 +62,7 @@
   font-weight: var(--components-tokens--typography--styles--subtitle--small--font-weight);
   font-size: var(--components-tokens--typography--styles--subtitle--small--font-size);
   line-height: var(--components-tokens--typography--styles--subtitle--small--line-height);
+  text-wrap: balance;
 }
 
 .qd-lifestyle-media-card__subtitle {

@@ -118,7 +118,7 @@ export const Navigation: FC<NavigationProps> = ({
                   Lifestyle
                 </NavLink>
               </li>
-              <li>
+              <li className="qd-navigation__link--hide-medium">
                 <a
                   className={navLinkBtn}
                   href="https://undefined.sh"
@@ -129,7 +129,7 @@ export const Navigation: FC<NavigationProps> = ({
                   <ArrowSquareOut size={12} weight="regular" aria-hidden />
                 </a>
               </li>
-              <li>
+              <li className="qd-navigation__link--hide-medium">
                 <a
                   className={navLinkBtn}
                   href="https://undefined.academy"

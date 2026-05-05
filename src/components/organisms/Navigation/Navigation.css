@@ -494,6 +494,12 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 
 /* ── Responsive ──────────────────────────────────────────── */
 
+@media (max-width: 1100px) and (min-width: 769px) {
+  .qd-navigation__link--hide-medium {
+    display: none;
+  }
+}
+
 /* Prevent overlay and backdrop from appearing on desktop regardless of state */
 @media (min-width: 769px) {
   .qd-navigation__overlay {

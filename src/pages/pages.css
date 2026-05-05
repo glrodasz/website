@@ -386,6 +386,7 @@
 .playlist-card:hover {
   border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .playlist-card__img {
@@ -467,6 +468,7 @@
 
 .tutorial-row:hover {
   border-color: var(--components-tokens--site--course-card--hover-border-color);
+  text-decoration: none;
 }
 
 .tutorial-row__thumb {
@@ -516,6 +518,7 @@
 .platform-course-card:hover {
   border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .platform-course-card__logo {

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { ArrowSquareOut, CaretDown } from 'phosphor-react';
 import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
+import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import './Navigation.css';
 
 export interface NavigationProps {
@@ -33,7 +34,10 @@ export const Navigation: FC<NavigationProps> = ({
     () => window.matchMedia('(max-width: 1169px)').matches
   );
   const aboutRef = useRef<HTMLLIElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
+
+  useFocusTrap(overlayRef, mobileOpen);
 
   const closeMobile = () => setMobileOpen(false);
 
@@ -297,6 +301,7 @@ export const Navigation: FC<NavigationProps> = ({
 
       {/* Fullscreen overlay menu */}
       <div
+        ref={overlayRef}
         className={[
           'qd-navigation__overlay',
           mobileOpen && 'qd-navigation__overlay--open',
@@ -304,6 +309,10 @@ export const Navigation: FC<NavigationProps> = ({
           .filter(Boolean)
           .join(' ')}
         aria-hidden={!mobileOpen}
+        aria-modal={mobileOpen ? 'true' : undefined}
+        aria-label="Navigation menu"
+        role="dialog"
+        tabIndex={-1}
       >
         {/* Overlay header: brand + close button */}
         <div className="qd-navigation__overlay-header">

@@ -1,0 +1,29 @@
+{
+  "history": {
+    "seo": {
+      "pageLabel": "Mi Historia"
+    },
+    "hero": {
+      "label": "Acerca",
+      "title": "Mi Historia"
+    }
+  },
+  "lifestyle": {
+    "seo": {
+      "pageLabel": "Estilo de vida"
+    },
+    "hero": {
+      "label": "Acerca",
+      "title": "Estilo de vida",
+      "intro": "Libros y películas a los que siempre vuelvo — además de dónde encontrar más en <goodreads>Goodreads</goodreads> y <letterboxd>Letterboxd</letterboxd>."
+    },
+    "books": {
+      "title": "Libros favoritos",
+      "profileLink": "Perfil en Goodreads"
+    },
+    "films": {
+      "title": "Películas favoritas",
+      "profileLink": "Perfil en Letterboxd"
+    }
+  }
+}

@@ -1,7 +1,10 @@
 import ReactMarkdown from 'react-markdown';
+import { useTranslation } from 'react-i18next';
 import { Seo } from '../components/Seo';
 import { defaultDescription, titleForPage } from '../data/site';
-import historyMarkdown from '../content/history.md?raw';
+import { useLangPrefix } from '../hooks/useLangPrefix';
+import historyEn from '../content/history.md?raw';
+import historyEs from '../content/history.es.md?raw';
 import './pages.css';
 import './AboutHistory.css';
 
@@ -13,21 +16,27 @@ const markdownComponents = {
   ),
 };
 
-const AboutHistory: React.FC = () => (
-  <div className="page">
-    <Seo title={titleForPage('My History')} description={defaultDescription} path="/about/history" />
+const AboutHistory: React.FC = () => {
+  const { t, i18n } = useTranslation('about');
+  const prefix = useLangPrefix();
+  const historyMarkdown = i18n.language === 'es' ? historyEs : historyEn;
 
-    <section className="page-hero">
-      <span className="section-label">About</span>
-      <h1 className="section-title">My History</h1>
-    </section>
+  return (
+    <div className="page">
+      <Seo title={titleForPage(t('history.seo.pageLabel'))} description={defaultDescription} path={`${prefix}/about/history`} />
 
-    <hr className="section-divider" />
+      <section className="page-hero">
+        <span className="section-label">{t('history.hero.label')}</span>
+        <h1 className="section-title">{t('history.hero.title')}</h1>
+      </section>
 
-    <section className="page-section history-bio">
-      <ReactMarkdown components={markdownComponents}>{historyMarkdown}</ReactMarkdown>
-    </section>
-  </div>
-);
+      <hr className="section-divider" />
+
+      <section className="page-section history-bio">
+        <ReactMarkdown components={markdownComponents}>{historyMarkdown}</ReactMarkdown>
+      </section>
+    </div>
+  );
+};
 
 export default AboutHistory;

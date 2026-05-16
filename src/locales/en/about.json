@@ -1,0 +1,29 @@
+{
+  "history": {
+    "seo": {
+      "pageLabel": "My History"
+    },
+    "hero": {
+      "label": "About",
+      "title": "My History"
+    }
+  },
+  "lifestyle": {
+    "seo": {
+      "pageLabel": "Lifestyle"
+    },
+    "hero": {
+      "label": "About",
+      "title": "Lifestyle",
+      "intro": "Books and films I keep coming back to — plus where to find more on <goodreads>Goodreads</goodreads> and <letterboxd>Letterboxd</letterboxd>."
+    },
+    "books": {
+      "title": "Favorite books",
+      "profileLink": "Goodreads profile"
+    },
+    "films": {
+      "title": "Favorite films",
+      "profileLink": "Letterboxd profile"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
+import { useLangPrefix } from '../hooks/useLangPrefix';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import { CourseBackground } from '../components/organisms/CourseBackground';
@@ -10,12 +12,6 @@ import {
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
-import {
-  defaultDescription,
-  defaultTitle,
-  HERO_HEADLINE,
-  HERO_DESCRIPTION,
-} from '../data/site';
 import { Seo } from '../components/Seo';
 import { writingPosts, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
@@ -57,26 +53,28 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 
 const Home: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation('home');
+  const prefix = useLangPrefix();
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
 
   return (
     <div className="page">
-      <Seo title={defaultTitle} description={defaultDescription} path="/" />
+      <Seo title={t('seo.title')} description={t('seo.description')} path={`${prefix}/`} />
       <section className="home-hero">
         <div className="home-hero__inner">
           <div className="home-hero__layout">
             <div className="home-hero__content-col">
               <div className="home-hero__text">
-                <a href="/courses#ai-first" className="home-hero__promo-pill">
+                <a href={`${prefix}/courses#ai-first`} className="home-hero__promo-pill">
                   <span className="home-hero__promo-icon" aria-hidden="true">⚡</span>
-                  AI-first programming course
+                  {t('hero.promoPill')}
                   <span className="home-hero__promo-arrow" aria-hidden="true">›</span>
                 </a>
-                <h1 className="home-hero__headline">{HERO_HEADLINE}</h1>
-                <p className="home-hero__description">{HERO_DESCRIPTION}</p>
+                <h1 className="home-hero__headline">{t('hero.headline')}</h1>
+                <p className="home-hero__description">{t('hero.description')}</p>
                 <div className="home-hero__ctas">
-                  <Button to="/courses" variant="primary">Courses</Button>
-                  <Button to="/contact" variant="secondary">Get in touch</Button>
+                  <Button to={`${prefix}/courses`} variant="primary">{t('hero.ctaCourses')}</Button>
+                  <Button to={`${prefix}/contact`} variant="secondary">{t('hero.ctaContact')}</Button>
                 </div>
               </div>
             </div>
@@ -89,8 +87,8 @@ const Home: React.FC = () => {
       <section className="home-courses">
         <div className="home-courses__inner">
           <div className="home-courses__header">
-            <h2 className="home-courses__title">Courses</h2>
-            <IconButton icon={<ArrowRight />} iconPosition="right" label="See all courses" variant="secondary" size="small" to="/courses">
+            <h2 className="home-courses__title">{t('courses.title')}</h2>
+            <IconButton icon={<ArrowRight />} iconPosition="right" label={t('courses.seeAll')} variant="secondary" size="small" to={`${prefix}/courses`}>
             </IconButton>
           </div>
           <div className="home-courses__grid">
@@ -98,11 +96,11 @@ const Home: React.FC = () => {
               <CourseBackground theme={theme} />
               <div className="home-course-card__body">
                 <div className="home-course-card__badge-container">
-                  <Badge variant="accent" size="small" uppercase>Coming soon</Badge>
+                  <Badge variant="accent" size="small" uppercase>{t('courses.comingSoon')}</Badge>
                 </div>
-                <h3 className="home-course-card__name">AI-first programming</h3>
+                <h3 className="home-course-card__name">{t('courses.featuredTitle')}</h3>
                 <p className="home-course-card__desc">
-                  Build software with AI as your primary tool, short, focused lessons across the stack.
+                  {t('courses.featuredDesc')}
                 </p>
                 <WaitlistForm />
               </div>
@@ -134,7 +132,7 @@ const Home: React.FC = () => {
                       </span>
                       <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
                     </div>
-                    <span className="home-course-card__cta">Open playlist on YouTube →</span>
+                    <span className="home-course-card__cta">{t('courses.openPlaylist')}</span>
                   </div>
                 </a>
               </article>
@@ -148,11 +146,11 @@ const Home: React.FC = () => {
       <section className="home-writing">
         <div className="home-writing__inner">
           <div className="home-writing__header">
-            <h2 className="home-writing__title">Writing</h2>
+            <h2 className="home-writing__title">{t('writing.title')}</h2>
             <IconButton
               icon={<ArrowRight />}
               iconPosition="right"
-              label="See full blog"
+              label={t('writing.seeFull')}
               variant="secondary"
               size="small"
               href="https://undefined.sh"

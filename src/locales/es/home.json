@@ -1,0 +1,25 @@
+{
+  "seo": {
+    "title": "Guillermo Rodas | Ingeniero Senior Full-stack de IA",
+    "description": "Guillermo Rodas ayuda a desarrolladores a crecer mientras crean software de calidad. Cursos, programación con IA, tutoriales en YouTube y artículos en undefined.sh."
+  },
+  "hero": {
+    "promoPill": "Curso de programación con IA",
+    "headline": "Socio tecnológico para grandes empresas",
+    "description": "Hola, soy Guillermo Rodas, desarrollador de IA para empresas y líder de comunidad que ayuda a desarrolladores a crecer mientras crean productos de calidad.",
+    "ctaCourses": "Cursos",
+    "ctaContact": "Contáctame"
+  },
+  "courses": {
+    "title": "Cursos",
+    "seeAll": "Ver todos los cursos",
+    "comingSoon": "Próximamente",
+    "featuredTitle": "Programación con IA",
+    "featuredDesc": "Crea software usando IA como herramienta principal, lecciones cortas y enfocadas en todo el stack.",
+    "openPlaylist": "Ver playlist en YouTube →"
+  },
+  "writing": {
+    "title": "Artículos",
+    "seeFull": "Ver el blog completo"
+  }
+}

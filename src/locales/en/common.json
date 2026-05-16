@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "professional": "Professional",
+    "myHistory": "My History",
+    "lifestyle": "Lifestyle",
+    "blog": "Blog",
+    "bootcamp": "Bootcamp",
+    "courses": "Courses",
+    "contact": "Contact",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "navigationMenu": "Navigation menu",
+    "langSwitcher": "ES"
+  },
+  "footer": {
+    "aboutMe": "About me",
+    "professionalProfile": "Professional profile",
+    "myHistory": "My History",
+    "lifestyle": "Lifestyle",
+    "courses": "Courses",
+    "allCourses": "All courses",
+    "joinWaitlist": "AI-First — join waitlist",
+    "content": "Content",
+    "blog": "Blog → undefined.sh",
+    "bootcamp": "Bootcamp → undefined.academy",
+    "contact": "Contact",
+    "email": "me@guillermorodas.com",
+    "socialEmail": "Social & email",
+    "followMe": "Follow me",
+    "copyright": "© {{year}} All rights reserved Guillermo Rodas"
+  },
+  "skipToContent": "Skip to main content"
+}

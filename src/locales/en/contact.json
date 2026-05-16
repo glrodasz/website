@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "pageLabel": "Contact"
+  },
+  "hero": {
+    "label": "Contact",
+    "title": "Say Hello",
+    "lead": "Pick the right channel for what you have in mind."
+  },
+  "intents": {
+    "hi": {
+      "label": "Just saying hi?",
+      "body": "Drop a quick hello or ask any question — I'm always happy to hear from you. Slide into my DMs on Twitter or Instagram."
+    },
+    "work": {
+      "label": "Want to work on something together?",
+      "body": "I've worked with several startups and I do entrepreneurship myself — so I know the difference between a bare idea and a real project. If you have more than just a concept and a solid deal to offer, write me directly."
+    },
+    "job": {
+      "label": "Job offer or career advice?",
+      "body": "LinkedIn is the right place for professional conversations. Write me directly there."
+    }
+  },
+  "langNote": {
+    "text": "I write in Spanish on <twitter>Twitter</twitter>. If you'd rather follow me in English, you'll find me on <bluesky>Bluesky</bluesky>, <threads>Threads</threads>, or <mastodon>Mastodon</mastodon>."
+  }
+}

@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
+import { useLangPrefix } from '../hooks/useLangPrefix';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
@@ -22,6 +24,8 @@ const INITIAL_TUTORIALS = 6;
 const Courses: React.FC = () => {
   const { theme } = useTheme();
   const location = useLocation();
+  const { t } = useTranslation('courses');
+  const prefix = useLangPrefix();
   const [showAllTutorials, setShowAllTutorials] = useState(false);
 
   useEffect(() => {
@@ -34,6 +38,7 @@ const Courses: React.FC = () => {
     window.scrollTo({ top, behavior: 'smooth' });
     section.querySelector<HTMLInputElement>('input')?.focus();
   }, [location.key, location.hash]);
+
   const visibleTutorials = useMemo(
     () => (showAllTutorials ? GARAJE_CODE_PILLS : GARAJE_CODE_PILLS.slice(0, INITIAL_TUTORIALS)),
     [showAllTutorials],
@@ -42,10 +47,10 @@ const Courses: React.FC = () => {
 
   return (
     <div className="page">
-      <Seo title={titleForPage('Courses')} description={defaultDescription} path="/courses" />
+      <Seo title={titleForPage(t('seo.pageLabel'))} description={defaultDescription} path={`${prefix}/courses`} />
       <section className="page-hero">
-        <span className="section-label">Courses</span>
-        <h1 className="section-title">Courses</h1>
+        <span className="section-label">{t('hero.label')}</span>
+        <h1 className="section-title">{t('hero.title')}</h1>
       </section>
 
       <section className="page-section" id="ai-first">
@@ -54,14 +59,12 @@ const Courses: React.FC = () => {
           <div className="featured-course-card__content">
             <div className="featured-course-card__header">
               <Badge variant="accent" size="small" uppercase>
-                Coming Soon
+                {t('aifirst.badge')}
               </Badge>
             </div>
-            <h2 className="featured-course-card__title">AI-First Programming Course</h2>
+            <h2 className="featured-course-card__title">{t('aifirst.title')}</h2>
             <p className="featured-course-card__description">
-              Learn to build software using AI as your primary tool. Covers JavaScript/TypeScript,
-              Python, Go, and Rust through 5-minute focused video lessons. Designed for developers
-              who want to move fast and build better with AI.
+              {t('aifirst.description')}
             </p>
             <WaitlistForm />
           </div>
@@ -71,9 +74,9 @@ const Courses: React.FC = () => {
       <hr className="section-divider" />
 
       <section className="page-section">
-        <h2 className="section-title">Free courses</h2>
+        <h2 className="section-title">{t('free.title')}</h2>
         <p className="page-section__lead">
-          Full playlists on YouTube — no paywall.
+          {t('free.lead')}
         </p>
         <div className="card-grid card-grid--2 playlist-card-grid">
           {FREE_YOUTUBE_PLAYLISTS.map((pl) => (
@@ -101,7 +104,7 @@ const Courses: React.FC = () => {
                   <span className="sr-only">{PLAYLIST_LANGUAGE_META[pl.language].label}</span>
                   <h3 className="playlist-card__title">{pl.title}</h3>
                 </div>
-                <span className="playlist-card__link">Watch on YouTube →</span>
+                <span className="playlist-card__link">{t('free.watchLink')}</span>
               </div>
             </a>
           ))}
@@ -111,9 +114,9 @@ const Courses: React.FC = () => {
       <hr className="section-divider" />
 
       <section className="page-section">
-        <h2 className="section-title">Tutorials</h2>
+        <h2 className="section-title">{t('tutorials.title')}</h2>
         <p className="page-section__lead">
-          Garaje Code Pills — short practical videos.
+          {t('tutorials.lead')}
         </p>
         <ul className="tutorial-list">
           {visibleTutorials.map((v) => (
@@ -144,7 +147,7 @@ const Courses: React.FC = () => {
             className="btn-load-more"
             onClick={() => setShowAllTutorials((s) => !s)}
           >
-            {showAllTutorials ? 'Show less' : 'Load more'}
+            {showAllTutorials ? t('tutorials.showLess') : t('tutorials.loadMore')}
           </Button>
         )}
       </section>
@@ -152,7 +155,7 @@ const Courses: React.FC = () => {
       <hr className="section-divider" />
 
       <section className="page-section">
-        <h2 className="section-title">Courses on other platforms</h2>
+        <h2 className="section-title">{t('platforms.title')}</h2>
         <div className="card-grid card-grid--3 platform-course-grid">
           {OTHER_PLATFORM_COURSES.map((c) => (
             <a
@@ -175,7 +178,7 @@ const Courses: React.FC = () => {
               <span className="platform-course-card__platform">{c.platform}</span>
               <h3 className="platform-course-card__title">{c.title}</h3>
               {c.description && <p className="platform-course-card__desc">{c.description}</p>}
-              <span className="platform-course-card__cta">Open course →</span>
+              <span className="platform-course-card__cta">{t('platforms.openCourse')}</span>
             </a>
           ))}
         </div>

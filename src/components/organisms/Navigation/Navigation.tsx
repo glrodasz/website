@@ -38,7 +38,7 @@ export const Navigation: FC<NavigationProps> = ({
   const aboutRef = useRef<HTMLLIElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const prefix = useLangPrefix();
   const location = useLocation();
 
@@ -46,14 +46,13 @@ export const Navigation: FC<NavigationProps> = ({
 
   const closeMobile = () => setMobileOpen(false);
 
-  // Build the alternate-language URL by toggling the /es prefix
+  // Build the alternate-language URL by toggling the /es prefix.
+  // Derived from pathname (not i18n.language) so it's always in sync with the URL.
   const altLangHref = (() => {
-    const isEs = i18n.language === 'es';
+    const isEs = location.pathname.startsWith('/es');
     if (isEs) {
-      // Strip the leading /es segment
       return location.pathname.replace(/^\/es(\/|$)/, '/') || '/';
     }
-    // Prepend /es
     return `/es${location.pathname === '/' ? '' : location.pathname}`;
   })();
 
@@ -126,7 +125,7 @@ export const Navigation: FC<NavigationProps> = ({
     <Link
       to={altLangHref}
       className="qd-navigation__lang-switcher"
-      aria-label={i18n.language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+      aria-label={location.pathname.startsWith('/es') ? 'Switch to English' : 'Cambiar a Español'}
     >
       {t('nav.langSwitcher')}
     </Link>

@@ -418,11 +418,23 @@
   margin: 0 0 var(--components-tokens--site--playlist-card--spacing--title-row-bottom);
 }
 
-.playlist-card__lang-flag {
-  font-size: 1.2em;
+.lang-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
   line-height: 1;
+  color: var(--components-tokens--site--course-card--card-title-color);
+  opacity: 0.55;
   flex-shrink: 0;
-  margin-top: 0.08em;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.lang-chip__flag {
+  font-size: 1.1em;
+  line-height: 1;
 }
 
 .playlist-card__title {
@@ -483,6 +495,13 @@
   object-fit: cover;
   border-radius: var(--radius-sm);
   background: var(--components-tokens--site--course-card--media-background-color);
+}
+
+.tutorial-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .tutorial-row__title {

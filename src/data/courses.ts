@@ -2,10 +2,10 @@ export type PlaylistLanguage = 'en' | 'es';
 
 export const PLAYLIST_LANGUAGE_META: Record<
   PlaylistLanguage,
-  { flag: string; label: string }
+  { flag: string; label: string; labelEs: string }
 > = {
-  en: { flag: '🇬🇧', label: 'English' },
-  es: { flag: '🇪🇸', label: 'Spanish' },
+  en: { flag: '🇬🇧', label: 'English', labelEs: 'Inglés' },
+  es: { flag: '🇪🇸', label: 'Spanish', labelEs: 'Español' },
 };
 
 export interface YouTubePlaylistCourse {

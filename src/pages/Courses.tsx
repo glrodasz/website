@@ -11,6 +11,7 @@ import {
   FREE_YOUTUBE_PLAYLISTS,
   OTHER_PLATFORM_COURSES,
   PLAYLIST_LANGUAGE_META,
+  type PlaylistLanguage,
   playlistUrl,
   youtubeThumb,
 } from '../data/courses';
@@ -21,12 +22,24 @@ import './pages.css';
 
 const INITIAL_TUTORIALS = 6;
 
+const LangChip: React.FC<{ lang: PlaylistLanguage; isEs: boolean }> = ({ lang, isEs }) => {
+  const meta = PLAYLIST_LANGUAGE_META[lang];
+  const label = isEs ? meta.labelEs : meta.label;
+  return (
+    <span className="lang-chip">
+      <span className="lang-chip__flag" aria-hidden="true">{meta.flag}</span>
+      <span>{label}</span>
+    </span>
+  );
+};
+
 const Courses: React.FC = () => {
   const { theme } = useTheme();
   const location = useLocation();
-  const { t } = useTranslation('courses');
+  const { t, i18n } = useTranslation('courses');
   const prefix = useLangPrefix();
   const [showAllTutorials, setShowAllTutorials] = useState(false);
+  const isEs = i18n.language === 'es';
 
   useEffect(() => {
     if (location.hash !== '#ai-first') return;
@@ -97,11 +110,8 @@ const Courses: React.FC = () => {
                 <div className="playlist-card__img-placeholder">▶</div>
               )}
               <div className="playlist-card__body">
+                <LangChip lang={pl.language} isEs={isEs} />
                 <div className="playlist-card__title-row">
-                  <span className="playlist-card__lang-flag" aria-hidden="true">
-                    {PLAYLIST_LANGUAGE_META[pl.language].flag}
-                  </span>
-                  <span className="sr-only">{PLAYLIST_LANGUAGE_META[pl.language].label}</span>
                   <h3 className="playlist-card__title">{pl.title}</h3>
                 </div>
                 <span className="playlist-card__link">{t('free.watchLink')}</span>
@@ -135,7 +145,12 @@ const Courses: React.FC = () => {
                   height={68}
                   loading="lazy"
                 />
-                <span className="tutorial-row__title">{v.title}</span>
+                <div className="tutorial-row__info">
+                  <LangChip lang={v.language} isEs={isEs} />
+                  <span className="tutorial-row__title">
+                    {isEs ? v.title : v.titleEn}
+                  </span>
+                </div>
               </a>
             </li>
           ))}

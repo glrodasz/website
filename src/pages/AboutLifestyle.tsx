@@ -15,8 +15,9 @@ import { ArrowRight } from 'phosphor-react';
 import { IconButton } from '../components/molecules/IconButton';
 
 const AboutLifestyle: React.FC = () => {
-  const { t } = useTranslation('about');
+  const { t, i18n } = useTranslation('about');
   const prefix = useLangPrefix();
+  const isEs = i18n.language === 'es';
 
   return (
     <div className="page">
@@ -63,7 +64,7 @@ const AboutLifestyle: React.FC = () => {
                 href={b.href}
                 imageUrl={b.coverUrl}
                 title={b.title}
-                summary={b.summary}
+                summary={isEs ? (b.summaryEs ?? b.summary) : b.summary}
                 placeholder="📖"
               />
             </li>
@@ -95,7 +96,7 @@ const AboutLifestyle: React.FC = () => {
                 href={f.href}
                 imageUrl={f.posterUrl}
                 title={f.title}
-                summary={f.summary}
+                summary={isEs ? (f.summaryEs ?? f.summary) : f.summary}
                 placeholder="▶"
               />
             </li>

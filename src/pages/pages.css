@@ -377,6 +377,13 @@
   z-index: 2;
 }
 
+.lang-ribbon.qd-tag--neutral.qd-tag--outlined {
+  backdrop-filter: blur(6px);
+  background-color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
 .lang-tag__inner {
   display: inline-flex;
   align-items: center;
@@ -472,7 +479,6 @@
   align-items: center;
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
   padding: var(--components-tokens--site--tutorial--spacing--row-padding);
-  padding-right: 90px;
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);

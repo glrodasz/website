@@ -187,6 +187,13 @@
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
+.lang-ribbon.qd-tag--neutral.qd-tag--outlined {
+  backdrop-filter: blur(6px);
+  background-color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
 .home-course-card:hover {
   border-color: var(--components-tokens--site--course-card--hover-border-color);
   transform: translateY(-2px);

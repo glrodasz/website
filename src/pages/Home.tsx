@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
 import { useLangPrefix } from '../hooks/useLangPrefix';
 import { Button } from '../components/atoms/Button';
+import { Tag } from '../components/atoms/Tag';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import { CourseBackground } from '../components/organisms/CourseBackground';
 import {
@@ -53,7 +54,8 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 
 const Home: React.FC = () => {
   const { theme } = useTheme();
-  const { t } = useTranslation('home');
+  const { t, i18n } = useTranslation('home');
+  const isEs = i18n.language === 'es';
   const prefix = useLangPrefix();
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
 
@@ -123,15 +125,12 @@ const Home: React.FC = () => {
                     <div className="home-course-card__thumb-placeholder">▶</div>
                   )}
                   <div className="home-course-card__body">
-                    <div className="home-course-card__title-row">
-                      <span className="home-course-card__lang-flag" aria-hidden="true">
-                        {PLAYLIST_LANGUAGE_META[featuredPlaylist.language].flag}
-                      </span>
-                      <span className="sr-only">
-                        {PLAYLIST_LANGUAGE_META[featuredPlaylist.language].label}
-                      </span>
-                      <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
-                    </div>
+                    <Tag size="small" variant="neutral">
+                      {isEs
+                        ? PLAYLIST_LANGUAGE_META[featuredPlaylist.language].labelEs
+                        : PLAYLIST_LANGUAGE_META[featuredPlaylist.language].label}
+                    </Tag>
+                    <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
                     <span className="home-course-card__cta">{t('courses.openPlaylist')}</span>
                   </div>
                 </a>

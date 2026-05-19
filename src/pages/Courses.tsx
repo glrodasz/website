@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
 import { useLangPrefix } from '../hooks/useLangPrefix';
 import { Badge } from '../components/atoms/Badge';
+import { Tag } from '../components/atoms/Tag';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import { CourseBackground } from '../components/organisms/CourseBackground';
@@ -22,15 +23,9 @@ import './pages.css';
 
 const INITIAL_TUTORIALS = 6;
 
-const LangChip: React.FC<{ lang: PlaylistLanguage; isEs: boolean }> = ({ lang, isEs }) => {
+const LangTag: React.FC<{ lang: PlaylistLanguage; isEs: boolean }> = ({ lang, isEs }) => {
   const meta = PLAYLIST_LANGUAGE_META[lang];
-  const label = isEs ? meta.labelEs : meta.label;
-  return (
-    <span className="lang-chip">
-      <span className="lang-chip__flag" aria-hidden="true">{meta.flag}</span>
-      <span>{label}</span>
-    </span>
-  );
+  return <Tag size="small" variant="neutral">{isEs ? meta.labelEs : meta.label}</Tag>;
 };
 
 const Courses: React.FC = () => {
@@ -110,7 +105,7 @@ const Courses: React.FC = () => {
                 <div className="playlist-card__img-placeholder">▶</div>
               )}
               <div className="playlist-card__body">
-                <LangChip lang={pl.language} isEs={isEs} />
+                <LangTag lang={pl.language} isEs={isEs} />
                 <div className="playlist-card__title-row">
                   <h3 className="playlist-card__title">{pl.title}</h3>
                 </div>
@@ -146,7 +141,7 @@ const Courses: React.FC = () => {
                   loading="lazy"
                 />
                 <div className="tutorial-row__info">
-                  <LangChip lang={v.language} isEs={isEs} />
+                  <LangTag lang={v.language} isEs={isEs} />
                   <span className="tutorial-row__title">
                     {isEs ? v.title : v.titleEn}
                   </span>
@@ -190,7 +185,10 @@ const Courses: React.FC = () => {
                   loading="lazy"
                 />
               )}
-              <span className="platform-course-card__platform">{c.platform}</span>
+              <div className="platform-course-card__header">
+                <span className="platform-course-card__platform">{c.platform}</span>
+                {c.language && <LangTag lang={c.language} isEs={isEs} />}
+              </div>
               <h3 className="platform-course-card__title">{c.title}</h3>
               {c.description && <p className="platform-course-card__desc">{c.description}</p>}
               <span className="platform-course-card__cta">{t('platforms.openCourse')}</span>

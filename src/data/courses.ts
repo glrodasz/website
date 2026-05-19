@@ -2,10 +2,10 @@ export type PlaylistLanguage = 'en' | 'es';
 
 export const PLAYLIST_LANGUAGE_META: Record<
   PlaylistLanguage,
-  { flag: string; label: string; labelEs: string }
+  { label: string; labelEs: string }
 > = {
-  en: { flag: '🇬🇧', label: 'English', labelEs: 'Inglés' },
-  es: { flag: '🇪🇸', label: 'Spanish', labelEs: 'Español' },
+  en: { label: 'English', labelEs: 'Inglés' },
+  es: { label: 'Spanish', labelEs: 'Español' },
 };
 
 export interface YouTubePlaylistCourse {
@@ -60,6 +60,7 @@ export interface PlatformCourse {
   title: string;
   platform: string;
   href: string;
+  language?: PlaylistLanguage;
   description?: string;
   logoSrc?: string;
   /** When set, used instead of logoSrc in dark mode */
@@ -72,6 +73,7 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     title: 'Node.js Profesional',
     platform: 'Código Facilito',
     href: 'https://codigofacilito.com/cursos/nodejs-profesional',
+    language: 'es',
     description: 'Professional Node.js on Código Facilito.',
     logoSrc: '/logos/codigofacilito.png',
     logoSrcDark: '/logos/codigofacilito-light.png',
@@ -81,6 +83,7 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     title: 'OAuth 2.0 y OpenID Connect',
     platform: 'Platzi',
     href: 'https://platzi.com/cursos/oauth/?utm_content=glrodasz&utm_source=affiliates&utm_medium=organic&utm_campaign=teacher_afiliados_glrodasz',
+    language: 'es',
     description: 'Authentication flows, JWT, and production patterns.',
     logoSrc: '/logos/platzi.svg',
   },
@@ -89,6 +92,7 @@ export const OTHER_PLATFORM_COURSES: PlatformCourse[] = [
     title: 'Auth0: Autenticación y seguridad web',
     platform: 'Platzi',
     href: 'https://platzi.com/cursos/auth0/?utm_content=glrodasz&utm_source=affiliates&utm_medium=organic&utm_campaign=teacher_afiliados_glrodasz',
+    language: 'es',
     description: 'Universal Login, social connections, APIs, and Auth0 in production.',
     logoSrc: '/logos/platzi.svg',
   },

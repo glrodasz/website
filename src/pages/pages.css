@@ -418,24 +418,6 @@
   margin: 0 0 var(--components-tokens--site--playlist-card--spacing--title-row-bottom);
 }
 
-.lang-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--components-tokens--site--course-card--card-title-color);
-  opacity: 0.55;
-  flex-shrink: 0;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-}
-
-.lang-chip__flag {
-  font-size: 1.1em;
-  line-height: 1;
-}
 
 .playlist-card__title {
   font-family: var(--system-tokens--typography--font-family--headings);
@@ -552,13 +534,19 @@
   margin-bottom: var(--components-tokens--site--course-card--logo-margin-bottom);
 }
 
+.platform-course-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--components-tokens--site--course-section--platform-card--platform-bottom);
+}
+
 .platform-course-card__platform {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--system-tokens--colors--complementary--subtle);
-  margin-bottom: var(--components-tokens--site--course-section--platform-card--platform-bottom);
 }
 
 .platform-course-card__title {

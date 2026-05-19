@@ -179,6 +179,7 @@
 }
 
 .home-course-card {
+  position: relative;
   border-radius: var(--radius-card);
   overflow: hidden;
   border: 1px solid var(--components-tokens--site--course-card--border-color);

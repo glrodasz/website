@@ -370,7 +370,21 @@
   margin-top: var(--components-tokens--site--playlist-card--spacing--grid-top);
 }
 
+.lang-ribbon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.lang-tag__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
 .playlist-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-card);
@@ -453,10 +467,12 @@
 }
 
 .tutorial-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
   padding: var(--components-tokens--site--tutorial--spacing--row-padding);
+  padding-right: 90px;
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);
@@ -510,6 +526,7 @@
 }
 
 .platform-course-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: var(--components-tokens--site--course-section--platform-card--padding);

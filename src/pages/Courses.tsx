@@ -8,6 +8,7 @@ import { Tag } from '../components/atoms/Tag';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import { CourseBackground } from '../components/organisms/CourseBackground';
+import { Globe } from 'phosphor-react';
 import {
   FREE_YOUTUBE_PLAYLISTS,
   OTHER_PLATFORM_COURSES,
@@ -23,9 +24,16 @@ import './pages.css';
 
 const INITIAL_TUTORIALS = 6;
 
-const LangTag: React.FC<{ lang: PlaylistLanguage; isEs: boolean }> = ({ lang, isEs }) => {
+const LangTag: React.FC<{ lang: PlaylistLanguage; isEs: boolean; className?: string }> = ({ lang, isEs, className }) => {
   const meta = PLAYLIST_LANGUAGE_META[lang];
-  return <Tag size="small" variant="neutral">{isEs ? meta.labelEs : meta.label}</Tag>;
+  return (
+    <Tag size="small" variant="neutral" outlined className={className}>
+      <span className="lang-tag__inner">
+        <Globe size={11} aria-hidden weight="regular" />
+        {isEs ? meta.labelEs : meta.label}
+      </span>
+    </Tag>
+  );
 };
 
 const Courses: React.FC = () => {
@@ -95,6 +103,7 @@ const Courses: React.FC = () => {
               rel="noopener noreferrer"
               className="playlist-card"
             >
+              <LangTag lang={pl.language} isEs={isEs} className="lang-ribbon" />
               {pl.thumbnailVideoId ? (
                 <img
                   src={youtubeThumb(pl.thumbnailVideoId)}
@@ -105,7 +114,6 @@ const Courses: React.FC = () => {
                 <div className="playlist-card__img-placeholder">▶</div>
               )}
               <div className="playlist-card__body">
-                <LangTag lang={pl.language} isEs={isEs} />
                 <div className="playlist-card__title-row">
                   <h3 className="playlist-card__title">{pl.title}</h3>
                 </div>
@@ -132,6 +140,7 @@ const Courses: React.FC = () => {
                 rel="noopener noreferrer"
                 className="tutorial-row"
               >
+                <LangTag lang={v.language} isEs={isEs} className="lang-ribbon" />
                 <img
                   src={youtubeThumb(v.videoId)}
                   alt=""
@@ -141,7 +150,6 @@ const Courses: React.FC = () => {
                   loading="lazy"
                 />
                 <div className="tutorial-row__info">
-                  <LangTag lang={v.language} isEs={isEs} />
                   <span className="tutorial-row__title">
                     {isEs ? v.title : v.titleEn}
                   </span>
@@ -175,6 +183,7 @@ const Courses: React.FC = () => {
               rel="noopener noreferrer"
               className="platform-course-card"
             >
+              {c.language && <LangTag lang={c.language} isEs={isEs} className="lang-ribbon" />}
               {c.logoSrc && (
                 <img
                   src={
@@ -187,7 +196,6 @@ const Courses: React.FC = () => {
               )}
               <div className="platform-course-card__header">
                 <span className="platform-course-card__platform">{c.platform}</span>
-                {c.language && <LangTag lang={c.language} isEs={isEs} />}
               </div>
               <h3 className="platform-course-card__title">{c.title}</h3>
               {c.description && <p className="platform-course-card__desc">{c.description}</p>}

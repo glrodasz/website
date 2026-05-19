@@ -16,7 +16,7 @@ import {
 import { Seo } from '../components/Seo';
 import { writingPosts, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
-import { ArrowRight } from 'phosphor-react';
+import { ArrowRight, Globe } from 'phosphor-react';
 import { IconButton } from '../components/molecules/IconButton';
 import { Badge } from '../components/atoms/Badge';
 
@@ -109,6 +109,14 @@ const Home: React.FC = () => {
             </article>
             {featuredPlaylist && (
               <article className="home-course-card">
+                <Tag size="small" variant="neutral" outlined className="lang-ribbon">
+                  <span className="lang-tag__inner">
+                    <Globe size={11} aria-hidden weight="regular" />
+                    {isEs
+                      ? PLAYLIST_LANGUAGE_META[featuredPlaylist.language].labelEs
+                      : PLAYLIST_LANGUAGE_META[featuredPlaylist.language].label}
+                  </span>
+                </Tag>
                 <a
                   href={playlistUrl(featuredPlaylist.playlistId)}
                   target="_blank"
@@ -125,11 +133,6 @@ const Home: React.FC = () => {
                     <div className="home-course-card__thumb-placeholder">▶</div>
                   )}
                   <div className="home-course-card__body">
-                    <Tag size="small" variant="neutral">
-                      {isEs
-                        ? PLAYLIST_LANGUAGE_META[featuredPlaylist.language].labelEs
-                        : PLAYLIST_LANGUAGE_META[featuredPlaylist.language].label}
-                    </Tag>
                     <h3 className="home-course-card__name">{featuredPlaylist.title}</h3>
                     <span className="home-course-card__cta">{t('courses.openPlaylist')}</span>
                   </div>

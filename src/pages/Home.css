@@ -45,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 680px;
+  max-width: 880px;
 }
 
 .home-hero__promo-pill {
@@ -83,7 +83,7 @@
   line-height: 1.1;
   color: var(--color-text);
   margin: 0 0 16px;
-  max-width: 640px;
+  max-width: 880px;
   -webkit-text-stroke: 2px var(--color-bg);
   paint-order: stroke fill;
 }
@@ -135,7 +135,7 @@
     align-items: center;
     text-align: center;
     padding-top: 0;
-    max-width: 720px;
+    max-width: 880px;
   }
 
   .home-hero__ctas {

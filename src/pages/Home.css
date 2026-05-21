@@ -450,6 +450,10 @@
     padding-right: 16px;
   }
 
+  .home-hero__headline {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
   .home-hero__ctas {
     flex-direction: column;
     width: 100%;

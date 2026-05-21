@@ -5,7 +5,8 @@
   },
   "hero": {
     "promoPill": "AI-first programming course",
-    "headline": "Technical partner for building better products",
+    "headlinePart1": "Technical partner for",
+    "headlinePart2": "building better products",
     "description": "Hi, I'm Guillermo Rodas, a fullstack developer specialized in AI.\nI help companies create high-quality products while sharing practical learnings with the Spanish-speaking dev community.",
     "ctaCourses": "Courses",
     "ctaContact": "Get in touch"

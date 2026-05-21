@@ -5,7 +5,8 @@
   },
   "hero": {
     "promoPill": "Curso de programación con IA",
-    "headline": "Aliado técnico para construir mejores productos",
+    "headlinePart1": "Aliado técnico para",
+    "headlinePart2": "construir mejores productos",
     "description": "Hola, soy Guillermo Rodas, desarrollador fullstack especializado en IA.\nAyudo a empresas a crear productos de calidad mientras comparto aprendizajes prácticos con la comunidad dev en español.",
     "ctaCourses": "Cursos",
     "ctaContact": "Escríbeme"

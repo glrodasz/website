@@ -456,7 +456,15 @@
   }
 
   .home-hero__headline {
-    font-size: clamp(1.3rem, 5.5vw, 2rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
+  }
+
+  .home-hero__headline-main {
+    display: block;
+  }
+
+  .home-hero__headline-secondary {
+    font-size: 0.72em;
   }
 
   .home-hero__description {

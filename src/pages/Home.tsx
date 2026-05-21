@@ -72,7 +72,10 @@ const Home: React.FC = () => {
                   {t('hero.promoPill')}
                   <span className="home-hero__promo-arrow" aria-hidden="true">›</span>
                 </a>
-                <h1 className="home-hero__headline">{t('hero.headline')}</h1>
+                <h1 className="home-hero__headline">
+                  <span className="home-hero__headline-main">{t('hero.headlinePart1')}</span>{' '}
+                  <span className="home-hero__headline-secondary">{t('hero.headlinePart2')}</span>
+                </h1>
                 <p className="home-hero__description">{t('hero.description')}</p>
                 <div className="home-hero__ctas">
                   <Button to={`${prefix}/courses`} variant="primary">{t('hero.ctaCourses')}</Button>

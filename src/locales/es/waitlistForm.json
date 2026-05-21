@@ -1,0 +1,19 @@
+{
+  "firstName": {
+    "label": "Nombre",
+    "placeholder": "Ada"
+  },
+  "email": {
+    "label": "Correo",
+    "placeholder": "tu@ejemplo.com"
+  },
+  "submit": "Unirse a la lista",
+  "submitting": "Uniéndose…",
+  "success": "Estás en la lista — te enviaré un correo cuando el curso abra.",
+  "errors": {
+    "firstName": "Por favor ingresa tu nombre.",
+    "email": "Por favor ingresa un correo válido.",
+    "subscription": "La suscripción falló, inténtalo de nuevo.",
+    "network": "Error de red — inténtalo de nuevo."
+  }
+}

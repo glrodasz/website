@@ -1,0 +1,19 @@
+{
+  "firstName": {
+    "label": "First name",
+    "placeholder": "Ada"
+  },
+  "email": {
+    "label": "Email",
+    "placeholder": "you@example.com"
+  },
+  "submit": "Join waitlist",
+  "submitting": "Joining…",
+  "success": "You're on the list — I'll email you when the course opens.",
+  "errors": {
+    "firstName": "Please enter your first name.",
+    "email": "Please enter a valid email address.",
+    "subscription": "Subscription failed, please try again.",
+    "network": "Network error — please try again."
+  }
+}

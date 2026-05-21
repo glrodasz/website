@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../../atoms/Button';
 import { InputText } from '../InputText';
 import './WaitlistForm.css';
@@ -8,10 +9,6 @@ export interface WaitlistFormProps {
   endpoint?: string;
   /** Optional extra class on the form wrapper */
   className?: string;
-  /** CTA label on the submit button */
-  submitLabel?: string;
-  /** Message shown after a successful subscription */
-  successMessage?: string;
 }
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
@@ -22,9 +19,8 @@ const MOBILE_BREAKPOINT = '(max-width: 640px)';
 export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   endpoint = '/api/subscribe',
   className,
-  submitLabel = 'Join waitlist',
-  successMessage = "You're on the list — I'll email you when the course opens.",
 }) => {
+  const { t } = useTranslation('waitlistForm');
   const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_BREAKPOINT).matches);
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -50,7 +46,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   if (status === 'success') {
     return (
       <div className={classNames} role="status">
-        <p className="qd-waitlist-form__success-message">{successMessage}</p>
+        <p className="qd-waitlist-form__success-message">{t('success')}</p>
       </div>
     );
   }
@@ -63,12 +59,12 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
 
     if (!isMobile && !trimmedFirstName) {
       setFieldError('firstName');
-      setErrorMessage('Please enter your first name.');
+      setErrorMessage(t('errors.firstName'));
       return;
     }
     if (!trimmedEmail || !EMAIL_REGEX.test(trimmedEmail)) {
       setFieldError('email');
-      setErrorMessage('Please enter a valid email address.');
+      setErrorMessage(t('errors.email'));
       return;
     }
 
@@ -97,10 +93,10 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
       }
 
       setStatus('error');
-      setErrorMessage(data.message || 'Subscription failed, please try again.');
+      setErrorMessage(data.message || t('errors.subscription'));
     } catch {
       setStatus('error');
-      setErrorMessage('Network error — please try again.');
+      setErrorMessage(t('errors.network'));
     }
   };
 
@@ -111,8 +107,8 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
       <div className="qd-waitlist-form__fields">
         <div className="qd-waitlist-form__name-field">
           <InputText
-            label="First name"
-            placeholder="Ada"
+            label={t('firstName.label')}
+            placeholder={t('firstName.placeholder')}
             type="text"
             autoComplete="given-name"
             value={firstName}
@@ -122,8 +118,8 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
           />
         </div>
         <InputText
-          label="Email"
-          placeholder="you@example.com"
+          label={t('email.label')}
+          placeholder={t('email.placeholder')}
           type="email"
           autoComplete="email"
           value={email}
@@ -134,7 +130,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
       </div>
       <div className="qd-waitlist-form__submit">
         <Button variant="primary" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Joining…' : submitLabel}
+          {isSubmitting ? t('submitting') : t('submit')}
         </Button>
       </div>
       {errorMessage && !isSubmitting && (

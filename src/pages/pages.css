@@ -370,7 +370,28 @@
   margin-top: var(--components-tokens--site--playlist-card--spacing--grid-top);
 }
 
+.lang-ribbon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.lang-ribbon.qd-tag--neutral.qd-tag--outlined {
+  backdrop-filter: blur(6px);
+  background-color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.lang-tag__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
 .playlist-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-card);
@@ -418,12 +439,6 @@
   margin: 0 0 var(--components-tokens--site--playlist-card--spacing--title-row-bottom);
 }
 
-.playlist-card__lang-flag {
-  font-size: 1.2em;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 0.08em;
-}
 
 .playlist-card__title {
   font-family: var(--system-tokens--typography--font-family--headings);
@@ -459,6 +474,7 @@
 }
 
 .tutorial-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
@@ -485,6 +501,13 @@
   background: var(--components-tokens--site--course-card--media-background-color);
 }
 
+.tutorial-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
 .tutorial-row__title {
   font-size: 0.95rem;
   font-weight: 600;
@@ -509,6 +532,7 @@
 }
 
 .platform-course-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: var(--components-tokens--site--course-section--platform-card--padding);
@@ -533,13 +557,19 @@
   margin-bottom: var(--components-tokens--site--course-card--logo-margin-bottom);
 }
 
+.platform-course-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--components-tokens--site--course-section--platform-card--platform-bottom);
+}
+
 .platform-course-card__platform {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--system-tokens--colors--complementary--subtle);
-  margin-bottom: var(--components-tokens--site--course-section--platform-card--platform-bottom);
 }
 
 .platform-course-card__title {

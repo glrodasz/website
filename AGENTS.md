@@ -75,6 +75,22 @@ CSS file  →  --components-tokens--*  →  --system-tokens--*  →  --global-to
 | `Border radius/lg` | 24px |
 | `Border radius/full` | 100px |
 
+## Package Manager — Always Use pnpm
+
+This project uses **pnpm** and Vercel deploys with `pnpm install --frozen-lockfile`.
+Always install packages with pnpm so `pnpm-lock.yaml` stays in sync:
+
+```bash
+# ✅ Correct
+pnpm add <package>
+pnpm add -D <package>
+
+# ❌ Wrong — leaves pnpm-lock.yaml stale, breaks Vercel CI
+npm install <package>
+```
+
+After installing, commit both `package.json` **and** `pnpm-lock.yaml`.
+
 ## Other Key Rules
 
 - **Never edit `src/tokens/design-tokens.css` directly** — it is generated. Edit the JSON files instead.

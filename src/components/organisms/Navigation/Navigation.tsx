@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, type FC } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { ArrowSquareOut, CaretDown } from 'phosphor-react';
+import { useTranslation } from 'react-i18next';
 import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
+import { useLangPrefix } from '../../../hooks/useLangPrefix';
 import './Navigation.css';
 
 export interface NavigationProps {
@@ -36,10 +38,23 @@ export const Navigation: FC<NavigationProps> = ({
   const aboutRef = useRef<HTMLLIElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
+  const prefix = useLangPrefix();
+  const location = useLocation();
 
   useFocusTrap(overlayRef, mobileOpen);
 
   const closeMobile = () => setMobileOpen(false);
+
+  // Build the alternate-language URL by toggling the /es prefix.
+  // Derived from pathname (not i18n.language) so it's always in sync with the URL.
+  const altLangHref = (() => {
+    const isEs = location.pathname.startsWith('/es');
+    if (isEs) {
+      return location.pathname.replace(/^\/es(\/|$)/, '/') || '/';
+    }
+    return `/es${location.pathname === '/' ? '' : location.pathname}`;
+  })();
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -85,8 +100,8 @@ export const Navigation: FC<NavigationProps> = ({
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
-  const themeLabel = theme === 'dark' ? 'Dark' : 'Light';
-  const ariaLabel = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  const themeLabel = theme === 'dark' ? t('nav.themeDark') : t('nav.themeLight');
+  const ariaLabel = theme === 'dark' ? t('nav.switchToLight') : t('nav.switchToDark');
 
   const themeToggle = (
     <button
@@ -106,11 +121,21 @@ export const Navigation: FC<NavigationProps> = ({
     </button>
   );
 
+  const langSwitcher = (
+    <Link
+      to={altLangHref}
+      className="qd-navigation__lang-switcher"
+      aria-label={location.pathname.startsWith('/es') ? 'Switch to English' : 'Cambiar a Español'}
+    >
+      {t('nav.langSwitcher')}
+    </Link>
+  );
+
   return (
     <header className="qd-navigation">
       <nav className="qd-navigation__bar" aria-label="Main">
         <div className="qd-navigation__inner">
-          <Link to="/" className="qd-navigation__brand" onClick={closeMobile}>
+          <Link to={`${prefix}/`} className="qd-navigation__brand" onClick={closeMobile}>
             <img
               className="qd-navigation__brand-mark"
               src={brandMarkSrc}
@@ -127,8 +152,8 @@ export const Navigation: FC<NavigationProps> = ({
           <div className="qd-navigation__cluster">
             <ul className="qd-navigation__links">
               <li>
-                <NavLink to="/" className={({ isActive }) => navLinkClass(isActive)} end>
-                  Home
+                <NavLink to={`${prefix}/`} className={({ isActive }) => navLinkClass(isActive)} end>
+                  {t('nav.home')}
                 </NavLink>
               </li>
               <li
@@ -150,7 +175,7 @@ export const Navigation: FC<NavigationProps> = ({
                     aria-expanded={isAboutCollapsed ? aboutOpen : undefined}
                     aria-haspopup={isAboutCollapsed ? 'true' : undefined}
                   >
-                    About
+                    {t('nav.about')}
                     <span className="qd-navigation__about-caret" aria-hidden="true">
                       <CaretDown size={12} weight="bold" />
                     </span>
@@ -163,22 +188,22 @@ export const Navigation: FC<NavigationProps> = ({
                       rel="noopener noreferrer"
                       tabIndex={isAboutCollapsed ? -1 : 0}
                     >
-                      Professional
+                      {t('nav.professional')}
                       <ArrowSquareOut size={12} weight="regular" aria-hidden />
                     </a>
                     <NavLink
-                      to="/about/history"
+                      to={`${prefix}/about/history`}
                       className={({ isActive }) => navLinkClass(isActive)}
                       tabIndex={isAboutCollapsed ? -1 : 0}
                     >
-                      My History
+                      {t('nav.myHistory')}
                     </NavLink>
                     <NavLink
-                      to="/about/lifestyle"
+                      to={`${prefix}/about/lifestyle`}
                       className={({ isActive }) => navLinkClass(isActive)}
                       tabIndex={isAboutCollapsed ? -1 : 0}
                     >
-                      Lifestyle
+                      {t('nav.lifestyle')}
                     </NavLink>
                   </div>
                 </div>
@@ -194,11 +219,11 @@ export const Navigation: FC<NavigationProps> = ({
                       onClick={() => setAboutOpen(false)}
                       role="menuitem"
                     >
-                      Professional
+                      {t('nav.professional')}
                       <ArrowSquareOut size={12} weight="regular" aria-hidden />
                     </a>
                     <NavLink
-                      to="/about/history"
+                      to={`${prefix}/about/history`}
                       className={({ isActive }) =>
                         [
                           'qd-navigation__about-dropdown-link',
@@ -210,10 +235,10 @@ export const Navigation: FC<NavigationProps> = ({
                       onClick={() => setAboutOpen(false)}
                       role="menuitem"
                     >
-                      My History
+                      {t('nav.myHistory')}
                     </NavLink>
                     <NavLink
-                      to="/about/lifestyle"
+                      to={`${prefix}/about/lifestyle`}
                       className={({ isActive }) =>
                         [
                           'qd-navigation__about-dropdown-link',
@@ -225,7 +250,7 @@ export const Navigation: FC<NavigationProps> = ({
                       onClick={() => setAboutOpen(false)}
                       role="menuitem"
                     >
-                      Lifestyle
+                      {t('nav.lifestyle')}
                     </NavLink>
                   </div>
                 )}
@@ -237,7 +262,7 @@ export const Navigation: FC<NavigationProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Blog
+                  {t('nav.blog')}
                   <ArrowSquareOut size={12} weight="regular" aria-hidden />
                 </a>
               </li>
@@ -248,26 +273,21 @@ export const Navigation: FC<NavigationProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Bootcamp
+                  {t('nav.bootcamp')}
                   <ArrowSquareOut size={12} weight="regular" aria-hidden />
                 </a>
               </li>
               <li>
-                <NavLink to="/courses" className={({ isActive }) => navLinkClass(isActive)}>
-                  Courses
+                <NavLink to={`${prefix}/courses`} className={({ isActive }) => navLinkClass(isActive)}>
+                  {t('nav.courses')}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={({ isActive }) => navLinkClass(isActive)}>
-                  Contact
+                <NavLink to={`${prefix}/contact`} className={({ isActive }) => navLinkClass(isActive)}>
+                  {t('nav.contact')}
                 </NavLink>
               </li>
             </ul>
-
-            <div className="qd-navigation__theme-wrap qd-navigation__theme-wrap--desktop">
-              {themeToggle}
-              <span className="qd-navigation__theme-label">{themeLabel}</span>
-            </div>
 
             <button
               type="button"
@@ -278,7 +298,7 @@ export const Navigation: FC<NavigationProps> = ({
                 .filter(Boolean)
                 .join(' ')}
               onClick={() => setMobileOpen((v) => !v)}
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               aria-expanded={mobileOpen}
             >
               <span />
@@ -310,13 +330,13 @@ export const Navigation: FC<NavigationProps> = ({
           .join(' ')}
         aria-hidden={!mobileOpen}
         aria-modal={mobileOpen ? 'true' : undefined}
-        aria-label="Navigation menu"
+        aria-label={t('nav.navigationMenu')}
         role="dialog"
         tabIndex={-1}
       >
         {/* Overlay header: brand + close button */}
         <div className="qd-navigation__overlay-header">
-          <Link to="/" className="qd-navigation__brand" onClick={closeMobile}>
+          <Link to={`${prefix}/`} className="qd-navigation__brand" onClick={closeMobile}>
             <img
               className="qd-navigation__brand-mark"
               src={brandMarkSrc}
@@ -333,7 +353,7 @@ export const Navigation: FC<NavigationProps> = ({
             type="button"
             className="qd-navigation__overlay-close"
             onClick={closeMobile}
-            aria-label="Close menu"
+            aria-label={t('nav.closeMenu')}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -349,7 +369,7 @@ export const Navigation: FC<NavigationProps> = ({
         {/* 2-column grid: HOME | ABOUT */}
         <div className="qd-navigation__overlay-grid">
           <NavLink
-            to="/"
+            to={`${prefix}/`}
             className={({ isActive }) =>
               [
                 'qd-navigation__overlay-cell',
@@ -364,14 +384,14 @@ export const Navigation: FC<NavigationProps> = ({
           >
             <span className="qd-navigation__overlay-num" aria-hidden="true">01</span>
             <span className="qd-navigation__overlay-item-name">
-              HOME
+              {t('nav.home').toUpperCase()}
               <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
             </span>
           </NavLink>
 
           <div className="qd-navigation__overlay-cell qd-navigation__overlay-cell--about">
             <span className="qd-navigation__overlay-num" aria-hidden="true">02</span>
-            <span className="qd-navigation__overlay-section-label">ABOUT —</span>
+            <span className="qd-navigation__overlay-section-label">{t('nav.about').toUpperCase()} —</span>
             <ul className="qd-navigation__overlay-sub-list">
               <li>
                 <a
@@ -382,14 +402,14 @@ export const Navigation: FC<NavigationProps> = ({
                   onClick={closeMobile}
                 >
                   <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
-                  Professional
+                  {t('nav.professional')}
                   <ArrowSquareOut size={14} weight="regular" aria-hidden />
                   <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
                 </a>
               </li>
               <li>
                 <NavLink
-                  to="/about/history"
+                  to={`${prefix}/about/history`}
                   className={({ isActive }) =>
                     [
                       'qd-navigation__overlay-sub-link',
@@ -401,13 +421,13 @@ export const Navigation: FC<NavigationProps> = ({
                   onClick={closeMobile}
                 >
                   <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
-                  My History
+                  {t('nav.myHistory')}
                   <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/about/lifestyle"
+                  to={`${prefix}/about/lifestyle`}
                   className={({ isActive }) =>
                     [
                       'qd-navigation__overlay-sub-link',
@@ -419,7 +439,7 @@ export const Navigation: FC<NavigationProps> = ({
                   onClick={closeMobile}
                 >
                   <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
-                  Lifestyle
+                  {t('nav.lifestyle')}
                   <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
                 </NavLink>
               </li>
@@ -437,7 +457,7 @@ export const Navigation: FC<NavigationProps> = ({
         >
           <span className="qd-navigation__overlay-num" aria-hidden="true">03</span>
           <span className="qd-navigation__overlay-item-name">
-            BLOG
+            {t('nav.blog').toUpperCase()}
             <ArrowSquareOut size={16} weight="regular" aria-hidden />
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
           </span>
@@ -452,14 +472,14 @@ export const Navigation: FC<NavigationProps> = ({
         >
           <span className="qd-navigation__overlay-num" aria-hidden="true">04</span>
           <span className="qd-navigation__overlay-item-name">
-            BOOTCAMP
+            {t('nav.bootcamp').toUpperCase()}
             <ArrowSquareOut size={16} weight="regular" aria-hidden />
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
           </span>
         </a>
 
         <NavLink
-          to="/courses"
+          to={`${prefix}/courses`}
           className={({ isActive }) =>
             [
               'qd-navigation__overlay-row',
@@ -472,13 +492,13 @@ export const Navigation: FC<NavigationProps> = ({
         >
           <span className="qd-navigation__overlay-num" aria-hidden="true">05</span>
           <span className="qd-navigation__overlay-item-name">
-            COURSES
+            {t('nav.courses').toUpperCase()}
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
           </span>
         </NavLink>
 
         <NavLink
-          to="/contact"
+          to={`${prefix}/contact`}
           className={({ isActive }) =>
             [
               'qd-navigation__overlay-row',
@@ -491,13 +511,14 @@ export const Navigation: FC<NavigationProps> = ({
         >
           <span className="qd-navigation__overlay-num" aria-hidden="true">06</span>
           <span className="qd-navigation__overlay-item-name">
-            CONTACT
+            {t('nav.contact').toUpperCase()}
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
           </span>
         </NavLink>
 
-        {/* Theme toggle */}
+        {/* Theme toggle + lang switcher */}
         <div className="qd-navigation__theme-wrap qd-navigation__theme-wrap--overlay">
+          {langSwitcher}
           {themeToggle}
           <span className="qd-navigation__theme-label">{themeLabel}</span>
         </div>

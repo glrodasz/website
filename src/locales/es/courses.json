@@ -1,0 +1,29 @@
+{
+  "seo": {
+    "pageLabel": "Cursos"
+  },
+  "hero": {
+    "label": "Cursos",
+    "title": "Cursos"
+  },
+  "aifirst": {
+    "badge": "Próximamente",
+    "title": "Programación AI-First",
+    "description": "Aprende a crear software usando IA como herramienta principal. Cubre JavaScript/TypeScript, Python, Go y Rust a través de lecciones de video de 5 minutos. Diseñado para desarrolladores que quieren moverse rápido y crear mejor con IA."
+  },
+  "free": {
+    "title": "Cursos gratuitos",
+    "lead": "Playlists completas en YouTube — sin costo.",
+    "watchLink": "Ver en YouTube →"
+  },
+  "tutorials": {
+    "title": "Tutoriales",
+    "lead": "Garaje Code Pills — videos prácticos y cortos.",
+    "showLess": "Ver menos",
+    "loadMore": "Cargar más"
+  },
+  "platforms": {
+    "title": "Cursos en otras plataformas",
+    "openCourse": "Abrir curso →"
+  }
+}

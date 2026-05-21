@@ -45,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 680px;
+  max-width: 880px;
 }
 
 .home-hero__promo-pill {
@@ -83,7 +83,7 @@
   line-height: 1.1;
   color: var(--color-text);
   margin: 0 0 16px;
-  max-width: 640px;
+  max-width: 880px;
   -webkit-text-stroke: 2px var(--color-bg);
   paint-order: stroke fill;
 }
@@ -94,7 +94,7 @@
   line-height: 1.6;
   font-weight: 400;
   color: var(--color-text);
-  max-width: 560px;
+  max-width: 880px;
   margin: 0 0 24px;
 }
 
@@ -135,7 +135,7 @@
     align-items: center;
     text-align: center;
     padding-top: 0;
-    max-width: 720px;
+    max-width: 880px;
   }
 
   .home-hero__ctas {
@@ -179,11 +179,19 @@
 }
 
 .home-course-card {
+  position: relative;
   border-radius: var(--radius-card);
   overflow: hidden;
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);
   transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lang-ribbon.qd-tag--neutral.qd-tag--outlined {
+  backdrop-filter: blur(6px);
+  background-color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  border-color: var(--color-border);
+  color: var(--color-text);
 }
 
 .home-course-card:hover {
@@ -274,20 +282,6 @@
   margin-bottom: 12px;
 }
 
-.home-course-card__title-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 0 0 8px;
-}
-
-.home-course-card__lang-flag {
-  font-size: 1.2em;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 0.08em;
-}
-
 .home-course-card__name {
   font-family: var(--system-tokens--typography--font-family--headings);
   font-size: 1.15rem;
@@ -295,12 +289,6 @@
   line-height: 1.3;
   margin: 0 0 8px;
   color: var(--components-tokens--site--course-card--card-title-color);
-}
-
-.home-course-card__title-row .home-course-card__name {
-  margin: 0;
-  flex: 1;
-  min-width: 0;
 }
 
 .home-course-card__desc {
@@ -460,6 +448,27 @@
   .home-hero {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .home-hero__text {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .home-hero__headline {
+    font-size: clamp(1.875rem, 8vw, 2.4rem);
+  }
+
+  .home-hero__headline-main {
+    display: block;
+  }
+
+  .home-hero__headline-secondary {
+    font-size: 0.72em;
+  }
+
+  .home-hero__description {
+    white-space: pre-line;
   }
 
   .home-hero__ctas {

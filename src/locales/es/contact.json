@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "pageLabel": "Contacto"
+  },
+  "hero": {
+    "label": "Contacto",
+    "title": "Escríbeme",
+    "lead": "Elige el canal adecuado según lo que tengas en mente."
+  },
+  "intents": {
+    "hi": {
+      "label": "¿Solo quieres saludar?",
+      "body": "Manda un saludo rápido o haz cualquier pregunta — siempre me alegra saber de ti. Escríbeme por DM en Twitter o Instagram."
+    },
+    "work": {
+      "label": "¿Quieres trabajar en algo juntos?",
+      "body": "He trabajado con varios startups y hago emprendimiento yo mismo — así que sé la diferencia entre una idea suelta y un proyecto real. Si tienes más que un concepto y una propuesta sólida, escríbeme directamente."
+    },
+    "job": {
+      "label": "¿Oferta de trabajo o consejo de carrera?",
+      "body": "LinkedIn es el lugar adecuado para conversaciones profesionales. Escríbeme directamente allí."
+    }
+  },
+  "langNote": {
+    "text": "Escribo en español en <twitter>Twitter</twitter>. Si prefieres seguirme en inglés, puedes encontrarme en <bluesky>Bluesky</bluesky>, <threads>Threads</threads> o <mastodon>Mastodon</mastodon>."
+  }
+}

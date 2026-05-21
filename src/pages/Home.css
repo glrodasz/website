@@ -456,7 +456,7 @@
   }
 
   .home-hero__headline {
-    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
+    font-size: clamp(1.3rem, 5.5vw, 2rem);
   }
 
   .home-hero__description {

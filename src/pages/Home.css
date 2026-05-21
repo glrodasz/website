@@ -450,8 +450,17 @@
     padding-right: 16px;
   }
 
+  .home-hero__text {
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .home-hero__headline {
-    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
+  }
+
+  .home-hero__description {
+    white-space: pre-line;
   }
 
   .home-hero__ctas {

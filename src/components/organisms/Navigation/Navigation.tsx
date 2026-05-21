@@ -289,12 +289,6 @@ export const Navigation: FC<NavigationProps> = ({
               </li>
             </ul>
 
-            <div className="qd-navigation__theme-wrap qd-navigation__theme-wrap--desktop">
-              {langSwitcher}
-              {themeToggle}
-              <span className="qd-navigation__theme-label">{themeLabel}</span>
-            </div>
-
             <button
               type="button"
               className={[

@@ -627,6 +627,7 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 .qd-navigation__theme-wrap--overlay {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--components-tokens--nav-bar--spacing--theme-wrap-gap);
   padding: var(--components-tokens--nav-bar--spacing--mobile-padding-vertical)
     var(--components-tokens--nav-bar--spacing--mobile-padding-horizontal);
@@ -654,9 +655,5 @@ a.qd-navigation__overlay-cell:hover .qd-navigation__overlay-item-name {
 
   .qd-navigation__hamburger {
     display: flex;
-  }
-
-  .qd-navigation__theme-wrap--desktop {
-    display: none;
   }
 }

@@ -1,12 +1,14 @@
 import type { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Globe, Moon, Sun } from 'phosphor-react';
 import { footerSocials, type SocialLink } from '../../../data/socials';
 import {
   FooterSocialIcon,
   FOOTER_MOBILE_SOCIAL_IDS,
 } from '../../molecules/FooterSocialIcon';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
+import { useTheme } from '../../../hooks/useTheme';
 import './Footer.css';
 
 export interface FooterProps {
@@ -22,6 +24,13 @@ export const Footer: FC<FooterProps> = ({
 }) => {
   const { t } = useTranslation();
   const prefix = useLangPrefix();
+  const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  const isEs = location.pathname.startsWith('/es');
+  const altLangHref = isEs
+    ? location.pathname.replace(/^\/es(\/|$)/, '/') || '/'
+    : `/es${location.pathname === '/' ? '' : location.pathname}`;
 
   const mobileSocials: SocialLink[] = FOOTER_MOBILE_SOCIAL_IDS.map((id) =>
     socials.find((s) => s.id === id)
@@ -121,6 +130,25 @@ export const Footer: FC<FooterProps> = ({
           <p className="qd-footer__copyright">
             {t('footer.copyright', { year })}
           </p>
+          <div className="qd-footer__controls">
+            <Link
+              to={altLangHref}
+              className="qd-footer__lang-switcher"
+              aria-label={isEs ? 'Switch to English' : 'Cambiar a Español'}
+            >
+              <Globe size={14} aria-hidden />
+              {t('nav.langSwitcher')}
+            </Link>
+            <button
+              type="button"
+              className="qd-footer__theme-toggle"
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? t('nav.switchToLight') : t('nav.switchToDark')}
+            >
+              {theme === 'dark' ? <Moon size={14} aria-hidden /> : <Sun size={14} aria-hidden />}
+              {theme === 'dark' ? t('nav.themeDark') : t('nav.themeLight')}
+            </button>
+          </div>
           <Link to={`${prefix}/`} className="qd-footer__logo">
             guillermorodas.com
           </Link>

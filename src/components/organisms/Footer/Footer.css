@@ -258,12 +258,6 @@
     gap: var(--components-tokens--footer--spacing--responsive--gap-menu-items);
   }
 
-  .qd-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--components-tokens--footer--spacing--col-item-gap);
-  }
-
   .qd-footer__bottom-left {
     flex-direction: column;
     align-items: flex-start;

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type FC } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { ArrowSquareOut, CaretDown } from 'phosphor-react';
+import { ArrowSquareOut, CaretDown, Globe, Moon, Sun } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
 import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
@@ -100,24 +100,15 @@ export const Navigation: FC<NavigationProps> = ({
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
-  const themeLabel = theme === 'dark' ? t('nav.themeDark') : t('nav.themeLight');
-  const ariaLabel = theme === 'dark' ? t('nav.switchToLight') : t('nav.switchToDark');
-
   const themeToggle = (
     <button
       type="button"
-      className={[
-        'qd-navigation__theme-toggle',
-        theme === 'light' && 'qd-navigation__theme-toggle--light',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className="qd-navigation__theme-toggle"
       onClick={toggleTheme}
-      aria-label={ariaLabel}
+      aria-label={theme === 'dark' ? t('nav.switchToLight') : t('nav.switchToDark')}
     >
-      <span className="qd-navigation__theme-track">
-        <span className="qd-navigation__theme-knob" />
-      </span>
+      {theme === 'dark' ? <Sun size={14} aria-hidden /> : <Moon size={14} aria-hidden />}
+      {theme === 'dark' ? t('nav.themeLight') : t('nav.themeDark')}
     </button>
   );
 
@@ -127,6 +118,7 @@ export const Navigation: FC<NavigationProps> = ({
       className="qd-navigation__lang-switcher"
       aria-label={location.pathname.startsWith('/es') ? 'Switch to English' : 'Cambiar a Español'}
     >
+      <Globe size={14} aria-hidden />
       {t('nav.langSwitcher')}
     </Link>
   );
@@ -520,7 +512,6 @@ export const Navigation: FC<NavigationProps> = ({
         <div className="qd-navigation__theme-wrap qd-navigation__theme-wrap--overlay">
           {langSwitcher}
           {themeToggle}
-          <span className="qd-navigation__theme-label">{themeLabel}</span>
         </div>
       </div>
     </header>

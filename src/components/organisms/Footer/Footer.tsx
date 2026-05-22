@@ -127,9 +127,17 @@ export const Footer: FC<FooterProps> = ({
         </div>
 
         <div className="qd-footer__bottom">
-          <p className="qd-footer__copyright">
-            {t('footer.copyright', { year })}
-          </p>
+          <div className="qd-footer__bottom-left">
+            <p className="qd-footer__copyright qd-footer__copyright--full">
+              {t('footer.copyright', { year })}
+            </p>
+            <p className="qd-footer__copyright qd-footer__copyright--short">
+              {t('footer.copyrightShort', { year })}
+            </p>
+            <Link to={`${prefix}/`} className="qd-footer__logo">
+              guillermorodas.com
+            </Link>
+          </div>
           <div className="qd-footer__controls">
             <Link
               to={altLangHref}
@@ -145,13 +153,10 @@ export const Footer: FC<FooterProps> = ({
               onClick={toggleTheme}
               aria-label={theme === 'dark' ? t('nav.switchToLight') : t('nav.switchToDark')}
             >
-              {theme === 'dark' ? <Moon size={14} aria-hidden /> : <Sun size={14} aria-hidden />}
-              {theme === 'dark' ? t('nav.themeDark') : t('nav.themeLight')}
+              {theme === 'dark' ? <Sun size={14} aria-hidden /> : <Moon size={14} aria-hidden />}
+              {theme === 'dark' ? t('nav.themeLight') : t('nav.themeDark')}
             </button>
           </div>
-          <Link to={`${prefix}/`} className="qd-footer__logo">
-            guillermorodas.com
-          </Link>
         </div>
       </div>
     </footer>

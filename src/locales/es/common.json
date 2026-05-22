@@ -33,7 +33,8 @@
     "email": "me@guillermorodas.com",
     "socialEmail": "Redes & email",
     "followMe": "Sígueme",
-    "copyright": "© {{year}} Todos los derechos reservados Guillermo Rodas"
+    "copyright": "© {{year}} Todos los derechos reservados Guillermo Rodas",
+    "copyrightShort": "© {{year}} Todos los derechos reservados"
   },
   "skipToContent": "Saltar al contenido principal"
 }

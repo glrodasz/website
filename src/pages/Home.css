@@ -96,6 +96,7 @@
   color: var(--color-text);
   max-width: 880px;
   margin: 0 0 24px;
+  white-space: pre-line;
 }
 
 .home-hero__ctas {
@@ -465,10 +466,6 @@
 
   .home-hero__headline-secondary {
     font-size: 0.72em;
-  }
-
-  .home-hero__description {
-    white-space: pre-line;
   }
 
   .home-hero__ctas {

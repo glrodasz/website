@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="theme-color" content="#ffffff" />
     <script>
       (function () {
         try {
@@ -13,6 +14,8 @@
               ? 'dark'
               : 'light';
           document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#262626' : '#ffffff');
         } catch (e) {}
       })();
     </script>
@@ -27,6 +30,9 @@
       content="Guillermo Rodas helps developers level up while shipping quality software. Courses, AI-first programming, YouTube tutorials, and writing on undefined.sh."
     />
     <link rel="canonical" href="https://guillermorodas.com/" />
+    <link rel="alternate" hreflang="en" href="https://guillermorodas.com/" />
+    <link rel="alternate" hreflang="es" href="https://guillermorodas.com/es" />
+    <link rel="alternate" hreflang="x-default" href="https://guillermorodas.com/" />
     <meta property="og:title" content="Guillermo Rodas | Senior Full-stack AI Engineer" />
     <meta
       property="og:description"

@@ -36,9 +36,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // so the initial theme is always correct (no flash).
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
-  // Keep <html data-theme="..."> in sync
+  // Keep <html data-theme="..."> and the browser chrome color in sync
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#262626' : '#ffffff');
   }, [theme]);
 
   // Follow OS preference changes, but only when the user has no stored override

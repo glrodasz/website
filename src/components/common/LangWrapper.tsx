@@ -16,6 +16,8 @@ export const LangWrapper: React.FC = () => {
   useEffect(() => {
     i18n.changeLanguage(locale);
     document.documentElement.lang = locale;
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) ogLocale.setAttribute('content', locale === 'es' ? 'es_ES' : 'en_US');
   }, [locale, i18n]);
 
   if (isUnknownSegment) {

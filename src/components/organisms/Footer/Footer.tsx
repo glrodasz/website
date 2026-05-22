@@ -128,8 +128,11 @@ export const Footer: FC<FooterProps> = ({
 
         <div className="qd-footer__bottom">
           <div className="qd-footer__bottom-left">
-            <p className="qd-footer__copyright">
+            <p className="qd-footer__copyright qd-footer__copyright--full">
               {t('footer.copyright', { year })}
+            </p>
+            <p className="qd-footer__copyright qd-footer__copyright--short">
+              {t('footer.copyrightShort', { year })}
             </p>
             <Link to={`${prefix}/`} className="qd-footer__logo">
               guillermorodas.com

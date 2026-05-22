@@ -212,6 +212,10 @@
   .qd-footer__copyright--short {
     display: block;
   }
+
+  .qd-footer__logo {
+    display: none;
+  }
 }
 
 .qd-footer__copyright {

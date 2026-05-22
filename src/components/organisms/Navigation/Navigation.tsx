@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
+import { persistLocale } from '../../../i18n/persistLocale';
 import './Navigation.css';
 
 export interface NavigationProps {
@@ -126,6 +127,7 @@ export const Navigation: FC<NavigationProps> = ({
       to={altLangHref}
       className="qd-navigation__lang-switcher"
       aria-label={location.pathname.startsWith('/es') ? 'Switch to English' : 'Cambiar a Español'}
+      onMouseDown={() => persistLocale(location.pathname.startsWith('/es') ? 'en' : 'es')}
     >
       {t('nav.langSwitcher')}
     </Link>

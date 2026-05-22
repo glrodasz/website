@@ -9,6 +9,7 @@ import {
 } from '../../molecules/FooterSocialIcon';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
 import { useTheme } from '../../../hooks/useTheme';
+import { persistLocale } from '../../../i18n/persistLocale';
 import './Footer.css';
 
 export interface FooterProps {
@@ -135,6 +136,7 @@ export const Footer: FC<FooterProps> = ({
               to={altLangHref}
               className="qd-footer__lang-switcher"
               aria-label={isEs ? 'Switch to English' : 'Cambiar a Español'}
+              onMouseDown={() => persistLocale(isEs ? 'en' : 'es')}
             >
               <Globe size={14} aria-hidden />
               {t('nav.langSwitcher')}

@@ -129,11 +129,8 @@ export const Footer: FC<FooterProps> = ({
 
         <div className="qd-footer__bottom">
           <div className="qd-footer__bottom-left">
-            <p className="qd-footer__copyright qd-footer__copyright--full">
+            <p className="qd-footer__copyright">
               {t('footer.copyright', { year })}
-            </p>
-            <p className="qd-footer__copyright qd-footer__copyright--short">
-              {t('footer.copyrightShort', { year })}
             </p>
           </div>
           <div className="qd-footer__controls">

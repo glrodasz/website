@@ -23,7 +23,7 @@ const FEEDS = {
 type PostLocale = keyof typeof FEEDS;
 
 const DATE_LOCALE: Record<PostLocale, string> = {
-  en: 'en-US',
+  en: 'en-GB',
   es: 'es-ES',
 };
 
@@ -103,7 +103,7 @@ async function fetchPosts(url: string, locale: PostLocale): Promise<BlogPost[]> 
     const description = String(item['description'] ?? '');
 
     const date = pubDate
-      ? new Date(pubDate).toLocaleDateString(DATE_LOCALE[locale], { month: 'short', year: 'numeric' })
+      ? new Date(pubDate).toLocaleDateString(DATE_LOCALE[locale], { day: 'numeric', month: 'short', year: 'numeric' })
       : '';
 
     const cover = extractCover(item);

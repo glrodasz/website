@@ -14,7 +14,7 @@ import {
   youtubeThumb,
 } from '../data/courses';
 import { Seo } from '../components/Seo';
-import { writingPosts, type BlogPost } from '../generated/writing-posts';
+import { writingPostsByLang, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
 import { ArrowRight, Globe } from 'phosphor-react';
 import { IconButton } from '../components/molecules/IconButton';
@@ -56,6 +56,7 @@ const Home: React.FC = () => {
   const { theme } = useTheme();
   const { t, i18n } = useTranslation('home');
   const isEs = i18n.language === 'es';
+  const posts = writingPostsByLang[isEs ? 'es' : 'en'];
   const prefix = useLangPrefix();
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);
 
@@ -165,7 +166,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className="home-writing__posts">
-            {writingPosts.map((post) => (
+            {posts.map((post) => (
               <PostCard key={`${post.link}|${post.cover ?? ''}`} post={post} />
             ))}
           </div>

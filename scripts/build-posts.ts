@@ -11,12 +11,21 @@ interface BlogPost {
   title: string;
   link: string;
   date: string;
-  readTime: string;
   excerpt: string;
   cover: string;
 }
 
-const RSS_URL = 'https://undefined.sh/rss.xml';
+const FEEDS = {
+  en: 'https://undefined.sh/rss.xml',
+  es: 'https://undefined.sh/es/rss.xml',
+} as const;
+
+type PostLocale = keyof typeof FEEDS;
+
+const DATE_LOCALE: Record<PostLocale, string> = {
+  en: 'en-GB',
+  es: 'es-ES',
+};
 
 
 function stripHtml(html: string): string {
@@ -69,8 +78,8 @@ function extractCover(item: Record<string, unknown>): string {
   return '';
 }
 
-async function fetchPosts(): Promise<BlogPost[]> {
-  const res = await fetch(RSS_URL, { signal: AbortSignal.timeout(15_000) });
+async function fetchPosts(url: string, locale: PostLocale): Promise<BlogPost[]> {
+  const res = await fetch(url, { signal: AbortSignal.timeout(15_000) });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const xml = await res.text();
 
@@ -94,27 +103,30 @@ async function fetchPosts(): Promise<BlogPost[]> {
     const description = String(item['description'] ?? '');
 
     const date = pubDate
-      ? new Date(pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+      ? new Date(pubDate).toLocaleDateString(DATE_LOCALE[locale], { day: 'numeric', month: 'short', year: 'numeric' })
       : '';
 
     const cover = extractCover(item);
     const excerpt = stripHtml(description).slice(0, 160);
 
-    return { title, link, date, readTime: '5 min read', excerpt, cover };
+    return { title, link, date, excerpt, cover };
   });
 }
 
 async function main() {
   console.log('📝 Fetching writing posts from RSS...');
 
-  let posts: BlogPost[];
-  try {
-    posts = await fetchPosts();
-    if (posts.length === 0) throw new Error('No posts in feed');
-    console.log(`✅ Fetched ${posts.length} posts`);
-  } catch (err) {
-    console.error(`❌ RSS fetch failed (${err}). Skipping file update.`);
-    return;
+  const postsByLang = {} as Record<PostLocale, BlogPost[]>;
+  for (const locale of Object.keys(FEEDS) as PostLocale[]) {
+    try {
+      const posts = await fetchPosts(FEEDS[locale], locale);
+      if (posts.length === 0) throw new Error('No posts in feed');
+      postsByLang[locale] = posts;
+      console.log(`✅ Fetched ${posts.length} posts (${locale})`);
+    } catch (err) {
+      console.error(`❌ RSS fetch failed for ${locale} (${err}). Skipping file update.`);
+      return;
+    }
   }
 
   const outDir = path.join(process.cwd(), 'src', 'generated');
@@ -130,12 +142,13 @@ async function main() {
     '  title: string;',
     '  link: string;',
     '  date: string;',
-    '  readTime: string;',
     '  excerpt: string;',
     '  cover: string;',
     '}',
     '',
-    `export const writingPosts: BlogPost[] = ${JSON.stringify(posts, null, 2)};`,
+    "export type PostLocale = 'en' | 'es';",
+    '',
+    `export const writingPostsByLang: Record<PostLocale, BlogPost[]> = ${JSON.stringify(postsByLang, null, 2)};`,
     '',
   ].join('\n');
 

@@ -452,12 +452,12 @@
   }
 
   .home-hero__text {
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
   }
 
   .home-hero__headline {
-    font-size: clamp(1.875rem, 8vw, 2.4rem);
+    font-size: clamp(1.875rem, 8.5vw, 2.4rem);
   }
 
   .home-hero__headline-main {
@@ -465,7 +465,7 @@
   }
 
   .home-hero__headline-secondary {
-    font-size: 0.72em;
+    font-size: 0.75em;
   }
 
   .home-hero__ctas {

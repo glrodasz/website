@@ -20,7 +20,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   endpoint = '/api/subscribe',
   className,
 }) => {
-  const { t } = useTranslation('waitlistForm');
+  const { t, i18n } = useTranslation('waitlistForm');
   const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_BREAKPOINT).matches);
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -79,6 +79,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
         body: JSON.stringify({
           ...(!isMobile && { firstName: trimmedFirstName }),
           email: trimmedEmail,
+          lang: i18n.language,
         }),
       });
 

@@ -43,7 +43,6 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
           <h3 className="post-card__title">{post.title}</h3>
           <div className="post-card__meta">
             {post.date && <span>{post.date}</span>}
-            <span>{post.readTime}</span>
           </div>
           {post.excerpt && <p className="post-card__excerpt">{post.excerpt}</p>}
         </div>

@@ -11,7 +11,6 @@ interface BlogPost {
   title: string;
   link: string;
   date: string;
-  readTime: string;
   excerpt: string;
   cover: string;
 }
@@ -26,11 +25,6 @@ type PostLocale = keyof typeof FEEDS;
 const DATE_LOCALE: Record<PostLocale, string> = {
   en: 'en-US',
   es: 'es-ES',
-};
-
-const READ_TIME: Record<PostLocale, string> = {
-  en: '5 min read',
-  es: '5 min de lectura',
 };
 
 
@@ -115,7 +109,7 @@ async function fetchPosts(url: string, locale: PostLocale): Promise<BlogPost[]> 
     const cover = extractCover(item);
     const excerpt = stripHtml(description).slice(0, 160);
 
-    return { title, link, date, readTime: READ_TIME[locale], excerpt, cover };
+    return { title, link, date, excerpt, cover };
   });
 }
 
@@ -148,7 +142,6 @@ async function main() {
     '  title: string;',
     '  link: string;',
     '  date: string;',
-    '  readTime: string;',
     '  excerpt: string;',
     '  cover: string;',
     '}',

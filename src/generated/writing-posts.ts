@@ -5,7 +5,6 @@ export interface BlogPost {
   title: string;
   link: string;
   date: string;
-  readTime: string;
   excerpt: string;
   cover: string;
 }
@@ -18,7 +17,6 @@ export const writingPostsByLang: Record<PostLocale, BlogPost[]> = {
       "title": "Success Was Never Overnight",
       "link": "https://undefined.sh/posts/success-was-never-overnight/",
       "date": "May 2026",
-      "readTime": "5 min read",
       "excerpt": "What we call 'overnight success' is usually the moment we find out about a story that's been quietly happening for years. Why the process matters more than we t",
       "cover": "https://undefined.sh//covers/metal-detector-with-gold-coins.jpg"
     },
@@ -26,7 +24,6 @@ export const writingPostsByLang: Record<PostLocale, BlogPost[]> = {
       "title": "AI Became Part of My Life",
       "link": "https://undefined.sh/posts/ai-became-part-of-my-life/",
       "date": "May 2026",
-      "readTime": "5 min read",
       "excerpt": "I have a confession to make: there's no way to live my life without AI anymore. How artificial intelligence changed the way I work, organize my thoughts, and mo",
       "cover": "https://undefined.sh//covers/close-up-of-a-robotic-hand-over-human-hand.jpg"
     },
@@ -34,7 +31,6 @@ export const writingPostsByLang: Record<PostLocale, BlogPost[]> = {
       "title": "The Hidden JavaScript Ecosystem",
       "link": "https://undefined.sh/posts/the-hidden-javascript-ecosystem/",
       "date": "May 2026",
-      "readTime": "5 min read",
       "excerpt": "Behind JavaScript lies an ecosystem that normally goes unnoticed: the engines that transform code into instructions, the runtime environments that take it beyon",
       "cover": "https://undefined.sh//covers/hidden-mushrooms-inside-a-tree-root.jpg"
     }
@@ -44,7 +40,6 @@ export const writingPostsByLang: Record<PostLocale, BlogPost[]> = {
       "title": "Success Was Never Overnight",
       "link": "https://undefined.sh/posts/success-was-never-overnight/",
       "date": "May 2026",
-      "readTime": "5 min de lectura",
       "excerpt": "What we call 'overnight success' is usually the moment we find out about a story that's been quietly happening for years. Why the process matters more than we t",
       "cover": "https://undefined.sh//covers/metal-detector-with-gold-coins.jpg"
     },
@@ -52,7 +47,6 @@ export const writingPostsByLang: Record<PostLocale, BlogPost[]> = {
       "title": "AI Became Part of My Life",
       "link": "https://undefined.sh/posts/ai-became-part-of-my-life/",
       "date": "May 2026",
-      "readTime": "5 min de lectura",
       "excerpt": "I have a confession to make: there's no way to live my life without AI anymore. How artificial intelligence changed the way I work, organize my thoughts, and mo",
       "cover": "https://undefined.sh//covers/close-up-of-a-robotic-hand-over-human-hand.jpg"
     },
@@ -60,7 +54,6 @@ export const writingPostsByLang: Record<PostLocale, BlogPost[]> = {
       "title": "The Hidden JavaScript Ecosystem",
       "link": "https://undefined.sh/posts/the-hidden-javascript-ecosystem/",
       "date": "May 2026",
-      "readTime": "5 min de lectura",
       "excerpt": "Behind JavaScript lies an ecosystem that normally goes unnoticed: the engines that transform code into instructions, the runtime environments that take it beyon",
       "cover": "https://undefined.sh//covers/hidden-mushrooms-inside-a-tree-root.jpg"
     }

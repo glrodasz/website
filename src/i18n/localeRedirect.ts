@@ -22,7 +22,8 @@ export function isExemptPath(pathname: string): boolean {
     pathname === '/es' ||
     pathname.startsWith('/es/') ||
     pathname === '/tokens' ||
-    pathname.startsWith('/tokens/')
+    pathname.startsWith('/tokens/') ||
+    pathname.startsWith('/api/')
   );
 }
 

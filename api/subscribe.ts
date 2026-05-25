@@ -6,6 +6,7 @@ const MAX_FIELD_LENGTH = 200;
 interface SubscribeBody {
   email?: unknown;
   firstName?: unknown;
+  lang?: unknown;
 }
 
 function asTrimmedString(value: unknown): string {
@@ -19,7 +20,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const apiKey = process.env.BREVO_API_KEY;
-  const listIdRaw = process.env.BREVO_AI_COURSE_LIST_ID;
+  const listIdEnRaw = process.env.BREVO_AI_COURSE_LIST_ID_EN;
+  const listIdEsRaw = process.env.BREVO_AI_COURSE_LIST_ID_ES;
+
+  const body: SubscribeBody =
+    typeof req.body === 'string' ? safeJsonParse(req.body) : req.body ?? {};
+
+  const lang = asTrimmedString(body.lang);
+  const listIdRaw = lang === 'es' ? (listIdEsRaw ?? listIdEnRaw) : listIdEnRaw;
   const listId = Number(listIdRaw);
 
   if (!apiKey || !listIdRaw || !Number.isFinite(listId)) {
@@ -28,9 +36,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .status(500)
       .json({ ok: false, message: 'Subscription service is not configured.' });
   }
-
-  const body: SubscribeBody =
-    typeof req.body === 'string' ? safeJsonParse(req.body) : req.body ?? {};
 
   const email = asTrimmedString(body.email);
   const firstName = asTrimmedString(body.firstName);

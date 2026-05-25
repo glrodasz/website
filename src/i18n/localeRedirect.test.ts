@@ -31,6 +31,11 @@ describe('isExemptPath', () => {
     expect(isExemptPath('/tokens/colors')).toBe(true);
   });
 
+  it('exempts API routes', () => {
+    expect(isExemptPath('/api/subscribe')).toBe(true);
+    expect(isExemptPath('/api/anything')).toBe(true);
+  });
+
   it('does not exempt regular paths', () => {
     expect(isExemptPath('/')).toBe(false);
     expect(isExemptPath('/courses')).toBe(false);

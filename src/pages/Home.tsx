@@ -54,7 +54,7 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 const Home: React.FC = () => {
   const { theme } = useTheme();
   const { t, i18n } = useTranslation('home');
-  const isEs = i18n.language === 'es';
+  const isEs = (i18n.resolvedLanguage ?? i18n.language ?? '').startsWith('es');
   const posts = writingPostsByLang[isEs ? 'es' : 'en'];
   const prefix = useLangPrefix();
   const featuredPlaylist = FREE_YOUTUBE_PLAYLISTS.find((p) => p.playlistId === HOME_FEATURED_PLAYLIST_ID);

@@ -21,5 +21,5 @@ export default function middleware(request: Request) {
 }
 
 export const config = {
-  matcher: ['/((?!assets/|components/|flags/|images/|logos/|og/|vectors/|.*\\.).*)'],
+  matcher: ['/((?!api/|assets/|components/|flags/|images/|logos/|og/|vectors/|.*\\.).*)'],
 };

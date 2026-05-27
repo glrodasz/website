@@ -15286,10 +15286,10 @@
       },
       "logo-margin-bottom": {
         "$type": "number",
-        "$value": 8,
+        "$value": 24,
         "$extensions": {
           "com.figma.aliasData": {
-            "targetVariableName": "Spacing/xs",
+            "targetVariableName": "Spacing/md",
             "targetVariableSetName": "System Tokens"
           }
         }
@@ -15898,6 +15898,26 @@
               "targetVariableSetName": "System Tokens"
             }
           }
+        },
+        "info-padding-vertical": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "info-padding-horizontal": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
         }
       }
     },
@@ -15931,6 +15951,16 @@
           "$extensions": {
             "com.figma.aliasData": {
               "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-top": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
               "targetVariableSetName": "System Tokens"
             }
           }
@@ -15983,6 +16013,36 @@
           "$extensions": {
             "com.figma.aliasData": {
               "targetVariableName": "Spacing/lm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-mobile": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal-mobile": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
               "targetVariableSetName": "System Tokens"
             }
           }

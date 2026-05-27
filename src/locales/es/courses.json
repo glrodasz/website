@@ -8,13 +8,13 @@
   },
   "aifirst": {
     "badge": "Próximamente",
-    "title": "Programación AI-First",
+    "title": "Programación con IA",
     "description": "Aprende a crear software usando IA como herramienta principal. Cubre JavaScript/TypeScript, Python, Go y Rust a través de lecciones de video de 5 minutos. Diseñado para desarrolladores que quieren moverse rápido y crear mejor con IA."
   },
   "free": {
     "title": "Cursos gratuitos",
     "lead": "Playlists completas en YouTube — sin costo.",
-    "watchLink": "Ver en YouTube →"
+    "watchLinkPrefix": "Ver en"
   },
   "tutorials": {
     "title": "Tutoriales",

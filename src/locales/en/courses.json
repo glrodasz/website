@@ -8,13 +8,13 @@
   },
   "aifirst": {
     "badge": "Coming Soon",
-    "title": "AI-First Programming Course",
+    "title": "AI-first Programming",
     "description": "Learn to build software using AI as your primary tool. Covers JavaScript/TypeScript, Python, Go, and Rust through 5-minute focused video lessons. Designed for developers who want to move fast and build better with AI."
   },
   "free": {
     "title": "Free courses",
     "lead": "Full playlists on YouTube — no paywall.",
-    "watchLink": "Watch on YouTube →"
+    "watchLinkPrefix": "Watch on"
   },
   "tutorials": {
     "title": "Tutorials",

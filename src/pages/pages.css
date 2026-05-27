@@ -442,19 +442,29 @@
 
 .playlist-card__title {
   font-family: var(--system-tokens--typography--font-family--headings);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.35;
   margin: 0;
   flex: 1;
   min-width: 0;
   color: var(--components-tokens--site--course-card--card-title-color);
+  text-wrap: balance;
 }
 
 .playlist-card__link {
+  display: inline-flex;
+  align-items: center;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--system-tokens--colors--complementary--subtle);
+}
+
+.playlist-card__link svg {
+  flex-shrink: 0;
+  margin-top: -2px;
+  margin-left: 4px;
+  margin-right: 2px;
 }
 
 /* Garaje tutorial rows */
@@ -476,10 +486,10 @@
 .tutorial-row {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
-  padding: var(--components-tokens--site--tutorial--spacing--row-padding);
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  overflow: hidden;
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
@@ -494,24 +504,28 @@
 
 .tutorial-row__thumb {
   flex-shrink: 0;
-  width: 120px;
-  height: 68px;
+  width: 200px;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
+  aspect-ratio: 16 / 9;
   background: var(--components-tokens--site--course-card--media-background-color);
 }
 
 .tutorial-row__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   min-width: 0;
+  padding: var(--components-tokens--site--tutorial--spacing--info-padding-vertical) var(--components-tokens--site--tutorial--spacing--info-padding-horizontal);
 }
 
 .tutorial-row__title {
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.4;
+  text-wrap: balance;
 }
 
 .btn-load-more {
@@ -536,6 +550,7 @@
   display: flex;
   flex-direction: column;
   padding: var(--components-tokens--site--course-section--platform-card--padding);
+  padding-top: var(--components-tokens--site--course-section--platform-card--padding-top);
   border-radius: var(--radius-card);
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);
@@ -606,7 +621,7 @@
   );
   border: 2px solid var(--components-tokens--site--course-card--hover-border-color);
   border-radius: var(--components-tokens--site--course-section--featured--border-radius);
-  padding: var(--components-tokens--site--course-section--featured--padding);
+  padding: var(--components-tokens--site--course-section--featured--padding) var(--components-tokens--site--course-section--featured--padding-horizontal);
 }
 
 .featured-course-card::before {
@@ -696,6 +711,8 @@
   .tutorial-row {
     flex-direction: column;
     align-items: flex-start;
+    padding: 0;
+    gap: 0;
   }
 
   .tutorial-row__thumb {
@@ -703,6 +720,15 @@
     max-width: none;
     height: auto;
     aspect-ratio: 16 / 9;
+    border-radius: 0;
+  }
+
+  .tutorial-row__info {
+    padding: var(--components-tokens--site--tutorial--spacing--row-padding);
+  }
+
+  .featured-course-card {
+    padding: var(--components-tokens--site--course-section--featured--padding-mobile) var(--components-tokens--site--course-section--featured--padding-horizontal-mobile);
   }
 }
 

@@ -442,13 +442,14 @@
 
 .playlist-card__title {
   font-family: var(--system-tokens--typography--font-family--headings);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.35;
   margin: 0;
   flex: 1;
   min-width: 0;
   color: var(--components-tokens--site--course-card--card-title-color);
+  text-wrap: balance;
 }
 
 .playlist-card__link {

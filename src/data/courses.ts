@@ -20,7 +20,7 @@ export interface YouTubePlaylistCourse {
 export const FREE_YOUTUBE_PLAYLISTS: YouTubePlaylistCourse[] = [
   {
     playlistId: 'PLKBvDYynKmlWa59k8pnw-EHac2_miPagh',
-    title: 'Modern Component Library with React & Storybook',
+    title: 'Modern Component Library w/ React & Storybook',
     language: 'en',
     thumbnailVideoId: '21iHNxVlfvw',
   },

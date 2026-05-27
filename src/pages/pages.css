@@ -514,6 +514,7 @@
 .tutorial-row__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   min-width: 0;
   padding: var(--components-tokens--site--tutorial--spacing--info-padding-vertical) var(--components-tokens--site--tutorial--spacing--info-padding-horizontal);

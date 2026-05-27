@@ -480,6 +480,7 @@
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
   padding: var(--components-tokens--site--tutorial--spacing--row-padding);
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  overflow: hidden;
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);
   text-decoration: none;
@@ -697,6 +698,8 @@
   .tutorial-row {
     flex-direction: column;
     align-items: flex-start;
+    padding: 0;
+    gap: 0;
   }
 
   .tutorial-row__thumb {
@@ -704,6 +707,11 @@
     max-width: none;
     height: auto;
     aspect-ratio: 16 / 9;
+    border-radius: 0;
+  }
+
+  .tutorial-row__info {
+    padding: var(--components-tokens--site--tutorial--spacing--row-padding);
   }
 
   .featured-course-card {

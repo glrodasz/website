@@ -713,6 +713,7 @@
   --components-tokens--site--course-section--platform-card--desc-bottom: var(--system-tokens--spacing--sm);
   --components-tokens--site--course-section--featured--border-radius: var(--system-tokens--border-radius--lm);
   --components-tokens--site--course-section--featured--padding: var(--system-tokens--spacing--lm);
+  --components-tokens--site--course-section--featured--padding-horizontal: var(--system-tokens--spacing--ml);
   --components-tokens--site--course-section--featured--header-gap: var(--system-tokens--spacing--sm);
   --components-tokens--site--course-section--featured--header-bottom: var(--system-tokens--spacing--sm);
   --components-tokens--site--course-section--featured--title-bottom: var(--system-tokens--spacing--sm);

@@ -606,7 +606,7 @@
   );
   border: 2px solid var(--components-tokens--site--course-card--hover-border-color);
   border-radius: var(--components-tokens--site--course-section--featured--border-radius);
-  padding: var(--components-tokens--site--course-section--featured--padding);
+  padding: var(--components-tokens--site--course-section--featured--padding) var(--components-tokens--site--course-section--featured--padding-horizontal);
 }
 
 .featured-course-card::before {

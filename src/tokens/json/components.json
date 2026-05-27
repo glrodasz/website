@@ -15935,6 +15935,16 @@
             }
           }
         },
+        "padding-top": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
         "platform-bottom": {
           "$type": "number",
           "$value": 8,

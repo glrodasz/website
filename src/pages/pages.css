@@ -538,6 +538,7 @@
   display: flex;
   flex-direction: column;
   padding: var(--components-tokens--site--course-section--platform-card--padding);
+  padding-top: var(--components-tokens--site--course-section--platform-card--padding-top);
   border-radius: var(--radius-card);
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);

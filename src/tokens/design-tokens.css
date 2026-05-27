@@ -708,6 +708,7 @@
   --components-tokens--site--course-section--spacing--load-more-top: var(--system-tokens--spacing--md);
   --components-tokens--site--course-section--spacing--grid-top: var(--system-tokens--spacing--xs);
   --components-tokens--site--course-section--platform-card--padding: var(--system-tokens--spacing--md);
+  --components-tokens--site--course-section--platform-card--padding-top: var(--system-tokens--spacing--ml);
   --components-tokens--site--course-section--platform-card--platform-bottom: var(--system-tokens--spacing--xs);
   --components-tokens--site--course-section--platform-card--title-bottom: var(--system-tokens--spacing--xs);
   --components-tokens--site--course-section--platform-card--desc-bottom: var(--system-tokens--spacing--sm);

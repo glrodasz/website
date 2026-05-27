@@ -8,7 +8,7 @@ import { Tag } from '../components/atoms/Tag';
 import { Button } from '../components/atoms/Button';
 import { WaitlistForm } from '../components/molecules/WaitlistForm';
 import { CourseBackground } from '../components/organisms/CourseBackground';
-import { Globe } from 'phosphor-react';
+import { Globe, YoutubeLogo } from 'phosphor-react';
 import {
   FREE_YOUTUBE_PLAYLISTS,
   OTHER_PLATFORM_COURSES,
@@ -117,7 +117,9 @@ const Courses: React.FC = () => {
                 <div className="playlist-card__title-row">
                   <h3 className="playlist-card__title">{pl.title}</h3>
                 </div>
-                <span className="playlist-card__link">{t('free.watchLink')}</span>
+                <span className="playlist-card__link">
+                  {t('free.watchLinkPrefix')} <YoutubeLogo size={14} weight="fill" aria-hidden /> YouTube →
+                </span>
               </div>
             </a>
           ))}

@@ -14,7 +14,7 @@
   "free": {
     "title": "Free courses",
     "lead": "Full playlists on YouTube — no paywall.",
-    "watchLink": "Watch on YouTube →"
+    "watchLinkPrefix": "Watch on"
   },
   "tutorials": {
     "title": "Tutorials",

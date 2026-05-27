@@ -452,6 +452,9 @@
 }
 
 .playlist-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--system-tokens--colors--complementary--subtle);

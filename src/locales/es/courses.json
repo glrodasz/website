@@ -14,7 +14,7 @@
   "free": {
     "title": "Cursos gratuitos",
     "lead": "Playlists completas en YouTube — sin costo.",
-    "watchLink": "Ver en YouTube →"
+    "watchLinkPrefix": "Ver en"
   },
   "tutorials": {
     "title": "Tutoriales",

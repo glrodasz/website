@@ -704,6 +704,10 @@
     height: auto;
     aspect-ratio: 16 / 9;
   }
+
+  .featured-course-card {
+    padding: var(--components-tokens--site--course-section--featured--padding-mobile) var(--components-tokens--site--course-section--featured--padding-horizontal-mobile);
+  }
 }
 
 .contact-hero__lead {

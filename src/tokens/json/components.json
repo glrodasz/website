@@ -15997,6 +15997,26 @@
             }
           }
         },
+        "padding-mobile": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/ml",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "padding-horizontal-mobile": {
+          "$type": "number",
+          "$value": 24,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/md",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
         "header-gap": {
           "$type": "number",
           "$value": 12,

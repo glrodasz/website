@@ -15286,10 +15286,10 @@
       },
       "logo-margin-bottom": {
         "$type": "number",
-        "$value": 8,
+        "$value": 24,
         "$extensions": {
           "com.figma.aliasData": {
-            "targetVariableName": "Spacing/xs",
+            "targetVariableName": "Spacing/md",
             "targetVariableSetName": "System Tokens"
           }
         }

@@ -118,7 +118,7 @@ const Courses: React.FC = () => {
                   <h3 className="playlist-card__title">{pl.title}</h3>
                 </div>
                 <span className="playlist-card__link">
-                  {t('free.watchLinkPrefix')} <YoutubeLogo size={14} weight="fill" aria-hidden /> YouTube →
+                  {t('free.watchLinkPrefix')} <YoutubeLogo size={20} weight="fill" aria-hidden /> YouTube →
                 </span>
               </div>
             </a>

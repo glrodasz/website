@@ -479,9 +479,8 @@
 .tutorial-row {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
-  padding: var(--components-tokens--site--tutorial--spacing--row-padding);
   border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
   overflow: hidden;
   border: 1px solid var(--components-tokens--site--course-card--border-color);
@@ -498,10 +497,11 @@
 
 .tutorial-row__thumb {
   flex-shrink: 0;
-  width: 120px;
-  height: 68px;
+  width: 200px;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
+  aspect-ratio: 16 / 9;
   background: var(--components-tokens--site--course-card--media-background-color);
 }
 
@@ -510,6 +510,7 @@
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+  padding: var(--components-tokens--site--tutorial--spacing--info-padding-vertical) var(--components-tokens--site--tutorial--spacing--info-padding-horizontal);
 }
 
 .tutorial-row__title {

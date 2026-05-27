@@ -705,6 +705,8 @@
   --components-tokens--site--tutorial--spacing--list-gap: var(--system-tokens--spacing--sm);
   --components-tokens--site--tutorial--spacing--row-gap: var(--system-tokens--spacing--sm);
   --components-tokens--site--tutorial--spacing--row-padding: var(--system-tokens--spacing--sm);
+  --components-tokens--site--tutorial--spacing--info-padding-vertical: var(--system-tokens--spacing--xxs);
+  --components-tokens--site--tutorial--spacing--info-padding-horizontal: var(--system-tokens--spacing--sm);
   --components-tokens--site--course-section--spacing--load-more-top: var(--system-tokens--spacing--md);
   --components-tokens--site--course-section--spacing--grid-top: var(--system-tokens--spacing--xs);
   --components-tokens--site--course-section--platform-card--padding: var(--system-tokens--spacing--md);

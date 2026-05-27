@@ -15898,6 +15898,26 @@
               "targetVariableSetName": "System Tokens"
             }
           }
+        },
+        "info-padding-vertical": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/xxs",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
+        },
+        "info-padding-horizontal": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "Spacing/sm",
+              "targetVariableSetName": "System Tokens"
+            }
+          }
         }
       }
     },

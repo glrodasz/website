@@ -28,10 +28,17 @@
   font-size: var(--components-tokens--site--not-found--hero--suggestion--font-size);
   color: var(--color-text-muted);
   margin-bottom: var(--components-tokens--site--page-layout--spacing--title-bottom);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--components-tokens--site--not-found--hero--suggestion--gap);
+}
+
+.not-found-hero__suggestion-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.not-found-hero__suggestion-link:hover {
+  opacity: 0.75;
 }
 
 .not-found-hero__actions {

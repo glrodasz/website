@@ -10,6 +10,7 @@
   },
   "suggestion": {
     "prefix": "¿Estabas buscando",
+    "suffix": "?",
     "pages": {
       "courses": "Cursos",
       "aboutHistory": "Mi Historia",

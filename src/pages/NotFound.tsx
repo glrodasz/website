@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
 import { useLangPrefix } from '../hooks/useLangPrefix';
@@ -50,9 +50,10 @@ const NotFound: React.FC = () => {
         {suggestion && (
           <p className="not-found-hero__suggestion">
             {t('suggestion.prefix')}{' '}
-            <Button variant="tertiary" size="small" to={suggestion.path}>
-              {t(`suggestion.pages.${suggestion.key}`)} →
-            </Button>
+            <Link to={suggestion.path} className="not-found-hero__suggestion-link">
+              {t(`suggestion.pages.${suggestion.key}`)}
+            </Link>
+            {t('suggestion.suffix')}
           </p>
         )}
 

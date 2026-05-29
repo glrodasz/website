@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { Navigate, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import NotFound from '../../pages/NotFound';
 
 const SUPPORTED_LANGS = ['es'];
 
@@ -21,7 +22,7 @@ export const LangWrapper: React.FC = () => {
   }, [locale, i18n]);
 
   if (isUnknownSegment) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   return <Outlet />;

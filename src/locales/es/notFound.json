@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "pageLabel": "404 — Página no encontrada"
+  },
+  "hero": {
+    "label": "404",
+    "title": "Parece que te perdiste.",
+    "lead": "Esta página no existe, nunca existió, o quizás solo se está haciendo la difícil.",
+    "cta": "Llévame a casa"
+  },
+  "suggestion": {
+    "prefix": "¿Estabas buscando",
+    "pages": {
+      "courses": "Cursos",
+      "aboutHistory": "Mi Historia",
+      "aboutLifestyle": "Estilo de vida",
+      "contact": "Contacto",
+      "tokens": "Design Tokens"
+    }
+  },
+  "course": {
+    "label": "Lado positivo",
+    "title": "Bueno, ya que estás aquí…",
+    "description": "¿Por qué no aseguras tu lugar en el curso de Programación con IA? Lecciones cortas y enfocadas en todo el stack. No se necesitan más desvíos.",
+    "badge": "Próximamente"
+  }
+}

@@ -1,0 +1,52 @@
+.not-found-hero__eyebrow {
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  font-family: var(--system-tokens--typography--font-family--headings);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+  line-height: 1;
+  display: block;
+}
+
+.not-found-hero__heading {
+  font-family: var(--system-tokens--typography--font-family--headings);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: var(--components-tokens--site--page-layout--spacing--label-bottom);
+  line-height: 1.2;
+}
+
+.not-found-hero__lead {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: var(--components-tokens--site--page-layout--spacing--label-bottom);
+}
+
+.not-found-hero__suggestion {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--components-tokens--site--page-layout--spacing--title-bottom);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3em;
+}
+
+.not-found-hero__actions {
+  margin-top: var(--components-tokens--site--cta-group--spacing--top);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--components-tokens--site--cta-group--spacing--gap);
+}
+
+@media (max-width: 640px) {
+  .not-found-hero__eyebrow {
+    font-size: clamp(3rem, 20vw, 5rem);
+  }
+
+  .not-found-hero__heading {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+}

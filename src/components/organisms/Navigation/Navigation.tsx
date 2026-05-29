@@ -49,13 +49,10 @@ export const Navigation: FC<NavigationProps> = ({
 
   // Build the alternate-language URL by toggling the /es prefix.
   // Derived from pathname (not i18n.language) so it's always in sync with the URL.
-  const altLangHref = (() => {
-    const isEs = location.pathname.startsWith('/es');
-    if (isEs) {
-      return location.pathname.replace(/^\/es(\/|$)/, '/') || '/';
-    }
-    return `/es${location.pathname === '/' ? '' : location.pathname}`;
-  })();
+  const isEs = location.pathname === '/es' || location.pathname.startsWith('/es/');
+  const altLangHref = isEs
+    ? location.pathname.replace(/^\/es(\/|$)/, '/') || '/'
+    : `/es${location.pathname === '/' ? '' : location.pathname}`;
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -117,8 +114,8 @@ export const Navigation: FC<NavigationProps> = ({
     <Link
       to={altLangHref}
       className="qd-navigation__lang-switcher"
-      aria-label={location.pathname.startsWith('/es') ? 'Switch to English' : 'Cambiar a Español'}
-      onMouseDown={() => persistLocale(location.pathname.startsWith('/es') ? 'en' : 'es')}
+      aria-label={isEs ? 'Switch to English' : 'Cambiar a Español'}
+      onMouseDown={() => persistLocale(isEs ? 'en' : 'es')}
     >
       <Globe size={14} aria-hidden />
       {t('nav.langSwitcher')}

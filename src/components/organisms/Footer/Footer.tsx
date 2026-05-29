@@ -28,7 +28,7 @@ export const Footer: FC<FooterProps> = ({
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
-  const isEs = location.pathname.startsWith('/es');
+  const isEs = location.pathname === '/es' || location.pathname.startsWith('/es/');
   const altLangHref = isEs
     ? location.pathname.replace(/^\/es(\/|$)/, '/') || '/'
     : `/es${location.pathname === '/' ? '' : location.pathname}`;

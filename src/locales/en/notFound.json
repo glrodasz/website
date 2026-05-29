@@ -1,0 +1,28 @@
+{
+  "seo": {
+    "pageLabel": "404 — Page Not Found"
+  },
+  "hero": {
+    "label": "404",
+    "title": "You seem lost.",
+    "lead": "This page doesn't exist, never existed, or maybe it's just playing hard to get.",
+    "cta": "Take me home"
+  },
+  "suggestion": {
+    "prefix": "Were you looking for",
+    "suffix": "?",
+    "pages": {
+      "courses": "Courses",
+      "aboutHistory": "My History",
+      "aboutLifestyle": "Lifestyle",
+      "contact": "Contact",
+      "tokens": "Design Tokens"
+    }
+  },
+  "course": {
+    "label": "Silver lining",
+    "title": "Well, since you're already here…",
+    "description": "Why not grab a spot in the AI-First Programming course? Short, focused lessons across the stack. No wrong turns required.",
+    "badge": "Coming Soon"
+  }
+}

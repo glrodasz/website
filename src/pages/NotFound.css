@@ -1,0 +1,59 @@
+.not-found-hero__eyebrow {
+  font-size: var(--components-tokens--site--not-found--hero--eyebrow--font-size);
+  font-family: var(--components-tokens--site--not-found--hero--eyebrow--font-family);
+  font-weight: var(--components-tokens--site--not-found--hero--eyebrow--font-weight);
+  letter-spacing: var(--components-tokens--site--not-found--hero--eyebrow--tracking);
+  line-height: var(--components-tokens--site--not-found--hero--eyebrow--line-height);
+  margin-bottom: 0;
+  display: block;
+}
+
+.not-found-hero__heading {
+  font-family: var(--components-tokens--site--not-found--hero--heading--font-family);
+  font-weight: var(--components-tokens--site--not-found--hero--heading--font-weight);
+  font-size: var(--components-tokens--site--not-found--hero--heading--font-size);
+  line-height: var(--components-tokens--site--not-found--hero--heading--line-height);
+  margin-bottom: var(--components-tokens--site--page-layout--spacing--label-bottom);
+}
+
+.not-found-hero__lead {
+  color: var(--color-text-muted);
+  font-size: var(--components-tokens--site--not-found--hero--lead--font-size);
+  line-height: var(--components-tokens--site--not-found--hero--lead--line-height);
+  max-width: var(--components-tokens--site--not-found--hero--lead--max-width);
+  margin-bottom: var(--components-tokens--site--page-layout--spacing--label-bottom);
+}
+
+.not-found-hero__suggestion {
+  font-size: var(--components-tokens--site--not-found--hero--suggestion--font-size);
+  color: var(--color-text-muted);
+  margin-bottom: var(--components-tokens--site--page-layout--spacing--title-bottom);
+}
+
+.not-found-hero__suggestion-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.not-found-hero__suggestion-link:hover {
+  opacity: 0.75;
+}
+
+.not-found-hero__actions {
+  margin-top: var(--components-tokens--site--cta-group--spacing--top);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--components-tokens--site--cta-group--spacing--gap);
+}
+
+@media (max-width: 640px) {
+  .not-found-hero__eyebrow {
+    font-size: var(--components-tokens--site--not-found--hero--eyebrow--font-size-mobile);
+  }
+
+  .not-found-hero__heading {
+    font-size: var(--components-tokens--site--not-found--hero--heading--font-size-mobile);
+  }
+}

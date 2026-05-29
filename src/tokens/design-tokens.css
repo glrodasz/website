@@ -637,6 +637,20 @@
   /* Site */
   --components-tokens--site--focus-ring--outline-width: 2px;
   --components-tokens--site--focus-ring--outline-offset: 2px;
+  --components-tokens--site--not-found--hero--eyebrow--font-size: clamp(3.5rem, 12vw, 7rem);
+  --components-tokens--site--not-found--hero--eyebrow--font-size-mobile: clamp(3rem, 20vw, 5rem);
+  --components-tokens--site--not-found--hero--eyebrow--font-weight: 900;
+  --components-tokens--site--not-found--hero--eyebrow--tracking: -0.02em;
+  --components-tokens--site--not-found--hero--eyebrow--line-height: 1;
+  --components-tokens--site--not-found--hero--heading--font-size: clamp(1.8rem, 4vw, 2.8rem);
+  --components-tokens--site--not-found--hero--heading--font-size-mobile: clamp(1.4rem, 6vw, 2rem);
+  --components-tokens--site--not-found--hero--heading--font-weight: 800;
+  --components-tokens--site--not-found--hero--heading--line-height: 1.2;
+  --components-tokens--site--not-found--hero--lead--font-size: 1.05rem;
+  --components-tokens--site--not-found--hero--lead--line-height: 1.7;
+  --components-tokens--site--not-found--hero--lead--max-width: 520px;
+  --components-tokens--site--not-found--hero--suggestion--font-size: 0.95rem;
+  --components-tokens--site--not-found--hero--suggestion--gap: 0.3em;
   --components-tokens--site--page--on-dark-text: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--site--page--placeholder-text: var(--system-tokens--colors--typography--paragraph);
   --components-tokens--site--course-card--border-color: var(--system-tokens--colors--borders--neutral);
@@ -757,6 +771,8 @@
   --components-tokens--site--skip-link--text-color: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--site--skip-link--border-radius: var(--system-tokens--border-radius--sm);
   --components-tokens--site--skip-link--typography--font-weight: var(--system-tokens--typography--font-weight--medium);
+  --components-tokens--site--not-found--hero--eyebrow--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--site--not-found--hero--heading--font-family: var(--system-tokens--typography--font-family--headings);
 
   /* Logo */
   --components-tokens--logo--sizing--icon-large: 40px;

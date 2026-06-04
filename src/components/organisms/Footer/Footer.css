@@ -17,7 +17,7 @@
 
 .qd-footer__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--components-tokens--footer--spacing--large--gap-blocks);
   margin-bottom: var(--components-tokens--footer--spacing--large--vertical);
 }

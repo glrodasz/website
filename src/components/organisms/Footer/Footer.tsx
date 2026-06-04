@@ -105,6 +105,32 @@ export const Footer: FC<FooterProps> = ({
           </div>
 
           <div className="qd-footer__col">
+            <h2 className="qd-footer__col-title">{t('footer.projects')}</h2>
+            <ul>
+              <li>
+                <a href="https://colors.guillermorodas.com" target="_blank" rel="noopener noreferrer">
+                  {t('footer.htmlColors')}
+                </a>
+              </li>
+              <li>
+                <a href="https://cero-components.vercel.app" target="_blank" rel="noopener noreferrer">
+                  {t('footer.ceroComponents')}
+                </a>
+              </li>
+              <li>
+                <a href="https://sublr.vercel.app" target="_blank" rel="noopener noreferrer">
+                  {t('footer.sublr')}
+                </a>
+              </li>
+              <li>
+                <a href="https://cssconf.co" target="_blank" rel="noopener noreferrer">
+                  {t('footer.cssConfColombia')}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="qd-footer__col">
             <h2 className="qd-footer__col-title">{t('footer.contact')}</h2>
             <ul>
               <li>

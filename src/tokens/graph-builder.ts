@@ -18,7 +18,6 @@ import componentsJson from './json/components.json';
 import {
   parseTokens,
   resolveReferences,
-  buildNameToPathMap,
   findReferencedPath,
   type TokenMap,
 } from './parser';
@@ -133,7 +132,7 @@ function labelFromPath(path: string): string {
 function resolveSystemAppearance(
   systemPath: string,
   rawMap: TokenMap,
-  nameToPath: Map<string, string>,
+  spaceMap: TokenMap,
   resolved: ReturnType<typeof resolveReferences>,
 ): { value?: string; globalTargetPath?: string } {
   const token = rawMap[systemPath];
@@ -142,7 +141,7 @@ function resolveSystemAppearance(
   const value = r?.resolvedValue;
   let globalTargetPath: string | undefined;
   if (token.isReference && token.referencePath) {
-    globalTargetPath = findReferencedPath(token.referencePath, nameToPath, resolved);
+    globalTargetPath = findReferencedPath(token.referencePath, spaceMap);
   }
   return { value, globalTargetPath };
 }
@@ -156,12 +155,10 @@ export function buildTokenGraph(): TokenGraph {
   // Light-mode resolution space: globals + light system + components.
   const lightSpace: TokenMap = { ...globalMap, ...systemLightMap, ...componentMap };
   const lightResolved = resolveReferences(lightSpace);
-  const lightNameToPath = buildNameToPathMap(lightSpace);
 
   // Dark-mode resolution space: globals + dark system overrides.
   const darkSpace: TokenMap = { ...globalMap, ...systemDarkMap };
   const darkResolved = resolveReferences(darkSpace);
-  const darkNameToPath = buildNameToPathMap(darkSpace);
 
   const nodes: GraphNode[] = [];
   const nodesById = new Map<string, GraphNode>();
@@ -193,9 +190,9 @@ export function buildTokenGraph(): TokenGraph {
 
   // --- System nodes + edges (one node per path; capture light + dark values) ---
   for (const path in systemLightMap) {
-    const lightAppearance = resolveSystemAppearance(path, systemLightMap, lightNameToPath, lightResolved);
+    const lightAppearance = resolveSystemAppearance(path, systemLightMap, lightSpace, lightResolved);
     const darkAppearance = systemDarkMap[path]
-      ? resolveSystemAppearance(path, systemDarkMap, darkNameToPath, darkResolved)
+      ? resolveSystemAppearance(path, systemDarkMap, darkSpace, darkResolved)
       : undefined;
 
     const nodeId = `system::${path}`;
@@ -273,7 +270,7 @@ export function buildTokenGraph(): TokenGraph {
 
     const raw = componentMap[path];
     if (raw.isReference && raw.referencePath) {
-      const targetPath = findReferencedPath(raw.referencePath, lightNameToPath, lightResolved);
+      const targetPath = findReferencedPath(raw.referencePath, lightSpace);
       if (targetPath && systemLightMap[targetPath]) {
         edges.push({
           from: nodeId,

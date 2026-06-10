@@ -3,681 +3,217 @@
     "Backgrounds": {
       "principal": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.102, 0.102, 0.102],
-          "alpha": 1,
-          "hex": "#1A1A1A"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:backgrounds-principal",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/950",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.950}"
       },
       "secondary": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1412, 0.1412, 0.1412],
-          "alpha": 1,
-          "hex": "#242424"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:backgrounds-secondary",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/900",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.900}"
       },
       "tertiary": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1412, 0.1412, 0.1412],
-          "alpha": 1,
-          "hex": "#242424"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:backgrounds-tertiary",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/900",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.900}"
       },
       "subtle": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.2, 0.2, 0.2],
-          "alpha": 1,
-          "hex": "#333333"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:backgrounds-subtle",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/700",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.700}"
       },
       "neutral": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1804, 0.1804, 0.1804],
-          "alpha": 1,
-          "hex": "#2E2E2E"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:backgrounds-neutral",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/800",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.800}"
       },
       "contrast": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 1,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:backgrounds-contrast",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/0",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.0}"
       }
     },
     "Foregrounds": {
       "principal": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 1,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:foregrounds-principal",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/0",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.0}"
       },
       "secondary": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.8196, 0.8196, 0.8196],
-          "alpha": 1,
-          "hex": "#D1D1D1"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:foregrounds-secondary",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/200",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.200}"
       },
       "tertiary": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.5333, 0.5333, 0.5333],
-          "alpha": 1,
-          "hex": "#888888"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:foregrounds-tertiary",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/300",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.300}"
       },
       "neutral": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.8196, 0.8196, 0.8196],
-          "alpha": 1,
-          "hex": "#D1D1D1"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:foregrounds-neutral",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/200",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.200}"
       },
       "contrast": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1412, 0.1412, 0.1412],
-          "alpha": 1,
-          "hex": "#242424"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:foregrounds-contrast",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/900",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.900}"
       },
       "disabled": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.2705, 0.2705, 0.2705],
-          "alpha": 1,
-          "hex": "#454545"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:foregrounds-disabled",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/500",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.500}"
       }
     },
     "Typography": {
       "Heading": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 1,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-heading",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/0",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.0}"
       },
       "Paragraph": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.8196, 0.8196, 0.8196],
-          "alpha": 1,
-          "hex": "#D1D1D1"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-paragraph",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/200",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.200}"
       },
       "Highlight": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686, 0.8745, 0.1137],
-          "alpha": 1,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-highlight"
-        }
+        "$value": "#F7DF1D"
       },
       "Alternative": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686, 0.8745, 0.1137],
-          "alpha": 1,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-alternative"
-        }
+        "$value": "#F7DF1D"
       },
       "Contrast": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1412, 0.1412, 0.1412],
-          "alpha": 1,
-          "hex": "#242424"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-contrast",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/900",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.900}"
       },
       "Link": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686, 0.8745, 0.1137],
-          "alpha": 1,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-link"
-        }
+        "$value": "#F7DF1D"
       },
       "disabled": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.3215, 0.3215, 0.3215],
-          "alpha": 1,
-          "hex": "#525252"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:typography-disabled"
-        }
+        "$value": "#525252"
       }
     },
     "Borders": {
       "strong": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.149, 0.149, 0.149],
-          "alpha": 1,
-          "hex": "#262626"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:borders-strong",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/600",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.600}"
       },
       "neutral": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.2, 0.2, 0.2],
-          "alpha": 1,
-          "hex": "#333333"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:borders-neutral",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/700",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.700}"
       },
       "disabled": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1804, 0.1804, 0.1804],
-          "alpha": 1,
-          "hex": "#2E2E2E"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:borders-disabled",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Support/Shark/800",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Support.Shark.800}"
       },
       "alternative": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686, 0.8745, 0.1137],
-          "alpha": 1,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:borders-alternative"
-        }
+        "$value": "#F7DF1D"
       },
       "focus": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686, 0.8745, 0.1137],
-          "alpha": 1,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:borders-focus",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Chartreuse/400",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}"
       }
     },
     "Neutral": {
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.149, 0.149, 0.149],
-          "alpha": 1,
-          "hex": "#262626"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:neutral-high"
-        }
+        "$value": "#262626"
       },
       "principal": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.2705, 0.2705, 0.2705],
-          "alpha": 1,
-          "hex": "#454545"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:neutral-principal"
-        }
+        "$value": "#454545"
       },
       "subtle": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.3647, 0.3647, 0.3647],
-          "alpha": 1,
-          "hex": "#5D5D5D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:neutral-subtle"
-        }
+        "$value": "#5D5D5D"
       },
       "off": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.149, 0.149, 0.149],
-          "alpha": 1,
-          "hex": "#262626"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:neutral-off"
-        }
+        "$value": "#262626"
       }
     },
     "Complementary": {
       "principal": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
-          "alpha": 1,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:complementary-principal",
-          "com.figma.aliasData": {
-            "targetVariableName": "Colors/Schemas/Metal chartreuse/Chartreuse/400",
-            "targetVariableSetName": "Global Tokens"
-          }
-        }
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}"
       },
       "subtle": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.6392, 0.8, 0],
-          "alpha": 1,
-          "hex": "#A3CC00"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:complementary-subtle"
-        }
+        "$value": "#A3CC00"
       },
       "off": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1215, 0.149, 0],
-          "alpha": 1,
-          "hex": "#1F2600"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:complementary-off"
-        }
+        "$value": "#1F2600"
       },
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1921, 0.2392, 0],
-          "alpha": 1,
-          "hex": "#313D00"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:complementary-high"
-        }
+        "$value": "#313D00"
       }
     },
     "Primary": {
       "principal": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 1,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:primary-principal"
-        }
+        "$value": "#FFFFFF"
       },
       "subtle": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.8196, 0.8196, 0.8196],
-          "alpha": 1,
-          "hex": "#D1D1D1"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:primary-subtle"
-        }
+        "$value": "#D1D1D1"
       },
       "off": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1804, 0.1804, 0.1804],
-          "alpha": 1,
-          "hex": "#2E2E2E"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:primary-off"
-        }
+        "$value": "#2E2E2E"
       },
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 1,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:primary-high"
-        }
+        "$value": "#FFFFFF"
       }
     },
     "Info": {
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9215, 0.9921, 1],
-          "alpha": 1,
-          "hex": "#EBFDFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:info-high"
-        }
+        "$value": "#EBFDFF"
       },
       "low": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.0588, 0.1215, 0.1333],
-          "alpha": 1,
-          "hex": "#0F1F22"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:info-low"
-        }
+        "$value": "#0F1F22"
       }
     },
     "Success": {
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.0627, 0.7254, 0.5058],
-          "alpha": 1,
-          "hex": "#10B981"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:success-high"
-        }
+        "$value": "#10B981"
       },
       "low": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.0392, 0.1647, 0.1215],
-          "alpha": 1,
-          "hex": "#0A2A1F"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:success-low"
-        }
+        "$value": "#0A2A1F"
       }
     },
     "Warning": {
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9176, 0.702, 0.0313],
-          "alpha": 1,
-          "hex": "#EAB308"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:warning-high"
-        }
+        "$value": "#EAB308"
       },
       "low": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1647, 0.1215, 0],
-          "alpha": 1,
-          "hex": "#2A1F00"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:warning-low"
-        }
+        "$value": "#2A1F00"
       }
     },
     "Danger": {
       "high": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9372, 0.2666, 0.2666],
-          "alpha": 1,
-          "hex": "#EF4444"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:danger-high"
-        }
+        "$value": "#EF4444"
       },
       "low": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.1647, 0.0784, 0.0627],
-          "alpha": 1,
-          "hex": "#2A1410"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:danger-low"
-        }
+        "$value": "#2A1410"
       }
     },
     "Transparency": {
       "primary": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 0.1,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:transparency-primary"
-        }
+        "$value": "#FFFFFF1a"
       },
       "complementary": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
-          "alpha": 0.15,
-          "hex": "#F7DF1D"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:transparency-complementary"
-        }
+        "$value": "#F7DF1D26"
       },
       "light": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [1, 1, 1],
-          "alpha": 0.15,
-          "hex": "#FFFFFF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:transparency-light"
-        }
+        "$value": "#FFFFFF26"
       },
       "dark": {
         "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0, 0, 0],
-          "alpha": 0.3,
-          "hex": "#000000"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:dark:transparency-dark"
-        }
+        "$value": "#0000004d"
       }
     }
   }

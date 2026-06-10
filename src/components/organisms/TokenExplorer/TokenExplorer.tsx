@@ -8,11 +8,13 @@
 
 import { useMemo, useState } from 'react';
 import type { GraphNode, ThemeMode, TokenGraph } from '../../../tokens/graph-builder';
+import { runTokenAudit } from '../../../tokens/audit';
 import { ComponentsView } from './ComponentsView';
 import { SystemView } from './SystemView';
 import { GlobalView } from './GlobalView';
+import { AuditView } from './AuditView';
 
-export type ExplorerTab = 'components' | 'system' | 'global';
+export type ExplorerTab = 'components' | 'system' | 'global' | 'audit';
 
 export interface TokenExplorerProps {
   graph: TokenGraph;
@@ -23,6 +25,7 @@ export interface TokenExplorerProps {
   focusedComponent: string | null;
   selectedId: string | null;
   onSelect: (nodeId: string) => void;
+  initialTab?: ExplorerTab;
 }
 
 const HIERARCHY_PILLS: { tab: ExplorerTab; label: string; statKey: 'global' | 'system' | 'component' }[] = [
@@ -40,8 +43,15 @@ export function TokenExplorer({
   focusedComponent,
   selectedId,
   onSelect,
+  initialTab,
 }: TokenExplorerProps) {
-  const [tab, setTab] = useState<ExplorerTab>('components');
+  const [tab, setTab] = useState<ExplorerTab>(initialTab ?? 'components');
+
+  // Computed eagerly: the audit pill badge is visible on every tab.
+  const audit = useMemo(() => runTokenAudit(graph), [graph]);
+  const auditSeverity =
+    audit.counts.error > 0 ? 'error' : audit.counts.warning > 0 ? 'warning' : 'info';
+  const auditTotal = audit.counts.error + audit.counts.warning + audit.counts.info;
 
   // Focusing a component (sidebar, inspector button, deep link) always lands
   // on the Components tab where the focused card lives.
@@ -111,10 +121,19 @@ export function TokenExplorer({
               </button>
             </span>
           ))}
+          <button
+            type="button"
+            className={`token-explorer__pill token-explorer__pill--audit token-explorer__pill--audit-${auditSeverity}${tab === 'audit' ? ' token-explorer__pill--active' : ''}`}
+            onClick={() => setTab('audit')}
+          >
+            Audit
+            <span className="token-explorer__pill-count">{auditTotal}</span>
+          </button>
         </div>
         <p className="token-explorer__caption">
-          Component tokens reference system tokens, which reference global values.
-          Tap any token to inspect its chain.
+          {tab === 'audit'
+            ? `Health checks over the token system — ${audit.counts.error} errors, ${audit.counts.warning} warnings, ${audit.counts.info} notes.`
+            : 'Component tokens reference system tokens, which reference global values. Tap any token to inspect its chain.'}
         </p>
       </header>
 
@@ -138,6 +157,15 @@ export function TokenExplorer({
             theme={theme}
             search={query}
             enabledCategories={enabledCategories}
+            selectedId={selectedId}
+            onSelect={onSelect}
+          />
+        )}
+        {tab === 'audit' && (
+          <AuditView
+            graph={graph}
+            audit={audit}
+            search={query}
             selectedId={selectedId}
             onSelect={onSelect}
           />

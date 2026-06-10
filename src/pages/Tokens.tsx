@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { buildTokenGraph } from '../tokens/graph-builder';
 import { TokenExplorer, TokenInspector } from '../components/organisms/TokenExplorer';
+import type { ExplorerTab } from '../components/organisms/TokenExplorer';
 import './Tokens.css';
 
 type SetStringSetter = (s: Set<string>) => void;
@@ -68,8 +69,15 @@ export default function Tokens() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  // Deep link: /tokens?component=button focuses that component on load.
+  // Deep links: /tokens?component=button focuses that component on load,
+  // /tokens?tab=audit opens the explorer on a specific tab.
   const [searchParams, setSearchParams] = useSearchParams();
+  const [initialTab] = useState<ExplorerTab | undefined>(() => {
+    const fromUrl = searchParams.get('tab');
+    return fromUrl && ['components', 'system', 'global', 'audit'].includes(fromUrl)
+      ? (fromUrl as ExplorerTab)
+      : undefined;
+  });
   const [focusedComponent, setFocusedComponent] = useState<string | null>(() => {
     const fromUrl = searchParams.get('component');
     return fromUrl && graph.componentNames.includes(fromUrl) ? fromUrl : null;
@@ -283,6 +291,7 @@ export default function Tokens() {
           focusedComponent={focusedComponent}
           selectedId={selectedId}
           onSelect={onSelectToken}
+          initialTab={initialTab}
         />
         {selectedId && graph.nodesById.has(selectedId) && (
           <TokenInspector

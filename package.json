@@ -6,13 +6,14 @@
   "scripts": {
     "build:tokens": "tsx src/tokens/build-tokens.ts",
     "build:posts": "tsx scripts/build-posts.ts",
+    "build:usage": "tsx scripts/build-token-usage.ts",
     "build:covers": "tsx scripts/download-covers.ts",
-    "dev": "npm run build:tokens && npm run build:posts && vite",
-    "build": "npm run build:tokens && npm run build:posts && tsc -b && vite build && storybook build --output-dir dist/components",
+    "dev": "npm run build:tokens && npm run build:usage && npm run build:posts && vite",
+    "build": "npm run build:tokens && npm run build:usage && npm run build:posts && tsc -b && vite build && storybook build --output-dir dist/components",
     "lint": "eslint .",
     "preview": "vite preview",
-    "storybook": "npm run build:tokens && npm run build:posts && storybook dev -p 6006",
-    "build-storybook": "npm run build:tokens && npm run build:posts && storybook build"
+    "storybook": "npm run build:tokens && npm run build:usage && npm run build:posts && storybook dev -p 6006",
+    "build-storybook": "npm run build:tokens && npm run build:usage && npm run build:posts && storybook build"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",

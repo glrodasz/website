@@ -196,13 +196,12 @@
 .tokens-filter-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 6px;
+  gap: 6px;
+  padding: 0 6px;
   margin: 0 -6px;
   font-size: 13px;
   color: #cbd5e1;
   border-radius: 4px;
-  cursor: default;
 }
 
 .tokens-filter-row:hover {
@@ -218,10 +217,60 @@
   font-weight: 500;
 }
 
-.tokens-filter-row input[type='checkbox'] {
-  accent-color: #7dd3fc;
-  flex-shrink: 0;
+/* The whole row is one switch — a single, unambiguous click target. */
+.tokens-filter-row__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
+}
+
+.tokens-switch {
+  flex-shrink: 0;
+  position: relative;
+  width: 28px;
+  height: 16px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.tokens-switch__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  background: #64748b;
+  border-radius: 50%;
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+.tokens-filter-row__main[aria-checked='true'] .tokens-switch {
+  background: #7dd3fc;
+  border-color: #7dd3fc;
+}
+
+.tokens-filter-row__main[aria-checked='true'] .tokens-switch__thumb {
+  background: #0b1018;
+  transform: translateX(12px);
+}
+
+.tokens-filter-row__main:hover .tokens-switch {
+  border-color: #475569;
+}
+
+.tokens-filter-row__main:hover[aria-checked='true'] .tokens-switch {
+  border-color: #bae6fd;
 }
 
 .tokens-filter-row__label {
@@ -230,25 +279,26 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background: none;
-  border: 0;
-  padding: 0;
-  color: inherit;
-  font: inherit;
-  text-align: left;
 }
 
-.tokens-filter-row__label--clickable {
-  cursor: pointer;
+.tokens-filter-row__main[aria-checked='false'] .tokens-filter-row__label {
+  color: #64748b;
 }
 
-.tokens-filter-row__label--clickable:hover {
-  color: #e0f2fe;
-}
-
-.tokens-filter-row__only {
+.tokens-filter-row__actions {
   flex-shrink: 0;
+  display: inline-flex;
+  gap: 4px;
   opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.tokens-filter-row:hover .tokens-filter-row__actions,
+.tokens-filter-row:focus-within .tokens-filter-row__actions {
+  opacity: 1;
+}
+
+.tokens-filter-row__action {
   padding: 2px 8px;
   font-size: 10px;
   font-weight: 600;
@@ -259,15 +309,10 @@
   border: 1px solid #334155;
   border-radius: 3px;
   cursor: pointer;
-  transition: opacity 120ms ease, background 120ms ease;
+  transition: background 120ms ease, border-color 120ms ease;
 }
 
-.tokens-filter-row:hover .tokens-filter-row__only,
-.tokens-filter-row:focus-within .tokens-filter-row__only {
-  opacity: 1;
-}
-
-.tokens-filter-row__only:hover {
+.tokens-filter-row__action:hover {
   background: #1e293b;
   border-color: #7dd3fc;
 }
@@ -309,10 +354,10 @@
   padding-right: 4px;
 }
 
-/* On touch devices the hover-reveal pattern hides the "only" button forever.
-   Always show it there. */
+/* On touch devices the hover-reveal pattern hides the actions forever.
+   Always show them there. */
 @media (hover: none) {
-  .tokens-filter-row__only {
+  .tokens-filter-row__actions {
     opacity: 1;
   }
 }

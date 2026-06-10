@@ -11,46 +11,52 @@ interface FilterRowProps {
   name: string;
   checked: boolean;
   focused?: boolean;
-  onToggleCheck: () => void;
+  onToggle: () => void;
   onOnly: () => void;
-  onSelectLabel?: () => void;
+  onFocus?: () => void;
 }
 
 /**
- * Datadog-style filter row:
- * - Checkbox on the left controls visibility
- * - Label is clickable when onSelectLabel is provided (focus the component)
- * - Hover reveals an inline "only" action to exclusively select this item
+ * Sidebar filter row: the whole row is a single switch that shows/hides the
+ * item — no competing click targets. Secondary actions appear on hover:
+ * "only" (exclusive select) and, for components, "view" (jump to its card).
  */
-function FilterRow({ name, checked, focused, onToggleCheck, onOnly, onSelectLabel }: FilterRowProps) {
+function FilterRow({ name, checked, focused, onToggle, onOnly, onFocus }: FilterRowProps) {
   return (
     <div className={`tokens-filter-row${focused ? ' tokens-filter-row--focused' : ''}`}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onToggleCheck}
-        aria-label={`Show ${name}`}
-      />
-      {onSelectLabel ? (
-        <button
-          type="button"
-          className="tokens-filter-row__label tokens-filter-row__label--clickable"
-          onClick={onSelectLabel}
-          title="Focus this component's tokens"
-        >
-          {name}
-        </button>
-      ) : (
-        <span className="tokens-filter-row__label">{name}</span>
-      )}
       <button
         type="button"
-        className="tokens-filter-row__only"
-        onClick={onOnly}
-        title={`Select only ${name}`}
+        role="switch"
+        aria-checked={checked}
+        className="tokens-filter-row__main"
+        onClick={onToggle}
+        title={checked ? `Hide ${name}` : `Show ${name}`}
       >
-        only
+        <span className="tokens-switch" aria-hidden="true">
+          <span className="tokens-switch__thumb" />
+        </span>
+        <span className="tokens-filter-row__label">{name}</span>
       </button>
+      <span className="tokens-filter-row__actions">
+        {onFocus && (
+          <button
+            type="button"
+            className="tokens-filter-row__action"
+            onClick={onFocus}
+            title={`Jump to ${name}'s tokens`}
+          >
+            view
+          </button>
+        )}
+        <button
+          type="button"
+          className="tokens-filter-row__action"
+          onClick={onOnly}
+          title={`Select only ${name}`}
+        >
+          only
+        </button>
+      </span>
     </div>
   );
 }
@@ -146,8 +152,8 @@ export default function Tokens() {
           <h1 className="tokens-page__title">Design Tokens</h1>
           <p className="tokens-page__description">
             Browse the three-level token hierarchy. Tap any token to inspect the
-            chain it resolves through (component → system → global), or click a
-            component name below to focus its tokens.
+            chain it resolves through (component → system → global). Toggle the
+            rows below to show or hide tokens.
           </p>
         </header>
 
@@ -232,7 +238,7 @@ export default function Tokens() {
               key={cat}
               name={cat}
               checked={enabledCategories.has(cat)}
-              onToggleCheck={() => toggleIn(enabledCategories, cat, setEnabledCategories)}
+              onToggle={() => toggleIn(enabledCategories, cat, setEnabledCategories)}
               onOnly={() => setEnabledCategories(new Set([cat]))}
             />
           ))}
@@ -265,14 +271,14 @@ export default function Tokens() {
                 name={name}
                 checked={enabledComponents.has(name)}
                 focused={focusedComponent === name}
-                onToggleCheck={() =>
+                onToggle={() =>
                   toggleIn(enabledComponents, name, setEnabledComponents)
                 }
                 onOnly={() => {
                   setEnabledComponents(new Set([name]));
                   setFocusedComponent(name);
                 }}
-                onSelectLabel={() =>
+                onFocus={() =>
                   setFocusedComponent((current) => (current === name ? null : name))
                 }
               />

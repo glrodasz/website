@@ -1,6 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { buildTokenGraph } from '../tokens/graph-builder';
-import { TokenTree, type TokenTreeFilters } from '../components/organisms/TokenTree';
+import { TokenExplorer, TokenInspector } from '../components/organisms/TokenExplorer';
+import type { ExplorerTab } from '../components/organisms/TokenExplorer';
 import './Tokens.css';
 
 type SetStringSetter = (s: Set<string>) => void;
@@ -9,46 +11,52 @@ interface FilterRowProps {
   name: string;
   checked: boolean;
   focused?: boolean;
-  onToggleCheck: () => void;
+  onToggle: () => void;
   onOnly: () => void;
-  onSelectLabel?: () => void;
+  onFocus?: () => void;
 }
 
 /**
- * Datadog-style filter row:
- * - Checkbox on the left controls visibility
- * - Label is clickable when onSelectLabel is provided (focus chain)
- * - Hover reveals an inline "only" action to exclusively select this item
+ * Sidebar filter row: the whole row is a single switch that shows/hides the
+ * item — no competing click targets. Secondary actions appear on hover:
+ * "only" (exclusive select) and, for components, "view" (jump to its card).
  */
-function FilterRow({ name, checked, focused, onToggleCheck, onOnly, onSelectLabel }: FilterRowProps) {
+function FilterRow({ name, checked, focused, onToggle, onOnly, onFocus }: FilterRowProps) {
   return (
     <div className={`tokens-filter-row${focused ? ' tokens-filter-row--focused' : ''}`}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onToggleCheck}
-        aria-label={`Show ${name}`}
-      />
-      {onSelectLabel ? (
-        <button
-          type="button"
-          className="tokens-filter-row__label tokens-filter-row__label--clickable"
-          onClick={onSelectLabel}
-          title="Focus this component's reference chain"
-        >
-          {name}
-        </button>
-      ) : (
-        <span className="tokens-filter-row__label">{name}</span>
-      )}
       <button
         type="button"
-        className="tokens-filter-row__only"
-        onClick={onOnly}
-        title={`Select only ${name}`}
+        role="switch"
+        aria-checked={checked}
+        className="tokens-filter-row__main"
+        onClick={onToggle}
+        title={checked ? `Hide ${name}` : `Show ${name}`}
       >
-        only
+        <span className="tokens-switch" aria-hidden="true">
+          <span className="tokens-switch__thumb" />
+        </span>
+        <span className="tokens-filter-row__label">{name}</span>
       </button>
+      <span className="tokens-filter-row__actions">
+        {onFocus && (
+          <button
+            type="button"
+            className="tokens-filter-row__action"
+            onClick={onFocus}
+            title={`Jump to ${name}'s tokens`}
+          >
+            view
+          </button>
+        )}
+        <button
+          type="button"
+          className="tokens-filter-row__action"
+          onClick={onOnly}
+          title={`Select only ${name}`}
+        >
+          only
+        </button>
+      </span>
     </div>
   );
 }
@@ -63,18 +71,48 @@ export default function Tokens() {
     () => new Set(graph.categories),
   );
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-  const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
-  const [focusedComponent, setFocusedComponent] = useState<string | null>(null);
-  const [componentQuery, setComponentQuery] = useState('');
+  const [search, setSearch] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const filters: TokenTreeFilters = {
-    enabledComponents,
-    enabledCategories,
-    theme,
-    focusedComponent,
-    viewMode,
-  };
+  // Deep links: /tokens?component=button focuses that component on load,
+  // /tokens?tab=audit opens the explorer on a specific tab.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [initialTab] = useState<ExplorerTab | undefined>(() => {
+    const fromUrl = searchParams.get('tab');
+    return fromUrl && ['components', 'system', 'global', 'audit'].includes(fromUrl)
+      ? (fromUrl as ExplorerTab)
+      : undefined;
+  });
+  const [focusedComponent, setFocusedComponent] = useState<string | null>(() => {
+    const fromUrl = searchParams.get('component');
+    return fromUrl && graph.componentNames.includes(fromUrl) ? fromUrl : null;
+  });
+
+  useEffect(() => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (focusedComponent) next.set('component', focusedComponent);
+        else next.delete('component');
+        return next;
+      },
+      { replace: true },
+    );
+  }, [focusedComponent, setSearchParams]);
+
+  const onSelectToken = (nodeId: string) =>
+    setSelectedId((prev) => (prev === nodeId ? null : nodeId));
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (selectedId !== null) setSelectedId(null);
+      else setSidebarOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [selectedId]);
 
   const toggleIn = (set: Set<string>, key: string, setter: SetStringSetter) => {
     const next = new Set(set);
@@ -84,10 +122,10 @@ export default function Tokens() {
   };
 
   const filteredComponentNames = useMemo(() => {
-    const q = componentQuery.trim().toLowerCase();
+    const q = search.trim().toLowerCase();
     if (!q) return graph.componentNames;
     return graph.componentNames.filter((n) => n.toLowerCase().includes(q));
-  }, [componentQuery, graph.componentNames]);
+  }, [search, graph.componentNames]);
 
   return (
     <div className={`tokens-page${sidebarOpen ? ' tokens-page--sidebar-open' : ''}`}>
@@ -111,11 +149,11 @@ export default function Tokens() {
 
       <aside className="tokens-page__sidebar">
         <header className="tokens-page__header">
-          <h1 className="tokens-page__title">Token Reference Tree</h1>
+          <h1 className="tokens-page__title">Design Tokens</h1>
           <p className="tokens-page__description">
-            Interactive view of the three-level design token hierarchy. Drag to orbit,
-            scroll to zoom, hover a node to inspect its references. Click a component
-            name below to highlight its reference chain across all layers.
+            Browse the three-level token hierarchy. Tap any token to inspect the
+            chain it resolves through (component → system → global). Toggle the
+            rows below to show or hide tokens.
           </p>
         </header>
 
@@ -143,31 +181,15 @@ export default function Tokens() {
         </section>
 
         <section className="tokens-page__filter-group">
-          <h2 className="tokens-page__filter-title">View</h2>
-          <div
-            className="tokens-page__theme-switch"
-            role="radiogroup"
-            aria-label="View mode"
-          >
-            <button
-              type="button"
-              role="radio"
-              aria-checked={viewMode === '2d'}
-              className={`tokens-page__theme-option${viewMode === '2d' ? ' tokens-page__theme-option--active' : ''}`}
-              onClick={() => setViewMode('2d')}
-            >
-              2D
-            </button>
-            <button
-              type="button"
-              role="radio"
-              aria-checked={viewMode === '3d'}
-              className={`tokens-page__theme-option${viewMode === '3d' ? ' tokens-page__theme-option--active' : ''}`}
-              onClick={() => setViewMode('3d')}
-            >
-              3D
-            </button>
-          </div>
+          <h2 className="tokens-page__filter-title">Search</h2>
+          <input
+            type="search"
+            className="tokens-page__search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search tokens…"
+            aria-label="Search tokens by name"
+          />
         </section>
 
         <section className="tokens-page__filter-group">
@@ -216,7 +238,7 @@ export default function Tokens() {
               key={cat}
               name={cat}
               checked={enabledCategories.has(cat)}
-              onToggleCheck={() => toggleIn(enabledCategories, cat, setEnabledCategories)}
+              onToggle={() => toggleIn(enabledCategories, cat, setEnabledCategories)}
               onOnly={() => setEnabledCategories(new Set([cat]))}
             />
           ))}
@@ -239,18 +261,9 @@ export default function Tokens() {
             </div>
           </div>
 
-          <input
-            type="search"
-            className="tokens-page__search"
-            value={componentQuery}
-            onChange={(e) => setComponentQuery(e.target.value)}
-            placeholder={`Filter ${graph.componentNames.length} components…`}
-            aria-label="Filter components by name"
-          />
-
           <div className="tokens-page__filter-list">
             {filteredComponentNames.length === 0 && (
-              <div className="tokens-page__empty">No components match “{componentQuery}”.</div>
+              <div className="tokens-page__empty">No components match “{search}”.</div>
             )}
             {filteredComponentNames.map((name) => (
               <FilterRow
@@ -258,14 +271,14 @@ export default function Tokens() {
                 name={name}
                 checked={enabledComponents.has(name)}
                 focused={focusedComponent === name}
-                onToggleCheck={() =>
+                onToggle={() =>
                   toggleIn(enabledComponents, name, setEnabledComponents)
                 }
                 onOnly={() => {
                   setEnabledComponents(new Set([name]));
                   setFocusedComponent(name);
                 }}
-                onSelectLabel={() =>
+                onFocus={() =>
                   setFocusedComponent((current) => (current === name ? null : name))
                 }
               />
@@ -274,8 +287,28 @@ export default function Tokens() {
         </section>
       </aside>
 
-      <div className="tokens-page__canvas">
-        <TokenTree graph={graph} filters={filters} />
+      <div className="tokens-page__content">
+        <TokenExplorer
+          graph={graph}
+          theme={theme}
+          search={search}
+          enabledCategories={enabledCategories}
+          enabledComponents={enabledComponents}
+          focusedComponent={focusedComponent}
+          selectedId={selectedId}
+          onSelect={onSelectToken}
+          initialTab={initialTab}
+        />
+        {selectedId && graph.nodesById.has(selectedId) && (
+          <TokenInspector
+            graph={graph}
+            selectedId={selectedId}
+            theme={theme}
+            onSelect={setSelectedId}
+            onFocusComponent={setFocusedComponent}
+            onClose={() => setSelectedId(null)}
+          />
+        )}
       </div>
     </div>
   );

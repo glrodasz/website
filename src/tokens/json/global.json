@@ -63,8 +63,8 @@
       }
     },
     "Schemas": {
-      "Frozen ribon": {
-        "Blue Ribon": {
+      "Frozen ribbon": {
+        "Blue Ribbon": {
           "100": {
             "$type": "color",
             "$value": "#EBF2FF"
@@ -937,7 +937,7 @@
         "$type": "string",
         "$value": "'Inter', system-ui, sans-serif"
       },
-      "Monstserrat": {
+      "Montserrat": {
         "$type": "string",
         "$value": "Montserrat"
       },

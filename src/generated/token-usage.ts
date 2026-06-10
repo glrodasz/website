@@ -293,7 +293,7 @@ export const tokenUsages: TokenUsage[] = [
     "line": 52
   },
   {
-    "varName": "--components-tokens--button--background-color--primary--acctived",
+    "varName": "--components-tokens--button--background-color--primary--active",
     "file": "src/components/atoms/Button.css",
     "line": 56
   },
@@ -303,7 +303,7 @@ export const tokenUsages: TokenUsage[] = [
     "line": 57
   },
   {
-    "varName": "--components-tokens--button--background-color--primary--acctived",
+    "varName": "--components-tokens--button--background-color--primary--active",
     "file": "src/components/atoms/Button.css",
     "line": 58
   },
@@ -338,7 +338,7 @@ export const tokenUsages: TokenUsage[] = [
     "line": 71
   },
   {
-    "varName": "--components-tokens--button--background-color--secondary--acctived",
+    "varName": "--components-tokens--button--background-color--secondary--active",
     "file": "src/components/atoms/Button.css",
     "line": 75
   },
@@ -348,7 +348,7 @@ export const tokenUsages: TokenUsage[] = [
     "line": 76
   },
   {
-    "varName": "--components-tokens--button--border-color--secondary--acctived",
+    "varName": "--components-tokens--button--border-color--secondary--active",
     "file": "src/components/atoms/Button.css",
     "line": 77
   },
@@ -383,7 +383,7 @@ export const tokenUsages: TokenUsage[] = [
     "line": 90
   },
   {
-    "varName": "--components-tokens--button--background-color--tertiary--acctived",
+    "varName": "--components-tokens--button--background-color--tertiary--active",
     "file": "src/components/atoms/Button.css",
     "line": 94
   },

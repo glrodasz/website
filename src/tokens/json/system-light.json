@@ -195,7 +195,7 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "{global.Colors.Schemas.Frozen ribon.Blue Ribon.500}"
+        "$value": "{global.Colors.Schemas.Frozen ribbon.Blue Ribbon.500}"
       }
     },
     "Transparency": {

@@ -366,7 +366,7 @@
           "$type": "color",
           "$value": "{system.Colors.Complementary.principal}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Complementary.high}"
         },
@@ -384,7 +384,7 @@
           "$type": "color",
           "$value": "{system.Colors.Backgrounds.tertiary}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Neutral.off}"
         },
@@ -402,7 +402,7 @@
           "$type": "color",
           "$value": "{system.Colors.Transparency.primary}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Transparency.primary}"
         },
@@ -586,7 +586,7 @@
           "$type": "color",
           "$value": "{system.Colors.Borders.strong}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Borders.strong}"
         },
@@ -2082,7 +2082,7 @@
           "$type": "color",
           "$value": "{system.Colors.Complementary.subtle}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Complementary.high}"
         },
@@ -2100,7 +2100,7 @@
           "$type": "color",
           "$value": "{system.Colors.Backgrounds.tertiary}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Neutral.off}"
         },
@@ -2118,7 +2118,7 @@
           "$type": "color",
           "$value": "{system.Colors.Transparency.primary}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Transparency.primary}"
         },
@@ -2136,7 +2136,7 @@
           "$type": "color",
           "$value": "{system.Colors.Transparency.dark}"
         },
-        "acctived": {
+        "active": {
           "$type": "color",
           "$value": "{system.Colors.Transparency.dark}"
         },

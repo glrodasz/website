@@ -20,26 +20,40 @@ export const LAYER_X: Record<NodeLevel, number> = {
   'component': 22,
 };
 
+export type ComponentGrouping = 'component' | 'property';
+
 /**
- * Returns a semantic type key used to group tokens within each layer.
+ * Returns a semantic key used to group tokens within each layer.
  * Global/System: category (2nd path segment — "colors", "spacing", etc.)
- * Component: property type (3rd path segment — "background-color", "text-color", etc.)
+ * Component: the owning component name by default (so clusters read as
+ * "button", "nav-bar", …), or the property type ("background-color", …)
+ * when grouping by property — used in isolated mode where a single
+ * component would otherwise collapse into one giant column.
  */
-export function tokenGroupKey(node: GraphNode): string {
+export function tokenGroupKey(
+  node: GraphNode,
+  componentGrouping: ComponentGrouping = 'component',
+): string {
   if (node.level === 'component') {
+    if (componentGrouping === 'component') {
+      return node.componentName ?? 'misc';
+    }
     const parts = node.path.split('.');
     return parts[2] ?? 'other';
   }
   return node.category;
 }
 
-function bucketByLevelAndGroup(nodes: GraphNode[]): Map<NodeLevel, Map<string, GraphNode[]>> {
+function bucketByLevelAndGroup(
+  nodes: GraphNode[],
+  componentGrouping: ComponentGrouping = 'component',
+): Map<NodeLevel, Map<string, GraphNode[]>> {
   const byLevel = new Map<NodeLevel, Map<string, GraphNode[]>>();
   for (const level of ['global', 'system', 'component'] as NodeLevel[]) {
     byLevel.set(level, new Map());
   }
   for (const node of nodes) {
-    const key = tokenGroupKey(node);
+    const key = tokenGroupKey(node, componentGrouping);
     const levelMap = byLevel.get(node.level)!;
     if (!levelMap.has(key)) levelMap.set(key, []);
     levelMap.get(key)!.push(node);
@@ -133,7 +147,7 @@ const ISOLATED_GROUP_GAP = 2.4;
  */
 export function computeIsolatedLayout(chainNodes: GraphNode[]): Map<string, NodePosition> {
   const positions = new Map<string, NodePosition>();
-  const byLevel = bucketByLevelAndGroup(chainNodes);
+  const byLevel = bucketByLevelAndGroup(chainNodes, 'property');
 
   for (const [level, groups] of byLevel.entries()) {
     const groupKeys = [...groups.keys()].sort();
@@ -170,10 +184,11 @@ export function computeIsolatedLayout(chainNodes: GraphNode[]): Map<string, Node
 export function computeGroupLabels(
   nodes: GraphNode[],
   positions: Map<string, NodePosition>,
+  componentGrouping: ComponentGrouping = 'component',
 ): GroupLabel[] {
   const labels = new Map<string, GroupLabel>();
   for (const node of nodes) {
-    const gk = tokenGroupKey(node);
+    const gk = tokenGroupKey(node, componentGrouping);
     const key = `${node.level}::${gk}`;
     const p = positions.get(node.id);
     if (!p) continue;

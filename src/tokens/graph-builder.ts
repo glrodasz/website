@@ -66,6 +66,51 @@ export interface TokenGraph {
   };
 }
 
+/**
+ * Walks outgoing references (consumer → target) from a node under a theme.
+ * Returns the ordered chain starting at the node itself, e.g.
+ * [component, system, global]. Each node has at most one outgoing edge per
+ * theme, so this is a simple path of length ≤ 3.
+ */
+export function getReferenceChain(
+  graph: TokenGraph,
+  nodeId: string,
+  theme: ThemeMode,
+): GraphNode[] {
+  const chain: GraphNode[] = [];
+  let current = graph.nodesById.get(nodeId);
+  const seen = new Set<string>();
+  while (current && !seen.has(current.id)) {
+    chain.push(current);
+    seen.add(current.id);
+    const edge = graph.edges.find(
+      (e) => e.from === current!.id && (e.mode === 'both' || e.mode === theme),
+    );
+    current = edge ? graph.nodesById.get(edge.to) : undefined;
+  }
+  return chain;
+}
+
+/**
+ * One-hop backward walk: nodes whose theme-visible edge points at nodeId
+ * (e.g. the component tokens that use a system token).
+ */
+export function getConsumers(
+  graph: TokenGraph,
+  nodeId: string,
+  theme: ThemeMode,
+): GraphNode[] {
+  const consumers: GraphNode[] = [];
+  for (const e of graph.edges) {
+    if (e.to !== nodeId) continue;
+    if (e.mode !== 'both' && e.mode !== theme) continue;
+    const node = graph.nodesById.get(e.from);
+    if (node) consumers.push(node);
+  }
+  consumers.sort((a, b) => a.path.localeCompare(b.path));
+  return consumers;
+}
+
 function categoryFromPath(path: string): string {
   const parts = path.split('.');
   return parts[1] ?? 'Other';

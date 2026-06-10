@@ -18,6 +18,8 @@ const LEVEL_FALLBACK_COLOR: Record<NodeLevel, string> = {
 const HIGHLIGHT_COLOR = new THREE.Color('#ffd400');
 const DIMMED_COLOR = new THREE.Color('#1a1a1a');
 
+const SELECTED_SCALE_FACTOR = 1.6;
+
 function resolveNodeColor(node: GraphNode, theme: ThemeMode): THREE.Color {
   const themedValue =
     theme === 'dark' && node.resolvedValueDark ? node.resolvedValueDark : node.resolvedValue;
@@ -32,11 +34,26 @@ interface TokenNodesProps {
   positions: Map<string, NodePosition>;
   seedIds: Set<string> | null;
   relatedIds: Set<string> | null;
+  selectedId: string | null;
   theme: ThemeMode;
+  coarsePointer: boolean;
+  hoverEnabled: boolean;
   onHover: (node: GraphNode | null) => void;
+  onSelect: (node: GraphNode | null) => void;
 }
 
-export function TokenNodes({ nodes, positions, seedIds, relatedIds, theme, onHover }: TokenNodesProps) {
+export function TokenNodes({
+  nodes,
+  positions,
+  seedIds,
+  relatedIds,
+  selectedId,
+  theme,
+  coarsePointer,
+  hoverEnabled,
+  onHover,
+  onSelect,
+}: TokenNodesProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
 
   const { baseColors, count } = useMemo(() => {
@@ -44,7 +61,14 @@ export function TokenNodes({ nodes, positions, seedIds, relatedIds, theme, onHov
     return { baseColors: colors, count: Math.max(nodes.length, 1) };
   }, [nodes, theme]);
 
-  // Set initial positions once.
+  // Bigger spheres on touch screens so taps land reliably.
+  const baseScaleFor = (node: GraphNode) => {
+    if (coarsePointer) return node.level === 'component' ? 0.26 : 0.3;
+    return node.level === 'component' ? 0.18 : 0.22;
+  };
+
+  // Set positions and scales; the selected node renders larger so it stays
+  // findable, which means this must re-run when selection changes.
   useEffect(() => {
     const mesh = meshRef.current;
     if (!mesh) return;
@@ -53,21 +77,25 @@ export function TokenNodes({ nodes, positions, seedIds, relatedIds, theme, onHov
       const p = positions.get(node.id);
       if (!p) return;
       dummy.position.set(p.x, p.y, p.z);
-      dummy.scale.setScalar(node.level === 'component' ? 0.18 : 0.22);
+      const base = baseScaleFor(node);
+      dummy.scale.setScalar(node.id === selectedId ? base * SELECTED_SCALE_FACTOR : base);
       dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
     });
     mesh.instanceMatrix.needsUpdate = true;
-  }, [nodes, positions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes, positions, selectedId, coarsePointer]);
 
-  // Update colors based on hover / focus state.
+  // Update colors based on hover / selection / focus state.
   useEffect(() => {
     const mesh = meshRef.current;
     if (!mesh) return;
     const hasHighlight = Boolean(seedIds && seedIds.size > 0);
     nodes.forEach((node, i) => {
       let c: THREE.Color;
-      if (!hasHighlight) {
+      if (node.id === selectedId) {
+        c = HIGHLIGHT_COLOR;
+      } else if (!hasHighlight) {
         c = baseColors[i];
       } else if (seedIds!.has(node.id)) {
         c = HIGHLIGHT_COLOR;
@@ -79,7 +107,7 @@ export function TokenNodes({ nodes, positions, seedIds, relatedIds, theme, onHov
       mesh.setColorAt(i, c);
     });
     if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
-  }, [nodes, baseColors, seedIds, relatedIds]);
+  }, [nodes, baseColors, seedIds, relatedIds, selectedId]);
 
   if (nodes.length === 0) return null;
 
@@ -87,12 +115,21 @@ export function TokenNodes({ nodes, positions, seedIds, relatedIds, theme, onHov
     <instancedMesh
       ref={meshRef}
       args={[undefined, undefined, count]}
+      onClick={(e) => {
+        // Ignore clicks that conclude an orbit drag.
+        if (e.delta > 5) return;
+        e.stopPropagation();
+        const idx = e.instanceId;
+        if (idx != null) onSelect(nodes[idx] ?? null);
+      }}
       onPointerOver={(e) => {
+        if (!hoverEnabled) return;
         e.stopPropagation();
         const idx = e.instanceId;
         if (idx != null) onHover(nodes[idx] ?? null);
       }}
       onPointerOut={(e) => {
+        if (!hoverEnabled) return;
         e.stopPropagation();
         onHover(null);
       }}

@@ -1,6 +1,11 @@
-import { useMemo, useState } from 'react';
-import { buildTokenGraph } from '../tokens/graph-builder';
-import { TokenTree, type TokenTreeFilters } from '../components/organisms/TokenTree';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { buildTokenGraph, type GraphNode } from '../tokens/graph-builder';
+import {
+  TokenTree,
+  TokenInspector,
+  type TokenTreeFilters,
+} from '../components/organisms/TokenTree';
 import './Tokens.css';
 
 type SetStringSetter = (s: Set<string>) => void;
@@ -64,9 +69,41 @@ export default function Tokens() {
   );
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
-  const [focusedComponent, setFocusedComponent] = useState<string | null>(null);
   const [componentQuery, setComponentQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  // Deep link: /tokens?component=button focuses that component on load.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [focusedComponent, setFocusedComponent] = useState<string | null>(() => {
+    const fromUrl = searchParams.get('component');
+    return fromUrl && graph.componentNames.includes(fromUrl) ? fromUrl : null;
+  });
+
+  useEffect(() => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (focusedComponent) next.set('component', focusedComponent);
+        else next.delete('component');
+        return next;
+      },
+      { replace: true },
+    );
+  }, [focusedComponent, setSearchParams]);
+
+  const onSelectNode = (node: GraphNode | null) =>
+    setSelectedId((prev) => (node && prev !== node.id ? node.id : null));
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (selectedId !== null) setSelectedId(null);
+      else setSidebarOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [selectedId]);
 
   const filters: TokenTreeFilters = {
     enabledComponents,
@@ -113,9 +150,9 @@ export default function Tokens() {
         <header className="tokens-page__header">
           <h1 className="tokens-page__title">Token Reference Tree</h1>
           <p className="tokens-page__description">
-            Interactive view of the three-level design token hierarchy. Drag to orbit,
-            scroll to zoom, hover a node to inspect its references. Click a component
-            name below to highlight its reference chain across all layers.
+            Interactive view of the three-level design token hierarchy. Tap or click a
+            node to inspect its full reference chain (component → system → global).
+            Click a component name below to isolate its tokens across all layers.
           </p>
         </header>
 
@@ -275,7 +312,22 @@ export default function Tokens() {
       </aside>
 
       <div className="tokens-page__canvas">
-        <TokenTree graph={graph} filters={filters} />
+        <TokenTree
+          graph={graph}
+          filters={filters}
+          selectedId={selectedId}
+          onSelectNode={onSelectNode}
+        />
+        {selectedId && graph.nodesById.has(selectedId) && (
+          <TokenInspector
+            graph={graph}
+            selectedId={selectedId}
+            theme={theme}
+            onSelect={setSelectedId}
+            onFocusComponent={setFocusedComponent}
+            onClose={() => setSelectedId(null)}
+          />
+        )}
       </div>
     </div>
   );

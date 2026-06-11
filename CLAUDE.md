@@ -103,7 +103,7 @@ Raw design values. These are the source of all colors, sizes, and typography. Ne
 
 | Category | Description |
 |---|---|
-| Colors | Multiple palettes (frozen ribon, aquamarine frozen, flash cerulean, metal chartreuse, shark…) with 100–600 scales |
+| Colors | Multiple palettes (frozen ribbon, aquamarine frozen, flash cerulean, metal chartreuse, shark…) with 100–600 scales |
 | Sizing | Multiples of 2, 0–240px |
 | Border radius | 0–100px |
 | Font families | 16 families (Inter, Montserrat, DM Sans, Work Sans…) |
@@ -141,7 +141,7 @@ button.background-color.primary.default    → system: complementary.principal  
 button.background-color.primary.hover      → system: complementary.principal  → #F7DF1D
 button.text-color.primary.default          → system: neutral.high              → #262626
 button.text-color.primary.hover            → system: neutral.principal         → #454545
-button.background-color.primary.acctived   → system: complementary.high        → #313D00
+button.background-color.primary.active     → system: complementary.high        → #313D00
 ```
 
 ### CSS Variable Naming Convention
@@ -156,7 +156,7 @@ Transformation rules: spaces → hyphens, dots → double hyphens, all lowercase
 
 ```css
 /* Global tokens */
---global-tokens--colors--schemas--frozen-ribon--blue-ribon--100
+--global-tokens--colors--schemas--frozen-ribbon--blue-ribbon--100
 --global-tokens--colors--custom--principal-palette--600
 
 /* System tokens */
@@ -206,9 +206,13 @@ npm run build:tokens
 }
 ```
 
-### W3C DTCG JSON Format
+### Slim W3C DTCG JSON Format
 
-Token files use the W3C DTCG format with Figma extensions. The parser uses `$value.hex` for colors and `$extensions.com.figma.aliasData.targetVariableName` to resolve cross-token references.
+Token files use a slim W3C DTCG format. Every token is a `{ "$type", "$value" }` pair — no `$extensions`, no Figma metadata.
+
+**Values**: colors are plain hex strings (`"#F7DF1D"`; use 8-digit hex like `"#0A60FF26"` when alpha < 1). Numbers and strings stay raw.
+
+**References** use the standard DTCG curly-brace syntax with a level prefix as the first segment — `global.`, `system.`, or `components.` — followed by the **exact JSON keys** of the target token (case- and space-sensitive), dot-separated:
 
 ```json
 {
@@ -217,20 +221,7 @@ Token files use the W3C DTCG format with Figma extensions. The parser uses `$val
       "primary": {
         "default": {
           "$type": "color",
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [0.9686274509803922, 0.8745098039215686, 0.11372549019607843],
-            "alpha": 1,
-            "hex": "#F7DF1D"
-          },
-          "$extensions": {
-            "com.figma.variableId": "VariableID:48:12126",
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:...",
-              "targetVariableName": "Colors/Complementary/principal",
-              "targetVariableSetName": "System Tokens"
-            }
-          }
+          "$value": "{system.Colors.Complementary.principal}"
         }
       }
     }
@@ -238,11 +229,25 @@ Token files use the W3C DTCG format with Figma extensions. The parser uses `$val
 }
 ```
 
+```json
+{
+  "Colors": {
+    "Primary": {
+      "principal": {
+        "$type": "color",
+        "$value": "{global.Colors.Custom.Principal palette.600}"
+      }
+    }
+  }
+}
+```
+
+Reference resolution is an exact lookup — a typo in any path segment produces a `⚠️ Could not resolve reference` warning at build time and the unresolved `{...}` string is emitted into the CSS.
+
 When editing token JSON:
-- Update `$value.hex` with the correct hex color
-- Update `$value.components` with sRGB float values (hex channel / 255)
-- Update `aliasData.targetVariableName` to point to the correct system/global token
-- Run `npm run build:tokens` after every change
+- Set `$value` to a raw value (hex string, number) **or** a `{level.path.to.token}` reference
+- Component tokens must reference system tokens; system tokens must reference global tokens
+- Run `npm run build:tokens` after every change and check for resolver warnings
 
 ### Dark Mode
 
@@ -436,7 +441,7 @@ export const GhostDark: Story = {
 
 1. **Never hardcode raw values.** No colors, spacing, radius, or typography values inline in CSS or components.
 
-2. **All CSS uses Component tokens exclusively — no exceptions.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via `aliasData.targetVariableName`. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**.
+2. **All CSS uses Component tokens exclusively.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via a `{system.…}` reference. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**. Sole exemption: `src/pages/Tokens.css` styles the token-explorer dev page with its own self-contained palette and is intentionally outside the design system.
 
 3. **System tokens bridge Global → Component.** System tokens give semantic meaning to raw global values. Component tokens then reference system tokens to scope them to a specific component context.
 
@@ -444,7 +449,7 @@ export const GhostDark: Story = {
 
 5. **Theme-invariant tokens must be explicit.** If a component token must stay the same color in both light and dark mode (e.g. dark text on a yellow button), add that system token to `system-dark.json` with the same value — don't rely on it being undefined.
 
-6. **Component tokens reference system tokens.** Set `aliasData.targetVariableName` to the appropriate system token path (e.g. `"Colors/Neutral/high"`). Only define raw hex values in `system-dark.json` for overrides that don't have an existing global alias.
+6. **Component tokens reference system tokens.** Set `$value` to a `{system.…}` reference (e.g. `"{system.Colors.Neutral.high}"`). Only define raw hex values in `system-dark.json` for overrides that don't have an existing global alias.
 
 7. **Use BEM with `qd-` prefix.** Every class starts with `qd-{component}`. Variants and states are modifiers (`--`), child elements use element syntax (`__`).
 

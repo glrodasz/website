@@ -15,6 +15,7 @@ import {
   type ThemeMode,
   type TokenGraph,
 } from '../../../tokens/graph-builder';
+import { displayComponentName } from './utils';
 
 const MAX_CONSUMERS_SHOWN = 8;
 const HEX_RE = /^#[0-9a-fA-F]{6,8}$/;
@@ -28,9 +29,21 @@ export interface TokenInspectorProps {
   onClose: () => void;
 }
 
-function ValueRow({ label, value, type }: { label: string; value: string; type: string }) {
+function ValueRow({
+  label,
+  value,
+  type,
+  active,
+}: {
+  label: string;
+  value: string;
+  type: string;
+  active?: boolean;
+}) {
   return (
-    <div className="token-inspector__value-row">
+    <div
+      className={`token-inspector__value-row${active ? ' token-inspector__value-row--active' : ''}`}
+    >
       <span className="token-inspector__value-key">{label}</span>
       <span className="token-inspector__value">
         {type === 'color' && HEX_RE.test(value) && (
@@ -75,8 +88,7 @@ function ChainRow({
   theme: ThemeMode;
   onSelect: (nodeId: string) => void;
 }) {
-  const themedValue =
-    theme === 'dark' && node.resolvedValueDark ? node.resolvedValueDark : node.resolvedValue;
+  const hasDark = node.resolvedValueDark !== undefined;
 
   const body = (
     <>
@@ -90,9 +102,24 @@ function ChainRow({
         <code className="token-inspector__var">{node.cssVarName}</code>
         <CopyButton text={`var(${node.cssVarName})`} />
       </div>
-      <ValueRow label={theme === 'dark' ? 'Dark' : 'Light'} value={themedValue} type={node.type} />
-      {node.resolvedValueDark !== undefined && theme === 'light' && (
-        <ValueRow label="Dark" value={node.resolvedValueDark} type={node.type} />
+      {hasDark ? (
+        // Theme-varying token: always show both values, highlight the active theme.
+        <>
+          <ValueRow
+            label="Light"
+            value={node.resolvedValue}
+            type={node.type}
+            active={theme === 'light'}
+          />
+          <ValueRow
+            label="Dark"
+            value={node.resolvedValueDark!}
+            type={node.type}
+            active={theme === 'dark'}
+          />
+        </>
+      ) : (
+        <ValueRow label="Value" value={node.resolvedValue} type={node.type} active />
       )}
     </>
   );
@@ -148,14 +175,16 @@ export function TokenInspector({
 
       {node.level === 'component' && node.componentName && (
         <div className="token-inspector__component">
-          <span className="token-inspector__component-chip">{node.componentName}</span>
+          <span className="token-inspector__component-chip">
+            {displayComponentName(node.componentName)}
+          </span>
           <button
             type="button"
             className="token-inspector__focus"
             onClick={() => onFocusComponent(node.componentName!)}
-            title={`Isolate all ${node.componentName} tokens`}
+            title={`Jump to ${displayComponentName(node.componentName)}'s tokens`}
           >
-            Focus component
+            View component
           </button>
         </div>
       )}
@@ -192,7 +221,9 @@ export function TokenInspector({
                 title={`Inspect ${c.path}`}
               >
                 <span className={`token-inspector__level token-inspector__level--${c.level}`}>
-                  {c.level === 'component' ? c.componentName : c.level}
+                  {c.level === 'component' && c.componentName
+                    ? displayComponentName(c.componentName)
+                    : c.level}
                 </span>
                 <span className="token-inspector__consumer-label">{c.displayLabel}</span>
               </button>

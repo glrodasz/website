@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { buildTokenGraph } from '../tokens/graph-builder';
 import { TokenExplorer, TokenInspector } from '../components/organisms/TokenExplorer';
 import type { ExplorerTab } from '../components/organisms/TokenExplorer';
+import { displayComponentName } from '../components/organisms/TokenExplorer/utils';
 import './Tokens.css';
 
 type SetStringSetter = (s: Set<string>) => void;
@@ -124,7 +125,9 @@ export default function Tokens() {
   const filteredComponentNames = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return graph.componentNames;
-    return graph.componentNames.filter((n) => n.toLowerCase().includes(q));
+    return graph.componentNames.filter(
+      (n) => n.toLowerCase().includes(q) || displayComponentName(n).toLowerCase().includes(q),
+    );
   }, [search, graph.componentNames]);
 
   return (
@@ -160,7 +163,7 @@ export default function Tokens() {
         {focusedComponent && (
           <div className="tokens-focus-banner">
             <span>
-              Focused on <strong>{focusedComponent}</strong>
+              Viewing <strong>{displayComponentName(focusedComponent)}</strong>
             </span>
             <button type="button" onClick={() => setFocusedComponent(null)}>
               clear
@@ -268,19 +271,24 @@ export default function Tokens() {
             {filteredComponentNames.map((name) => (
               <FilterRow
                 key={name}
-                name={name}
+                name={displayComponentName(name)}
                 checked={enabledComponents.has(name)}
                 focused={focusedComponent === name}
                 onToggle={() =>
                   toggleIn(enabledComponents, name, setEnabledComponents)
                 }
-                onOnly={() => {
-                  setEnabledComponents(new Set([name]));
+                onOnly={() => setEnabledComponents(new Set([name]))}
+                onFocus={() => {
+                  if (focusedComponent === name) {
+                    setFocusedComponent(null);
+                    return;
+                  }
+                  // A hidden component can't be scrolled to — re-enable it.
+                  if (!enabledComponents.has(name)) {
+                    setEnabledComponents(new Set(enabledComponents).add(name));
+                  }
                   setFocusedComponent(name);
                 }}
-                onFocus={() =>
-                  setFocusedComponent((current) => (current === name ? null : name))
-                }
               />
             ))}
           </div>

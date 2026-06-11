@@ -144,6 +144,7 @@ export function TokenExplorer({
             chainFor={chainFor}
             theme={theme}
             search={query}
+            enabledCategories={enabledCategories}
             enabledComponents={enabledComponents}
             focusedComponent={focusedComponent}
             selectedId={selectedId}

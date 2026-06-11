@@ -39,7 +39,7 @@
 }
 
 .section-title {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-weight: 800;
   margin-bottom: var(--components-tokens--site--page-layout--spacing--title-bottom);
 }
@@ -117,12 +117,12 @@
   padding: 3px 10px;
   border-radius: 100px;
   background-color: var(--color-accent);
-  color: #1a1a1a; /* always dark — ensures contrast on the golden-yellow accent */
+  color: var(--components-tokens--site--colors--on-accent); /* always dark — ensures contrast on the golden-yellow accent */
   margin-bottom: var(--components-tokens--site--card--spacing--tag-bottom);
 }
 
 .card__title {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: var(--components-tokens--site--card--spacing--title-bottom);
@@ -221,7 +221,7 @@
 }
 
 .timeline__company {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 2px;
@@ -428,8 +428,8 @@
 }
 
 .playlist-card__body {
-  padding: var(--components-tokens--card-text--spacing--vertical, 20px)
-    var(--components-tokens--card-text--spacing--horizontal, 20px);
+  padding: var(--components-tokens--card-text--spacing--vertical)
+    var(--components-tokens--card-text--spacing--horizontal);
 }
 
 .playlist-card__title-row {
@@ -441,7 +441,7 @@
 
 
 .playlist-card__title {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.35;
@@ -457,7 +457,7 @@
   align-items: center;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--system-tokens--colors--complementary--subtle);
+  color: var(--components-tokens--site--colors--accent-text);
 }
 
 .playlist-card__link svg {
@@ -488,7 +488,7 @@
   display: flex;
   align-items: stretch;
   gap: var(--components-tokens--site--tutorial--spacing--row-gap);
-  border-radius: var(--components-tokens--card-text--border-radius--default, 10px);
+  border-radius: var(--components-tokens--card-text--border-radius--default);
   overflow: hidden;
   border: 1px solid var(--components-tokens--site--course-card--border-color);
   background-color: var(--components-tokens--site--course-card--surface-color);
@@ -584,11 +584,11 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--system-tokens--colors--complementary--subtle);
+  color: var(--components-tokens--site--colors--accent-text);
 }
 
 .platform-course-card__title {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 var(--components-tokens--site--course-section--platform-card--title-bottom);
@@ -607,7 +607,7 @@
 .platform-course-card__cta {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--system-tokens--colors--complementary--subtle);
+  color: var(--components-tokens--site--colors--accent-text);
 }
 
 /* Featured course card */
@@ -644,7 +644,7 @@
 }
 
 .featured-course-card__title {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
   margin-bottom: var(--components-tokens--site--course-section--featured--title-bottom);
@@ -776,7 +776,7 @@
 
 .contact-intent__label {
   display: block;
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -857,7 +857,7 @@
 }
 
 .contact-simple__subtitle {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   font-size: 1.25rem;
   font-weight: 700;
   margin: var(--components-tokens--site--contact--spacing--subtitle-top) 0

@@ -6,48 +6,19 @@
 }
 
 :root {
-  /* Non-theme tokens — always the same regardless of mode */
-  /* Matches Quantum Colors/Complementary/principal (global Chartreuse 400) after token build */
-  --golden-yellow: var(--system-tokens--colors--complementary--principal, #f7df1d);
-  --color-accent: var(--golden-yellow);
-  --concrete: #f3f1f1;
-
-  --radius-pill: 100px;
   --radius-card: 12px;
-  --radius-sm: 6px;
 
   --max-width: 1140px;
-  --spacing-section: 80px;
   --nav-height: 76px;
 
-  /* Site color aliases — resolved via system tokens which change per [data-theme] */
-  --color-bg:            var(--system-tokens--colors--backgrounds--principal);
-  --color-text:          var(--system-tokens--colors--foregrounds--principal);
-  --color-text-muted:    var(--system-tokens--colors--foregrounds--neutral);
-  --color-surface:       var(--system-tokens--colors--backgrounds--tertiary);
-  --color-surface-2:     var(--system-tokens--colors--backgrounds--neutral);
-  --color-surface-hover: var(--system-tokens--colors--backgrounds--subtle);
-  --color-border:        var(--system-tokens--colors--borders--neutral);
-
-  /* Nav aliases */
-  --nav-bg: var(--color-bg);
-  --nav-text: var(--color-text);
-  --nav-text-muted: var(--color-text-muted);
-  --nav-border: var(--color-border);
-  --nav-link-color: var(--color-text);
-  --nav-link-color-hover: var(--color-accent);
-  --nav-link-active-color: var(--color-accent);
-}
-
-/* Overlay/transparency colors — no direct system token equivalent */
-[data-theme=”light”] {
-  --nav-link-bg-hover: rgba(0, 0, 0, 0.06);
-  --theme-track-bg: #cccccc;
-}
-
-[data-theme=”dark”] {
-  --nav-link-bg-hover: rgba(255, 255, 255, 0.08);
-  --theme-track-bg: var(--color-surface-2);
+  /* Site color aliases — resolved via component tokens whose system targets change per [data-theme] */
+  --color-bg:         var(--components-tokens--site--colors--background);
+  --color-text:       var(--components-tokens--site--colors--text);
+  --color-text-muted: var(--components-tokens--site--colors--text-muted);
+  --color-surface:    var(--components-tokens--site--colors--surface);
+  --color-surface-2:  var(--components-tokens--site--colors--surface-secondary);
+  --color-border:     var(--components-tokens--site--colors--border);
+  --color-accent:     var(--components-tokens--site--colors--accent);
 }
 
 .app-main {
@@ -65,7 +36,7 @@ body {
   padding: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--system-tokens--typography--font-family--body);
+  font-family: var(--components-tokens--site--typography--font-family--body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,7 +46,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--system-tokens--typography--font-family--headings);
+  font-family: var(--components-tokens--site--typography--font-family--headings);
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.5em;
@@ -103,7 +74,7 @@ a:hover {
 }
 
 /* Default keyboard focus ring — applies to anything that doesn't override it.
-   Theme-aware via --system-tokens--colors--borders--focus (blue in light, yellow in dark).
+   Theme-aware via the site focus-ring tokens (blue in light, yellow in dark).
    Modern browsers make `outline` follow the element's existing border-radius, so we
    don't override it here. */
 :focus-visible {
@@ -148,12 +119,12 @@ ul, ol {
 }
 
 button {
-  font-family: var(--system-tokens--typography--font-family--body);
+  font-family: var(--components-tokens--site--typography--font-family--body);
   cursor: pointer;
 }
 
 code, pre, kbd, samp {
-  font-family: var(--system-tokens--typography--font-family--code);
+  font-family: var(--components-tokens--site--typography--font-family--code);
 }
 
 .container {

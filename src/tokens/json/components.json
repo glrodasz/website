@@ -698,6 +698,16 @@
       "small": {
         "$type": "number",
         "$value": "{system.Sizing.md}"
+      },
+      "icon": {
+        "large": {
+          "$type": "number",
+          "$value": "{system.Sizing.sm}"
+        },
+        "small": {
+          "$type": "number",
+          "$value": "{system.Sizing.xs}"
+        }
       }
     },
     "border-radius": {
@@ -2160,6 +2170,10 @@
       "max-width": {
         "$type": "number",
         "$value": 1140
+      },
+      "sm": {
+        "$type": "number",
+        "$value": "{system.Sizing.sm}"
       }
     },
     "typography": {
@@ -3172,6 +3186,60 @@
             "$value": "0.95rem"
           }
         }
+      }
+    },
+    "typography": {
+      "font-family": {
+        "headings": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Headings}"
+        },
+        "body": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Body}"
+        },
+        "code": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Code}"
+        }
+      }
+    },
+    "colors": {
+      "background": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.principal}"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.tertiary}"
+      },
+      "surface-secondary": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.neutral}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.principal}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.neutral}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.principal}"
+      },
+      "accent-text": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.subtle}"
+      },
+      "on-accent": {
+        "$type": "color",
+        "$value": "{system.Colors.Fixed.on-accent}"
       }
     }
   },

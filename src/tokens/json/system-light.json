@@ -215,6 +215,12 @@
         "$type": "color",
         "$value": "{global.Colors.Support.Shark.opacity-dark}"
       }
+    },
+    "Fixed": {
+      "on-accent": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Shark.950}"
+      }
     }
   },
   "Sizing": {

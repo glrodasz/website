@@ -1,6 +1,6 @@
 /* Height of the fixed site navbar — used to offset the tokens page below it. */
 .tokens-page {
-  --tokens-nav-offset: var(--components-tokens--nav-bar--sizing--height, 72px);
+  --tokens-nav-offset: var(--components-tokens--nav-bar--sizing--height);
 
   position: fixed;
   top: var(--tokens-nav-offset);

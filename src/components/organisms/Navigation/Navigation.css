@@ -367,7 +367,7 @@ button.qd-navigation__link-btn:focus-visible {
 
 .qd-navigation__hamburger span {
   display: block;
-  width: var(--components-tokens--nav-bar--sizing--sm, 24px);
+  width: var(--components-tokens--nav-bar--sizing--sm);
   height: var(--components-tokens--nav-bar--sizing--hamburger-bar);
   background-color: var(--components-tokens--nav-bar--text-color--hamburger);
   border-radius: 2px;

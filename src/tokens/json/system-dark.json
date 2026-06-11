@@ -215,6 +215,12 @@
         "$type": "color",
         "$value": "#0000004d"
       }
+    },
+    "Fixed": {
+      "on-accent": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Shark.950}"
+      }
     }
   }
 }

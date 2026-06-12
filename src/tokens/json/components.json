@@ -410,6 +410,42 @@
           "$type": "color",
           "$value": "{system.Colors.Transparency.primary}"
         }
+      },
+      "ghost-light": {
+        "default": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.primary}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.primary}"
+        },
+        "active": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.primary}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.primary}"
+        }
+      },
+      "ghost-dark": {
+        "default": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.dark}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.dark}"
+        },
+        "active": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.dark}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.light}"
+        }
       }
     },
     "text-color": {
@@ -465,6 +501,42 @@
         "disabled": {
           "$type": "color",
           "$value": "{system.Colors.Transparency.primary}"
+        }
+      },
+      "ghost-light": {
+        "default": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.principal}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.principal}"
+        },
+        "actived": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.principal}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.primary}"
+        }
+      },
+      "ghost-dark": {
+        "default": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.off}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.off}"
+        },
+        "actived": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.off}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.light}"
         }
       }
     },
@@ -603,6 +675,26 @@
         "disabled": {
           "$type": "color",
           "$value": "{system.Colors.Primary.off}"
+        }
+      },
+      "ghost-light": {
+        "default": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.principal}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.off}"
+        }
+      },
+      "ghost-dark": {
+        "default": {
+          "$type": "color",
+          "$value": "{system.Colors.Primary.off}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{system.Colors.Transparency.light}"
         }
       }
     }
@@ -1901,6 +1993,12 @@
         "$type": "color",
         "$value": "{system.Colors.Borders.neutral}"
       }
+    },
+    "shadow-color": {
+      "elevation": {
+        "$type": "color",
+        "$value": "{system.Colors.Transparency.dark}"
+      }
     }
   },
   "card-text": {
@@ -1958,6 +2056,12 @@
       "edge": {
         "$type": "color",
         "$value": "{system.Colors.Borders.neutral}"
+      }
+    },
+    "shadow-color": {
+      "elevation": {
+        "$type": "color",
+        "$value": "{system.Colors.Transparency.dark}"
       }
     }
   },

@@ -28,6 +28,23 @@
   align-items: center;
 }
 
+/* Ghost variant icon colors */
+.qd-button--ghost-light .qd-icon-button__icon {
+  color: var(--components-tokens--icon-button--icon-color--ghost-light--default);
+}
+
+.qd-button--ghost-dark .qd-icon-button__icon {
+  color: var(--components-tokens--icon-button--icon-color--ghost-dark--default);
+}
+
+.qd-button--ghost-light.qd-button--disabled .qd-icon-button__icon {
+  color: var(--components-tokens--icon-button--icon-color--ghost-light--disabled);
+}
+
+.qd-button--ghost-dark.qd-button--disabled .qd-icon-button__icon {
+  color: var(--components-tokens--icon-button--icon-color--ghost-dark--disabled);
+}
+
 /* Size adjustments for small buttons */
 .qd-button--small .qd-icon-button__icon {
   width: var(--components-tokens--button--sizing--icon--small);

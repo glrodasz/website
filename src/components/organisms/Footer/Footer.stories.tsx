@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from '../../../hooks/useTheme';
 import { Footer } from './Footer';
 
 const meta: Meta<typeof Footer> = {
@@ -11,9 +12,11 @@ const meta: Meta<typeof Footer> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <Story />
-      </MemoryRouter>
+      <ThemeProvider>
+        <MemoryRouter>
+          <Story />
+        </MemoryRouter>
+      </ThemeProvider>
     ),
   ],
 };

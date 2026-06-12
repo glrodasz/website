@@ -1,0 +1,26 @@
+@import '../../../tokens/design-tokens.css';
+
+/* ButtonGroup Molecule */
+.qd-button-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Size Variants */
+.qd-button-group--large {
+  padding: var(--components-tokens--button-group--spacing--large--vertical)
+           var(--components-tokens--button-group--spacing--large--horizontal);
+  gap: var(--components-tokens--button-group--spacing--large--gap);
+}
+
+.qd-button-group--small {
+  padding: var(--components-tokens--button-group--spacing--small--vertical)
+           var(--components-tokens--button-group--spacing--small--horizontal);
+  gap: var(--components-tokens--button-group--spacing--small--gap);
+}
+
+/* Direction Variants */
+.qd-button-group--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}

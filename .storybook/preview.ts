@@ -1,5 +1,6 @@
 import type { Preview, Decorator } from '@storybook/react-vite'
 import '../src/index.css'
+import '../src/i18n'
 
 const withQuantumTheme: Decorator = (Story, context) => {
   const theme = (context.globals.theme as 'light' | 'dark') ?? 'light';

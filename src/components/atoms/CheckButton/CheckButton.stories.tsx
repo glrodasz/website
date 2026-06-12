@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CheckButton } from './CheckButton';
 
 const meta: Meta<typeof CheckButton> = {
-  title: 'Atoms/Navigation/CheckButton',
+  title: 'Atoms/CheckButton',
   component: CheckButton,
   parameters: {
     layout: 'centered',
@@ -101,11 +101,11 @@ export const StepIndicatorExample: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
       <CheckButton size="large" active aria-label="Step 1 completed" />
-      <div style={{ width: '60px', height: '2px', backgroundColor: '#006E7A' }} />
+      <div style={{ width: '60px', height: '2px', backgroundColor: 'var(--components-tokens--check-button--background-color--actived)' }} />
       <CheckButton size="large" active aria-label="Step 2 completed" />
-      <div style={{ width: '60px', height: '2px', backgroundColor: '#006E7A' }} />
+      <div style={{ width: '60px', height: '2px', backgroundColor: 'var(--components-tokens--check-button--background-color--actived)' }} />
       <CheckButton size="large" aria-label="Step 3 not completed" />
-      <div style={{ width: '60px', height: '2px', backgroundColor: '#ddd' }} />
+      <div style={{ width: '60px', height: '2px', backgroundColor: 'var(--components-tokens--check-button--border-color--default)' }} />
       <CheckButton size="large" aria-label="Step 4 not completed" />
     </div>
   ),
@@ -136,7 +136,9 @@ export const Interactive: Story = {
                 style={{
                   width: '60px',
                   height: '2px',
-                  backgroundColor: isActive && steps[index + 1] ? '#006E7A' : '#ddd',
+                  backgroundColor: isActive && steps[index + 1]
+                    ? 'var(--components-tokens--check-button--background-color--actived)'
+                    : 'var(--components-tokens--check-button--border-color--default)',
                 }}
               />
             )}

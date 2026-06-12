@@ -30,7 +30,7 @@ const meta: Meta<typeof IconButton> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary'],
+      options: ['primary', 'secondary', 'tertiary', 'ghost-light', 'ghost-dark'],
       description: 'Button visual variant',
     },
     size: {
@@ -107,6 +107,30 @@ export const Tertiary: Story = {
   },
 };
 
+// Ghost variants
+export const GhostLight: Story = {
+  args: {
+    variant: 'ghost-light',
+    size: 'large',
+    icon: <ArrowIcon />,
+    label: 'Learn More',
+    iconPosition: 'right',
+  },
+};
+
+export const GhostDark: Story = {
+  args: {
+    variant: 'ghost-dark',
+    size: 'large',
+    icon: <ArrowIcon />,
+    label: 'Learn More',
+    iconPosition: 'right',
+  },
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+};
+
 // Disabled state
 export const Disabled: Story = {
   args: {
@@ -148,6 +172,7 @@ export const AllVariants: Story = {
         <IconButton variant="primary" size="large" icon={<CheckIcon />} label="Primary" />
         <IconButton variant="secondary" size="large" icon={<PlusIcon />} label="Secondary" />
         <IconButton variant="tertiary" size="large" icon={<ArrowIcon />} label="Tertiary" />
+        <IconButton variant="ghost-light" size="large" icon={<ArrowIcon />} label="Ghost Light" />
       </div>
       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <IconButton variant="primary" size="small" icon={<CheckIcon />} label="Small" />

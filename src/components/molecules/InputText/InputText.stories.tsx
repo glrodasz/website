@@ -1,10 +1,11 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { InputText } from './InputText';
+import { Button } from '../../atoms';
 import { MagnifyingGlass, User, EnvelopeSimple, LockKey } from 'phosphor-react';
 
 const meta: Meta<typeof InputText> = {
-  title: 'Molecules/Input Fields/InputText',
+  title: 'Molecules/InputText',
   component: InputText,
   parameters: {
     layout: 'centered',
@@ -146,7 +147,14 @@ export const AllVariants: Story = {
 
 export const FormExample: Story = {
   render: () => (
-    <div style={{ width: '400px', padding: '2rem', backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
+    <div
+      style={{
+        width: '400px',
+        padding: '2rem',
+        backgroundColor: 'var(--components-tokens--card-text--background-color--flat)',
+        borderRadius: 'var(--components-tokens--card-text--border-radius--default)',
+      }}
+    >
       <h2 style={{ marginBottom: '1.5rem', fontSize: '20px', fontWeight: 600 }}>Sign In</h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <InputText
@@ -163,21 +171,9 @@ export const FormExample: Story = {
           size="large"
           icon={LockKey}
         />
-        <button
-          style={{
-            marginTop: '1rem',
-            padding: '12px',
-            backgroundColor: '#006E7A',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '6px',
-            fontSize: '16px',
-            fontWeight: 600,
-            cursor: 'pointer'
-          }}
-        >
-          Sign In
-        </button>
+        <div style={{ marginTop: '1rem', display: 'flex' }}>
+          <Button type="submit">Sign In</Button>
+        </div>
       </div>
     </div>
   ),

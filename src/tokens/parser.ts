@@ -1,22 +1,17 @@
 /**
  * Token Parser
- * Parses W3C DTCG design tokens from JSON files and resolves all token references
+ * Parses slim W3C DTCG design tokens from JSON files and resolves all token references.
+ *
+ * References use the standard DTCG syntax with a level prefix:
+ *   {global.Colors.Custom.Principal palette.600}
+ *   {system.Colors.Complementary.principal}
+ *   {components.button.background-color.primary.default}
+ * Path segments after the prefix are the exact JSON keys of the target token.
  */
-
-// W3C DTCG format - Color value structure from Figma export
-// Used for type documentation when extracting hex values
-// @ts-expect-error - Interface kept for documentation purposes
-interface ColorValue {
-  colorSpace: string;
-  components: number[];
-  alpha: number;
-  hex: string;
-}
 
 export interface ParsedToken {
   type: string;
   value: string | number;
-  extensions?: any;
   level: 'global' | 'system' | 'component';
   isReference: boolean;
   referencePath?: string;
@@ -54,9 +49,11 @@ export function sanitizeTokenName(path: string): string {
     .replace(/[^a-z0-9\-]/g, '');
 }
 
+const REFERENCE_PATTERN = /^\{(.+)\}$/;
+
 /**
  * Traverse nested object and build flat token map
- * Supports W3C DTCG format
+ * Supports slim W3C DTCG format
  */
 export function parseTokens(
   obj: any,
@@ -69,45 +66,28 @@ export function parseTokens(
     if (current && typeof current === 'object') {
       // Check for W3C DTCG token (has $type and $value)
       if (current.$type && current.$value !== undefined) {
-        let resolvedValue = current.$value;
         let isReference = false;
         let referencePath: string | undefined;
 
-        // Check if this is a reference via aliasData
-        const aliasData = current.$extensions?.['com.figma.aliasData'];
-        if (aliasData?.targetVariableName) {
-          isReference = true;
-          referencePath = aliasData.targetVariableName;
-        }
-
-        // Extract actual value from complex objects
-        if (current.$type === 'color' && typeof resolvedValue === 'object') {
-          // Use hex value from color object
-          const hex = resolvedValue.hex || '#000000';
-          const alpha = resolvedValue.alpha;
-
-          // If alpha is less than 1, append alpha channel to hex
-          if (alpha !== undefined && alpha < 1) {
-            // Convert alpha (0-1) to hex (00-FF)
-            const alphaHex = Math.round(alpha * 255).toString(16).padStart(2, '0');
-            resolvedValue = hex + alphaHex;
-          } else {
-            resolvedValue = hex;
+        if (typeof current.$value === 'string') {
+          const match = current.$value.match(REFERENCE_PATTERN);
+          if (match) {
+            isReference = true;
+            referencePath = match[1];
           }
         }
 
         tokenMap[path] = {
           type: current.$type,
-          value: resolvedValue,
-          extensions: current.$extensions,
+          value: current.$value,
           level: level,
           isReference: isReference,
           referencePath: referencePath
         };
       }
-      // Continue traversing (including mode definition containers)
+      // Continue traversing nested groups
       else {
-        const keys = Object.keys(current).filter(k => k !== '$extensions');
+        const keys = Object.keys(current).filter(k => !k.startsWith('$'));
         for (const key of keys) {
           const newPath = path ? `${path}.${key}` : key;
           traverse(current[key], newPath);
@@ -126,67 +106,29 @@ export function parseTokens(
   return tokenMap;
 }
 
-/**
- * Build a mapping of Figma variable names to internal paths
- * for resolving aliasData references
- */
-export function buildNameToPathMap(tokenMap: TokenMap): Map<string, string> {
-  const nameToPath = new Map<string, string>();
-
-  for (const path in tokenMap) {
-    const token = tokenMap[path];
-
-    // Only map concrete values (not references)
-    if (!token.isReference) {
-      // Extract the path without level prefix
-      const pathParts = path.split('.');
-      if (pathParts.length >= 2) {
-        const levelPrefix = pathParts[0]; // "global tokens", "system tokens", "components tokens"
-        const relativePath = pathParts.slice(1).join('/');
-
-        // Map both with and without level for flexibility
-        nameToPath.set(relativePath, path);
-        nameToPath.set(`${levelPrefix}/${relativePath}`, path);
-
-        // Also map with dots instead of slashes
-        const dotPath = pathParts.slice(1).join('.');
-        nameToPath.set(dotPath, path);
-      }
-    }
-  }
-
-  return nameToPath;
-}
+/** Maps reference level prefixes to the internal token-map path prefixes */
+const LEVEL_PREFIXES: Record<string, string> = {
+  global: 'global tokens',
+  system: 'system tokens',
+  components: 'components tokens',
+};
 
 /**
- * Find the target path for a Figma reference
- * Tries multiple strategies to locate the referenced token
+ * Find the target token-map path for a {level.path.to.token} reference.
+ * Exact match only — segments after the level prefix are the JSON keys of the target.
  */
 export function findReferencedPath(
   referencePath: string,
-  nameToPath: Map<string, string>,
-  resolvedMap: ResolvedTokenMap
+  tokenMap: TokenMap
 ): string | undefined {
-  // Strategy 1: Direct match
-  let targetPath = nameToPath.get(referencePath);
-  if (targetPath) return targetPath;
+  const dotIndex = referencePath.indexOf('.');
+  if (dotIndex === -1) return undefined;
 
-  // Strategy 2: Try with different level prefixes
-  for (const level of ['global tokens', 'system tokens', 'components tokens']) {
-    const prefixedPath = `${level}/${referencePath}`;
-    targetPath = nameToPath.get(prefixedPath);
-    if (targetPath) return targetPath;
-  }
+  const levelPrefix = LEVEL_PREFIXES[referencePath.slice(0, dotIndex)];
+  if (!levelPrefix) return undefined;
 
-  // Strategy 3: Try converting slashes to dots and searching
-  const dotPath = referencePath.replace(/\//g, '.');
-  for (const candidatePath in resolvedMap) {
-    if (candidatePath.endsWith(`.${dotPath}`) || candidatePath.endsWith(dotPath)) {
-      return candidatePath;
-    }
-  }
-
-  return undefined;
+  const targetPath = `${levelPrefix}.${referencePath.slice(dotIndex + 1)}`;
+  return targetPath in tokenMap ? targetPath : undefined;
 }
 
 /**
@@ -197,11 +139,10 @@ function generateCssVarName(path: string): string {
 }
 
 /**
- * Resolve token references using W3C DTCG aliasData
+ * Resolve token references
  */
 export function resolveReferences(tokenMap: TokenMap): ResolvedTokenMap {
   const resolvedMap: ResolvedTokenMap = {};
-  const nameToPath = buildNameToPathMap(tokenMap);
 
   // First pass: Resolve all concrete values (non-references)
   for (const path in tokenMap) {
@@ -218,12 +159,12 @@ export function resolveReferences(tokenMap: TokenMap): ResolvedTokenMap {
     }
   }
 
-  // Second pass: Resolve references via aliasData
+  // Second pass: Resolve references
   for (const path in tokenMap) {
     const token = tokenMap[path];
 
     if (token.isReference && token.referencePath) {
-      const targetPath = findReferencedPath(token.referencePath, nameToPath, resolvedMap);
+      const targetPath = findReferencedPath(token.referencePath, tokenMap);
 
       if (targetPath && resolvedMap[targetPath]) {
         resolvedMap[path] = {
@@ -238,7 +179,7 @@ export function resolveReferences(tokenMap: TokenMap): ResolvedTokenMap {
         };
       } else {
         console.warn(`⚠️  Could not resolve reference: ${path} -> ${token.referencePath}`);
-        // Fallback: use the current value as-is
+        // Fallback: emit the unresolved reference string as-is
         resolvedMap[path] = {
           originalPath: path,
           cssVarName: generateCssVarName(path),

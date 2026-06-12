@@ -7,13 +7,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { GraphNode, ThemeMode } from '../../../tokens/graph-builder';
 import { TokenSwatch } from './TokenSwatch';
-import { matchesSearch, themedValueOf } from './utils';
+import {
+  categoryOfComponentToken,
+  displayComponentName,
+  matchesSearch,
+  themedValueOf,
+} from './utils';
 
 interface ComponentsViewProps {
   nodes: GraphNode[];
   chainFor: (nodeId: string) => GraphNode[];
   theme: ThemeMode;
   search: string;
+  enabledCategories: Set<string>;
   enabledComponents: Set<string>;
   focusedComponent: string | null;
   selectedId: string | null;
@@ -77,6 +83,7 @@ export function ComponentsView({
   chainFor,
   theme,
   search,
+  enabledCategories,
   enabledComponents,
   focusedComponent,
   selectedId,
@@ -89,7 +96,9 @@ export function ComponentsView({
     const byComponent = new Map<string, Map<string, GraphNode[]>>();
     for (const node of nodes) {
       const name = node.componentName ?? 'misc';
-      if (focusedComponent ? name !== focusedComponent : !enabledComponents.has(name)) continue;
+      if (!enabledComponents.has(name)) continue;
+      const category = categoryOfComponentToken(node);
+      if (category !== null && !enabledCategories.has(category)) continue;
       if (!matchesSearch(node, search)) continue;
       if (!byComponent.has(name)) byComponent.set(name, new Map());
       const byProperty = byComponent.get(name)!;
@@ -103,14 +112,15 @@ export function ComponentsView({
       }
     }
     return [...byComponent.entries()].sort(([a], [b]) => a.localeCompare(b));
-  }, [nodes, enabledComponents, focusedComponent, search]);
+  }, [nodes, enabledCategories, enabledComponents, search]);
 
   // A focused component (sidebar click, inspector button, or deep link)
-  // opens expanded; a search expands everything that matched.
+  // opens expanded alongside whatever is already open; a search expands
+  // everything that matched.
   const [prevFocused, setPrevFocused] = useState(focusedComponent);
   if (focusedComponent !== prevFocused) {
     setPrevFocused(focusedComponent);
-    if (focusedComponent) setExpanded(new Set([focusedComponent]));
+    if (focusedComponent) setExpanded((prev) => new Set(prev).add(focusedComponent));
   }
 
   useEffect(() => {
@@ -151,7 +161,7 @@ export function ComponentsView({
               aria-expanded={open}
             >
               <span className="token-card__chevron" aria-hidden="true">{open ? '▾' : '▸'}</span>
-              <span className="token-card__name">{name}</span>
+              <span className="token-card__name">{displayComponentName(name)}</span>
               <span className="token-card__count">{count} tokens</span>
             </button>
             {open && (

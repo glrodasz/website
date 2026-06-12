@@ -54,36 +54,44 @@ export function SystemView({
           {members.map((node) => {
             const usedBy = consumerCount.get(node.id) ?? 0;
             const hasDark = node.resolvedValueDark !== undefined;
+            const isColor = node.type === 'color';
             return (
               <button
                 key={node.id}
                 type="button"
-                className={`token-row${selectedId === node.id ? ' token-row--selected' : ''}`}
+                className={`token-row token-row--system${selectedId === node.id ? ' token-row--selected' : ''}`}
                 onClick={() => onSelect(node.id)}
                 title={`Inspect ${node.path}`}
               >
-                <span className="token-row__main">
-                  <span className="token-row__label">
-                    {node.path.split('.').slice(2).join('.')}
-                  </span>
-                  <span className="token-row__values">
-                    <span
-                      className={`token-row__themed${theme === 'light' ? ' token-row__themed--active' : ''}`}
-                    >
-                      <TokenSwatch value={node.resolvedValue} size="md" />
-                      <code>{node.resolvedValue}</code>
-                    </span>
-                    {hasDark && (
-                      <span
-                        className={`token-row__themed${theme === 'dark' ? ' token-row__themed--active' : ''}`}
-                      >
-                        <TokenSwatch value={node.resolvedValueDark!} size="md" />
-                        <code>{node.resolvedValueDark}</code>
-                        <span className="token-row__themed-tag">dark</span>
+                <span className="token-row__label">
+                  {node.path.split('.').slice(2).join('.')}
+                </span>
+                <span
+                  className={`token-row__themed${theme === 'light' || !hasDark ? ' token-row__themed--active' : ''}`}
+                >
+                  <TokenSwatch value={node.resolvedValue} size="md" />
+                  <code>{node.resolvedValue}</code>
+                  {isColor && <span className="token-row__themed-tag">light</span>}
+                </span>
+                <span
+                  className={`token-row__themed${theme === 'dark' && hasDark ? ' token-row__themed--active' : ''}`}
+                >
+                  {hasDark ? (
+                    <>
+                      <TokenSwatch value={node.resolvedValueDark!} size="md" />
+                      <code>{node.resolvedValueDark}</code>
+                      <span className="token-row__themed-tag">dark</span>
+                    </>
+                  ) : (
+                    isColor && (
+                      <span className="token-row__themed-empty" title="Same value in dark mode">
+                        —
                       </span>
-                    )}
-                  </span>
-                  {usedBy > 0 && <span className="token-row__used-by">used by {usedBy}</span>}
+                    )
+                  )}
+                </span>
+                <span className="token-row__used-by">
+                  {usedBy > 0 ? `used by ${usedBy}` : ''}
                 </span>
               </button>
             );

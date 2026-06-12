@@ -1,6 +1,6 @@
 /* Height of the fixed site navbar — used to offset the tokens page below it. */
 .tokens-page {
-  --tokens-nav-offset: var(--components-tokens--nav-bar--sizing--height, 72px);
+  --tokens-nav-offset: var(--components-tokens--nav-bar--sizing--height);
 
   position: fixed;
   top: var(--tokens-nav-offset);
@@ -640,6 +640,42 @@
   gap: 4px 12px;
 }
 
+/* System rows: fixed columns so light/dark values and usage counts align
+   vertically across the whole list. */
+.token-row--system {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 130px 130px 76px;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-row--system .token-row__label {
+  flex: none;
+}
+
+.token-row--system .token-row__used-by {
+  margin-left: 0;
+  text-align: right;
+}
+
+.token-row__themed-empty {
+  color: #475569;
+}
+
+@media (max-width: 560px) {
+  .token-row--system {
+    grid-template-columns: 1fr 130px;
+  }
+
+  .token-row--system .token-row__label {
+    grid-column: 1 / -1;
+  }
+
+  .token-row--system .token-row__used-by {
+    text-align: left;
+  }
+}
+
 .token-row__themed {
   display: inline-flex;
   align-items: center;
@@ -989,6 +1025,11 @@
   gap: 6px;
   margin-top: 3px;
   align-items: center;
+  opacity: 0.55;
+}
+
+.token-inspector__value-row--active {
+  opacity: 1;
 }
 
 .token-inspector__value-key {

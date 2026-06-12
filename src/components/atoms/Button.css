@@ -53,9 +53,9 @@
 }
 
 .qd-button--primary:active:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--primary--acctived);
+  background-color: var(--components-tokens--button--background-color--primary--active);
   color: var(--components-tokens--button--text-color--primary--actived);
-  border-color: var(--components-tokens--button--background-color--primary--acctived);
+  border-color: var(--components-tokens--button--background-color--primary--active);
 }
 
 /* Secondary Variant */
@@ -72,9 +72,9 @@
 }
 
 .qd-button--secondary:active:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--secondary--acctived);
+  background-color: var(--components-tokens--button--background-color--secondary--active);
   color: var(--components-tokens--button--text-color--secondary--actived);
-  border-color: var(--components-tokens--button--border-color--secondary--acctived);
+  border-color: var(--components-tokens--button--border-color--secondary--active);
 }
 
 /* Tertiary Variant */
@@ -91,7 +91,7 @@
 }
 
 .qd-button--tertiary:active:not(.qd-button--disabled) {
-  background-color: var(--components-tokens--button--background-color--tertiary--acctived);
+  background-color: var(--components-tokens--button--background-color--tertiary--active);
   color: var(--components-tokens--button--text-color--tertiary--actived);
   border-color: var(--components-tokens--button--border-color--tertiary--default);
 }

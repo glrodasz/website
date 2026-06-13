@@ -13,7 +13,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'ghost-light', 'ghost-dark'],
+      options: ['primary', 'secondary', 'tertiary', 'ghost'],
       description: 'Button visual variant based on Quantum Design system',
     },
     size: {
@@ -83,23 +83,13 @@ export const TertiarySmall: Story = {
   },
 };
 
-// Ghost variant stories
-export const GhostLight: Story = {
+// Ghost variant story — appearance follows the active theme (toggle the
+// Storybook theme to see the light vs dark treatment of the same variant)
+export const Ghost: Story = {
   args: {
-    variant: 'ghost-light',
+    variant: 'ghost',
     size: 'large',
-    children: 'Ghost Light Button',
-  },
-};
-
-export const GhostDark: Story = {
-  args: {
-    variant: 'ghost-dark',
-    size: 'large',
-    children: 'Ghost Dark Button',
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
+    children: 'Ghost Button',
   },
 };
 
@@ -147,14 +137,14 @@ export const AllVariants: Story = {
         <Button variant="tertiary" size="small">Tertiary Small</Button>
       </div>
       <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="ghost-light" size="large">Ghost Light</Button>
-        <Button variant="ghost-light" size="small">Ghost Light Small</Button>
+        <Button variant="ghost" size="large">Ghost</Button>
+        <Button variant="ghost" size="small">Ghost Small</Button>
       </div>
       <div style={{ display: 'flex', gap: '16px' }}>
         <Button variant="primary" disabled>Disabled</Button>
         <Button variant="secondary" disabled>Disabled</Button>
         <Button variant="tertiary" disabled>Disabled</Button>
-        <Button variant="ghost-light" disabled>Disabled</Button>
+        <Button variant="ghost" disabled>Disabled</Button>
       </div>
     </div>
   ),

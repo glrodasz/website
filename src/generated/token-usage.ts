@@ -398,94 +398,49 @@ export const tokenUsages: TokenUsage[] = [
     "line": 96
   },
   {
-    "varName": "--components-tokens--button--background-color--ghost-light--default",
+    "varName": "--components-tokens--button--background-color--ghost--default",
     "file": "src/components/atoms/Button.css",
     "line": 101
   },
   {
-    "varName": "--components-tokens--button--text-color--ghost-light--default",
+    "varName": "--components-tokens--button--text-color--ghost--default",
     "file": "src/components/atoms/Button.css",
     "line": 102
   },
   {
-    "varName": "--components-tokens--button--border-color--ghost-light--default",
+    "varName": "--components-tokens--button--border-color--ghost--default",
     "file": "src/components/atoms/Button.css",
     "line": 103
   },
   {
-    "varName": "--components-tokens--button--background-color--ghost-light--hover",
+    "varName": "--components-tokens--button--background-color--ghost--hover",
     "file": "src/components/atoms/Button.css",
     "line": 107
   },
   {
-    "varName": "--components-tokens--button--text-color--ghost-light--hover",
+    "varName": "--components-tokens--button--text-color--ghost--hover",
     "file": "src/components/atoms/Button.css",
     "line": 108
   },
   {
-    "varName": "--components-tokens--button--border-color--ghost-light--default",
+    "varName": "--components-tokens--button--border-color--ghost--default",
     "file": "src/components/atoms/Button.css",
     "line": 109
   },
   {
-    "varName": "--components-tokens--button--background-color--ghost-light--active",
+    "varName": "--components-tokens--button--background-color--ghost--active",
     "file": "src/components/atoms/Button.css",
     "line": 113
   },
   {
-    "varName": "--components-tokens--button--text-color--ghost-light--actived",
+    "varName": "--components-tokens--button--text-color--ghost--actived",
     "file": "src/components/atoms/Button.css",
     "line": 114
   },
   {
-    "varName": "--components-tokens--button--border-color--ghost-light--default",
+    "varName": "--components-tokens--button--border-color--ghost--default",
     "file": "src/components/atoms/Button.css",
     "line": 115
-  },
-  {
-    "varName": "--components-tokens--button--background-color--ghost-dark--default",
-    "file": "src/components/atoms/Button.css",
-    "line": 120
-  },
-  {
-    "varName": "--components-tokens--button--text-color--ghost-dark--default",
-    "file": "src/components/atoms/Button.css",
-    "line": 121
-  },
-  {
-    "varName": "--components-tokens--button--border-color--ghost-dark--default",
-    "file": "src/components/atoms/Button.css",
-    "line": 122
-  },
-  {
-    "varName": "--components-tokens--button--background-color--ghost-dark--hover",
-    "file": "src/components/atoms/Button.css",
-    "line": 126
-  },
-  {
-    "varName": "--components-tokens--button--text-color--ghost-dark--hover",
-    "file": "src/components/atoms/Button.css",
-    "line": 127
-  },
-  {
-    "varName": "--components-tokens--button--border-color--ghost-dark--default",
-    "file": "src/components/atoms/Button.css",
-    "line": 128
-  },
-  {
-    "varName": "--components-tokens--button--background-color--ghost-dark--active",
-    "file": "src/components/atoms/Button.css",
-    "line": 132
-  },
-  {
-    "varName": "--components-tokens--button--text-color--ghost-dark--actived",
-    "file": "src/components/atoms/Button.css",
-    "line": 133
-  },
-  {
-    "varName": "--components-tokens--button--border-color--ghost-dark--default",
-    "file": "src/components/atoms/Button.css",
-    "line": 134
   },
   {
     "varName": "--components-tokens--check-button--typography--font-family",
@@ -1383,39 +1338,29 @@ export const tokenUsages: TokenUsage[] = [
     "line": 23
   },
   {
-    "varName": "--components-tokens--icon-button--icon-color--ghost-light--default",
+    "varName": "--components-tokens--icon-button--icon-color--ghost--default",
     "file": "src/components/molecules/IconButton.css",
     "line": 33
   },
   {
-    "varName": "--components-tokens--icon-button--icon-color--ghost-dark--default",
+    "varName": "--components-tokens--icon-button--icon-color--ghost--disabled",
     "file": "src/components/molecules/IconButton.css",
     "line": 37
   },
   {
-    "varName": "--components-tokens--icon-button--icon-color--ghost-light--disabled",
+    "varName": "--components-tokens--button--sizing--icon--small",
     "file": "src/components/molecules/IconButton.css",
-    "line": 41
-  },
-  {
-    "varName": "--components-tokens--icon-button--icon-color--ghost-dark--disabled",
-    "file": "src/components/molecules/IconButton.css",
-    "line": 45
+    "line": 42
   },
   {
     "varName": "--components-tokens--button--sizing--icon--small",
     "file": "src/components/molecules/IconButton.css",
-    "line": 50
-  },
-  {
-    "varName": "--components-tokens--button--sizing--icon--small",
-    "file": "src/components/molecules/IconButton.css",
-    "line": 51
+    "line": 43
   },
   {
     "varName": "--components-tokens--button--spacing--small--gap",
     "file": "src/components/molecules/IconButton.css",
-    "line": 55
+    "line": 47
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--gap",

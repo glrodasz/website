@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from './Logo';
 
 const meta: Meta<typeof Logo> = {
-  title: 'Atoms/Information/Logo',
+  title: 'Atoms/Logo',
   component: Logo,
   parameters: {
     layout: 'centered',
@@ -81,17 +81,17 @@ export const AllVariants: Story = {
             gap: '2rem',
             alignItems: 'center',
             padding: '2rem',
-            backgroundColor: '#f5f5f5',
-            borderRadius: '8px',
+            backgroundColor: 'var(--components-tokens--card-image--background-color--flat)',
+            borderRadius: 'var(--components-tokens--card-image--border-radius--default)',
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
             <Logo variant="default" size="large" />
-            <span style={{ fontSize: '12px', color: '#666' }}>Large</span>
+            <span style={{ fontSize: '12px', color: 'var(--components-tokens--site--page--placeholder-text)' }}>Large</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
             <Logo variant="default" size="small" />
-            <span style={{ fontSize: '12px', color: '#666' }}>Small</span>
+            <span style={{ fontSize: '12px', color: 'var(--components-tokens--site--page--placeholder-text)' }}>Small</span>
           </div>
         </div>
       </div>
@@ -107,17 +107,17 @@ export const AllVariants: Story = {
             gap: '2rem',
             alignItems: 'center',
             padding: '2rem',
-            backgroundColor: '#1a1a1a',
-            borderRadius: '8px',
+            backgroundColor: 'var(--components-tokens--card-image--background-color--contrast)',
+            borderRadius: 'var(--components-tokens--card-image--border-radius--default)',
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
             <Logo variant="contrast" size="large" />
-            <span style={{ fontSize: '12px', color: '#ccc' }}>Large</span>
+            <span style={{ fontSize: '12px', color: 'var(--components-tokens--card-image--text-color--contrast--caption)' }}>Large</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
             <Logo variant="contrast" size="small" />
-            <span style={{ fontSize: '12px', color: '#ccc' }}>Small</span>
+            <span style={{ fontSize: '12px', color: 'var(--components-tokens--card-image--text-color--contrast--caption)' }}>Small</span>
           </div>
         </div>
       </div>

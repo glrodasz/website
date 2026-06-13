@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ArrowRight } from 'phosphor-react';
 import { Button } from './Button';
+import { Icon } from './Icon';
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
@@ -11,7 +13,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary'],
+      options: ['primary', 'secondary', 'tertiary', 'ghost'],
       description: 'Button visual variant based on Quantum Design system',
     },
     size: {
@@ -81,6 +83,26 @@ export const TertiarySmall: Story = {
   },
 };
 
+// Ghost variant story — appearance follows the active theme (toggle the
+// Storybook theme to see the light vs dark treatment of the same variant)
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    size: 'large',
+    children: 'Ghost Button',
+  },
+};
+
+// Icon support
+export const WithIcon: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    icon: <Icon icon={ArrowRight} size="xs" />,
+    children: 'Get Started',
+  },
+};
+
 // Disabled states
 export const PrimaryDisabled: Story = {
   args: {
@@ -115,9 +137,14 @@ export const AllVariants: Story = {
         <Button variant="tertiary" size="small">Tertiary Small</Button>
       </div>
       <div style={{ display: 'flex', gap: '16px' }}>
+        <Button variant="ghost" size="large">Ghost</Button>
+        <Button variant="ghost" size="small">Ghost Small</Button>
+      </div>
+      <div style={{ display: 'flex', gap: '16px' }}>
         <Button variant="primary" disabled>Disabled</Button>
         <Button variant="secondary" disabled>Disabled</Button>
         <Button variant="tertiary" disabled>Disabled</Button>
+        <Button variant="ghost" disabled>Disabled</Button>
       </div>
     </div>
   ),

@@ -30,7 +30,7 @@ const meta: Meta<typeof IconButton> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary'],
+      options: ['primary', 'secondary', 'tertiary', 'ghost'],
       description: 'Button visual variant',
     },
     size: {
@@ -107,6 +107,18 @@ export const Tertiary: Story = {
   },
 };
 
+// Ghost variant — appearance follows the active theme (toggle the Storybook
+// theme to see the light vs dark treatment of the same variant)
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    size: 'large',
+    icon: <ArrowIcon />,
+    label: 'Learn More',
+    iconPosition: 'right',
+  },
+};
+
 // Disabled state
 export const Disabled: Story = {
   args: {
@@ -148,6 +160,7 @@ export const AllVariants: Story = {
         <IconButton variant="primary" size="large" icon={<CheckIcon />} label="Primary" />
         <IconButton variant="secondary" size="large" icon={<PlusIcon />} label="Secondary" />
         <IconButton variant="tertiary" size="large" icon={<ArrowIcon />} label="Tertiary" />
+        <IconButton variant="ghost" size="large" icon={<ArrowIcon />} label="Ghost" />
       </div>
       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <IconButton variant="primary" size="small" icon={<CheckIcon />} label="Small" />

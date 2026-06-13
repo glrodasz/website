@@ -96,6 +96,25 @@
   border-color: var(--components-tokens--button--border-color--tertiary--default);
 }
 
+/* Ghost Variant — appearance adapts to the active theme */
+.qd-button--ghost {
+  background-color: var(--components-tokens--button--background-color--ghost--default);
+  color: var(--components-tokens--button--text-color--ghost--default);
+  border-color: var(--components-tokens--button--border-color--ghost--default);
+}
+
+.qd-button--ghost:hover:not(.qd-button--disabled) {
+  background-color: var(--components-tokens--button--background-color--ghost--hover);
+  color: var(--components-tokens--button--text-color--ghost--hover);
+  border-color: var(--components-tokens--button--border-color--ghost--default);
+}
+
+.qd-button--ghost:active:not(.qd-button--disabled) {
+  background-color: var(--components-tokens--button--background-color--ghost--active);
+  color: var(--components-tokens--button--text-color--ghost--actived);
+  border-color: var(--components-tokens--button--border-color--ghost--default);
+}
+
 /* Disabled State */
 .qd-button--disabled {
   opacity: 0.4;

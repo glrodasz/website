@@ -1,0 +1,49 @@
+@import '../../../tokens/design-tokens.css';
+
+/* CardText Organism */
+.qd-card-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--components-tokens--card-text--border-radius--default);
+}
+
+.qd-card-text__body {
+  display: flex;
+  flex-direction: column;
+  padding: var(--components-tokens--card-text--spacing--vertical)
+           var(--components-tokens--card-text--spacing--horizontal);
+}
+
+.qd-card-text__actions {
+  display: flex;
+  gap: var(--components-tokens--card-text--spacing--button-gap);
+  margin-top: var(--components-tokens--card-text--spacing--button-gap);
+}
+
+/* Variant Modifiers */
+.qd-card-text--flat {
+  background-color: var(--components-tokens--card-text--background-color--flat);
+}
+
+.qd-card-text--elevation {
+  background-color: var(--components-tokens--card-text--background-color--elevation);
+  box-shadow: 0 4px 16px var(--components-tokens--card-text--shadow-color--elevation);
+}
+
+.qd-card-text--edge {
+  background-color: var(--components-tokens--card-text--background-color--edge);
+  border: 1px solid var(--components-tokens--card-text--border-color--edge);
+}
+
+.qd-card-text--contrast {
+  background-color: var(--components-tokens--card-text--background-color--contrast);
+}
+
+.qd-card-text--contrast .qd-card-text__title {
+  color: var(--components-tokens--card-text--text-color--contrast--title);
+}
+
+.qd-card-text--contrast .qd-card-text__description {
+  color: var(--components-tokens--card-text--text-color--contrast--caption);
+}

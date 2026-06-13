@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { NumberButton } from './NumberButton';
 
 const meta: Meta<typeof NumberButton> = {
-  title: 'Atoms/Navigation/NumberButton',
+  title: 'Atoms/NumberButton',
   component: NumberButton,
   parameters: {
     layout: 'centered',

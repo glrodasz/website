@@ -66,7 +66,7 @@ export const Large: Story = {
     icon: Heart,
     size: 'lg',
     weight: 'fill',
-    color: '#e74c3c',
+    color: 'var(--components-tokens--status--fill-color--hold)',
   },
 };
 
@@ -75,7 +75,7 @@ export const ExtraLarge: Story = {
     icon: Star,
     size: 'xxl',
     weight: 'fill',
-    color: '#f39c12',
+    color: 'var(--components-tokens--status--fill-color--sleep)',
   },
 };
 
@@ -155,13 +155,13 @@ export const IconShowcase: Story = {
       <Icon icon={House} size="lg" />
       <Icon icon={User} size="lg" />
       <Icon icon={Gear} size="lg" />
-      <Icon icon={Heart} size="lg" weight="fill" color="#e74c3c" />
-      <Icon icon={Star} size="lg" weight="fill" color="#f39c12" />
+      <Icon icon={Heart} size="lg" weight="fill" color="var(--components-tokens--status--fill-color--hold)" />
+      <Icon icon={Star} size="lg" weight="fill" color="var(--components-tokens--status--fill-color--sleep)" />
       <Icon icon={MagnifyingGlass} size="lg" />
       <Icon icon={ShoppingCart} size="lg" />
       <Icon icon={Bell} size="lg" />
       <Icon icon={Calendar} size="lg" />
-      <Icon icon={Check} size="lg" weight="bold" color="#27ae60" />
+      <Icon icon={Check} size="lg" weight="bold" color="var(--components-tokens--status--fill-color--available)" />
     </div>
   ),
 };

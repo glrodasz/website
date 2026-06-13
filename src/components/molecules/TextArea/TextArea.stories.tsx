@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TextArea } from './TextArea';
 
 const meta: Meta<typeof TextArea> = {
-  title: 'Molecules/Input Fields/TextArea',
+  title: 'Molecules/TextArea',
   component: TextArea,
   parameters: {
     layout: 'centered',
@@ -146,7 +146,15 @@ export const Interactive: Story = {
           onChange={(e) => setValue(e.target.value)}
           maxLength={maxLength}
         />
-        <p style={{ marginTop: '0.5rem', fontSize: '12px', color: remaining < 20 ? '#dc3545' : '#666' }}>
+        <p
+          style={{
+            marginTop: '0.5rem',
+            fontSize: '12px',
+            color: remaining < 20
+              ? 'var(--components-tokens--text-area--text-color--message--error)'
+              : 'var(--components-tokens--site--page--placeholder-text)',
+          }}
+        >
           {remaining} characters remaining
         </p>
       </div>

@@ -360,6 +360,10 @@
   --components-tokens--button--background-color--tertiary--hover: var(--system-tokens--colors--transparency--primary);
   --components-tokens--button--background-color--tertiary--active: var(--system-tokens--colors--transparency--primary);
   --components-tokens--button--background-color--tertiary--disabled: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost--default: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost--hover: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost--active: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--background-color--ghost--disabled: var(--system-tokens--colors--transparency--primary);
   --components-tokens--button--text-color--primary--default: var(--system-tokens--colors--neutral--high);
   --components-tokens--button--text-color--primary--hover: var(--system-tokens--colors--neutral--principal);
   --components-tokens--button--text-color--primary--actived: var(--system-tokens--colors--complementary--off);
@@ -372,6 +376,10 @@
   --components-tokens--button--text-color--tertiary--hover: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--tertiary--actived: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--text-color--tertiary--disabled: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--button--text-color--ghost--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--ghost--hover: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--ghost--actived: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--text-color--ghost--disabled: var(--system-tokens--colors--transparency--primary);
   --components-tokens--button--spacing--large--horizontal: var(--system-tokens--spacing--ml);
   --components-tokens--button--spacing--large--vertical: var(--system-tokens--spacing--sm);
   --components-tokens--button--spacing--large--gap: var(--system-tokens--spacing--xs);
@@ -398,6 +406,8 @@
   --components-tokens--button--border-color--secondary--disabled: var(--system-tokens--colors--borders--disabled);
   --components-tokens--button--border-color--tertiary--default: var(--system-tokens--colors--primary--principal);
   --components-tokens--button--border-color--tertiary--disabled: var(--system-tokens--colors--primary--off);
+  --components-tokens--button--border-color--ghost--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--button--border-color--ghost--disabled: var(--system-tokens--colors--primary--off);
 
   /* Tag */
   --components-tokens--tag--typography--small--font-size: 12px;
@@ -953,14 +963,10 @@
   --components-tokens--icon-button--background-color--secondary--hover: var(--system-tokens--colors--backgrounds--tertiary);
   --components-tokens--icon-button--background-color--secondary--active: var(--system-tokens--colors--neutral--off);
   --components-tokens--icon-button--background-color--secondary--disabled: var(--system-tokens--colors--backgrounds--tertiary);
-  --components-tokens--icon-button--background-color--ghost-light--default: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--icon-button--background-color--ghost-light--hover: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--icon-button--background-color--ghost-light--active: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--icon-button--background-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--icon-button--background-color--ghost-dark--default: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--icon-button--background-color--ghost-dark--hover: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--icon-button--background-color--ghost-dark--active: var(--system-tokens--colors--transparency--dark);
-  --components-tokens--icon-button--background-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--icon-button--background-color--ghost--default: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--icon-button--background-color--ghost--hover: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--icon-button--background-color--ghost--active: var(--system-tokens--colors--transparency--primary);
+  --components-tokens--icon-button--background-color--ghost--disabled: var(--system-tokens--colors--transparency--primary);
   --components-tokens--icon-button--icon-color--primary--default: var(--system-tokens--colors--complementary--high);
   --components-tokens--icon-button--icon-color--primary--hover: var(--system-tokens--colors--complementary--high);
   --components-tokens--icon-button--icon-color--primary--actived: var(--system-tokens--colors--complementary--off);
@@ -969,14 +975,10 @@
   --components-tokens--icon-button--icon-color--secondary--hover: var(--system-tokens--colors--neutral--high);
   --components-tokens--icon-button--icon-color--secondary--actived: var(--system-tokens--colors--neutral--high);
   --components-tokens--icon-button--icon-color--secondary--disabled: var(--system-tokens--colors--foregrounds--disabled);
-  --components-tokens--icon-button--icon-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
-  --components-tokens--icon-button--icon-color--ghost-light--hover: var(--system-tokens--colors--primary--principal);
-  --components-tokens--icon-button--icon-color--ghost-light--actived: var(--system-tokens--colors--primary--principal);
-  --components-tokens--icon-button--icon-color--ghost-light--disabled: var(--system-tokens--colors--transparency--primary);
-  --components-tokens--icon-button--icon-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
-  --components-tokens--icon-button--icon-color--ghost-dark--hover: var(--system-tokens--colors--primary--off);
-  --components-tokens--icon-button--icon-color--ghost-dark--actived: var(--system-tokens--colors--primary--off);
-  --components-tokens--icon-button--icon-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--icon-button--icon-color--ghost--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--icon-button--icon-color--ghost--hover: var(--system-tokens--colors--primary--principal);
+  --components-tokens--icon-button--icon-color--ghost--actived: var(--system-tokens--colors--primary--principal);
+  --components-tokens--icon-button--icon-color--ghost--disabled: var(--system-tokens--colors--transparency--primary);
   --components-tokens--icon-button--spacing--large--horizontal: var(--system-tokens--spacing--xs);
   --components-tokens--icon-button--spacing--large--vertical: var(--system-tokens--spacing--xs);
   --components-tokens--icon-button--spacing--small--horizontal: var(--system-tokens--spacing--xxs);
@@ -985,10 +987,8 @@
   --components-tokens--icon-button--sizing--icon--small: var(--system-tokens--sizing--xs);
   --components-tokens--icon-button--border-radius--large: var(--system-tokens--border-radius--xs);
   --components-tokens--icon-button--border-radius--small: var(--system-tokens--border-radius--xs);
-  --components-tokens--icon-button--border-color--ghost-light--default: var(--system-tokens--colors--primary--principal);
-  --components-tokens--icon-button--border-color--ghost-light--disabled: var(--system-tokens--colors--primary--off);
-  --components-tokens--icon-button--border-color--ghost-dark--default: var(--system-tokens--colors--primary--off);
-  --components-tokens--icon-button--border-color--ghost-dark--disabled: var(--system-tokens--colors--transparency--light);
+  --components-tokens--icon-button--border-color--ghost--default: var(--system-tokens--colors--primary--principal);
+  --components-tokens--icon-button--border-color--ghost--disabled: var(--system-tokens--colors--primary--off);
 
   /* Check-button */
   --components-tokens--check-button--spacing--large--horizontal: var(--system-tokens--spacing--md);
@@ -1065,6 +1065,7 @@
   --components-tokens--card-image--text-color--contrast--title: var(--system-tokens--colors--typography--alternative);
   --components-tokens--card-image--text-color--contrast--caption: var(--system-tokens--colors--typography--contrast);
   --components-tokens--card-image--border-color--edge: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--card-image--shadow-color--elevation: var(--system-tokens--colors--transparency--dark);
 
   /* Card-text */
   --components-tokens--card-text--spacing--horizontal: var(--system-tokens--spacing--md);
@@ -1078,6 +1079,7 @@
   --components-tokens--card-text--text-color--contrast--title: var(--system-tokens--colors--typography--alternative);
   --components-tokens--card-text--text-color--contrast--caption: var(--system-tokens--colors--typography--contrast);
   --components-tokens--card-text--border-color--edge: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--card-text--shadow-color--elevation: var(--system-tokens--colors--transparency--dark);
 
   /* Markdown */
   --components-tokens--markdown--font-family--heading: var(--system-tokens--typography--font-family--headings);

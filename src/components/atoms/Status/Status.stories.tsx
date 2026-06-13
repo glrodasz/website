@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Status } from './Status';
 
 const meta: Meta<typeof Status> = {
-  title: 'Atoms/Information/Status',
+  title: 'Atoms/Status',
   component: Status,
   parameters: {
     layout: 'centered',

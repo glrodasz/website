@@ -28,6 +28,15 @@
   align-items: center;
 }
 
+/* Ghost variant icon colors — adapts to the active theme */
+.qd-button--ghost .qd-icon-button__icon {
+  color: var(--components-tokens--icon-button--icon-color--ghost--default);
+}
+
+.qd-button--ghost.qd-button--disabled .qd-icon-button__icon {
+  color: var(--components-tokens--icon-button--icon-color--ghost--disabled);
+}
+
 /* Size adjustments for small buttons */
 .qd-button--small .qd-icon-button__icon {
   width: var(--components-tokens--button--sizing--icon--small);

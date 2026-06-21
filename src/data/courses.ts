@@ -52,7 +52,7 @@ export function playlistUrl(playlistId: string): string {
 }
 
 export function youtubeThumb(videoId: string): string {
-  return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  return `https://i.ytimg.com/vi_webp/${videoId}/hqdefault.webp`;
 }
 
 export interface PlatformCourse {

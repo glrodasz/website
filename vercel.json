@@ -19,7 +19,7 @@
         { "key": "X-DNS-Prefetch-Control", "value": "on" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-rHw/UlJ4buBFhnUtcLwhQlWMFUDuCOLURz+KNMBDxNE=' https://scripts.simpleanalyticscdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://i.ytimg.com https://image.tmdb.org https://covers.openlibrary.org https://guillermorodas.com; connect-src 'self' https://queue.simpleanalyticscdn.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-rHw/UlJ4buBFhnUtcLwhQlWMFUDuCOLURz+KNMBDxNE=' https://scripts.simpleanalyticscdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://i.ytimg.com https://image.tmdb.org https://covers.openlibrary.org https://guillermorodas.com https://undefined.sh; connect-src 'self' https://queue.simpleanalyticscdn.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
         }
       ]
     },

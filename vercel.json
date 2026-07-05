@@ -51,13 +51,13 @@
     {
       "source": "/(images|flags|logos|vectors|og)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
       ]
     },
     {
       "source": "/(favicon.ico|favicon.svg|apple-touch-icon.png|site.webmanifest|vite.svg|logo-nav.svg)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
       ]
     }
   ]

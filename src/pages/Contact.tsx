@@ -2,9 +2,12 @@ import { Briefcase, EnvelopeSimple, HandWaving, Rocket } from 'phosphor-react';
 import { useTranslation, Trans } from 'react-i18next';
 import { FooterSocialIcon } from '../components/molecules/FooterSocialIcon/FooterSocialIcon';
 import { Seo } from '../components/Seo';
+import { contactSocials } from '../data/socials';
 import { defaultDescription, titleForPage } from '../data/site';
 import { useLangPrefix } from '../hooks/useLangPrefix';
 import './pages.css';
+
+const socialHref = Object.fromEntries(contactSocials.map(({ id, href }) => [id, href]));
 
 const Contact: React.FC = () => {
   const { t } = useTranslation('contact');
@@ -35,7 +38,7 @@ const Contact: React.FC = () => {
               </p>
               <div className="contact-intent__links">
                 <a
-                  href="https://x.com/germorodas"
+                  href={socialHref.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-intent__link"
@@ -44,7 +47,7 @@ const Contact: React.FC = () => {
                   Twitter
                 </a>
                 <a
-                  href="https://instagram.com/germorodas"
+                  href={socialHref.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-intent__link"
@@ -88,7 +91,7 @@ const Contact: React.FC = () => {
               </p>
               <div className="contact-intent__links">
                 <a
-                  href="https://linkedin.com/in/guillermorodas"
+                  href={socialHref.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-intent__link"
@@ -109,22 +112,22 @@ const Contact: React.FC = () => {
               ns="contact"
               components={{
                 twitter: (
-                  <a href="https://x.com/germorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+                  <a href={socialHref.twitter} target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
                     <FooterSocialIcon id="twitter" />
                   </a>
                 ),
                 bluesky: (
-                  <a href="https://bsky.app/profile/guillermorodas.com" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+                  <a href={socialHref.bluesky} target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
                     <FooterSocialIcon id="bluesky" />
                   </a>
                 ),
                 threads: (
-                  <a href="https://threads.net/@germorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+                  <a href={socialHref.threads} target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
                     <FooterSocialIcon id="threads" />
                   </a>
                 ),
                 mastodon: (
-                  <a href="https://mastodon.cloud/@guillermorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+                  <a href={socialHref.mastodon} target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
                     <FooterSocialIcon id="mastodon" />
                   </a>
                 ),

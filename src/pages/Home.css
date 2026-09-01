@@ -48,7 +48,16 @@
   max-width: 880px;
 }
 
+/* Registered so the conic-gradient angle can be animated for the idle "glance" sweep */
+@property --home-hero-glance-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .home-hero__promo-pill {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -65,10 +74,54 @@
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
+/* Idle "glance": a 1px accent highlight sweeps around the border every ~5s.
+   The ring is masked to the border area only, so background and text stay untouched. */
+.home-hero__promo-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(
+    from var(--home-hero-glance-angle),
+    transparent 0 72%,
+    color-mix(in srgb, var(--color-accent) 45%, transparent) 84%,
+    var(--color-accent) 92%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: home-hero-glance 5s linear infinite;
+}
+
+@keyframes home-hero-glance {
+  0%   { --home-hero-glance-angle: 0deg;   opacity: 0; }
+  3%   { opacity: 1; }
+  21%  { opacity: 1; }
+  24%  { --home-hero-glance-angle: 360deg; opacity: 0; }
+  100% { --home-hero-glance-angle: 360deg; opacity: 0; }
+}
+
 .home-hero__promo-pill:hover {
   border-color: var(--color-accent);
   background: color-mix(in srgb, var(--color-surface) 80%, transparent);
   text-decoration: none;
+}
+
+/* Hover shows the solid accent border, so the sweep steps aside */
+.home-hero__promo-pill:hover::before {
+  animation: none;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__promo-pill::before {
+    animation: none;
+  }
 }
 
 .home-hero__promo-arrow {

@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -37,14 +37,14 @@
 .home-hero__content-col {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .home-hero__text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   max-width: 880px;
 }
 
@@ -103,7 +103,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 8px;
 }
 
@@ -117,7 +117,6 @@
     background-size: cover;
     width: 100%;
     margin-bottom: 0;
-    padding: 0 32px;
   }
 
   .home-hero__inner {
@@ -127,28 +126,26 @@
   .home-hero__layout {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 64px;
     padding-bottom: 64px;
   }
 
   .home-hero__text {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding-top: 0;
     max-width: 880px;
   }
 
   .home-hero__ctas {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
 /* Courses preview (Quantum-friendly surfaces) */
 .home-courses {
   padding: 80px 24px;
-  max-width: 1140px;
-  margin: 0 auto;
 }
 
 .home-courses__inner {
@@ -452,7 +449,7 @@
   }
 
   .home-hero__text {
-    align-items: center;
+    align-items: flex-start;
     text-align: left;
   }
 
@@ -479,7 +476,8 @@
     justify-content: center;
   }
 
-  .home-courses {
+  .home-courses,
+  .home-writing {
     padding: 48px 16px;
   }
 

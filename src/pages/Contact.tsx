@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
               </p>
               <div className="contact-intent__links">
                 <a
-                  href="https://x.com/guillermorodas"
+                  href="https://x.com/germorodas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-intent__link"
@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
                   Twitter
                 </a>
                 <a
-                  href="https://instagram.com/_guillermorodas"
+                  href="https://instagram.com/germorodas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-intent__link"
@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
               ns="contact"
               components={{
                 twitter: (
-                  <a href="https://x.com/guillermorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+                  <a href="https://x.com/germorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
                     <FooterSocialIcon id="twitter" />
                   </a>
                 ),
@@ -119,7 +119,7 @@ const Contact: React.FC = () => {
                   </a>
                 ),
                 threads: (
-                  <a href="https://threads.net/@_guillermorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
+                  <a href="https://threads.net/@germorodas" target="_blank" rel="noopener noreferrer" className="contact-language-note__link">
                     <FooterSocialIcon id="threads" />
                   </a>
                 ),

@@ -11,17 +11,20 @@ import { useState } from 'react';
 import {
   getConsumers,
   getReferenceChain,
+  type EdgeIndex,
   type GraphNode,
   type ThemeMode,
   type TokenGraph,
-} from '../../../tokens/graph-builder';
+} from '../../tokens/graph-builder';
+import { TokenSwatch } from './TokenSwatch';
 import { displayComponentName } from './utils';
+import './TokenInspector.css';
 
 const MAX_CONSUMERS_SHOWN = 8;
-const HEX_RE = /^#[0-9a-fA-F]{6,8}$/;
 
 export interface TokenInspectorProps {
   graph: TokenGraph;
+  index: EdgeIndex;
   selectedId: string;
   theme: ThemeMode;
   onSelect: (nodeId: string) => void;
@@ -46,9 +49,7 @@ function ValueRow({
     >
       <span className="token-inspector__value-key">{label}</span>
       <span className="token-inspector__value">
-        {type === 'color' && HEX_RE.test(value) && (
-          <span className="token-inspector__swatch" style={{ background: value.slice(0, 7) }} />
-        )}
+        {type === 'color' && <TokenSwatch value={value} />}
         <code>{value}</code>
       </span>
     </div>
@@ -90,14 +91,33 @@ function ChainRow({
 }) {
   const hasDark = node.resolvedValueDark !== undefined;
 
-  const body = (
+  // Only the head is the navigation control: the row also holds the copy
+  // button, and interactive content cannot nest inside a <button>.
+  const head = (
     <>
-      <div className="token-inspector__chain-head">
-        <span className={`token-inspector__level token-inspector__level--${node.level}`}>
-          {node.level}
-        </span>
-        <span className="token-inspector__chain-label">{node.displayLabel}</span>
-      </div>
+      <span className={`token-inspector__level token-inspector__level--${node.level}`}>
+        {node.level}
+      </span>
+      <span className="token-inspector__chain-label">{node.displayLabel}</span>
+    </>
+  );
+
+  return (
+    <div
+      className={`token-inspector__chain-row${isCurrent ? ' token-inspector__chain-row--current' : ' token-inspector__chain-row--link'}`}
+    >
+      {isCurrent ? (
+        <div className="token-inspector__chain-head">{head}</div>
+      ) : (
+        <button
+          type="button"
+          className="token-inspector__chain-head token-inspector__chain-head--link"
+          onClick={() => onSelect(node.id)}
+          title={`Inspect ${node.path}`}
+        >
+          {head}
+        </button>
+      )}
       <div className="token-inspector__var-row">
         <code className="token-inspector__var">{node.cssVarName}</code>
         <CopyButton text={`var(${node.cssVarName})`} />
@@ -121,26 +141,13 @@ function ChainRow({
       ) : (
         <ValueRow label="Value" value={node.resolvedValue} type={node.type} active />
       )}
-    </>
-  );
-
-  if (isCurrent) {
-    return <div className="token-inspector__chain-row token-inspector__chain-row--current">{body}</div>;
-  }
-  return (
-    <button
-      type="button"
-      className="token-inspector__chain-row token-inspector__chain-row--link"
-      onClick={() => onSelect(node.id)}
-      title={`Inspect ${node.path}`}
-    >
-      {body}
-    </button>
+    </div>
   );
 }
 
 export function TokenInspector({
   graph,
+  index,
   selectedId,
   theme,
   onSelect,
@@ -150,9 +157,8 @@ export function TokenInspector({
   const node = graph.nodesById.get(selectedId);
   if (!node) return null;
 
-  const chain = getReferenceChain(graph, selectedId, theme);
-  const consumers =
-    node.level === 'component' ? [] : getConsumers(graph, selectedId, theme);
+  const chain = getReferenceChain(graph, index, selectedId);
+  const consumers = node.level === 'component' ? [] : getConsumers(index, selectedId);
 
   return (
     <aside className="token-inspector" aria-label="Token details">

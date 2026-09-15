@@ -1,7 +1,7 @@
 /**
- * Runtime graph builder for the /tokens visualization.
+ * Runtime graph builder for the /tokens explorer page.
  *
- * Reuses the W3C DTCG parser used by the CSS token build so the 3D graph
+ * Reuses the W3C DTCG parser used by the CSS token build so the explorer
  * always reflects the same source-of-truth as design-tokens.css.
  *
  * The graph is modeled as three layers: global → system → component.
@@ -66,48 +66,57 @@ export interface TokenGraph {
 }
 
 /**
- * Walks outgoing references (consumer → target) from a node under a theme.
- * Returns the ordered chain starting at the node itself, e.g.
- * [component, system, global]. Each node has at most one outgoing edge per
- * theme, so this is a simple path of length ≤ 3.
+ * Per-theme adjacency index over the graph edges. Each node has at most one
+ * outgoing reference per theme, so `targetByNode` is a plain map; consumers
+ * are the reverse lookup (e.g. the component tokens that use a system token).
+ */
+export interface EdgeIndex {
+  targetByNode: Map<string, string>;
+  consumersByNode: Map<string, GraphNode[]>;
+}
+
+export function indexEdges(graph: TokenGraph, theme: ThemeMode): EdgeIndex {
+  const targetByNode = new Map<string, string>();
+  const consumersByNode = new Map<string, GraphNode[]>();
+  for (const e of graph.edges) {
+    if (e.mode !== 'both' && e.mode !== theme) continue;
+    targetByNode.set(e.from, e.to);
+    const consumer = graph.nodesById.get(e.from);
+    if (!consumer) continue;
+    const list = consumersByNode.get(e.to) ?? [];
+    list.push(consumer);
+    consumersByNode.set(e.to, list);
+  }
+  for (const list of consumersByNode.values()) {
+    list.sort((a, b) => a.path.localeCompare(b.path));
+  }
+  return { targetByNode, consumersByNode };
+}
+
+/**
+ * Walks outgoing references (consumer → target) from a node. Returns the
+ * ordered chain starting at the node itself, e.g. [component, system, global].
  */
 export function getReferenceChain(
   graph: TokenGraph,
+  index: EdgeIndex,
   nodeId: string,
-  theme: ThemeMode,
 ): GraphNode[] {
   const chain: GraphNode[] = [];
-  let current = graph.nodesById.get(nodeId);
   const seen = new Set<string>();
+  let current = graph.nodesById.get(nodeId);
   while (current && !seen.has(current.id)) {
     chain.push(current);
     seen.add(current.id);
-    const edge = graph.edges.find(
-      (e) => e.from === current!.id && (e.mode === 'both' || e.mode === theme),
-    );
-    current = edge ? graph.nodesById.get(edge.to) : undefined;
+    const next = index.targetByNode.get(current.id);
+    current = next ? graph.nodesById.get(next) : undefined;
   }
   return chain;
 }
 
-/**
- * One-hop backward walk: nodes whose theme-visible edge points at nodeId
- * (e.g. the component tokens that use a system token).
- */
-export function getConsumers(
-  graph: TokenGraph,
-  nodeId: string,
-  theme: ThemeMode,
-): GraphNode[] {
-  const consumers: GraphNode[] = [];
-  for (const e of graph.edges) {
-    if (e.to !== nodeId) continue;
-    if (e.mode !== 'both' && e.mode !== theme) continue;
-    const node = graph.nodesById.get(e.from);
-    if (node) consumers.push(node);
-  }
-  consumers.sort((a, b) => a.path.localeCompare(b.path));
-  return consumers;
+/** One-hop backward walk: nodes whose theme-visible edge points at nodeId. */
+export function getConsumers(index: EdgeIndex, nodeId: string): GraphNode[] {
+  return index.consumersByNode.get(nodeId) ?? [];
 }
 
 function categoryFromPath(path: string): string {

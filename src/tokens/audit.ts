@@ -169,7 +169,7 @@ export function runTokenAudit(graph: TokenGraph): AuditReport {
   }
 
   // --- 2 & 3. CSS usage checks ---
-  const knownVars = new Set(graph.nodes.map((n) => n.cssVarName));
+  const nodeByVar = new Map(graph.nodes.map((n) => [n.cssVarName, n]));
   const usedVars = new Set(tokenUsages.map((u) => u.varName));
 
   const locationsByVar = new Map<string, AuditLocation[]>();
@@ -180,7 +180,8 @@ export function runTokenAudit(graph: TokenGraph): AuditReport {
   }
 
   for (const [varName, locations] of locationsByVar) {
-    if (!knownVars.has(varName)) {
+    const node = nodeByVar.get(varName);
+    if (!node) {
       issues.push({
         check: 'missing-token',
         severity: 'error',
@@ -190,13 +191,12 @@ export function runTokenAudit(graph: TokenGraph): AuditReport {
       });
     } else if (!varName.startsWith('--components-tokens--')) {
       const level = varName.startsWith('--system-tokens--') ? 'system' : 'global';
-      const node = graph.nodes.find((n) => n.cssVarName === varName);
       issues.push({
         check: 'bad-usage',
         severity: 'warning',
         message: `CSS uses this ${level} token directly (${locations.length} usage${locations.length > 1 ? 's' : ''}) — should go through a component token.`,
         cssVar: varName,
-        nodeId: node?.id,
+        nodeId: node.id,
         locations,
       });
     }

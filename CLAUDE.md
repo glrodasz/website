@@ -44,6 +44,7 @@ src/
 │   ├── organisms/      # Complex UI sections: Header, Footer, CardImage…
 │   ├── templates/      # Page-level layout structures
 │   └── pages/          # Specific page instances
+├── pages/              # Route components (pages/tokens/ is the dev-only token explorer)
 ├── hooks/              # Shared hooks (e.g. useTheme)
 ├── tokens/             # Token build system
 │   ├── json/
@@ -441,7 +442,7 @@ export const GhostDark: Story = {
 
 1. **Never hardcode raw values.** No colors, spacing, radius, or typography values inline in CSS or components.
 
-2. **All CSS uses Component tokens exclusively.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via a `{system.…}` reference. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**. Sole exemption: `src/pages/Tokens.css` styles the token-explorer dev page with its own self-contained palette and is intentionally outside the design system.
+2. **All CSS uses Component tokens exclusively.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via a `{system.…}` reference. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**. Sole exemption: the stylesheets under `src/pages/tokens/` style the token-explorer dev page with their own self-contained palette and are intentionally outside the design system.
 
 3. **System tokens bridge Global → Component.** System tokens give semantic meaning to raw global values. Component tokens then reference system tokens to scope them to a specific component context.
 

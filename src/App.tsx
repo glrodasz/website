@@ -13,8 +13,9 @@ import Courses from './pages/Courses';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
-// Heavy 3D visualization — lazy-loaded so it doesn't bloat the main bundle.
-const Tokens = lazy(() => import('./pages/Tokens'));
+// Dev-only token explorer: bundles every token JSON plus the audit engine,
+// so it is lazy-loaded to keep it out of the main bundle.
+const Tokens = lazy(() => import('./pages/tokens/Tokens'));
 
 function AppShell() {
   const { t } = useTranslation();
@@ -40,7 +41,7 @@ function AppShell() {
           <Route
             path="/tokens"
             element={
-              <Suspense fallback={null}>
+              <Suspense fallback={<div className="tokens-page tokens-page--loading">Loading tokens…</div>}>
                 <Tokens />
               </Suspense>
             }

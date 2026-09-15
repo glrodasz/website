@@ -5,7 +5,13 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import type { GraphNode, ThemeMode } from '../../../tokens/graph-builder';
+import {
+  getReferenceChain,
+  type EdgeIndex,
+  type GraphNode,
+  type ThemeMode,
+  type TokenGraph,
+} from '../../tokens/graph-builder';
 import { TokenSwatch } from './TokenSwatch';
 import {
   categoryOfComponentToken,
@@ -13,10 +19,12 @@ import {
   matchesSearch,
   themedValueOf,
 } from './utils';
+import './ComponentsView.css';
 
 interface ComponentsViewProps {
+  graph: TokenGraph;
+  index: EdgeIndex;
   nodes: GraphNode[];
-  chainFor: (nodeId: string) => GraphNode[];
   theme: ThemeMode;
   search: string;
   enabledCategories: Set<string>;
@@ -79,8 +87,9 @@ function TokenRow({
 }
 
 export function ComponentsView({
+  graph,
+  index,
   nodes,
-  chainFor,
   theme,
   search,
   enabledCategories,
@@ -89,7 +98,11 @@ export function ComponentsView({
   selectedId,
   onSelect,
 }: ComponentsViewProps) {
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  // The focused component (deep link, sidebar "view", inspector button) is
+  // always expanded, including when this view mounts already focused.
+  const [expanded, setExpanded] = useState<Set<string>>(
+    () => new Set(focusedComponent ? [focusedComponent] : []),
+  );
   const focusedRef = useRef<HTMLElement | null>(null);
 
   const groups = useMemo(() => {
@@ -114,19 +127,20 @@ export function ComponentsView({
     return [...byComponent.entries()].sort(([a], [b]) => a.localeCompare(b));
   }, [nodes, enabledCategories, enabledComponents, search]);
 
-  // A focused component (sidebar click, inspector button, or deep link)
-  // opens expanded alongside whatever is already open; a search expands
-  // everything that matched.
+  // Focusing a component while mounted opens it alongside whatever is
+  // already open (state adjusted during render, per React's guidance)…
   const [prevFocused, setPrevFocused] = useState(focusedComponent);
   if (focusedComponent !== prevFocused) {
     setPrevFocused(focusedComponent);
     if (focusedComponent) setExpanded((prev) => new Set(prev).add(focusedComponent));
   }
 
+  // …and scrolls its card into view once it has rendered.
   useEffect(() => {
     focusedRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }, [focusedComponent]);
 
+  // A search expands everything that matched (when the result set is small).
   const isExpanded = (name: string) =>
     expanded.has(name) || (search.length > 0 && groups.length <= 8);
 
@@ -173,7 +187,7 @@ export function ComponentsView({
                       <TokenRow
                         key={node.id}
                         node={node}
-                        chain={chainFor(node.id)}
+                        chain={getReferenceChain(graph, index, node.id).slice(1)}
                         theme={theme}
                         selected={selectedId === node.id}
                         onSelect={onSelect}

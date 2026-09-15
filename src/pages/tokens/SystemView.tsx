@@ -5,9 +5,10 @@
  */
 
 import { useMemo } from 'react';
-import type { GraphNode, ThemeMode } from '../../../tokens/graph-builder';
+import type { GraphNode, ThemeMode } from '../../tokens/graph-builder';
 import { TokenSwatch } from './TokenSwatch';
 import { matchesSearch } from './utils';
+import './Views.css';
 
 interface SystemViewProps {
   nodes: GraphNode[];

@@ -6,9 +6,11 @@
  */
 
 import { useMemo } from 'react';
-import type { TokenGraph } from '../../../tokens/graph-builder';
-import { AUDIT_CHECKS, type AuditIssue, type AuditReport } from '../../../tokens/audit';
+import type { TokenGraph } from '../../tokens/graph-builder';
+import { AUDIT_CHECKS, type AuditIssue, type AuditReport } from '../../tokens/audit';
 import { TokenSwatch } from './TokenSwatch';
+import './Views.css';
+import './AuditView.css';
 
 interface AuditViewProps {
   graph: TokenGraph;
@@ -152,7 +154,7 @@ export function AuditView({ graph, audit, search, selectedId, onSelect }: AuditV
             <div className="audit-section__issues">
               {issues.map((issue, i) => (
                 <IssueRow
-                  key={i}
+                  key={`${issue.nodeId ?? issue.cssVar ?? ''}#${i}`}
                   graph={graph}
                   issue={issue}
                   selectedId={selectedId}

@@ -3398,11 +3398,6 @@ export const tokenUsages: TokenUsage[] = [
     "line": 57
   },
   {
-    "varName": "--components-tokens--nav-bar--sizing--height",
-    "file": "src/pages/Tokens.css",
-    "line": 3
-  },
-  {
     "varName": "--components-tokens--site--page-layout--spacing--hero-top",
     "file": "src/pages/pages.css",
     "line": 7

@@ -186,6 +186,14 @@
   outline: none;
 }
 
+/* iOS zooms the page in when focusing an input under 16px, and never zooms
+   back out — the same guard global.css applies to every other input. */
+@media (pointer: coarse) {
+  .tokens-page__search {
+    font-size: 16px;
+  }
+}
+
 .tokens-page__search::placeholder {
   color: #7b8aa3;
 }

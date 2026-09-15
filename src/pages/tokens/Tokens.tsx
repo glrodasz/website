@@ -148,11 +148,13 @@ export default function Tokens() {
   }, [selectedId]);
 
   // On narrow viewports the sidebar is an off-canvas drawer: keep it out of
-  // the tab order while closed and trap focus inside it while open.
+  // the tab order while closed and trap focus inside it while open. Focus goes
+  // to the drawer itself, not to the search field it starts with — focusing a
+  // text field would open the keyboard over the filters on every open.
   const isNarrow = useMediaQuery(NARROW_QUERY);
   const sidebarRef = useRef<HTMLElement>(null);
   const drawerOpen = isNarrow && sidebarOpen;
-  useFocusTrap(sidebarRef, drawerOpen);
+  useFocusTrap(sidebarRef, drawerOpen, { initialFocus: 'container' });
 
   // Sidebar list follows the same search as the explorer: a component stays
   // listed when its name matches or when any of its tokens match.

@@ -18,6 +18,7 @@ import {
   parseTokens,
   findReferencedPath,
   formatValue,
+  type ParsedToken,
   type TokenMap,
 } from './parser';
 import type { TokenGraph } from './graph-builder';
@@ -66,7 +67,7 @@ export const AUDIT_CHECKS: AuditCheck[] = [
     title: 'Raw values where an alias is expected',
     severity: 'warning',
     description:
-      'Component tokens must alias system tokens, and system (light) tokens must alias globals. Level-skipping references are flagged too.',
+      'Colors must always alias — they are the layer that changes with the theme. Any other raw value is accepted once the token carries a "$description" saying why it is not an alias. Level-skipping references are flagged too.',
   },
   {
     id: 'duplicate',
@@ -121,6 +122,26 @@ function normalizeValue(value: string | number, type: string, path: string): str
 
 function nodeIdFor(level: 'global' | 'system' | 'component', path: string): string {
   return `${level}::${path}`;
+}
+
+/**
+ * Whether a raw (non-aliasing) token is a problem, and why.
+ *
+ * Colors always have to alias: they are the layer that changes between themes,
+ * so a raw one silently opts out of theming. Everything else — CSS expressions
+ * like clamp(), em tracking, one-off chrome dimensions — often has no honest
+ * ancestor, so it is accepted once the token documents why via `$description`.
+ */
+function rawValueProblem(
+  token: ParsedToken,
+  level: 'component' | 'system',
+  parent: 'system' | 'global',
+): string | null {
+  if (token.type === 'color') {
+    return `${level === 'component' ? 'Component' : 'System'} color has a raw value — colors must alias a ${parent} token so they follow the theme.`;
+  }
+  if (token.description) return null;
+  return `Raw value with no "$description" — either alias a ${parent} token, or document why this value has no ${parent} ancestor.`;
 }
 
 export function runTokenAudit(graph: TokenGraph): AuditReport {
@@ -206,12 +227,15 @@ export function runTokenAudit(graph: TokenGraph): AuditReport {
   for (const path in componentMap) {
     const token = componentMap[path];
     if (!token.isReference) {
-      issues.push({
-        check: 'raw-value',
-        severity: 'warning',
-        message: 'Component token has a raw value — it must alias a system token.',
-        nodeId: nodeIdFor('component', path),
-      });
+      const problem = rawValueProblem(token, 'component', 'system');
+      if (problem) {
+        issues.push({
+          check: 'raw-value',
+          severity: 'warning',
+          message: problem,
+          nodeId: nodeIdFor('component', path),
+        });
+      }
       continue;
     }
     const targetPath = token.referencePath
@@ -228,11 +252,14 @@ export function runTokenAudit(graph: TokenGraph): AuditReport {
     }
   }
   for (const path in systemLightMap) {
-    if (!systemLightMap[path].isReference) {
+    const token = systemLightMap[path];
+    if (token.isReference) continue;
+    const problem = rawValueProblem(token, 'system', 'global');
+    if (problem) {
       issues.push({
         check: 'raw-value',
         severity: 'warning',
-        message: 'System token has a raw value — it should alias a global token.',
+        message: problem,
         nodeId: nodeIdFor('system', path),
       });
     }

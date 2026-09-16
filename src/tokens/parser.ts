@@ -15,6 +15,11 @@ export interface ParsedToken {
   level: 'global' | 'system' | 'component';
   isReference: boolean;
   referencePath?: string;
+  /**
+   * The token's `$description`. Carried through because the audit treats it as
+   * the documented justification for a non-color token holding a raw value.
+   */
+  description?: string;
 }
 
 export interface TokenMap {
@@ -82,7 +87,8 @@ export function parseTokens(
           value: current.$value,
           level: level,
           isReference: isReference,
-          referencePath: referencePath
+          referencePath: referencePath,
+          description: typeof current.$description === 'string' ? current.$description : undefined
         };
       }
       // Continue traversing nested groups

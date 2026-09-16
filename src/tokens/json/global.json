@@ -883,6 +883,10 @@
     "240": {
       "$type": "number",
       "$value": 240
+    },
+    "1140": {
+      "$type": "number",
+      "$value": 1140
     }
   },
   "Border radius": {
@@ -1000,28 +1004,28 @@
     },
     "Font-weight": {
       "100": {
-        "$type": "string",
-        "$value": "Light"
+        "$type": "number",
+        "$value": 100
       },
       "300": {
-        "$type": "string",
-        "$value": "Regular"
+        "$type": "number",
+        "$value": 300
       },
       "400": {
-        "$type": "string",
-        "$value": "Medium"
+        "$type": "number",
+        "$value": 400
       },
       "600": {
-        "$type": "string",
-        "$value": "Semibold"
+        "$type": "number",
+        "$value": 600
       },
       "700": {
-        "$type": "string",
-        "$value": "Bold"
+        "$type": "number",
+        "$value": 700
       },
       "900": {
-        "$type": "string",
-        "$value": "Black"
+        "$type": "number",
+        "$value": 900
       }
     },
     "Base": {
@@ -1094,6 +1098,108 @@
       "Low contrast": {
         "$type": "number",
         "$value": 1.1200000047683716
+      }
+    },
+    "Steps": {
+      "13": {
+        "$type": "number",
+        "$value": 13
+      },
+      "16": {
+        "$type": "number",
+        "$value": 16
+      },
+      "17": {
+        "$type": "number",
+        "$value": 17
+      },
+      "19": {
+        "$type": "number",
+        "$value": 19
+      },
+      "20": {
+        "$type": "number",
+        "$value": 20
+      },
+      "22": {
+        "$type": "number",
+        "$value": 22
+      },
+      "24": {
+        "$type": "number",
+        "$value": 24
+      },
+      "27": {
+        "$type": "number",
+        "$value": 27
+      },
+      "29": {
+        "$type": "number",
+        "$value": 29
+      },
+      "30": {
+        "$type": "number",
+        "$value": 30
+      },
+      "34": {
+        "$type": "number",
+        "$value": 34
+      },
+      "35": {
+        "$type": "number",
+        "$value": 35
+      },
+      "36": {
+        "$type": "number",
+        "$value": 36
+      },
+      "38": {
+        "$type": "number",
+        "$value": 38
+      },
+      "44": {
+        "$type": "number",
+        "$value": 44
+      },
+      "46": {
+        "$type": "number",
+        "$value": 46
+      },
+      "48": {
+        "$type": "number",
+        "$value": 48
+      },
+      "54": {
+        "$type": "number",
+        "$value": 54
+      },
+      "56": {
+        "$type": "number",
+        "$value": 56
+      },
+      "59": {
+        "$type": "number",
+        "$value": 59
+      },
+      "66": {
+        "$type": "number",
+        "$value": 66
+      },
+      "68": {
+        "$type": "number",
+        "$value": 68
+      },
+      "80": {
+        "$type": "number",
+        "$value": 80
+      },
+      "82": {
+        "$type": "number",
+        "$value": 82
+      },
+      "98": {
+        "$type": "number",
+        "$value": 98
       }
     }
   }

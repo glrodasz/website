@@ -467,68 +467,6 @@
           }
         }
       },
-      "Sweet chiffon": {
-        "Bittersweet": {
-          "100": {
-            "$type": "color",
-            "$value": "#FDEFEC"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "#F9D1C8"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "#F1937E"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "#EE7158"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "#DF3716"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "#82200D"
-          },
-          "opacity": {
-            "$type": "color",
-            "$value": "#EE715826"
-          }
-        },
-        "Lemon chiffon": {
-          "100": {
-            "$type": "color",
-            "$value": "#FCFBED"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "#F4F1BB"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "#EBE684"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "#E2DB50"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "#8C8617"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "#46430B"
-          },
-          "opacity": {
-            "$type": "color",
-            "$value": "#F4F1BB26"
-          }
-        }
-      },
       "Antique amaranth": {
         "Amaranth purple": {
           "100": {

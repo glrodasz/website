@@ -33,6 +33,11 @@
   text-decoration: none;
   color: inherit;
   flex-shrink: 0;
+  /* The logo answers to a press-and-hold (see useLogoSecret). Suppress the
+     iOS link callout and the text selection a hold would otherwise start. */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .qd-navigation__brand:hover {
@@ -44,6 +49,27 @@
   flex-shrink: 0;
   width: var(--components-tokens--nav-bar--sizing--brand-mark);
   height: var(--components-tokens--nav-bar--sizing--brand-mark);
+  transition: transform 140ms ease-out;
+}
+
+/* Each counted click nudges the mark, so a streak that is building looks
+   deliberate rather than broken. The click that completes it navigates. */
+.qd-navigation__brand[data-streak='1'] .qd-navigation__brand-mark {
+  transform: rotate(9deg);
+}
+
+.qd-navigation__brand[data-streak='2'] .qd-navigation__brand-mark {
+  transform: rotate(18deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qd-navigation__brand-mark {
+    transition: none;
+  }
+
+  .qd-navigation__brand[data-streak] .qd-navigation__brand-mark {
+    transform: none;
+  }
 }
 
 .qd-navigation__brand-text {

@@ -8,7 +8,7 @@
 :root {
   --radius-card: 12px;
 
-  --max-width: 1140px;
+  --max-width: var(--components-tokens--site--page-layout--sizing--container-max-width);
   --nav-height: 76px;
 
   /* Site color aliases — resolved via component tokens whose system targets change per [data-theme] */

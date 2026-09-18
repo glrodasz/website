@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
+import { useLogoSecret } from '../../../hooks/useLogoSecret';
 import { persistLocale } from '../../../i18n/persistLocale';
 import './Navigation.css';
 
@@ -42,6 +43,8 @@ export const Navigation: FC<NavigationProps> = ({
   const { t } = useTranslation();
   const prefix = useLangPrefix();
   const location = useLocation();
+  // Hidden ways into the dev pages: see useLogoSecret.
+  const logoSecret = useLogoSecret();
 
   useFocusTrap(overlayRef, mobileOpen);
 
@@ -126,7 +129,16 @@ export const Navigation: FC<NavigationProps> = ({
     <header className="qd-navigation">
       <nav className="qd-navigation__bar" aria-label="Main">
         <div className="qd-navigation__inner">
-          <Link to={`${prefix}/`} className="qd-navigation__brand" onClick={closeMobile}>
+          <Link
+            to={`${prefix}/`}
+            className="qd-navigation__brand"
+            data-streak={logoSecret.streak || undefined}
+            {...logoSecret.handlers}
+            onClick={(e) => {
+              logoSecret.handlers.onClick(e);
+              closeMobile();
+            }}
+          >
             <img
               className="qd-navigation__brand-mark"
               src={brandMarkSrc}
@@ -327,7 +339,16 @@ export const Navigation: FC<NavigationProps> = ({
       >
         {/* Overlay header: brand + close button */}
         <div className="qd-navigation__overlay-header">
-          <Link to={`${prefix}/`} className="qd-navigation__brand" onClick={closeMobile}>
+          <Link
+            to={`${prefix}/`}
+            className="qd-navigation__brand"
+            data-streak={logoSecret.streak || undefined}
+            {...logoSecret.handlers}
+            onClick={(e) => {
+              logoSecret.handlers.onClick(e);
+              closeMobile();
+            }}
+          >
             <img
               className="qd-navigation__brand-mark"
               src={brandMarkSrc}

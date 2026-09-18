@@ -3,7 +3,21 @@ import { type RefObject, useEffect, useRef } from 'react';
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean) {
+export interface FocusTrapOptions {
+  /**
+   * Where focus lands when the trap engages. 'first' (default) focuses the
+   * first control inside. 'container' focuses the container itself — use it
+   * when the first control is a text field, which would open the on-screen
+   * keyboard (and zoom the page on iOS) just from opening the panel.
+   */
+  initialFocus?: 'first' | 'container';
+}
+
+export function useFocusTrap(
+  ref: RefObject<HTMLElement | null>,
+  active: boolean,
+  { initialFocus = 'first' }: FocusTrapOptions = {},
+) {
   const previousFocus = useRef<Element | null>(null);
 
   useEffect(() => {
@@ -19,11 +33,11 @@ export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean
         (el) => !el.closest('[aria-hidden="true"]')
       );
 
-    const first = focusables()[0];
+    const first = initialFocus === 'container' ? undefined : focusables()[0];
     if (first) {
       first.focus();
     } else {
-      container.focus();
+      container.focus({ preventScroll: true });
     }
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -39,7 +53,9 @@ export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean
       const lastEl = els[els.length - 1];
 
       if (e.shiftKey) {
-        if (document.activeElement === firstEl) {
+        // The container itself can hold focus (initialFocus: 'container'), and
+        // it sits before every control, so shift-tab from it wraps to the last.
+        if (document.activeElement === firstEl || document.activeElement === container) {
           e.preventDefault();
           lastEl.focus();
         }
@@ -59,5 +75,5 @@ export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean
         prev.focus();
       }
     };
-  }, [active, ref]);
+  }, [active, ref, initialFocus]);
 }

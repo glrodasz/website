@@ -1,12 +1,19 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { buildTokenGraph } from '../tokens/graph-builder';
-import { TokenExplorer, TokenInspector } from '../components/organisms/TokenExplorer';
-import type { ExplorerTab } from '../components/organisms/TokenExplorer';
-import { displayComponentName } from '../components/organisms/TokenExplorer/utils';
+import { buildTokenGraph, indexEdges, type ThemeMode } from '../../tokens/graph-builder';
+import { runTokenAudit } from '../../tokens/audit';
+import { Seo } from '../../components/Seo';
+import { useTheme } from '../../hooks/useTheme';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { TokenExplorer } from './TokenExplorer';
+import { TokenInspector } from './TokenInspector';
+import { displayComponentName, isExplorerTab, matchesSearch, type ExplorerTab } from './utils';
 import './Tokens.css';
 
-type SetStringSetter = (s: Set<string>) => void;
+const DEFAULT_TAB: ExplorerTab = 'components';
+/** Must match the breakpoint in Tokens.css where the sidebar becomes a drawer. */
+const NARROW_QUERY = '(max-width: 900px)';
 
 interface FilterRowProps {
   name: string;
@@ -62,8 +69,17 @@ function FilterRow({ name, checked, focused, onToggle, onOnly, onFocus }: Filter
   );
 }
 
+function toggleInSet(set: Set<string>, key: string): Set<string> {
+  const next = new Set(set);
+  if (next.has(key)) next.delete(key);
+  else next.add(key);
+  return next;
+}
+
 export default function Tokens() {
   const graph = useMemo(() => buildTokenGraph(), []);
+  const audit = useMemo(() => runTokenAudit(graph), [graph]);
+  const siteTheme = useTheme().theme;
 
   const [enabledComponents, setEnabledComponents] = useState<Set<string>>(
     () => new Set(graph.componentNames),
@@ -71,19 +87,20 @@ export default function Tokens() {
   const [enabledCategories, setEnabledCategories] = useState<Set<string>>(
     () => new Set(graph.categories),
   );
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  // Which theme's values are previewed. Starts on the site theme so the
+  // explorer agrees with what the visitor currently sees.
+  const [theme, setTheme] = useState<ThemeMode>(siteTheme);
+  const index = useMemo(() => indexEdges(graph, theme), [graph, theme]);
   const [search, setSearch] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  // Deep links: /tokens?component=button focuses that component on load,
-  // /tokens?tab=audit opens the explorer on a specific tab.
+  // Deep links: /tokens?component=button focuses that component,
+  // /tokens?tab=audit opens a specific tab. Both are kept in sync with the URL.
   const [searchParams, setSearchParams] = useSearchParams();
-  const [initialTab] = useState<ExplorerTab | undefined>(() => {
+  const [tab, setTab] = useState<ExplorerTab>(() => {
     const fromUrl = searchParams.get('tab');
-    return fromUrl && ['components', 'system', 'global', 'audit'].includes(fromUrl)
-      ? (fromUrl as ExplorerTab)
-      : undefined;
+    return isExplorerTab(fromUrl) ? fromUrl : DEFAULT_TAB;
   });
   const [focusedComponent, setFocusedComponent] = useState<string | null>(() => {
     const fromUrl = searchParams.get('component');
@@ -96,11 +113,26 @@ export default function Tokens() {
         const next = new URLSearchParams(prev);
         if (focusedComponent) next.set('component', focusedComponent);
         else next.delete('component');
+        if (tab !== DEFAULT_TAB) next.set('tab', tab);
+        else next.delete('tab');
         return next;
       },
       { replace: true },
     );
-  }, [focusedComponent, setSearchParams]);
+  }, [focusedComponent, tab, setSearchParams]);
+
+  /**
+   * The single way to focus a component, whatever the entry point (sidebar
+   * "view", inspector "View component", banner "clear"): a hidden component
+   * is re-enabled so its card exists, and the Components tab is shown.
+   */
+  const focusComponent = useCallback((name: string | null) => {
+    if (name) {
+      setEnabledComponents((prev) => (prev.has(name) ? prev : new Set(prev).add(name)));
+      setTab('components');
+    }
+    setFocusedComponent(name);
+  }, []);
 
   const onSelectToken = (nodeId: string) =>
     setSelectedId((prev) => (prev === nodeId ? null : nodeId));
@@ -115,23 +147,39 @@ export default function Tokens() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [selectedId]);
 
-  const toggleIn = (set: Set<string>, key: string, setter: SetStringSetter) => {
-    const next = new Set(set);
-    if (next.has(key)) next.delete(key);
-    else next.add(key);
-    setter(next);
-  };
+  // On narrow viewports the sidebar is an off-canvas drawer: keep it out of
+  // the tab order while closed and trap focus inside it while open. Focus goes
+  // to the drawer itself, not to the search field it starts with — focusing a
+  // text field would open the keyboard over the filters on every open.
+  const isNarrow = useMediaQuery(NARROW_QUERY);
+  const sidebarRef = useRef<HTMLElement>(null);
+  const drawerOpen = isNarrow && sidebarOpen;
+  useFocusTrap(sidebarRef, drawerOpen, { initialFocus: 'container' });
 
+  // Sidebar list follows the same search as the explorer: a component stays
+  // listed when its name matches or when any of its tokens match.
   const filteredComponentNames = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return graph.componentNames;
+    const withMatchingToken = new Set<string>();
+    for (const node of graph.nodes) {
+      if (node.level === 'component' && node.componentName && matchesSearch(node, q)) {
+        withMatchingToken.add(node.componentName);
+      }
+    }
     return graph.componentNames.filter(
-      (n) => n.toLowerCase().includes(q) || displayComponentName(n).toLowerCase().includes(q),
+      (n) =>
+        withMatchingToken.has(n) ||
+        n.toLowerCase().includes(q) ||
+        displayComponentName(n).toLowerCase().includes(q),
     );
-  }, [search, graph.componentNames]);
+  }, [search, graph]);
 
   return (
     <div className={`tokens-page${sidebarOpen ? ' tokens-page--sidebar-open' : ''}`}>
+      <Seo title="Design Tokens" description="Explorer for the Quantum Design token hierarchy." path="/tokens" />
+      <meta name="robots" content="noindex" />
+
       <button
         type="button"
         className="tokens-page__sidebar-toggle"
@@ -150,7 +198,13 @@ export default function Tokens() {
         />
       )}
 
-      <aside className="tokens-page__sidebar">
+      <aside
+        ref={sidebarRef}
+        className="tokens-page__sidebar"
+        aria-label="Token filters"
+        tabIndex={-1}
+        inert={isNarrow && !sidebarOpen}
+      >
         <header className="tokens-page__header">
           <h1 className="tokens-page__title">Design Tokens</h1>
           <p className="tokens-page__description">
@@ -165,7 +219,7 @@ export default function Tokens() {
             <span>
               Viewing <strong>{displayComponentName(focusedComponent)}</strong>
             </span>
-            <button type="button" onClick={() => setFocusedComponent(null)}>
+            <button type="button" onClick={() => focusComponent(null)}>
               clear
             </button>
           </div>
@@ -183,24 +237,24 @@ export default function Tokens() {
           <div><strong>{graph.stats.edges}</strong> references</div>
         </section>
 
-        <section className="tokens-page__filter-group">
-          <h2 className="tokens-page__filter-title">Search</h2>
+        <div className="tokens-page__filter-group">
+          <label className="sr-only" htmlFor="tokens-search">Search tokens by name</label>
           <input
+            id="tokens-search"
             type="search"
             className="tokens-page__search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search tokens…"
-            aria-label="Search tokens by name"
           />
-        </section>
+        </div>
 
         <section className="tokens-page__filter-group">
-          <h2 className="tokens-page__filter-title">Theme</h2>
+          <h2 className="tokens-page__filter-title">Preview values</h2>
           <div
             className="tokens-page__theme-switch"
             role="radiogroup"
-            aria-label="Preview theme"
+            aria-label="Theme whose values are shown"
           >
             <button
               type="button"
@@ -241,7 +295,7 @@ export default function Tokens() {
               key={cat}
               name={cat}
               checked={enabledCategories.has(cat)}
-              onToggle={() => toggleIn(enabledCategories, cat, setEnabledCategories)}
+              onToggle={() => setEnabledCategories((prev) => toggleInSet(prev, cat))}
               onOnly={() => setEnabledCategories(new Set([cat]))}
             />
           ))}
@@ -266,7 +320,7 @@ export default function Tokens() {
 
           <div className="tokens-page__filter-list">
             {filteredComponentNames.length === 0 && (
-              <div className="tokens-page__empty">No components match “{search}”.</div>
+              <div className="tokens-page__empty">No tokens match “{search}”.</div>
             )}
             {filteredComponentNames.map((name) => (
               <FilterRow
@@ -274,21 +328,9 @@ export default function Tokens() {
                 name={displayComponentName(name)}
                 checked={enabledComponents.has(name)}
                 focused={focusedComponent === name}
-                onToggle={() =>
-                  toggleIn(enabledComponents, name, setEnabledComponents)
-                }
+                onToggle={() => setEnabledComponents((prev) => toggleInSet(prev, name))}
                 onOnly={() => setEnabledComponents(new Set([name]))}
-                onFocus={() => {
-                  if (focusedComponent === name) {
-                    setFocusedComponent(null);
-                    return;
-                  }
-                  // A hidden component can't be scrolled to — re-enable it.
-                  if (!enabledComponents.has(name)) {
-                    setEnabledComponents(new Set(enabledComponents).add(name));
-                  }
-                  setFocusedComponent(name);
-                }}
+                onFocus={() => focusComponent(focusedComponent === name ? null : name)}
               />
             ))}
           </div>
@@ -298,22 +340,26 @@ export default function Tokens() {
       <div className="tokens-page__content">
         <TokenExplorer
           graph={graph}
+          index={index}
+          audit={audit}
           theme={theme}
+          tab={tab}
+          onTabChange={setTab}
           search={search}
           enabledCategories={enabledCategories}
           enabledComponents={enabledComponents}
           focusedComponent={focusedComponent}
           selectedId={selectedId}
           onSelect={onSelectToken}
-          initialTab={initialTab}
         />
         {selectedId && graph.nodesById.has(selectedId) && (
           <TokenInspector
             graph={graph}
+            index={index}
             selectedId={selectedId}
             theme={theme}
             onSelect={setSelectedId}
-            onFocusComponent={setFocusedComponent}
+            onFocusComponent={focusComponent}
             onClose={() => setSelectedId(null)}
           />
         )}

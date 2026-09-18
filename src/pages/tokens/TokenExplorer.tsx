@@ -1,31 +1,36 @@
 /**
  * DOM-based explorer for the three-level design token hierarchy.
  *
- * Three tabs — Components / System / Global — over the same TokenGraph that
- * powers the generated design-tokens.css. Clicking any token opens the
- * TokenInspector with its full reference chain.
+ * Four tabs — Global / System / Component / Audit — over the same TokenGraph
+ * that powers the generated design-tokens.css. Tab state is owned by the page
+ * so it can be deep-linked; clicking any token opens the TokenInspector.
  */
 
-import { useMemo, useState } from 'react';
-import type { GraphNode, ThemeMode, TokenGraph } from '../../../tokens/graph-builder';
-import { runTokenAudit } from '../../../tokens/audit';
+import { useMemo } from 'react';
+import type { EdgeIndex, ThemeMode, TokenGraph } from '../../tokens/graph-builder';
+import type { AuditReport } from '../../tokens/audit';
 import { ComponentsView } from './ComponentsView';
 import { SystemView } from './SystemView';
 import { GlobalView } from './GlobalView';
 import { AuditView } from './AuditView';
+import type { ExplorerTab } from './utils';
+import './TokenExplorer.css';
 
-export type ExplorerTab = 'components' | 'system' | 'global' | 'audit';
+export type { ExplorerTab };
 
 export interface TokenExplorerProps {
   graph: TokenGraph;
+  index: EdgeIndex;
+  audit: AuditReport;
   theme: ThemeMode;
+  tab: ExplorerTab;
+  onTabChange: (tab: ExplorerTab) => void;
   search: string;
   enabledCategories: Set<string>;
   enabledComponents: Set<string>;
   focusedComponent: string | null;
   selectedId: string | null;
   onSelect: (nodeId: string) => void;
-  initialTab?: ExplorerTab;
 }
 
 const HIERARCHY_PILLS: { tab: ExplorerTab; label: string; statKey: 'global' | 'system' | 'component' }[] = [
@@ -36,30 +41,24 @@ const HIERARCHY_PILLS: { tab: ExplorerTab; label: string; statKey: 'global' | 's
 
 export function TokenExplorer({
   graph,
+  index,
+  audit,
   theme,
+  tab,
+  onTabChange,
   search,
   enabledCategories,
   enabledComponents,
   focusedComponent,
   selectedId,
   onSelect,
-  initialTab,
 }: TokenExplorerProps) {
-  const [tab, setTab] = useState<ExplorerTab>(initialTab ?? 'components');
-
-  // Computed eagerly: the audit pill badge is visible on every tab.
-  const audit = useMemo(() => runTokenAudit(graph), [graph]);
   const auditSeverity =
     audit.counts.error > 0 ? 'error' : audit.counts.warning > 0 ? 'warning' : 'info';
-  const auditTotal = audit.counts.error + audit.counts.warning + audit.counts.info;
-
-  // Focusing a component (sidebar, inspector button, deep link) always lands
-  // on the Components tab where the focused card lives.
-  const [prevFocused, setPrevFocused] = useState(focusedComponent);
-  if (focusedComponent !== prevFocused) {
-    setPrevFocused(focusedComponent);
-    if (focusedComponent) setTab('components');
-  }
+  // The pill badge counts actionable findings only; informational notes
+  // (duplicates, unused tokens) are numerous by design and live in the caption.
+  const auditActionable = audit.counts.error + audit.counts.warning;
+  const auditSummary = `${audit.counts.error} errors, ${audit.counts.warning} warnings, ${audit.counts.info} notes`;
 
   const query = search.trim().toLowerCase();
 
@@ -72,37 +71,11 @@ export function TokenExplorer({
     [graph.nodes],
   );
 
-  // One forward edge per node per theme: nodeId → referenced nodeId.
-  const targetByNode = useMemo(() => {
-    const m = new Map<string, string>();
-    for (const e of graph.edges) {
-      if (e.mode !== 'both' && e.mode !== theme) continue;
-      m.set(e.from, e.to);
-    }
-    return m;
-  }, [graph.edges, theme]);
-
-  // How many tokens reference each node under the active theme.
   const consumerCount = useMemo(() => {
     const m = new Map<string, number>();
-    for (const e of graph.edges) {
-      if (e.mode !== 'both' && e.mode !== theme) continue;
-      m.set(e.to, (m.get(e.to) ?? 0) + 1);
-    }
+    for (const [id, consumers] of index.consumersByNode) m.set(id, consumers.length);
     return m;
-  }, [graph.edges, theme]);
-
-  const chainFor = (nodeId: string): GraphNode[] => {
-    const chain: GraphNode[] = [];
-    let current = targetByNode.get(nodeId);
-    while (current) {
-      const node = graph.nodesById.get(current);
-      if (!node) break;
-      chain.push(node);
-      current = targetByNode.get(current);
-    }
-    return chain;
-  };
+  }, [index]);
 
   return (
     <div className="token-explorer">
@@ -114,7 +87,8 @@ export function TokenExplorer({
               <button
                 type="button"
                 className={`token-explorer__pill${tab === p.tab ? ' token-explorer__pill--active' : ''}`}
-                onClick={() => setTab(p.tab)}
+                aria-pressed={tab === p.tab}
+                onClick={() => onTabChange(p.tab)}
               >
                 {p.label}
                 <span className="token-explorer__pill-count">{graph.stats[p.statKey]}</span>
@@ -124,15 +98,19 @@ export function TokenExplorer({
           <button
             type="button"
             className={`token-explorer__pill token-explorer__pill--audit token-explorer__pill--audit-${auditSeverity}${tab === 'audit' ? ' token-explorer__pill--active' : ''}`}
-            onClick={() => setTab('audit')}
+            aria-pressed={tab === 'audit'}
+            onClick={() => onTabChange('audit')}
+            title={auditSummary}
           >
             Audit
-            <span className="token-explorer__pill-count">{auditTotal}</span>
+            <span className="token-explorer__pill-count">
+              {auditActionable > 0 ? auditActionable : '✓'}
+            </span>
           </button>
         </div>
         <p className="token-explorer__caption">
           {tab === 'audit'
-            ? `Health checks over the token system — ${audit.counts.error} errors, ${audit.counts.warning} warnings, ${audit.counts.info} notes.`
+            ? `Health checks over the token system — ${auditSummary}.`
             : 'Component tokens reference system tokens, which reference global values. Tap any token to inspect its chain.'}
         </p>
       </header>
@@ -140,8 +118,9 @@ export function TokenExplorer({
       <div className="token-explorer__body">
         {tab === 'components' && (
           <ComponentsView
+            graph={graph}
+            index={index}
             nodes={componentNodes}
-            chainFor={chainFor}
             theme={theme}
             search={query}
             enabledCategories={enabledCategories}

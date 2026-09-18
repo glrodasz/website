@@ -44,6 +44,7 @@ src/
 │   ├── organisms/      # Complex UI sections: Header, Footer, CardImage…
 │   ├── templates/      # Page-level layout structures
 │   └── pages/          # Specific page instances
+├── pages/              # Route components (pages/tokens/ is the dev-only token explorer)
 ├── hooks/              # Shared hooks (e.g. useTheme)
 ├── tokens/             # Token build system
 │   ├── json/
@@ -104,11 +105,11 @@ Raw design values. These are the source of all colors, sizes, and typography. Ne
 | Category | Description |
 |---|---|
 | Colors | Multiple palettes (frozen ribbon, aquamarine frozen, flash cerulean, metal chartreuse, shark…) with 100–600 scales |
-| Sizing | Multiples of 2, 0–240px |
+| Sizing | Multiples of 2, 0–240px, plus the 1140px container width |
 | Border radius | 0–100px |
 | Font families | 16 families (Inter, Montserrat, DM Sans, Work Sans…) |
-| Font weights | Light (100), Regular (300), Medium (400), Semibold (600), Bold (700), Black (900) |
-| Typography scale | Base sizes 8–22, high/medium/low contrast ratios |
+| Font weights | Numeric values keyed by weight: Light 100, Regular 300, Medium 400, Semibold 600, Bold 700, Black 900 |
+| Typography scale | `Base` sizes 8–21, `Scale` high/medium/low contrast ratios, and `Steps` — the 25 computed sizes (13–98) the system type scale aliases |
 
 #### Level 2 — System Tokens (`system-light.json` / `system-dark.json`)
 
@@ -441,7 +442,19 @@ export const GhostDark: Story = {
 
 1. **Never hardcode raw values.** No colors, spacing, radius, or typography values inline in CSS or components.
 
-2. **All CSS uses Component tokens exclusively.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via a `{system.…}` reference. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**. Sole exemption: `src/pages/Tokens.css` styles the token-explorer dev page with its own self-contained palette and is intentionally outside the design system.
+   Inside the token JSON the same rule is enforced by the `raw-value` audit check, with one documented escape hatch. **Colors must always alias** — they are the layer that changes with the theme, so a raw color silently opts out of theming. Any **non-color** value may be raw when the token carries a `$description` explaining why it has no ancestor, for example a `clamp()` expression, `em` tracking, or a one-off chrome dimension:
+
+   ```json
+   "height": {
+     "$type": "number",
+     "$value": 72,
+     "$description": "Fixed chrome height, tuned to the bar contents rather than taken from the sizing scale."
+   }
+   ```
+
+   An undocumented raw value is a warning. Reach for the escape hatch only when no honest ancestor exists — never to skip adding a token that should exist.
+
+2. **All CSS uses Component tokens exclusively.** Every CSS file in this project (`src/components/**`, `src/pages/**`, `src/styles/**`) must only reference `--components-tokens--*` variables. Never use `--system-tokens--*` or `--global-tokens--*` directly in any CSS file. If a token you need doesn't exist in `components.json`, add it there first under the appropriate namespace (e.g. `Site` for page-level tokens, `button` for button tokens) and point it to the correct system token via a `{system.…}` reference. The chain is always: **CSS → `--components-tokens--*` → `--system-tokens--*` → `--global-tokens--*`**. Sole exemption: the stylesheets under `src/pages/tokens/` style the token-explorer dev page with their own self-contained palette and are intentionally outside the design system.
 
 3. **System tokens bridge Global → Component.** System tokens give semantic meaning to raw global values. Component tokens then reference system tokens to scope them to a specific component context.
 

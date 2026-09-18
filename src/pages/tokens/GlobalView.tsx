@@ -4,8 +4,10 @@
  */
 
 import { useMemo } from 'react';
-import type { GraphNode } from '../../../tokens/graph-builder';
+import type { GraphNode } from '../../tokens/graph-builder';
 import { HEX_RE, matchesSearch } from './utils';
+import './Views.css';
+import './GlobalView.css';
 
 interface GlobalViewProps {
   nodes: GraphNode[];
@@ -85,7 +87,7 @@ export function GlobalView({
                     className={`palette-ramp__swatch${
                       selectedId === node.id ? ' palette-ramp__swatch--selected' : ''
                     }`}
-                    style={{ background: node.resolvedValue.slice(0, 7) }}
+                    style={{ background: node.resolvedValue }}
                     onClick={() => onSelect(node.id)}
                     title={`${node.path} · ${node.resolvedValue} · used by ${
                       consumerCount.get(node.id) ?? 0

@@ -12,13 +12,6 @@
   --global-tokens--colors--custom--principal-palette--500: #525252;
   --global-tokens--colors--custom--principal-palette--600: #292929;
   --global-tokens--colors--custom--principal-palette--opacity: #8F8F8F26;
-  --global-tokens--colors--custom--complementary-palette--100: #F5F5F5;
-  --global-tokens--colors--custom--complementary-palette--200: #D6D6D6;
-  --global-tokens--colors--custom--complementary-palette--300: #B8B8B8;
-  --global-tokens--colors--custom--complementary-palette--400: #8F8F8F;
-  --global-tokens--colors--custom--complementary-palette--500: #525252;
-  --global-tokens--colors--custom--complementary-palette--600: #292929;
-  --global-tokens--colors--custom--complementary-palette--opacity: #8F8F8F26;
   --global-tokens--colors--schemas--frozen-ribbon--blue-ribbon--100: #EBF2FF;
   --global-tokens--colors--schemas--frozen-ribbon--blue-ribbon--200: #ADCAFF;
   --global-tokens--colors--schemas--frozen-ribbon--blue-ribbon--300: #70A2FF;
@@ -117,20 +110,6 @@
   --global-tokens--colors--schemas--violet-bittersweet--dark-violet--500: #6D0E81;
   --global-tokens--colors--schemas--violet-bittersweet--dark-violet--600: #34073D;
   --global-tokens--colors--schemas--violet-bittersweet--dark-violet--opacity: #34073D26;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--100: #FDEFEC;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--200: #F9D1C8;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--300: #F1937E;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--400: #EE7158;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--500: #DF3716;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--600: #82200D;
-  --global-tokens--colors--schemas--sweet-chiffon--bittersweet--opacity: #EE715826;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--100: #FCFBED;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--200: #F4F1BB;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--300: #EBE684;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--400: #E2DB50;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--500: #8C8617;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--600: #46430B;
-  --global-tokens--colors--schemas--sweet-chiffon--lemon-chiffon--opacity: #F4F1BB26;
   --global-tokens--colors--schemas--antique-amaranth--amaranth-purple--100: #FAF0F2;
   --global-tokens--colors--schemas--antique-amaranth--amaranth-purple--200: #EBC2CA;
   --global-tokens--colors--schemas--antique-amaranth--amaranth-purple--300: #D78494;
@@ -208,6 +187,7 @@
   --global-tokens--sizing--148: 148px;
   --global-tokens--sizing--180: 180px;
   --global-tokens--sizing--240: 240px;
+  --global-tokens--sizing--1140: 1140px;
 
   /* Border radius */
   --global-tokens--border-radius--0: 0px;
@@ -239,12 +219,12 @@
   --global-tokens--typography--font-family--oswald: Oswald;
   --global-tokens--typography--font-family--raleway: Raleway;
   --global-tokens--typography--font-family--futura: Futura;
-  --global-tokens--typography--font-weight--100: Light;
-  --global-tokens--typography--font-weight--300: Regular;
-  --global-tokens--typography--font-weight--400: Medium;
-  --global-tokens--typography--font-weight--600: Semibold;
-  --global-tokens--typography--font-weight--700: Bold;
-  --global-tokens--typography--font-weight--900: Black;
+  --global-tokens--typography--font-weight--100: 100;
+  --global-tokens--typography--font-weight--300: 300;
+  --global-tokens--typography--font-weight--400: 400;
+  --global-tokens--typography--font-weight--600: 600;
+  --global-tokens--typography--font-weight--700: 700;
+  --global-tokens--typography--font-weight--900: 900;
   --global-tokens--typography--base--8: 8;
   --global-tokens--typography--base--9: 9;
   --global-tokens--typography--base--10: 10;
@@ -262,12 +242,83 @@
   --global-tokens--typography--scale--high-contrast: 1.409999966621399;
   --global-tokens--typography--scale--medium-contrast: 1.2200000286102295;
   --global-tokens--typography--scale--low-contrast: 1.1200000047683716;
+  --global-tokens--typography--steps--13: 13;
+  --global-tokens--typography--steps--16: 16;
+  --global-tokens--typography--steps--17: 17;
+  --global-tokens--typography--steps--19: 19;
+  --global-tokens--typography--steps--20: 20;
+  --global-tokens--typography--steps--22: 22;
+  --global-tokens--typography--steps--24: 24;
+  --global-tokens--typography--steps--27: 27;
+  --global-tokens--typography--steps--29: 29;
+  --global-tokens--typography--steps--30: 30;
+  --global-tokens--typography--steps--34: 34;
+  --global-tokens--typography--steps--35: 35;
+  --global-tokens--typography--steps--36: 36;
+  --global-tokens--typography--steps--38: 38;
+  --global-tokens--typography--steps--44: 44;
+  --global-tokens--typography--steps--46: 46;
+  --global-tokens--typography--steps--48: 48;
+  --global-tokens--typography--steps--54: 54;
+  --global-tokens--typography--steps--56: 56;
+  --global-tokens--typography--steps--59: 59;
+  --global-tokens--typography--steps--66: 66;
+  --global-tokens--typography--steps--68: 68;
+  --global-tokens--typography--steps--80: 80;
+  --global-tokens--typography--steps--82: 82;
+  --global-tokens--typography--steps--98: 98;
 
   /* ============================================================ */
   /*  SYSTEM TOKENS (NON-COLOR)                                */
   /* ============================================================ */
 
+  /* Sizing */
+  --system-tokens--sizing--xxs: 12px;
+  --system-tokens--sizing--xs: 16px;
+  --system-tokens--sizing--sm: 24px;
+  --system-tokens--sizing--md: 32px;
+  --system-tokens--sizing--ml: 48px;
+  --system-tokens--sizing--lg: 64px;
+  --system-tokens--sizing--xl: 96px;
+  --system-tokens--sizing--xxl: 148px;
+  --system-tokens--sizing--container: 1140px;
+
+  /* Spacing */
+  --system-tokens--spacing--xxs: 4px;
+  --system-tokens--spacing--xs: 8px;
+  --system-tokens--spacing--sm: 12px;
+  --system-tokens--spacing--md: 24px;
+  --system-tokens--spacing--ml: 32px;
+  --system-tokens--spacing--lm: 48px;
+  --system-tokens--spacing--lg: 64px;
+  --system-tokens--spacing--xl: 80px;
+  --system-tokens--spacing--xxl: 116px;
+  --system-tokens--spacing--xxxl: 180px;
+  --system-tokens--spacing--none: 0px;
+
+  /* Border radius */
+  --system-tokens--border-radius--flat: 2px;
+  --system-tokens--border-radius--xs: 4px;
+  --system-tokens--border-radius--sm: 8px;
+  --system-tokens--border-radius--md: 12px;
+  --system-tokens--border-radius--lm: 16px;
+  --system-tokens--border-radius--lg: 24px;
+  --system-tokens--border-radius--xl: 32px;
+  --system-tokens--border-radius--xxl: 48px;
+  --system-tokens--border-radius--full: 100px;
+
   /* Typography */
+  --system-tokens--typography--font-family--headings: 'DM Sans', 'Inter', sans-serif;
+  --system-tokens--typography--font-family--body: 'Inter', system-ui, sans-serif;
+  --system-tokens--typography--font-family--alternative-text: 'Inter', system-ui, sans-serif;
+  --system-tokens--typography--font-family--code: 'JetBrains Mono', monospace;
+  --system-tokens--typography--font-weight--weak: 300;
+  --system-tokens--typography--font-weight--moderate: 400;
+  --system-tokens--typography--font-weight--medium: 600;
+  --system-tokens--typography--font-weight--strong: 700;
+  --system-tokens--typography--font-weight--strongest: 900;
+  --system-tokens--typography--font-size--headings--base: 20px;
+  --system-tokens--typography--font-size--headings--scale: 1.2200000286102295px;
   --system-tokens--typography--font-size--headings--xxs: 20px;
   --system-tokens--typography--font-size--headings--xs: 24px;
   --system-tokens--typography--font-size--headings--sm: 30px;
@@ -276,6 +327,8 @@
   --system-tokens--typography--font-size--headings--xl: 54px;
   --system-tokens--typography--font-size--headings--xxl: 66px;
   --system-tokens--typography--font-size--headings--huge: 80px;
+  --system-tokens--typography--font-size--body--base: 13px;
+  --system-tokens--typography--font-size--body--scale: 1.2200000286102295px;
   --system-tokens--typography--font-size--body--xs: 13px;
   --system-tokens--typography--font-size--body--sm: 16px;
   --system-tokens--typography--font-size--body--md: 19px;
@@ -296,51 +349,6 @@
   --system-tokens--typography--line-height--body--lg: 34px;
   --system-tokens--typography--line-height--body--xl: 48px;
   --system-tokens--typography--line-height--body--xxl: 59px;
-  --system-tokens--typography--font-family--headings: 'DM Sans', 'Inter', sans-serif;
-  --system-tokens--typography--font-family--body: 'Inter', system-ui, sans-serif;
-  --system-tokens--typography--font-family--alternative-text: 'Inter', system-ui, sans-serif;
-  --system-tokens--typography--font-family--code: 'JetBrains Mono', monospace;
-  --system-tokens--typography--font-weight--weak: Regular;
-  --system-tokens--typography--font-weight--moderate: Medium;
-  --system-tokens--typography--font-weight--medium: Semibold;
-  --system-tokens--typography--font-weight--strong: Bold;
-  --system-tokens--typography--font-size--headings--base: 20px;
-  --system-tokens--typography--font-size--headings--scale: 1.2200000286102295px;
-  --system-tokens--typography--font-size--body--base: 13px;
-  --system-tokens--typography--font-size--body--scale: 1.2200000286102295px;
-
-  /* Sizing */
-  --system-tokens--sizing--xxs: 12px;
-  --system-tokens--sizing--xs: 16px;
-  --system-tokens--sizing--sm: 24px;
-  --system-tokens--sizing--md: 32px;
-  --system-tokens--sizing--ml: 48px;
-  --system-tokens--sizing--lg: 64px;
-  --system-tokens--sizing--xl: 96px;
-  --system-tokens--sizing--xxl: 148px;
-
-  /* Spacing */
-  --system-tokens--spacing--xxs: 4px;
-  --system-tokens--spacing--xs: 8px;
-  --system-tokens--spacing--sm: 12px;
-  --system-tokens--spacing--md: 24px;
-  --system-tokens--spacing--ml: 32px;
-  --system-tokens--spacing--lm: 48px;
-  --system-tokens--spacing--lg: 64px;
-  --system-tokens--spacing--xl: 80px;
-  --system-tokens--spacing--xxl: 116px;
-  --system-tokens--spacing--xxxl: 180px;
-
-  /* Border radius */
-  --system-tokens--border-radius--flat: 2px;
-  --system-tokens--border-radius--xs: 4px;
-  --system-tokens--border-radius--sm: 8px;
-  --system-tokens--border-radius--md: 12px;
-  --system-tokens--border-radius--lm: 16px;
-  --system-tokens--border-radius--lg: 24px;
-  --system-tokens--border-radius--xl: 32px;
-  --system-tokens--border-radius--xxl: 48px;
-  --system-tokens--border-radius--full: 100px;
 
   /* ============================================================ */
   /*  COMPONENT TOKENS                                         */
@@ -411,7 +419,6 @@
 
   /* Tag */
   --components-tokens--tag--typography--small--font-size: 12px;
-  --components-tokens--tag--close-background-color--outlined-hover: #0000000D0d;
   --components-tokens--tag--background-color--filled--discovery: var(--system-tokens--colors--primary--principal);
   --components-tokens--tag--background-color--filled--info: var(--system-tokens--colors--info--high);
   --components-tokens--tag--background-color--filled--success: var(--system-tokens--colors--success--high);
@@ -462,6 +469,7 @@
   --components-tokens--tag--text-color--error: var(--system-tokens--colors--danger--high);
   --components-tokens--tag--text-color--neutral: var(--system-tokens--colors--neutral--principal);
   --components-tokens--tag--close-background-color--filled-hover: var(--system-tokens--colors--transparency--dark);
+  --components-tokens--tag--close-background-color--outlined-hover: var(--system-tokens--colors--transparency--dark);
 
   /* Status */
   --components-tokens--status--sizing--xs: 8px;
@@ -484,11 +492,9 @@
   --components-tokens--status--border-color--disabled: var(--system-tokens--colors--borders--neutral);
 
   /* Nav-bar */
-  --components-tokens--nav-bar--spacing--bar-horizontal-mobile: 0px;
   --components-tokens--nav-bar--sizing--height: 72px;
   --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
   --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;
-  --components-tokens--nav-bar--sizing--max-width: 1140px;
   --components-tokens--nav-bar--typography--brand-name--letter-spacing: 2px;
   --components-tokens--nav-bar--typography--about-label--font-size: 11px;
   --components-tokens--nav-bar--spacing--horizontal: var(--system-tokens--spacing--md);
@@ -508,6 +514,7 @@
   --components-tokens--nav-bar--spacing--mobile-padding-horizontal: var(--system-tokens--spacing--md);
   --components-tokens--nav-bar--spacing--mobile-padding-vertical: var(--system-tokens--spacing--sm);
   --components-tokens--nav-bar--spacing--mobile-gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--nav-bar--spacing--bar-horizontal-mobile: var(--system-tokens--spacing--none);
   --components-tokens--nav-bar--background-color--default: var(--system-tokens--colors--backgrounds--principal);
   --components-tokens--nav-bar--background-color--dropdown: var(--system-tokens--colors--backgrounds--principal);
   --components-tokens--nav-bar--background-color--link-hover: var(--system-tokens--colors--backgrounds--tertiary);
@@ -535,6 +542,7 @@
   --components-tokens--nav-bar--sizing--theme-track-width: var(--system-tokens--sizing--ml);
   --components-tokens--nav-bar--sizing--theme-track-height: var(--system-tokens--sizing--sm);
   --components-tokens--nav-bar--sizing--theme-knob: var(--system-tokens--sizing--xs);
+  --components-tokens--nav-bar--sizing--max-width: var(--system-tokens--sizing--container);
   --components-tokens--nav-bar--sizing--sm: var(--system-tokens--sizing--sm);
   --components-tokens--nav-bar--typography--font-family: var(--system-tokens--typography--font-family--body);
   --components-tokens--nav-bar--typography--brand-name--font-family: var(--system-tokens--typography--font-family--headings);
@@ -562,13 +570,13 @@
   --components-tokens--nav-bar--typography--mobile-sub-item--font-weight: var(--system-tokens--typography--font-weight--medium);
 
   /* Footer */
-  --components-tokens--footer--sizing--max-width: 1140px;
   --components-tokens--footer--typography--col-title--tracking: 0.08em;
   --components-tokens--footer--background-color--flat: var(--system-tokens--colors--backgrounds--principal);
   --components-tokens--footer--background-color--colorful: var(--system-tokens--colors--backgrounds--contrast);
   --components-tokens--footer--divider-color--flat: var(--system-tokens--colors--borders--neutral);
   --components-tokens--footer--sizing--icon--large: var(--system-tokens--sizing--md);
   --components-tokens--footer--sizing--icon--small: var(--system-tokens--sizing--sm);
+  --components-tokens--footer--sizing--max-width: var(--system-tokens--sizing--container);
   --components-tokens--footer--spacing--large--horizontal: var(--system-tokens--spacing--ml);
   --components-tokens--footer--spacing--large--vertical: var(--system-tokens--spacing--lm);
   --components-tokens--footer--spacing--large--gap-blocks: var(--system-tokens--spacing--ml);
@@ -620,7 +628,6 @@
   --components-tokens--site--focus-ring--outline-offset: 2px;
   --components-tokens--site--not-found--hero--eyebrow--font-size: clamp(3.5rem, 12vw, 7rem);
   --components-tokens--site--not-found--hero--eyebrow--font-size-mobile: clamp(3rem, 20vw, 5rem);
-  --components-tokens--site--not-found--hero--eyebrow--font-weight: 900;
   --components-tokens--site--not-found--hero--eyebrow--tracking: -0.02em;
   --components-tokens--site--not-found--hero--eyebrow--line-height: 1;
   --components-tokens--site--not-found--hero--heading--font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -652,6 +659,7 @@
   --components-tokens--site--page-layout--spacing--section-horizontal: var(--system-tokens--spacing--md);
   --components-tokens--site--page-layout--spacing--label-bottom: var(--system-tokens--spacing--sm);
   --components-tokens--site--page-layout--spacing--title-bottom: var(--system-tokens--spacing--sm);
+  --components-tokens--site--page-layout--sizing--container-max-width: var(--system-tokens--sizing--container);
   --components-tokens--site--card-grid--spacing--gap: var(--system-tokens--spacing--md);
   --components-tokens--site--card--spacing--body: var(--system-tokens--spacing--md);
   --components-tokens--site--card--spacing--tag-bottom: var(--system-tokens--spacing--sm);
@@ -752,6 +760,7 @@
   --components-tokens--site--skip-link--border-radius: var(--system-tokens--border-radius--sm);
   --components-tokens--site--skip-link--typography--font-weight: var(--system-tokens--typography--font-weight--medium);
   --components-tokens--site--not-found--hero--eyebrow--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--site--not-found--hero--eyebrow--font-weight: var(--system-tokens--typography--font-weight--strongest);
   --components-tokens--site--not-found--hero--heading--font-family: var(--system-tokens--typography--font-family--headings);
   --components-tokens--site--typography--font-family--headings: var(--system-tokens--typography--font-family--headings);
   --components-tokens--site--typography--font-family--body: var(--system-tokens--typography--font-family--body);

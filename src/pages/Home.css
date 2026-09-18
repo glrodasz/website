@@ -21,7 +21,7 @@
 .home-hero__inner {
   position: relative;
   z-index: 1;
-  max-width: 1140px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -202,7 +202,7 @@
 }
 
 .home-courses__inner {
-  max-width: 1140px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -364,7 +364,7 @@
 }
 
 .home-writing__inner {
-  max-width: 1140px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 

@@ -26,7 +26,7 @@
             "$value": "{system.Typography.Font-family.Headings}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -44,7 +44,7 @@
             "$value": "{system.Typography.Font-family.Headings}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -64,7 +64,7 @@
             "$value": "{system.Typography.Font-family.Headings}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -82,7 +82,7 @@
             "$value": "{system.Typography.Font-family.Headings}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -102,7 +102,7 @@
             "$value": "{system.Typography.Font-family.Headings}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -120,7 +120,7 @@
             "$value": "{system.Typography.Font-family.Headings}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -140,7 +140,7 @@
             "$value": "{system.Typography.Font-family.Body}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -158,7 +158,7 @@
             "$value": "{system.Typography.Font-family.Body}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -178,11 +178,11 @@
             "$value": "{system.Typography.Font-family.Body}"
           },
           "Font-weight regular": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Moderate}"
           },
           "Font-weight bold": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -200,11 +200,11 @@
             "$value": "{system.Typography.Font-family.Body}"
           },
           "Font-weight regular": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Moderate}"
           },
           "Font-weight bold": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -222,11 +222,11 @@
             "$value": "{system.Typography.Font-family.Body}"
           },
           "Font-weight regular": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Moderate}"
           },
           "Font-weight bold": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Strong}"
           },
           "Font-size": {
@@ -246,7 +246,7 @@
             "$value": "{system.Typography.Font-family.Alternative text}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Medium}"
           },
           "Font-size": {
@@ -264,7 +264,7 @@
             "$value": "{system.Typography.Font-family.Alternative text}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Medium}"
           },
           "Font-size": {
@@ -284,7 +284,7 @@
             "$value": "{system.Typography.Font-family.Alternative text}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Medium}"
           },
           "Font-size": {
@@ -302,7 +302,7 @@
             "$value": "{system.Typography.Font-family.Alternative text}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Medium}"
           },
           "Font-size": {
@@ -322,7 +322,7 @@
             "$value": "{system.Typography.Font-family.Alternative text}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Moderate}"
           },
           "Font-size": {
@@ -340,7 +340,7 @@
             "$value": "{system.Typography.Font-family.Alternative text}"
           },
           "Font-weight": {
-            "$type": "string",
+            "$type": "number",
             "$value": "{system.Typography.Font-weight.Moderate}"
           },
           "Font-size": {
@@ -554,7 +554,8 @@
       "small": {
         "min-height": {
           "$type": "number",
-          "$value": 36
+          "$value": 36,
+          "$description": "Tap-target floor for the small button; falls between Sizing md (32) and ml (48)."
         }
       }
     },
@@ -565,7 +566,7 @@
           "$value": "{system.Typography.Font-family.Alternative text}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         },
         "font-size": {
@@ -583,7 +584,7 @@
           "$value": "{system.Typography.Font-family.Alternative text}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         },
         "font-size": {
@@ -813,7 +814,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         }
       },
@@ -987,7 +988,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         }
       },
@@ -1214,7 +1215,7 @@
         "$value": "{system.Typography.Font-family.Alternative text}"
       },
       "font-weight": {
-        "$type": "string",
+        "$type": "number",
         "$value": "{system.Typography.Font-weight.Moderate}"
       },
       "large": {
@@ -1226,7 +1227,8 @@
       "small": {
         "font-size": {
           "$type": "number",
-          "$value": 12
+          "$value": 12,
+          "$description": "Compact tag label, below the smallest Body step (13), so it sits outside the type scale."
         }
       }
     },
@@ -1267,7 +1269,7 @@
       },
       "outlined-hover": {
         "$type": "color",
-        "$value": "#0000000D0d"
+        "$value": "{system.Colors.Transparency.dark}"
       }
     }
   },
@@ -1489,7 +1491,8 @@
       },
       "xs": {
         "$type": "number",
-        "$value": 8
+        "$value": 8,
+        "$description": "Status dot diameter, below the smallest Sizing step (xxs = 12)."
       }
     },
     "background-color": {
@@ -1786,7 +1789,7 @@
         "$value": "{system.Typography.Font-family.Alternative text}"
       },
       "font-weight": {
-        "$type": "string",
+        "$type": "number",
         "$value": "{system.Typography.Font-weight.Medium}"
       },
       "large": {
@@ -2045,7 +2048,7 @@
       },
       "bar-horizontal-mobile": {
         "$type": "number",
-        "$value": 0
+        "$value": "{system.Spacing.none}"
       }
     },
     "background-color": {
@@ -2149,7 +2152,8 @@
     "sizing": {
       "height": {
         "$type": "number",
-        "$value": 72
+        "$value": 72,
+        "$description": "Fixed chrome height, tuned to the bar contents rather than taken from the sizing scale."
       },
       "brand-mark": {
         "$type": "number",
@@ -2161,7 +2165,8 @@
       },
       "hamburger-bar": {
         "$type": "number",
-        "$value": 2
+        "$value": 2,
+        "$description": "Hamburger line thickness; the system has no stroke-width scale."
       },
       "theme-track-width": {
         "$type": "number",
@@ -2177,11 +2182,12 @@
       },
       "dropdown-min-width": {
         "$type": "number",
-        "$value": 200
+        "$value": 200,
+        "$description": "Dropdown width, sized to its longest label rather than to the sizing scale."
       },
       "max-width": {
         "$type": "number",
-        "$value": 1140
+        "$value": "{system.Sizing.container}"
       },
       "sm": {
         "$type": "number",
@@ -2207,12 +2213,13 @@
           "$value": "{system.Typography.Line-height.Body.sm}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         },
         "letter-spacing": {
           "$type": "number",
-          "$value": 2
+          "$value": 2,
+          "$description": "Brand wordmark tracking in px. Tracking is not modelled at the system level."
         }
       },
       "brand-tagline": {
@@ -2225,21 +2232,22 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Moderate}"
         }
       },
       "about-label": {
         "font-size": {
           "$type": "number",
-          "$value": 11
+          "$value": 11,
+          "$description": "Small nav label, below the smallest Body step (13), so it sits outside the type scale."
         },
         "line-height": {
           "$type": "number",
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         }
       },
@@ -2253,13 +2261,13 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         }
       },
       "link-active": {
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         }
       },
@@ -2273,7 +2281,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Moderate}"
         }
       },
@@ -2287,7 +2295,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Moderate}"
         }
       },
@@ -2297,7 +2305,7 @@
           "$value": "{system.Typography.font-size.Body.lg}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         }
       },
@@ -2307,7 +2315,7 @@
           "$value": "{system.Typography.font-size.Body.sm}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         }
       }
@@ -2343,7 +2351,7 @@
       },
       "max-width": {
         "$type": "number",
-        "$value": 1140
+        "$value": "{system.Sizing.container}"
       }
     },
     "spacing": {
@@ -2505,12 +2513,13 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         },
         "tracking": {
           "$type": "string",
-          "$value": "0.08em"
+          "$value": "0.08em",
+          "$description": "Relative (em) tracking has no global ancestor; the scales are in px."
         }
       },
       "link": {
@@ -2523,7 +2532,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Weak}"
         }
       },
@@ -2537,7 +2546,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Weak}"
         }
       },
@@ -2551,7 +2560,7 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         }
       }
@@ -2647,6 +2656,12 @@
         "title-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
+        }
+      },
+      "sizing": {
+        "container-max-width": {
+          "$type": "number",
+          "$value": "{system.Sizing.container}"
         }
       }
     },
@@ -3079,11 +3094,13 @@
       },
       "outline-width": {
         "$type": "number",
-        "$value": 2
+        "$value": 2,
+        "$description": "Focus ring stroke width; the system has no border-width scale."
       },
       "outline-offset": {
         "$type": "number",
-        "$value": 2
+        "$value": 2,
+        "$description": "Focus ring gap, measured against the ring itself rather than the spacing scale."
       },
       "border-radius": {
         "$type": "number",
@@ -3123,7 +3140,7 @@
       },
       "typography": {
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         }
       }
@@ -3133,11 +3150,13 @@
         "eyebrow": {
           "font-size": {
             "$type": "string",
-            "$value": "clamp(3.5rem, 12vw, 7rem)"
+            "$value": "clamp(3.5rem, 12vw, 7rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
           },
           "font-size-mobile": {
             "$type": "string",
-            "$value": "clamp(3rem, 20vw, 5rem)"
+            "$value": "clamp(3rem, 20vw, 5rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
           },
           "font-family": {
             "$type": "string",
@@ -3145,25 +3164,29 @@
           },
           "font-weight": {
             "$type": "number",
-            "$value": 900
+            "$value": "{system.Typography.Font-weight.Strongest}"
           },
           "tracking": {
             "$type": "string",
-            "$value": "-0.02em"
+            "$value": "-0.02em",
+            "$description": "Relative (em) tracking has no global ancestor; the scales are in px."
           },
           "line-height": {
             "$type": "string",
-            "$value": "1"
+            "$value": "1",
+            "$description": "Unitless line-height; the system Line-height scale is in px."
           }
         },
         "heading": {
           "font-size": {
             "$type": "string",
-            "$value": "clamp(1.8rem, 4vw, 2.8rem)"
+            "$value": "clamp(1.8rem, 4vw, 2.8rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
           },
           "font-size-mobile": {
             "$type": "string",
-            "$value": "clamp(1.4rem, 6vw, 2rem)"
+            "$value": "clamp(1.4rem, 6vw, 2rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
           },
           "font-family": {
             "$type": "string",
@@ -3171,31 +3194,37 @@
           },
           "font-weight": {
             "$type": "number",
-            "$value": 800
+            "$value": 800,
+            "$description": "Off-scale weight used only by the 404 heading; the documented weights are 100/300/400/600/700/900."
           },
           "line-height": {
             "$type": "string",
-            "$value": "1.2"
+            "$value": "1.2",
+            "$description": "Unitless line-height; the system Line-height scale is in px."
           }
         },
         "lead": {
           "font-size": {
             "$type": "string",
-            "$value": "1.05rem"
+            "$value": "1.05rem",
+            "$description": "rem-based size for the 404 page; the type scale is in px."
           },
           "line-height": {
             "$type": "string",
-            "$value": "1.7"
+            "$value": "1.7",
+            "$description": "Unitless line-height; the system Line-height scale is in px."
           },
           "max-width": {
             "$type": "number",
-            "$value": 520
+            "$value": 520,
+            "$description": "Measure cap for the 404 lead, chosen for line length rather than from the sizing scale."
           }
         },
         "suggestion": {
           "font-size": {
             "$type": "string",
-            "$value": "0.95rem"
+            "$value": "0.95rem",
+            "$description": "rem-based size for the 404 page; the type scale is in px."
           }
         }
       }
@@ -3265,7 +3294,8 @@
     "sizing": {
       "icon-large": {
         "$type": "number",
-        "$value": 40
+        "$value": 40,
+        "$description": "Logo mark size, falling between Sizing md (32) and ml (48)."
       },
       "icon-small": {
         "$type": "number",
@@ -3289,12 +3319,13 @@
           "$value": "{system.Typography.font-size.Body.sm}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Moderate}"
         },
         "letter-spacing": {
           "$type": "string",
-          "$value": "-0.5px"
+          "$value": "-0.5px",
+          "$description": "Wordmark tracking in px. Tracking is not modelled at the system level."
         }
       },
       "design": {
@@ -3303,12 +3334,13 @@
           "$value": "{system.Typography.font-size.Body.xs}"
         },
         "font-weight": {
-          "$type": "string",
+          "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
         },
         "letter-spacing": {
           "$type": "string",
-          "$value": "1px"
+          "$value": "1px",
+          "$description": "Wordmark tracking in px. Tracking is not modelled at the system level."
         }
       }
     },
@@ -3336,12 +3368,13 @@
         "$value": "{system.Typography.Font-family.Alternative text}"
       },
       "font-weight": {
-        "$type": "string",
+        "$type": "number",
         "$value": "{system.Typography.Font-weight.Moderate}"
       },
       "letter-spacing": {
         "$type": "string",
-        "$value": "0.08em"
+        "$value": "0.08em",
+        "$description": "Relative (em) tracking has no global ancestor; the scales are in px."
       }
     },
     "text-color": {

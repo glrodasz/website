@@ -2,9 +2,18 @@
  * Shared helpers for the token explorer views.
  */
 
-import type { GraphNode, ThemeMode } from '../../../tokens/graph-builder';
+import type { GraphNode, ThemeMode } from '../../tokens/graph-builder';
 
-export const HEX_RE = /^#[0-9a-fA-F]{6,8}$/;
+export type ExplorerTab = 'components' | 'system' | 'global' | 'audit';
+
+const EXPLORER_TABS: readonly string[] = ['components', 'system', 'global', 'audit'];
+
+export function isExplorerTab(value: string | null): value is ExplorerTab {
+  return value !== null && EXPLORER_TABS.includes(value);
+}
+
+/** 6- or 8-digit hex colour (8 = with alpha). */
+export const HEX_RE = /^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/;
 
 /** Resolved value under the active preview theme. */
 export function themedValueOf(node: GraphNode, theme: ThemeMode): string {

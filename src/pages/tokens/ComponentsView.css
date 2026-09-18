@@ -1,0 +1,81 @@
+/* ---- Component cards ---- */
+
+.token-explorer__cards {
+  display: grid;
+  gap: 10px;
+  max-width: 860px;
+}
+
+.token-card {
+  background: #0f1624;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.token-card--focused {
+  border-color: rgba(125, 211, 252, 0.5);
+  scroll-margin-top: 12px;
+}
+
+.token-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  background: transparent;
+  border: 0;
+  color: #f1f5f9;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.token-card__header:hover {
+  background: rgba(125, 211, 252, 0.04);
+}
+
+.token-card__chevron {
+  color: #7b8aa3;
+  font-size: 11px;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.token-card__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.token-card__count {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 500;
+  color: #7b8aa3;
+  font-variant-numeric: tabular-nums;
+}
+
+.token-card__body {
+  padding: 0 14px 12px;
+  border-top: 1px solid #1f2937;
+}
+
+.token-card__group {
+  margin-top: 12px;
+}
+
+.token-card__group-title {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+

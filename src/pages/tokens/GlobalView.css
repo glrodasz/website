@@ -1,0 +1,49 @@
+/* ---- Palette ramps (global view) ---- */
+
+.palette-ramp {
+  margin-bottom: 14px;
+}
+
+.palette-ramp__name {
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.palette-ramp__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.palette-ramp__swatch {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 52px;
+  height: 40px;
+  padding: 3px;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease;
+}
+
+.palette-ramp__swatch:hover {
+  transform: translateY(-2px);
+  border-color: #7dd3fc;
+}
+
+.palette-ramp__swatch--selected {
+  border-color: rgba(255, 212, 0, 0.8);
+  box-shadow: 0 0 0 1px rgba(255, 212, 0, 0.8);
+}
+
+.palette-ramp__shade {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './hooks/useTheme';
 import { useTranslation } from 'react-i18next';
 import Navigation from './components/organisms/Navigation';
@@ -17,15 +17,27 @@ import NotFound from './pages/NotFound';
 // so it is lazy-loaded to keep it out of the main bundle.
 const Tokens = lazy(() => import('./pages/tokens/Tokens'));
 
+/** Routes that own the whole viewport and render no site chrome around them. */
+function isFullScreenRoute(pathname: string): boolean {
+  return pathname === '/tokens' || pathname.startsWith('/tokens/');
+}
+
 function AppShell() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  // The token explorer is a fixed, full-viewport panel, so the navbar and
+  // footer around it are never visible. Rendering them anyway added document
+  // height — which is what made the page scroll with content sliding past
+  // behind it — and left stray tab stops in content nobody could see.
+  const showChrome = !isFullScreenRoute(pathname);
+
   return (
     <>
       <a href="#main-content" className="skip-to-content">
         {t('skipToContent')}
       </a>
       <ScrollToTop />
-      <Navigation />
+      {showChrome && <Navigation />}
       <main id="main-content" className="app-main" tabIndex={-1}>
         <Routes>
           {/* Language-aware routes: /:lang? covers both "/" and "/es/" */}
@@ -49,7 +61,7 @@ function AppShell() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      {showChrome && <Footer />}
     </>
   );
 }

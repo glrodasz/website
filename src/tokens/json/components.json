@@ -2631,11 +2631,11 @@
     "Course-background": {
       "synapse-color": {
         "$type": "color",
-        "$value": "{system.Colors.Complementary.principal}"
+        "$value": "{system.Colors.Complementary.deep}"
       },
       "neuron-color": {
         "$type": "color",
-        "$value": "{system.Colors.Complementary.principal}"
+        "$value": "{system.Colors.Complementary.deep}"
       },
       "signal-color": {
         "$type": "color",
@@ -2643,7 +2643,7 @@
       },
       "haze-color": {
         "$type": "color",
-        "$value": "{system.Colors.Neutral.principal}"
+        "$value": "{system.Colors.Backgrounds.atmosphere}"
       },
       "content-width": {
         "$type": "string",

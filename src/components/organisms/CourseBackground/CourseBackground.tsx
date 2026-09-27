@@ -42,7 +42,7 @@ function readPalette(el: HTMLElement): ScenePalette | null {
  * Animated 3D neural network behind the AI-first course card.
  *
  * A Three.js "plexus" cloud framed from the middle of the card to its right edge, with
- * depth-of-field bokeh, star-flare hubs and pulse cascades, over drifting smoke.
+ * depth-of-field bokeh, star-flare hubs and pulse cascades, over a soft atmosphere.
  * Parallax follows the pointer (fine pointers only) and the card's scroll position.
  * Three.js is loaded lazily, so it stays out of the main bundle. Colors come from the
  * Site.Course-background tokens and are re-read whenever `<html data-theme>` changes.

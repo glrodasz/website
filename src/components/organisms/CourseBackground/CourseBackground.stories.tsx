@@ -62,7 +62,7 @@ const meta: Meta<typeof CourseBackground> = {
     docs: {
       description: {
         component:
-          'Animated 3D neural network (Three.js, loaded lazily) behind the AI-first course card: a golden plexus cloud with star-flare hubs, depth-of-field bokeh and pulse cascades over drifting smoke, framed from the middle of the card to its right edge. Move the pointer over the card for parallax; scrolling adds more. Phone-width cards keep full-width copy, so the network recedes further there. Switch the theme from the toolbar; colors come from the `Site.Course-background` tokens. Honors `prefers-reduced-motion` with a single still frame.',
+          'Animated 3D neural network (Three.js, loaded lazily) behind the AI-first course card: a golden plexus cloud with star-flare hubs, depth-of-field bokeh and pulse cascades over a soft atmosphere (warm beige on light, smoky gray on dark), framed from the middle of the card to its right edge. Move the pointer over the card for parallax; scrolling adds more. Phone-width cards keep full-width copy, so the network recedes further there. Switch the theme from the toolbar; colors come from the `Site.Course-background` tokens. Honors `prefers-reduced-motion` with a single still frame.',
       },
     },
   },

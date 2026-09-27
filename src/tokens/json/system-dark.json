@@ -24,6 +24,11 @@
       "contrast": {
         "$type": "color",
         "$value": "{global.Colors.Support.Shark.0}"
+      },
+      "atmosphere": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Shark.500}",
+        "$description": "Soft backdrop behind decorative illustrations: warm beige on light surfaces, smoky gray on dark ones."
       }
     },
     "Foregrounds": {
@@ -138,6 +143,11 @@
       "high": {
         "$type": "color",
         "$value": "#313D00"
+      },
+      "deep": {
+        "$type": "color",
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}",
+        "$description": "Gold for fine detail (thin lines, small marks) that must stay visible on light surfaces."
       }
     },
     "Primary": {

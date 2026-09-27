@@ -20,7 +20,11 @@ export interface ScenePalette {
   neuron: string;
   signal: string;
   haze: string;
-  /** Light card surface: the haze needs more body there for the golden glow to read. */
+  /**
+   * Light card surface. Glow can't be additive there (gold over beige washes out to white), so
+   * everything blends normally, cores get a smaller glint instead of going white-hot, and lines
+   * get more weight.
+   */
   lightSurface: boolean;
 }
 
@@ -45,10 +49,12 @@ const FLARE_SIZE = 3.1;
 const PULSE_SIZE = 1.8;
 const FAR_BOKEH = 22;
 const NEAR_BOKEH = 4;
-const HAZE_OPACITY = { light: 0.82, dark: 0.55 };
-/** Phone cards run full-width copy over the network: thin the smoke so body text keeps its contrast. */
-const NARROW_HAZE_FACTOR = 0.35;
-const SYNAPSE_ALPHA = 0.26;
+const HAZE_OPACITY = { light: 0.7, dark: 0.55 };
+/** Phone cards run full-width copy over the network, so the atmosphere is thinned there. */
+const NARROW_HAZE_FACTOR = { light: 0.6, dark: 0.35 };
+const SYNAPSE_ALPHA = { light: 0.4, dark: 0.26 };
+/** White-hot cores: full on dark; on light a smaller glint, which still reads inside each gold halo. */
+const CORE_GLOW = { light: 0.55, dark: 1 };
 const PARALLAX_POINTER = { x: 3.2, y: 2.0 };  // world units of camera travel
 const PARALLAX_SCROLL = 3.2;
 const PARALLAX_EASE = 0.0045;                 // per ms; ~220 ms to settle
@@ -103,6 +109,7 @@ const NODE_VERTEX = /* glsl */ `
 `;
 
 const NODE_FRAGMENT = /* glsl */ `
+  uniform float uCoreGlow;
   uniform vec3 uColor;
   uniform vec3 uHot;
   uniform float uOpacity;
@@ -117,8 +124,8 @@ const NODE_FRAGMENT = /* glsl */ `
     float disc = smoothstep(1.0, 0.72, r) * 0.42;           // bokeh
     float shape = mix(core * 0.85 + halo * 0.38, disc, vBlur);
     vec3 color = mix(uColor, uHot, vActivation);
-    // A white-hot centre on in-focus and firing nodes.
-    color = mix(color, vec3(1.0), core * (0.3 + 0.55 * vActivation) * (1.0 - vBlur));
+    // A white-hot centre on in-focus and firing nodes (a smaller glint on light surfaces).
+    color = mix(color, vec3(1.0), core * (0.3 + 0.55 * vActivation) * (1.0 - vBlur) * uCoreGlow);
     float alpha = shape * mix(1.0, 0.45, vBlur) * vTwinkle * uOpacity;
     gl_FragColor = vec4(color, alpha);
   }
@@ -170,13 +177,14 @@ const SPRITE_VERTEX = /* glsl */ `
 
 /** Star flares on hubs and firing nodes. */
 const FLARE_FRAGMENT = /* glsl */ `
+  uniform float uCoreGlow;
   uniform sampler2D uMap;
   uniform vec3 uColor;
   varying float vAlpha;
   varying float vBlur;
   void main() {
     vec4 tex = texture2D(uMap, gl_PointCoord);
-    vec3 color = mix(uColor, vec3(1.0), tex.r * 0.45);
+    vec3 color = mix(uColor, vec3(1.0), tex.r * 0.45 * uCoreGlow);
     gl_FragColor = vec4(color, tex.a * vAlpha * mix(1.0, 0.4, vBlur));
   }
 `;
@@ -238,6 +246,7 @@ const HAZE_FRAGMENT = /* glsl */ `
 
 /** Travelling pulses: a tight hot core in a wide glow. */
 const PULSE_FRAGMENT = /* glsl */ `
+  uniform float uCoreGlow;
   uniform vec3 uColor;
   varying float vAlpha;
   varying float vBlur;
@@ -246,7 +255,7 @@ const PULSE_FRAGMENT = /* glsl */ `
     if (r > 1.0) discard;
     float glow = pow(1.0 - r, 3.0);
     float core = smoothstep(0.22, 0.0, r);
-    vec3 color = mix(uColor, vec3(1.0), core * 0.8);
+    vec3 color = mix(uColor, vec3(1.0), core * 0.8 * uCoreGlow);
     gl_FragColor = vec4(color, (glow * 0.8 + core) * vAlpha);
   }
 `;
@@ -319,6 +328,7 @@ export function createNeuralScene(canvas: HTMLCanvasElement): NeuralScene {
     uScale: { value: 1 },
     uFocus: { value: 50 },
     uDofRange: { value: 14 },
+    uCoreGlow: { value: 1 },
   };
   const material = (vertexShader: string, fragmentShader: string, extra: Record<string, THREE.IUniform>) =>
     new THREE.ShaderMaterial({
@@ -334,7 +344,7 @@ export function createNeuralScene(canvas: HTMLCanvasElement): NeuralScene {
     uColor: { value: colors.neuron }, uHot: { value: colors.signal }, uOpacity: { value: 1 },
   });
   const edgeMaterial = material(EDGE_VERTEX, EDGE_FRAGMENT, {
-    uColor: { value: colors.synapse }, uHot: { value: colors.signal }, uOpacity: { value: SYNAPSE_ALPHA },
+    uColor: { value: colors.synapse }, uHot: { value: colors.signal }, uOpacity: { value: SYNAPSE_ALPHA.dark },
   });
   const flareMaterial = material(SPRITE_VERTEX, FLARE_FRAGMENT, {
     uMap: { value: flareTexture }, uColor: { value: colors.signal },
@@ -453,8 +463,9 @@ export function createNeuralScene(canvas: HTMLCanvasElement): NeuralScene {
   }
 
   function applyHazeOpacity() {
-    const base = lightSurface ? HAZE_OPACITY.light : HAZE_OPACITY.dark;
-    hazeMaterial.uniforms.uOpacity.value = base * (graph?.framing === 'narrow' ? NARROW_HAZE_FACTOR : 1);
+    const theme = lightSurface ? 'light' : 'dark';
+    const narrow = graph?.framing === 'narrow';
+    hazeMaterial.uniforms.uOpacity.value = HAZE_OPACITY[theme] * (narrow ? NARROW_HAZE_FACTOR[theme] : 1);
   }
 
   function update(now: number, animate: boolean) {
@@ -580,6 +591,13 @@ export function createNeuralScene(canvas: HTMLCanvasElement): NeuralScene {
       colors.haze.setStyle(palette.haze, THREE.LinearSRGBColorSpace);
       lightSurface = palette.lightSurface;
       applyHazeOpacity();
+      shared.uCoreGlow.value = lightSurface ? CORE_GLOW.light : CORE_GLOW.dark;
+      edgeMaterial.uniforms.uOpacity.value = lightSurface ? SYNAPSE_ALPHA.light : SYNAPSE_ALPHA.dark;
+      const blending = lightSurface ? THREE.NormalBlending : THREE.AdditiveBlending;
+      for (const m of [nodeMaterial, edgeMaterial, flareMaterial, pulseMaterial, bokehMaterial]) {
+        m.blending = blending;
+        m.needsUpdate = true;
+      }
     },
     setPointer(x, y) {
       pointer.set(x, y);

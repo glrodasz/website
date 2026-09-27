@@ -51,7 +51,7 @@ export function sanitizeTokenName(path: string): string {
     .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/\./g, '--')
-    .replace(/[^a-z0-9\-]/g, '');
+    .replace(/[^a-z0-9-]/g, '');
 }
 
 const REFERENCE_PATTERN = /^\{(.+)\}$/;
@@ -61,16 +61,17 @@ const REFERENCE_PATTERN = /^\{(.+)\}$/;
  * Supports slim W3C DTCG format
  */
 export function parseTokens(
-  obj: any,
+  obj: unknown,
   prefix: string = '',
   level: 'global' | 'system' | 'component' = 'global'
 ): TokenMap {
   const tokenMap: TokenMap = {};
 
-  function traverse(current: any, path: string) {
-    if (current && typeof current === 'object') {
+  function traverse(node: unknown, path: string) {
+    if (node && typeof node === 'object') {
+      const current = node as Record<string, unknown>;
       // Check for W3C DTCG token (has $type and $value)
-      if (current.$type && current.$value !== undefined) {
+      if (typeof current.$type === 'string' && current.$type && current.$value !== undefined) {
         let isReference = false;
         let referencePath: string | undefined;
 
@@ -84,7 +85,7 @@ export function parseTokens(
 
         tokenMap[path] = {
           type: current.$type,
-          value: current.$value,
+          value: current.$value as string | number,
           level: level,
           isReference: isReference,
           referencePath: referencePath,

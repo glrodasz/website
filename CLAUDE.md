@@ -252,7 +252,7 @@ When editing token JSON:
 
 ### Dark Mode
 
-Theme is applied via the `data-theme` attribute on `<html>`. Managed by `src/hooks/useTheme.ts`:
+Theme is applied via the `data-theme` attribute on `<html>`. Managed by `ThemeProvider` (`src/hooks/ThemeProvider.tsx`, wraps the app in `App.tsx`) and read with `useTheme()` (`src/hooks/useTheme.ts`):
 
 1. Checks `localStorage` for a persisted user preference
 2. Falls back to `prefers-color-scheme` OS setting

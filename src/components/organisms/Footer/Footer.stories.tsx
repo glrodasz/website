@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
-import { ThemeProvider } from '../../../hooks/useTheme';
+import { ThemeProvider } from '../../../hooks/ThemeProvider';
 import { Footer } from './Footer';
 
 const meta: Meta<typeof Footer> = {

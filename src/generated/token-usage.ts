@@ -3215,87 +3215,92 @@ export const tokenUsages: TokenUsage[] = [
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/pages/Home.css",
-    "line": 285
+    "line": 278
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/pages/Home.css",
-    "line": 286
+    "line": 279
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/pages/Home.css",
-    "line": 287
+    "line": 280
   },
   {
     "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/pages/Home.css",
-    "line": 298
+    "line": 291
   },
   {
     "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/pages/Home.css",
-    "line": 308
+    "line": 301
   },
   {
     "varName": "--components-tokens--site--course-card--media-placeholder-accent-color",
     "file": "src/pages/Home.css",
-    "line": 309
+    "line": 302
   },
   {
     "varName": "--components-tokens--card-text--spacing--vertical",
     "file": "src/pages/Home.css",
-    "line": 315
+    "line": 308
   },
   {
     "varName": "--components-tokens--card-text--spacing--horizontal",
     "file": "src/pages/Home.css",
-    "line": 316
+    "line": 309
   },
   {
     "varName": "--components-tokens--site--colors--on-accent",
     "file": "src/pages/Home.css",
-    "line": 332
+    "line": 325
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/Home.css",
-    "line": 337
+    "line": 330
   },
   {
     "varName": "--components-tokens--site--course-card--card-title-color",
     "file": "src/pages/Home.css",
-    "line": 342
+    "line": 335
+  },
+  {
+    "varName": "--components-tokens--site--course-card--content-max-width",
+    "file": "src/pages/Home.css",
+    "line": 341
   },
   {
     "varName": "--components-tokens--site--course-card--card-description-color",
     "file": "src/pages/Home.css",
-    "line": 348
+    "line": 342
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/Home.css",
-    "line": 381
+    "line": 375
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/pages/Home.css",
-    "line": 420
+    "line": 414
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/pages/Home.css",
-    "line": 421
+    "line": 415
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/pages/Home.css",
-    "line": 422
+    "line": 416
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/Home.css",
-    "line": 454
+    "line": 448
   },
   {
     "varName": "--components-tokens--site--not-found--hero--eyebrow--font-size",
@@ -3925,222 +3930,227 @@ export const tokenUsages: TokenUsage[] = [
   {
     "varName": "--components-tokens--site--course-section--featured--header-gap",
     "file": "src/pages/pages.css",
-    "line": 642
+    "line": 635
   },
   {
     "varName": "--components-tokens--site--course-section--featured--header-bottom",
     "file": "src/pages/pages.css",
-    "line": 643
+    "line": 636
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/pages.css",
-    "line": 647
+    "line": 640
   },
   {
     "varName": "--components-tokens--site--course-section--featured--title-bottom",
     "file": "src/pages/pages.css",
-    "line": 650
+    "line": 643
   },
   {
     "varName": "--components-tokens--site--course-card--card-title-color",
     "file": "src/pages/pages.css",
-    "line": 651
+    "line": 644
   },
   {
     "varName": "--components-tokens--site--course-card--card-description-color",
     "file": "src/pages/pages.css",
-    "line": 655
+    "line": 648
+  },
+  {
+    "varName": "--components-tokens--site--course-card--content-max-width",
+    "file": "src/pages/pages.css",
+    "line": 650
   },
   {
     "varName": "--components-tokens--site--course-section--featured--desc-bottom",
     "file": "src/pages/pages.css",
-    "line": 658
+    "line": 651
   },
   {
     "varName": "--components-tokens--site--course-card--hover-border-color",
     "file": "src/pages/pages.css",
-    "line": 663
+    "line": 656
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--hero-top-mobile",
     "file": "src/pages/pages.css",
-    "line": 689
+    "line": 682
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--hero-bottom-mobile",
     "file": "src/pages/pages.css",
-    "line": 690
+    "line": 683
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--section-horizontal",
     "file": "src/pages/pages.css",
-    "line": 695
+    "line": 688
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--section-horizontal",
     "file": "src/pages/pages.css",
-    "line": 696
+    "line": 689
   },
   {
     "varName": "--components-tokens--site--tutorial--spacing--row-padding",
     "file": "src/pages/pages.css",
-    "line": 727
+    "line": 720
   },
   {
     "varName": "--components-tokens--site--course-section--featured--padding-mobile",
     "file": "src/pages/pages.css",
-    "line": 731
+    "line": 724
   },
   {
     "varName": "--components-tokens--site--course-section--featured--padding-horizontal-mobile",
     "file": "src/pages/pages.css",
-    "line": 731
+    "line": 724
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intents-bottom",
     "file": "src/pages/pages.css",
-    "line": 751
+    "line": 744
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-gap",
     "file": "src/pages/pages.css",
-    "line": 756
+    "line": 749
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-padding",
     "file": "src/pages/pages.css",
-    "line": 758
+    "line": 751
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/pages.css",
-    "line": 779
+    "line": 772
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-label-bottom",
     "file": "src/pages/pages.css",
-    "line": 783
+    "line": 776
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-body-bottom",
     "file": "src/pages/pages.css",
-    "line": 790
+    "line": 783
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-links-gap-y",
     "file": "src/pages/pages.css",
-    "line": 797
+    "line": 790
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-links-gap-x",
     "file": "src/pages/pages.css",
-    "line": 798
+    "line": 791
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-icon-gap",
     "file": "src/pages/pages.css",
-    "line": 804
+    "line": 797
   },
   {
     "varName": "--components-tokens--site--contact--spacing--language-note-padding",
     "file": "src/pages/pages.css",
-    "line": 825
+    "line": 818
   },
   {
     "varName": "--components-tokens--site--contact--spacing--language-note-link-gap",
     "file": "src/pages/pages.css",
-    "line": 841
+    "line": 834
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/pages.css",
-    "line": 860
+    "line": 853
   },
   {
     "varName": "--components-tokens--site--contact--spacing--subtitle-top",
     "file": "src/pages/pages.css",
-    "line": 863
+    "line": 856
   },
   {
     "varName": "--components-tokens--site--contact--spacing--subtitle-bottom",
     "file": "src/pages/pages.css",
-    "line": 864
+    "line": 857
   },
   {
     "varName": "--components-tokens--site--contact--spacing--social-list-gap",
     "file": "src/pages/pages.css",
-    "line": 874
+    "line": 867
   },
   {
     "varName": "--components-tokens--site--contact--spacing--social-link-padding",
     "file": "src/pages/pages.css",
-    "line": 879
+    "line": 872
   },
   {
     "varName": "--components-tokens--site--contact--spacing--layout-gap",
     "file": "src/pages/pages.css",
-    "line": 897
+    "line": 890
   },
   {
     "varName": "--components-tokens--site--contact--spacing--email-bottom",
     "file": "src/pages/pages.css",
-    "line": 907
+    "line": 900
   },
   {
     "varName": "--components-tokens--site--contact--spacing--social-gap",
     "file": "src/pages/pages.css",
-    "line": 919
+    "line": 912
   },
   {
     "varName": "--components-tokens--site--contact--spacing--form-gap",
     "file": "src/pages/pages.css",
-    "line": 936
+    "line": 929
   },
   {
     "varName": "--components-tokens--site--contact--spacing--form-field-gap",
     "file": "src/pages/pages.css",
-    "line": 942
+    "line": 935
   },
   {
     "varName": "--components-tokens--site--contact--form-input--border-radius",
     "file": "src/pages/pages.css",
-    "line": 955
+    "line": 948
   },
   {
     "varName": "--components-tokens--site--contact--spacing--form-input-padding",
     "file": "src/pages/pages.css",
-    "line": 959
+    "line": 952
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/pages/pages.css",
-    "line": 968
+    "line": 961
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/pages/pages.css",
-    "line": 969
+    "line": 962
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/pages/pages.css",
-    "line": 970
+    "line": 963
   },
   {
     "varName": "--components-tokens--site--contact--spacing--success-padding",
     "file": "src/pages/pages.css",
-    "line": 983
+    "line": 976
   },
   {
     "varName": "--components-tokens--site--contact--spacing--success-gap",
     "file": "src/pages/pages.css",
-    "line": 988
+    "line": 981
   },
   {
     "varName": "--components-tokens--site--contact--spacing--layout-gap-mobile",
     "file": "src/pages/pages.css",
-    "line": 994
+    "line": 987
   },
   {
     "varName": "--components-tokens--site--page-layout--sizing--container-max-width",

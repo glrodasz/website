@@ -260,13 +260,6 @@
   );
 }
 
-.home-course-card--accent::before {
-  background: linear-gradient(180deg, var(--color-surface), 35%, var(--color-surface), 45%, transparent);
-  z-index: 1;
-  content: "";
-  opacity: 0.8;
-}
-
 .home-course-card__link,
 .home-course-card__link:hover {
   text-decoration: none;
@@ -345,6 +338,7 @@
 .home-course-card__desc {
   font-size: 0.95rem;
   line-height: 1.6;
+  max-width: var(--components-tokens--site--course-card--content-max-width);
   color: var(--components-tokens--site--course-card--card-description-color);
   margin: 0 0 16px;
 }

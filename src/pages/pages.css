@@ -624,13 +624,6 @@
   padding: var(--components-tokens--site--course-section--featured--padding) var(--components-tokens--site--course-section--featured--padding-horizontal);
 }
 
-.featured-course-card::before {
-  background: linear-gradient(180deg, var(--color-surface), 35%, var(--color-surface), 45%, transparent);
-  z-index: 1;
-  content: "";
-  opacity: 0.8;
-}
-
 .featured-course-card__content {
   position: relative;
   z-index: 1;
@@ -654,7 +647,7 @@
 .featured-course-card__description {
   color: var(--components-tokens--site--course-card--card-description-color);
   line-height: 1.7;
-  max-width: 580px;
+  max-width: var(--components-tokens--site--course-card--content-max-width);
   margin-bottom: var(--components-tokens--site--course-section--featured--desc-bottom);
 }
 

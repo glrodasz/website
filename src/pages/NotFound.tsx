@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../hooks/useTheme';
 import { useLangPrefix } from '../hooks/useLangPrefix';
 import { Seo } from '../components/Seo';
 import { Button } from '../components/atoms/Button';
@@ -24,7 +23,6 @@ const SUGGESTION_RULES: Array<{ pattern: RegExp; key: SuggestionKey; path: strin
 ];
 
 const NotFound: React.FC = () => {
-  const { theme } = useTheme();
   const { t } = useTranslation('notFound');
   const prefix = useLangPrefix();
   const { pathname } = useLocation();
@@ -68,7 +66,7 @@ const NotFound: React.FC = () => {
 
       <section className="page-section">
         <div className="featured-course-card">
-          <CourseBackground theme={theme} />
+          <CourseBackground />
           <div className="featured-course-card__content">
             <div className="featured-course-card__header">
               <Badge variant="accent" size="small" uppercase>

@@ -71,7 +71,7 @@ const Courses: React.FC = () => {
 
       <section className="page-section" id="ai-first">
         <div className="featured-course-card">
-          <CourseBackground theme={theme} />
+          <CourseBackground />
           <div className="featured-course-card__content">
             <div className="featured-course-card__header">
               <Badge variant="accent" size="small" uppercase>

@@ -3215,92 +3215,97 @@ export const tokenUsages: TokenUsage[] = [
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/pages/Home.css",
-    "line": 278
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-color",
-    "file": "src/pages/Home.css",
     "line": 279
   },
   {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
+    "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/pages/Home.css",
     "line": 280
   },
   {
-    "varName": "--components-tokens--site--course-card--media-background-color",
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/pages/Home.css",
-    "line": 291
+    "line": 281
   },
   {
     "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/pages/Home.css",
-    "line": 301
+    "line": 292
   },
   {
-    "varName": "--components-tokens--site--course-card--media-placeholder-accent-color",
+    "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/pages/Home.css",
     "line": 302
   },
   {
-    "varName": "--components-tokens--card-text--spacing--vertical",
+    "varName": "--components-tokens--site--course-card--media-placeholder-accent-color",
     "file": "src/pages/Home.css",
-    "line": 308
+    "line": 303
   },
   {
-    "varName": "--components-tokens--card-text--spacing--horizontal",
+    "varName": "--components-tokens--card-text--spacing--vertical",
     "file": "src/pages/Home.css",
     "line": 309
   },
   {
+    "varName": "--components-tokens--card-text--spacing--horizontal",
+    "file": "src/pages/Home.css",
+    "line": 310
+  },
+  {
+    "varName": "--components-tokens--site--course-background--content-width",
+    "file": "src/pages/Home.css",
+    "line": 316
+  },
+  {
     "varName": "--components-tokens--site--colors--on-accent",
     "file": "src/pages/Home.css",
-    "line": 325
+    "line": 333
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/Home.css",
-    "line": 330
+    "line": 338
   },
   {
     "varName": "--components-tokens--site--course-card--card-title-color",
     "file": "src/pages/Home.css",
-    "line": 335
+    "line": 343
   },
   {
     "varName": "--components-tokens--site--course-card--content-max-width",
     "file": "src/pages/Home.css",
-    "line": 341
+    "line": 349
   },
   {
     "varName": "--components-tokens--site--course-card--card-description-color",
     "file": "src/pages/Home.css",
-    "line": 342
+    "line": 350
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/Home.css",
-    "line": 375
+    "line": 383
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/pages/Home.css",
-    "line": 414
+    "line": 422
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/pages/Home.css",
-    "line": 415
+    "line": 423
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/pages/Home.css",
-    "line": 416
+    "line": 424
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/Home.css",
-    "line": 448
+    "line": 456
   },
   {
     "varName": "--components-tokens--site--not-found--hero--eyebrow--font-size",
@@ -3900,257 +3905,262 @@ export const tokenUsages: TokenUsage[] = [
   {
     "varName": "--components-tokens--site--course-card--surface-color",
     "file": "src/pages/pages.css",
-    "line": 619
+    "line": 620
   },
   {
     "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/pages/pages.css",
-    "line": 620
+    "line": 621
   },
   {
     "varName": "--components-tokens--site--course-card--hover-border-color",
-    "file": "src/pages/pages.css",
-    "line": 622
-  },
-  {
-    "varName": "--components-tokens--site--course-section--featured--border-radius",
     "file": "src/pages/pages.css",
     "line": 623
   },
   {
-    "varName": "--components-tokens--site--course-section--featured--padding",
+    "varName": "--components-tokens--site--course-section--featured--border-radius",
     "file": "src/pages/pages.css",
     "line": 624
+  },
+  {
+    "varName": "--components-tokens--site--course-section--featured--padding",
+    "file": "src/pages/pages.css",
+    "line": 625
   },
   {
     "varName": "--components-tokens--site--course-section--featured--padding-horizontal",
     "file": "src/pages/pages.css",
-    "line": 624
+    "line": 625
   },
   {
-    "varName": "--components-tokens--site--course-section--featured--header-gap",
-    "file": "src/pages/pages.css",
-    "line": 635
-  },
-  {
-    "varName": "--components-tokens--site--course-section--featured--header-bottom",
+    "varName": "--components-tokens--site--course-background--content-width",
     "file": "src/pages/pages.css",
     "line": 636
   },
   {
-    "varName": "--components-tokens--site--typography--font-family--headings",
-    "file": "src/pages/pages.css",
-    "line": 640
-  },
-  {
-    "varName": "--components-tokens--site--course-section--featured--title-bottom",
+    "varName": "--components-tokens--site--course-section--featured--header-gap",
     "file": "src/pages/pages.css",
     "line": 643
   },
   {
-    "varName": "--components-tokens--site--course-card--card-title-color",
+    "varName": "--components-tokens--site--course-section--featured--header-bottom",
     "file": "src/pages/pages.css",
     "line": 644
   },
   {
-    "varName": "--components-tokens--site--course-card--card-description-color",
+    "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/pages.css",
     "line": 648
   },
   {
-    "varName": "--components-tokens--site--course-card--content-max-width",
-    "file": "src/pages/pages.css",
-    "line": 650
-  },
-  {
-    "varName": "--components-tokens--site--course-section--featured--desc-bottom",
+    "varName": "--components-tokens--site--course-section--featured--title-bottom",
     "file": "src/pages/pages.css",
     "line": 651
   },
   {
-    "varName": "--components-tokens--site--course-card--hover-border-color",
+    "varName": "--components-tokens--site--course-card--card-title-color",
+    "file": "src/pages/pages.css",
+    "line": 652
+  },
+  {
+    "varName": "--components-tokens--site--course-card--card-description-color",
     "file": "src/pages/pages.css",
     "line": 656
   },
   {
+    "varName": "--components-tokens--site--course-card--content-max-width",
+    "file": "src/pages/pages.css",
+    "line": 658
+  },
+  {
+    "varName": "--components-tokens--site--course-section--featured--desc-bottom",
+    "file": "src/pages/pages.css",
+    "line": 659
+  },
+  {
+    "varName": "--components-tokens--site--course-card--hover-border-color",
+    "file": "src/pages/pages.css",
+    "line": 664
+  },
+  {
     "varName": "--components-tokens--site--page-layout--spacing--hero-top-mobile",
     "file": "src/pages/pages.css",
-    "line": 682
+    "line": 690
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--hero-bottom-mobile",
     "file": "src/pages/pages.css",
-    "line": 683
+    "line": 691
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--section-horizontal",
     "file": "src/pages/pages.css",
-    "line": 688
+    "line": 696
   },
   {
     "varName": "--components-tokens--site--page-layout--spacing--section-horizontal",
     "file": "src/pages/pages.css",
-    "line": 689
+    "line": 697
   },
   {
     "varName": "--components-tokens--site--tutorial--spacing--row-padding",
     "file": "src/pages/pages.css",
-    "line": 720
+    "line": 728
   },
   {
     "varName": "--components-tokens--site--course-section--featured--padding-mobile",
     "file": "src/pages/pages.css",
-    "line": 724
+    "line": 732
   },
   {
     "varName": "--components-tokens--site--course-section--featured--padding-horizontal-mobile",
     "file": "src/pages/pages.css",
-    "line": 724
+    "line": 732
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intents-bottom",
     "file": "src/pages/pages.css",
-    "line": 744
+    "line": 752
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-gap",
     "file": "src/pages/pages.css",
-    "line": 749
+    "line": 757
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-padding",
     "file": "src/pages/pages.css",
-    "line": 751
+    "line": 759
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/pages.css",
-    "line": 772
+    "line": 780
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-label-bottom",
     "file": "src/pages/pages.css",
-    "line": 776
+    "line": 784
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-body-bottom",
     "file": "src/pages/pages.css",
-    "line": 783
+    "line": 791
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-links-gap-y",
     "file": "src/pages/pages.css",
-    "line": 790
+    "line": 798
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-links-gap-x",
     "file": "src/pages/pages.css",
-    "line": 791
+    "line": 799
   },
   {
     "varName": "--components-tokens--site--contact--spacing--intent-icon-gap",
     "file": "src/pages/pages.css",
-    "line": 797
+    "line": 805
   },
   {
     "varName": "--components-tokens--site--contact--spacing--language-note-padding",
     "file": "src/pages/pages.css",
-    "line": 818
+    "line": 826
   },
   {
     "varName": "--components-tokens--site--contact--spacing--language-note-link-gap",
     "file": "src/pages/pages.css",
-    "line": 834
+    "line": 842
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/pages/pages.css",
-    "line": 853
+    "line": 861
   },
   {
     "varName": "--components-tokens--site--contact--spacing--subtitle-top",
     "file": "src/pages/pages.css",
-    "line": 856
+    "line": 864
   },
   {
     "varName": "--components-tokens--site--contact--spacing--subtitle-bottom",
     "file": "src/pages/pages.css",
-    "line": 857
+    "line": 865
   },
   {
     "varName": "--components-tokens--site--contact--spacing--social-list-gap",
     "file": "src/pages/pages.css",
-    "line": 867
+    "line": 875
   },
   {
     "varName": "--components-tokens--site--contact--spacing--social-link-padding",
     "file": "src/pages/pages.css",
-    "line": 872
+    "line": 880
   },
   {
     "varName": "--components-tokens--site--contact--spacing--layout-gap",
     "file": "src/pages/pages.css",
-    "line": 890
+    "line": 898
   },
   {
     "varName": "--components-tokens--site--contact--spacing--email-bottom",
     "file": "src/pages/pages.css",
-    "line": 900
+    "line": 908
   },
   {
     "varName": "--components-tokens--site--contact--spacing--social-gap",
     "file": "src/pages/pages.css",
-    "line": 912
+    "line": 920
   },
   {
     "varName": "--components-tokens--site--contact--spacing--form-gap",
     "file": "src/pages/pages.css",
-    "line": 929
+    "line": 937
   },
   {
     "varName": "--components-tokens--site--contact--spacing--form-field-gap",
     "file": "src/pages/pages.css",
-    "line": 935
+    "line": 943
   },
   {
     "varName": "--components-tokens--site--contact--form-input--border-radius",
     "file": "src/pages/pages.css",
-    "line": 948
+    "line": 956
   },
   {
     "varName": "--components-tokens--site--contact--spacing--form-input-padding",
     "file": "src/pages/pages.css",
-    "line": 952
+    "line": 960
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/pages/pages.css",
-    "line": 961
+    "line": 969
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/pages/pages.css",
-    "line": 962
+    "line": 970
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/pages/pages.css",
-    "line": 963
+    "line": 971
   },
   {
     "varName": "--components-tokens--site--contact--spacing--success-padding",
     "file": "src/pages/pages.css",
-    "line": 976
+    "line": 984
   },
   {
     "varName": "--components-tokens--site--contact--spacing--success-gap",
     "file": "src/pages/pages.css",
-    "line": 981
+    "line": 989
   },
   {
     "varName": "--components-tokens--site--contact--spacing--layout-gap-mobile",
     "file": "src/pages/pages.css",
-    "line": 987
+    "line": 995
   },
   {
     "varName": "--components-tokens--site--page-layout--sizing--container-max-width",

@@ -2631,15 +2631,24 @@
     "Course-background": {
       "synapse-color": {
         "$type": "color",
-        "$value": "{system.Colors.Foregrounds.neutral}"
+        "$value": "{system.Colors.Complementary.principal}"
       },
       "neuron-color": {
         "$type": "color",
-        "$value": "{system.Colors.Foregrounds.neutral}"
+        "$value": "{system.Colors.Complementary.principal}"
       },
       "signal-color": {
         "$type": "color",
         "$value": "{system.Colors.Complementary.principal}"
+      },
+      "haze-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Neutral.principal}"
+      },
+      "content-width": {
+        "$type": "string",
+        "$value": "58%",
+        "$description": "Share of the card the copy column may use from tablet up; the neural network owns the rest. A percentage has no ancestor on the sizing scale."
       }
     },
     "Page-layout": {

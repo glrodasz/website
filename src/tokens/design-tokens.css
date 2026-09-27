@@ -625,6 +625,7 @@
 
   /* Site */
   --components-tokens--site--course-card--content-max-width: 580px;
+  --components-tokens--site--course-background--content-width: 58%;
   --components-tokens--site--focus-ring--outline-width: 2px;
   --components-tokens--site--focus-ring--outline-offset: 2px;
   --components-tokens--site--not-found--hero--eyebrow--font-size: clamp(3.5rem, 12vw, 7rem);
@@ -652,9 +653,10 @@
   --components-tokens--site--course-card--meta-padding: var(--system-tokens--spacing--sm);
   --components-tokens--site--course-card--logo-height: var(--system-tokens--sizing--md);
   --components-tokens--site--course-card--logo-margin-bottom: var(--system-tokens--spacing--md);
-  --components-tokens--site--course-background--synapse-color: var(--system-tokens--colors--foregrounds--neutral);
-  --components-tokens--site--course-background--neuron-color: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--site--course-background--synapse-color: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--course-background--neuron-color: var(--system-tokens--colors--complementary--principal);
   --components-tokens--site--course-background--signal-color: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--course-background--haze-color: var(--system-tokens--colors--neutral--principal);
   --components-tokens--site--page-layout--spacing--hero-top: var(--system-tokens--spacing--lm);
   --components-tokens--site--page-layout--spacing--hero-bottom: var(--system-tokens--spacing--ml);
   --components-tokens--site--page-layout--spacing--hero-top-mobile: var(--system-tokens--spacing--md);

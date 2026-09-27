@@ -252,6 +252,7 @@
 
 .home-course-card--accent {
   position: relative;
+  container-type: inline-size;
   border: 2px solid var(--color-accent);
   background: linear-gradient(
     135deg,
@@ -307,6 +308,13 @@
   z-index: 1;
   padding: var(--components-tokens--card-text--spacing--vertical)
     var(--components-tokens--card-text--spacing--horizontal);
+}
+
+/* From tablet up the copy keeps to the left; the neural-network background owns the right. */
+@container (min-width: 520px) {
+  .home-course-card--accent .home-course-card__body {
+    max-width: var(--components-tokens--site--course-background--content-width);
+  }
 }
 
 .home-course-card__badge-container {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { CSSProperties, ReactNode } from 'react';
 import { CourseBackground } from './CourseBackground';
+import { NARROW_MAX_WIDTH } from './graph';
 import { Badge } from '../../atoms/Badge';
 import { WaitlistForm } from '../../molecules/WaitlistForm';
 
@@ -14,13 +15,25 @@ const CardShell: React.FC<{ width: number; height?: number; children?: ReactNode
     boxSizing: 'border-box',
     padding: 'var(--components-tokens--site--course-section--featured--padding-mobile) var(--components-tokens--site--course-section--featured--padding-horizontal)',
     borderRadius: 'var(--components-tokens--site--course-section--featured--border-radius)',
+    containerType: 'inline-size',
     border: '2px solid var(--components-tokens--site--course-card--hover-border-color)',
     background: 'var(--components-tokens--site--course-card--surface-color)',
   };
   return (
     <div style={style}>
       <CourseBackground />
-      {children && <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>}
+      {children && (
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            // Mirrors the pages: from tablet up the copy keeps to the left, the network owns the right.
+            maxWidth: width >= NARROW_MAX_WIDTH ? 'var(--components-tokens--site--course-background--content-width)' : undefined,
+          }}
+        >
+          {children}
+        </div>
+      )}
     </div>
   );
 };
@@ -49,7 +62,7 @@ const meta: Meta<typeof CourseBackground> = {
     docs: {
       description: {
         component:
-          'Animated neural network behind the AI-first course card. The layout follows the card width: wide cards get a full network in the free column right of the copy, narrow cards a smaller one in the top-right corner. Switch the theme from the toolbar; colors come from the `Site.Course-background` tokens. Honors `prefers-reduced-motion` with a single still frame.',
+          'Animated 3D neural network (Three.js, loaded lazily) behind the AI-first course card: a golden plexus cloud with star-flare hubs, depth-of-field bokeh and pulse cascades over drifting smoke, framed from the middle of the card to its right edge. Move the pointer over the card for parallax; scrolling adds more. Phone-width cards keep full-width copy, so the network recedes further there. Switch the theme from the toolbar; colors come from the `Site.Course-background` tokens. Honors `prefers-reduced-motion` with a single still frame.',
       },
     },
   },
@@ -59,17 +72,17 @@ const meta: Meta<typeof CourseBackground> = {
 export default meta;
 type Story = StoryObj<typeof CourseBackground>;
 
-/** Courses page and 404 on desktop: the network fills the column right of the copy. */
+/** Courses page and 404 on desktop. */
 export const Wide: Story = {
   render: () => <CardShell width={1080} height={420} />,
 };
 
-/** Half-width Home card on desktop, and tablets. */
+/** Half-width Home card on desktop. */
 export const Compact: Story = {
   render: () => <CardShell width={560} height={400} />,
 };
 
-/** Phone-width card. */
+/** Phone-width card: full-width copy, so the network is faded further. */
 export const Mobile: Story = {
   render: () => <CardShell width={358} height={300} />,
 };

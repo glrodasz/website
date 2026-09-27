@@ -614,6 +614,7 @@
 .featured-course-card {
   position: relative;
   overflow: hidden;
+  container-type: inline-size;
   background: linear-gradient(
     135deg,
     var(--components-tokens--site--course-card--surface-color) 0%,
@@ -627,6 +628,13 @@
 .featured-course-card__content {
   position: relative;
   z-index: 1;
+}
+
+/* From tablet up the copy keeps to the left; the neural-network background owns the right. */
+@container (min-width: 520px) {
+  .featured-course-card__content {
+    max-width: var(--components-tokens--site--course-background--content-width);
+  }
 }
 
 .featured-course-card__header {

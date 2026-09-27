@@ -30,9 +30,11 @@
 | `site--course-card--hover-border-color` | `{system.Colors.Complementary.principal}` | Card hover border (e.g. `LifestyleMediaCard`, course rows) |
 | `site--course-card--media-placeholder-accent-color` | `{system.Colors.Complementary.principal}` | Icon/emoji on empty media area |
 | `site--course-card--content-max-width` | `580` (raw, documented) | Line length of the featured course copy; keeps it clear of the neural-network background |
-| `site--course-background--synapse-color` | `{system.Colors.Foregrounds.neutral}` | Neural-network connections (drawn at low alpha) |
-| `site--course-background--neuron-color` | `{system.Colors.Foregrounds.neutral}` | Idle neurons |
-| `site--course-background--signal-color` | `{system.Colors.Complementary.principal}` | Travelling signals, lit neurons and their glow |
+| `site--course-background--synapse-color` | `{system.Colors.Complementary.principal}` | Neural-network connections (drawn at low alpha) |
+| `site--course-background--neuron-color` | `{system.Colors.Complementary.principal}` | Nodes at rest |
+| `site--course-background--signal-color` | `{system.Colors.Complementary.principal}` | Pulses, firing nodes, star flares and bokeh |
+| `site--course-background--haze-color` | `{system.Colors.Neutral.principal}` | Smoke behind the network (dark on the light card, a lighter fog on the dark one) |
+| `site--course-background--content-width` | `58%` (raw, documented) | Copy column from tablet up; the network owns the rest of the card |
 
 **Gradients:** Use `surface-color` and `media-background-color` for start/end stops (same system targets as today; split later if the featured card should diverge).
 

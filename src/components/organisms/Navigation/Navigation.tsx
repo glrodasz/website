@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, type FC } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { ArrowSquareOut, CaretDown, Globe, Moon, Sun } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
-import { SITE_NAME, SITE_TAGLINE } from '../../../data/site';
+import { BLOG_URL, SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
@@ -261,7 +261,7 @@ export const Navigation: FC<NavigationProps> = ({
               <li>
                 <a
                   className={navLinkBtn}
-                  href="https://undefined.sh"
+                  href={BLOG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -462,7 +462,7 @@ export const Navigation: FC<NavigationProps> = ({
         {/* Full-width rows */}
         <a
           className="qd-navigation__overlay-row"
-          href="https://undefined.sh"
+          href={BLOG_URL}
           target="_blank"
           rel="noopener noreferrer"
           onClick={closeMobile}

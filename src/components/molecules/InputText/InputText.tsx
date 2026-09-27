@@ -52,7 +52,8 @@ export const InputText: React.FC<InputTextProps> = ({
   ...rest
 }) => {
   const baseClass = 'qd-input-text';
-  const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
+  const generatedId = React.useId();
+  const inputId = id || `input-${generatedId}`;
 
   const wrapperClasses = [
     `${baseClass}__wrapper`,

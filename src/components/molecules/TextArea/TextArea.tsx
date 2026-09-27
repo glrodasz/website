@@ -46,7 +46,8 @@ export const TextArea: React.FC<TextAreaProps> = ({
   ...rest
 }) => {
   const baseClass = 'qd-textarea';
-  const textareaId = id || `textarea-${Math.random().toString(36).substr(2, 9)}`;
+  const generatedId = React.useId();
+  const textareaId = id || `textarea-${generatedId}`;
 
   const wrapperClasses = [
     `${baseClass}__wrapper`,

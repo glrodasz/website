@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
+import { BLOG_URL } from '../src/data/site';
 
 interface BlogPost {
   title: string;
@@ -16,8 +17,8 @@ interface BlogPost {
 }
 
 const FEEDS = {
-  en: 'https://undefined.sh/rss.xml',
-  es: 'https://undefined.sh/es/rss.xml',
+  en: `${BLOG_URL}/rss.xml`,
+  es: `${BLOG_URL}/es/rss.xml`,
 } as const;
 
 type PostLocale = keyof typeof FEEDS;
@@ -27,6 +28,23 @@ const DATE_LOCALE: Record<PostLocale, string> = {
   es: 'es-ES',
 };
 
+
+// Feed HTML (unclosed <img>, <br>…) is kept raw via stopNodes, so CDATA wrappers survive as text.
+function unwrapCdata(text: string): string {
+  return text.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1');
+}
+
+// Resolve relative covers against the feed origin and collapse duplicate slashes
+// (the feed has emitted `//covers/...` paths).
+function normalizeUrl(url: string, base: string): string {
+  try {
+    const resolved = new URL(url, base);
+    resolved.pathname = resolved.pathname.replace(/\/{2,}/g, '/');
+    return resolved.toString();
+  } catch {
+    return '';
+  }
+}
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim();
@@ -64,14 +82,14 @@ function extractCover(item: Record<string, unknown>): string {
   // first <img> in content:encoded
   const contentEncoded = item['content:encoded'];
   if (typeof contentEncoded === 'string') {
-    const match = contentEncoded.match(/<img[^>]+src=["']([^"']+)["']/i);
+    const match = unwrapCdata(contentEncoded).match(/<img[^>]+src=["']([^"']+)["']/i);
     if (match?.[1]) return match[1];
   }
 
   // first <img> in description
   const description = item['description'];
   if (typeof description === 'string') {
-    const match = description.match(/<img[^>]+src=["']([^"']+)["']/i);
+    const match = unwrapCdata(description).match(/<img[^>]+src=["']([^"']+)["']/i);
     if (match?.[1]) return match[1];
   }
 
@@ -88,6 +106,9 @@ async function fetchPosts(url: string, locale: PostLocale): Promise<BlogPost[]> 
     attributeNamePrefix: '@_',
     cdataPropName: '__cdata',
     allowBooleanAttributes: true,
+    // Keep post HTML as raw text: parsing it as XML nests every unclosed <img>/<br>
+    // until fast-xml-parser throws "Maximum nested tags exceeded".
+    stopNodes: ['*.content:encoded', '*.description'],
   });
 
   const feed = parser.parse(xml) as Record<string, unknown>;
@@ -98,15 +119,16 @@ async function fetchPosts(url: string, locale: PostLocale): Promise<BlogPost[]> 
   return items.slice(0, 3).map((raw) => {
     const item = raw as Record<string, unknown>;
     const title = String(item['title'] ?? '');
-    const link = String(item['link'] ?? 'https://undefined.sh');
+    const link = String(item['link'] ?? BLOG_URL);
     const pubDate = String(item['pubDate'] ?? '');
-    const description = String(item['description'] ?? '');
+    const description = unwrapCdata(String(item['description'] ?? ''));
 
     const date = pubDate
       ? new Date(pubDate).toLocaleDateString(DATE_LOCALE[locale], { day: 'numeric', month: 'short', year: 'numeric' })
       : '';
 
-    const cover = extractCover(item);
+    const rawCover = extractCover(item);
+    const cover = rawCover ? normalizeUrl(rawCover, url) : '';
     const excerpt = stripHtml(description).slice(0, 160);
 
     return { title, link, date, excerpt, cover };

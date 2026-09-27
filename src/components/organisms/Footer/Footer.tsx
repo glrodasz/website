@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Globe, Moon, Sun } from 'phosphor-react';
 import { footerSocials, type SocialLink } from '../../../data/socials';
+import { BLOG_URL } from '../../../data/site';
 import {
   FooterSocialIcon,
   FOOTER_MOBILE_SOCIAL_IDS,
@@ -92,7 +93,7 @@ export const Footer: FC<FooterProps> = ({
             <h2 className="qd-footer__col-title">{t('footer.content')}</h2>
             <ul>
               <li>
-                <a href="https://undefined.sh" target="_blank" rel="noopener noreferrer">
+                <a href={BLOG_URL} target="_blank" rel="noopener noreferrer">
                   {t('footer.blog')}
                 </a>
               </li>

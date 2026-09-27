@@ -17,7 +17,7 @@ Landing page with a hero introducing Guillermo's focus as a tech partner for big
 
 ### Writing
 
-Links to articles published on [undefined.sh](https://undefined.sh), Guillermo's blog.
+Links to articles published on [blog.guillermorodas.com](https://blog.guillermorodas.com), Guillermo's blog.
 
 ### About — My History
 

@@ -13,6 +13,7 @@ import {
   youtubeThumb,
 } from '../data/courses';
 import { Seo } from '../components/Seo';
+import { BLOG_URL } from '../data/site';
 import { writingPostsByLang, type BlogPost } from '../generated/writing-posts';
 import './Home.css';
 import { ArrowRight, Globe } from 'phosphor-react';
@@ -156,7 +157,7 @@ const Home: React.FC = () => {
               label={t('writing.seeFull')}
               variant="secondary"
               size="small"
-              href="https://undefined.sh"
+              href={BLOG_URL}
               target="_blank"
               rel="noopener noreferrer"
             />

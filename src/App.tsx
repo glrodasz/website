@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { ThemeProvider } from './hooks/useTheme';
+import { ThemeProvider } from './hooks/ThemeProvider';
 import { useTranslation } from 'react-i18next';
 import Navigation from './components/organisms/Navigation';
 import { ScrollToTop } from './components/molecules/ScrollToTop';

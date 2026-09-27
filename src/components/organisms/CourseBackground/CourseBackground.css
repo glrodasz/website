@@ -1,15 +1,32 @@
-.course-background {
+/* Fills the card behind its content. The network is framed from the middle of the card
+   to its right edge; the stage mask fades it out toward the copy on the left. */
+.qd-course-background {
   position: absolute;
-  top: -50%;
-  left: 0;
-  width: 150%;
-  height: 200%;
-  display: block;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
-  /* Fade the canvas out on the left so it never competes with the card text.
-     Transparent from 0 → 30 %, then blends in from 30 → 55 %, fully opaque after. */
-  mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 55%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 55%);
-  filter: blur(2px);
+  container-type: size;
+}
+
+.qd-course-background__stage {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 30%, black 70%);
+  mask-image: linear-gradient(to right, transparent 30%, black 70%);
+}
+
+.qd-course-background__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Phones: the copy runs full width over the network, so everything recedes further. */
+@container (max-width: 519px) {
+  .qd-course-background__stage {
+    -webkit-mask-image: linear-gradient(to right, transparent 25%, rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.72) 100%);
+    mask-image: linear-gradient(to right, transparent 25%, rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.72) 100%);
+  }
 }

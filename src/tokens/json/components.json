@@ -2621,6 +2621,34 @@
       "logo-margin-bottom": {
         "$type": "number",
         "$value": "{system.Spacing.md}"
+      },
+      "content-max-width": {
+        "$type": "number",
+        "$value": 580,
+        "$description": "Readable line length for the featured course copy; also keeps it clear of the neural-network background drawn to its right."
+      }
+    },
+    "Course-background": {
+      "synapse-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.deep}"
+      },
+      "neuron-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.deep}"
+      },
+      "signal-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.principal}"
+      },
+      "haze-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.atmosphere}"
+      },
+      "content-width": {
+        "$type": "string",
+        "$value": "58%",
+        "$description": "Share of the card the copy column may use from tablet up; the neural network owns the rest. A percentage has no ancestor on the sizing scale."
       }
     },
     "Page-layout": {

@@ -34,6 +34,11 @@
       "high": {
         "$type": "color",
         "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.600}"
+      },
+      "deep": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Supernova.400}",
+        "$description": "Gold for fine detail (thin lines, small marks) that must stay visible on light surfaces."
       }
     },
     "Neutral": {
@@ -118,6 +123,11 @@
       "neutral": {
         "$type": "color",
         "$value": "{global.Colors.Support.Shark.100}"
+      },
+      "atmosphere": {
+        "$type": "color",
+        "$value": "{global.Colors.Schemas.Flax sepia.Sepia.200}",
+        "$description": "Soft backdrop behind decorative illustrations: warm beige on light surfaces, smoky gray on dark ones."
       }
     },
     "Foregrounds": {

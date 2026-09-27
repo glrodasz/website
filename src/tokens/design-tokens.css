@@ -624,6 +624,8 @@
   --components-tokens--footer--typography--logo--font-weight: var(--system-tokens--typography--font-weight--strong);
 
   /* Site */
+  --components-tokens--site--course-card--content-max-width: 580px;
+  --components-tokens--site--course-background--content-width: 58%;
   --components-tokens--site--focus-ring--outline-width: 2px;
   --components-tokens--site--focus-ring--outline-offset: 2px;
   --components-tokens--site--not-found--hero--eyebrow--font-size: clamp(3.5rem, 12vw, 7rem);
@@ -651,6 +653,10 @@
   --components-tokens--site--course-card--meta-padding: var(--system-tokens--spacing--sm);
   --components-tokens--site--course-card--logo-height: var(--system-tokens--sizing--md);
   --components-tokens--site--course-card--logo-margin-bottom: var(--system-tokens--spacing--md);
+  --components-tokens--site--course-background--synapse-color: var(--system-tokens--colors--complementary--deep);
+  --components-tokens--site--course-background--neuron-color: var(--system-tokens--colors--complementary--deep);
+  --components-tokens--site--course-background--signal-color: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--course-background--haze-color: var(--system-tokens--colors--backgrounds--atmosphere);
   --components-tokens--site--page-layout--spacing--hero-top: var(--system-tokens--spacing--lm);
   --components-tokens--site--page-layout--spacing--hero-bottom: var(--system-tokens--spacing--ml);
   --components-tokens--site--page-layout--spacing--hero-top-mobile: var(--system-tokens--spacing--md);
@@ -1128,6 +1134,7 @@
   --system-tokens--colors--complementary--subtle: #313D00;
   --system-tokens--colors--complementary--off: #FBFFEB;
   --system-tokens--colors--complementary--high: #313D00;
+  --system-tokens--colors--complementary--deep: #CD8901;
   --system-tokens--colors--neutral--principal: #454545;
   --system-tokens--colors--neutral--subtle: #5D5D5D;
   --system-tokens--colors--neutral--off: #F6F6F6;
@@ -1146,6 +1153,7 @@
   --system-tokens--colors--backgrounds--subtle: #D1D1D1;
   --system-tokens--colors--backgrounds--contrast: #292929;
   --system-tokens--colors--backgrounds--neutral: #F6F6F6;
+  --system-tokens--colors--backgrounds--atmosphere: #F4DBB8;
   --system-tokens--colors--foregrounds--principal: #002529;
   --system-tokens--colors--foregrounds--secondary: #006E7A;
   --system-tokens--colors--foregrounds--tertiary: #262626;
@@ -1208,6 +1216,7 @@
   --system-tokens--colors--backgrounds--subtle: #333333;
   --system-tokens--colors--backgrounds--neutral: #2E2E2E;
   --system-tokens--colors--backgrounds--contrast: #FFFFFF;
+  --system-tokens--colors--backgrounds--atmosphere: #454545;
   --system-tokens--colors--foregrounds--principal: #FFFFFF;
   --system-tokens--colors--foregrounds--secondary: #D1D1D1;
   --system-tokens--colors--foregrounds--tertiary: #888888;
@@ -1222,5 +1231,6 @@
   --system-tokens--colors--borders--disabled: #2E2E2E;
   --system-tokens--colors--borders--focus: #F7DF1D;
   --system-tokens--colors--complementary--principal: #F7DF1D;
+  --system-tokens--colors--complementary--deep: #F7DF1D;
   --system-tokens--colors--fixed--on-accent: #1A1A1A;
 }

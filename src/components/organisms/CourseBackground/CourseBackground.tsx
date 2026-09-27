@@ -1,268 +1,184 @@
 import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import { NARROW_MAX_WIDTH } from './graph';
+import type { NeuralScene, ScenePalette } from './scene';
 import './CourseBackground.css';
 
 export interface CourseBackgroundProps {
-  theme?: 'light' | 'dark';
+  className?: string;
 }
 
-// — Network layout —————————————————————————————————
-const LAYERS = [3, 6, 8, 8, 6, 3];   // neurons per layer
-const LAYER_SPACING = 10;             // horizontal gap between layers
-const NEURON_V_SPACING = 4.5;         // vertical gap between neurons
-const NEURON_RADIUS = 0.42;
-const SIGNAL_RADIUS = 0.30;
+const TOKEN = '--components-tokens--site--course-background';
+const SURFACE_TOKEN = '--components-tokens--site--course-card--surface-color';
+const WIDE_PIXEL_RATIO = 2;
+const NARROW_PIXEL_RATIO = 1.5;
 
-// — Timing —————————————————————————————————————————
-const WAVE_INTERVAL_MS = 2400;  // new activation wave every ~2.4 s
-const SIGNAL_TRAVEL_MS = 480;   // time for a signal to cross one layer
-const NEURON_FLASH_MS  = 720;   // duration of the neuron glow
-
-// — Connection opacity ——————————————————————————————
-const CONN_OPACITY = { dark: 0.10, light: 0.38 } as const;
-
-// Quick-rise / slow-decay envelope for the neuron flash
-function flashEase(t: number): number {
-  if (t <= 0 || t >= 1) return 0;
-  return t < 0.2 ? t / 0.2 : 1 - (t - 0.2) / 0.8;
+/** Relative luminance (0–1) of a CSS color, via a throwaway 2D context. */
+function luminance(color: string): number {
+  const ctx = document.createElement('canvas').getContext('2d');
+  if (!ctx) return 0;
+  ctx.fillStyle = color;
+  ctx.fillRect(0, 0, 1, 1);
+  const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+  const lin = (c: number) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 }
 
-function pickRandom<T>(arr: T[], n: number): T[] {
-  return [...arr].sort(() => Math.random() - 0.5).slice(0, n);
+function readPalette(el: HTMLElement): ScenePalette | null {
+  const style = getComputedStyle(el);
+  const read = (name: string) => style.getPropertyValue(name).trim();
+  const synapse = read(`${TOKEN}--synapse-color`);
+  const neuron = read(`${TOKEN}--neuron-color`);
+  const signal = read(`${TOKEN}--signal-color`);
+  const haze = read(`${TOKEN}--haze-color`);
+  const surface = read(SURFACE_TOKEN);
+  if (!synapse || !neuron || !signal || !haze) return null;
+  return { synapse, neuron, signal, haze, lightSurface: !!surface && luminance(surface) > 0.4 };
 }
 
-interface NeuronData {
-  mesh: THREE.Mesh;
-  mat:  THREE.MeshBasicMaterial;
-  pos:  THREE.Vector3;   // world-space snapshot (neurons never move)
-  activeAt: number;      // performance.now() when last activated, -Inf = idle
-}
-
-interface SignalData {
-  mesh:      THREE.Mesh;
-  mat:       THREE.MeshBasicMaterial;
-  from:      THREE.Vector3;
-  to:        THREE.Vector3;
-  startTime: number;
-}
-
-interface ScheduledEvent {
-  fireAt: number;
-  fn: () => void;
-}
-
-export const CourseBackground: React.FC<CourseBackgroundProps> = ({ theme = 'dark' }) => {
+/**
+ * Animated 3D neural network behind the AI-first course card.
+ *
+ * A Three.js "plexus" cloud framed from the middle of the card to its right edge, with
+ * depth-of-field bokeh, star-flare hubs and pulse cascades, over a soft atmosphere.
+ * Parallax follows the pointer (fine pointers only) and the card's scroll position.
+ * Three.js is loaded lazily, so it stays out of the main bundle. Colors come from the
+ * Site.Course-background tokens and are re-read whenever `<html data-theme>` changes.
+ */
+export const CourseBackground: React.FC<CourseBackgroundProps> = ({ className }) => {
+  const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const root = rootRef.current;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const card = root?.parentElement;
+    if (!root || !canvas || !card) return;
 
-    // — Renderer ——————————————————————————————————
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    let reducedMotion = motionQuery.matches;
+    let visible = typeof IntersectionObserver === 'undefined';
+    let scene: NeuralScene | null = null;
+    let disposed = false;
+    let running = false;
+    let rafId = 0;
 
-    const scene = new THREE.Scene();
+    /** -1 while the card enters at the bottom of the viewport, 0 centred, 1 as it leaves at the top. */
+    const scrollProgress = () => {
+      const rect = card.getBoundingClientRect();
+      const viewport = window.innerHeight || 1;
+      const centre = rect.top + rect.height / 2;
+      return Math.max(-1, Math.min(1, (viewport / 2 - centre) / (viewport / 2 + rect.height / 2)));
+    };
 
-    // Camera sits slightly left of centre and looks rightward so the network
-    // occupies the right half of the canvas naturally.
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 1000);
-    camera.position.set(-2, 0, 64);
-    camera.lookAt(24, 0, 0);
+    const frame = (now: number) => {
+      rafId = requestAnimationFrame(frame);
+      if (!scene) return;
+      scene.setScroll(scrollProgress());
+      scene.frame(now);
+    };
 
-    const group = new THREE.Group();
-    group.position.x = 8; // push network into the right half
-    scene.add(group);
-
-    // — Design-token colour (yellow in dark, amber in light) ——
-    const rawColor = getComputedStyle(document.documentElement)
-      .getPropertyValue('--components-tokens--site--course-card--hover-border-color')
-      .trim();
-    const ACTIVE_COLOR = new THREE.Color(rawColor || '#f7df1d');
-    const IDLE_COLOR   = ACTIVE_COLOR.clone().multiplyScalar(0.12);
-
-    // — Neurons ———————————————————————————————————
-    const neuronGeom = new THREE.SphereGeometry(NEURON_RADIUS, 10, 10);
-    const neurons: NeuronData[][] = LAYERS.map((count, l) =>
-      Array.from({ length: count }, (_, n) => {
-        const mat  = new THREE.MeshBasicMaterial({ color: IDLE_COLOR.clone() });
-        const mesh = new THREE.Mesh(neuronGeom, mat);
-        mesh.position.set(
-          l * LAYER_SPACING,
-          (n - (count - 1) / 2) * NEURON_V_SPACING,
-          (Math.random() - 0.5) * 7,
-        );
-        group.add(mesh);
-        return { mesh, mat, pos: mesh.position.clone(), activeAt: -Infinity };
-      }),
-    );
-
-    // — Connections (single static geometry) ————————
-    const connVerts: number[] = [];
-    for (let l = 0; l < LAYERS.length - 1; l++) {
-      for (const a of neurons[l]) {
-        for (const b of neurons[l + 1]) {
-          connVerts.push(a.pos.x, a.pos.y, a.pos.z, b.pos.x, b.pos.y, b.pos.z);
-        }
+    const sync = () => {
+      if (!scene) return;
+      const shouldRun = visible && !reducedMotion;
+      if (shouldRun && !running) {
+        running = true;
+        rafId = requestAnimationFrame(frame);
+      } else if (!shouldRun && running) {
+        running = false;
+        cancelAnimationFrame(rafId);
       }
-    }
-    const connGeom = new THREE.BufferGeometry();
-    connGeom.setAttribute(
-      'position',
-      new THREE.BufferAttribute(new Float32Array(connVerts), 3),
-    );
-    const connMat = new THREE.LineBasicMaterial({
-      color: ACTIVE_COLOR,
-      transparent: true,
-      opacity: CONN_OPACITY[theme],
+      if (!running && reducedMotion) scene.still();
+    };
+
+    const applyPalette = () => {
+      const palette = readPalette(root);
+      if (palette) scene?.setPalette(palette);
+    };
+
+    const resize = () => {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      if (!scene || width === 0 || height === 0) return;
+      const cap = width < NARROW_MAX_WIDTH ? NARROW_PIXEL_RATIO : WIDE_PIXEL_RATIO;
+      scene.resize(width, height, Math.min(window.devicePixelRatio || 1, cap));
+      if (!running) sync();
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!finePointer.matches || e.pointerType !== 'mouse') return;
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      scene?.setPointer(x, y);
+    };
+    const onPointerLeave = () => scene?.setPointer(0, 0);
+
+    const resizeObserver = new ResizeObserver(resize);
+    // ThemeProvider flips data-theme in its own effect, after ours has run, so a `theme` prop
+    // would always be one render stale. Watching the attribute is exact.
+    const themeObserver = new MutationObserver(() => {
+      applyPalette();
+      if (!running) sync();
     });
-    group.add(new THREE.LineSegments(connGeom, connMat));
+    const intersectionObserver = typeof IntersectionObserver === 'undefined'
+      ? null
+      : new IntersectionObserver(([entry]) => {
+          visible = entry.isIntersecting;
+          sync();
+        }, { rootMargin: '120px' });
+    const onMotionChange = (e: MediaQueryListEvent) => {
+      reducedMotion = e.matches;
+      sync();
+    };
 
-    // — Signal sphere pool ——————————————————————
-    const POOL_SIZE = 24;
-    const signalGeom = new THREE.SphereGeometry(SIGNAL_RADIUS, 6, 6);
-    const pool: SignalData[] = Array.from({ length: POOL_SIZE }, () => {
-      const mat  = new THREE.MeshBasicMaterial({ color: ACTIVE_COLOR.clone(), transparent: true, opacity: 0 });
-      const mesh = new THREE.Mesh(signalGeom, mat);
-      mesh.visible = false;
-      group.add(mesh);
-      return { mesh, mat, from: new THREE.Vector3(), to: new THREE.Vector3(), startTime: -Infinity };
-    });
-    let activeSignals: SignalData[] = [];
-
-    function spawnSignal(from: THREE.Vector3, to: THREE.Vector3) {
-      const sig = pool.find(s => !s.mesh.visible);
-      if (!sig) return;
-      sig.from.copy(from);
-      sig.to.copy(to);
-      sig.startTime = performance.now();
-      sig.mesh.position.copy(from);
-      sig.mesh.visible = true;
-      sig.mat.opacity = 1;
-      activeSignals.push(sig);
-    }
-
-    // — Time-based event queue (avoids dangling setTimeout on unmount) —
-    const queue: ScheduledEvent[] = [];
-    function schedule(delayMs: number, fn: () => void) {
-      queue.push({ fireAt: performance.now() + delayMs, fn });
-    }
-
-    // — Activation wave —————————————————————————
-    let lastWaveTime = -Infinity;
-
-    function triggerWave() {
-      lastWaveTime = performance.now();
-
-      // Build the full propagation path upfront so we can schedule everything
-      // without needing to track mid-wave state.
-      let prevActive = pickRandom(neurons[0], Math.random() < 0.5 ? 2 : 1);
-
-      // Activate layer 0 immediately
-      prevActive.forEach(n => schedule(0, () => { n.activeAt = performance.now(); }));
-
-      for (let l = 1; l < LAYERS.length; l++) {
-        const sigDelay  = (l - 1) * SIGNAL_TRAVEL_MS; // signals leave when source activates
-        const nodeDelay = l * SIGNAL_TRAVEL_MS;         // targets activate when signal arrives
-
-        const sources = prevActive;
-        const targets = pickRandom(
-          neurons[l],
-          Math.min(Math.floor(Math.random() * 3) + 2, neurons[l].length),
-        );
-
-        // Spawn signals: each source sends to 1-2 of the chosen targets
-        sources.forEach(src => {
-          pickRandom(targets, Math.min(2, targets.length)).forEach(tgt => {
-            schedule(sigDelay, () => spawnSignal(src.pos, tgt.pos));
-          });
-        });
-
-        // Activate target neurons when signals arrive
-        targets.forEach(tgt => schedule(nodeDelay, () => { tgt.activeAt = performance.now(); }));
-
-        prevActive = targets;
-      }
-    }
-
-    // — Resize ——————————————————————————————————
-    function resize() {
-      const w = canvas!.clientWidth;
-      const h = canvas!.clientHeight;
-      if (w === 0 || h === 0) return;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    }
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas);
-    resize();
-
-    // — Animation loop ——————————————————————————
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let animId: number;
-
-    function animate() {
-      animId = requestAnimationFrame(animate);
-      const now = performance.now();
-
-      if (!prefersReduced) {
-        // Flush due events
-        for (let i = queue.length - 1; i >= 0; i--) {
-          if (now >= queue[i].fireAt) {
-            queue[i].fn();
-            queue.splice(i, 1);
-          }
+    // Three.js ships in its own chunk, fetched only when a card with this background mounts.
+    import('./scene')
+      .then(({ createNeuralScene }) => {
+        if (disposed) return;
+        try {
+          scene = createNeuralScene(canvas);
+        } catch {
+          return; // No WebGL: the card simply shows without its background.
         }
-
-        // Trigger a new wave once the previous one has had time to clear
-        if (now - lastWaveTime > WAVE_INTERVAL_MS) triggerWave();
-
-        // Update neuron flash
-        for (const layer of neurons) {
-          for (const n of layer) {
-            if (n.activeAt === -Infinity) continue;
-            const t = (now - n.activeAt) / NEURON_FLASH_MS;
-            if (t >= 1) {
-              n.mat.color.copy(IDLE_COLOR);
-              n.mesh.scale.setScalar(1);
-              n.activeAt = -Infinity;
-            } else {
-              const intensity = flashEase(t);
-              n.mat.color.copy(IDLE_COLOR).lerp(ACTIVE_COLOR, intensity);
-              n.mesh.scale.setScalar(1 + intensity * 0.7);
-            }
-          }
-        }
-
-        // Update travelling signals
-        activeSignals = activeSignals.filter(sig => {
-          const t = Math.min((now - sig.startTime) / SIGNAL_TRAVEL_MS, 1);
-          sig.mesh.position.lerpVectors(sig.from, sig.to, t);
-          sig.mat.opacity = 1 - t * t; // fade out as it arrives
-          if (t >= 1) {
-            sig.mesh.visible = false;
-            return false;
-          }
-          return true;
-        });
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    animate();
+        applyPalette();
+        resize();
+        resizeObserver.observe(canvas);
+        themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+        intersectionObserver?.observe(canvas);
+        motionQuery.addEventListener('change', onMotionChange);
+        card.addEventListener('pointermove', onPointerMove);
+        card.addEventListener('pointerleave', onPointerLeave);
+        sync();
+      })
+      .catch(() => {
+        // Chunk failed to load (offline, deploy skew): the card shows without its background.
+      });
 
     return () => {
-      cancelAnimationFrame(animId);
-      ro.disconnect();
-      renderer.dispose();
-      neuronGeom.dispose();
-      signalGeom.dispose();
-      connGeom.dispose();
+      disposed = true;
+      running = false;
+      cancelAnimationFrame(rafId);
+      resizeObserver.disconnect();
+      themeObserver.disconnect();
+      intersectionObserver?.disconnect();
+      motionQuery.removeEventListener('change', onMotionChange);
+      card.removeEventListener('pointermove', onPointerMove);
+      card.removeEventListener('pointerleave', onPointerLeave);
+      scene?.dispose();
+      scene = null;
     };
-  }, [theme]);
+  }, []);
 
-  return <canvas ref={canvasRef} className="course-background" aria-hidden="true" />;
+  const classNames = ['qd-course-background', className].filter(Boolean).join(' ');
+  return (
+    <div ref={rootRef} className={classNames} aria-hidden="true">
+      <div className="qd-course-background__stage">
+        <canvas ref={canvasRef} className="qd-course-background__canvas" />
+      </div>
+    </div>
+  );
 };

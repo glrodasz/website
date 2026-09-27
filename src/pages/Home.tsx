@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../hooks/useTheme';
 import { useLangPrefix } from '../hooks/useLangPrefix';
 import { Button } from '../components/atoms/Button';
 import { Tag } from '../components/atoms/Tag';
@@ -52,7 +51,6 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 };
 
 const Home: React.FC = () => {
-  const { theme } = useTheme();
   const { t, i18n } = useTranslation('home');
   const isEs = (i18n.resolvedLanguage ?? i18n.language ?? '').startsWith('es');
   const posts = writingPostsByLang[isEs ? 'es' : 'en'];
@@ -98,7 +96,7 @@ const Home: React.FC = () => {
           </div>
           <div className="home-courses__grid">
             <article className="home-course-card home-course-card--accent">
-              <CourseBackground theme={theme} />
+              <CourseBackground />
               <div className="home-course-card__body">
                 <div className="home-course-card__badge-container">
                   <Badge variant="accent" size="small" uppercase>{t('courses.comingSoon')}</Badge>

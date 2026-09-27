@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
+import { BLOG_URL } from '../src/data/site';
 
 interface BlogPost {
   title: string;
@@ -16,8 +17,8 @@ interface BlogPost {
 }
 
 const FEEDS = {
-  en: 'https://blog.guillermorodas.com/rss.xml',
-  es: 'https://blog.guillermorodas.com/es/rss.xml',
+  en: `${BLOG_URL}/rss.xml`,
+  es: `${BLOG_URL}/es/rss.xml`,
 } as const;
 
 type PostLocale = keyof typeof FEEDS;
@@ -34,7 +35,7 @@ function unwrapCdata(text: string): string {
 }
 
 // Resolve relative covers against the feed origin and collapse duplicate slashes
-// (the feed has emitted `https://undefined.sh//covers/...`).
+// (the feed has emitted `//covers/...` paths).
 function normalizeUrl(url: string, base: string): string {
   try {
     const resolved = new URL(url, base);
@@ -118,7 +119,7 @@ async function fetchPosts(url: string, locale: PostLocale): Promise<BlogPost[]> 
   return items.slice(0, 3).map((raw) => {
     const item = raw as Record<string, unknown>;
     const title = String(item['title'] ?? '');
-    const link = String(item['link'] ?? 'https://blog.guillermorodas.com');
+    const link = String(item['link'] ?? BLOG_URL);
     const pubDate = String(item['pubDate'] ?? '');
     const description = unwrapCdata(String(item['description'] ?? ''));
 

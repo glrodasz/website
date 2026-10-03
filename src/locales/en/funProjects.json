@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "pageLabel": "Fun Projects",
+    "description": "Pet projects by Guillermo Rodas — small apps, experiments and community sites built for fun, to learn something new, or because I needed them."
+  },
+  "hero": {
+    "label": "Side projects",
+    "title": "Fun Projects",
+    "lead": "Things I built for fun, to learn something new, or simply because I needed them. Take a look, and share the ones you like."
+  },
+  "card": {
+    "visit": "Visit project",
+    "source": "Source",
+    "share": "Share",
+    "shareOn": "Share {{project}} on {{network}}",
+    "shareNative": "Share {{project}}…",
+    "copyLink": "Copy link to {{project}}",
+    "copied": "Link copied",
+    "shareText": "Check out {{project}} by @germorodas",
+    "screenshotAlt": "Screenshot of {{project}}"
+  },
+  "more": {
+    "title": "There's more on GitHub",
+    "lead": "Experiments, workshops and course material live in my repositories.",
+    "cta": "Browse my GitHub"
+  }
+}

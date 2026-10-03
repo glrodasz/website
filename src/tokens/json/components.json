@@ -1976,6 +1976,219 @@
       }
     }
   },
+  "project-card": {
+    "spacing": {
+      "body-vertical": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "body-horizontal": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "tags-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      },
+      "tags-bottom": {
+        "$type": "number",
+        "$value": "{system.Spacing.sm}"
+      },
+      "title-bottom": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      },
+      "description-bottom": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "actions-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.sm}"
+      },
+      "share-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      },
+      "placeholder-padding": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "placeholder-chrome-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "list-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      }
+    },
+    "sizing": {
+      "media-width": {
+        "$type": "number",
+        "$value": 360,
+        "$description": "Width of the screenshot column on wide screens — sized so a 16:10 screenshot stays legible next to the copy; not on the sizing scale."
+      },
+      "share-button": {
+        "$type": "number",
+        "$value": "{system.Sizing.md}"
+      },
+      "share-icon": {
+        "$type": "number",
+        "$value": "{system.Sizing.xs}"
+      },
+      "placeholder-dot": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      }
+    },
+    "border-radius": {
+      "default": {
+        "$type": "number",
+        "$value": "{system.Border radius.md}"
+      },
+      "share-button": {
+        "$type": "number",
+        "$value": "{system.Border radius.full}"
+      },
+      "placeholder-window": {
+        "$type": "number",
+        "$value": "{system.Border radius.sm}"
+      }
+    },
+    "background-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.tertiary}"
+      },
+      "media": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.neutral}"
+      },
+      "placeholder": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.principal}"
+      },
+      "placeholder-window": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.principal}"
+      },
+      "share-button": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.principal}"
+      },
+      "share-button-hover": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.principal}"
+      }
+    },
+    "border-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{system.Colors.Complementary.principal}"
+      },
+      "share-button": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      }
+    },
+    "text-color": {
+      "title": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.principal}"
+      },
+      "description": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.neutral}"
+      },
+      "share-label": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.neutral}"
+      },
+      "share-button": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.principal}"
+      },
+      "share-button-hover": {
+        "$type": "color",
+        "$value": "{system.Colors.Fixed.on-accent}"
+      },
+      "share-feedback": {
+        "$type": "color",
+        "$value": "{system.Colors.Success.high}"
+      },
+      "placeholder-title": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.principal}"
+      },
+      "placeholder-url": {
+        "$type": "color",
+        "$value": "{system.Colors.Foregrounds.neutral}"
+      },
+      "placeholder-dot": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "title": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Headings}"
+        },
+        "body": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Body}"
+        }
+      },
+      "font-size": {
+        "title": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Headings.xxs}"
+        },
+        "description": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.sm}"
+        },
+        "share-label": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.xs}"
+        },
+        "placeholder-title": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Headings.xs}"
+        },
+        "placeholder-url": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.xs}"
+        }
+      },
+      "line-height": {
+        "title": {
+          "$type": "number",
+          "$value": "{system.Typography.Line-height.Headings.xxs}"
+        },
+        "description": {
+          "$type": "number",
+          "$value": "{system.Typography.Line-height.Body.sm}"
+        }
+      },
+      "font-weight": {
+        "title": {
+          "$type": "number",
+          "$value": "{system.Typography.Font-weight.Strong}"
+        },
+        "share-label": {
+          "$type": "number",
+          "$value": "{system.Typography.Font-weight.Medium}"
+        }
+      }
+    }
+  },
   "nav-bar": {
     "spacing": {
       "horizontal": {

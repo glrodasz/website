@@ -122,8 +122,8 @@ export const Footer: FC<FooterProps> = ({
                 </a>
               </li>
               <li>
-                <a href="https://sublr.vercel.app" target="_blank" rel="noopener noreferrer">
-                  {t('footer.sublr')}
+                <a href="https://walleto.guillermorodas.com" target="_blank" rel="noopener noreferrer">
+                  {t('footer.walleto')}
                 </a>
               </li>
               <li>

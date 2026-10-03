@@ -85,17 +85,6 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Community', 'CSS'],
   },
   {
-    slug: 'translatr',
-    name: 'Translatr',
-    url: 'https://mytranslatr.vercel.app',
-    repoUrl: 'https://github.com/glrodasz/translatr',
-    description:
-      'An AI-powered translator between Spanish, English and Swedish, built live on stream with Next.js and the OpenAI API.',
-    descriptionEs:
-      'Un traductor con IA entre español, inglés y sueco, construido en vivo con Next.js y la API de OpenAI.',
-    tags: ['Next.js', 'OpenAI', 'Tailwind'],
-  },
-  {
     slug: 'cero-components',
     name: 'Cero Components',
     url: 'https://cero-components.vercel.app',
@@ -116,18 +105,6 @@ export const FUN_PROJECTS: FunProject[] = [
     descriptionEs:
       'Una app nativa para la barra de menú de Apple Silicon que muestra varias zonas horarias, cada una con su bandera y hora actual.',
     tags: ['Swift', 'macOS'],
-    capturable: false,
-  },
-  {
-    slug: 'awesome-estreamers-coders',
-    name: 'Awesome EStreamers Coders',
-    url: 'https://github.com/glrodasz/awesome-estreamers-coders',
-    repoUrl: 'https://github.com/glrodasz/awesome-estreamers-coders',
-    description:
-      'A community-curated list of Spanish-speaking developers who stream about code on Twitch and YouTube.',
-    descriptionEs:
-      'Una lista curada por la comunidad de desarrolladores hispanohablantes que hacen streaming de programación en Twitch y YouTube.',
-    tags: ['Community', 'Open source'],
     capturable: false,
   },
 ];

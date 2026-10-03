@@ -85,6 +85,17 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Community', 'CSS'],
   },
   {
+    slug: 'reto',
+    name: 'RETO',
+    url: 'https://www.makemistak.es',
+    repoUrl: 'https://github.com/glrodasz/cero-web',
+    description:
+      'A focus-first task planner built from zero to production in the live-coding series Cero a Producción: keep a backlog, work on a few tasks at a time and close each focus session with a retrospective.',
+    descriptionEs:
+      'Un planificador de tareas enfocado, construido de cero a producción en la serie en vivo Cero a Producción: mantén un backlog, trabaja en pocas tareas a la vez y cierra cada sesión de foco con una retrospectiva.',
+    tags: ['Next.js', 'React Query', 'Auth0'],
+  },
+  {
     slug: 'cero-components',
     name: 'Cero Components',
     url: 'https://cero-components.vercel.app',
@@ -108,3 +119,12 @@ export const FUN_PROJECTS: FunProject[] = [
     capturable: false,
   },
 ];
+
+/** Projects linked from the footer, in display order. */
+export const FOOTER_PROJECT_SLUGS = ['walleto', 'cero-components', 'timepass', 'cssconf-colombia'];
+
+export const FOOTER_PROJECTS: FunProject[] = FOOTER_PROJECT_SLUGS.map((slug) => {
+  const project = FUN_PROJECTS.find((p) => p.slug === slug);
+  if (!project) throw new Error(`Unknown footer project: ${slug}`);
+  return project;
+});

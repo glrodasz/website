@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Globe, Moon, Sun } from 'phosphor-react';
 import { footerSocials, type SocialLink } from '../../../data/socials';
 import { BLOG_URL } from '../../../data/site';
-import { FUN_PROJECTS } from '../../../data/funProjects';
+import { FOOTER_PROJECTS } from '../../../data/funProjects';
 import {
   FooterSocialIcon,
   FOOTER_MOBILE_SOCIAL_IDS,
@@ -109,16 +109,16 @@ export const Footer: FC<FooterProps> = ({
           <div className="qd-footer__col">
             <h2 className="qd-footer__col-title">{t('footer.projects')}</h2>
             <ul>
-              <li>
-                <Link to={`${prefix}/fun-projects`}>{t('footer.allProjects')}</Link>
-              </li>
-              {FUN_PROJECTS.map((project) => (
+              {FOOTER_PROJECTS.map((project) => (
                 <li key={project.slug}>
                   <a href={project.url} target="_blank" rel="noopener noreferrer">
                     {project.name}
                   </a>
                 </li>
               ))}
+              <li>
+                <Link to={`${prefix}/fun-projects`}>{t('footer.allProjects')}</Link>
+              </li>
             </ul>
           </div>
 

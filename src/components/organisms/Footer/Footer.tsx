@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Globe, Moon, Sun } from 'phosphor-react';
 import { footerSocials, type SocialLink } from '../../../data/socials';
 import { BLOG_URL } from '../../../data/site';
+import { FUN_PROJECTS } from '../../../data/funProjects';
 import {
   FooterSocialIcon,
   FOOTER_MOBILE_SOCIAL_IDS,
@@ -111,26 +112,13 @@ export const Footer: FC<FooterProps> = ({
               <li>
                 <Link to={`${prefix}/fun-projects`}>{t('footer.allProjects')}</Link>
               </li>
-              <li>
-                <a href="https://colors.guillermorodas.com" target="_blank" rel="noopener noreferrer">
-                  {t('footer.htmlColors')}
-                </a>
-              </li>
-              <li>
-                <a href="https://cero-components.vercel.app" target="_blank" rel="noopener noreferrer">
-                  {t('footer.ceroComponents')}
-                </a>
-              </li>
-              <li>
-                <a href="https://walleto.guillermorodas.com" target="_blank" rel="noopener noreferrer">
-                  {t('footer.walleto')}
-                </a>
-              </li>
-              <li>
-                <a href="https://cssconf.co" target="_blank" rel="noopener noreferrer">
-                  {t('footer.cssConfColombia')}
-                </a>
-              </li>
+              {FUN_PROJECTS.map((project) => (
+                <li key={project.slug}>
+                  <a href={project.url} target="_blank" rel="noopener noreferrer">
+                    {project.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

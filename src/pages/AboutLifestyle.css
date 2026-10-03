@@ -33,8 +33,11 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--components-tokens--site--lifestyle-card--grid--min-column)), 1fr)
+  );
+  gap: var(--components-tokens--site--lifestyle-card--grid--gap);
 }
 
 .lifestyle-grid > li {

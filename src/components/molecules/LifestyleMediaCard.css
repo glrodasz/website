@@ -289,11 +289,21 @@
   transform: scaleX(-1);
 }
 
+/* Font size fitted at runtime (see useFittedFontSize) between the summary size tokens. */
+.qd-lifestyle-media-card__back-title,
+.qd-lifestyle-media-card__summary,
+.qd-lifestyle-media-card__link {
+  --qd-lifestyle-media-card-text-size: var(
+    --qd-lifestyle-media-card-fitted-size,
+    var(--components-tokens--site--lifestyle-card--back--summary--min-font-size)
+  );
+}
+
 .qd-lifestyle-media-card__back-title {
-  font-family: var(--components-tokens--typography--styles--label--small--font-family);
-  font-size: var(--components-tokens--typography--styles--label--small--font-size);
-  font-weight: var(--components-tokens--typography--styles--label--small--font-weight);
-  line-height: var(--components-tokens--typography--styles--label--small--line-height);
+  font-family: var(--components-tokens--site--lifestyle-card--back--title--font-family);
+  font-weight: var(--components-tokens--site--lifestyle-card--back--title--font-weight);
+  font-size: calc(var(--qd-lifestyle-media-card-text-size) * var(--components-tokens--site--lifestyle-card--back--title--scale));
+  line-height: var(--components-tokens--site--lifestyle-card--back--title--line-height);
   color: var(--components-tokens--site--lifestyle-card--back--link-color);
   text-wrap: balance;
 }
@@ -302,34 +312,23 @@
   flex: 1;
   min-height: 0;
   margin: 0;
-  overflow: auto;
+  overflow: hidden;
   font-family: var(--components-tokens--typography--styles--paragraph--extra-small--font-family);
-  font-size: var(--components-tokens--typography--styles--paragraph--extra-small--font-size);
-  line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height);
-  scrollbar-width: none;
-}
-
-.qd-lifestyle-media-card__back-footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--components-tokens--site--lifestyle-card--back--gap);
+  font-size: var(--qd-lifestyle-media-card-text-size);
+  line-height: var(--components-tokens--site--lifestyle-card--back--summary--line-height);
 }
 
 .qd-lifestyle-media-card__link {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  white-space: nowrap;
   font-family: var(--components-tokens--typography--styles--label--small--font-family);
   font-size: var(--components-tokens--typography--styles--label--small--font-size);
   font-weight: var(--components-tokens--typography--styles--label--small--font-weight);
   line-height: var(--components-tokens--typography--styles--label--small--line-height);
   color: var(--components-tokens--site--lifestyle-card--back--link-color);
   text-decoration: none;
-}
-
-/* The whole back face opens the link, like the original card did. */
-.qd-lifestyle-media-card__link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
 }
 
 .qd-lifestyle-media-card__link svg {
@@ -341,26 +340,32 @@
   text-decoration: underline;
 }
 
-.qd-lifestyle-media-card__flip-back {
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--components-tokens--site--lifestyle-card--back--button-size);
-  height: var(--components-tokens--site--lifestyle-card--back--button-size);
-  padding: 0;
-  border: 1px solid var(--components-tokens--site--lifestyle-card--back--border-color);
-  border-radius: var(--components-tokens--site--lifestyle-card--dvd--border-radius);
-  background: transparent;
-  color: var(--components-tokens--site--lifestyle-card--back--text-color);
+/* Clicking anywhere on the back turns it over; this button is the keyboard and
+   screen-reader equivalent, covering the face so its focus ring outlines it. */
+.qd-lifestyle-media-card__sheet {
   cursor: pointer;
 }
 
-.qd-lifestyle-media-card__flip-back:hover {
-  border-color: var(--components-tokens--site--lifestyle-card--back--link-color);
-  color: var(--components-tokens--site--lifestyle-card--back--link-color);
+.qd-lifestyle-media-card__flip-back {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.qd-lifestyle-media-card__sheet--overflowing .qd-lifestyle-media-card__summary {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  mask-image: linear-gradient(
+    to bottom,
+    var(--components-tokens--site--lifestyle-card--back--background-color)
+      calc(100% - var(--components-tokens--site--lifestyle-card--back--padding) * 2),
+    transparent
+  );
 }
 
 /* ---------- Focus ---------- */
@@ -371,6 +376,10 @@
   outline: var(--components-tokens--site--focus-ring--outline-width) solid
     var(--components-tokens--site--focus-ring--outline-color);
   outline-offset: calc(var(--components-tokens--site--focus-ring--outline-width) * -2);
+}
+
+.qd-lifestyle-media-card__link:focus-visible {
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
 }
 
 /* ---------- Caption ---------- */

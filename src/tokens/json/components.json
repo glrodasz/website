@@ -3387,13 +3387,40 @@
           "$value": "blur(10px) saturate(1.3)",
           "$description": "Filter for the cover reflection on the back face; a filter expression cannot be a token reference."
         },
-        "button-size": {
-          "$type": "number",
-          "$value": "{system.Sizing.sm}"
+        "summary": {
+          "min-font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "max-font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "1.4",
+            "$description": "Unitless so the leading follows the font size, which is fitted at runtime to the space on the back face."
+          }
         },
-        "border-color": {
-          "$type": "color",
-          "$value": "{system.Colors.Fixed.sheen}"
+        "title": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{system.Typography.Font-family.Headings}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "scale": {
+            "$type": "string",
+            "$value": "1.3",
+            "$description": "Title size as a multiple of the fitted summary size, so the hierarchy holds at every fitted size."
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "1.15",
+            "$description": "Unitless so the leading follows the fitted title size."
+          }
         }
       },
       "book": {

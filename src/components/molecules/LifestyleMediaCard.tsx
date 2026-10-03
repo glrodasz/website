@@ -1,5 +1,5 @@
-import React, { useId, useRef, useState } from 'react';
-import { ArrowCounterClockwise, ArrowUpRight } from 'phosphor-react';
+import React, { useId, useLayoutEffect, useRef, useState } from 'react';
+import { ArrowUpRight } from 'phosphor-react';
 import './LifestyleMediaCard.css';
 
 export interface LifestyleMediaCardProps {
@@ -16,11 +16,63 @@ export interface LifestyleMediaCardProps {
   linkLabel: string;
   /** Accessible label of the front face button that turns the object over. */
   flipLabel: string;
-  /** Accessible label of the back face button that turns the object back. */
+  /** Accessible label of the back face, which turns the object back when clicked. */
   flipBackLabel: string;
   /** Start turned over, showing the back face. */
   defaultFlipped?: boolean;
   className?: string;
+}
+
+const SUMMARY_MIN_FONT_SIZE = '--components-tokens--site--lifestyle-card--back--summary--min-font-size';
+const SUMMARY_MAX_FONT_SIZE = '--components-tokens--site--lifestyle-card--back--summary--max-font-size';
+const FITTED_FONT_SIZE = '--qd-lifestyle-media-card-fitted-size';
+const FIT_PRECISION_PX = 0.25;
+const OVERFLOW_CLASS = 'qd-lifestyle-media-card__sheet--overflowing';
+
+/**
+ * Grows the back-face text to the largest size, between the token bounds, at which
+ * the summary still fits its box. Re-fits whenever the face resizes or fonts load.
+ */
+function useFittedFontSize(
+  sheetRef: React.RefObject<HTMLElement | null>,
+  summaryRef: React.RefObject<HTMLElement | null>,
+  content: string,
+) {
+  useLayoutEffect(() => {
+    const sheet = sheetRef.current;
+    const summary = summaryRef.current;
+    if (!sheet || !summary) return;
+
+    const fit = () => {
+      const styles = getComputedStyle(sheet);
+      let low = parseFloat(styles.getPropertyValue(SUMMARY_MIN_FONT_SIZE));
+      let high = parseFloat(styles.getPropertyValue(SUMMARY_MAX_FONT_SIZE));
+      if (Number.isNaN(low) || Number.isNaN(high)) return;
+
+      const fits = (size: number) => {
+        sheet.style.setProperty(FITTED_FONT_SIZE, `${size}px`);
+        return summary.scrollHeight <= summary.clientHeight;
+      };
+
+      let overflowing = false;
+      if (!fits(high)) {
+        while (high - low > FIT_PRECISION_PX) {
+          const mid = (low + high) / 2;
+          if (fits(mid)) low = mid;
+          else high = mid;
+        }
+        // Even the smallest size can overflow on narrow cards: the summary then scrolls.
+        overflowing = !fits(low);
+      }
+      sheet.classList.toggle(OVERFLOW_CLASS, overflowing);
+    };
+
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(sheet);
+    document.fonts?.ready.then(fit);
+    return () => observer.disconnect();
+  }, [sheetRef, summaryRef, content]);
 }
 
 export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
@@ -42,7 +94,11 @@ export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
   const [hovered, setHovered] = useState(false);
   const frontRef = useRef<HTMLButtonElement>(null);
   const linkRef = useRef<HTMLAnchorElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const summaryRef = useRef<HTMLParagraphElement>(null);
   const backId = useId();
+
+  useFittedFontSize(sheetRef, summaryRef, `${title}${summary ?? ''}`);
 
   const showImage = imageUrl && !imgError;
   const flipped = pinned || hovered;
@@ -57,6 +113,11 @@ export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
     setPinned(false);
     setHovered(false);
     requestAnimationFrame(() => frontRef.current?.focus());
+  };
+
+  // Any click on the back turns the object over again, except on the link itself.
+  const handleSheetClick = (event: React.MouseEvent) => {
+    if (!(event.target as Element).closest('a, button')) turnBack();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -124,31 +185,29 @@ export const LifestyleMediaCard: React.FC<LifestyleMediaCardProps> = ({
             className="qd-lifestyle-media-card__face qd-lifestyle-media-card__back"
             inert={!flipped}
           >
-            <div className="qd-lifestyle-media-card__sheet">
+            <div ref={sheetRef} className="qd-lifestyle-media-card__sheet" onClick={handleSheetClick}>
               <span className="qd-lifestyle-media-card__back-title" aria-hidden="true">
                 {title}
               </span>
-              {summary ? <p className="qd-lifestyle-media-card__summary">{summary}</p> : null}
-              <div className="qd-lifestyle-media-card__back-footer">
-                <a
-                  ref={linkRef}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="qd-lifestyle-media-card__link"
-                >
-                  {linkLabel}
-                  <ArrowUpRight aria-hidden="true" />
-                </a>
-                <button
-                  type="button"
-                  className="qd-lifestyle-media-card__flip-back"
-                  aria-label={flipBackLabel}
-                  onClick={turnBack}
-                >
-                  <ArrowCounterClockwise aria-hidden="true" />
-                </button>
-              </div>
+              <p ref={summaryRef} className="qd-lifestyle-media-card__summary">
+                {summary}
+              </p>
+              <a
+                ref={linkRef}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="qd-lifestyle-media-card__link"
+              >
+                {linkLabel}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+              <button
+                type="button"
+                className="qd-lifestyle-media-card__flip-back"
+                aria-label={flipBackLabel}
+                onClick={turnBack}
+              />
             </div>
           </div>
         </div>

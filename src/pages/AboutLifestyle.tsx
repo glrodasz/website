@@ -61,11 +61,16 @@ const AboutLifestyle: React.FC = () => {
           {FAVORITE_BOOKS.map((b) => (
             <li key={b.href}>
               <LifestyleMediaCard
+                variant="book"
                 href={b.href}
                 imageUrl={b.coverUrl}
                 title={b.title}
+                subtitle={b.author}
                 summary={isEs ? (b.summaryEs ?? b.summary) : b.summary}
                 placeholder="📖"
+                linkLabel={t('lifestyle.books.cardLink')}
+                flipLabel={t('lifestyle.card.flip', { title: b.title })}
+                flipBackLabel={t('lifestyle.card.flipBack')}
               />
             </li>
           ))}
@@ -93,11 +98,15 @@ const AboutLifestyle: React.FC = () => {
           {FAVORITE_FILMS.map((f) => (
             <li key={f.href}>
               <LifestyleMediaCard
+                variant="dvd"
                 href={f.href}
                 imageUrl={f.posterUrl}
                 title={f.title}
                 summary={isEs ? (f.summaryEs ?? f.summary) : f.summary}
                 placeholder="▶"
+                linkLabel={t('lifestyle.films.cardLink')}
+                flipLabel={t('lifestyle.card.flip', { title: f.title })}
+                flipBackLabel={t('lifestyle.card.flipBack')}
               />
             </li>
           ))}

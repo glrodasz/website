@@ -19,11 +19,17 @@
     },
     "books": {
       "title": "Favorite books",
-      "profileLink": "Goodreads profile"
+      "profileLink": "Goodreads profile",
+      "cardLink": "View on Goodreads"
     },
     "films": {
       "title": "Favorite films",
-      "profileLink": "Letterboxd profile"
+      "profileLink": "Letterboxd profile",
+      "cardLink": "View on Letterboxd"
+    },
+    "card": {
+      "flip": "Turn {{title}} over to read why I recommend it",
+      "flipBack": "Turn back to the cover"
     }
   }
 }

@@ -1,44 +1,97 @@
 @import '../../tokens/design-tokens.css';
 
+/*
+ * A book or DVD case built as a 3D box: front and back faces plus side faces
+ * (spine, page block). Turning the object over rotates the whole box 180°.
+ */
+
 .qd-lifestyle-media-card {
+  --qd-lifestyle-media-card-depth: var(--components-tokens--site--lifestyle-card--book--depth);
+  --qd-lifestyle-media-card-radius: var(--components-tokens--site--lifestyle-card--book--border-radius);
+  --qd-lifestyle-media-card-edge-radius: var(--components-tokens--site--lifestyle-card--book--fore-edge-radius);
+
   display: flex;
   flex: 1;
   flex-direction: column;
   width: 100%;
   min-width: 0;
-  border-radius: var(--components-tokens--card-text--border-radius--default);
+  margin: 0;
+}
+
+.qd-lifestyle-media-card--dvd {
+  --qd-lifestyle-media-card-depth: var(--components-tokens--site--lifestyle-card--dvd--depth);
+  --qd-lifestyle-media-card-radius: var(--components-tokens--site--lifestyle-card--dvd--border-radius);
+  --qd-lifestyle-media-card-edge-radius: var(--components-tokens--site--lifestyle-card--dvd--border-radius);
+}
+
+/* ---------- Stage & object ---------- */
+
+.qd-lifestyle-media-card__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--components-tokens--site--lifestyle-card--book--aspect-ratio);
+  perspective: var(--components-tokens--site--lifestyle-card--stage--perspective);
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__stage {
+  aspect-ratio: var(--components-tokens--site--lifestyle-card--dvd--aspect-ratio);
+}
+
+.qd-lifestyle-media-card__object {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--components-tokens--site--lifestyle-card--stage--rest-tilt));
+  transition: transform var(--components-tokens--site--lifestyle-card--stage--flip-duration)
+    var(--components-tokens--site--lifestyle-card--stage--flip-easing);
+}
+
+.qd-lifestyle-media-card--flipped .qd-lifestyle-media-card__object {
+  transform: rotateY(180deg);
+}
+
+/* ---------- Faces ---------- */
+
+.qd-lifestyle-media-card__face {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  border: 1px solid var(--components-tokens--site--course-card--border-color);
-  background-color: var(--components-tokens--site--course-card--surface-color);
-  text-decoration: none;
-  color: var(--components-tokens--site--course-card--card-title-color);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 8px 20px var(--components-tokens--site--lifestyle-card--shadow-color);
 }
 
-.qd-lifestyle-media-card:hover {
-  border-color: var(--components-tokens--site--course-card--hover-border-color);
-  transform: translateY(-2px);
-  text-decoration: none;
+.qd-lifestyle-media-card__front {
+  display: block;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: var(--components-tokens--site--course-card--media-background-color);
+  border-radius: var(--qd-lifestyle-media-card-radius) var(--qd-lifestyle-media-card-edge-radius)
+    var(--qd-lifestyle-media-card-edge-radius) var(--qd-lifestyle-media-card-radius);
+  transform: translateZ(calc(var(--qd-lifestyle-media-card-depth) / 2));
 }
 
-.qd-lifestyle-media-card:hover * {
-  text-decoration: none;
+.qd-lifestyle-media-card__back {
+  border-radius: var(--qd-lifestyle-media-card-edge-radius) var(--qd-lifestyle-media-card-radius)
+    var(--qd-lifestyle-media-card-radius) var(--qd-lifestyle-media-card-edge-radius);
+  background-color: var(--components-tokens--site--lifestyle-card--back--background-color);
+  transform: rotateY(180deg) translateZ(calc(var(--qd-lifestyle-media-card-depth) / 2));
+}
+
+.qd-lifestyle-media-card--flipped .qd-lifestyle-media-card__front,
+.qd-lifestyle-media-card:not(.qd-lifestyle-media-card--flipped) .qd-lifestyle-media-card__back {
+  pointer-events: none;
 }
 
 .qd-lifestyle-media-card__media,
 .qd-lifestyle-media-card__media-placeholder {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
-  object-position: top;
-  background: var(--components-tokens--site--course-card--media-background-color);
-}
-
-@media (min-width: 640px) {
-  .qd-lifestyle-media-card__media,
-  .qd-lifestyle-media-card__media-placeholder {
-    aspect-ratio: 3 / 4;
-  }
 }
 
 .qd-lifestyle-media-card__media-placeholder {
@@ -50,18 +103,292 @@
   color: var(--components-tokens--site--course-card--media-placeholder-accent-color);
 }
 
-.qd-lifestyle-media-card__meta {
+/* ---------- Side faces ---------- */
+
+.qd-lifestyle-media-card__spine,
+.qd-lifestyle-media-card__pages {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--qd-lifestyle-media-card-depth);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.qd-lifestyle-media-card__spine {
+  left: 0;
+  transform: translateX(-50%) rotateY(-90deg);
+}
+
+.qd-lifestyle-media-card__pages {
+  left: 100%;
+  top: var(--components-tokens--site--lifestyle-card--back--gap);
+  bottom: var(--components-tokens--site--lifestyle-card--back--gap);
+  transform: translateX(-50%) rotateY(90deg);
+}
+
+/* ---------- Book ---------- */
+
+/* Hinge crease and the light falling across the cover board. */
+.qd-lifestyle-media-card--book .qd-lifestyle-media-card__front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to right,
+      var(--components-tokens--site--lifestyle-card--book--spine-shade-color) 0,
+      var(--components-tokens--site--lifestyle-card--book--spine-highlight-color) 2px,
+      transparent 4px,
+      var(--components-tokens--site--lifestyle-card--book--spine-shade-color) var(--components-tokens--site--lifestyle-card--book--hinge-offset),
+      var(--components-tokens--site--lifestyle-card--book--spine-highlight-color) calc(var(--components-tokens--site--lifestyle-card--book--hinge-offset) + 2px),
+      transparent calc(var(--components-tokens--site--lifestyle-card--book--hinge-offset) * 2)
+    ),
+    linear-gradient(
+      100deg,
+      transparent 55%,
+      var(--components-tokens--site--lifestyle-card--book--spine-highlight-color) 70%,
+      transparent 85%
+    );
+}
+
+/* Spine wrapped from the cover artwork, darkened at the joints. */
+.qd-lifestyle-media-card--book .qd-lifestyle-media-card__spine {
+  background:
+    linear-gradient(
+      to right,
+      var(--components-tokens--site--lifestyle-card--book--spine-shade-color),
+      var(--components-tokens--site--lifestyle-card--book--spine-highlight-color) 40%,
+      var(--components-tokens--site--lifestyle-card--book--spine-shade-color)
+    ),
+    var(--qd-lifestyle-media-card-cover, none) left center / auto 100% no-repeat,
+    var(--components-tokens--site--lifestyle-card--back--background-color);
+}
+
+.qd-lifestyle-media-card--book .qd-lifestyle-media-card__pages {
+  background:
+    linear-gradient(
+      to right,
+      var(--components-tokens--site--lifestyle-card--book--spine-shade-color),
+      transparent 30%,
+      transparent 70%,
+      var(--components-tokens--site--lifestyle-card--book--spine-shade-color)
+    ),
+    repeating-linear-gradient(
+      to right,
+      var(--components-tokens--site--lifestyle-card--book--page-line-color) 0 1px,
+      var(--components-tokens--site--lifestyle-card--book--page-color) 1px 3px
+    );
+}
+
+/* ---------- DVD keep case ---------- */
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__front,
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__back {
+  background-color: var(--components-tokens--site--lifestyle-card--dvd--plastic-color);
+  padding: var(--components-tokens--site--lifestyle-card--dvd--frame-padding);
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__front {
+  padding-left: var(--components-tokens--site--lifestyle-card--dvd--spine-width);
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__back {
+  padding-right: var(--components-tokens--site--lifestyle-card--dvd--spine-width);
+}
+
+/* Moulded grip ridges along the hinge. */
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__front::before,
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__back::before {
+  content: '';
+  position: absolute;
+  top: var(--components-tokens--site--lifestyle-card--back--padding);
+  bottom: var(--components-tokens--site--lifestyle-card--back--padding);
+  width: calc(var(--components-tokens--site--lifestyle-card--dvd--spine-width) / 3);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--components-tokens--site--lifestyle-card--dvd--ridge-color) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__front::before {
+  left: calc(var(--components-tokens--site--lifestyle-card--dvd--spine-width) / 3);
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__back::before {
+  right: calc(var(--components-tokens--site--lifestyle-card--dvd--spine-width) / 3);
+}
+
+/* Poster sits under the clear outer sleeve. */
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__media,
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__media-placeholder,
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__sheet {
+  border-radius: var(--components-tokens--site--lifestyle-card--book--border-radius);
+  box-shadow: inset 0 0 0 1px var(--components-tokens--site--lifestyle-card--dvd--inner-shade-color);
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__media-placeholder {
+  background: var(--components-tokens--site--course-card--media-background-color);
+}
+
+/* Clear plastic sleeve: a diagonal glare and a bright rim. */
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__front::after,
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__back::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--components-tokens--site--lifestyle-card--dvd--sheen-color);
+  background: linear-gradient(
+    115deg,
+    var(--components-tokens--site--lifestyle-card--dvd--sheen-color) 0,
+    transparent 25%,
+    transparent 50%,
+    var(--components-tokens--site--lifestyle-card--dvd--sheen-color) 58%,
+    transparent 68%
+  );
+}
+
+.qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__spine {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      var(--components-tokens--site--lifestyle-card--dvd--ridge-color) 0 1px,
+      transparent 1px 4px
+    ),
+    var(--components-tokens--site--lifestyle-card--dvd--plastic-color);
+}
+
+/* ---------- Back face content ---------- */
+
+.qd-lifestyle-media-card__sheet {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--components-tokens--site--course-card--meta-gap);
-  padding: var(--components-tokens--site--course-card--meta-padding);
+  gap: var(--components-tokens--site--lifestyle-card--back--gap);
+  height: 100%;
+  padding: var(--components-tokens--site--lifestyle-card--back--padding);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--components-tokens--site--lifestyle-card--back--text-color);
+  background-color: var(--components-tokens--site--lifestyle-card--back--background-color);
+}
+
+/* A blurred echo of the cover, like the printed back of the same edition. */
+.qd-lifestyle-media-card__sheet::before {
+  content: '';
+  position: absolute;
+  inset: calc(var(--components-tokens--site--lifestyle-card--back--padding) * -2);
+  z-index: -1;
+  background: var(--qd-lifestyle-media-card-cover, none) center / cover no-repeat;
+  filter: var(--components-tokens--site--lifestyle-card--back--cover-blur);
+  opacity: var(--components-tokens--site--lifestyle-card--back--cover-opacity);
+  transform: scaleX(-1);
+}
+
+.qd-lifestyle-media-card__back-title {
+  font-family: var(--components-tokens--typography--styles--label--small--font-family);
+  font-size: var(--components-tokens--typography--styles--label--small--font-size);
+  font-weight: var(--components-tokens--typography--styles--label--small--font-weight);
+  line-height: var(--components-tokens--typography--styles--label--small--line-height);
+  color: var(--components-tokens--site--lifestyle-card--back--link-color);
+  text-wrap: balance;
+}
+
+.qd-lifestyle-media-card__summary {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  overflow: auto;
+  font-family: var(--components-tokens--typography--styles--paragraph--extra-small--font-family);
+  font-size: var(--components-tokens--typography--styles--paragraph--extra-small--font-size);
+  line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height);
+  scrollbar-width: none;
+}
+
+.qd-lifestyle-media-card__back-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--components-tokens--site--lifestyle-card--back--gap);
+}
+
+.qd-lifestyle-media-card__link {
+  font-family: var(--components-tokens--typography--styles--label--small--font-family);
+  font-size: var(--components-tokens--typography--styles--label--small--font-size);
+  font-weight: var(--components-tokens--typography--styles--label--small--font-weight);
+  line-height: var(--components-tokens--typography--styles--label--small--line-height);
+  color: var(--components-tokens--site--lifestyle-card--back--link-color);
+  text-decoration: none;
+}
+
+/* The whole back face opens the link, like the original card did. */
+.qd-lifestyle-media-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.qd-lifestyle-media-card__link svg {
+  margin-left: var(--components-tokens--site--lifestyle-card--caption-gap);
+  vertical-align: middle;
+}
+
+.qd-lifestyle-media-card__link:hover {
+  text-decoration: underline;
+}
+
+.qd-lifestyle-media-card__flip-back {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--components-tokens--site--lifestyle-card--back--button-size);
+  height: var(--components-tokens--site--lifestyle-card--back--button-size);
+  padding: 0;
+  border: 1px solid var(--components-tokens--site--lifestyle-card--back--border-color);
+  border-radius: var(--components-tokens--site--lifestyle-card--dvd--border-radius);
+  background: transparent;
+  color: var(--components-tokens--site--lifestyle-card--back--text-color);
+  cursor: pointer;
+}
+
+.qd-lifestyle-media-card__flip-back:hover {
+  border-color: var(--components-tokens--site--lifestyle-card--back--link-color);
+  color: var(--components-tokens--site--lifestyle-card--back--link-color);
+}
+
+/* ---------- Focus ---------- */
+
+.qd-lifestyle-media-card__front:focus-visible,
+.qd-lifestyle-media-card__link:focus-visible,
+.qd-lifestyle-media-card__flip-back:focus-visible {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+    var(--components-tokens--site--focus-ring--outline-color);
+  outline-offset: calc(var(--components-tokens--site--focus-ring--outline-width) * -2);
+}
+
+/* ---------- Caption ---------- */
+
+.qd-lifestyle-media-card__caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--components-tokens--site--lifestyle-card--caption-gap);
+  padding-top: var(--components-tokens--site--lifestyle-card--caption-top);
 }
 
 .qd-lifestyle-media-card__title {
+  margin: 0;
   font-family: var(--components-tokens--typography--styles--subtitle--small--font-family);
   font-weight: var(--components-tokens--typography--styles--subtitle--small--font-weight);
   font-size: var(--components-tokens--typography--styles--subtitle--small--font-size);
   line-height: var(--components-tokens--typography--styles--subtitle--small--line-height);
+  color: var(--components-tokens--site--course-card--card-title-color);
   text-wrap: balance;
 }
 
@@ -71,10 +398,8 @@
   color: var(--components-tokens--site--course-card--card-description-color);
 }
 
-.qd-lifestyle-media-card__summary {
-  margin: 0;
-  font-size: var(--components-tokens--typography--styles--paragraph--extra-small--font-size);
-  line-height: var(--components-tokens--typography--styles--paragraph--extra-small--line-height);
-  color: var(--components-tokens--site--course-card--card-description-color);
-  text-wrap: balance;
+@media (prefers-reduced-motion: reduce) {
+  .qd-lifestyle-media-card__object {
+    transition: none;
+  }
 }

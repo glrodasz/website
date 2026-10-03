@@ -230,6 +230,31 @@
       "on-accent": {
         "$type": "color",
         "$value": "{global.Colors.Support.Shark.950}"
+      },
+      "on-dark": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Shark.0}",
+        "$description": "Theme-invariant light text for surfaces that stay dark in both themes."
+      },
+      "paper": {
+        "$type": "color",
+        "$value": "{global.Colors.Schemas.Flax sepia.Sepia.100}",
+        "$description": "Theme-invariant: physical-object material that must look the same in light and dark themes."
+      },
+      "paper-line": {
+        "$type": "color",
+        "$value": "{global.Colors.Schemas.Flax sepia.Sepia.200}",
+        "$description": "Theme-invariant: physical-object material that must look the same in light and dark themes."
+      },
+      "sheen": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Shark.opacity-light}",
+        "$description": "Theme-invariant translucent white for glossy highlights on physical objects."
+      },
+      "shade": {
+        "$type": "color",
+        "$value": "{global.Colors.Support.Shark.opacity-dark}",
+        "$description": "Theme-invariant translucent black for creases and shading on physical objects."
       }
     }
   }

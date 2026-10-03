@@ -1,0 +1,11 @@
+.fun-projects__lead {
+  margin-bottom: 0;
+}
+
+.fun-projects__list {
+  display: grid;
+  gap: var(--components-tokens--project-card--spacing--list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

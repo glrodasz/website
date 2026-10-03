@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import AboutHistory from './pages/AboutHistory';
 import AboutLifestyle from './pages/AboutLifestyle';
 import Courses from './pages/Courses';
+import FunProjects from './pages/FunProjects';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
@@ -46,6 +47,7 @@ function AppShell() {
             <Route path="about/history" element={<AboutHistory />} />
             <Route path="about/lifestyle" element={<AboutLifestyle />} />
             <Route path="courses" element={<Courses />} />
+            <Route path="fun-projects" element={<FunProjects />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>

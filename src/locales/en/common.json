@@ -8,6 +8,7 @@
     "blog": "Blog",
     "bootcamp": "Bootcamp",
     "courses": "Courses",
+    "projects": "Projects",
     "contact": "Contact",
     "switchToLight": "Switch to light mode",
     "switchToDark": "Switch to dark mode",
@@ -38,7 +39,8 @@
     "htmlColors": "HTML Colors",
     "ceroComponents": "Cero Components",
     "sublr": "Sublr",
-    "cssConfColombia": "CSS Conf Colombia"
+    "cssConfColombia": "CSS Conf Colombia",
+    "allProjects": "All projects"
   },
   "skipToContent": "Skip to main content"
 }

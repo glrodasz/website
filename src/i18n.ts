@@ -9,6 +9,7 @@ import enContact from './locales/en/contact.json';
 import enAbout from './locales/en/about.json';
 import enWaitlistForm from './locales/en/waitlistForm.json';
 import enNotFound from './locales/en/notFound.json';
+import enFunProjects from './locales/en/funProjects.json';
 
 import esCommon from './locales/es/common.json';
 import esHome from './locales/es/home.json';
@@ -17,6 +18,7 @@ import esContact from './locales/es/contact.json';
 import esAbout from './locales/es/about.json';
 import esWaitlistForm from './locales/es/waitlistForm.json';
 import esNotFound from './locales/es/notFound.json';
+import esFunProjects from './locales/es/funProjects.json';
 
 i18n
   .use(LanguageDetector)
@@ -31,6 +33,7 @@ i18n
         about: enAbout,
         waitlistForm: enWaitlistForm,
         notFound: enNotFound,
+        funProjects: enFunProjects,
       },
       es: {
         common: esCommon,
@@ -40,6 +43,7 @@ i18n
         about: esAbout,
         waitlistForm: esWaitlistForm,
         notFound: esNotFound,
+        funProjects: esFunProjects,
       },
     },
     defaultNS: 'common',

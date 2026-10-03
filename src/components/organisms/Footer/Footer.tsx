@@ -109,6 +109,9 @@ export const Footer: FC<FooterProps> = ({
             <h2 className="qd-footer__col-title">{t('footer.projects')}</h2>
             <ul>
               <li>
+                <Link to={`${prefix}/fun-projects`}>{t('footer.allProjects')}</Link>
+              </li>
+              <li>
                 <a href="https://colors.guillermorodas.com" target="_blank" rel="noopener noreferrer">
                   {t('footer.htmlColors')}
                 </a>

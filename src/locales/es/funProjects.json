@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "pageLabel": "Proyectos divertidos",
+    "description": "Proyectos personales de Guillermo Rodas — pequeñas apps, experimentos y sitios para la comunidad hechos por diversión, para aprender algo nuevo o porque los necesitaba."
+  },
+  "hero": {
+    "label": "Proyectos personales",
+    "title": "Proyectos divertidos",
+    "lead": "Cosas que construí por diversión, para aprender algo nuevo o simplemente porque las necesitaba. Échales un vistazo y comparte las que te gusten."
+  },
+  "card": {
+    "visit": "Ver proyecto",
+    "source": "Código",
+    "share": "Compartir",
+    "shareOn": "Compartir {{project}} en {{network}}",
+    "shareNative": "Compartir {{project}}…",
+    "copyLink": "Copiar enlace a {{project}}",
+    "copied": "Enlace copiado",
+    "shareText": "Mira {{project}} de @germorodas",
+    "screenshotAlt": "Captura de pantalla de {{project}}"
+  },
+  "more": {
+    "title": "Hay más en GitHub",
+    "lead": "Experimentos, talleres y material de cursos viven en mis repositorios.",
+    "cta": "Ver mi GitHub"
+  }
+}

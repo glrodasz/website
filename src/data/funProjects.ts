@@ -4,6 +4,11 @@ export interface FunProject {
   name: string;
   /** Where the "Visit" button and share links point. */
   url: string;
+  /**
+   * Page to screenshot when it differs from `url`, e.g. a dashboard behind a login
+   * (see `--login` in scripts/capture-project-screenshots.ts).
+   */
+  screenshotUrl?: string;
   /** Source code, when public. */
   repoUrl?: string;
   description: string;

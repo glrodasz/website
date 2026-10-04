@@ -180,8 +180,10 @@ function generateThemeBlock(selector: string, tokens: ResolvedToken[]): string {
 }
 
 /**
- * Generate themed CSS variables — system color tokens go into [data-theme] blocks,
- * everything else (global, non-color system, component) goes into :root.
+ * Generate themed CSS variables — light system color tokens go into
+ * `:root, [data-theme="light"]` so they are the default and the fallback for any
+ * token omitted from the dark file; dark overrides follow in [data-theme="dark"].
+ * Everything else (global, non-color system, component) goes into :root.
  */
 export function generateThemedCSSVariables(
   resolvedTokens: ResolvedTokenMap,
@@ -233,12 +235,12 @@ export function generateThemedCSSVariables(
 
   css += '}\n';
 
-  // [data-theme="light"] — light system color tokens
+  // :root, [data-theme="light"] — light system color tokens (default + dark fallback)
   if (systemColorTokens.length > 0) {
-    css += generateThemeBlock('[data-theme="light"]', systemColorTokens);
+    css += generateThemeBlock(':root,\n[data-theme="light"]', systemColorTokens);
   }
 
-  // [data-theme="dark"] — dark system color tokens
+  // [data-theme="dark"] — dark overrides; must come after the light block
   if (darkSystemColorTokens.length > 0) {
     css += generateThemeBlock('[data-theme="dark"]', darkSystemColorTokens);
   }

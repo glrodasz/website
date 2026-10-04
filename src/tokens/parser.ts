@@ -263,6 +263,10 @@ export function formatValue(value: string, type: string, path: string = ''): str
     const numValue = parseFloat(value);
 
     if (!isNaN(numValue)) {
+      // Ratios (e.g. a type scale's Scale) are unitless even under font-size
+      if (pathLower.endsWith('.scale')) {
+        return value;
+      }
       // Add px for size-related tokens
       if (pathLower.includes('font-size') ||
           pathLower.includes('fontsize') ||

@@ -239,9 +239,9 @@
   --global-tokens--typography--base--19: 19;
   --global-tokens--typography--base--20: 20;
   --global-tokens--typography--base--21: 21;
-  --global-tokens--typography--scale--high-contrast: 1.409999966621399;
-  --global-tokens--typography--scale--medium-contrast: 1.2200000286102295;
-  --global-tokens--typography--scale--low-contrast: 1.1200000047683716;
+  --global-tokens--typography--scale--high-contrast: 1.41;
+  --global-tokens--typography--scale--medium-contrast: 1.22;
+  --global-tokens--typography--scale--low-contrast: 1.12;
   --global-tokens--typography--steps--13: 13;
   --global-tokens--typography--steps--16: 16;
   --global-tokens--typography--steps--17: 17;
@@ -318,7 +318,7 @@
   --system-tokens--typography--font-weight--strong: 700;
   --system-tokens--typography--font-weight--strongest: 900;
   --system-tokens--typography--font-size--headings--base: 20px;
-  --system-tokens--typography--font-size--headings--scale: 1.2200000286102295px;
+  --system-tokens--typography--font-size--headings--scale: 1.22;
   --system-tokens--typography--font-size--headings--xxs: 20px;
   --system-tokens--typography--font-size--headings--xs: 24px;
   --system-tokens--typography--font-size--headings--sm: 30px;
@@ -328,7 +328,7 @@
   --system-tokens--typography--font-size--headings--xxl: 66px;
   --system-tokens--typography--font-size--headings--huge: 80px;
   --system-tokens--typography--font-size--body--base: 13px;
-  --system-tokens--typography--font-size--body--scale: 1.2200000286102295px;
+  --system-tokens--typography--font-size--body--scale: 1.22;
   --system-tokens--typography--font-size--body--xs: 13px;
   --system-tokens--typography--font-size--body--sm: 16px;
   --system-tokens--typography--font-size--body--md: 19px;
@@ -1213,6 +1213,7 @@
   --components-tokens--markdown--border-radius--quote: var(--system-tokens--border-radius--xs);
 }
 
+:root,
 [data-theme="light"] {
 
   /* Colors */

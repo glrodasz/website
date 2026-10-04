@@ -997,15 +997,15 @@
     "Scale": {
       "High contrast": {
         "$type": "number",
-        "$value": 1.409999966621399
+        "$value": 1.41
       },
       "Medium contrast": {
         "$type": "number",
-        "$value": 1.2200000286102295
+        "$value": 1.22
       },
       "Low contrast": {
         "$type": "number",
-        "$value": 1.1200000047683716
+        "$value": 1.12
       }
     },
     "Steps": {

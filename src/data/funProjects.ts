@@ -81,15 +81,6 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Education', 'JavaScript'],
   },
   {
-    slug: 'cssconf-colombia',
-    name: 'CSS Conf Colombia',
-    url: 'https://cssconf.co',
-    description:
-      'The website for CSS Conf Colombia, the community conference about CSS and design on the web that I organized.',
-    descriptionEs:
-      'El sitio web de CSS Conf Colombia, la conferencia comunitaria sobre CSS y diseño web que organicé.',
-    tags: ['Community', 'CSS'],
-  },
   {
     slug: 'reto',
     name: 'RETO',
@@ -116,7 +107,7 @@ export const FUN_PROJECTS: FunProject[] = [
 ];
 
 /** Projects linked from the footer, in display order. */
-export const FOOTER_PROJECT_SLUGS = ['walleto', 'reto', 'timepass', 'cssconf-colombia'];
+export const FOOTER_PROJECT_SLUGS = ['walleto', 'reto', 'timepass', 'serielines'];
 
 export const FOOTER_PROJECTS: FunProject[] = FOOTER_PROJECT_SLUGS.map((slug) => {
   const project = FUN_PROJECTS.find((p) => p.slug === slug);

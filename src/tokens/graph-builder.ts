@@ -7,7 +7,8 @@
  * The graph is modeled as three layers: global → system → component.
  * System tokens are single nodes that carry both light and dark values; the
  * dark value (plus dark reference target) only exists when system-dark.json
- * overrides that token. The consumer picks a theme and we render the matching
+ * overrides that token; component tokens inherit the dark value of the system
+ * token they alias. The consumer picks a theme and we render the matching
  * color + edge set.
  */
 
@@ -35,7 +36,10 @@ export interface GraphNode {
   type: string;
   /** Resolved value in light mode (also used for globals and components). */
   resolvedValue: string;
-  /** Resolved value in dark mode — only set for system tokens overridden in system-dark.json. */
+  /**
+   * Resolved value in dark mode — set for system tokens overridden in
+   * system-dark.json and for the component tokens that alias them.
+   */
   resolvedValueDark?: string;
   displayLabel: string;
   path: string;
@@ -265,6 +269,13 @@ export function buildTokenGraph(): TokenGraph {
     if (!r) continue;
     const componentName = componentNameFromPath(path);
     const nodeId = `component::${path}`;
+    const raw = componentMap[path];
+    const targetPath =
+      raw.isReference && raw.referencePath
+        ? findReferencedPath(raw.referencePath, lightSpace)
+        : undefined;
+    const systemId = targetPath && systemLightMap[targetPath] ? `system::${targetPath}` : undefined;
+
     pushNode({
       id: nodeId,
       level: 'component',
@@ -273,21 +284,14 @@ export function buildTokenGraph(): TokenGraph {
       cssVarName: r.cssVarName,
       type: r.type,
       resolvedValue: r.resolvedValue,
+      // System nodes are already pushed, so the alias can inherit their dark value.
+      resolvedValueDark: systemId ? nodesById.get(systemId)?.resolvedValueDark : undefined,
       displayLabel: labelFromPath(path),
       path,
     });
 
-    const raw = componentMap[path];
-    if (raw.isReference && raw.referencePath) {
-      const targetPath = findReferencedPath(raw.referencePath, lightSpace);
-      if (targetPath && systemLightMap[targetPath]) {
-        edges.push({
-          from: nodeId,
-          to: `system::${targetPath}`,
-          kind: 'component-system',
-          mode: 'both',
-        });
-      }
+    if (systemId) {
+      edges.push({ from: nodeId, to: systemId, kind: 'component-system', mode: 'both' });
     }
   }
 

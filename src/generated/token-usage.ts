@@ -3408,6 +3408,321 @@ export const tokenUsages: TokenUsage[] = [
     "line": 637
   },
   {
+    "varName": "--components-tokens--project-card--border-color--default",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 8
+  },
+  {
+    "varName": "--components-tokens--project-card--border-radius--default",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 9
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--default",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 10
+  },
+  {
+    "varName": "--components-tokens--project-card--border-color--hover",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 15
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--media-width",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 20
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--media",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 30
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--placeholder-padding",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 60
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--placeholder",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 61
+  },
+  {
+    "varName": "--components-tokens--project-card--border-radius--placeholder-window",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 70
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--placeholder-window",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 71
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--placeholder-chrome-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 82
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--tags-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 83
+  },
+  {
+    "varName": "--components-tokens--project-card--border-color--default",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 84
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--placeholder-dot",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 89
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--placeholder-dot",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 90
+  },
+  {
+    "varName": "--components-tokens--project-card--border-radius--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 91
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--placeholder-dot",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 92
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--tags-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 96
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-family--body",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 100
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-size--placeholder-url",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 101
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--placeholder-url",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 102
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--placeholder-padding",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 110
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-family--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 113
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-size--placeholder-title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 114
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-weight--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 115
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--line-height--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 116
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--placeholder-title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 117
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--body-vertical",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 125
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--body-horizontal",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 126
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--tags-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 132
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--tags-bottom",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 133
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--title-bottom",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 139
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-family--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 140
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-size--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 141
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-weight--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 142
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--line-height--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 143
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--title",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 144
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--description-bottom",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 158
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-family--body",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 159
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-size--description",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 160
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--line-height--description",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 161
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--description",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 162
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--actions-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 170
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--actions-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 176
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--share-gap",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 183
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-family--body",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 187
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-size--share-label",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 188
+  },
+  {
+    "varName": "--components-tokens--project-card--typography--font-weight--share-label",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 189
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--share-label",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 190
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 198
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 199
+  },
+  {
+    "varName": "--components-tokens--project-card--border-color--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 201
+  },
+  {
+    "varName": "--components-tokens--project-card--border-radius--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 202
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 203
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 204
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--share-icon",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 210
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--share-icon",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 211
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--share-button-hover",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 216
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--share-button-hover",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 217
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--share-button-hover",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 218
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--share-feedback",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 223
+  },
+  {
+    "varName": "--components-tokens--project-card--text-color--share-feedback",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 224
+  },
+  {
+    "varName": "--components-tokens--project-card--background-color--share-button",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 225
+  },
+  {
     "varName": "--components-tokens--markdown--font-family--heading",
     "file": "src/pages/AboutHistory.css",
     "line": 2
@@ -3536,6 +3851,11 @@ export const tokenUsages: TokenUsage[] = [
     "varName": "--components-tokens--site--lifestyle-card--grid--gap",
     "file": "src/pages/AboutLifestyle.css",
     "line": 40
+  },
+  {
+    "varName": "--components-tokens--project-card--spacing--list-gap",
+    "file": "src/pages/FunProjects.css",
+    "line": 7
   },
   {
     "varName": "--components-tokens--site--typography--font-family--body",

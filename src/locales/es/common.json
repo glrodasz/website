@@ -8,6 +8,7 @@
     "blog": "Blog",
     "bootcamp": "Bootcamp",
     "courses": "Cursos",
+    "projects": "Proyectos",
     "contact": "Contacto",
     "switchToLight": "Cambiar a modo claro",
     "switchToDark": "Cambiar a modo oscuro",
@@ -35,10 +36,7 @@
     "followMe": "Sígueme",
     "copyright": "Guillermo Rodas © {{year}}",
     "projects": "Proyectos",
-    "htmlColors": "HTML Colors",
-    "ceroComponents": "Cero Components",
-    "sublr": "Sublr",
-    "cssConfColombia": "CSS Conf Colombia"
+    "allProjects": "Todos los proyectos"
   },
   "skipToContent": "Saltar al contenido principal"
 }

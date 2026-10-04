@@ -467,7 +467,7 @@
   --components-tokens--tag--text-color--success: var(--system-tokens--colors--success--high);
   --components-tokens--tag--text-color--warning: var(--system-tokens--colors--warning--high);
   --components-tokens--tag--text-color--error: var(--system-tokens--colors--danger--high);
-  --components-tokens--tag--text-color--neutral: var(--system-tokens--colors--neutral--principal);
+  --components-tokens--tag--text-color--neutral: var(--system-tokens--colors--typography--paragraph);
   --components-tokens--tag--close-background-color--filled-hover: var(--system-tokens--colors--transparency--dark);
   --components-tokens--tag--close-background-color--outlined-hover: var(--system-tokens--colors--transparency--dark);
 
@@ -490,6 +490,55 @@
   --components-tokens--status--border-color--sleep: var(--system-tokens--colors--warning--low);
   --components-tokens--status--border-color--hold: var(--system-tokens--colors--danger--low);
   --components-tokens--status--border-color--disabled: var(--system-tokens--colors--borders--neutral);
+
+  /* Project-card */
+  --components-tokens--project-card--sizing--media-width: 360px;
+  --components-tokens--project-card--spacing--body-vertical: var(--system-tokens--spacing--md);
+  --components-tokens--project-card--spacing--body-horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--project-card--spacing--tags-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--project-card--spacing--tags-bottom: var(--system-tokens--spacing--sm);
+  --components-tokens--project-card--spacing--title-bottom: var(--system-tokens--spacing--xs);
+  --components-tokens--project-card--spacing--description-bottom: var(--system-tokens--spacing--md);
+  --components-tokens--project-card--spacing--actions-gap: var(--system-tokens--spacing--sm);
+  --components-tokens--project-card--spacing--share-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--project-card--spacing--placeholder-padding: var(--system-tokens--spacing--md);
+  --components-tokens--project-card--spacing--placeholder-chrome-gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--project-card--spacing--list-gap: var(--system-tokens--spacing--md);
+  --components-tokens--project-card--sizing--share-button: var(--system-tokens--sizing--md);
+  --components-tokens--project-card--sizing--share-icon: var(--system-tokens--sizing--xs);
+  --components-tokens--project-card--sizing--placeholder-dot: var(--system-tokens--spacing--xs);
+  --components-tokens--project-card--border-radius--default: var(--system-tokens--border-radius--md);
+  --components-tokens--project-card--border-radius--share-button: var(--system-tokens--border-radius--full);
+  --components-tokens--project-card--border-radius--placeholder-window: var(--system-tokens--border-radius--sm);
+  --components-tokens--project-card--background-color--default: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--project-card--background-color--media: var(--system-tokens--colors--backgrounds--neutral);
+  --components-tokens--project-card--background-color--placeholder: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--project-card--background-color--placeholder-window: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--project-card--background-color--share-button: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--project-card--background-color--share-button-hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--project-card--border-color--default: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--project-card--border-color--hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--project-card--border-color--share-button: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--project-card--text-color--title: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--project-card--text-color--description: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--project-card--text-color--share-label: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--project-card--text-color--share-button: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--project-card--text-color--share-button-hover: var(--system-tokens--colors--fixed--on-accent);
+  --components-tokens--project-card--text-color--share-feedback: var(--system-tokens--colors--success--high);
+  --components-tokens--project-card--text-color--placeholder-title: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--project-card--text-color--placeholder-url: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--project-card--text-color--placeholder-dot: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--project-card--typography--font-family--title: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--project-card--typography--font-family--body: var(--system-tokens--typography--font-family--body);
+  --components-tokens--project-card--typography--font-size--title: var(--system-tokens--typography--font-size--headings--xxs);
+  --components-tokens--project-card--typography--font-size--description: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--project-card--typography--font-size--share-label: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--project-card--typography--font-size--placeholder-title: var(--system-tokens--typography--font-size--headings--xs);
+  --components-tokens--project-card--typography--font-size--placeholder-url: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--project-card--typography--line-height--title: var(--system-tokens--typography--line-height--headings--xxs);
+  --components-tokens--project-card--typography--line-height--description: var(--system-tokens--typography--line-height--body--sm);
+  --components-tokens--project-card--typography--font-weight--title: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--project-card--typography--font-weight--share-label: var(--system-tokens--typography--font-weight--medium);
 
   /* Nav-bar */
   --components-tokens--nav-bar--sizing--height: 72px;

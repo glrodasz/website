@@ -11,10 +11,11 @@ import { titleForPage, defaultDescription } from '../data/site';
 import './pages.css';
 import './NotFound.css';
 
-type SuggestionKey = 'courses' | 'aboutHistory' | 'aboutLifestyle' | 'contact' | 'tokens';
+type SuggestionKey = 'courses' | 'funProjects' | 'aboutHistory' | 'aboutLifestyle' | 'contact' | 'tokens';
 
 const SUGGESTION_RULES: Array<{ pattern: RegExp; key: SuggestionKey; path: string }> = [
   { pattern: /cour/i,    key: 'courses',        path: '/courses' },
+  { pattern: /proj/i,    key: 'funProjects',    path: '/fun-projects' },
   { pattern: /hist/i,    key: 'aboutHistory',   path: '/about/history' },
   { pattern: /life/i,    key: 'aboutLifestyle', path: '/about/lifestyle' },
   { pattern: /about/i,   key: 'aboutHistory',   path: '/about/history' },

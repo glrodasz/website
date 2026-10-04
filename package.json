@@ -8,6 +8,7 @@
     "build:posts": "tsx scripts/build-posts.ts",
     "build:usage": "tsx scripts/build-token-usage.ts",
     "build:covers": "tsx scripts/download-covers.ts",
+    "build:screenshots": "tsx scripts/capture-project-screenshots.ts",
     "dev": "npm run build:tokens && npm run build:usage && npm run build:posts && vite",
     "build": "npm run build:tokens && npm run build:usage && npm run build:posts && tsc -b && vite build && storybook build --output-dir dist/components",
     "lint": "eslint .",

@@ -6,6 +6,7 @@ import { BLOG_URL, SITE_NAME, SITE_TAGLINE } from '../../../data/site';
 import { useTheme } from '../../../hooks/useTheme';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useLogoSecret } from '../../../hooks/useLogoSecret';
 import { persistLocale } from '../../../i18n/persistLocale';
 import './Navigation.css';
@@ -21,6 +22,15 @@ export interface NavigationProps {
 
 const navLinkBtn = 'qd-navigation__link-btn';
 
+/**
+ * Below these widths the About sub-links fold into a dropdown so the desktop
+ * row fits. Spanish labels are longer, so its row needs more room.
+ */
+const ABOUT_COLLAPSE_QUERY = {
+  en: '(max-width: 1279px)',
+  es: '(max-width: 1459px)',
+} as const;
+
 function navLinkClass(isActive: boolean) {
   return [navLinkBtn, isActive ? 'qd-navigation__link-btn--active' : '']
     .filter(Boolean)
@@ -34,9 +44,6 @@ export const Navigation: FC<NavigationProps> = ({
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [isAboutCollapsed, setIsAboutCollapsed] = useState(
-    () => window.matchMedia('(max-width: 1169px)').matches
-  );
   const aboutRef = useRef<HTMLLIElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
@@ -56,6 +63,10 @@ export const Navigation: FC<NavigationProps> = ({
   const altLangHref = isEs
     ? location.pathname.replace(/^\/es(\/|$)/, '/') || '/'
     : `/es${location.pathname === '/' ? '' : location.pathname}`;
+
+  const isAboutCollapsed = useMediaQuery(isEs ? ABOUT_COLLAPSE_QUERY.es : ABOUT_COLLAPSE_QUERY.en);
+  // Closing the dropdown once the row has room again, so it doesn't pop back open on the next collapse.
+  if (!isAboutCollapsed && aboutOpen) setAboutOpen(false);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -90,16 +101,6 @@ export const Navigation: FC<NavigationProps> = ({
       document.removeEventListener('mousedown', onClickOutside);
     };
   }, [aboutOpen]);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 1169px)');
-    const onChange = (e: MediaQueryListEvent) => {
-      setIsAboutCollapsed(e.matches);
-      if (!e.matches) setAboutOpen(false);
-    };
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
 
   const themeToggle = (
     <button
@@ -283,6 +284,11 @@ export const Navigation: FC<NavigationProps> = ({
               <li>
                 <NavLink to={`${prefix}/courses`} className={({ isActive }) => navLinkClass(isActive)}>
                   {t('nav.courses')}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={`${prefix}/fun-projects`} className={({ isActive }) => navLinkClass(isActive)}>
+                  {t('nav.projects')}
                 </NavLink>
               </li>
               <li>
@@ -510,7 +516,7 @@ export const Navigation: FC<NavigationProps> = ({
         </NavLink>
 
         <NavLink
-          to={`${prefix}/contact`}
+          to={`${prefix}/fun-projects`}
           className={({ isActive }) =>
             [
               'qd-navigation__overlay-row',
@@ -522,6 +528,25 @@ export const Navigation: FC<NavigationProps> = ({
           onClick={closeMobile}
         >
           <span className="qd-navigation__overlay-num" aria-hidden="true">06</span>
+          <span className="qd-navigation__overlay-item-name">
+            {t('nav.projects').toUpperCase()}
+            <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
+          </span>
+        </NavLink>
+
+        <NavLink
+          to={`${prefix}/contact`}
+          className={({ isActive }) =>
+            [
+              'qd-navigation__overlay-row',
+              isActive && 'qd-navigation__overlay-row--active',
+            ]
+              .filter(Boolean)
+              .join(' ')
+          }
+          onClick={closeMobile}
+        >
+          <span className="qd-navigation__overlay-num" aria-hidden="true">07</span>
           <span className="qd-navigation__overlay-item-name">
             {t('nav.contact').toUpperCase()}
             <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>

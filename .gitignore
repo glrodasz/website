@@ -29,3 +29,6 @@ yarn.lock
 *.sw?
 .vercel
 .env*.local
+
+# Saved browser sessions for the screenshot script (contain login cookies)
+.auth

@@ -30,6 +30,7 @@ const VIEWPORT = { width: 1280, height: 800 };
 const OUTPUT_WIDTH = 960;
 const SETTLE_MS = 1500;
 const NAVIGATION_TIMEOUT_MS = 30_000;
+const NETWORK_IDLE_MAX_MS = 10_000;
 const CDP_PORT = 9333;
 
 const OUT_DIR = path.resolve(import.meta.dirname, '../src/assets/projects');
@@ -128,7 +129,10 @@ async function capture(args: string[]): Promise<void> {
       const page = await context.newPage();
       const target = captureUrl(project);
       try {
-        await page.goto(target, { waitUntil: 'networkidle', timeout: NAVIGATION_TIMEOUT_MS });
+        await page.goto(target, { waitUntil: 'load', timeout: NAVIGATION_TIMEOUT_MS });
+        // Apps with live connections (Firestore listeners, websockets) never go
+        // network-idle, so give data time to arrive but don't wait forever.
+        await page.waitForLoadState('networkidle', { timeout: NETWORK_IDLE_MAX_MS }).catch(() => {});
         await page.waitForTimeout(SETTLE_MS);
 
         if (new URL(page.url()).hostname !== new URL(target).hostname) {

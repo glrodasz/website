@@ -56,7 +56,7 @@ export const WithoutScreenshot: Story = {
     title: 'The Lineage of JavaScript',
     description:
       'A scroll-driven history of three decades of JavaScript frameworks, each rendered in the visual language of its era.',
-    url: 'https://js-lineage.vercel.app',
+    url: 'https://javascript.guillermorodas.com',
     tags: ['Vite', 'TypeScript', 'Animation'],
   },
 };

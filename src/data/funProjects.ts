@@ -23,7 +23,7 @@ export interface FunProject {
 }
 
 /**
- * Pet projects shown on /fun-projects, newest and most polished first.
+ * Pet projects shown on /projects, newest and most polished first.
  * Sourced from what's deployed on Vercel and Netlify plus public GitHub repos.
  */
 export const FUN_PROJECTS: FunProject[] = [

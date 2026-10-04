@@ -287,7 +287,7 @@ export const Navigation: FC<NavigationProps> = ({
                 </NavLink>
               </li>
               <li>
-                <NavLink to={`${prefix}/fun-projects`} className={({ isActive }) => navLinkClass(isActive)}>
+                <NavLink to={`${prefix}/projects`} className={({ isActive }) => navLinkClass(isActive)}>
                   {t('nav.projects')}
                 </NavLink>
               </li>
@@ -516,7 +516,7 @@ export const Navigation: FC<NavigationProps> = ({
         </NavLink>
 
         <NavLink
-          to={`${prefix}/fun-projects`}
+          to={`${prefix}/projects`}
           className={({ isActive }) =>
             [
               'qd-navigation__overlay-row',

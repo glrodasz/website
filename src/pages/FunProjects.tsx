@@ -22,7 +22,7 @@ const FunProjects: React.FC = () => {
       <Seo
         title={titleForPage(t('seo.pageLabel'))}
         description={t('seo.description')}
-        path={`${prefix}/fun-projects`}
+        path={`${prefix}/projects`}
       />
       <section className="page-hero">
         <span className="section-label">{t('hero.label')}</span>

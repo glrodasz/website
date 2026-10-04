@@ -15,8 +15,9 @@ export interface FunProject {
   descriptionEs: string;
   tags: string[];
   /**
-   * Set to false for projects that aren't a web page (e.g. a native app),
-   * so the screenshot script skips them and the card keeps its mockup cover.
+   * Set to false for projects that aren't a web page (e.g. a native app), so the
+   * screenshot script skips them. Add their image to src/assets/projects by hand
+   * (Timepass uses the cover from its README); without one the card shows a mockup.
    */
   capturable?: boolean;
 }

@@ -130,7 +130,7 @@ Semantic aliases to global tokens. These give meaning to raw values. Theme-aware
 | Border radius | `flat`=2, `xs`=4, `sm`=8, `md`=12, `lm`=16, `lg`=24, `xl`=32, `xxl`=48, `full`=100 |
 | Elevations | `soft`, `medium`, `high`, `extreme` |
 
-**Dark mode override rule**: `system-dark.json` only needs to define tokens whose values change in dark mode. Tokens omitted from it inherit from `system-light.json` via `:root`. Tokens that must stay constant across themes (e.g. neutral--high on a yellow button) must be explicitly set in `system-dark.json` with the same value.
+**Dark mode override rule**: `system-dark.json` only needs to define tokens whose values change in dark mode. Light system colors are emitted under `:root, [data-theme="light"]`, so tokens omitted from it inherit the light value. Tokens that must stay constant across themes (e.g. neutral--high on a yellow button) must be explicitly set in `system-dark.json` with the same value.
 
 #### Level 3 — Component Tokens (`components.json`)
 
@@ -198,14 +198,17 @@ npm run build:tokens
   /* Non-color system tokens (spacing, sizing, radius, typography) */
 }
 
+:root,
 [data-theme="light"] {
-  /* System color tokens — light values */
+  /* System color tokens — light values (default, and fallback for dark) */
 }
 
 [data-theme="dark"] {
   /* System color tokens — dark overrides only */
 }
 ```
+
+Numeric tokens get `px` from their type or path (`spacing`, `sizing`, `radius`, `font-size`, …), except ratio tokens whose last segment is `Scale`, which stay unitless.
 
 ### Slim W3C DTCG JSON Format
 

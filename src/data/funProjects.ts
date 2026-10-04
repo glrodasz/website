@@ -39,8 +39,8 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Next.js', 'TypeScript', 'Firestore'],
   },
   {
-    slug: 'serielines',
-    name: 'Serielines',
+    slug: 'serieslines',
+    name: 'Serieslines',
     url: 'https://serieslines.guillermorodas.com',
     description:
       'A visual timeline of the TV series I watch — seasons and release dates laid out so I always know what is coming next.',
@@ -106,7 +106,7 @@ export const FUN_PROJECTS: FunProject[] = [
 ];
 
 /** Projects linked from the footer, in display order. */
-export const FOOTER_PROJECT_SLUGS = ['walleto', 'reto', 'timepass', 'serielines'];
+export const FOOTER_PROJECT_SLUGS = ['walleto', 'reto', 'timepass', 'serieslines'];
 
 export const FOOTER_PROJECTS: FunProject[] = FOOTER_PROJECT_SLUGS.map((slug) => {
   const project = FUN_PROJECTS.find((p) => p.slug === slug);

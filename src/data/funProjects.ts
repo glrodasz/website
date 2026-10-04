@@ -62,7 +62,7 @@ export const FUN_PROJECTS: FunProject[] = [
   {
     slug: 'js-lineage',
     name: 'The Lineage of JavaScript',
-    url: 'https://js-lineage.vercel.app',
+    url: 'https://javascript.guillermorodas.com',
     description:
       'A scroll-driven history of three decades of JavaScript frameworks, each rendered in the visual language of its era.',
     descriptionEs:

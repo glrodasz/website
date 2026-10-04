@@ -101,17 +101,6 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Next.js', 'React Query', 'Auth0'],
   },
   {
-    slug: 'cero-components',
-    name: 'Cero Components',
-    url: 'https://cero-components.vercel.app',
-    repoUrl: 'https://github.com/glrodasz/cero-components',
-    description:
-      'The Atomic Design UI kit for RETO, a productivity app built from zero to production in the live-coding series Cero a Producción.',
-    descriptionEs:
-      'El kit de UI con Atomic Design de RETO, una app de productividad construida de cero a producción en la serie en vivo Cero a Producción.',
-    tags: ['React', 'Storybook', 'Design tokens'],
-  },
-  {
     slug: 'timepass',
     name: 'Timepass',
     url: 'https://github.com/glrodasz/timepass',

@@ -1259,7 +1259,7 @@
       },
       "neutral": {
         "$type": "color",
-        "$value": "{system.Colors.Neutral.principal}"
+        "$value": "{system.Colors.Typography.Paragraph}"
       }
     },
     "close-background-color": {

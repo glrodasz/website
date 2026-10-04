@@ -467,7 +467,7 @@
   --components-tokens--tag--text-color--success: var(--system-tokens--colors--success--high);
   --components-tokens--tag--text-color--warning: var(--system-tokens--colors--warning--high);
   --components-tokens--tag--text-color--error: var(--system-tokens--colors--danger--high);
-  --components-tokens--tag--text-color--neutral: var(--system-tokens--colors--neutral--principal);
+  --components-tokens--tag--text-color--neutral: var(--system-tokens--colors--typography--paragraph);
   --components-tokens--tag--close-background-color--filled-hover: var(--system-tokens--colors--transparency--dark);
   --components-tokens--tag--close-background-color--outlined-hover: var(--system-tokens--colors--transparency--dark);
 

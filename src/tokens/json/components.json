@@ -3523,6 +3523,197 @@
         "$type": "color",
         "$value": "{system.Colors.Fixed.on-accent}"
       }
+    },
+    "Lifestyle-card": {
+      "grid": {
+        "min-column": {
+          "$type": "number",
+          "$value": "{system.Sizing.xxl}"
+        },
+        "gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        }
+      },
+      "stage": {
+        "perspective": {
+          "$type": "string",
+          "$value": "1200px",
+          "$description": "3D camera distance for the flip; a viewing distance, not a size on the sizing scale."
+        },
+        "flip-duration": {
+          "$type": "string",
+          "$value": "0.7s",
+          "$description": "Motion timing; the system has no duration scale."
+        },
+        "flip-easing": {
+          "$type": "string",
+          "$value": "cubic-bezier(0.4, 0.1, 0.2, 1)",
+          "$description": "Motion curve; the system has no easing scale."
+        },
+        "rest-tilt": {
+          "$type": "string",
+          "$value": "-20deg",
+          "$description": "Resting turn that shows the object's side so it reads as a physical object; an angle has no token ancestor."
+        }
+      },
+      "shadow-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Transparency.dark}"
+      },
+      "caption-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "caption-top": {
+        "$type": "number",
+        "$value": "{system.Spacing.sm}"
+      },
+      "back": {
+        "text-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.on-dark}"
+        },
+        "link-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Complementary.principal}"
+        },
+        "background-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.on-accent}"
+        },
+        "padding": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.xs}"
+        },
+        "cover-opacity": {
+          "$type": "string",
+          "$value": "0.22",
+          "$description": "How much of the blurred cover shows through the back face; an opacity has no token ancestor."
+        },
+        "cover-blur": {
+          "$type": "string",
+          "$value": "blur(10px) saturate(1.3)",
+          "$description": "Filter for the cover reflection on the back face; a filter expression cannot be a token reference."
+        },
+        "summary": {
+          "min-font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "max-font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "1.4",
+            "$description": "Unitless so the leading follows the font size, which is fitted at runtime to the space on the back face."
+          }
+        },
+        "title": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{system.Typography.Font-family.Headings}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "scale": {
+            "$type": "string",
+            "$value": "1.3",
+            "$description": "Title size as a multiple of the fitted summary size, so the hierarchy holds at every fitted size."
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "1.15",
+            "$description": "Unitless so the leading follows the fitted title size."
+          }
+        }
+      },
+      "book": {
+        "aspect-ratio": {
+          "$type": "string",
+          "$value": "2 / 3",
+          "$description": "Trade paperback proportion."
+        },
+        "depth": {
+          "$type": "number",
+          "$value": "{system.Sizing.xs}"
+        },
+        "border-radius": {
+          "$type": "number",
+          "$value": "{system.Border radius.flat}"
+        },
+        "fore-edge-radius": {
+          "$type": "number",
+          "$value": "{system.Border radius.xs}"
+        },
+        "hinge-offset": {
+          "$type": "number",
+          "$value": "{system.Spacing.xs}"
+        },
+        "page-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.paper}"
+        },
+        "page-line-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.paper-line}"
+        },
+        "spine-shade-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.shade}"
+        },
+        "spine-highlight-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.sheen}"
+        }
+      },
+      "dvd": {
+        "aspect-ratio": {
+          "$type": "string",
+          "$value": "27 / 38",
+          "$description": "Standard DVD keep-case proportion (135 × 190 mm)."
+        },
+        "depth": {
+          "$type": "number",
+          "$value": "{system.Sizing.xxs}"
+        },
+        "border-radius": {
+          "$type": "number",
+          "$value": "{system.Border radius.sm}"
+        },
+        "frame-padding": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        },
+        "spine-width": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "plastic-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.on-accent}"
+        },
+        "ridge-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.sheen}"
+        },
+        "sheen-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.sheen}"
+        },
+        "inner-shade-color": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.shade}"
+        }
+      }
     }
   },
   "logo": {

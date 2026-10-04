@@ -689,6 +689,17 @@
   --components-tokens--site--not-found--hero--lead--line-height: 1.7;
   --components-tokens--site--not-found--hero--lead--max-width: 520px;
   --components-tokens--site--not-found--hero--suggestion--font-size: 0.95rem;
+  --components-tokens--site--lifestyle-card--stage--perspective: 1200px;
+  --components-tokens--site--lifestyle-card--stage--flip-duration: 0.7s;
+  --components-tokens--site--lifestyle-card--stage--flip-easing: cubic-bezier(0.4, 0.1, 0.2, 1);
+  --components-tokens--site--lifestyle-card--stage--rest-tilt: -20deg;
+  --components-tokens--site--lifestyle-card--back--cover-opacity: 0.22;
+  --components-tokens--site--lifestyle-card--back--cover-blur: blur(10px) saturate(1.3);
+  --components-tokens--site--lifestyle-card--back--summary--line-height: 1.4;
+  --components-tokens--site--lifestyle-card--back--title--scale: 1.3;
+  --components-tokens--site--lifestyle-card--back--title--line-height: 1.15;
+  --components-tokens--site--lifestyle-card--book--aspect-ratio: 2 / 3;
+  --components-tokens--site--lifestyle-card--dvd--aspect-ratio: 27 / 38;
   --components-tokens--site--page--on-dark-text: var(--system-tokens--colors--foregrounds--principal);
   --components-tokens--site--page--placeholder-text: var(--system-tokens--colors--typography--paragraph);
   --components-tokens--site--course-card--border-color: var(--system-tokens--colors--borders--neutral);
@@ -829,6 +840,36 @@
   --components-tokens--site--colors--accent: var(--system-tokens--colors--complementary--principal);
   --components-tokens--site--colors--accent-text: var(--system-tokens--colors--complementary--subtle);
   --components-tokens--site--colors--on-accent: var(--system-tokens--colors--fixed--on-accent);
+  --components-tokens--site--lifestyle-card--grid--min-column: var(--system-tokens--sizing--xxl);
+  --components-tokens--site--lifestyle-card--grid--gap: var(--system-tokens--spacing--md);
+  --components-tokens--site--lifestyle-card--shadow-color: var(--system-tokens--colors--transparency--dark);
+  --components-tokens--site--lifestyle-card--caption-gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--site--lifestyle-card--caption-top: var(--system-tokens--spacing--sm);
+  --components-tokens--site--lifestyle-card--back--text-color: var(--system-tokens--colors--fixed--on-dark);
+  --components-tokens--site--lifestyle-card--back--link-color: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--lifestyle-card--back--background-color: var(--system-tokens--colors--fixed--on-accent);
+  --components-tokens--site--lifestyle-card--back--padding: var(--system-tokens--spacing--sm);
+  --components-tokens--site--lifestyle-card--back--gap: var(--system-tokens--spacing--xs);
+  --components-tokens--site--lifestyle-card--back--summary--min-font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--site--lifestyle-card--back--summary--max-font-size: var(--system-tokens--typography--font-size--body--md);
+  --components-tokens--site--lifestyle-card--back--title--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--site--lifestyle-card--back--title--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--site--lifestyle-card--book--depth: var(--system-tokens--sizing--xs);
+  --components-tokens--site--lifestyle-card--book--border-radius: var(--system-tokens--border-radius--flat);
+  --components-tokens--site--lifestyle-card--book--fore-edge-radius: var(--system-tokens--border-radius--xs);
+  --components-tokens--site--lifestyle-card--book--hinge-offset: var(--system-tokens--spacing--xs);
+  --components-tokens--site--lifestyle-card--book--page-color: var(--system-tokens--colors--fixed--paper);
+  --components-tokens--site--lifestyle-card--book--page-line-color: var(--system-tokens--colors--fixed--paper-line);
+  --components-tokens--site--lifestyle-card--book--spine-shade-color: var(--system-tokens--colors--fixed--shade);
+  --components-tokens--site--lifestyle-card--book--spine-highlight-color: var(--system-tokens--colors--fixed--sheen);
+  --components-tokens--site--lifestyle-card--dvd--depth: var(--system-tokens--sizing--xxs);
+  --components-tokens--site--lifestyle-card--dvd--border-radius: var(--system-tokens--border-radius--sm);
+  --components-tokens--site--lifestyle-card--dvd--frame-padding: var(--system-tokens--spacing--xxs);
+  --components-tokens--site--lifestyle-card--dvd--spine-width: var(--system-tokens--spacing--sm);
+  --components-tokens--site--lifestyle-card--dvd--plastic-color: var(--system-tokens--colors--fixed--on-accent);
+  --components-tokens--site--lifestyle-card--dvd--ridge-color: var(--system-tokens--colors--fixed--sheen);
+  --components-tokens--site--lifestyle-card--dvd--sheen-color: var(--system-tokens--colors--fixed--sheen);
+  --components-tokens--site--lifestyle-card--dvd--inner-shade-color: var(--system-tokens--colors--fixed--shade);
 
   /* Logo */
   --components-tokens--logo--sizing--icon-large: 40px;
@@ -1226,6 +1267,11 @@
   --system-tokens--colors--transparency--light: #FFFFFF26;
   --system-tokens--colors--transparency--dark: #00000026;
   --system-tokens--colors--fixed--on-accent: #1A1A1A;
+  --system-tokens--colors--fixed--on-dark: #FFFFFF;
+  --system-tokens--colors--fixed--paper: #FCF6ED;
+  --system-tokens--colors--fixed--paper-line: #F4DBB8;
+  --system-tokens--colors--fixed--sheen: #FFFFFF26;
+  --system-tokens--colors--fixed--shade: #00000026;
 }
 
 [data-theme="dark"] {
@@ -1282,4 +1328,9 @@
   --system-tokens--colors--complementary--principal: #F7DF1D;
   --system-tokens--colors--complementary--deep: #F7DF1D;
   --system-tokens--colors--fixed--on-accent: #1A1A1A;
+  --system-tokens--colors--fixed--on-dark: #FFFFFF;
+  --system-tokens--colors--fixed--paper: #FCF6ED;
+  --system-tokens--colors--fixed--paper-line: #F4DBB8;
+  --system-tokens--colors--fixed--sheen: #FFFFFF26;
+  --system-tokens--colors--fixed--shade: #00000026;
 }

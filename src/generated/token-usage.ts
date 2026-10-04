@@ -1578,109 +1578,459 @@ export const tokenUsages: TokenUsage[] = [
     "line": 122
   },
   {
-    "varName": "--components-tokens--card-text--border-radius--default",
+    "varName": "--components-tokens--site--lifestyle-card--book--depth",
     "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 9
   },
   {
-    "varName": "--components-tokens--site--course-card--border-color",
+    "varName": "--components-tokens--site--lifestyle-card--book--border-radius",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 10
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--fore-edge-radius",
     "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 11
   },
   {
-    "varName": "--components-tokens--site--course-card--surface-color",
+    "varName": "--components-tokens--site--lifestyle-card--dvd--depth",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 12
+    "line": 22
   },
   {
-    "varName": "--components-tokens--site--course-card--card-title-color",
+    "varName": "--components-tokens--site--lifestyle-card--dvd--border-radius",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 14
+    "line": 23
   },
   {
-    "varName": "--components-tokens--site--course-card--hover-border-color",
+    "varName": "--components-tokens--site--lifestyle-card--dvd--border-radius",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 19
+    "line": 24
   },
   {
-    "varName": "--components-tokens--site--course-card--media-background-color",
+    "varName": "--components-tokens--site--lifestyle-card--book--aspect-ratio",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 34
+    "line": 32
   },
   {
-    "varName": "--components-tokens--typography--styles--subtitle--large--font-size",
+    "varName": "--components-tokens--site--lifestyle-card--stage--perspective",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 48
+    "line": 33
   },
   {
-    "varName": "--components-tokens--typography--styles--subtitle--large--line-height",
+    "varName": "--components-tokens--site--lifestyle-card--dvd--aspect-ratio",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 49
+    "line": 37
   },
   {
-    "varName": "--components-tokens--site--course-card--media-placeholder-accent-color",
+    "varName": "--components-tokens--site--lifestyle-card--stage--rest-tilt",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 50
+    "line": 44
   },
   {
-    "varName": "--components-tokens--site--course-card--meta-gap",
+    "varName": "--components-tokens--site--lifestyle-card--stage--flip-duration",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 56
+    "line": 45
   },
   {
-    "varName": "--components-tokens--site--course-card--meta-padding",
+    "varName": "--components-tokens--site--lifestyle-card--stage--flip-easing",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 57
+    "line": 46
   },
   {
-    "varName": "--components-tokens--typography--styles--subtitle--small--font-family",
+    "varName": "--components-tokens--site--lifestyle-card--shadow-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 61
   },
   {
-    "varName": "--components-tokens--typography--styles--subtitle--small--font-weight",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 62
-  },
-  {
-    "varName": "--components-tokens--typography--styles--subtitle--small--font-size",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 63
-  },
-  {
-    "varName": "--components-tokens--typography--styles--subtitle--small--line-height",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 64
-  },
-  {
-    "varName": "--components-tokens--typography--styles--paragraph--extra-small--font-size",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 69
-  },
-  {
-    "varName": "--components-tokens--typography--styles--paragraph--extra-small--line-height",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 70
-  },
-  {
-    "varName": "--components-tokens--site--course-card--card-description-color",
+    "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 71
   },
   {
+    "varName": "--components-tokens--site--lifestyle-card--back--background-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 80
+  },
+  {
+    "varName": "--components-tokens--typography--styles--subtitle--large--font-size",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 101
+  },
+  {
+    "varName": "--components-tokens--typography--styles--subtitle--large--line-height",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 102
+  },
+  {
+    "varName": "--components-tokens--site--course-card--media-placeholder-accent-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 103
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--gap",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 125
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--gap",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 126
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 141
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 142
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 144
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 144
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 145
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 145
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 146
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 151
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 161
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 162
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 163
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--background-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 166
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 173
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 176
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--page-line-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 180
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--page-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 181
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--plastic-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 189
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--frame-padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 190
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 194
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 198
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 206
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 207
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 208
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--ridge-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 211
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 217
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 221
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--border-radius",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 228
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--inner-shade-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 229
+  },
+  {
+    "varName": "--components-tokens--site--course-card--media-background-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 233
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--sheen-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 244
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--sheen-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 247
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--sheen-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 250
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--ridge-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 259
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--plastic-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 262
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--gap",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 271
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 273
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--text-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 276
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--background-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 277
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 284
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--cover-blur",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 287
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--cover-opacity",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 288
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--summary--min-font-size",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 298
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--title--font-family",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 303
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--title--font-weight",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 304
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--title--scale",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 305
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--title--line-height",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 306
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--link-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 307
+  },
+  {
+    "varName": "--components-tokens--typography--styles--paragraph--extra-small--font-family",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 316
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--summary--line-height",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 318
+  },
+  {
+    "varName": "--components-tokens--typography--styles--label--small--font-family",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 326
+  },
+  {
+    "varName": "--components-tokens--typography--styles--label--small--font-size",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 327
+  },
+  {
+    "varName": "--components-tokens--typography--styles--label--small--font-weight",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 328
+  },
+  {
+    "varName": "--components-tokens--typography--styles--label--small--line-height",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 329
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--link-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 330
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--caption-gap",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 335
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--background-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 365
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 366
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 376
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 377
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 378
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 382
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--caption-gap",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 390
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--caption-top",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 391
+  },
+  {
+    "varName": "--components-tokens--typography--styles--subtitle--small--font-family",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 396
+  },
+  {
+    "varName": "--components-tokens--typography--styles--subtitle--small--font-weight",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 397
+  },
+  {
+    "varName": "--components-tokens--typography--styles--subtitle--small--font-size",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 398
+  },
+  {
+    "varName": "--components-tokens--typography--styles--subtitle--small--line-height",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 399
+  },
+  {
+    "varName": "--components-tokens--site--course-card--card-title-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 400
+  },
+  {
     "varName": "--components-tokens--typography--styles--paragraph--extra-small--font-size",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 76
+    "line": 405
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--extra-small--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 77
+    "line": 406
   },
   {
     "varName": "--components-tokens--site--course-card--card-description-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 78
+    "line": 407
   },
   {
     "varName": "--components-tokens--text-area--spacing--large--gap",
@@ -3491,6 +3841,16 @@ export const tokenUsages: TokenUsage[] = [
     "varName": "--components-tokens--markdown--color--strong",
     "file": "src/pages/AboutHistory.css",
     "line": 63
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--grid--min-column",
+    "file": "src/pages/AboutLifestyle.css",
+    "line": 38
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--grid--gap",
+    "file": "src/pages/AboutLifestyle.css",
+    "line": 40
   },
   {
     "varName": "--components-tokens--project-card--spacing--list-gap",

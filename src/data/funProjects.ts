@@ -39,9 +39,9 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Next.js', 'TypeScript', 'Firestore'],
   },
   {
-    slug: 'series-timeline',
-    name: 'Series Timeline',
-    url: 'https://seriestimeline.netlify.app',
+    slug: 'serielines',
+    name: 'Serielines',
+    url: 'https://serieslines.guillermorodas.com',
     description:
       'A visual timeline of the TV series I watch — seasons and release dates laid out so I always know what is coming next.',
     descriptionEs:

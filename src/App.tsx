@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './hooks/ThemeProvider';
 import { useTranslation } from 'react-i18next';
 import Navigation from './components/organisms/Navigation';
@@ -48,7 +48,6 @@ function AppShell() {
             <Route path="about/lifestyle" element={<AboutLifestyle />} />
             <Route path="courses" element={<Courses />} />
             <Route path="projects" element={<FunProjects />} />
-            <Route path="fun-projects" element={<Navigate to="../projects" replace />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>

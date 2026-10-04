@@ -6,9 +6,10 @@
  *      npm run build:screenshots -- --force (re-captures everything)
  *      npm run build:screenshots -- walleto html-colors   (only these slugs, always re-captured)
  *
- * Projects behind a login: run once with `--login <slug>`. A browser window opens
- * on the project; sign in, then press Enter in the terminal. The session is saved to
- * `.auth/{slug}.json` (gitignored) and reused by every later capture of that project.
+ * Projects behind a login: run once with `--login <slug>`. Your regular Google Chrome
+ * opens on the project with a separate profile; sign in, then press Enter in the terminal.
+ * The session is saved to `.auth/{slug}.json` (gitignored) and reused by every later
+ * capture of that project.
  *
  *      npm run build:screenshots -- --login walleto
  *      npm run build:screenshots -- walleto
@@ -17,6 +18,7 @@
  * (`npx playwright install chromium`, or point CHROMIUM_PATH at an existing binary).
  */
 
+import { spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import readline from 'readline/promises';
@@ -28,6 +30,7 @@ const VIEWPORT = { width: 1280, height: 800 };
 const OUTPUT_WIDTH = 960;
 const SETTLE_MS = 1500;
 const NAVIGATION_TIMEOUT_MS = 30_000;
+const CDP_PORT = 9333;
 
 const OUT_DIR = path.resolve(import.meta.dirname, '../src/assets/projects');
 const AUTH_DIR = path.resolve(import.meta.dirname, '../.auth');
@@ -35,27 +38,63 @@ const AUTH_DIR = path.resolve(import.meta.dirname, '../.auth');
 const authStatePath = (slug: string) => path.join(AUTH_DIR, `${slug}.json`);
 const captureUrl = (project: FunProject) => project.screenshotUrl ?? project.url;
 
-function launch(headless = true): Promise<Browser> {
-  return chromium.launch({ headless, executablePath: process.env.CHROMIUM_PATH || undefined });
+function launch(): Promise<Browser> {
+  return chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 }
 
+/** Locates the user's regular Google Chrome. Override with CHROME_PATH. */
+function findChrome(): string {
+  const candidates = [
+    process.env.CHROME_PATH,
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    `${process.env.PROGRAMFILES}\\Google\\Chrome\\Application\\chrome.exe`,
+    `${process.env['PROGRAMFILES(X86)']}\\Google\\Chrome\\Application\\chrome.exe`,
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+  ];
+  const found = candidates.find((c): c is string => Boolean(c) && fs.existsSync(c!));
+  if (!found) throw new Error('Google Chrome not found. Set CHROME_PATH to its executable.');
+  return found;
+}
+
+/**
+ * Opens a plain Chrome window — not driven by Playwright — so Google and other
+ * identity providers don't reject the sign-in as an automated browser. Once the
+ * user is signed in, Playwright attaches over CDP only to read the cookies.
+ */
 async function login(slug: string): Promise<void> {
   const project = FUN_PROJECTS.find((p) => p.slug === slug);
   if (!project) throw new Error(`Unknown project: ${slug}`);
 
-  const browser = await launch(false);
-  const context = await browser.newContext({ viewport: VIEWPORT });
-  const page = await context.newPage();
-  await page.goto(captureUrl(project));
-
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  await rl.question(`Sign in to ${project.name} in the browser window, then press Enter here… `);
-  rl.close();
-
   fs.mkdirSync(AUTH_DIR, { recursive: true });
-  await context.storageState({ path: authStatePath(slug) });
-  await browser.close();
-  console.log(`  🔐 Saved session to .auth/${slug}.json`);
+  const chrome = spawn(
+    findChrome(),
+    [
+      // A dedicated profile: Chrome refuses remote debugging on the default one,
+      // and keeping it lets the next --login reuse the identity-provider session.
+      `--user-data-dir=${path.join(AUTH_DIR, 'chrome-profile')}`,
+      `--remote-debugging-port=${CDP_PORT}`,
+      '--no-first-run',
+      '--no-default-browser-check',
+      captureUrl(project),
+    ],
+    { stdio: 'ignore' },
+  );
+
+  try {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    await rl.question(`Sign in to ${project.name} in the Chrome window, then press Enter here… `);
+    rl.close();
+
+    const browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`);
+    await browser.contexts()[0].storageState({ path: authStatePath(slug) });
+    await browser.close();
+    console.log(`  🔐 Saved session to .auth/${slug}.json`);
+  } finally {
+    chrome.kill();
+  }
 }
 
 async function capture(args: string[]): Promise<void> {

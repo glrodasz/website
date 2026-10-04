@@ -47,7 +47,7 @@ function AppShell() {
             <Route path="about/history" element={<AboutHistory />} />
             <Route path="about/lifestyle" element={<AboutLifestyle />} />
             <Route path="courses" element={<Courses />} />
-            <Route path="fun-projects" element={<FunProjects />} />
+            <Route path="projects" element={<FunProjects />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>

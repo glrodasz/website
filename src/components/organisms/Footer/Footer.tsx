@@ -117,7 +117,7 @@ export const Footer: FC<FooterProps> = ({
                 </li>
               ))}
               <li>
-                <Link to={`${prefix}/fun-projects`}>{t('footer.allProjects')}</Link>
+                <Link to={`${prefix}/projects`}>{t('footer.allProjects')}</Link>
               </li>
             </ul>
           </div>

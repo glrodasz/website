@@ -81,7 +81,6 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Education', 'JavaScript'],
   },
   {
-  {
     slug: 'reto',
     name: 'RETO',
     url: 'https://www.makemistak.es',

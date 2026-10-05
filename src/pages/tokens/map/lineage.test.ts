@@ -8,6 +8,7 @@ import {
   computeMapView,
   groupId,
   lineageOf,
+  overviewPrefix,
   resolveMapId,
   toOpaqueHex,
   type MapColumn,
@@ -36,10 +37,11 @@ function viewOf(focusId: string | null, { filters, theme = 'light', expanded = [
 
 const ids = (v: MapView, column: MapColumn) => v.columns[column].map((r) => r.id);
 const rowCounts = (v: MapView) => MAP_COLUMNS.map((c) => v.columns[c].length);
-const linkWeight = (v: MapView, from: MapColumn) => {
+const linksFrom = (v: MapView, from: MapColumn) => {
   const left = new Set(ids(v, from));
-  return v.links.filter((l) => left.has(l.left)).reduce((n, l) => n + l.weight, 0);
+  return v.links.filter((l) => left.has(l.left));
 };
+const linkWeight = (v: MapView, from: MapColumn) => linksFrom(v, from).reduce((n, l) => n + l.weight, 0);
 
 const BUTTON_CSS = 'ui::src/components/atoms/Button.css';
 const ICON_BUTTON_CSS = 'ui::src/components/molecules/IconButton.css';
@@ -128,6 +130,26 @@ describe('computeMapView overview', () => {
     expect(linkWeight(overview, 'global')).toBe(themeEdges('system-global'));
     expect(linkWeight(overview, 'system')).toBe(themeEdges('component-system'));
     expect(linkWeight(overview, 'component')).toBe(usagePairs.size);
+  });
+
+  it('draws one link per pair of groups that reference each other', () => {
+    const groupPairs = (kind: string, left: 'global' | 'system', right: 'system' | 'component') =>
+      new Set(
+        graph.edges
+          .filter((e) => e.kind === kind && e.mode !== 'dark')
+          .map((e) => {
+            const [from, to] = [graph.nodesById.get(e.from)!, graph.nodesById.get(e.to)!];
+            return `${groupId(left, overviewPrefix(to))}\n${groupId(right, overviewPrefix(from))}`;
+          }),
+      );
+    const pairsOf = (from: MapColumn) =>
+      new Set(linksFrom(overview, from).map((l) => `${l.left}\n${l.right}`));
+
+    expect(pairsOf('global')).toEqual(groupPairs('system-global', 'global', 'system'));
+    expect(pairsOf('system')).toEqual(groupPairs('component-system', 'system', 'component'));
+    expect(linksFrom(overview, 'global')).toHaveLength(33);
+    expect(linksFrom(overview, 'system')).toHaveLength(176);
+    expect(overview.links.every((l) => l.weight > 0)).toBe(true);
   });
 
   it('keeps groups nothing references, without links', () => {

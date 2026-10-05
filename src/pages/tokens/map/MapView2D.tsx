@@ -2,13 +2,15 @@
  * 2D rendering of the token map: four columns of row buttons over a single
  * SVG of links, all inside one scroller.
  *
- * Row and link geometry comes from arrange.ts, so nothing is measured. The
+ * Row and link geometry comes from arrange.ts, so no row is measured. The
  * SVG's viewBox is 100 units wide and as tall as the rows, stretched to the
  * plot, so links follow resizes without JS. Hovering or keyboard-focusing a
- * row lights its lineage and dims everything else.
+ * row lights its lineage and dims everything else. When the scroller is
+ * narrower than the map, the columns cut off at either side are named at
+ * that edge.
  */
 
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { TokenSwatch } from '../TokenSwatch';
 import { COLUMN_X, ROW, layoutRows, linkPath } from './arrange';
 import { MAP_COLUMNS, lineageOf, type MapColumn, type MapRow, type MapView } from './lineage';
@@ -32,14 +34,35 @@ const COLUMN_HEADS: Record<MapColumn, { title: string; caption: string; empty: s
   ui: { title: 'UI', caption: 'CSS files using them', empty: 'No CSS files' },
 };
 
+/** Longer values (font stacks, `clamp()` expressions) stay in the tooltip and the inspector. */
+const MAX_VALUE_CHARS = 7;
+/** Space kept beside a column scrolled into view by the edge hint. */
+const REVEAL_MARGIN = 14;
+const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
+
 function columnStyle(column: MapColumn): React.CSSProperties {
   const { left, right } = COLUMN_X[column];
   return { left: `${left}%`, width: `${right - left}%` };
 }
 
+/** A column's left and right edges in the scroller's content px. */
+function columnEdges(plot: HTMLElement, column: MapColumn): [number, number] {
+  const at = (percent: number) => plot.offsetLeft + (percent / 100) * plot.clientWidth;
+  return [at(COLUMN_X[column].left), at(COLUMN_X[column].right)];
+}
+
 /** Link stroke in screen px: thicker for links that stand for more references. */
 function strokeWidth(weight: number): number {
   return 1 + Math.min(4, Math.log2(Math.max(1, weight)));
+}
+
+/**
+ * Resting link opacity for a gap holding `count` links: a dense gap (176
+ * system → namespace links in the overview) fades so it reads as texture
+ * rather than a solid mass, while a sparse one stays clearly drawn.
+ */
+function restingOpacity(count: number): number {
+  return Math.min(0.35, Math.max(0.08, 0.35 * Math.sqrt(16 / count)));
 }
 
 function plural(count: number, noun: string): string {
@@ -56,6 +79,15 @@ function rowTitle(row: MapRow): string {
   if (row.elsewhere > 0) lines.push(`${plural(row.elsewhere, 'more user')} not on this map`);
   if (row.collapse === 'collapsed') lines.push('Click to show its tokens');
   return lines.join('\n');
+}
+
+/** The value worth printing in a token row: short ones only, and not when the label already says it. */
+function shownValue(row: MapRow): string | null {
+  const { value } = row;
+  if (row.kind !== 'token' || row.swatches.length > 0 || value === undefined) return null;
+  if (value.length > MAX_VALUE_CHARS) return null;
+  // Scale steps are named by their value (`Sizing.16` is 16).
+  return value === row.label.slice(row.label.lastIndexOf('.') + 1) ? null : value;
 }
 
 /** The prefix a `group::<level>::<prefix>` id names. */
@@ -82,13 +114,23 @@ function refocusTarget(scroller: HTMLElement, r: RefocusTarget): HTMLElement | n
   );
 }
 
+interface Overflow {
+  /** Columns cut off on the left, then on the right, of the scroller. */
+  before: readonly MapColumn[];
+  after: readonly MapColumn[];
+}
+
+const NO_OVERFLOW: Overflow = { before: [], after: [] };
+
 interface RowSlotProps {
   row: MapRow;
   top: number;
   searching: boolean;
+  /** In the lineage being traced; rows outside it dim while one is. */
+  lit: boolean;
+  selected: boolean;
   /** The first member of an expanded group carries the fold control. */
   foldable: boolean;
-  classes: string;
   /** `viaKeyboard`: activated with Enter or Space rather than a pointer. */
   onActivate: (row: MapRow, viaKeyboard: boolean) => void;
   onFold: (groupId: string, viaKeyboard: boolean) => void;
@@ -96,21 +138,36 @@ interface RowSlotProps {
   onKeyboardFocus: (id: string | null) => void;
 }
 
-function RowSlot({
+/** Memoised on primitive state, so tracing a lineage re-renders only the rows it lights or leaves. */
+const RowSlot = memo(function RowSlot({
   row,
   top,
   searching,
+  lit,
+  selected,
   foldable,
-  classes,
   onActivate,
   onFold,
   onHover,
   onKeyboardFocus,
 }: RowSlotProps) {
   const isColor = row.swatches.length > 0;
+  const muted = searching && row.matches === 0;
+  const value = shownValue(row);
   // Sibling tokens share long prefixes (`text-color.ghost.…`), so the prefix
   // gives way before the last segment that tells them apart.
   const cut = row.kind === 'token' ? row.label.lastIndexOf('.') + 1 : 0;
+  const classes = [
+    'token-map__row',
+    `token-map__row--${row.kind}`,
+    row.isFocus && 'token-map__row--focus',
+    selected && 'token-map__row--selected',
+    row.collapse === 'collapsed' && 'token-map__row--collapsed',
+    lit && 'token-map__row--lit',
+    muted && 'token-map__row--muted',
+  ]
+    .filter(Boolean)
+    .join(' ');
   return (
     <div
       className={`token-map__slot${row.collapse === 'expanded' ? ' token-map__slot--expanded' : ''}`}
@@ -145,9 +202,7 @@ function RowSlot({
           {cut > 0 && <span className="token-map__label-head">{row.label.slice(0, cut)}</span>}
           <span className="token-map__label-tail">{row.label.slice(cut)}</span>
         </span>
-        {row.kind === 'token' && !isColor && row.value !== undefined && (
-          <code className="token-map__value">{row.value}</code>
-        )}
+        {value !== null && <code className="token-map__value">{value}</code>}
         {row.kind === 'group' && (
           <span className="token-map__count">
             {searching && row.matches > 0 ? `${row.matches}/${row.memberCount}` : row.memberCount}
@@ -164,7 +219,7 @@ function RowSlot({
             ▸
           </span>
         )}
-        {searching && row.matches === 0 && <span className="sr-only"> (no match)</span>}
+        {muted && <span className="sr-only"> (no match)</span>}
       </button>
       {foldable && row.toggleId && (
         <button
@@ -179,7 +234,7 @@ function RowSlot({
       )}
     </div>
   );
-}
+});
 
 export function MapView2D({
   view,
@@ -209,6 +264,7 @@ export function MapView2D({
       view.links.map((l) => ({
         link: l,
         key: `${l.left}\n${l.right}`,
+        column: columnById.get(l.left) ?? 'global',
         d: linkPath(l, layout.top, (id) => columnById.get(id) ?? 'global'),
         width: strokeWidth(l.weight),
       })),
@@ -217,15 +273,24 @@ export function MapView2D({
   // The resting links never change on hover; only the lit overlay does.
   const restingLinks = useMemo(
     () =>
-      links.map((l) => (
-        <path
-          key={l.key}
-          className="token-map__edge"
-          d={l.d}
-          strokeWidth={l.width}
-          vectorEffect="non-scaling-stroke"
-        />
-      )),
+      MAP_COLUMNS.map((column) => {
+        const gap = links.filter((l) => l.column === column);
+        if (gap.length === 0) return null;
+        const style = { '--token-map-edge-rest': restingOpacity(gap.length) } as React.CSSProperties;
+        return (
+          <g key={column} style={style}>
+            {gap.map((l) => (
+              <path
+                key={l.key}
+                className="token-map__edge"
+                d={l.d}
+                strokeWidth={l.width}
+                vectorEffect="non-scaling-stroke"
+              />
+            ))}
+          </g>
+        );
+      }),
     [links],
   );
 
@@ -261,9 +326,8 @@ export function MapView2D({
     const visible = scroller.clientHeight - plot.offsetTop;
     scroller.scrollTop =
       last - first > visible ? first - ROW.padTop : (first + last) / 2 - visible / 2;
-    const { left, right } = COLUMN_X[MAP_COLUMNS[focusColumn]];
-    const centre = plot.offsetLeft + ((left + right) / 200) * plot.clientWidth;
-    scroller.scrollLeft = centre - scroller.clientWidth / 2;
+    const [left, right] = columnEdges(plot, MAP_COLUMNS[focusColumn]);
+    scroller.scrollLeft = (left + right) / 2 - scroller.clientWidth / 2;
   }, [view, layout, focusColumn]);
 
   // A keyboard action can replace the row holding focus (a new focus, a group
@@ -280,140 +344,193 @@ export function MapView2D({
   });
 
   const focusId = view.focusId;
-  const activate = (row: MapRow, viaKeyboard: boolean) => {
-    if (row.collapse === 'collapsed' && row.toggleId) {
-      if (viaKeyboard) refocus.current = { kind: 'member', groupId: row.toggleId };
-      onToggleGroup(row.toggleId);
-      return;
-    }
-    if (viaKeyboard && row.id !== focusId) refocus.current = { kind: 'focus', fallback: null };
-    onFocus(row.id);
-    if (row.kind === 'token') onSelectToken(row.id);
-  };
+  const activate = useCallback(
+    (row: MapRow, viaKeyboard: boolean) => {
+      if (row.collapse === 'collapsed' && row.toggleId) {
+        if (viaKeyboard) refocus.current = { kind: 'member', groupId: row.toggleId };
+        onToggleGroup(row.toggleId);
+        return;
+      }
+      if (viaKeyboard && row.id !== focusId) refocus.current = { kind: 'focus', fallback: null };
+      onFocus(row.id);
+      if (row.kind === 'token') onSelectToken(row.id);
+    },
+    [focusId, onFocus, onSelectToken, onToggleGroup],
+  );
 
-  const fold = (groupId: string, viaKeyboard: boolean) => {
-    if (viaKeyboard) refocus.current = { kind: 'row', id: groupId };
-    onToggleGroup(groupId);
-  };
+  const fold = useCallback(
+    (groupId: string, viaKeyboard: boolean) => {
+      if (viaKeyboard) refocus.current = { kind: 'row', id: groupId };
+      onToggleGroup(groupId);
+    },
+    [onToggleGroup],
+  );
 
-  const rowClasses = (row: MapRow) =>
-    [
-      'token-map__row',
-      `token-map__row--${row.kind}`,
-      row.isFocus && 'token-map__row--focus',
-      row.id === selectedId && 'token-map__row--selected',
-      row.collapse === 'collapsed' && 'token-map__row--collapsed',
-      lit && (lit.has(row.id) ? 'token-map__row--lit' : 'token-map__row--dim'),
-      searching && row.matches === 0 && 'token-map__row--muted',
-    ]
-      .filter(Boolean)
-      .join(' ');
+  // Which columns the scroller cuts off, so its edges can name them.
+  const [overflow, setOverflow] = useState<Overflow>(NO_OVERFLOW);
+  const measureOverflow = useCallback(() => {
+    const scroller = scrollerRef.current;
+    const plot = plotRef.current;
+    if (!scroller || !plot) return;
+    const start = scroller.scrollLeft;
+    const end = start + scroller.clientWidth;
+    const before = MAP_COLUMNS.filter((c) => columnEdges(plot, c)[0] < start - 1);
+    const after = MAP_COLUMNS.filter((c) => columnEdges(plot, c)[1] > end + 1);
+    setOverflow((prev) =>
+      prev.before.join() === before.join() && prev.after.join() === after.join()
+        ? prev
+        : { before, after },
+    );
+  }, []);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const observer = new ResizeObserver(measureOverflow);
+    observer.observe(scroller);
+    return () => observer.disconnect();
+  }, [measureOverflow, isEmpty]);
+
+  const reveal = (side: keyof Overflow) => {
+    const scroller = scrollerRef.current;
+    const plot = plotRef.current;
+    const columns = overflow[side];
+    if (!scroller || !plot || columns.length === 0) return;
+    const left =
+      side === 'after'
+        ? columnEdges(plot, columns[0])[0] - REVEAL_MARGIN
+        : columnEdges(plot, columns[columns.length - 1])[1] + REVEAL_MARGIN - scroller.clientWidth;
+    const smooth = !window.matchMedia(REDUCED_MOTION).matches;
+    scroller.scrollTo({ left: Math.max(0, left), behavior: smooth ? 'smooth' : 'auto' });
+  };
 
   if (isEmpty) {
     return <div className="token-map__notice">No tokens match the current filters.</div>;
   }
 
   return (
-    <div
-      className="token-map__scroller"
-      ref={scrollerRef}
-      onKeyDown={(e) => {
-        // The page pops the map focus on Escape; follow it from the row it leaves.
-        if (e.key === 'Escape' && focusId !== null) {
-          refocus.current = { kind: 'focus', fallback: focusId };
-        }
-      }}
-    >
-      <div className="token-map__canvas">
-        <div className="token-map__heads">
-          <div className="token-map__heads-inner">
-            {MAP_COLUMNS.map((c) => (
-              <div key={c} className={`token-map__head token-map__head--${c}`} style={columnStyle(c)}>
-                <h2 id={`${headId}-${c}`} className="token-map__head-title">
-                  {COLUMN_HEADS[c].title}
-                  <span className="token-map__head-count">{view.totals[c]}</span>
-                </h2>
-                <span className="token-map__head-caption">{COLUMN_HEADS[c].caption}</span>
-              </div>
-            ))}
+    <div className="token-map__viewport">
+      <div
+        className="token-map__scroller"
+        ref={scrollerRef}
+        onScroll={measureOverflow}
+        onKeyDown={(e) => {
+          // The page pops the map focus on Escape; follow it from the row it leaves.
+          if (e.key === 'Escape' && focusId !== null) {
+            refocus.current = { kind: 'focus', fallback: focusId };
+          }
+        }}
+      >
+        <div className="token-map__canvas">
+          <div className="token-map__heads">
+            <div className="token-map__heads-inner">
+              {MAP_COLUMNS.map((c) => (
+                <div key={c} className={`token-map__head token-map__head--${c}`} style={columnStyle(c)}>
+                  <h2 id={`${headId}-${c}`} className="token-map__head-title">
+                    {COLUMN_HEADS[c].title}
+                    <span className="token-map__head-count">{view.totals[c]}</span>
+                  </h2>
+                  <span className="token-map__head-caption">{COLUMN_HEADS[c].caption}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className={`token-map__plot${lit ? ' token-map__plot--tracing' : ''}`}
+            ref={plotRef}
+            style={{ height: layout.height }}
+          >
+            <svg
+              className={`token-map__edges${lit ? ' token-map__edges--tracing' : ''}`}
+              viewBox={`0 0 100 ${layout.height}`}
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              {restingLinks}
+              {lit && (
+                <g>
+                  {links
+                    .filter((l) => lit.has(l.link.left) && lit.has(l.link.right))
+                    .map((l) => (
+                      <path
+                        key={l.key}
+                        className="token-map__edge token-map__edge--lit"
+                        d={l.d}
+                        strokeWidth={l.width}
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    ))}
+                </g>
+              )}
+            </svg>
+
+            {MAP_COLUMNS.map((c, i) => {
+              const rows = view.columns[c];
+              return (
+                <section
+                  key={c}
+                  className={`token-map__column token-map__column--${c}`}
+                  style={columnStyle(c)}
+                  aria-labelledby={`${headId}-${c}`}
+                >
+                  {rows.length === 0 && (
+                    <p className="token-map__column-empty" style={{ top: layout.height / 2 - ROW.h }}>
+                      {COLUMN_HEADS[c].empty}
+                      {focusColumn >= 0 && (i < focusColumn ? ' upstream' : ' downstream')}
+                    </p>
+                  )}
+                  {rows.flatMap((row, r) => {
+                    const heading = headingByRow.get(row.id);
+                    const slot = (
+                      <RowSlot
+                        key={row.id}
+                        row={row}
+                        top={layout.top.get(row.id) ?? 0}
+                        searching={searching}
+                        lit={lit?.has(row.id) ?? false}
+                        selected={row.id === selectedId}
+                        foldable={row.collapse === 'expanded' && rows[r - 1]?.toggleId !== row.toggleId}
+                        onActivate={activate}
+                        onFold={fold}
+                        onHover={setHoverId}
+                        onKeyboardFocus={setKeyboardId}
+                      />
+                    );
+                    // Each heading comes right before its first row, so reading order follows the sections.
+                    return heading
+                      ? [
+                          <h3
+                            key={`heading:${row.id}`}
+                            className="token-map__section"
+                            style={{ top: heading.top }}
+                          >
+                            {heading.label}
+                          </h3>,
+                          slot,
+                        ]
+                      : [slot];
+                  })}
+                </section>
+              );
+            })}
           </div>
         </div>
-
-        <div className="token-map__plot" ref={plotRef} style={{ height: layout.height }}>
-          <svg
-            className={`token-map__edges${lit ? ' token-map__edges--tracing' : ''}`}
-            viewBox={`0 0 100 ${layout.height}`}
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <g>{restingLinks}</g>
-            {lit && (
-              <g>
-                {links
-                  .filter((l) => lit.has(l.link.left) && lit.has(l.link.right))
-                  .map((l) => (
-                    <path
-                      key={l.key}
-                      className="token-map__edge token-map__edge--lit"
-                      d={l.d}
-                      strokeWidth={l.width}
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  ))}
-              </g>
-            )}
-          </svg>
-
-          {MAP_COLUMNS.map((c, i) => {
-            const rows = view.columns[c];
-            return (
-              <section
-                key={c}
-                className={`token-map__column token-map__column--${c}`}
-                style={columnStyle(c)}
-                aria-labelledby={`${headId}-${c}`}
-              >
-                {rows.length === 0 && (
-                  <p className="token-map__column-empty" style={{ top: layout.height / 2 - ROW.h }}>
-                    {COLUMN_HEADS[c].empty}
-                    {focusColumn >= 0 && (i < focusColumn ? ' upstream' : ' downstream')}
-                  </p>
-                )}
-                {rows.flatMap((row, r) => {
-                  const heading = headingByRow.get(row.id);
-                  const slot = (
-                    <RowSlot
-                      key={row.id}
-                      row={row}
-                      top={layout.top.get(row.id) ?? 0}
-                      searching={searching}
-                      foldable={row.collapse === 'expanded' && rows[r - 1]?.toggleId !== row.toggleId}
-                      classes={rowClasses(row)}
-                      onActivate={activate}
-                      onFold={fold}
-                      onHover={setHoverId}
-                      onKeyboardFocus={setKeyboardId}
-                    />
-                  );
-                  // Each heading comes right before its first row, so reading order follows the sections.
-                  return heading
-                    ? [
-                        <h3
-                          key={`heading:${row.id}`}
-                          className="token-map__section"
-                          style={{ top: heading.top }}
-                        >
-                          {heading.label}
-                        </h3>,
-                        slot,
-                      ]
-                    : [slot];
-                })}
-              </section>
-            );
-          })}
-        </div>
       </div>
+
+      {(['before', 'after'] as const).map(
+        (side) =>
+          overflow[side].length > 0 && (
+            <div key={side} className={`token-map__more token-map__more--${side}`}>
+              <button type="button" className="token-map__more-button" onClick={() => reveal(side)}>
+                {side === 'before' && <span aria-hidden="true">←</span>}
+                <span className="sr-only">Scroll to </span>
+                {overflow[side].map((c) => COLUMN_HEADS[c].title).join(' · ')}
+                {side === 'after' && <span aria-hidden="true">→</span>}
+              </button>
+            </div>
+          ),
+      )}
     </div>
   );
 }

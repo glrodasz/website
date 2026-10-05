@@ -124,6 +124,29 @@
   .token-explorer__pill--audit {
     margin-left: 0;
   }
+
+  /* One line that scrolls sideways, so the arrows stay between the pills.
+     The padding keeps focus rings inside the clip, and the faded end shows
+     there is more. */
+  .token-explorer__pills {
+    flex-wrap: nowrap;
+    margin: -4px;
+    padding: 4px 32px 4px 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+  }
+
+  .token-explorer__pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .token-explorer__pill,
+  .token-explorer__pill-step {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
 }
 
 /* The map scrolls itself on both axes and fills the remaining height, so the

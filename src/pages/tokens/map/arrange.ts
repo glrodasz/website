@@ -214,12 +214,16 @@ export function orderColumns(v: MapView): MapView {
 /** Row geometry in px. */
 export const ROW = { h: 28, gap: 4, sectionH: 22, sectionGap: 10, padTop: 8 } as const;
 
-/** Horizontal extent of each column, in % of the map width. */
+/**
+ * Horizontal extent of each column, in % of the map width. Rows get most of
+ * it and the gaps just enough for links to read, so labels still fit when
+ * the inspector narrows the map.
+ */
 export const COLUMN_X: Record<MapColumn, { left: number; right: number }> = {
-  global: { left: 0, right: 19 },
-  system: { left: 27, right: 46 },
-  component: { left: 54, right: 73 },
-  ui: { left: 81, right: 100 },
+  global: { left: 0, right: 20.5 },
+  system: { left: 26.5, right: 47 },
+  component: { left: 53, right: 73.5 },
+  ui: { left: 79.5, right: 100 },
 };
 
 export interface SectionHeading {

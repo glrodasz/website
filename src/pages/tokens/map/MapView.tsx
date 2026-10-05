@@ -107,12 +107,15 @@ export function MapView({
   // Expanded groups are remembered per focus: a new focus starts folded.
   const [expansion, setExpansion] = useState({ focusId, groups: NO_GROUPS });
   const expanded = expansion.focusId === focusId ? expansion.groups : NO_GROUPS;
-  const toggleGroup = (groupId: string) => {
-    const groups = new Set(expanded);
-    if (groups.has(groupId)) groups.delete(groupId);
-    else groups.add(groupId);
-    setExpansion({ focusId, groups });
-  };
+  const toggleGroup = useCallback(
+    (groupId: string) => {
+      const groups = new Set(expanded);
+      if (groups.has(groupId)) groups.delete(groupId);
+      else groups.add(groupId);
+      setExpansion({ focusId, groups });
+    },
+    [focusId, expanded],
+  );
 
   const view = useMemo(() => {
     const filters: MapFilters = { search, enabledCategories, enabledComponents };

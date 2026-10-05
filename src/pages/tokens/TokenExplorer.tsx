@@ -7,7 +7,7 @@
  * the TokenInspector.
  */
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import type { EdgeIndex, ThemeMode, TokenGraph } from '../../tokens/graph-builder';
 import type { AuditReport } from '../../tokens/audit';
 import { ComponentsView } from './ComponentsView';
@@ -46,6 +46,9 @@ export interface TokenExplorerProps {
   onMapReset: () => void;
   onMapModeChange: (mode: MapMode) => void;
 }
+
+/** Width of the pill row's faded end on narrow screens (TokenExplorer.css). */
+const PILLS_FADE = 32;
 
 const HIERARCHY_PILLS: { tab: ExplorerTab; label: string; statKey: 'global' | 'system' | 'component' }[] = [
   { tab: 'global', label: 'Global', statKey: 'global' },
@@ -93,6 +96,18 @@ export function TokenExplorer({
     [graph.nodes],
   );
 
+  // On narrow screens the pills scroll sideways; keep the open tab's pill in view.
+  const pillsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const pills = pillsRef.current;
+    const active = pills?.querySelector('.token-explorer__pill--active');
+    if (!pills || !active || pills.scrollWidth <= pills.clientWidth) return;
+    const box = pills.getBoundingClientRect();
+    const pill = active.getBoundingClientRect();
+    if (pill.left < box.left) pills.scrollLeft -= box.left - pill.left;
+    else if (pill.right > box.right - PILLS_FADE) pills.scrollLeft += pill.right - box.right + PILLS_FADE;
+  }, [tab]);
+
   const consumerCount = useMemo(() => {
     const m = new Map<string, number>();
     for (const [id, consumers] of index.consumersByNode) m.set(id, consumers.length);
@@ -102,7 +117,7 @@ export function TokenExplorer({
   return (
     <div className="token-explorer">
       <header className="token-explorer__head">
-        <div className="token-explorer__pills" aria-label="Token hierarchy">
+        <div className="token-explorer__pills" aria-label="Token hierarchy" ref={pillsRef}>
           <button
             type="button"
             className={`token-explorer__pill token-explorer__pill--map${tab === 'map' ? ' token-explorer__pill--active' : ''}`}

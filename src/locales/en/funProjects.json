@@ -1,11 +1,11 @@
 {
   "seo": {
-    "pageLabel": "Fun Projects",
+    "pageLabel": "Projects",
     "description": "Pet projects by Guillermo Rodas — small apps, experiments and community sites built for fun, to learn something new, or because I needed them."
   },
   "hero": {
-    "label": "Side projects",
-    "title": "Fun Projects",
+    "label": "Side Projects",
+    "title": "Projects",
     "lead": "Things I built for fun, to learn something new, or simply because I needed them. Take a look, and share the ones you like."
   },
   "card": {

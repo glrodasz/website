@@ -8,7 +8,7 @@
  * to the focus they were opened under. The 3D view loads on demand.
  */
 
-import { Suspense, lazy, useCallback, useMemo, useState } from 'react';
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import type { EdgeIndex, ThemeMode } from '../../../tokens/graph-builder';
 import { displayComponentName } from '../utils';
 import { MapView2D } from './MapView2D';
@@ -19,9 +19,18 @@ import {
   type MapColumn,
   type MapFilters,
 } from './lineage';
+import type { MapView3DProps } from './MapView3D';
 import './TokenMap.css';
 
-const MapView3D = lazy(() => import('./MapView3D'));
+/** Stands in for a 3D chunk that failed to load (offline, deploy skew): back to 2D, as without WebGL. */
+function Unavailable3D({ onUnavailable }: MapView3DProps) {
+  useEffect(() => onUnavailable(), [onUnavailable]);
+  return null;
+}
+
+const MapView3D = lazy(() =>
+  import('./MapView3D').catch(() => ({ default: Unavailable3D })),
+);
 
 export type MapMode = '2d' | '3d';
 
@@ -179,7 +188,7 @@ export function MapView({
         <p className="token-map__legend">
           <span className="token-map__legend-item">
             <span className="token-map__legend-line" aria-hidden="true" />
-            width = references
+            {activeMode === '3d' ? 'brightness' : 'width'} = references
           </span>
           <span className="token-map__legend-item">
             <span className="token-map__legend-badge" aria-hidden="true">
@@ -227,6 +236,7 @@ export function MapView({
             selectedId={selectedId}
             onFocus={onFocus}
             onSelectToken={onSelectToken}
+            onToggleGroup={toggleGroup}
             onUnavailable={onUnavailable}
           />
         </Suspense>

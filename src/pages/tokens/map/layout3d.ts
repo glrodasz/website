@@ -19,7 +19,7 @@ export const LAYER_X: Record<MapColumn, number> = {
 };
 
 /** Level hues of the 2D map, with system toned down from its near-white. */
-const LAYER_COLORS: Record<MapColumn, string> = {
+export const LAYER_COLORS: Record<MapColumn, string> = {
   global: '#94a3b8',
   system: '#cbd5e1',
   component: '#7dd3fc',

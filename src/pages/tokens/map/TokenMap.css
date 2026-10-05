@@ -12,28 +12,32 @@
 
 .token-map__column--global,
 .token-map__head--global,
-.token-map__crumb--global {
+.token-map__crumb--global,
+.token-map__caption3d--global {
   --token-map-hue: #94a3b8;
   --token-map-hue-soft: rgba(148, 163, 184, 0.45);
 }
 
 .token-map__column--system,
 .token-map__head--system,
-.token-map__crumb--system {
+.token-map__crumb--system,
+.token-map__caption3d--system {
   --token-map-hue: #f1f5f9;
   --token-map-hue-soft: rgba(241, 245, 249, 0.4);
 }
 
 .token-map__column--component,
 .token-map__head--component,
-.token-map__crumb--component {
+.token-map__crumb--component,
+.token-map__caption3d--component {
   --token-map-hue: #7dd3fc;
   --token-map-hue-soft: rgba(125, 211, 252, 0.45);
 }
 
 .token-map__column--ui,
 .token-map__head--ui,
-.token-map__crumb--ui {
+.token-map__crumb--ui,
+.token-map__caption3d--ui {
   --token-map-hue: #fbbf24;
   --token-map-hue-soft: rgba(251, 191, 36, 0.45);
 }
@@ -595,9 +599,191 @@
   border-color: #475569;
 }
 
+/* ---- 3D map ----
+   The canvas fills the stage; labels and captions are an HTML layer on top,
+   positioned by the scene every frame it draws. */
+
+.token-map__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: #0b1018;
+}
+
+.token-map__canvas3d {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.token-map__canvas3d:active {
+  cursor: grabbing;
+}
+
+.token-map__labels3d {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.token-map__label3d,
+.token-map__caption3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.token-map__label3d {
+  display: flex;
+  max-width: 190px;
+  padding: 1px 6px;
+  font-size: 11px;
+  line-height: 16px;
+  color: #cbd5e1;
+  background: rgba(11, 16, 24, 0.78);
+  border-radius: 4px;
+  transition: opacity 120ms ease;
+}
+
+.token-map__label3d--component {
+  color: #bae6fd;
+}
+
+.token-map__label3d--ui {
+  color: #fde68a;
+}
+
+.token-map__label3d-head {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #7b8aa3;
+}
+
+.token-map__label3d-tail {
+  flex-shrink: 0;
+}
+
+.token-map__label3d--lit {
+  color: #f1f5f9;
+  background: rgba(20, 29, 46, 0.9);
+}
+
+.token-map__label3d--focus {
+  color: #f0f9ff;
+  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.6);
+}
+
+.token-map__label3d--selected {
+  box-shadow: inset 0 0 0 1px rgba(255, 212, 0, 0.7);
+}
+
+.token-map__label3d--hover {
+  z-index: 1;
+  color: #f8fafc;
+  background: #1e293b;
+  box-shadow: inset 0 0 0 1px #475569;
+}
+
+.token-map__label3d--dim,
+.token-map__label3d--muted {
+  opacity: 0.35;
+}
+
+.token-map__caption3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e2e8f0;
+}
+
+.token-map__caption3d::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--token-map-hue);
+}
+
+.token-map__caption3d-count {
+  padding: 0 7px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #cbd5e1;
+  background: #1e293b;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.token-map__stage > .token-map__notice--overlay {
+  position: absolute;
+  inset: 0;
+  background: #0b1018;
+}
+
+.token-map__dock3d {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  pointer-events: none;
+}
+
+.token-map__chip3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+  background: rgba(30, 41, 59, 0.92);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color 120ms ease;
+}
+
+.token-map__chip3d:hover:not(:disabled) {
+  border-color: #7dd3fc;
+}
+
+.token-map__chip3d:disabled {
+  color: #64748b;
+  cursor: default;
+}
+
+.token-map__chip3d:focus-visible {
+  outline: 2px solid #f1f5f9;
+  outline-offset: 2px;
+}
+
+.token-map__hint3d {
+  font-size: 11.5px;
+  color: #7b8aa3;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .token-map__row,
-  .token-map__edge {
+  .token-map__edge,
+  .token-map__label3d {
     transition: none;
   }
 }

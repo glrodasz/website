@@ -101,17 +101,40 @@ type RefocusTarget =
   | { kind: 'focus'; fallback: string | null }
   | { kind: 'row'; id: string }
   /** The first member of a group just expanded. */
-  | { kind: 'member'; groupId: string };
+  | { kind: 'member'; groupId: string }
+  /** The edge hint at `side` scrolled its columns into view and went away. */
+  | { kind: 'edge'; side: keyof Overflow };
 
-function refocusTarget(scroller: HTMLElement, r: RefocusTarget): HTMLElement | null {
+function refocusTarget(root: HTMLElement, r: RefocusTarget): HTMLElement | null {
   const find = (attribute: string, id: string) =>
-    scroller.querySelector<HTMLElement>(`[${attribute}="${CSS.escape(id)}"]`);
+    root.querySelector<HTMLElement>(`[${attribute}="${CSS.escape(id)}"]`);
   if (r.kind === 'row') return find('data-row-id', r.id);
   if (r.kind === 'member') return find('data-group-id', r.groupId);
+  if (r.kind === 'edge') {
+    const other = r.side === 'after' ? 'before' : 'after';
+    return (
+      root.querySelector<HTMLElement>(`.token-map__more--${other} .token-map__more-button`) ??
+      rowNearEdge(root, r.side)
+    );
+  }
   return (
-    scroller.querySelector<HTMLElement>('.token-map__row--focus') ??
+    root.querySelector<HTMLElement>('.token-map__row--focus') ??
     (r.fallback === null ? null : find('data-row-id', r.fallback))
   );
+}
+
+/** The first row below the sticky heads in the column nearest that edge that has rows. */
+function rowNearEdge(root: HTMLElement, side: keyof Overflow): HTMLElement | null {
+  const floor = root.querySelector('.token-map__heads')?.getBoundingClientRect().bottom ?? 0;
+  const columns = side === 'after' ? [...MAP_COLUMNS].reverse() : MAP_COLUMNS;
+  for (const c of columns) {
+    const rows = [
+      ...root.querySelectorAll<HTMLElement>(`.token-map__column--${c} .token-map__row`),
+    ];
+    const row = rows.find((r) => r.getBoundingClientRect().top >= floor) ?? rows[rows.length - 1];
+    if (row) return row;
+  }
+  return null;
 }
 
 interface Overflow {
@@ -245,6 +268,7 @@ export function MapView2D({
   onToggleGroup,
 }: MapView2DProps) {
   const headId = useId();
+  const viewportRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const plotRef = useRef<HTMLDivElement>(null);
   const scrolledFor = useRef<string | null | undefined>(undefined);
@@ -337,10 +361,10 @@ export function MapView2D({
   useEffect(() => {
     const pending = refocus.current;
     refocus.current = null;
-    const scroller = scrollerRef.current;
+    const viewport = viewportRef.current;
     const active = document.activeElement;
-    if (!pending || !scroller || (active && active !== document.body)) return;
-    refocusTarget(scroller, pending)?.focus();
+    if (!pending || !viewport || (active && active !== document.body)) return;
+    refocusTarget(viewport, pending)?.focus();
   });
 
   const focusId = view.focusId;
@@ -368,6 +392,10 @@ export function MapView2D({
 
   // Which columns the scroller cuts off, so its edges can name them.
   const [overflow, setOverflow] = useState<Overflow>(NO_OVERFLOW);
+  const hintRefs = useRef<Record<keyof Overflow, HTMLButtonElement | null>>({
+    before: null,
+    after: null,
+  });
   const measureOverflow = useCallback(() => {
     const scroller = scrollerRef.current;
     const plot = plotRef.current;
@@ -376,6 +404,14 @@ export function MapView2D({
     const end = start + scroller.clientWidth;
     const before = MAP_COLUMNS.filter((c) => columnEdges(plot, c)[0] < start - 1);
     const after = MAP_COLUMNS.filter((c) => columnEdges(plot, c)[1] > end + 1);
+    // A hint unmounts once its columns are in view; if it held focus, focus
+    // moves on rather than dropping to the page.
+    const focused = (['before', 'after'] as const).find(
+      (side) => hintRefs.current[side] === document.activeElement,
+    );
+    if (focused && { before, after }[focused].length === 0) {
+      refocus.current = { kind: 'edge', side: focused };
+    }
     setOverflow((prev) =>
       prev.before.join() === before.join() && prev.after.join() === after.join()
         ? prev
@@ -409,7 +445,7 @@ export function MapView2D({
   }
 
   return (
-    <div className="token-map__viewport">
+    <div className="token-map__viewport" ref={viewportRef}>
       <div
         className="token-map__scroller"
         ref={scrollerRef}
@@ -522,7 +558,14 @@ export function MapView2D({
         (side) =>
           overflow[side].length > 0 && (
             <div key={side} className={`token-map__more token-map__more--${side}`}>
-              <button type="button" className="token-map__more-button" onClick={() => reveal(side)}>
+              <button
+                type="button"
+                className="token-map__more-button"
+                ref={(el) => {
+                  hintRefs.current[side] = el;
+                }}
+                onClick={() => reveal(side)}
+              >
                 {side === 'before' && <span aria-hidden="true">←</span>}
                 <span className="sr-only">Scroll to </span>
                 {overflow[side].map((c) => COLUMN_HEADS[c].title).join(' · ')}

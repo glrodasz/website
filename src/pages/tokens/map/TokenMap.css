@@ -182,8 +182,14 @@
   white-space: nowrap;
 }
 
+/* Hidden visually, not with display: none, so the live region is already in
+   the accessibility tree when the first count arrives and gets announced. */
 .token-map__search-status:empty {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
 
 .token-map__legend {

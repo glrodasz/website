@@ -95,8 +95,10 @@
   min-width: 0;
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
+  /* Room inside the clip for the 2px focus ring (offset 2px) of the crumbs,
+     which overhang the list by their 4px side margins. */
+  margin: -4px -8px;
+  padding: 4px 8px;
   list-style: none;
   font-size: 12.5px;
   overflow: hidden;
@@ -169,6 +171,19 @@
 .token-map__crumb-current {
   font-weight: 600;
   color: #f1f5f9;
+  /* Rounds the site focus ring it gets when the control just used goes away. */
+  border-radius: 4px;
+}
+
+.token-map__search-status {
+  margin: 0;
+  font-size: 11.5px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.token-map__search-status:empty {
+  display: none;
 }
 
 .token-map__legend {
@@ -468,12 +483,31 @@
   opacity: 0.3;
 }
 
+/* Search misses recede by colour rather than opacity, so their text stays
+   at 4.5:1 or better: they are still live controls. */
 .token-map__row--muted {
-  opacity: 0.4;
+  color: #7b8aa3;
+  background: #0b1018;
+  border-color: #1a2332;
+  border-left-color: rgba(148, 163, 184, 0.2);
+}
+
+.token-map__row--muted .token-map__label-head {
+  opacity: 1;
+}
+
+.token-map__row--muted .token-map__swatches {
+  opacity: 0.45;
+}
+
+.token-map__row--muted .token-map__count {
+  color: #7b8aa3;
 }
 
 .token-map__row--muted.token-map__row--lit {
-  opacity: 0.75;
+  color: #94a3b8;
+  background: #141d2e;
+  border-left-color: var(--token-map-hue-soft);
 }
 
 .token-map__row--focus {
@@ -488,6 +522,15 @@
 .token-map__row--focus.token-map__row--lit {
   background: rgba(125, 211, 252, 0.18);
   border-color: #7dd3fc;
+}
+
+/* The focus tint is lighter than a row, so its quiet text needs a lighter grey. */
+.token-map__row--focus.token-map__row--muted,
+.token-map__row--focus .token-map__value,
+.token-map__row--focus .token-map__count,
+.token-map__row--focus .token-map__elsewhere,
+.token-map__row--focus .token-map__chevron {
+  color: #94a3b8;
 }
 
 /* The token open in the inspector, in the explorer's selection yellow. */

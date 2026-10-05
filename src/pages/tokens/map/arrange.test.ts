@@ -265,6 +265,17 @@ describe('layoutRows', () => {
     }
   });
 
+  it.each(Object.entries(VIEWS))('names the row each heading introduces (%s)', (_, view) => {
+    const { top, sections } = layoutRows(view);
+    for (const column of MAP_COLUMNS) {
+      const rows = view.columns[column];
+      const starts = rows.filter((r, i) => r.section !== rows[i - 1]?.section).map((r) => r.id);
+      const headings = sections.filter((s) => s.column === column);
+      expect(headings.map((s) => s.rowId)).toEqual(starts);
+      for (const s of headings) expect(top.get(s.rowId)).toBe(s.top + ROW.sectionH);
+    }
+  });
+
   it('starts every overview column at the top', () => {
     for (const column of MAP_COLUMNS) expect(boxesOf(VIEWS.overview, column)[0][0]).toBe(ROW.padTop);
   });

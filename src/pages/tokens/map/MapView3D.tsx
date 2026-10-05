@@ -195,7 +195,14 @@ const MapView3D: React.FC<MapView3DProps> = ({
             key={g.id}
             type="button"
             className="token-map__chip3d"
-            onClick={() => onToggleGroup(g.id)}
+            onClick={(e) => {
+              // The chip goes away with its group; keep keyboard focus in the dock.
+              const chip = e.currentTarget;
+              if (document.activeElement === chip) {
+                (chip.nextElementSibling as HTMLElement | null)?.focus();
+              }
+              onToggleGroup(g.id);
+            }}
             title={`Collapse ${g.label} back into one node`}
           >
             <span aria-hidden="true">▴</span> Fold {g.label}

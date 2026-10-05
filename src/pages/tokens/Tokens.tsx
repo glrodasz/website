@@ -263,7 +263,8 @@ export default function Tokens() {
           </p>
         </header>
 
-        {focusedComponent && (
+        {/* The map names its own focus in the breadcrumb; this one belongs to the Components tab. */}
+        {focusedComponent && tab !== 'map' && (
           <div className="tokens-focus-banner">
             <span>
               Viewing <strong>{displayComponentName(focusedComponent)}</strong>

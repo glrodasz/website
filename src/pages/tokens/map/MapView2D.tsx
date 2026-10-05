@@ -9,7 +9,6 @@
  */
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { TokenSwatch } from '../TokenSwatch';
 import { COLUMN_X, ROW, layoutRows, linkPath } from './arrange';
 import { MAP_COLUMNS, lineageOf, type MapColumn, type MapRow, type MapView } from './lineage';
@@ -71,13 +70,6 @@ type RefocusTarget =
   | { kind: 'row'; id: string }
   /** The first member of a group just expanded. */
   | { kind: 'member'; groupId: string };
-
-interface Refocus {
-  target: RefocusTarget;
-  /** The map focus and URL query when the keyboard acted. */
-  focusId: string | null;
-  search: string;
-}
 
 function refocusTarget(scroller: HTMLElement, r: RefocusTarget): HTMLElement | null {
   const find = (attribute: string, id: string) =>
@@ -172,6 +164,7 @@ function RowSlot({
             ▸
           </span>
         )}
+        {searching && row.matches === 0 && <span className="sr-only"> (no match)</span>}
       </button>
       {foldable && row.toggleId && (
         <button
@@ -200,10 +193,13 @@ export function MapView2D({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const plotRef = useRef<HTMLDivElement>(null);
   const scrolledFor = useRef<string | null | undefined>(undefined);
-  const refocus = useRef<Refocus | null>(null);
-  const { search: urlSearch } = useLocation();
+  const refocus = useRef<RefocusTarget | null>(null);
 
   const layout = useMemo(() => layoutRows(view), [view]);
+  const headingByRow = useMemo(
+    () => new Map(layout.sections.map((s) => [s.rowId, s] as const)),
+    [layout],
+  );
   const columnById = useMemo(
     () => new Map(MAP_COLUMNS.flatMap((c) => view.columns[c].map((r) => [r.id, c] as const))),
     [view],
@@ -270,41 +266,33 @@ export function MapView2D({
     scroller.scrollLeft = centre - scroller.clientWidth / 2;
   }, [view, layout, focusColumn]);
 
-  // Keyboard focus outlives the row it sat on being replaced (a new focus, a
-  // group expanded or folded, Escape): it moves to the matching new row
-  // instead of falling back to the top of the page. A new focus reaches the
-  // URL a commit later and the site's ScrollToTop blurs on every URL change,
-  // so the request is held until the URL has caught up.
+  // A keyboard action can replace the row holding focus (a new focus, a group
+  // expanded or folded, Escape back out): focus moves to the matching new row
+  // rather than dropping to the page. The request only applies to the render
+  // that follows it.
   useEffect(() => {
     const pending = refocus.current;
+    refocus.current = null;
     const scroller = scrollerRef.current;
-    if (!pending || !scroller) return;
     const active = document.activeElement;
-    if (active && active !== document.body && !scroller.contains(active)) {
-      refocus.current = null;
-      return;
-    }
-    if (!active || active === document.body) refocusTarget(scroller, pending.target)?.focus();
-    if (view.focusId === pending.focusId || urlSearch !== pending.search) refocus.current = null;
-  }, [view, urlSearch]);
+    if (!pending || !scroller || (active && active !== document.body)) return;
+    refocusTarget(scroller, pending)?.focus();
+  });
 
-  const requestRefocus = (target: RefocusTarget | null) => {
-    refocus.current = target && { target, focusId: view.focusId, search: urlSearch };
-  };
-
+  const focusId = view.focusId;
   const activate = (row: MapRow, viaKeyboard: boolean) => {
     if (row.collapse === 'collapsed' && row.toggleId) {
-      requestRefocus(viaKeyboard ? { kind: 'member', groupId: row.toggleId } : null);
+      if (viaKeyboard) refocus.current = { kind: 'member', groupId: row.toggleId };
       onToggleGroup(row.toggleId);
       return;
     }
-    requestRefocus(viaKeyboard ? { kind: 'focus', fallback: null } : null);
+    if (viaKeyboard && row.id !== focusId) refocus.current = { kind: 'focus', fallback: null };
     onFocus(row.id);
     if (row.kind === 'token') onSelectToken(row.id);
   };
 
   const fold = (groupId: string, viaKeyboard: boolean) => {
-    requestRefocus(viaKeyboard ? { kind: 'row', id: groupId } : null);
+    if (viaKeyboard) refocus.current = { kind: 'row', id: groupId };
     onToggleGroup(groupId);
   };
 
@@ -331,7 +319,9 @@ export function MapView2D({
       ref={scrollerRef}
       onKeyDown={(e) => {
         // The page pops the map focus on Escape; follow it from the row it leaves.
-        if (e.key === 'Escape') requestRefocus({ kind: 'focus', fallback: view.focusId });
+        if (e.key === 'Escape' && focusId !== null) {
+          refocus.current = { kind: 'focus', fallback: focusId };
+        }
       }}
     >
       <div className="token-map__canvas">
@@ -389,27 +379,36 @@ export function MapView2D({
                     {focusColumn >= 0 && (i < focusColumn ? ' upstream' : ' downstream')}
                   </p>
                 )}
-                {layout.sections
-                  .filter((s) => s.column === c)
-                  .map((s) => (
-                    <h3 key={`${s.label}@${s.top}`} className="token-map__section" style={{ top: s.top }}>
-                      {s.label}
-                    </h3>
-                  ))}
-                {rows.map((row, r) => (
-                  <RowSlot
-                    key={row.id}
-                    row={row}
-                    top={layout.top.get(row.id) ?? 0}
-                    searching={searching}
-                    foldable={row.collapse === 'expanded' && rows[r - 1]?.toggleId !== row.toggleId}
-                    classes={rowClasses(row)}
-                    onActivate={activate}
-                    onFold={fold}
-                    onHover={setHoverId}
-                    onKeyboardFocus={setKeyboardId}
-                  />
-                ))}
+                {rows.flatMap((row, r) => {
+                  const heading = headingByRow.get(row.id);
+                  const slot = (
+                    <RowSlot
+                      key={row.id}
+                      row={row}
+                      top={layout.top.get(row.id) ?? 0}
+                      searching={searching}
+                      foldable={row.collapse === 'expanded' && rows[r - 1]?.toggleId !== row.toggleId}
+                      classes={rowClasses(row)}
+                      onActivate={activate}
+                      onFold={fold}
+                      onHover={setHoverId}
+                      onKeyboardFocus={setKeyboardId}
+                    />
+                  );
+                  // Each heading comes right before its first row, so reading order follows the sections.
+                  return heading
+                    ? [
+                        <h3
+                          key={`heading:${row.id}`}
+                          className="token-map__section"
+                          style={{ top: heading.top }}
+                        >
+                          {heading.label}
+                        </h3>,
+                        slot,
+                      ]
+                    : [slot];
+                })}
               </section>
             );
           })}

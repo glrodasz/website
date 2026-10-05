@@ -226,6 +226,8 @@ export interface SectionHeading {
   column: MapColumn;
   label: string;
   top: number;
+  /** The first row under the heading, so the heading can precede it in reading order. */
+  rowId: string;
 }
 
 export interface RowLayout {
@@ -243,7 +245,7 @@ function stackColumn(column: MapColumn, rows: readonly MapRow[]) {
   for (const row of rows) {
     if (previous) y += previous.section === row.section ? ROW.gap : ROW.gap + ROW.sectionGap;
     if (row.section !== previous?.section) {
-      sections.push({ column, label: row.section, top: y });
+      sections.push({ column, label: row.section, top: y, rowId: row.id });
       y += ROW.sectionH;
     }
     top.set(row.id, y);

@@ -12,14 +12,15 @@ const filters = {
   enabledCategories: new Set(graph.categories),
   enabledComponents: new Set(graph.componentNames),
 };
-const viewOf = (focusId: string | null) =>
-  computeMapView(model, index, 'light', filters, focusId, new Set());
+const viewOf = (focusId: string | null, expanded: string[] = []) =>
+  computeMapView(model, index, 'light', filters, focusId, new Set(expanded));
 
 const VIEWS: Record<string, MapView> = {
   overview: viewOf(null),
   'button group': viewOf(groupId('component', 'button')),
   'Shark palette': viewOf(groupId('global', 'Colors.Support.Shark')),
   'single token': viewOf('component::components tokens.button.background-color.primary.default'),
+  'Spacing.sm with Site expanded': viewOf('system::system tokens.Spacing.sm', [groupId('component', 'Site')]),
 };
 
 const mean = (values: number[]) => values.reduce((s, v) => s + v, 0) / values.length;
@@ -49,6 +50,18 @@ describe('layout3D', () => {
       expect(mean([...slabs])).toBeCloseTo(0);
       for (const z of slabs) expect(mean(points.filter((p) => p[2] === z).map(([, y]) => y))).toBeCloseTo(0);
     }
+  });
+
+  it('keeps every column in one slab until a group is expanded', () => {
+    const slabsOf = (view: MapView) => {
+      const positions = layout3D(view);
+      return MAP_COLUMNS.map((c) => new Set(view.columns[c].map((r) => positions.get(r.id)![2])).size);
+    };
+    const overview = VIEWS.overview;
+    for (const focusId of [null, ...MAP_COLUMNS.flatMap((c) => overview.columns[c].map((r) => r.id))]) {
+      expect(Math.max(...slabsOf(viewOf(focusId))), String(focusId)).toBeLessThanOrEqual(1);
+    }
+    expect(slabsOf(VIEWS['Spacing.sm with Site expanded'])).toEqual([1, 1, 2, 1]);
   });
 
   it('follows the 2D order down each slab', () => {

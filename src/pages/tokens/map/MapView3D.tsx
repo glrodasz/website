@@ -8,7 +8,7 @@
  * WebGL cannot start, `onUnavailable` sends the map back to 2D.
  */
 
-import { useEffect, useEffectEvent, useMemo, useRef, useState } from 'react';
+import { useEffect, useEffectEvent, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { toSceneNodes } from './layout3d';
 import { MAP_COLUMNS, lineageOf, type MapRow, type MapView } from './lineage';
 import type { SceneHighlight, TokenMapScene } from './scene3d';
@@ -99,7 +99,9 @@ const MapView3D: React.FC<MapView3DProps> = ({
   });
   const reportUnavailable = useEffectEvent(() => onUnavailable());
 
-  useEffect(() => {
+  // A layout effect, so dispose() runs before React detaches the canvas:
+  // OrbitControls removes its document keydown listener via the canvas's root node.
+  useLayoutEffect(() => {
     const stage = stageRef.current;
     const canvas = canvasRef.current;
     const labelLayer = labelsRef.current;

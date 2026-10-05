@@ -212,9 +212,11 @@ export function createTokenMapScene(
 ): TokenMapScene {
   assertWebGL2();
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'low-power' });
-  renderer.setClearColor(BACKGROUND, 1);
 
+  const background = new THREE.Color(BACKGROUND);
   const scene = new THREE.Scene();
+  // Unlike the renderer's clear colour, a scene background survives a context restore.
+  scene.background = background;
   const camera = new THREE.PerspectiveCamera(FOV, 1, 0.5, 1000);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = true;
@@ -285,7 +287,8 @@ export function createTokenMapScene(
   let edges: THREE.LineSegments | null = null;
   let linkEnds: { a: number; b: number; weight: number }[] = [];
   const labels = new Map<string, Label>();
-  const bounds = new THREE.Box3();
+  /** The corners of every layer plane: what the camera frames. */
+  let corners: THREE.Vector3[] = [];
   /** Per node: screen x, y (CSS px), view depth and projected radius (px), from the last frame. */
   let screen = new Float32Array(0);
   /** Node indices in label priority order. */
@@ -296,14 +299,16 @@ export function createTokenMapScene(
   const viewport = { width: 0, height: 0 };
   let reducedMotion = false;
   let tween: Tween | null = null;
-  /** Fitted and untouched since: resizes refit instead of cropping. */
+  /** Fitted and not orbited or zoomed since: resizes refit instead of cropping. */
   let pinned = true;
   let rafId = 0;
   let disposed = false;
-  let pointerDown: { x: number; y: number } | null = null;
+  /** Between OrbitControls' start and end, which a plain click fires too. */
+  let gesture = false;
+  /** The press under way: a click until it travels DRAG_PX, a drag from then on. */
+  let press: { x: number; y: number; dragged: boolean } | null = null;
 
   const color = new THREE.Color();
-  const background = new THREE.Color(BACKGROUND);
   const matrix = new THREE.Matrix4();
   const identity = new THREE.Quaternion();
   const position = new THREE.Vector3();
@@ -387,7 +392,7 @@ export function createTokenMapScene(
   }
 
   function layoutLayers(totals: Readonly<Record<MapColumn, number>>) {
-    bounds.makeEmpty();
+    corners = [];
     for (const column of MAP_COLUMNS) {
       const members = nodes.filter((n) => n.column === column);
       const range = { y0: -EMPTY_LAYER.y, y1: EMPTY_LAYER.y, z0: -EMPTY_LAYER.z, z1: EMPTY_LAYER.z };
@@ -409,8 +414,11 @@ export function createTokenMapScene(
       layer.group.scale.set(width, height, 1);
       layer.anchor.set(LAYER_X[column], y + height / 2, z);
       layer.count.textContent = String(totals[column]);
-      bounds.expandByPoint(point.set(LAYER_X[column], y - height / 2, z - width / 2));
-      bounds.expandByPoint(point.set(LAYER_X[column], y + height / 2, z + width / 2));
+      for (const dy of [-height / 2, height / 2]) {
+        for (const dz of [-width / 2, width / 2]) {
+          corners.push(new THREE.Vector3(LAYER_X[column], y + dy, z + dz));
+        }
+      }
     }
     for (const column of MAP_COLUMNS) {
       const { caption, size } = layers[column];
@@ -647,8 +655,8 @@ export function createTokenMapScene(
   /** Camera placement that frames the layers from the default angle, leaving room for labels. */
   function framing(): Framing | null {
     const { width, height } = viewport;
-    if (width === 0 || height === 0 || bounds.isEmpty()) return null;
-    const target = bounds.getCenter(new THREE.Vector3());
+    if (width === 0 || height === 0 || corners.length === 0) return null;
+    const target = new THREE.Box3().setFromPoints(corners).getCenter(new THREE.Vector3());
     const yaw = width < PORTRAIT_ASPECT * height ? PORTRAIT_YAW : YAW;
     const back = new THREE.Vector3(
       Math.sin(yaw) * Math.cos(ELEVATION),
@@ -672,20 +680,31 @@ export function createTokenMapScene(
     const halfV = Math.tan(THREE.MathUtils.degToRad(FOV) / 2);
     const fitV = (halfV * usableHeight) / height;
     const fitH = (halfV * camera.aspect * usableWidth) / width;
-    let distance = 0;
-    for (const x of [bounds.min.x, bounds.max.x]) {
-      for (const y of [bounds.min.y, bounds.max.y]) {
-        for (const z of [bounds.min.z, bounds.max.z]) {
-          point.set(x, y, z).sub(target);
-          const toward = point.dot(back);
-          distance = Math.max(
-            distance,
-            toward + Math.abs(point.dot(right)) / fitH,
-            toward + Math.abs(point.dot(up)) / fitV,
-          );
-        }
-      }
+    /** The nearest distance from which every layer fits around `target`. */
+    const fitDistance = () =>
+      Math.max(
+        ...corners.map((corner) => {
+          const toward = point.copy(corner).sub(target).dot(back);
+          return toward + Math.max(Math.abs(point.dot(right)) / fitH, Math.abs(point.dot(up)) / fitV);
+        }),
+      );
+    let distance = fitDistance();
+    // Perspective draws the near layers larger, so the graph sits off the centre of
+    // its corners: centre what the camera sees, then fit again from closer.
+    const seen = { x0: Infinity, x1: -Infinity, y0: Infinity, y1: -Infinity };
+    for (const corner of corners) {
+      const depth = distance - point.copy(corner).sub(target).dot(back);
+      const x = point.dot(right) / depth;
+      const y = point.dot(up) / depth;
+      seen.x0 = Math.min(seen.x0, x);
+      seen.x1 = Math.max(seen.x1, x);
+      seen.y0 = Math.min(seen.y0, y);
+      seen.y1 = Math.max(seen.y1, y);
     }
+    target
+      .addScaledVector(right, ((seen.x0 + seen.x1) / 2) * distance)
+      .addScaledVector(up, ((seen.y0 + seen.y1) / 2) * distance);
+    distance = fitDistance();
     // Centre the graph in the room left over rather than in the whole canvas.
     const unitsPerPx = (2 * distance * halfV) / height;
     target
@@ -694,11 +713,24 @@ export function createTokenMapScene(
     return { target, position: target.clone().addScaledVector(back, distance) };
   }
 
+  /**
+   * Places the camera, dropping the momentum OrbitControls still holds from a
+   * flick, which would otherwise carry the camera on past a fit.
+   */
+  function place(position: THREE.Vector3, target: THREE.Vector3) {
+    const damping = controls.enableDamping;
+    controls.enableDamping = false;
+    // Undamped, an update spends the leftover momentum at once.
+    controls.update();
+    controls.enableDamping = damping;
+    camera.position.copy(position);
+    controls.target.copy(target);
+    camera.lookAt(target);
+  }
+
   function jumpTo(to: Framing) {
     tween = null;
-    camera.position.copy(to.position);
-    controls.target.copy(to.target);
-    camera.lookAt(to.target);
+    place(to.position, to.target);
     controls.update();
   }
 
@@ -734,34 +766,57 @@ export function createTokenMapScene(
     return best < 0 ? null : nodes[best].id;
   }
 
+  const travelled = (from: { x: number; y: number }, e: PointerEvent) =>
+    Math.hypot(e.clientX - from.x, e.clientY - from.y) >= DRAG_PX;
+
+  // The canvas sees a pointer event before OrbitControls, which listens on the
+  // document, so a press is marked as a drag before the camera change it causes.
   const onPointerMove = (e: PointerEvent) => {
+    if (press && e.isPrimary && travelled(press, e)) press.dragged = true;
     // Orbiting: leave the trace as it was until the drag ends.
     if (e.buttons !== 0) return;
     setHover(pickAt(e.clientX, e.clientY));
   };
   const onPointerDown = (e: PointerEvent) => {
-    pointerDown = e.button === 0 ? { x: e.clientX, y: e.clientY } : null;
+    if (e.isPrimary) press = { x: e.clientX, y: e.clientY, dragged: false };
+    // A second finger pinches or pans.
+    else if (press) press.dragged = true;
   };
   const onPointerUp = (e: PointerEvent) => {
-    const start = pointerDown;
-    pointerDown = null;
-    if (!start || e.button !== 0) return;
-    if (Math.hypot(e.clientX - start.x, e.clientY - start.y) >= DRAG_PX) return;
+    if (!press || press.dragged || !e.isPrimary || e.button !== 0 || travelled(press, e)) return;
     const id = pickAt(e.clientX, e.clientY);
     if (id) on.pick(id);
   };
   const onPointerLeave = () => setHover(null);
   const onControlsStart = () => {
-    tween = null;
-    pinned = false;
+    gesture = true;
   };
+  // Only a drag or a zoom leaves the fit. A click that picks a node keeps it,
+  // so the scene still refits when the inspector narrows the stage.
+  const onControlsChange = () => {
+    if (gesture && (!press || press.dragged)) {
+      tween = null;
+      pinned = false;
+    }
+    requestRender();
+  };
+  // OrbitControls ends a press after the canvas's pointerup, so a refit that
+  // the pick itself causes still counts as part of the click.
+  const onControlsEnd = () => {
+    gesture = false;
+    press = null;
+  };
+  // three rebuilds its GL state on a restore, but nothing would ask for a frame.
+  const onContextRestored = () => requestRender();
 
   canvas.addEventListener('pointermove', onPointerMove);
   canvas.addEventListener('pointerdown', onPointerDown);
   canvas.addEventListener('pointerup', onPointerUp);
   canvas.addEventListener('pointerleave', onPointerLeave);
-  controls.addEventListener('change', requestRender);
+  canvas.addEventListener('webglcontextrestored', onContextRestored);
   controls.addEventListener('start', onControlsStart);
+  controls.addEventListener('change', onControlsChange);
+  controls.addEventListener('end', onControlsEnd);
 
   return {
     setGraph(next, links, totals) {
@@ -812,8 +867,13 @@ export function createTokenMapScene(
       pinned = true;
       const to = framing();
       if (!to) return;
-      if (!animate || reducedMotion) jumpTo(to);
-      else tween = { from: { position: camera.position.clone(), target: controls.target.clone() }, to, start: -1 };
+      if (!animate || reducedMotion) {
+        jumpTo(to);
+      } else {
+        const from = { position: camera.position.clone(), target: controls.target.clone() };
+        place(from.position, from.target);
+        tween = { from, to, start: -1 };
+      }
       requestRender();
     },
 
@@ -846,8 +906,10 @@ export function createTokenMapScene(
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointerleave', onPointerLeave);
-      controls.removeEventListener('change', requestRender);
+      canvas.removeEventListener('webglcontextrestored', onContextRestored);
       controls.removeEventListener('start', onControlsStart);
+      controls.removeEventListener('change', onControlsChange);
+      controls.removeEventListener('end', onControlsEnd);
       controls.dispose();
       clearGraph();
       for (const geometry of [...Object.values(shapes), planeGeometry, outlineGeometry]) geometry.dispose();

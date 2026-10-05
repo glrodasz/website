@@ -4,11 +4,18 @@
  * along z. Pure — the three.js scene only reads these numbers.
  */
 
+import { COLLAPSE_AT } from './arrange';
 import { MAP_COLUMNS, toOpaqueHex, type MapColumn, type MapRow, type MapView } from './lineage';
 
 export const LAYER_GAP = 14;
 export const ROW_GAP = 1.4;
-export const ROWS_PER_SLAB = 18;
+/**
+ * A single slab leaves every node a free side for its label; next to a second
+ * slab, one of the two has none. Every overview column, and every focus
+ * column once the 2D map has collapsed it, fits one slab, so only an
+ * expanded group wraps.
+ */
+export const ROWS_PER_SLAB = COLLAPSE_AT;
 export const SLAB_GAP = 3.2;
 
 export const LAYER_X: Record<MapColumn, number> = {

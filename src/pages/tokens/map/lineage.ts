@@ -166,27 +166,32 @@ function headingDepth(groupDepth: number): number {
 }
 
 /**
- * Namespace group rows share one heading: a column can hold a dozen, and a
- * heading each would only repeat their labels.
+ * Top-level group rows (component namespaces; Sizing, Spacing and Border
+ * radius) share one heading per level: their own heading would only repeat
+ * their label, and a column can hold a dozen namespaces.
  */
-const NAMESPACES_HEADING = 'Components';
+const TOP_LEVEL_HEADINGS: Record<NodeLevel, string> = {
+  global: 'Scales',
+  system: 'Scales',
+  component: 'Components',
+};
 
 /**
  * The group row for every node sharing `node`'s first `depth` segments. It
  * sits under the heading its tokens sit under, so a section reads the same
- * collapsed or expanded; namespaces share NAMESPACES_HEADING instead.
+ * collapsed or expanded; top-level groups share TOP_LEVEL_HEADINGS instead.
  */
 function groupOf(node: GraphNode, depth: number): RowGroup {
   const prefix = segmentsOf(node).slice(0, depth);
   const last = prefix.length - 1;
-  const isNamespace = node.level === 'component' && depth === 1;
   return {
     id: groupId(node.level, prefix.join('.')),
     label: displaySegment(node.level, prefix[last], last),
     title: prefix.join('.'),
-    section: isNamespace
-      ? NAMESPACES_HEADING
-      : headingOf(node.level, prefix.slice(0, headingDepth(depth))),
+    section:
+      depth === 1
+        ? TOP_LEVEL_HEADINGS[node.level]
+        : headingOf(node.level, prefix.slice(0, headingDepth(depth))),
   };
 }
 

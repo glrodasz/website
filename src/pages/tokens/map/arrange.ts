@@ -76,9 +76,17 @@ function mergeRows({ group, members }: Bucket): MapRow {
   };
 }
 
+/**
+ * Rows reordered so each section is one run: top-level groups share a
+ * heading, but other sections can sit between them.
+ */
+function sectionRuns(rows: readonly MapRow[]): MapRow[] {
+  return blocksBy(rows, (r) => r.section).flat();
+}
+
 /** Folds every row into its group row (the overview). */
 export function groupColumn(rows: readonly MapRow[], groupOf: (r: MapRow) => RowGroup): MapRow[] {
-  return bucket(rows, groupOf).map(mergeRows);
+  return sectionRuns(bucket(rows, groupOf).map(mergeRows));
 }
 
 /**
@@ -97,9 +105,8 @@ export function collapseColumn(
     if (expanded.has(toggleId)) return b.members.map((r) => ({ ...r, collapse: 'expanded', toggleId }));
     return [{ ...mergeRows(b), collapse: 'collapsed', toggleId }];
   });
-  // Collapsed namespaces share one heading, but small namespaces stay loose
-  // between them under their own; keep each section in one run.
-  return blocksBy(collapsed, (r) => r.section).flat();
+  // Small and expanded top-level groups stay under their own heading, between collapsed ones.
+  return sectionRuns(collapsed);
 }
 
 function indexById(rows: readonly MapRow[]): Map<string, number> {

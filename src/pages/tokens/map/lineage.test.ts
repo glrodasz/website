@@ -158,10 +158,26 @@ describe('computeMapView overview', () => {
       overview.columns[level].find((r) => r.id === groupId(level, prefix))?.section;
     expect(sectionOf('global', 'Colors.Support.Shark')).toBe('Colors / Support');
     expect(sectionOf('system', 'Colors.Primary')).toBe('Colors');
-    // A top-level group heads its own section, as its tokens do.
-    expect(sectionOf('global', 'Sizing')).toBe('Sizing');
-    expect(sectionOf('system', 'Spacing')).toBe('Spacing');
+    // Top-level groups share a heading rather than each repeating its own label.
+    expect(sectionOf('global', 'Sizing')).toBe('Scales');
+    expect(sectionOf('global', 'Border radius')).toBe('Scales');
+    expect(sectionOf('system', 'Spacing')).toBe('Scales');
     expect(overview.columns.component.every((r) => r.section === 'Components')).toBe(true);
+  });
+
+  it('never repeats a row’s label as its heading', () => {
+    const site = groupId('component', 'Site');
+    const topLevel = viewOf(site).columns.system.filter((r) => r.section === 'Scales');
+    expect(topLevel.map((r) => r.label)).toEqual(expect.arrayContaining(['Sizing', 'Spacing', 'Border radius']));
+    expect(topLevel.every((r) => r.collapse === 'collapsed')).toBe(true);
+
+    const toggles = topLevel.map((r) => r.toggleId!);
+    const views = [overview, viewOf(site), viewOf(site, { expanded: toggles }), viewOf(FOOTER_CSS)];
+    for (const view of views) {
+      for (const column of MAP_COLUMNS) {
+        for (const r of view.columns[column]) expect(r.label.toLowerCase()).not.toBe(r.section.toLowerCase());
+      }
+    }
   });
 
   it('keeps groups nothing references, without links', () => {

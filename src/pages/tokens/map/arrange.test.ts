@@ -8,6 +8,7 @@ import {
   ROW,
   collapseColumn,
   countCrossings,
+  groupColumn,
   layoutRows,
   linkPath,
   orderColumns,
@@ -143,6 +144,21 @@ describe('collapseColumn', () => {
     expect(rows).toHaveLength(16);
     expect(rows.every((r) => r.collapse === 'expanded' && r.kind === 'token')).toBe(true);
     expect(expanded.columns.component).toHaveLength(VIEWS['button group'].columns.component.length + 15);
+  });
+});
+
+describe('groupColumn', () => {
+  it('keeps groups that share a heading in one run', () => {
+    // Groups a and c share heading S; b sits between them under its own.
+    const sectionOf: Record<string, string> = { a: 'S', b: 'T', c: 'S' };
+    const groupOf = (r: MapRow): RowGroup => ({
+      id: r.id[0],
+      label: r.id[0],
+      title: r.id[0],
+      section: sectionOf[r.id[0]],
+    });
+    const rows = ['a0', 'a1', 'b0', 'c0'].map((id) => row(id, sectionOf[id[0]]));
+    expect(groupColumn(rows, groupOf).map((r) => `${r.section}:${r.id}`)).toEqual(['S:a', 'S:c', 'T:b']);
   });
 });
 

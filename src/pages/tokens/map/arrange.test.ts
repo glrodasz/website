@@ -40,6 +40,7 @@ const VIEWS: Record<string, MapView> = {
   'Button.css': viewOf('ui::src/components/atoms/Button.css'),
   'Spacing.sm': viewOf('system::system tokens.Spacing.sm'),
   'Shark palette': viewOf(groupId('global', 'Colors.Support.Shark')),
+  'Supernova palette': viewOf(groupId('global', 'Colors.Support.Supernova')),
   'Site namespace': viewOf(groupId('component', 'Site')),
 };
 
@@ -57,7 +58,7 @@ function rearranged(v: MapView, arrange: (rows: MapRow[]) => MapRow[]): MapView 
   return { ...v, columns };
 }
 
-function row(id: string, section: string | null, extra: Partial<MapRow> = {}): MapRow {
+function row(id: string, section: string, extra: Partial<MapRow> = {}): MapRow {
   return {
     id,
     column: 'system',
@@ -69,6 +70,7 @@ function row(id: string, section: string | null, extra: Partial<MapRow> = {}): M
     swatches: [],
     matches: 1,
     elsewhere: 0,
+    unseen: [],
     isFocus: false,
     collapse: null,
     ...extra,
@@ -76,12 +78,12 @@ function row(id: string, section: string | null, extra: Partial<MapRow> = {}): M
 }
 
 describe('collapseColumn', () => {
-  // Rows `a0…`, `b0…`, `c0…` belong to groups a, b, c.
-  const groupOf = (r: MapRow): RowGroup => ({ id: r.id[0], label: r.id[0], title: r.id[0], section: null });
+  // Rows `a0…`, `b0…`, `c0…` belong to groups a, b, c; each has one of three users off the map.
+  const groupOf = (r: MapRow): RowGroup => ({ id: r.id[0], label: r.id[0], title: r.id[0], section: 'S' });
   const rowsOf = (sizes: Record<string, number>) =>
     Object.entries(sizes).flatMap(([g, n]) =>
       Array.from({ length: n }, (_, i) =>
-        row(`${g}${i}`, g, { swatches: [`#00000${i % 10}`], elsewhere: 1 }),
+        row(`${g}${i}`, g, { swatches: [`#00000${i % 10}`], elsewhere: 1, unseen: [`user${i % 3}`] }),
       ),
     );
 
@@ -100,7 +102,7 @@ describe('collapseColumn', () => {
       toggleId: 'a',
       memberCount: 20,
       matches: 20,
-      elsewhere: 20,
+      elsewhere: 3,
       column: 'system',
     });
     expect(collapsed[0].swatches).toHaveLength(4);
@@ -146,8 +148,8 @@ describe('collapseColumn', () => {
 
 describe('countCrossings', () => {
   it('counts pairs of links that swap order between the columns', () => {
-    const left = [row('a', null), row('b', null)];
-    const right = [row('x', null), row('y', null)];
+    const left = [row('a', 'L'), row('b', 'L')];
+    const right = [row('x', 'R'), row('y', 'R')];
     const link = (l: string, r: string) => ({ left: l, right: r, weight: 1 });
     expect(countCrossings(left, right, [link('a', 'x'), link('b', 'y')])).toBe(0);
     expect(countCrossings(left, right, [link('a', 'y'), link('b', 'x')])).toBe(1);
@@ -172,10 +174,37 @@ describe('orderColumns', () => {
       for (const column of MAP_COLUMNS) {
         const rows = ordered.columns[column];
         expect(new Set(rows.map((r) => r.id))).toEqual(new Set(view.columns[column].map((r) => r.id)));
-        const runs = rows.map((r) => r.section).filter((s, i, all) => s !== null && s !== all[i - 1]);
+        const runs = rows.map((r) => r.section).filter((s, i, all) => s !== all[i - 1]);
         expect(new Set(runs).size).toBe(runs.length);
       }
     }
+  });
+
+  it.each([
+    groupId('component', 'button'),
+    groupId('component', 'nav-bar'),
+    groupId('component', 'Site'),
+    'system::system tokens.Spacing.sm',
+    'ui::src/components/organisms/Footer/Footer.css',
+  ])('keeps an expanded group in one run of its section (%s)', (focusId) => {
+    const view = viewOf(focusId);
+    const toggles = MAP_COLUMNS.flatMap((column) =>
+      view.columns[column].flatMap((r) => (r.collapse === 'collapsed' ? [[column, r.id] as const] : [])),
+    );
+    expect(toggles.length).toBeGreaterThan(0);
+    for (const [column, toggleId] of toggles) {
+      const rows = viewOf(focusId, [toggleId]).columns[column];
+      const members = rows.flatMap((r, i) => (r.toggleId === toggleId ? [i] : []));
+      expect(members.length).toBeGreaterThanOrEqual(MIN_GROUP);
+      expect(members[members.length - 1] - members[0], toggleId).toBe(members.length - 1);
+      expect(new Set(members.map((i) => rows[i].section)).size).toBe(1);
+    }
+  });
+
+  it.each(Object.entries(VIEWS))('keeps UI tiers in atomic order (%s)', (_, view) => {
+    const tiers = ['atom', 'molecule', 'organism', 'page', 'global'];
+    const ranks = view.columns.ui.map((r) => tiers.indexOf(model.uiById.get(r.id)!.tier));
+    expect(ranks).toEqual([...ranks].sort((a, b) => a - b));
   });
 
   it('keeps the focus column in its natural order', () => {
@@ -210,7 +239,21 @@ describe('layoutRows', () => {
     }
   });
 
-  it('centres every column against the tallest', () => {
+  it.each(Object.entries(VIEWS))('puts every row under its own section heading (%s)', (_, view) => {
+    const { top, sections } = layoutRows(view);
+    for (const column of MAP_COLUMNS) {
+      const headings = sections.filter((s) => s.column === column).sort((a, b) => a.top - b.top);
+      for (const r of view.columns[column]) {
+        expect(headings.filter((s) => s.top < top.get(r.id)!).at(-1)?.label, r.id).toBe(r.section);
+      }
+    }
+  });
+
+  it('starts every overview column at the top', () => {
+    for (const column of MAP_COLUMNS) expect(boxesOf(VIEWS.overview, column)[0][0]).toBe(ROW.padTop);
+  });
+
+  it('centres every column of a focus view against the tallest', () => {
     const view = VIEWS['Spacing.sm'];
     const { height } = layoutRows(view);
     for (const column of MAP_COLUMNS) {

@@ -24,7 +24,7 @@ export interface RowGroup {
   id: string;
   label: string;
   title: string;
-  section: string | null;
+  section: string;
 }
 
 interface Bucket {
@@ -32,16 +32,24 @@ interface Bucket {
   members: MapRow[];
 }
 
+/** Rows split into blocks by `key`, in order of first appearance. */
+function blocksBy(rows: readonly MapRow[], key: (r: MapRow) => string): MapRow[][] {
+  const blocks = new Map<string, MapRow[]>();
+  for (const row of rows) {
+    const k = key(row);
+    const block = blocks.get(k);
+    if (block) block.push(row);
+    else blocks.set(k, [row]);
+  }
+  return [...blocks.values()];
+}
+
 /** Buckets rows by group, in order of first appearance. */
 function bucket(rows: readonly MapRow[], groupOf: (r: MapRow) => RowGroup): Bucket[] {
-  const buckets = new Map<string, Bucket>();
-  for (const row of rows) {
-    const group = groupOf(row);
-    const existing = buckets.get(group.id);
-    if (existing) existing.members.push(row);
-    else buckets.set(group.id, { group, members: [row] });
-  }
-  return [...buckets.values()];
+  return blocksBy(rows, (r) => groupOf(r).id).map((members) => ({
+    group: groupOf(members[0]),
+    members,
+  }));
 }
 
 /** Up to `count` items spread evenly across the list, so a palette shows its range. */
@@ -51,8 +59,9 @@ function spread<T>(items: readonly T[], count: number): T[] {
 }
 
 function mergeRows({ group, members }: Bucket): MapRow {
-  const sum = (key: 'memberCount' | 'matches' | 'elsewhere') =>
-    members.reduce((total, r) => total + r[key], 0);
+  const sum = (key: 'memberCount' | 'matches') => members.reduce((total, r) => total + r[key], 0);
+  // Members share consumers (most CSS files use several of a group's tokens); count each once.
+  const unseen = [...new Set(members.flatMap((r) => r.unseen))];
   return {
     ...group,
     column: members[0].column,
@@ -60,7 +69,8 @@ function mergeRows({ group, members }: Bucket): MapRow {
     memberCount: sum('memberCount'),
     swatches: spread([...new Set(members.flatMap((r) => r.swatches))], MAX_SWATCHES),
     matches: sum('matches'),
-    elsewhere: sum('elsewhere'),
+    elsewhere: unseen.length,
+    unseen,
     isFocus: members.some((r) => r.isFocus),
     collapse: null,
   };
@@ -81,12 +91,15 @@ export function collapseColumn(
   expanded: ReadonlySet<string>,
 ): MapRow[] {
   if (rows.length <= COLLAPSE_AT) return rows;
-  return bucket(rows, groupOf).flatMap((b): MapRow[] => {
+  const collapsed = bucket(rows, groupOf).flatMap((b): MapRow[] => {
     const toggleId = b.group.id;
     if (b.members.length < MIN_GROUP) return b.members;
     if (expanded.has(toggleId)) return b.members.map((r) => ({ ...r, collapse: 'expanded', toggleId }));
     return [{ ...mergeRows(b), collapse: 'collapsed', toggleId }];
   });
+  // Collapsed namespaces share one heading, but small namespaces stay loose
+  // between them under their own; keep each section in one run.
+  return blocksBy(collapsed, (r) => r.section).flat();
 }
 
 function indexById(rows: readonly MapRow[]): Map<string, number> {
@@ -113,11 +126,18 @@ export function countCrossings(left: MapRow[], right: MapRow[], links: MapLink[]
 }
 
 /**
- * Sorts rows by the weighted mean position of their neighbours in `anchor`,
- * moving whole sections so each stays contiguous. Rows without links keep
- * their original index, scaled to the anchor's length.
+ * Sorts rows by the weighted mean position of their neighbours in `anchor`.
+ * Sections, and the members of an expanded group inside them, move as
+ * blocks so neither is ever split; with `keepSectionOrder` sections stay
+ * where they are and only their rows move. Rows without links keep their
+ * original index, scaled to the anchor's length.
  */
-function sortByBarycenter(rows: MapRow[], anchor: MapRow[], links: MapLink[]): MapRow[] {
+function sortByBarycenter(
+  rows: MapRow[],
+  anchor: MapRow[],
+  links: MapLink[],
+  keepSectionOrder: boolean,
+): MapRow[] {
   const anchorIndex = indexById(anchor);
   const scale = anchor.length / rows.length;
   const centerOf = new Map<string, number>();
@@ -136,18 +156,13 @@ function sortByBarycenter(rows: MapRow[], anchor: MapRow[], links: MapLink[]): M
 
   const center = (r: MapRow) => centerOf.get(r.id) ?? 0;
   const mean = (block: MapRow[]) => block.reduce((s, r) => s + center(r), 0) / block.length;
-  const blocks = new Map<string, MapRow[]>();
-  for (const row of rows) {
-    // Unsectioned rows move on their own; ids never collide with section headings.
-    const key = row.section ?? row.id;
-    const block = blocks.get(key);
-    if (block) block.push(row);
-    else blocks.set(key, [row]);
-  }
-  return [...blocks.values()]
-    .map((block) => block.sort((a, b) => center(a) - center(b)))
-    .sort((a, b) => mean(a) - mean(b))
-    .flat();
+  const byCenter = (block: MapRow[]) => block.sort((a, b) => center(a) - center(b));
+  const byMean = (blocks: MapRow[][]) => blocks.sort((a, b) => mean(a) - mean(b));
+  // Members of an expanded group share its toggleId; every other row moves alone.
+  const sections = blocksBy(rows, (r) => r.section).map((section) =>
+    byMean(blocksBy(section, (r) => r.toggleId ?? r.id).map(byCenter)).flat(),
+  );
+  return (keepSectionOrder ? sections : byMean(sections)).flat();
 }
 
 /** Which column to sort against which neighbour, in sweep order. */
@@ -164,7 +179,8 @@ function sweepPlan(v: MapView): [MapColumn, MapColumn][] {
 /**
  * Orders the rows of each column to reduce edge crossings: outward from the
  * focus column (which keeps its natural order), or against the system and UI
- * columns in the overview. A step that would add crossings is skipped, so the
+ * columns in the overview. UI tiers keep their atomic order; only the files
+ * inside a tier move. A step that would add crossings is skipped, so the
  * result never has more crossings than the order it was given.
  */
 export function orderColumns(v: MapView): MapView {
@@ -180,7 +196,7 @@ export function orderColumns(v: MapView): MapView {
   };
   for (const [column, anchor] of sweepPlan(v)) {
     if (columns[column].length < 2) continue;
-    const sorted = sortByBarycenter(columns[column], columns[anchor], v.links);
+    const sorted = sortByBarycenter(columns[column], columns[anchor], v.links, column === 'ui');
     if (crossingsAround(column, sorted) <= crossingsAround(column, columns[column])) {
       columns[column] = sorted;
     }
@@ -219,7 +235,7 @@ function stackColumn(column: MapColumn, rows: readonly MapRow[]) {
   let previous: MapRow | undefined;
   for (const row of rows) {
     if (previous) y += previous.section === row.section ? ROW.gap : ROW.gap + ROW.sectionGap;
-    if (row.section !== null && row.section !== previous?.section) {
+    if (row.section !== previous?.section) {
       sections.push({ column, label: row.section, top: y });
       y += ROW.sectionH;
     }
@@ -230,14 +246,18 @@ function stackColumn(column: MapColumn, rows: readonly MapRow[]) {
   return { top, sections, height: y + ROW.padTop };
 }
 
-/** Pixel tops of every row and section heading; shorter columns are centred against the tallest. */
+/**
+ * Pixel tops of every row and section heading. On a focus, shorter columns
+ * are centred against the tallest so a short focus column sits level with
+ * its fan-out; on the overview every column starts at the top.
+ */
 export function layoutRows(v: MapView): RowLayout {
   const stacks = MAP_COLUMNS.map((column) => stackColumn(column, v.columns[column]));
   const height = Math.max(...stacks.map((s) => s.height));
   const top = new Map<string, number>();
   const sections: SectionHeading[] = [];
   for (const stack of stacks) {
-    const offset = (height - stack.height) / 2;
+    const offset = v.focusId === null ? 0 : (height - stack.height) / 2;
     for (const [id, y] of stack.top) top.set(id, y + offset);
     for (const s of stack.sections) sections.push({ ...s, top: s.top + offset });
   }

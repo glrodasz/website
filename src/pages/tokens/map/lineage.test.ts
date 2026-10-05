@@ -45,6 +45,7 @@ const linkWeight = (v: MapView, from: MapColumn) => linksFrom(v, from).reduce((n
 
 const BUTTON_CSS = 'ui::src/components/atoms/Button.css';
 const ICON_BUTTON_CSS = 'ui::src/components/molecules/IconButton.css';
+const FOOTER_CSS = 'ui::src/components/organisms/Footer/Footer.css';
 const nodeByVar = new Map(graph.nodes.map((n) => [n.cssVarName, n]));
 const usagePairs = new Set(
   tokenUsages.flatMap((u) => {
@@ -152,6 +153,17 @@ describe('computeMapView overview', () => {
     expect(overview.links.every((l) => l.weight > 0)).toBe(true);
   });
 
+  it('puts every group row under a heading', () => {
+    const sectionOf = (level: 'global' | 'system', prefix: string) =>
+      overview.columns[level].find((r) => r.id === groupId(level, prefix))?.section;
+    expect(sectionOf('global', 'Colors.Support.Shark')).toBe('Colors / Support');
+    expect(sectionOf('system', 'Colors.Primary')).toBe('Colors');
+    // A top-level group heads its own section, as its tokens do.
+    expect(sectionOf('global', 'Sizing')).toBe('Sizing');
+    expect(sectionOf('system', 'Spacing')).toBe('Spacing');
+    expect(overview.columns.component.every((r) => r.section === 'Components')).toBe(true);
+  });
+
   it('keeps groups nothing references, without links', () => {
     const linked = new Set(overview.links.flatMap((l) => [l.left, l.right]));
     expect(ids(overview, 'global').some((id) => !linked.has(id))).toBe(true);
@@ -214,6 +226,68 @@ describe('computeMapView focus', () => {
     const row = view.columns.system.find((r) => r.id === spacingSm);
     expect(row?.elsewhere).toBe(55);
     expect(viewOf(spacingSm).columns.system[0].elsewhere).toBe(0);
+  });
+
+  it('counts each user of a group row once', () => {
+    const footer = viewOf(FOOTER_CSS);
+    const site = footer.columns.component.find((r) => r.id === groupId('component', 'Site'));
+    expect(site).toMatchObject({ collapse: 'collapsed', memberCount: 3 });
+    const siteTokens = model.tokensByFile.get(FOOTER_CSS)!.filter((id) => id.includes(' tokens.Site.'));
+    const others = new Set(siteTokens.flatMap((id) => model.filesByToken.get(id)!));
+    others.delete(FOOTER_CSS);
+    expect(others.size).toBe(9);
+    expect(site?.elsewhere).toBe(others.size);
+
+    const users: Record<MapColumn, number> = {
+      global: graph.stats.system,
+      system: graph.stats.component,
+      component: model.ui.length,
+      ui: 0,
+    };
+    for (const ui of model.ui) {
+      const view = viewOf(ui.id);
+      for (const column of MAP_COLUMNS) {
+        for (const r of view.columns[column]) expect(r.elsewhere).toBeLessThanOrEqual(users[column]);
+      }
+    }
+  });
+
+  it('puts collapsed namespaces under one heading', () => {
+    const view = viewOf('system::system tokens.Spacing.sm');
+    const namespaces = view.columns.component.filter((r) => r.kind === 'group');
+    expect(namespaces.map((r) => r.label)).toEqual(expect.arrayContaining(['Navigation', 'Footer', 'Site']));
+    expect(namespaces.every((r) => r.section === 'Components')).toBe(true);
+    const loose = view.columns.component.find((r) => r.id.includes('.button.'));
+    expect(loose?.section).toBe('Button');
+  });
+
+  it('labels global colours by their last two segments', () => {
+    const button = viewOf(groupId('component', 'button'));
+    const colors = button.columns.global.filter((r) => r.type === 'color');
+    expect(colors.map((r) => r.label)).toEqual(expect.arrayContaining(['Chartreuse.600', 'Gunmetal.600']));
+    for (const r of colors) expect(r.label).toBe(r.title.split('.').slice(-2).join('.'));
+
+    const custom = viewOf(groupId('global', 'Colors.Custom.Principal palette'));
+    expect(custom.columns.global.map((r) => r.label)).toContain('Principal palette.600');
+  });
+
+  it('keeps labels unique within each section', () => {
+    const focusIds = [
+      null,
+      groupId('component', 'button'),
+      groupId('component', 'Site'),
+      groupId('global', 'Colors.Schemas.Metal chartreuse'),
+      groupId('system', 'Typography.font-size'),
+      'system::system tokens.Spacing.sm',
+      BUTTON_CSS,
+    ];
+    for (const focusId of focusIds) {
+      const view = viewOf(focusId);
+      for (const column of MAP_COLUMNS) {
+        const labels = view.columns[column].map((r) => `${r.section} › ${r.label}`);
+        expect(new Set(labels).size).toBe(labels.length);
+      }
+    }
   });
 
   it('follows the theme’s reference for system tokens overridden in dark mode', () => {

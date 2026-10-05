@@ -153,20 +153,40 @@ function displaySegment(level: NodeLevel, segment: string, index: number): strin
   return level === 'component' && index === 0 ? displayComponentName(segment) : segment;
 }
 
-function headingOf(level: NodeLevel, segments: readonly string[]): string | null {
-  if (segments.length === 0) return null;
+function headingOf(level: NodeLevel, segments: readonly string[]): string {
   return segments.map((s, i) => displaySegment(level, s, i)).join(' / ');
 }
 
-/** The group row for every node sharing `node`'s first `depth` segments. */
+/**
+ * How many leading segments name the heading a group's rows sit under: the
+ * group's parent, or for a top-level group the group itself.
+ */
+function headingDepth(groupDepth: number): number {
+  return Math.max(1, groupDepth - 1);
+}
+
+/**
+ * Namespace group rows share one heading: a column can hold a dozen, and a
+ * heading each would only repeat their labels.
+ */
+const NAMESPACES_HEADING = 'Components';
+
+/**
+ * The group row for every node sharing `node`'s first `depth` segments. It
+ * sits under the heading its tokens sit under, so a section reads the same
+ * collapsed or expanded; namespaces share NAMESPACES_HEADING instead.
+ */
 function groupOf(node: GraphNode, depth: number): RowGroup {
   const prefix = segmentsOf(node).slice(0, depth);
   const last = prefix.length - 1;
+  const isNamespace = node.level === 'component' && depth === 1;
   return {
     id: groupId(node.level, prefix.join('.')),
     label: displaySegment(node.level, prefix[last], last),
     title: prefix.join('.'),
-    section: headingOf(node.level, prefix.slice(0, last)),
+    section: isNamespace
+      ? NAMESPACES_HEADING
+      : headingOf(node.level, prefix.slice(0, headingDepth(depth))),
   };
 }
 
@@ -208,8 +228,8 @@ export interface MapRow {
   label: string;
   /** Full path or file, for tooltips. */
   title: string;
-  /** Heading the row sits under; null when it has none. */
-  section: string | null;
+  /** Heading the row sits under. */
+  section: string;
   /** 1 for tokens and UI sources; the member count for groups. */
   memberCount: number;
   /** Up to four themed hex values, for color tokens and color groups. */
@@ -218,6 +238,8 @@ export interface MapRow {
   matches: number;
   /** Consumers that exist (theme edges, CSS usage) but are not on this view. */
   elsewhere: number;
+  /** The consumers `elsewhere` counts, so a group row counts the ones its members share once. */
+  unseen: readonly string[];
   isFocus: boolean;
   /** In a collapsed column: a group row standing in for its members, or a member shown in place. */
   collapse: 'collapsed' | 'expanded' | null;
@@ -381,21 +403,25 @@ export function computeMapView(
   for (const node of nodes) {
     if (!visible.has(node.id)) continue;
     const segments = segmentsOf(node);
-    // A token sits under its group's heading (a top-level group is the heading
-    // itself), so collapsed, expanded and loose rows of a section stay together.
-    const headingDepth = Math.max(1, groupDepth(node, byProperty) - 1);
+    const heading = headingDepth(groupDepth(node, byProperty));
+    // A global colour's schema name would crowd out the shade that tells
+    // siblings apart (`Chartreuse.600`, `Gunmetal.600`); the title keeps it.
+    const isGlobalColor = node.level === 'global' && node.type === 'color';
+    const labelStart = isGlobalColor ? Math.max(heading, segments.length - 2) : heading;
     const value = themedValueOf(node, theme);
+    const unseen = w.down(node.id).filter((id) => !visible.has(id));
     columns[node.level].push({
       id: node.id,
       column: node.level,
       kind: 'token',
-      label: segments.slice(headingDepth).join('.') || node.displayLabel,
+      label: segments.slice(labelStart).join('.') || node.displayLabel,
       title: node.path,
-      section: headingOf(node.level, segments.slice(0, headingDepth)),
+      section: headingOf(node.level, segments.slice(0, heading)),
       memberCount: 1,
       swatches: node.type === 'color' && HEX_RE.test(value) ? [value] : [],
       matches: matchesSearch(node, query) ? 1 : 0,
-      elsewhere: w.down(node.id).filter((id) => !visible.has(id)).length,
+      elsewhere: unseen.length,
+      unseen,
       isFocus: focusIds.has(node.id),
       collapse: null,
       value,
@@ -416,6 +442,7 @@ export function computeMapView(
       swatches: [],
       matches: matches ? 1 : 0,
       elsewhere: 0,
+      unseen: [],
       isFocus: focusIds.has(ui.id),
       collapse: null,
     });

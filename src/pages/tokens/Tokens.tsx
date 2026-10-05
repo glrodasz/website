@@ -2,16 +2,21 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { buildTokenGraph, indexEdges, type ThemeMode } from '../../tokens/graph-builder';
 import { runTokenAudit } from '../../tokens/audit';
+import { tokenUsages } from '../../generated/token-usage';
 import { Seo } from '../../components/Seo';
 import { useTheme } from '../../hooks/useTheme';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { TokenExplorer } from './TokenExplorer';
 import { TokenInspector } from './TokenInspector';
+import { buildLineageModel, groupId, resolveMapId } from './map/lineage';
+import type { MapMode } from './map/MapView';
 import { displayComponentName, isExplorerTab, matchesSearch, type ExplorerTab } from './utils';
 import './Tokens.css';
 
-const DEFAULT_TAB: ExplorerTab = 'components';
+const DEFAULT_TAB: ExplorerTab = 'map';
+/** Map focus history kept for Back and the breadcrumb. */
+const MAX_MAP_TRAIL = 12;
 /** Must match the breakpoint in Tokens.css where the sidebar becomes a drawer. */
 const NARROW_QUERY = '(max-width: 900px)';
 
@@ -79,6 +84,7 @@ function toggleInSet(set: Set<string>, key: string): Set<string> {
 export default function Tokens() {
   const graph = useMemo(() => buildTokenGraph(), []);
   const audit = useMemo(() => runTokenAudit(graph), [graph]);
+  const lineage = useMemo(() => buildLineageModel(graph, tokenUsages), [graph]);
   const siteTheme = useTheme().theme;
 
   const [enabledComponents, setEnabledComponents] = useState<Set<string>>(
@@ -95,17 +101,30 @@ export default function Tokens() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  // Deep links: /tokens?component=button focuses that component,
-  // /tokens?tab=audit opens a specific tab. Both are kept in sync with the URL.
+  // Deep links: /tokens?tab=audit opens a specific tab, ?component=button
+  // focuses that component's card (and, without a tab, opens Components as
+  // links made before the Map tab did), ?focus=<id>&view=3d restore the map.
+  // All of them are kept in sync with the URL.
   const [searchParams, setSearchParams] = useSearchParams();
   const [tab, setTab] = useState<ExplorerTab>(() => {
     const fromUrl = searchParams.get('tab');
-    return isExplorerTab(fromUrl) ? fromUrl : DEFAULT_TAB;
+    if (isExplorerTab(fromUrl)) return fromUrl;
+    return searchParams.has('component') ? 'components' : DEFAULT_TAB;
   });
   const [focusedComponent, setFocusedComponent] = useState<string | null>(() => {
     const fromUrl = searchParams.get('component');
     return fromUrl && graph.componentNames.includes(fromUrl) ? fromUrl : null;
   });
+  // The map's focus history, newest last. The URL only carries the current
+  // focus (it is replaced, not pushed), so Back walks this instead.
+  const [mapTrail, setMapTrail] = useState<string[]>(() => {
+    const fromUrl = searchParams.get('focus');
+    return fromUrl && resolveMapId(lineage, fromUrl) ? [fromUrl] : [];
+  });
+  const mapFocus = mapTrail.at(-1) ?? null;
+  const [mapMode, setMapMode] = useState<MapMode>(() =>
+    searchParams.get('view') === '3d' ? '3d' : '2d',
+  );
 
   useEffect(() => {
     setSearchParams(
@@ -113,39 +132,69 @@ export default function Tokens() {
         const next = new URLSearchParams(prev);
         if (focusedComponent) next.set('component', focusedComponent);
         else next.delete('component');
-        if (tab !== DEFAULT_TAB) next.set('tab', tab);
+        // A component without a tab reads as a legacy Components link, so the
+        // default tab is spelled out whenever a component is in the URL.
+        if (tab !== DEFAULT_TAB || focusedComponent) next.set('tab', tab);
         else next.delete('tab');
+        if (tab === 'map' && mapFocus) next.set('focus', mapFocus);
+        else next.delete('focus');
+        if (tab === 'map' && mapMode === '3d') next.set('view', '3d');
+        else next.delete('view');
         return next;
       },
       { replace: true },
     );
-  }, [focusedComponent, tab, setSearchParams]);
+  }, [focusedComponent, tab, mapFocus, mapMode, setSearchParams]);
+
+  /** Focuses the map on a row id; revisiting an earlier focus rewinds the trail to it. */
+  const focusMap = useCallback((id: string) => {
+    setMapTrail((trail) => {
+      if (trail.at(-1) === id) return trail;
+      const earlier = trail.indexOf(id);
+      if (earlier >= 0) return trail.slice(0, earlier + 1);
+      return [...trail, id].slice(-MAX_MAP_TRAIL);
+    });
+  }, []);
+  const mapBack = useCallback(() => setMapTrail((trail) => trail.slice(0, -1)), []);
+  const mapReset = useCallback(() => setMapTrail([]), []);
 
   /**
    * The single way to focus a component, whatever the entry point (sidebar
-   * "view", inspector "View component", banner "clear"): a hidden component
-   * is re-enabled so its card exists, and the Components tab is shown.
+   * "view", inspector "View component", banner "clear"). On the Map tab it
+   * traces the component's lineage; elsewhere a hidden component is
+   * re-enabled so its card exists, and the Components tab is shown.
    */
-  const focusComponent = useCallback((name: string | null) => {
-    if (name) {
-      setEnabledComponents((prev) => (prev.has(name) ? prev : new Set(prev).add(name)));
-      setTab('components');
-    }
-    setFocusedComponent(name);
-  }, []);
+  const focusComponent = useCallback(
+    (name: string | null) => {
+      if (name && tab === 'map') {
+        focusMap(groupId('component', name));
+        return;
+      }
+      if (name) {
+        setEnabledComponents((prev) => (prev.has(name) ? prev : new Set(prev).add(name)));
+        setTab('components');
+      }
+      setFocusedComponent(name);
+    },
+    [tab, focusMap],
+  );
 
   const onSelectToken = (nodeId: string) =>
     setSelectedId((prev) => (prev === nodeId ? null : nodeId));
 
+  // Escape unwinds one layer at a time: inspector, drawer, then map focus.
+  // Escape in a text field clears it instead of leaving the focus.
+  const canPopMap = tab === 'map' && mapTrail.length > 0;
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
       if (selectedId !== null) setSelectedId(null);
-      else setSidebarOpen(false);
+      else if (sidebarOpen) setSidebarOpen(false);
+      else if (canPopMap && !(e.target instanceof HTMLInputElement)) mapBack();
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [selectedId]);
+  }, [selectedId, sidebarOpen, canPopMap, mapBack]);
 
   // On narrow viewports the sidebar is an off-canvas drawer: keep it out of
   // the tab order while closed and trap focus inside it while open. Focus goes
@@ -327,10 +376,16 @@ export default function Tokens() {
                 key={name}
                 name={displayComponentName(name)}
                 checked={enabledComponents.has(name)}
-                focused={focusedComponent === name}
+                focused={
+                  tab === 'map'
+                    ? mapFocus === groupId('component', name)
+                    : focusedComponent === name
+                }
                 onToggle={() => setEnabledComponents((prev) => toggleInSet(prev, name))}
                 onOnly={() => setEnabledComponents(new Set([name]))}
-                onFocus={() => focusComponent(focusedComponent === name ? null : name)}
+                onFocus={() =>
+                  focusComponent(tab !== 'map' && focusedComponent === name ? null : name)
+                }
               />
             ))}
           </div>
@@ -351,6 +406,14 @@ export default function Tokens() {
           focusedComponent={focusedComponent}
           selectedId={selectedId}
           onSelect={onSelectToken}
+          onInspect={setSelectedId}
+          lineage={lineage}
+          mapTrail={mapTrail}
+          mapMode={mapMode}
+          onMapFocus={focusMap}
+          onMapBack={mapBack}
+          onMapReset={mapReset}
+          onMapModeChange={setMapMode}
         />
         {selectedId && graph.nodesById.has(selectedId) && (
           <TokenInspector

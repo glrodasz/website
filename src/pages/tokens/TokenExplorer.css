@@ -83,6 +83,10 @@
   color: #7b8aa3;
 }
 
+.token-explorer__pill--map {
+  margin-right: 12px;
+}
+
 .token-explorer__pill--audit {
   margin-left: 12px;
 }
@@ -113,7 +117,21 @@
     display: none;
   }
 
+  .token-explorer__pill--map {
+    margin-right: 0;
+  }
+
   .token-explorer__pill--audit {
     margin-left: 0;
   }
+}
+
+/* The map scrolls itself on both axes and fills the remaining height, so the
+   body neither pads nor scrolls. Last, to win over the narrow padding above. */
+.token-explorer__body--map {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
 }

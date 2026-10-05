@@ -1,0 +1,245 @@
+/**
+ * The Map tab: how tokens flow from global values, through system and
+ * component tokens, to the CSS files that use them.
+ *
+ * With nothing focused it shows one row per group; focusing a token, a group
+ * or a CSS file shows only its lineage. The focus history is owned by the
+ * page (URL sync, Escape), while groups expanded inside a long column belong
+ * to the focus they were opened under. The 3D view loads on demand.
+ */
+
+import { Suspense, lazy, useCallback, useMemo, useState } from 'react';
+import type { EdgeIndex, ThemeMode } from '../../../tokens/graph-builder';
+import { displayComponentName } from '../utils';
+import { MapView2D } from './MapView2D';
+import {
+  computeMapView,
+  resolveMapId,
+  type LineageModel,
+  type MapColumn,
+  type MapFilters,
+} from './lineage';
+import './TokenMap.css';
+
+const MapView3D = lazy(() => import('./MapView3D'));
+
+export type MapMode = '2d' | '3d';
+
+export interface MapViewProps {
+  lineage: LineageModel;
+  index: EdgeIndex;
+  theme: ThemeMode;
+  search: string;
+  enabledCategories: ReadonlySet<string>;
+  enabledComponents: ReadonlySet<string>;
+  /** Focus history, oldest first; the last entry is the current focus. Empty means the overview. */
+  trail: readonly string[];
+  mode: MapMode;
+  /** The token open in the inspector. */
+  selectedId: string | null;
+  onFocus: (id: string) => void;
+  onBack: () => void;
+  onReset: () => void;
+  onModeChange: (mode: MapMode) => void;
+  onSelectToken: (id: string) => void;
+}
+
+/** Breadcrumbs beyond this many collapse into an ellipsis after "Overview". */
+const MAX_CRUMBS = 3;
+const NO_GROUPS: ReadonlySet<string> = new Set();
+
+interface Crumb {
+  id: string;
+  label: string;
+  column: MapColumn;
+}
+
+function crumbOf(lineage: LineageModel, id: string): Crumb | null {
+  const resolved = resolveMapId(lineage, id);
+  if (!resolved) return null;
+  if (resolved.kind === 'ui') return { id, label: resolved.ui.label, column: 'ui' };
+  if (resolved.kind === 'token') {
+    const { node } = resolved;
+    const owner = node.componentName ? `${displayComponentName(node.componentName)} · ` : '';
+    return { id, label: owner + node.displayLabel, column: node.level };
+  }
+  const label =
+    resolved.level === 'component'
+      ? displayComponentName(resolved.prefix)
+      : resolved.prefix.split('.').slice(-2).join(' / ');
+  return { id, label, column: resolved.level };
+}
+
+export function MapView({
+  lineage,
+  index,
+  theme,
+  search,
+  enabledCategories,
+  enabledComponents,
+  trail,
+  mode,
+  selectedId,
+  onFocus,
+  onBack,
+  onReset,
+  onModeChange,
+  onSelectToken,
+}: MapViewProps) {
+  const focusId = trail.at(-1) ?? null;
+
+  // Expanded groups are remembered per focus: a new focus starts folded.
+  const [expansion, setExpansion] = useState({ focusId, groups: NO_GROUPS });
+  const expanded = expansion.focusId === focusId ? expansion.groups : NO_GROUPS;
+  const toggleGroup = (groupId: string) => {
+    const groups = new Set(expanded);
+    if (groups.has(groupId)) groups.delete(groupId);
+    else groups.add(groupId);
+    setExpansion({ focusId, groups });
+  };
+
+  const view = useMemo(() => {
+    const filters: MapFilters = { search, enabledCategories, enabledComponents };
+    return computeMapView(lineage, index, theme, filters, focusId, expanded);
+  }, [lineage, index, theme, search, enabledCategories, enabledComponents, focusId, expanded]);
+  const searching = search.trim() !== '';
+
+  const [webglUnavailable, setWebglUnavailable] = useState(false);
+  const activeMode: MapMode = webglUnavailable ? '2d' : mode;
+  const onUnavailable = useCallback(() => {
+    setWebglUnavailable(true);
+    onModeChange('2d');
+  }, [onModeChange]);
+
+  const crumbs = useMemo(
+    () => trail.flatMap((id) => crumbOf(lineage, id) ?? []),
+    [lineage, trail],
+  );
+  const shownCrumbs = crumbs.slice(-MAX_CRUMBS);
+  const inspectorOpen = selectedId !== null && lineage.graph.nodesById.has(selectedId);
+
+  return (
+    <div className={`token-map${inspectorOpen ? ' token-map--inspector-open' : ''}`}>
+      <div className="token-map__toolbar">
+        <nav className="token-map__trail" aria-label="Map focus">
+          <button
+            type="button"
+            className="token-map__back"
+            onClick={onBack}
+            disabled={trail.length === 0}
+            title="Back to the previous focus (Esc)"
+          >
+            <span aria-hidden="true">←</span> Back
+          </button>
+          <ol className="token-map__crumbs">
+            <li className="token-map__crumb">
+              {crumbs.length === 0 ? (
+                <span className="token-map__crumb-current" aria-current="location">
+                  Overview
+                </span>
+              ) : (
+                <button type="button" className="token-map__crumb-link" onClick={onReset}>
+                  Overview
+                </button>
+              )}
+            </li>
+            {crumbs.length > shownCrumbs.length && (
+              <li className="token-map__crumb token-map__crumb--gap" aria-hidden="true">
+                …
+              </li>
+            )}
+            {shownCrumbs.map((crumb, i) => (
+              <li
+                key={crumb.id}
+                className={`token-map__crumb token-map__crumb--level token-map__crumb--${crumb.column}`}
+              >
+                {i === shownCrumbs.length - 1 ? (
+                  <span
+                    className="token-map__crumb-current"
+                    aria-current="location"
+                    title={crumb.label}
+                  >
+                    {crumb.label}
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    className="token-map__crumb-link"
+                    onClick={() => onFocus(crumb.id)}
+                    title={crumb.label}
+                  >
+                    {crumb.label}
+                  </button>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <p className="token-map__legend">
+          <span className="token-map__legend-item">
+            <span className="token-map__legend-line" aria-hidden="true" />
+            width = references
+          </span>
+          <span className="token-map__legend-item">
+            <span className="token-map__legend-badge" aria-hidden="true">
+              +N
+            </span>
+            users not shown
+          </span>
+        </p>
+
+        <div className="token-map__modes" role="radiogroup" aria-label="Map rendering">
+          <button
+            type="button"
+            role="radio"
+            aria-checked={activeMode === '2d'}
+            className={`token-map__mode${activeMode === '2d' ? ' token-map__mode--active' : ''}`}
+            onClick={() => onModeChange('2d')}
+          >
+            2D
+          </button>
+          <button
+            type="button"
+            role="radio"
+            aria-checked={activeMode === '3d'}
+            className={`token-map__mode${activeMode === '3d' ? ' token-map__mode--active' : ''}`}
+            onClick={() => onModeChange('3d')}
+            disabled={webglUnavailable}
+            title={webglUnavailable ? 'WebGL is not available in this browser' : undefined}
+          >
+            3D
+          </button>
+        </div>
+      </div>
+
+      {activeMode === '3d' ? (
+        <Suspense
+          fallback={
+            <div className="token-map__notice" role="status">
+              Loading the 3D view…
+            </div>
+          }
+        >
+          <MapView3D
+            view={view}
+            searching={searching}
+            selectedId={selectedId}
+            onFocus={onFocus}
+            onSelectToken={onSelectToken}
+            onUnavailable={onUnavailable}
+          />
+        </Suspense>
+      ) : (
+        <MapView2D
+          view={view}
+          searching={searching}
+          selectedId={selectedId}
+          onFocus={onFocus}
+          onSelectToken={onSelectToken}
+          onToggleGroup={toggleGroup}
+        />
+      )}
+    </div>
+  );
+}

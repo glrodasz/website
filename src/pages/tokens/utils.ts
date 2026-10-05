@@ -4,9 +4,9 @@
 
 import type { GraphNode, ThemeMode } from '../../tokens/graph-builder';
 
-export type ExplorerTab = 'components' | 'system' | 'global' | 'audit';
+export type ExplorerTab = 'map' | 'components' | 'system' | 'global' | 'audit';
 
-const EXPLORER_TABS: readonly string[] = ['components', 'system', 'global', 'audit'];
+const EXPLORER_TABS: readonly string[] = ['map', 'components', 'system', 'global', 'audit'];
 
 export function isExplorerTab(value: string | null): value is ExplorerTab {
   return value !== null && EXPLORER_TABS.includes(value);

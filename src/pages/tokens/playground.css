@@ -64,8 +64,6 @@
   --tk-on-swatch: #ffffff;
   /* Under a label on any swatch colour, white on it stays above 4.5:1. */
   --tk-on-swatch-chip: rgba(0, 0, 0, 0.62);
-  /* Masks only read alpha: any opaque colour. */
-  --tk-mask: #000000;
 }
 
 /* Storybook-style light canvas. */

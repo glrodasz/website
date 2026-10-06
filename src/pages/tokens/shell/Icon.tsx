@@ -13,7 +13,6 @@ const PATHS = {
   audit: 'M8 1.5 13.5 3.5v4c0 3.3-2.3 5.9-5.5 7-3.2-1.1-5.5-3.7-5.5-7v-4L8 1.5ZM5.5 8l1.8 1.8L10.8 6.3',
   chevronRight: 'M6 3.5 10.5 8 6 12.5',
   chevronDown: 'M3.5 6 8 10.5 12.5 6',
-  theme: 'M8 14.5A6.5 6.5 0 1 0 8 1.5v13ZM8 14.5a6.5 6.5 0 0 1 0-13',
   categories: 'M2 2h5.6l6.4 6.4-5.6 5.6L2 7.6V2ZM5 5.01V5',
   reset: 'M2.8 6.2A5.5 5.5 0 1 1 3 10.5M2.5 2.5v3.8h3.8',
   panel: 'M2 2.5h12v11H2zM2 9.5h12',
@@ -22,7 +21,6 @@ const PATHS = {
   restore: 'M13.5 2.5 9.5 6.5M9.5 3v3.5H13M2.5 13.5l4-4M6.5 13V9.5H3',
   copy: 'M5.5 5.5h8v8h-8zM10.5 5.5v-3h-8v8h3',
   check: 'M3 8.5 6.5 12 13 4.5',
-  usage: 'M3 2.5h7l3 3v8H3zM10 2.5v3h3M5.5 8h5M5.5 10.5h5',
   inspector: 'M2.5 3h11M2.5 8h7M2.5 13h9M12.5 10.5a2 2 0 1 0 0-.01',
   arrowRight: 'M2.5 8h11M9.5 4l4 4-4 4',
 } as const;

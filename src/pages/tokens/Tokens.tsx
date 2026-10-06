@@ -43,6 +43,7 @@ const MAX_MAP_TRAIL = 12;
 const NARROW_QUERY = '(max-width: 900px)';
 const SIDEBAR_ID = 'tokens-sidebar';
 const COMPONENT_GROUP = groupId('component', '');
+const PREFS_WRITE_DELAY_MS = 250;
 
 export default function Tokens() {
   const graph = useMemo(() => buildTokenGraph(), []);
@@ -64,7 +65,15 @@ export default function Tokens() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [panel, setPanel] = useState<PanelPrefs>(readPanelPrefs);
-  useEffect(() => writePanelPrefs(panel), [panel]);
+  // Debounced, since a handle drag changes the height on every pointer move,
+  // and flushed on unmount so leaving the page right after a change keeps it.
+  const latestPanel = useRef(panel);
+  useEffect(() => {
+    latestPanel.current = panel;
+    const timer = window.setTimeout(() => writePanelPrefs(panel), PREFS_WRITE_DELAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [panel]);
+  useEffect(() => () => writePanelPrefs(latestPanel.current), []);
 
   // Deep links: /tokens?tab=audit opens a specific tab, ?component=button
   // focuses that component's card (and, without a tab, opens Components as
@@ -178,23 +187,31 @@ export default function Tokens() {
   // The selection's origin (the row or chip clicked), to hand focus back to
   // when the selection closes from inside the panel.
   const selectOrigin = useRef<HTMLElement | null>(null);
-  const noteOrigin = () => {
+  // Stable: these reach every map row through memoised callbacks, so a new
+  // identity per render would re-render the whole map on any page change.
+  const noteOrigin = useCallback(() => {
     const active = document.activeElement;
     if (active instanceof HTMLElement && !active.closest('[data-tokens-panel]')) {
       selectOrigin.current = active;
     }
-  };
-  const openPanel = () => setPanel((p) => (p.open ? p : { ...p, open: true }));
-  const onSelectToken = (nodeId: string) => {
-    noteOrigin();
-    openPanel();
-    setSelectedId((prev) => (prev === nodeId ? null : nodeId));
-  };
-  const onInspect = (nodeId: string) => {
-    noteOrigin();
-    openPanel();
-    setSelectedId(nodeId);
-  };
+  }, []);
+  const openPanel = useCallback(() => setPanel((p) => (p.open ? p : { ...p, open: true })), []);
+  const onSelectToken = useCallback(
+    (nodeId: string) => {
+      noteOrigin();
+      openPanel();
+      setSelectedId((prev) => (prev === nodeId ? null : nodeId));
+    },
+    [noteOrigin, openPanel],
+  );
+  const onInspect = useCallback(
+    (nodeId: string) => {
+      noteOrigin();
+      openPanel();
+      setSelectedId(nodeId);
+    },
+    [noteOrigin, openPanel],
+  );
 
   const panelHasFocus = () =>
     document.querySelector('[data-tokens-panel]')?.contains(document.activeElement) ?? false;
@@ -298,7 +315,8 @@ export default function Tokens() {
         onComponentSelect={(name) => {
           // Picking a hidden component in the tree shows it again.
           setEnabledComponents((prev) => (prev.has(name) ? prev : new Set(prev).add(name)));
-          focusComponent(tab !== 'map' && focusedComponent === name ? null : name);
+          // Only an item shown as active toggles off; elsewhere the click opens it.
+          focusComponent(tab === 'components' && focusedComponent === name ? null : name);
           setSidebarOpen(false);
         }}
         search={search}

@@ -118,13 +118,6 @@ export function ToolbarMenu({
   };
 
   const onPopupKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape') {
-      // The page also unwinds on Escape; the open menu is the first layer.
-      e.preventDefault();
-      e.stopPropagation();
-      close(true);
-      return;
-    }
     const target = e.target as HTMLElement;
     const all = rows();
     const row = target.closest('[data-menu-row]');
@@ -181,6 +174,15 @@ export function ToolbarMenu({
     <span
       ref={rootRef}
       className={`tokens-menu${className ? ` ${className}` : ''}`}
+      onKeyDown={(e) => {
+        // The page also unwinds on Escape; the open menu is the first layer,
+        // whether focus is in the popover or still on its trigger.
+        if (open && e.key === 'Escape') {
+          e.preventDefault();
+          e.stopPropagation();
+          close(true);
+        }
+      }}
       onBlur={(e) => {
         // A press on the popover's padding blurs to nothing; only a real move elsewhere closes it.
         const next = e.relatedTarget as Node | null;

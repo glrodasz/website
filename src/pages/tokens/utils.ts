@@ -3,6 +3,7 @@
  */
 
 import type { GraphNode, ThemeMode } from '../../tokens/graph-builder';
+import type { AuditReport } from '../../tokens/audit';
 
 export type ExplorerTab = 'map' | 'components' | 'system' | 'global' | 'audit';
 
@@ -10,6 +11,12 @@ const EXPLORER_TABS: readonly string[] = ['map', 'components', 'system', 'global
 
 export function isExplorerTab(value: string | null): value is ExplorerTab {
   return value !== null && EXPLORER_TABS.includes(value);
+}
+
+/** The audit's counts in words, for captions and tooltips. */
+export function auditSummary(audit: AuditReport): string {
+  const { error, warning, info } = audit.counts;
+  return `${error} errors, ${warning} warnings, ${info} notes`;
 }
 
 /** 6- or 8-digit hex colour (8 = with alpha). */

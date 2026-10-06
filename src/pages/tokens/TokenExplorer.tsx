@@ -7,7 +7,7 @@
  * backgrounds.
  */
 
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import type { EdgeIndex, ThemeMode, TokenGraph } from '../../tokens/graph-builder';
 import type { AuditReport } from '../../tokens/audit';
 import { ComponentsView } from './ComponentsView';
@@ -16,10 +16,8 @@ import { GlobalView } from './GlobalView';
 import { AuditView } from './AuditView';
 import { MapView, type MapMode } from './map/MapView';
 import type { LineageModel } from './map/lineage';
-import type { ExplorerTab } from './utils';
+import { auditSummary, type ExplorerTab } from './utils';
 import './TokenExplorer.css';
-
-export type { ExplorerTab };
 
 export interface TokenExplorerProps {
   graph: TokenGraph;
@@ -65,7 +63,9 @@ const CANVAS_HEADS: Record<Exclude<ExplorerTab, 'map'>, { title: string; caption
   },
 };
 
-export function TokenExplorer({
+// Memoised: the page re-renders on panel drags and tab switches that leave
+// the canvas unchanged, and the map is costly to re-render.
+export const TokenExplorer = memo(function TokenExplorer({
   graph,
   index,
   audit,
@@ -86,7 +86,6 @@ export function TokenExplorer({
   onMapReset,
   onMapUnavailable,
 }: TokenExplorerProps) {
-  const auditSummary = `${audit.counts.error} errors, ${audit.counts.warning} warnings, ${audit.counts.info} notes`;
 
   const query = search.trim().toLowerCase();
   const head = tab === 'map' ? null : CANVAS_HEADS[tab];
@@ -125,7 +124,7 @@ export function TokenExplorer({
             {tab !== 'audit' && <span className="token-explorer__count">{stat}</span>}
           </h2>
           <p className="token-explorer__caption">
-            {tab === 'audit' ? `${head.caption} ${auditSummary}.` : head.caption}
+            {tab === 'audit' ? `${head.caption} ${auditSummary(audit)}.` : head.caption}
           </p>
         </header>
       )}
@@ -195,4 +194,4 @@ export function TokenExplorer({
       </div>
     </section>
   );
-}
+});

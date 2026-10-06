@@ -351,7 +351,8 @@
   padding: 0 8px;
   background: var(--tk-surface);
   border-bottom: 1px solid var(--tk-border);
-  /* Small screens scroll the controls sideways; the menus are fixed, so they are not clipped. */
+  /* A last resort below 320px: the container rules below keep every control
+     in view down to that width. The menus are fixed, so they are not clipped. */
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
@@ -516,7 +517,11 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 1100px) {
+/* The toolbar never needs its sideways scroll: as the room beside the
+   sidebar (or the whole width, below the drawer breakpoint) shrinks, it drops
+   the "Theme:" prefix, then the filter names, then tightens. Sized for the
+   widest state: the Map's 2D/3D switch, Reset filters and the panel toggle. */
+@container tokens-content (max-width: 880px) {
   .tokens-toolbar__text--muted {
     position: absolute;
     width: 1px;
@@ -528,7 +533,7 @@
 }
 
 /* Icons and counts carry the filters; their names stay for screen readers. */
-@media (max-width: 640px) {
+@container tokens-content (max-width: 800px) {
   .tokens-toolbar {
     padding: 0 6px;
   }
@@ -550,10 +555,59 @@
     padding: 0;
   }
 
-  /* Room for every control at 390px: the trigger icons, counts and swatch say enough. */
+  /* The trigger icons, counts and swatch say enough. */
   .tokens-toolbar__divider,
   .tokens-toolbar__caret {
     display: none;
+  }
+}
+
+@container tokens-content (max-width: 420px) {
+  .tokens-toolbar {
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  .tokens-toolbar__button {
+    padding: 0 6px;
+  }
+
+  .tokens-toolbar__button--icon {
+    padding: 0;
+  }
+
+  .tokens-toolbar__badge {
+    min-width: 0;
+  }
+
+  .tokens-segmented__option {
+    min-width: 34px;
+    padding: 0 6px;
+  }
+}
+
+/* Phone widths below 390px: the swatch alone shows the previewed theme. */
+@container tokens-content (max-width: 380px) {
+  .tokens-toolbar__value {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .tokens-toolbar__button {
+    padding: 0 4px;
+  }
+
+  .tokens-toolbar__button--icon {
+    padding: 0;
+  }
+
+  .tokens-segmented__option {
+    min-width: 30px;
+    padding: 0 4px;
   }
 }
 
@@ -827,10 +881,13 @@
 
 /* The canvas keeps at least PANEL_CANVAS_MIN (helpers.ts) above the panel. */
 .tokens-panel--docked {
-  max-height: calc(100% - 160px);
+  max-height: calc(100% - 240px);
 }
 
+/* A fixed height, not sized to content, so switching Inspector/Usage does
+   not move the tab bar under the finger; the body scrolls instead. */
 .tokens-panel--sheet {
+  height: min(55%, 440px);
   max-height: 55%;
   border: 1px solid var(--tk-border);
   border-bottom: 0;

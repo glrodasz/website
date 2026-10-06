@@ -9,7 +9,7 @@
 import { useEffect, useId, useMemo, useRef, useState, type Ref, type RefObject } from 'react';
 import type { TokenGraph } from '../../../tokens/graph-builder';
 import type { AuditReport } from '../../../tokens/audit';
-import { matchesSearch, type ExplorerTab } from '../utils';
+import { auditSummary, matchesSearch, type ExplorerTab } from '../utils';
 import type { FilterItem } from './Toolbar';
 import { Icon, type IconName } from './Icon';
 
@@ -66,10 +66,22 @@ export function Sidebar({
   const navRef = useRef<HTMLElement>(null);
   const [expanded, setExpanded] = useState(true);
 
-  // The tree is longer than most screens: keep the active item in view as the view changes.
+  // The tree is longer than most screens: keep the active item in view as the
+  // view changes. The sidebar is scrolled directly, and only when the item is
+  // out of view — Element.scrollIntoView would also move the browser's Tab
+  // starting point to the item, so the first Tab would skip the skip link.
   useEffect(() => {
-    navRef.current?.querySelector('.tokens-nav__item--active')?.scrollIntoView({ block: 'nearest' });
-  }, [tab, activeComponent]);
+    if (inert) return;
+    const nav = navRef.current;
+    const scroller = nav?.closest<HTMLElement>('.tokens-sidebar');
+    // The deepest active item: a focused component's leaf rather than Components.
+    const active = [...(nav?.querySelectorAll<HTMLElement>('.tokens-nav__item--active') ?? [])].at(-1);
+    if (!scroller || !active) return;
+    const view = scroller.getBoundingClientRect();
+    const box = active.getBoundingClientRect();
+    if (box.top < view.top) scroller.scrollTop += box.top - view.top;
+    else if (box.bottom > view.bottom) scroller.scrollTop += box.bottom - view.bottom;
+  }, [tab, activeComponent, inert]);
   const query = search.trim().toLowerCase();
 
   // The component list follows the token search: a component stays listed
@@ -107,7 +119,6 @@ export function Sidebar({
 
   const actionable = audit.counts.error + audit.counts.warning;
   const severity = audit.counts.error > 0 ? 'error' : audit.counts.warning > 0 ? 'warning' : 'ok';
-  const auditSummary = `${audit.counts.error} errors, ${audit.counts.warning} warnings, ${audit.counts.info} notes`;
 
   const item = (target: ExplorerTab, icon: IconName, label: string, extra: React.ReactNode, title?: string) => (
     <button
@@ -265,7 +276,7 @@ export function Sidebar({
                   {actionable > 0 ? ` (${actionable} to fix)` : ' (no errors or warnings)'}
                 </span>
               </span>,
-              auditSummary,
+              auditSummary(audit),
             )}
           </li>
         </ul>

@@ -17,7 +17,8 @@ export interface PanelPrefs {
 /** Docked panel height bounds, in px. The canvas always keeps PANEL_CANVAS_MIN above it. */
 export const PANEL_MIN = 140;
 export const PANEL_DEFAULT = 280;
-export const PANEL_CANVAS_MIN = 160;
+/** Room for the canvas's own header (the map's breadcrumb and column heads) plus a few rows. */
+export const PANEL_CANVAS_MIN = 240;
 /** Keyboard resize steps on the panel's handle. */
 export const PANEL_STEP = 16;
 export const PANEL_STEP_LARGE = 64;

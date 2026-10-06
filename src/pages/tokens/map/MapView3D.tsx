@@ -102,6 +102,7 @@ const MapView3D: React.FC<MapView3DProps> = ({
     if (row.kind === 'token') onSelectToken(id);
   });
   const reportUnavailable = useEffectEvent(() => onUnavailable());
+  const currentTheme = useEffectEvent(() => theme);
 
   // A layout effect, so dispose() runs before React detaches the canvas:
   // OrbitControls removes its document keydown listener via the canvas's root node.
@@ -125,10 +126,12 @@ const MapView3D: React.FC<MapView3DProps> = ({
       .then(({ createTokenMapScene }) => {
         if (disposed) return;
         try {
-          created = createTokenMapScene(canvas, labelLayer, {
-            hover: (id) => setHoverId(id),
-            pick: (id) => pick(id),
-          });
+          created = createTokenMapScene(
+            canvas,
+            labelLayer,
+            { hover: (id) => setHoverId(id), pick: (id) => pick(id) },
+            currentTheme(),
+          );
         } catch {
           reportUnavailable();
           return;

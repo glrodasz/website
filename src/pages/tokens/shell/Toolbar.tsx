@@ -61,6 +61,16 @@ function FilterMenuContent({ title, noun, items, enabled, onChange, searchable }
   const visible = q ? items.filter((i) => i.label.toLowerCase().includes(q)) : items;
   // While searching, the bulk actions apply to the matches only.
   const scope = q ? 'shown' : 'all';
+  // The menu is a single Tab stop that follows focus (roving tabindex), so
+  // Shift+Tab from any item leaves the menu. It falls back to the first row
+  // when the focused item is filtered out.
+  const [current, setCurrent] = useState<string | null>(null);
+  const tabStop =
+    current !== null && visible.some((i) => current === `${i.key}:item` || current === `${i.key}:only`)
+      ? current
+      : visible.length > 0
+        ? `${visible[0].key}:item`
+        : null;
 
   const setMany = (keys: readonly FilterItem[], on: boolean) => {
     const next = new Set(enabled);
@@ -109,7 +119,7 @@ function FilterMenuContent({ title, noun, items, enabled, onChange, searchable }
         <p className="tokens-menu__empty">No {noun} match “{query.trim()}”.</p>
       ) : (
         <div role="menu" aria-label={title} className="tokens-menu__list">
-          {visible.map((item, i) => {
+          {visible.map((item) => {
             const checked = enabled.has(item.key);
             return (
               <div key={item.key} role="none" className="tokens-menu__row" data-menu-row data-menu-text={item.label}>
@@ -119,7 +129,8 @@ function FilterMenuContent({ title, noun, items, enabled, onChange, searchable }
                   aria-checked={checked}
                   className="tokens-menu__item"
                   data-menu-primary
-                  tabIndex={i === 0 ? 0 : -1}
+                  tabIndex={tabStop === `${item.key}:item` ? 0 : -1}
+                  onFocus={() => setCurrent(`${item.key}:item`)}
                   onClick={() => {
                     const next = new Set(enabled);
                     if (checked) next.delete(item.key);
@@ -137,7 +148,8 @@ function FilterMenuContent({ title, noun, items, enabled, onChange, searchable }
                   role="menuitem"
                   className="tokens-menu__only"
                   data-menu-secondary
-                  tabIndex={-1}
+                  tabIndex={tabStop === `${item.key}:only` ? 0 : -1}
+                  onFocus={() => setCurrent(`${item.key}:only`)}
                   aria-label={`Show only ${item.label}`}
                   onClick={() => onChange(new Set([item.key]))}
                 >
@@ -219,7 +231,7 @@ export function Toolbar({
             <>
               <span className={`tokens-theme-swatch tokens-theme-swatch--${theme}`} aria-hidden="true" />
               <span className="tokens-toolbar__text tokens-toolbar__text--muted">Theme:</span>
-              <span>{themeLabel}</span>
+              <span className="tokens-toolbar__value">{themeLabel}</span>
               <Icon name="chevronDown" className="tokens-toolbar__caret" />
             </>
           }

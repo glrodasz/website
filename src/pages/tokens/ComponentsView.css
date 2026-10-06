@@ -18,6 +18,11 @@
   scroll-margin-top: 12px;
 }
 
+.token-card__heading {
+  margin: 0;
+  font: inherit;
+}
+
 .token-card__header {
   display: flex;
   align-items: center;

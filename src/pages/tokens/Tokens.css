@@ -16,15 +16,6 @@
   z-index: 1;
 }
 
-/* Suspense fallback while the lazy chunk loads — same ground as the page. */
-.tokens-page--loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: var(--tk-text-soft);
-}
-
 .tokens-page__backdrop {
   position: absolute;
   inset: 0;
@@ -41,6 +32,8 @@
   overflow: hidden;
   /* Keeps the explorer's own layers (sticky map heads, edge hints) under the drawer and its backdrop. */
   isolation: isolate;
+  /* The toolbar's density follows this width, not the viewport's (shell.css). */
+  container: tokens-content / inline-size;
 }
 
 /* Canvas over the addons panel; the panel's height comes out of the canvas. */
@@ -238,6 +231,16 @@
   margin: 0;
 }
 
+/* Long values (font stacks) give way before the name does; the full value is in the inspector. */
+.token-row--compact .token-row__value {
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 55%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ---- Swatches ---- */
 
 .token-swatch {
@@ -286,12 +289,15 @@
     width: min(300px, 85vw);
     z-index: 3;
     transform: translateX(-100%);
-    transition: transform 200ms ease-out;
-    box-shadow: 4px 0 20px var(--tk-shadow-strong);
+    transition:
+      transform 200ms ease-out,
+      box-shadow 200ms ease-out;
   }
 
+  /* Shadowed only while open: a closed drawer's shadow would still fall on the canvas edge. */
   .tokens-page--sidebar-open .tokens-sidebar {
     transform: translateX(0);
+    box-shadow: 4px 0 20px var(--tk-shadow-strong);
   }
 
   .token-row__chain {

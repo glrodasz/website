@@ -74,6 +74,7 @@ const LABEL_GAP_PX = 5;
 const LABEL_MAX_PX = 190;
 /** Screen room kept above the layers for their captions, and below for the dock. */
 const CAPTION_ROOM_PX = 36;
+const CAPTION_STACK_GAP_PX = 4;
 const DOCK_ROOM_PX = 44;
 /** Padding of a layer plane around its nodes, in world units. */
 const LAYER_PAD = 1.1;
@@ -242,11 +243,13 @@ export function createTokenMapScene(
   canvas: HTMLCanvasElement,
   labelLayer: HTMLElement,
   on: SceneCallbacks,
+  /** The canvas theme at creation, so the first frame is not cleared in the other theme's colour. */
+  initialTheme: ThemeMode,
 ): TokenMapScene {
   assertWebGL2();
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'low-power' });
 
-  let theme: ThemeMode = 'dark';
+  let theme: ThemeMode = initialTheme;
   let palette = PALETTES[theme];
   const background = new THREE.Color(palette.background);
   renderer.setClearColor(background);
@@ -613,6 +616,21 @@ export function createTokenMapScene(
         w: size.width,
         h: size.height,
       };
+      // Layers drawn close together (a small canvas) would run their captions
+      // into each other: lift a caption above the ones it would cover while
+      // there is room above, else move it along past them.
+      const blockers = placed.filter((p) => overlaps(p, box));
+      if (blockers.length > 0) {
+        const candidates: Box[] = [];
+        for (let k = 1; k < MAP_COLUMNS.length; k++) {
+          const y = box.y - k * (box.h + CAPTION_STACK_GAP_PX);
+          if (y >= 0) candidates.push({ ...box, y });
+        }
+        const past = Math.max(...blockers.map((p) => p.x + p.w)) + CAPTION_STACK_GAP_PX;
+        candidates.push({ ...box, x: Math.min(past, width - box.w) });
+        const free = candidates.find((c) => !placed.some((p) => overlaps(p, c)));
+        if (free) Object.assign(box, free);
+      }
       caption.style.transform = `translate(${box.x}px, ${box.y}px)`;
       placed.push(box);
     }

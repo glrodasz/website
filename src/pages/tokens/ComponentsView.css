@@ -7,14 +7,14 @@
 }
 
 .token-card {
-  background: #0f1624;
-  border: 1px solid #1f2937;
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .token-card--focused {
-  border-color: rgba(125, 211, 252, 0.5);
+  border-color: color-mix(in srgb, var(--tk-accent) 50%, transparent);
   scroll-margin-top: 12px;
 }
 
@@ -26,7 +26,7 @@
   padding: 12px 14px;
   background: transparent;
   border: 0;
-  color: #f1f5f9;
+  color: var(--tk-text-heading);
   font: inherit;
   font-size: 14px;
   font-weight: 600;
@@ -35,11 +35,11 @@
 }
 
 .token-card__header:hover {
-  background: rgba(125, 211, 252, 0.04);
+  background: color-mix(in srgb, var(--tk-accent) 4%, transparent);
 }
 
 .token-card__chevron {
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
   font-size: 11px;
   width: 12px;
   flex-shrink: 0;
@@ -57,13 +57,13 @@
   flex-shrink: 0;
   font-size: 11px;
   font-weight: 500;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
   font-variant-numeric: tabular-nums;
 }
 
 .token-card__body {
   padding: 0 14px 12px;
-  border-top: 1px solid #1f2937;
+  border-top: 1px solid var(--tk-border);
 }
 
 .token-card__group {
@@ -76,6 +76,6 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
 }
 

@@ -12,6 +12,7 @@ import { TokenInspector } from './TokenInspector';
 import { buildLineageModel, groupId, resolveMapId } from './map/lineage';
 import type { MapMode } from './map/MapView';
 import { displayComponentName, isExplorerTab, matchesSearch, type ExplorerTab } from './utils';
+import './playground.css';
 import './Tokens.css';
 
 const DEFAULT_TAB: ExplorerTab = 'map';

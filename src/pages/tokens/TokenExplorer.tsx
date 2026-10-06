@@ -162,7 +162,11 @@ export function TokenExplorer({
         </p>
       </header>
 
-      <div className={`token-explorer__body${tab === 'map' ? ' token-explorer__body--map' : ''}`}>
+      {/* The canvas: its palette follows the previewed theme, like Storybook's backgrounds. */}
+      <div
+        className={`token-explorer__body${tab === 'map' ? ' token-explorer__body--map' : ''}`}
+        data-canvas-theme={theme}
+      >
         {tab === 'map' && (
           <MapView
             lineage={lineage}

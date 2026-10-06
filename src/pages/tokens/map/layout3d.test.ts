@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildTokenGraph, indexEdges } from '../../../tokens/graph-builder';
 import { tokenUsages } from '../../../generated/token-usage';
-import { LAYER_X, ROWS_PER_SLAB, layout3D, toSceneNodes } from './layout3d';
+import { LAYER_COLORS, LAYER_X, ROWS_PER_SLAB, layout3D, toSceneNodes } from './layout3d';
 import { MAP_COLUMNS, buildLineageModel, computeMapView, groupId, type MapView } from './lineage';
 
 const graph = buildTokenGraph();
@@ -73,25 +73,55 @@ describe('layout3D', () => {
 
 describe('toSceneNodes', () => {
   it('colours color tokens with their opaque swatch and everything else by layer', () => {
-    const nodes = toSceneNodes(VIEWS['button group']);
+    const nodes = toSceneNodes(VIEWS['button group'], 'light');
     expect(nodes).toHaveLength(MAP_COLUMNS.reduce((n, c) => n + VIEWS['button group'].columns[c].length, 0));
     for (const node of nodes) expect(node.color).toMatch(/^#[0-9a-fA-F]{6}$/);
 
-    const shark = toSceneNodes(VIEWS['Shark palette']).filter((n) => n.column === 'global');
     const swatches = VIEWS['Shark palette'].columns.global.map((r) => r.swatches[0].slice(0, 7));
-    expect(shark.map((n) => n.color)).toEqual(swatches);
-    const groups = toSceneNodes(VIEWS.overview).filter((n) => n.column === 'global');
-    expect(new Set(groups.map((n) => n.color)).size).toBe(1);
+    for (const theme of ['light', 'dark'] as const) {
+      const shark = toSceneNodes(VIEWS['Shark palette'], theme).filter((n) => n.column === 'global');
+      expect(shark.map((n) => n.color)).toEqual(swatches);
+    }
+  });
+
+  it.each(['light', 'dark'] as const)('takes the layer hues of the %s canvas', (theme) => {
+    for (const column of MAP_COLUMNS) {
+      const groups = toSceneNodes(VIEWS.overview, theme).filter((n) => n.column === column && n.kind !== 'token');
+      expect(groups.length).toBeGreaterThan(0);
+      expect(new Set(groups.map((n) => n.color))).toEqual(new Set([LAYER_COLORS[theme][column]]));
+    }
+  });
+
+  /** WCAG relative luminance contrast of two `#RRGGBB` colours. */
+  const contrast = (a: string, b: string) => {
+    const luminance = (hex: string) => {
+      const [r, g, b] = [1, 3, 5].map((i) => {
+        const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+        return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+      });
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    };
+    const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+    return (hi + 0.05) / (lo + 0.05);
+  };
+
+  it.each([
+    ['light', '#ffffff'],
+    ['dark', '#0b1018'],
+  ] as const)('keeps every %s layer hue at 3:1 or more against its canvas', (theme, canvas) => {
+    for (const column of MAP_COLUMNS) {
+      expect(contrast(LAYER_COLORS[theme][column], canvas), column).toBeGreaterThanOrEqual(3);
+    }
   });
 
   it('sizes tokens, groups by member count, and UI sources', () => {
-    const nodes = toSceneNodes(VIEWS.overview);
+    const nodes = toSceneNodes(VIEWS.overview, 'light');
     const rows = new Map(MAP_COLUMNS.flatMap((c) => VIEWS.overview.columns[c]).map((r) => [r.id, r]));
     for (const node of nodes) {
       if (node.kind === 'ui') expect(node.size).toBe(0.5);
       else expect(node.size).toBeCloseTo(Math.min(0.9, 0.32 + 0.12 * Math.sqrt(rows.get(node.id)!.memberCount)));
     }
-    const token = toSceneNodes(VIEWS['single token']).find((n) => n.kind === 'token');
+    const token = toSceneNodes(VIEWS['single token'], 'light').find((n) => n.kind === 'token');
     expect(token?.size).toBe(0.32);
   });
 });

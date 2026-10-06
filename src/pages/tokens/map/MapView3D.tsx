@@ -9,12 +9,15 @@
  */
 
 import { useEffect, useEffectEvent, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import type { ThemeMode } from '../../../tokens/graph-builder';
 import { toSceneNodes } from './layout3d';
 import { MAP_COLUMNS, lineageOf, type MapRow, type MapView } from './lineage';
 import type { SceneHighlight, TokenMapScene } from './scene3d';
 
 export interface MapView3DProps {
   view: MapView;
+  /** The canvas theme, which the scene's colours follow. */
+  theme: ThemeMode;
   /** True while a search is active, so rows without matches are muted. */
   searching: boolean;
   /** The token open in the inspector. */
@@ -42,6 +45,7 @@ function sceneLabel(row: MapRow): string {
 
 const MapView3D: React.FC<MapView3DProps> = ({
   view,
+  theme,
   searching,
   selectedId,
   onFocus,
@@ -62,8 +66,8 @@ const MapView3D: React.FC<MapView3DProps> = ({
     [view],
   );
   const nodes = useMemo(
-    () => toSceneNodes(view).map((n) => ({ ...n, label: sceneLabel(rowsById.get(n.id)!) })),
-    [view, rowsById],
+    () => toSceneNodes(view, theme).map((n) => ({ ...n, label: sceneLabel(rowsById.get(n.id)!) })),
+    [view, theme, rowsById],
   );
   const structure = useMemo(() => nodes.map((n) => `${n.id}@${n.position.join()}`).join('\n'), [nodes]);
 
@@ -155,6 +159,11 @@ const MapView3D: React.FC<MapView3DProps> = ({
   useEffect(() => {
     scene?.setReducedMotion(reducedMotion);
   }, [scene, reducedMotion]);
+
+  // Declared before the graph effect, which recolours with this palette.
+  useEffect(() => {
+    scene?.setTheme(theme);
+  }, [scene, theme]);
 
   // Declared before the highlight and fit effects: both need the new graph in place.
   useEffect(() => {

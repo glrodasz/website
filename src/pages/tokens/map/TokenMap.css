@@ -1,7 +1,7 @@
 /* ---- Token map (Map tab) ----
-   Dev-only page: uses the explorer's own slate palette rather than design
-   tokens (see CLAUDE.md rule 2). Each column sets --token-map-hue for its
-   level: global slate, system near-white, component sky, UI amber. */
+   Dev-only page: uses the explorer's own palette (playground.css) rather
+   than design tokens (see CLAUDE.md rule 2). Each column sets
+   --token-map-hue for its level from the canvas's level hues. */
 
 .token-map {
   flex: 1 1 auto;
@@ -14,32 +14,32 @@
 .token-map__head--global,
 .token-map__crumb--global,
 .token-map__caption3d--global {
-  --token-map-hue: #94a3b8;
-  --token-map-hue-soft: rgba(148, 163, 184, 0.45);
+  --token-map-hue: var(--tk-hue-global);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-global) 45%, transparent);
 }
 
 .token-map__column--system,
 .token-map__head--system,
 .token-map__crumb--system,
 .token-map__caption3d--system {
-  --token-map-hue: #f1f5f9;
-  --token-map-hue-soft: rgba(241, 245, 249, 0.4);
+  --token-map-hue: var(--tk-hue-system);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-system) 40%, transparent);
 }
 
 .token-map__column--component,
 .token-map__head--component,
 .token-map__crumb--component,
 .token-map__caption3d--component {
-  --token-map-hue: #7dd3fc;
-  --token-map-hue-soft: rgba(125, 211, 252, 0.45);
+  --token-map-hue: var(--tk-hue-component);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-component) 45%, transparent);
 }
 
 .token-map__column--ui,
 .token-map__head--ui,
 .token-map__crumb--ui,
 .token-map__caption3d--ui {
-  --token-map-hue: #fbbf24;
-  --token-map-hue-soft: rgba(251, 191, 36, 0.45);
+  --token-map-hue: var(--tk-hue-ui);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-ui) 45%, transparent);
 }
 
 /* ---- Toolbar: breadcrumb, legend, 2D/3D ---- */
@@ -51,7 +51,7 @@
   align-items: center;
   gap: 8px 16px;
   padding: 10px 20px;
-  border-bottom: 1px solid #1f2937;
+  border-bottom: 1px solid var(--tk-border);
 }
 
 .token-map__trail {
@@ -71,23 +71,23 @@
   font: inherit;
   font-size: 12px;
   font-weight: 600;
-  color: #e2e8f0;
-  background: #1e293b;
-  border: 1px solid #334155;
+  color: var(--tk-text-strong);
+  background: var(--tk-raised);
+  border: 1px solid var(--tk-border-strong);
   border-radius: 6px;
   cursor: pointer;
   transition: border-color 120ms ease, background 120ms ease;
 }
 
 .token-map__back:hover:not(:disabled) {
-  background: #253247;
-  border-color: #7dd3fc;
+  background: var(--tk-raised-hover);
+  border-color: var(--tk-accent);
 }
 
 .token-map__back:disabled {
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
   background: transparent;
-  border-color: #1f2937;
+  border-color: var(--tk-border);
   cursor: default;
 }
 
@@ -114,7 +114,7 @@
   content: '›';
   flex-shrink: 0;
   padding: 0 8px;
-  color: #64748b;
+  color: var(--tk-text-faint);
 }
 
 /* Earlier crumbs give way first, down to a stub that still shows its
@@ -127,7 +127,7 @@
 .token-map__crumbs .token-map__crumb--gap {
   flex: none;
   min-width: 0;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__crumb-link,
@@ -156,7 +156,7 @@
   padding: 2px 4px;
   margin: 0 -4px;
   font: inherit;
-  color: #7dd3fc;
+  color: var(--tk-accent);
   background: none;
   border: 0;
   border-radius: 4px;
@@ -164,13 +164,13 @@
 }
 
 .token-map__crumb-link:hover {
-  color: #bae6fd;
+  color: var(--tk-accent-strong);
   text-decoration: underline;
 }
 
 .token-map__crumb-current {
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--tk-text-heading);
   /* Rounds the site focus ring it gets when the control just used goes away. */
   border-radius: 4px;
 }
@@ -178,7 +178,7 @@
 .token-map__search-status {
   margin: 0;
   font-size: 11.5px;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
   white-space: nowrap;
 }
 
@@ -198,7 +198,7 @@
   gap: 14px;
   margin: 0;
   font-size: 11.5px;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__legend-item {
@@ -212,7 +212,7 @@
 .token-map__legend-line {
   width: 24px;
   height: 6px;
-  background: #94a3b8;
+  background: var(--tk-edge);
   clip-path: polygon(0 42%, 100% 0, 100% 100%, 0 58%);
 }
 
@@ -221,8 +221,8 @@
   display: inline-flex;
   gap: 2px;
   padding: 2px;
-  background: #0b1220;
-  border: 1px solid #1f2937;
+  background: var(--tk-sunken);
+  border: 1px solid var(--tk-border);
   border-radius: 6px;
 }
 
@@ -231,7 +231,7 @@
   font: inherit;
   font-size: 12px;
   font-weight: 600;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
   background: transparent;
   border: 0;
   border-radius: 4px;
@@ -240,17 +240,17 @@
 }
 
 .token-map__mode:hover:not(:disabled):not(.token-map__mode--active) {
-  color: #e2e8f0;
+  color: var(--tk-text-strong);
 }
 
 .token-map__mode--active {
-  color: #f1f5f9;
-  background: #1e293b;
-  box-shadow: inset 0 0 0 1px #334155;
+  color: var(--tk-text-heading);
+  background: var(--tk-raised);
+  box-shadow: inset 0 0 0 1px var(--tk-border-strong);
 }
 
 .token-map__mode:disabled {
-  color: #475569;
+  color: var(--tk-text-disabled);
   cursor: not-allowed;
 }
 
@@ -261,7 +261,7 @@
   justify-content: center;
   padding: 24px;
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
 }
 
 /* ---- 2D map ---- */
@@ -300,12 +300,12 @@
 
 .token-map__more--before {
   left: 0;
-  background: linear-gradient(to right, #0b1018 10%, rgba(11, 16, 24, 0));
+  background: linear-gradient(to right, var(--tk-bg) 10%, var(--tk-bg-clear));
 }
 
 .token-map__more--after {
   right: 0;
-  background: linear-gradient(to left, #0b1018 10%, rgba(11, 16, 24, 0));
+  background: linear-gradient(to left, var(--tk-bg) 10%, var(--tk-bg-clear));
 }
 
 .token-map__more-button {
@@ -320,11 +320,11 @@
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
-  color: #e2e8f0;
-  background: #1e293b;
-  border: 1px solid #334155;
+  color: var(--tk-text-strong);
+  background: var(--tk-raised);
+  border: 1px solid var(--tk-border-strong);
   border-radius: 999px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 10px var(--tk-shadow-strong);
   cursor: pointer;
   pointer-events: auto;
 }
@@ -338,7 +338,7 @@
 }
 
 .token-map__more-button:hover {
-  border-color: #7dd3fc;
+  border-color: var(--tk-accent);
 }
 
 .token-map__heads {
@@ -346,8 +346,8 @@
   top: 0;
   z-index: 3;
   height: 52px;
-  background: rgba(11, 16, 24, 0.94);
-  border-bottom: 1px solid #1f2937;
+  background: var(--tk-bg-veil);
+  border-bottom: 1px solid var(--tk-border);
   backdrop-filter: blur(6px);
 }
 
@@ -377,7 +377,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #e2e8f0;
+  color: var(--tk-text-strong);
 }
 
 .token-map__head-title::before {
@@ -394,8 +394,8 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0;
-  color: #cbd5e1;
-  background: #1e293b;
+  color: var(--tk-text);
+  background: var(--tk-raised);
   border-radius: 999px;
   font-variant-numeric: tabular-nums;
 }
@@ -406,7 +406,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 11px;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__plot {
@@ -426,7 +426,7 @@
 
 .token-map__edge {
   fill: none;
-  stroke: #94a3b8;
+  stroke: var(--tk-edge);
   /* Set per gap by the renderer: dense gaps rest fainter. */
   stroke-opacity: var(--token-map-edge-rest, 0.35);
   stroke-linecap: round;
@@ -440,7 +440,7 @@
 }
 
 .token-map__edges--tracing .token-map__edge--lit {
-  stroke: #7dd3fc;
+  stroke: var(--tk-edge-lit);
   stroke-opacity: 0.9;
 }
 
@@ -458,8 +458,8 @@
   padding: 14px 10px;
   font-size: 12px;
   text-align: center;
-  color: #7b8aa3;
-  border: 1px dashed #1f2937;
+  color: var(--tk-text-muted);
+  border: 1px dashed var(--tk-border);
   border-radius: 6px;
 }
 
@@ -479,7 +479,7 @@
   line-height: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 /* Height matches ROW.h in arrange.ts. */
@@ -503,7 +503,7 @@
   top: -2px;
   bottom: -2px;
   left: 3px;
-  border-left: 1px solid #334155;
+  border-left: 1px solid var(--tk-border-strong);
 }
 
 .token-map__row {
@@ -517,9 +517,9 @@
   font: inherit;
   font-size: 12px;
   text-align: left;
-  color: #cbd5e1;
-  background: #0f1624;
-  border: 1px solid #1f2937;
+  color: var(--tk-text);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
   border-left: 2px solid var(--token-map-hue-soft);
   border-radius: 5px;
   cursor: pointer;
@@ -535,15 +535,15 @@
 /* A group stands for several tokens: drawn as a small stack of cards. */
 .token-map__row--group {
   box-shadow:
-    3px 3px 0 -1px #0b1018,
-    3px 3px 0 0 #1f2937;
+    3px 3px 0 -1px var(--tk-bg),
+    3px 3px 0 0 var(--tk-border);
 }
 
 .token-map__row:hover,
 .token-map__row--lit {
-  color: #f1f5f9;
-  background: #141d2e;
-  border-color: #475569;
+  color: var(--tk-text-heading);
+  background: var(--tk-hover);
+  border-color: var(--tk-border-hover);
   border-left-color: var(--token-map-hue);
 }
 
@@ -555,10 +555,10 @@
 /* Search misses recede by colour rather than opacity, so their text stays
    at 4.5:1 or better: they are still live controls. */
 .token-map__row--muted {
-  color: #7b8aa3;
-  background: #0b1018;
-  border-color: #1a2332;
-  border-left-color: rgba(148, 163, 184, 0.2);
+  color: var(--tk-text-muted);
+  background: var(--tk-bg);
+  border-color: var(--tk-border-faint);
+  border-left-color: color-mix(in srgb, var(--tk-edge) 20%, transparent);
 }
 
 .token-map__row--muted .token-map__label-head {
@@ -570,27 +570,27 @@
 }
 
 .token-map__row--muted .token-map__count {
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__row--muted.token-map__row--lit {
-  color: #94a3b8;
-  background: #141d2e;
+  color: var(--tk-text-soft);
+  background: var(--tk-hover);
   border-left-color: var(--token-map-hue-soft);
 }
 
 .token-map__row--focus {
   font-weight: 500;
-  color: #f0f9ff;
-  background: rgba(125, 211, 252, 0.12);
-  border-color: rgba(125, 211, 252, 0.6);
-  border-left-color: #7dd3fc;
+  color: var(--tk-accent-ink);
+  background: color-mix(in srgb, var(--tk-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--tk-accent) 60%, transparent);
+  border-left-color: var(--tk-accent);
 }
 
 .token-map__row--focus:hover,
 .token-map__row--focus.token-map__row--lit {
-  background: rgba(125, 211, 252, 0.18);
-  border-color: #7dd3fc;
+  background: color-mix(in srgb, var(--tk-accent) 18%, transparent);
+  border-color: var(--tk-accent);
 }
 
 /* The focus tint is lighter than a row, so its quiet text needs a lighter grey. */
@@ -599,18 +599,18 @@
 .token-map__row--focus .token-map__count,
 .token-map__row--focus .token-map__elsewhere,
 .token-map__row--focus .token-map__chevron {
-  color: #94a3b8;
+  color: var(--tk-text-soft);
 }
 
 /* The token open in the inspector, in the explorer's selection yellow. */
 .token-map__row--selected {
-  border-color: rgba(255, 212, 0, 0.7);
-  box-shadow: inset 0 0 0 1px rgba(255, 212, 0, 0.35);
+  border-color: color-mix(in srgb, var(--tk-select) 70%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tk-select) 35%, transparent);
 }
 
 .token-map__row:focus-visible,
 .token-map__fold:focus-visible {
-  outline: 2px solid #f1f5f9;
+  outline: 2px solid var(--tk-focus-ring);
   outline-offset: 2px;
 }
 
@@ -620,7 +620,7 @@
 }
 
 .token-map__swatches .token-swatch {
-  box-shadow: 0 0 0 1px #0f1624;
+  box-shadow: 0 0 0 1px var(--tk-surface);
 }
 
 .token-map__swatches .token-swatch + .token-swatch {
@@ -662,14 +662,14 @@
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-size: 10.5px;
   font-weight: 400;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__count {
   flex-shrink: 0;
   font-size: 11px;
   font-weight: 600;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
   font-variant-numeric: tabular-nums;
 }
 
@@ -681,8 +681,8 @@
   font-size: 10px;
   font-weight: 500;
   line-height: 15px;
-  color: #7b8aa3;
-  border: 1px dashed #334155;
+  color: var(--tk-text-muted);
+  border: 1px dashed var(--tk-border-strong);
   border-radius: 999px;
   font-variant-numeric: tabular-nums;
 }
@@ -690,7 +690,7 @@
 .token-map__chevron {
   flex-shrink: 0;
   font-size: 10px;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__fold {
@@ -698,17 +698,17 @@
   padding: 0;
   font: inherit;
   font-size: 11px;
-  color: #94a3b8;
-  background: #0f1624;
-  border: 1px solid #1f2937;
+  color: var(--tk-text-soft);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
   border-radius: 5px;
   cursor: pointer;
   transition: border-color 120ms ease, color 120ms ease;
 }
 
 .token-map__fold:hover {
-  color: #f1f5f9;
-  border-color: #475569;
+  color: var(--tk-text-heading);
+  border-color: var(--tk-border-hover);
 }
 
 /* ---- 3D map ----
@@ -720,7 +720,7 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
-  background: #0b1018;
+  background: var(--tk-bg);
 }
 
 .token-map__canvas3d {
@@ -757,25 +757,25 @@
   padding: 1px 6px;
   font-size: 11px;
   line-height: 14px;
-  color: #cbd5e1;
-  background: rgba(11, 16, 24, 0.78);
+  color: var(--tk-text);
+  background: var(--tk-label-bg);
   border-radius: 4px;
   transition: opacity 120ms ease;
 }
 
 .token-map__label3d--component {
-  color: #bae6fd;
+  color: var(--tk-label-component);
 }
 
 .token-map__label3d--ui {
-  color: #fde68a;
+  color: var(--tk-label-ui);
 }
 
 .token-map__label3d-head {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-map__label3d-tail {
@@ -783,24 +783,24 @@
 }
 
 .token-map__label3d--lit {
-  color: #f1f5f9;
-  background: rgba(20, 29, 46, 0.9);
+  color: var(--tk-text-heading);
+  background: var(--tk-label-bg-lit);
 }
 
 .token-map__label3d--focus {
-  color: #f0f9ff;
-  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.6);
+  color: var(--tk-accent-ink);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tk-accent) 60%, transparent);
 }
 
 .token-map__label3d--selected {
-  box-shadow: inset 0 0 0 1px rgba(255, 212, 0, 0.7);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tk-select) 70%, transparent);
 }
 
 .token-map__label3d--hover {
   z-index: 1;
-  color: #f8fafc;
-  background: #1e293b;
-  box-shadow: inset 0 0 0 1px #475569;
+  color: var(--tk-text-heading);
+  background: var(--tk-raised);
+  box-shadow: inset 0 0 0 1px var(--tk-border-hover);
 }
 
 .token-map__label3d--dim,
@@ -817,7 +817,7 @@
   line-height: 18px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #e2e8f0;
+  color: var(--tk-text-strong);
 }
 
 .token-map__caption3d::before {
@@ -832,8 +832,8 @@
   padding: 0 7px;
   font-weight: 600;
   letter-spacing: 0;
-  color: #cbd5e1;
-  background: #1e293b;
+  color: var(--tk-text);
+  background: var(--tk-raised);
   border-radius: 999px;
   font-variant-numeric: tabular-nums;
 }
@@ -841,7 +841,7 @@
 .token-map__stage > .token-map__notice--overlay {
   position: absolute;
   inset: 0;
-  background: #0b1018;
+  background: var(--tk-bg);
 }
 
 .token-map__dock3d {
@@ -864,9 +864,9 @@
   font: inherit;
   font-size: 12px;
   font-weight: 600;
-  color: #e2e8f0;
-  background: rgba(30, 41, 59, 0.92);
-  border: 1px solid #334155;
+  color: var(--tk-text-strong);
+  background: var(--tk-chip-bg);
+  border: 1px solid var(--tk-border-strong);
   border-radius: 6px;
   cursor: pointer;
   pointer-events: auto;
@@ -874,22 +874,22 @@
 }
 
 .token-map__chip3d:hover:not(:disabled) {
-  border-color: #7dd3fc;
+  border-color: var(--tk-accent);
 }
 
 .token-map__chip3d:disabled {
-  color: #64748b;
+  color: var(--tk-text-faint);
   cursor: default;
 }
 
 .token-map__chip3d:focus-visible {
-  outline: 2px solid #f1f5f9;
+  outline: 2px solid var(--tk-focus-ring);
   outline-offset: 2px;
 }
 
 .token-map__hint3d {
   font-size: 11.5px;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

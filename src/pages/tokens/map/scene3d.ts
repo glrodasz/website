@@ -13,6 +13,7 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import type { ThemeMode } from '../../../tokens/graph-builder';
 import { LAYER_COLORS, LAYER_GAP, LAYER_X, ROW_GAP, type SceneNode } from './layout3d';
 import { MAP_COLUMNS, type MapColumn, type MapLink } from './lineage';
 
@@ -34,6 +35,8 @@ export interface TokenMapScene {
     totals: Readonly<Record<MapColumn, number>>,
   ): void;
   setHighlight(h: SceneHighlight): void;
+  /** Recolours the scene for the light or dark canvas. */
+  setTheme(theme: ThemeMode): void;
   /** Frames the graph from the default angle, tweening unless `animate` is false or motion is reduced. */
   fit(animate: boolean): void;
   /** Reduced motion turns off camera inertia and fit tweens. */
@@ -76,16 +79,46 @@ const DOCK_ROOM_PX = 44;
 const LAYER_PAD = 1.1;
 const EMPTY_LAYER = { y: 2, z: 1 };
 
-const BACKGROUND = '#0b1018';
-const EDGE_REST = '#94a3b8';
-const EDGE_LIT = '#7dd3fc';
-const HALO = {
-  rest: '#334155',
-  lit: '#64748b',
-  dim: '#131b29',
-  focus: '#7dd3fc',
-  hover: '#f1f5f9',
-  selected: '#ffd400',
+interface ScenePalette {
+  /** The canvas colour of playground.css. */
+  background: string;
+  edgeRest: string;
+  edgeLit: string;
+  halo: Record<'rest' | 'lit' | 'dim' | 'focus' | 'hover' | 'selected', string>;
+}
+
+/**
+ * Mirrors the canvas palettes in playground.css. A resting halo sits just off
+ * the background, enough to outline swatches the colour of the canvas; the
+ * highlighted ones are marks, at 3:1 or more.
+ */
+const PALETTES: Record<ThemeMode, ScenePalette> = {
+  dark: {
+    background: '#0b1018',
+    edgeRest: '#94a3b8',
+    edgeLit: '#7dd3fc',
+    halo: {
+      rest: '#334155',
+      lit: '#64748b',
+      dim: '#131b29',
+      focus: '#7dd3fc',
+      hover: '#f1f5f9',
+      selected: '#ffd400',
+    },
+  },
+  light: {
+    background: '#ffffff',
+    edgeRest: '#64748b',
+    edgeLit: '#0369a1',
+    halo: {
+      rest: '#b6c0cc',
+      lit: '#64748b',
+      dim: '#eef2f6',
+      focus: '#0369a1',
+      hover: '#0f172a',
+      selected: '#a16207',
+    },
+  },
 };
 
 const CAPTIONS: Record<MapColumn, string> = {
@@ -213,7 +246,10 @@ export function createTokenMapScene(
   assertWebGL2();
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'low-power' });
 
-  const background = new THREE.Color(BACKGROUND);
+  let theme: ThemeMode = 'dark';
+  let palette = PALETTES[theme];
+  const background = new THREE.Color(palette.background);
+  renderer.setClearColor(background);
   const scene = new THREE.Scene();
   // Unlike the renderer's clear colour, a scene background survives a context restore.
   scene.background = background;
@@ -248,10 +284,11 @@ export function createTokenMapScene(
     new THREE.Vector3(-0.5, 0.5, 0),
   ]);
   const layerMaterials: THREE.Material[] = [];
+  const layerHues: { column: MapColumn; material: THREE.MeshBasicMaterial | THREE.LineBasicMaterial }[] = [];
 
   const layers = {} as Record<MapColumn, Layer>;
   for (const column of MAP_COLUMNS) {
-    const hue = LAYER_COLORS[column];
+    const hue = LAYER_COLORS[theme][column];
     const fill = new THREE.MeshBasicMaterial({
       color: hue,
       transparent: true,
@@ -261,6 +298,7 @@ export function createTokenMapScene(
     });
     const line = new THREE.LineBasicMaterial({ color: hue, transparent: true, opacity: 0.2, depthWrite: false });
     layerMaterials.push(fill, line);
+    layerHues.push({ column, material: fill }, { column, material: line });
     const group = new THREE.Group();
     // Planes face along x: local x runs along world z.
     group.rotation.y = Math.PI / 2;
@@ -448,17 +486,18 @@ export function createTokenMapScene(
       if (s.dim) color.lerp(background, 0.8);
       else if (s.muted) color.lerp(background, 0.6);
       body.setColorAt(index, color);
+      const { halo: tones } = palette;
       const haloColor = s.selected
-        ? HALO.selected
+        ? tones.selected
         : s.hovered
-          ? HALO.hover
+          ? tones.hover
           : s.focus
-            ? HALO.focus
+            ? tones.focus
             : s.dim
-              ? HALO.dim
+              ? tones.dim
               : s.lit
-                ? HALO.lit
-                : HALO.rest;
+                ? tones.lit
+                : tones.rest;
       halo.setColorAt(index, color.set(haloColor));
 
       const radius = radiusOf(node) * (s.hovered ? 1.2 : s.focus ? 1.08 : 1);
@@ -493,7 +532,7 @@ export function createTokenMapScene(
         const { lit } = highlight;
         const traced = lit !== null && lit.has(nodes[a].id) && lit.has(nodes[b].id);
         const alpha = traced ? 0.9 : lit ? 0.05 : restAlpha(weight, focused);
-        color.set(traced || (focused && !lit) ? EDGE_LIT : EDGE_REST);
+        color.set(traced || (focused && !lit) ? palette.edgeLit : palette.edgeRest);
         for (let k = 0; k < perLink; k++) {
           const o = (j * perLink + k) * 4;
           values[o] = color.r;
@@ -874,6 +913,17 @@ export function createTokenMapScene(
         place(from.position, from.target);
         tween = { from, to, start: -1 };
       }
+      requestRender();
+    },
+
+    setTheme(next) {
+      if (disposed || next === theme) return;
+      theme = next;
+      palette = PALETTES[theme];
+      background.set(palette.background);
+      renderer.setClearColor(background);
+      for (const { column, material } of layerHues) material.color.set(LAYER_COLORS[theme][column]);
+      applyHighlight();
       requestRender();
     },
 

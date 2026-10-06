@@ -4,6 +4,7 @@
  * along z. Pure — the three.js scene only reads these numbers.
  */
 
+import type { ThemeMode } from '../../../tokens/graph-builder';
 import { COLLAPSE_AT } from './arrange';
 import { MAP_COLUMNS, toOpaqueHex, type MapColumn, type MapRow, type MapView } from './lineage';
 
@@ -25,12 +26,25 @@ export const LAYER_X: Record<MapColumn, number> = {
   ui: 1.5 * LAYER_GAP,
 };
 
-/** Level hues of the 2D map, with system toned down from its near-white. */
-export const LAYER_COLORS: Record<MapColumn, string> = {
-  global: '#94a3b8',
-  system: '#cbd5e1',
-  component: '#7dd3fc',
-  ui: '#fbbf24',
+/**
+ * Level hues of the 2D map per canvas theme (playground.css), each at least
+ * 3:1 against its canvas. On the dark canvas system is toned down from its
+ * near-white, on the light one lifted from its near-black, so the solids
+ * still show their shading.
+ */
+export const LAYER_COLORS: Record<ThemeMode, Record<MapColumn, string>> = {
+  dark: {
+    global: '#94a3b8',
+    system: '#cbd5e1',
+    component: '#7dd3fc',
+    ui: '#fbbf24',
+  },
+  light: {
+    global: '#64748b',
+    system: '#334155',
+    component: '#0369a1',
+    ui: '#b45309',
+  },
 };
 
 export type Vec3 = [number, number, number];
@@ -67,9 +81,9 @@ export interface SceneNode {
   position: Vec3;
 }
 
-function colorOf(row: MapRow): string {
+function colorOf(row: MapRow, theme: ThemeMode): string {
   const swatch = row.kind === 'token' ? row.swatches[0] : undefined;
-  return (swatch && toOpaqueHex(swatch)) || LAYER_COLORS[row.column];
+  return (swatch && toOpaqueHex(swatch)) || LAYER_COLORS[theme][row.column];
 }
 
 function sizeOf(row: MapRow): number {
@@ -78,7 +92,8 @@ function sizeOf(row: MapRow): number {
   return 0.32;
 }
 
-export function toSceneNodes(v: MapView): SceneNode[] {
+/** Nodes without a colour value take their layer's hue on the `theme` canvas. */
+export function toSceneNodes(v: MapView, theme: ThemeMode): SceneNode[] {
   const positions = layout3D(v);
   return MAP_COLUMNS.flatMap((column) =>
     v.columns[column].map((row) => ({
@@ -86,7 +101,7 @@ export function toSceneNodes(v: MapView): SceneNode[] {
       column,
       kind: row.kind,
       label: row.label,
-      color: colorOf(row),
+      color: colorOf(row, theme),
       size: sizeOf(row),
       position: positions.get(row.id)!,
     })),

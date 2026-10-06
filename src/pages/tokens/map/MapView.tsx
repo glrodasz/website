@@ -279,6 +279,7 @@ export function MapView({
         >
           <MapView3D
             view={view}
+            theme={theme}
             searching={searching}
             selectedId={selectedId}
             onFocus={onFocus}

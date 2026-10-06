@@ -726,7 +726,7 @@
 .token-map__label3d {
   display: flex;
   max-width: 190px;
-  padding: 1px 6px;
+  padding: 0 6px;
   font-size: 11px;
   line-height: 14px;
   color: var(--tk-text);

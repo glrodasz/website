@@ -205,7 +205,7 @@ interface Box {
 }
 
 const overlaps = (a: Box, b: Box) =>
-  a.x < b.x + b.w + 2 && b.x < a.x + a.w + 2 && a.y < b.y + b.h + 1 && b.y < a.y + a.h + 1;
+  a.x < b.x + b.w + 2 && b.x < a.x + a.w + 2 && a.y < b.y + b.h && b.y < a.y + a.h;
 
 const radiusOf = (node: SceneNode) => Math.min(node.size, MAX_RADIUS);
 

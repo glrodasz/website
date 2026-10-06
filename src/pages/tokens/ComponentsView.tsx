@@ -135,10 +135,22 @@ export function ComponentsView({
     if (focusedComponent) setExpanded((prev) => new Set(prev).add(focusedComponent));
   }
 
-  // …and scrolls its card into view once it has rendered.
+  // …and scrolls its card into view once it has rendered. The explorer body is
+  // scrolled directly: Element.scrollIntoView would also move the browser's Tab
+  // starting point into the card, so on a deep link the first Tab would skip
+  // the skip link, the search and the nav.
   useEffect(() => {
+    const card = focusedRef.current;
+    const scroller = card?.closest<HTMLElement>('.token-explorer__body');
+    if (!card || !scroller) return;
+    const margin = parseFloat(getComputedStyle(card).scrollMarginTop) || 0;
+    const top =
+      scroller.scrollTop +
+      card.getBoundingClientRect().top -
+      scroller.getBoundingClientRect().top -
+      margin;
     const instant = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    focusedRef.current?.scrollIntoView({ block: 'start', behavior: instant ? 'auto' : 'smooth' });
+    scroller.scrollTo({ top, behavior: instant ? 'auto' : 'smooth' });
   }, [focusedComponent]);
 
   // A search expands everything that matched (when the result set is small).

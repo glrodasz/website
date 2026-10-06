@@ -4,7 +4,7 @@
    the design-token rule, CLAUDE.md rule 2).
 
    The same names are defined three times: the light chrome on .tokens-page
-   (sidebar, header, inspector), then a light and a dark canvas under
+   (sidebar, toolbar, menus, addons panel), then a light and a dark canvas under
    [data-canvas-theme], which the views sit in and which follows the theme
    whose values are previewed. A rule therefore picks up whichever palette
    its element sits in. Tints are derived in the rules with color-mix().
@@ -19,6 +19,8 @@
   --tk-surface: #ffffff;
   --tk-sunken: #f6f9fc;
   --tk-hover: #f1f4f8;
+  /* Hover on the sidebar's tinted ground. */
+  --tk-nav-hover: #e8eef6;
   --tk-raised: #eef2f6;
   --tk-raised-hover: #e3e8ee;
   /* Borders */
@@ -52,11 +54,16 @@
   --tk-shadow-strong: rgba(15, 23, 42, 0.18);
   --tk-backdrop: rgba(15, 23, 42, 0.35);
 
+  /* The two canvases, as the Theme menu shows them. */
+  --tk-preview-light: #ffffff;
+  --tk-preview-dark: #0b1018;
+
   /* Theme-independent: swatch furniture drawn over the token's own colour. */
   --tk-checker-light: #e2e8f0;
   --tk-checker-dark: #94a3b8;
-  --tk-on-swatch: rgba(255, 255, 255, 0.85);
-  --tk-on-swatch-shadow: rgba(0, 0, 0, 0.7);
+  --tk-on-swatch: #ffffff;
+  /* Under a label on any swatch colour, white on it stays above 4.5:1. */
+  --tk-on-swatch-chip: rgba(0, 0, 0, 0.62);
   /* Masks only read alpha: any opaque colour. */
   --tk-mask: #000000;
 }

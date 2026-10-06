@@ -5,7 +5,8 @@
  * With nothing focused it shows one row per group; focusing a token, a group
  * or a CSS file shows only its lineage. The focus history is owned by the
  * page (URL sync, Escape), while groups expanded inside a long column belong
- * to the focus they were opened under. The 3D view loads on demand.
+ * to the focus they were opened under. The 3D view loads on demand; the
+ * 2D/3D switch lives in the page toolbar.
  */
 
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -44,25 +45,21 @@ export interface MapViewProps {
   enabledComponents: ReadonlySet<string>;
   /** Focus history, oldest first; the last entry is the current focus. Empty means the overview. */
   trail: readonly string[];
+  /** The rendering in use: already 2D when WebGL is unavailable. */
   mode: MapMode;
   /** The token open in the inspector. */
   selectedId: string | null;
   onFocus: (id: string) => void;
   onBack: () => void;
   onReset: () => void;
-  onModeChange: (mode: MapMode) => void;
   onSelectToken: (id: string) => void;
+  /** Called when WebGL cannot start, so the page can fall back to 2D for good. */
+  onUnavailable: () => void;
 }
 
 /** Breadcrumbs beyond this many collapse into an ellipsis after "Overview". */
 const MAX_CRUMBS = 3;
 const NO_GROUPS: ReadonlySet<string> = new Set();
-
-/**
- * Set once WebGL fails to start, for the rest of the page's life: the Map tab
- * unmounts whenever another tab opens, and should not offer 3D again.
- */
-let webglFailed = false;
 
 interface Crumb {
   id: string;
@@ -99,8 +96,8 @@ export function MapView({
   onFocus,
   onBack,
   onReset,
-  onModeChange,
   onSelectToken,
+  onUnavailable,
 }: MapViewProps) {
   const focusId = trail.at(-1) ?? null;
 
@@ -128,18 +125,6 @@ export function MapView({
     0,
   );
 
-  const modesRef = useRef<HTMLDivElement>(null);
-  const [webglUnavailable, setWebglUnavailable] = useState(webglFailed);
-  const activeMode: MapMode = webglUnavailable ? '2d' : mode;
-  const onUnavailable = useCallback(() => {
-    webglFailed = true;
-    setWebglUnavailable(true);
-    onModeChange('2d');
-    // The 3D button is about to be disabled; keep keyboard focus on the toggle.
-    const [twoD, threeD] = modesRef.current?.querySelectorAll('button') ?? [];
-    if (threeD && document.activeElement === threeD) twoD?.focus();
-  }, [onModeChange]);
-
   // Back and the crumbs act on the trail, which can disable or replace the
   // control just used (Back at the overview, a crumb that becomes the current
   // one): focus then lands on the current crumb rather than the page. The
@@ -162,10 +147,9 @@ export function MapView({
     [lineage, trail],
   );
   const shownCrumbs = crumbs.slice(-MAX_CRUMBS);
-  const inspectorOpen = selectedId !== null && lineage.graph.nodesById.has(selectedId);
 
   return (
-    <div className={`token-map${inspectorOpen ? ' token-map--inspector-open' : ''}`}>
+    <div className="token-map">
       <div className="token-map__toolbar">
         <nav
           ref={trailRef}
@@ -237,7 +221,7 @@ export function MapView({
         <p className="token-map__legend">
           <span className="token-map__legend-item">
             <span className="token-map__legend-line" aria-hidden="true" />
-            {activeMode === '3d' ? 'brightness' : 'width'} = references
+            {mode === '3d' ? 'brightness' : 'width'} = references
           </span>
           <span className="token-map__legend-item">
             <span className="token-map__legend-badge" aria-hidden="true">
@@ -246,30 +230,9 @@ export function MapView({
             users not shown
           </span>
         </p>
-
-        <div className="token-map__modes" role="group" aria-label="Map rendering" ref={modesRef}>
-          <button
-            type="button"
-            aria-pressed={activeMode === '2d'}
-            className={`token-map__mode${activeMode === '2d' ? ' token-map__mode--active' : ''}`}
-            onClick={() => onModeChange('2d')}
-          >
-            2D
-          </button>
-          <button
-            type="button"
-            aria-pressed={activeMode === '3d'}
-            className={`token-map__mode${activeMode === '3d' ? ' token-map__mode--active' : ''}`}
-            onClick={() => onModeChange('3d')}
-            disabled={webglUnavailable}
-            title={webglUnavailable ? 'WebGL is not available in this browser' : undefined}
-          >
-            3D
-          </button>
-        </div>
       </div>
 
-      {activeMode === '3d' ? (
+      {mode === '3d' ? (
         <Suspense
           fallback={
             <div className="token-map__notice" role="status">

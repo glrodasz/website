@@ -1,0 +1,1163 @@
+/* ---- Playground shell: sidebar, toolbar, menus, addons panel ----
+   Storybook's chrome: always light, hairline borders, an accent pill for
+   the active item, a compact toolbar. Colours come from playground.css;
+   controls are at least 32px tall with 13px text. */
+
+.tokens-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ---- Sidebar ---- */
+
+.tokens-sidebar {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 12px 24px;
+  background: var(--tk-bg);
+  border-right: 1px solid var(--tk-border);
+  outline: none;
+}
+
+.tokens-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 4px 14px;
+}
+
+.tokens-sidebar__logo {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--tk-on-accent);
+  background: var(--tk-accent);
+  border-radius: 8px;
+}
+
+.tokens-sidebar__title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--tk-text-heading);
+}
+
+.tokens-sidebar__subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--tk-text-muted);
+}
+
+.tokens-sidebar__close {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  padding: 0;
+  color: var(--tk-text-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-sidebar__close:hover {
+  color: var(--tk-text-heading);
+  background: var(--tk-nav-hover);
+}
+
+.tokens-sidebar__search {
+  position: relative;
+  margin: 0 0 16px;
+}
+
+.tokens-sidebar__search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: var(--tk-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.tokens-sidebar__search-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 34px 0 34px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--tk-text-strong);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.tokens-sidebar__search-input::placeholder {
+  color: var(--tk-text-muted);
+}
+
+.tokens-sidebar__search-input:hover {
+  border-color: var(--tk-border-strong);
+}
+
+.tokens-sidebar__search-input:focus {
+  border-color: var(--tk-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tk-accent) 18%, transparent);
+}
+
+.tokens-sidebar__kbd {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--tk-text-muted);
+  background: var(--tk-bg);
+  border: 1px solid var(--tk-border);
+  border-radius: 4px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* iOS zooms the page in when focusing an input under 16px, and never zooms
+   back out — the same guard global.css applies to every other input. */
+@media (pointer: coarse) {
+  .tokens-sidebar__search-input,
+  .tokens-menu__search-input {
+    font-size: 16px;
+  }
+}
+
+/* ---- Nav tree ---- */
+
+.tokens-nav__heading {
+  margin: 18px 10px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tk-text-muted);
+}
+
+.tokens-nav__list,
+.tokens-nav__sublist {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tokens-nav__sublist {
+  position: relative;
+  margin-top: 2px;
+  padding-left: 18px;
+}
+
+.tokens-nav__sublist[hidden] {
+  display: none;
+}
+
+/* The tree's guide line. */
+.tokens-nav__sublist::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 17px;
+  border-left: 1px solid var(--tk-border);
+}
+
+.tokens-nav__row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tokens-nav__item {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  color: var(--tk-text);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.tokens-nav__item:hover {
+  background: var(--tk-nav-hover);
+  color: var(--tk-text-heading);
+}
+
+.tokens-nav__item--leaf {
+  padding-left: 14px;
+}
+
+.tokens-nav__icon {
+  color: var(--tk-text-muted);
+}
+
+.tokens-nav__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tokens-nav__count {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--tk-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hidden by the Components filter: still listed, and selecting it shows it again. */
+.tokens-nav__item--hidden .tokens-nav__label {
+  color: var(--tk-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--tk-text-faint);
+}
+
+.tokens-nav__item--active,
+.tokens-nav__item--active:hover {
+  font-weight: 600;
+  color: var(--tk-on-accent);
+  background: var(--tk-accent);
+}
+
+.tokens-nav__item--active .tokens-nav__icon,
+.tokens-nav__item--active .tokens-nav__count,
+.tokens-nav__item--active .tokens-nav__label {
+  color: var(--tk-on-accent);
+}
+
+.tokens-nav__item:focus-visible,
+.tokens-nav__disclosure:focus-visible {
+  outline: 2px solid var(--tk-focus-ring);
+  outline-offset: -2px;
+}
+
+.tokens-nav__item--active:focus-visible {
+  outline-color: var(--tk-accent-ink);
+  box-shadow: inset 0 0 0 4px var(--tk-on-accent);
+}
+
+.tokens-nav__disclosure {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--tk-text-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-nav__disclosure:hover:not(:disabled) {
+  color: var(--tk-text-heading);
+  background: var(--tk-nav-hover);
+}
+
+.tokens-nav__disclosure:disabled {
+  color: var(--tk-text-faint);
+  cursor: default;
+}
+
+.tokens-nav__empty {
+  padding: 6px 14px;
+  color: var(--tk-text-muted);
+}
+
+.tokens-nav__badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--tk-on-accent);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tokens-nav__badge .tokens-icon {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.25;
+}
+
+.tokens-nav__badge--error {
+  background: var(--tk-error);
+}
+
+.tokens-nav__badge--warning {
+  background: var(--tk-warning);
+}
+
+.tokens-nav__badge--ok {
+  background: var(--tk-success);
+}
+
+.tokens-nav__item--active .tokens-nav__badge {
+  box-shadow: 0 0 0 1.5px var(--tk-on-accent);
+}
+
+/* ---- Toolbar ---- */
+
+.tokens-toolbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 44px;
+  padding: 0 8px;
+  background: var(--tk-surface);
+  border-bottom: 1px solid var(--tk-border);
+  /* Small screens scroll the controls sideways; the menus are fixed, so they are not clipped. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.tokens-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+.tokens-toolbar__group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tokens-toolbar__button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--tk-text-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.tokens-toolbar__button:hover {
+  color: var(--tk-accent-strong);
+  background: var(--tk-nav-hover);
+}
+
+.tokens-toolbar__button[aria-expanded='true'],
+.tokens-toolbar__button[aria-pressed='true'] {
+  color: var(--tk-accent-strong);
+  background: var(--tk-accent-soft);
+}
+
+.tokens-toolbar__button--active {
+  color: var(--tk-accent-strong);
+}
+
+.tokens-toolbar__button--icon {
+  justify-content: center;
+  width: 32px;
+  padding: 0;
+}
+
+.tokens-toolbar__button:focus-visible,
+.tokens-segmented__option:focus-visible {
+  outline: 2px solid var(--tk-focus-ring);
+  outline-offset: -2px;
+}
+
+.tokens-toolbar__text--muted {
+  font-weight: 400;
+  color: var(--tk-text-muted);
+}
+
+.tokens-toolbar__button:hover .tokens-toolbar__text--muted,
+.tokens-toolbar__button[aria-expanded='true'] .tokens-toolbar__text--muted {
+  color: inherit;
+}
+
+.tokens-toolbar__caret {
+  width: 12px;
+  height: 12px;
+  margin-left: -1px;
+  opacity: 0.8;
+}
+
+.tokens-toolbar__badge {
+  min-width: 34px;
+  padding: 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  color: var(--tk-text-soft);
+  background: var(--tk-raised);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tokens-toolbar__badge--filtered {
+  color: var(--tk-on-accent);
+  background: var(--tk-accent);
+}
+
+.tokens-toolbar__divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 20px;
+  margin: 0 6px;
+  background: var(--tk-border);
+}
+
+/* What each theme's canvas looks like. */
+.tokens-theme-swatch {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--tk-border-strong);
+  border-radius: 50%;
+}
+
+.tokens-theme-swatch--light {
+  background: var(--tk-preview-light);
+}
+
+.tokens-theme-swatch--dark {
+  background: var(--tk-preview-dark);
+  border-color: var(--tk-preview-dark);
+}
+
+.tokens-segmented {
+  flex-shrink: 0;
+  display: inline-flex;
+  gap: 2px;
+  padding: 1px;
+  background: var(--tk-bg);
+  border: 1px solid var(--tk-border);
+  border-radius: 8px;
+}
+
+.tokens-segmented__option {
+  min-width: 40px;
+  height: 32px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tk-text-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-segmented__option:hover:not(:disabled):not([aria-pressed='true']) {
+  color: var(--tk-accent-strong);
+}
+
+.tokens-segmented__option[aria-pressed='true'] {
+  color: var(--tk-text-heading);
+  background: var(--tk-surface);
+  box-shadow:
+    0 0 0 1px var(--tk-border),
+    0 1px 2px var(--tk-shadow);
+}
+
+.tokens-segmented__option:disabled {
+  color: var(--tk-text-disabled);
+  cursor: not-allowed;
+}
+
+@media (max-width: 1100px) {
+  .tokens-toolbar__text--muted {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Icons and counts carry the filters; their names stay for screen readers. */
+@media (max-width: 640px) {
+  .tokens-toolbar {
+    padding: 0 6px;
+  }
+
+  .tokens-toolbar__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .tokens-toolbar__button {
+    padding: 0 8px;
+  }
+
+  .tokens-toolbar__button--icon {
+    padding: 0;
+  }
+
+  /* Room for every control at 390px: the trigger icons, counts and swatch say enough. */
+  .tokens-toolbar__divider,
+  .tokens-toolbar__caret {
+    display: none;
+  }
+}
+
+/* ---- Toolbar menus ---- */
+
+.tokens-menu {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.tokens-menu__popup {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  max-width: calc(100vw - 16px);
+  padding: 6px;
+  font-size: 13px;
+  color: var(--tk-text);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: 10px;
+  box-shadow:
+    0 12px 32px var(--tk-shadow),
+    0 2px 6px var(--tk-shadow);
+  outline: none;
+  overflow: hidden;
+}
+
+.tokens-menu__popup--dialog {
+  width: 288px;
+}
+
+.tokens-menu__head {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 0 4px 8px;
+}
+
+.tokens-menu__title {
+  font-weight: 700;
+  color: var(--tk-text-heading);
+}
+
+.tokens-menu__bulk {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.tokens-menu__bulk-button,
+.tokens-menu__only {
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--tk-accent-strong);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-menu__bulk-button:hover,
+.tokens-menu__only:hover {
+  background: var(--tk-accent-soft);
+}
+
+.tokens-menu__search {
+  flex-shrink: 0;
+  position: relative;
+  margin: 2px 2px 6px;
+}
+
+.tokens-menu__search .tokens-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: var(--tk-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.tokens-menu__search-input {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px 0 32px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--tk-text-strong);
+  background: var(--tk-bg);
+  border: 1px solid var(--tk-border);
+  border-radius: 6px;
+  outline: none;
+}
+
+.tokens-menu__search-input::placeholder {
+  color: var(--tk-text-muted);
+}
+
+.tokens-menu__search-input:focus {
+  border-color: var(--tk-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tk-accent) 18%, transparent);
+}
+
+.tokens-menu__list {
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  align-content: start;
+  gap: 1px;
+}
+
+.tokens-menu__row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 6px;
+}
+
+.tokens-menu__row:hover,
+.tokens-menu__row:focus-within {
+  background: var(--tk-hover);
+}
+
+.tokens-menu__item {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  padding: 0 8px;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  color: var(--tk-text);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-menu__item:focus-visible,
+.tokens-menu__only:focus-visible,
+.tokens-menu__bulk-button:focus-visible {
+  outline: 2px solid var(--tk-focus-ring);
+  outline-offset: -2px;
+}
+
+.tokens-menu__item-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tokens-menu__check {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  color: var(--tk-on-accent);
+  border: 1.5px solid var(--tk-border-hover);
+  border-radius: 4px;
+}
+
+.tokens-menu__check .tokens-icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.5;
+}
+
+.tokens-menu__item[aria-checked='true'] .tokens-menu__check {
+  background: var(--tk-accent);
+  border-color: var(--tk-accent);
+}
+
+.tokens-menu__item[aria-checked='false'] .tokens-menu__item-label {
+  color: var(--tk-text-muted);
+}
+
+/* "Only" waits for the row to be pointed at or focused; touch screens always show it. */
+.tokens-menu__only {
+  opacity: 0;
+}
+
+.tokens-menu__row:hover .tokens-menu__only,
+.tokens-menu__row:focus-within .tokens-menu__only {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .tokens-menu__only {
+    opacity: 1;
+  }
+}
+
+.tokens-menu__item--radio {
+  min-height: 44px;
+}
+
+.tokens-menu__item--radio:hover,
+.tokens-menu__item--radio:focus-visible {
+  background: var(--tk-hover);
+}
+
+.tokens-menu__item--radio .tokens-theme-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+.tokens-menu__item-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tokens-menu__item--radio .tokens-menu__item-label {
+  font-weight: 600;
+  color: var(--tk-text-heading);
+}
+
+.tokens-menu__item-hint {
+  font-size: 13px;
+  color: var(--tk-text-muted);
+}
+
+.tokens-menu__tick {
+  flex-shrink: 0;
+  width: 16px;
+  color: var(--tk-accent);
+}
+
+.tokens-menu__empty {
+  margin: 0;
+  padding: 10px 8px;
+  color: var(--tk-text-muted);
+}
+
+.tokens-menu__foot {
+  flex-shrink: 0;
+  margin: 6px -6px -6px;
+  padding: 8px 14px;
+  color: var(--tk-text-muted);
+  background: var(--tk-bg);
+  border-top: 1px solid var(--tk-border);
+}
+
+/* ---- Addons panel ---- */
+
+.tokens-panel {
+  flex-shrink: 0;
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--tk-surface);
+  border-top: 1px solid var(--tk-border);
+  container: tokens-panel / inline-size;
+}
+
+/* The canvas keeps at least PANEL_CANVAS_MIN (helpers.ts) above the panel. */
+.tokens-panel--docked {
+  max-height: calc(100% - 160px);
+}
+
+.tokens-panel--sheet {
+  max-height: 55%;
+  border: 1px solid var(--tk-border);
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -8px 24px var(--tk-shadow);
+}
+
+/* Straddles the panel's top border: the whole width is the grip. */
+.tokens-panel__handle {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 16px;
+  cursor: row-resize;
+  touch-action: none;
+  outline: none;
+}
+
+.tokens-panel__handle::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 40px;
+  height: 4px;
+  background: var(--tk-border-strong);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  transition: background 120ms ease, width 120ms ease;
+}
+
+.tokens-panel__handle:hover::after,
+.tokens-panel__handle:active::after {
+  width: 64px;
+  background: var(--tk-accent);
+}
+
+.tokens-panel__handle:focus-visible::after {
+  width: 64px;
+  background: var(--tk-accent);
+  box-shadow: 0 0 0 2px var(--tk-surface), 0 0 0 4px var(--tk-focus-ring);
+}
+
+.tokens-panel__bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 8px;
+  height: 44px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.tokens-panel__tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.tokens-panel__tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tk-text-soft);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.tokens-panel__tab:hover {
+  color: var(--tk-text-heading);
+}
+
+.tokens-panel__tab--active {
+  color: var(--tk-accent-strong);
+}
+
+.tokens-panel__tab--active::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -1px;
+  height: 3px;
+  background: var(--tk-accent);
+  border-radius: 3px 3px 0 0;
+}
+
+.tokens-panel__tab:focus-visible,
+.tokens-panel__icon-button:focus-visible {
+  outline: 2px solid var(--tk-focus-ring);
+  outline-offset: -4px;
+  border-radius: 8px;
+}
+
+.tokens-panel__tab-count {
+  min-width: 22px;
+  padding: 0 6px;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--tk-text-soft);
+  background: var(--tk-raised);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tokens-panel__tab--active .tokens-panel__tab-count {
+  color: var(--tk-accent-ink);
+  background: var(--tk-accent-soft);
+}
+
+.tokens-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tokens-panel__icon-button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--tk-text-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-panel__icon-button:hover {
+  color: var(--tk-text-heading);
+  background: var(--tk-hover);
+}
+
+.tokens-panel__icon-button[aria-pressed='true'] {
+  color: var(--tk-accent-strong);
+}
+
+.tokens-panel__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  outline: none;
+}
+
+.tokens-panel__body:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--tk-focus-ring);
+}
+
+.tokens-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 100%;
+  padding: 20px 24px;
+  text-align: center;
+  color: var(--tk-text-muted);
+}
+
+.tokens-panel__empty .tokens-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--tk-text-faint);
+}
+
+.tokens-panel__empty p {
+  max-width: 46ch;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tokens-panel__button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tk-accent-strong);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border-strong);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-panel__button:hover {
+  background: var(--tk-accent-soft);
+  border-color: var(--tk-accent);
+}
+
+/* ---- Usage tab ---- */
+
+.tokens-usage {
+  padding: 14px 16px 18px;
+}
+
+.tokens-usage__summary {
+  margin: 0 0 12px;
+  color: var(--tk-text-soft);
+}
+
+.tokens-usage__summary strong {
+  color: var(--tk-text-heading);
+}
+
+.tokens-usage__summary code,
+.tokens-usage__path {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.tokens-usage__files {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--tk-border);
+  border-radius: 8px;
+}
+
+.tokens-usage__file {
+  display: grid;
+  grid-template-columns: 88px minmax(110px, 200px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 8px 6px 12px;
+}
+
+.tokens-usage__file + .tokens-usage__file {
+  border-top: 1px solid var(--tk-border-faint);
+}
+
+.tokens-usage__tier {
+  justify-self: start;
+  padding: 1px 7px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: capitalize;
+  color: var(--tk-text-soft);
+  background: var(--tk-raised);
+  border-radius: 999px;
+}
+
+.tokens-usage__file-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--tk-text-heading);
+}
+
+.tokens-usage__path {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--tk-text-soft);
+}
+
+.tokens-usage__tokens {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 6px;
+}
+
+.tokens-usage__token {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 36px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  color: var(--tk-text);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tokens-usage__token:hover {
+  border-color: var(--tk-accent);
+  background: var(--tk-accent-soft);
+}
+
+.tokens-usage__token-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@container tokens-panel (max-width: 640px) {
+  .tokens-usage__file {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 12px;
+  }
+
+  .tokens-usage__tier {
+    display: none;
+  }
+
+  .tokens-usage__path {
+    grid-row: 2;
+  }
+
+  .tokens-usage__file .tokens-panel__button {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+}

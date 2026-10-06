@@ -1,4 +1,14 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+/**
+ * The /tokens playground, laid out like Storybook: a sidebar that picks the
+ * view, a toolbar of preview and filter controls, the canvas, and a docked
+ * addons panel for the selected token.
+ *
+ * All state lives here so it can be deep-linked and shared by the shell:
+ * the view, the map's focus history and 2D/3D mode, the filters, the
+ * previewed theme, the selection and the panel's remembered layout.
+ */
+
+import { useCallback, useEffect, useEffectEvent, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { buildTokenGraph, indexEdges, type ThemeMode } from '../../tokens/graph-builder';
 import { runTokenAudit } from '../../tokens/audit';
@@ -8,79 +18,31 @@ import { useTheme } from '../../hooks/useTheme';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { TokenExplorer } from './TokenExplorer';
-import { TokenInspector } from './TokenInspector';
 import { buildLineageModel, groupId, resolveMapId } from './map/lineage';
 import type { MapMode } from './map/MapView';
-import { displayComponentName, isExplorerTab, matchesSearch, type ExplorerTab } from './utils';
+import { AddonsPanel } from './shell/AddonsPanel';
+import { Sidebar } from './shell/Sidebar';
+import { Toolbar } from './shell/Toolbar';
+import {
+  componentTokenCounts,
+  isTextEntry,
+  readPanelPrefs,
+  sortedComponentNames,
+  writePanelPrefs,
+  type PanelPrefs,
+} from './shell/helpers';
+import { displayComponentName, isExplorerTab, type ExplorerTab } from './utils';
 import './playground.css';
 import './Tokens.css';
+import './shell/shell.css';
 
 const DEFAULT_TAB: ExplorerTab = 'map';
 /** Map focus history kept for Back and the breadcrumb. */
 const MAX_MAP_TRAIL = 12;
 /** Must match the breakpoint in Tokens.css where the sidebar becomes a drawer. */
 const NARROW_QUERY = '(max-width: 900px)';
-
-interface FilterRowProps {
-  name: string;
-  checked: boolean;
-  focused?: boolean;
-  onToggle: () => void;
-  onOnly: () => void;
-  onFocus?: () => void;
-}
-
-/**
- * Sidebar filter row: the whole row is a single switch that shows/hides the
- * item — no competing click targets. Secondary actions appear on hover:
- * "only" (exclusive select) and, for components, "view" (jump to its card).
- */
-function FilterRow({ name, checked, focused, onToggle, onOnly, onFocus }: FilterRowProps) {
-  return (
-    <div className={`tokens-filter-row${focused ? ' tokens-filter-row--focused' : ''}`}>
-      <button
-        type="button"
-        role="switch"
-        aria-checked={checked}
-        className="tokens-filter-row__main"
-        onClick={onToggle}
-        title={checked ? `Hide ${name}` : `Show ${name}`}
-      >
-        <span className="tokens-switch" aria-hidden="true">
-          <span className="tokens-switch__thumb" />
-        </span>
-        <span className="tokens-filter-row__label">{name}</span>
-      </button>
-      <span className="tokens-filter-row__actions">
-        {onFocus && (
-          <button
-            type="button"
-            className="tokens-filter-row__action"
-            onClick={onFocus}
-            title={`Jump to ${name}'s tokens`}
-          >
-            view
-          </button>
-        )}
-        <button
-          type="button"
-          className="tokens-filter-row__action"
-          onClick={onOnly}
-          title={`Select only ${name}`}
-        >
-          only
-        </button>
-      </span>
-    </div>
-  );
-}
-
-function toggleInSet(set: Set<string>, key: string): Set<string> {
-  const next = new Set(set);
-  if (next.has(key)) next.delete(key);
-  else next.add(key);
-  return next;
-}
+const SIDEBAR_ID = 'tokens-sidebar';
+const COMPONENT_GROUP = groupId('component', '');
 
 export default function Tokens() {
   const graph = useMemo(() => buildTokenGraph(), []);
@@ -101,6 +63,8 @@ export default function Tokens() {
   const [search, setSearch] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [panel, setPanel] = useState<PanelPrefs>(readPanelPrefs);
+  useEffect(() => writePanelPrefs(panel), [panel]);
 
   // Deep links: /tokens?tab=audit opens a specific tab, ?component=button
   // focuses that component's card (and, without a tab, opens Components as
@@ -126,6 +90,9 @@ export default function Tokens() {
   const [mapMode, setMapMode] = useState<MapMode>(() =>
     searchParams.get('view') === '3d' ? '3d' : '2d',
   );
+  // Once WebGL fails it stays failed for the page's life: 3D is not offered again.
+  const [webglUnavailable, setWebglUnavailable] = useState(false);
+  const activeMapMode: MapMode = webglUnavailable ? '2d' : mapMode;
 
   useEffect(() => {
     setSearchParams(
@@ -161,9 +128,9 @@ export default function Tokens() {
 
   /**
    * The single way to focus a component, whatever the entry point (sidebar
-   * "view", inspector "View component", banner "clear"). On the Map tab it
-   * traces the component's lineage; elsewhere a hidden component is
-   * re-enabled so its card exists, and the Components tab is shown.
+   * tree, inspector "View component"). On the Map tab it traces the
+   * component's lineage; elsewhere a hidden component is re-enabled so its
+   * card exists, and the Components tab is shown.
    */
   const focusComponent = useCallback(
     (name: string | null) => {
@@ -180,67 +147,132 @@ export default function Tokens() {
     [tab, focusMap],
   );
 
-  const onSelectToken = (nodeId: string) =>
-    setSelectedId((prev) => (prev === nodeId ? null : nodeId));
-
-  // Escape unwinds one layer at a time: inspector, drawer, then map focus.
-  // Escape in a text field clears it instead of leaving the focus.
-  const canPopMap = tab === 'map' && mapTrail.length > 0;
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
-      if (selectedId !== null) setSelectedId(null);
-      else if (sidebarOpen) setSidebarOpen(false);
-      else if (canPopMap && !(e.target instanceof HTMLInputElement)) mapBack();
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [selectedId, sidebarOpen, canPopMap, mapBack]);
+  const onMapUnavailable = useCallback(() => {
+    // The 3D button is about to be disabled; keep keyboard focus on the switch.
+    const threeD = document.querySelector('[data-map-mode="3d"]');
+    if (threeD && document.activeElement === threeD) {
+      document.querySelector<HTMLElement>('[data-map-mode="2d"]')?.focus();
+    }
+    setWebglUnavailable(true);
+    setMapMode('2d');
+  }, []);
 
   // On narrow viewports the sidebar is an off-canvas drawer: keep it out of
   // the tab order while closed and trap focus inside it while open. Focus goes
   // to the drawer itself, not to the search field it starts with — focusing a
-  // text field would open the keyboard over the filters on every open.
+  // text field would open the keyboard over the tree on every open.
   const isNarrow = useMediaQuery(NARROW_QUERY);
-  const sidebarRef = useRef<HTMLElement>(null);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const drawerOpen = isNarrow && sidebarOpen;
   useFocusTrap(sidebarRef, drawerOpen, { initialFocus: 'container' });
+  // '/' on a narrow screen opens the drawer first; the search is focused once
+  // the trap above has taken focus into it.
+  const searchOnOpen = useRef(false);
+  useEffect(() => {
+    if (!drawerOpen || !searchOnOpen.current) return;
+    searchOnOpen.current = false;
+    searchRef.current?.focus();
+  }, [drawerOpen]);
 
-  // Sidebar list follows the same search as the explorer: a component stays
-  // listed when its name matches or when any of its tokens match.
-  const filteredComponentNames = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    if (!q) return graph.componentNames;
-    const withMatchingToken = new Set<string>();
-    for (const node of graph.nodes) {
-      if (node.level === 'component' && node.componentName && matchesSearch(node, q)) {
-        withMatchingToken.add(node.componentName);
-      }
+  // The selection's origin (the row or chip clicked), to hand focus back to
+  // when the selection closes from inside the panel.
+  const selectOrigin = useRef<HTMLElement | null>(null);
+  const noteOrigin = () => {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && !active.closest('[data-tokens-panel]')) {
+      selectOrigin.current = active;
     }
-    return graph.componentNames.filter(
-      (n) =>
-        withMatchingToken.has(n) ||
-        n.toLowerCase().includes(q) ||
-        displayComponentName(n).toLowerCase().includes(q),
-    );
-  }, [search, graph]);
+  };
+  const openPanel = () => setPanel((p) => (p.open ? p : { ...p, open: true }));
+  const onSelectToken = (nodeId: string) => {
+    noteOrigin();
+    openPanel();
+    setSelectedId((prev) => (prev === nodeId ? null : nodeId));
+  };
+  const onInspect = (nodeId: string) => {
+    noteOrigin();
+    openPanel();
+    setSelectedId(nodeId);
+  };
+
+  const panelHasFocus = () =>
+    document.querySelector('[data-tokens-panel]')?.contains(document.activeElement) ?? false;
+  const returnFocusFromPanel = () => {
+    const origin = selectOrigin.current;
+    const target =
+      origin?.isConnected ? origin
+      : (document.querySelector<HTMLElement>('.token-map__row--focus') ??
+        document.querySelector<HTMLElement>('.token-explorer'));
+    target?.focus();
+  };
+  const clearSelection = () => {
+    if (panelHasFocus()) returnFocusFromPanel();
+    setSelectedId(null);
+  };
+  const hidePanel = () => {
+    if (panelHasFocus()) document.querySelector<HTMLElement>('[aria-label="Addons panel"]')?.focus();
+    setPanel((p) => ({ ...p, open: false }));
+  };
+
+  // Escape unwinds one layer at a time: an open menu (which handles it
+  // itself), the selection, the drawer, then the map focus. Escape in a text
+  // field clears it instead of leaving the map focus. '/' jumps to search.
+  const canPopMap = tab === 'map' && mapTrail.length > 0;
+  const onWindowKeyDown = useEffectEvent((e: KeyboardEvent) => {
+    if (e.defaultPrevented) return;
+    if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey && !isTextEntry(e.target)) {
+      e.preventDefault();
+      if (isNarrow && !sidebarOpen) {
+        searchOnOpen.current = true;
+        setSidebarOpen(true);
+      } else {
+        searchRef.current?.focus();
+      }
+      return;
+    }
+    if (e.key !== 'Escape') return;
+    if (selectedId !== null) clearSelection();
+    else if (drawerOpen) setSidebarOpen(false);
+    else if (canPopMap && !(e.target instanceof HTMLInputElement)) mapBack();
+  });
+  useEffect(() => {
+    const listener = (e: KeyboardEvent) => onWindowKeyDown(e);
+    window.addEventListener('keydown', listener);
+    return () => window.removeEventListener('keydown', listener);
+  }, []);
+
+  const categoryItems = useMemo(
+    () => graph.categories.map((c) => ({ key: c, label: c })),
+    [graph],
+  );
+  const componentItems = useMemo(
+    () => sortedComponentNames(graph).map((n) => ({ key: n, label: displayComponentName(n) })),
+    [graph],
+  );
+  const componentCounts = useMemo(() => componentTokenCounts(graph), [graph]);
+  const filtersChanged =
+    enabledCategories.size !== graph.categories.length ||
+    enabledComponents.size !== graph.componentNames.length;
+
+  const activeComponent =
+    tab === 'map'
+      ? mapFocus?.startsWith(COMPONENT_GROUP)
+        ? mapFocus.slice(COMPONENT_GROUP.length)
+        : null
+      : tab === 'components'
+        ? focusedComponent
+        : null;
+
+  const selected = selectedId !== null && graph.nodesById.has(selectedId) ? selectedId : null;
+  const showPanel = isNarrow ? selected !== null : panel.open;
 
   return (
     <div className={`tokens-page${sidebarOpen ? ' tokens-page--sidebar-open' : ''}`}>
       <Seo title="Design Tokens" description="Explorer for the Quantum Design token hierarchy." path="/tokens" />
       <meta name="robots" content="noindex" />
 
-      <button
-        type="button"
-        className="tokens-page__sidebar-toggle"
-        onClick={() => setSidebarOpen((v) => !v)}
-        aria-label={sidebarOpen ? 'Close filters' : 'Open filters'}
-        aria-expanded={sidebarOpen}
-      >
-        {sidebarOpen ? '✕' : '☰ Filters'}
-      </button>
-
-      {sidebarOpen && (
+      {drawerOpen && (
         <div
           className="tokens-page__backdrop"
           onClick={() => setSidebarOpen(false)}
@@ -248,186 +280,102 @@ export default function Tokens() {
         />
       )}
 
-      <aside
+      <Sidebar
+        id={SIDEBAR_ID}
         ref={sidebarRef}
-        className="tokens-page__sidebar"
-        aria-label="Token filters"
-        tabIndex={-1}
+        searchRef={searchRef}
+        graph={graph}
+        audit={audit}
+        tab={tab}
+        onTabChange={(next) => {
+          setTab(next);
+          setSidebarOpen(false);
+        }}
+        components={componentItems}
+        componentCounts={componentCounts}
+        enabledComponents={enabledComponents}
+        activeComponent={activeComponent}
+        onComponentSelect={(name) => {
+          // Picking a hidden component in the tree shows it again.
+          setEnabledComponents((prev) => (prev.has(name) ? prev : new Set(prev).add(name)));
+          focusComponent(tab !== 'map' && focusedComponent === name ? null : name);
+          setSidebarOpen(false);
+        }}
+        search={search}
+        onSearchChange={setSearch}
         inert={isNarrow && !sidebarOpen}
-      >
-        <header className="tokens-page__header">
-          <h1 className="tokens-page__title">Design Tokens</h1>
-          <p className="tokens-page__description">
-            Browse the three-level token hierarchy. Tap any token to inspect the
-            chain it resolves through (component → system → global). Toggle the
-            rows below to show or hide tokens.
-          </p>
-        </header>
-
-        {/* The map names its own focus in the breadcrumb; this one belongs to the Components tab. */}
-        {focusedComponent && tab !== 'map' && (
-          <div className="tokens-focus-banner">
-            <span>
-              Viewing <strong>{displayComponentName(focusedComponent)}</strong>
-            </span>
-            <button type="button" onClick={() => focusComponent(null)}>
-              clear
-            </button>
-          </div>
-        )}
-
-        <section className="tokens-page__stats">
-          <div><strong>{graph.stats.global}</strong> global</div>
-          <div>
-            <strong>{graph.stats.system}</strong> system
-            <span className="tokens-page__stats-note">
-              ({graph.stats.systemDarkOverrides} overridden in dark)
-            </span>
-          </div>
-          <div><strong>{graph.stats.component}</strong> component</div>
-          <div><strong>{graph.stats.edges}</strong> references</div>
-        </section>
-
-        <div className="tokens-page__filter-group">
-          <label className="sr-only" htmlFor="tokens-search">Search tokens by name</label>
-          <input
-            id="tokens-search"
-            type="search"
-            className="tokens-page__search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search tokens…"
-          />
-        </div>
-
-        <section className="tokens-page__filter-group">
-          <h2 className="tokens-page__filter-title">Preview values</h2>
-          <div
-            className="tokens-page__theme-switch"
-            role="radiogroup"
-            aria-label="Theme whose values are shown"
-          >
-            <button
-              type="button"
-              role="radio"
-              aria-checked={theme === 'light'}
-              className={`tokens-page__theme-option${theme === 'light' ? ' tokens-page__theme-option--active' : ''}`}
-              onClick={() => setTheme('light')}
-            >
-              Light
-            </button>
-            <button
-              type="button"
-              role="radio"
-              aria-checked={theme === 'dark'}
-              className={`tokens-page__theme-option${theme === 'dark' ? ' tokens-page__theme-option--active' : ''}`}
-              onClick={() => setTheme('dark')}
-            >
-              Dark
-            </button>
-          </div>
-        </section>
-
-        <section className="tokens-page__filter-group">
-          <div className="tokens-page__filter-head">
-            <h2 className="tokens-page__filter-title">Categories</h2>
-            <div className="tokens-page__bulk">
-              <button type="button" onClick={() => setEnabledCategories(new Set(graph.categories))}>
-                all
-              </button>
-              <span aria-hidden="true">·</span>
-              <button type="button" onClick={() => setEnabledCategories(new Set())}>
-                none
-              </button>
-            </div>
-          </div>
-          {graph.categories.map((cat) => (
-            <FilterRow
-              key={cat}
-              name={cat}
-              checked={enabledCategories.has(cat)}
-              onToggle={() => setEnabledCategories((prev) => toggleInSet(prev, cat))}
-              onOnly={() => setEnabledCategories(new Set([cat]))}
-            />
-          ))}
-        </section>
-
-        <section className="tokens-page__filter-group">
-          <div className="tokens-page__filter-head">
-            <h2 className="tokens-page__filter-title">Components</h2>
-            <div className="tokens-page__bulk">
-              <button
-                type="button"
-                onClick={() => setEnabledComponents(new Set(graph.componentNames))}
-              >
-                all
-              </button>
-              <span aria-hidden="true">·</span>
-              <button type="button" onClick={() => setEnabledComponents(new Set())}>
-                none
-              </button>
-            </div>
-          </div>
-
-          <div className="tokens-page__filter-list">
-            {filteredComponentNames.length === 0 && (
-              <div className="tokens-page__empty">No tokens match “{search}”.</div>
-            )}
-            {filteredComponentNames.map((name) => (
-              <FilterRow
-                key={name}
-                name={displayComponentName(name)}
-                checked={enabledComponents.has(name)}
-                focused={
-                  tab === 'map'
-                    ? mapFocus === groupId('component', name)
-                    : focusedComponent === name
-                }
-                onToggle={() => setEnabledComponents((prev) => toggleInSet(prev, name))}
-                onOnly={() => setEnabledComponents(new Set([name]))}
-                onFocus={() =>
-                  focusComponent(tab !== 'map' && focusedComponent === name ? null : name)
-                }
-              />
-            ))}
-          </div>
-        </section>
-      </aside>
+        onClose={drawerOpen ? () => setSidebarOpen(false) : null}
+      />
 
       <div className="tokens-page__content">
-        <TokenExplorer
-          graph={graph}
-          index={index}
-          audit={audit}
+        <Toolbar
           theme={theme}
-          tab={tab}
-          onTabChange={setTab}
-          search={search}
+          onThemeChange={setTheme}
+          categories={categoryItems}
           enabledCategories={enabledCategories}
+          onCategoriesChange={setEnabledCategories}
+          components={componentItems}
           enabledComponents={enabledComponents}
-          focusedComponent={focusedComponent}
-          selectedId={selectedId}
-          onSelect={onSelectToken}
-          onInspect={setSelectedId}
-          lineage={lineage}
-          mapTrail={mapTrail}
-          mapMode={mapMode}
-          onMapFocus={focusMap}
-          onMapBack={mapBack}
-          onMapReset={mapReset}
+          onComponentsChange={setEnabledComponents}
+          mapMode={tab === 'map' ? activeMapMode : null}
+          webglUnavailable={webglUnavailable}
           onMapModeChange={setMapMode}
+          filtersChanged={filtersChanged}
+          onResetFilters={() => {
+            setEnabledCategories(new Set(graph.categories));
+            setEnabledComponents(new Set(graph.componentNames));
+          }}
+          panelOpen={isNarrow ? null : panel.open}
+          onTogglePanel={() => (panel.open ? hidePanel() : openPanel())}
+          navOpen={isNarrow ? sidebarOpen : null}
+          navId={SIDEBAR_ID}
+          onToggleNav={() => setSidebarOpen((v) => !v)}
         />
-        {selectedId && graph.nodesById.has(selectedId) && (
-          <TokenInspector
+
+        <div className="tokens-page__stage">
+          <TokenExplorer
             graph={graph}
             index={index}
-            selectedId={selectedId}
+            audit={audit}
             theme={theme}
-            onSelect={setSelectedId}
-            onFocusComponent={focusComponent}
-            onClose={() => setSelectedId(null)}
+            tab={tab}
+            search={search}
+            enabledCategories={enabledCategories}
+            enabledComponents={enabledComponents}
+            focusedComponent={focusedComponent}
+            selectedId={selected}
+            onSelect={onSelectToken}
+            onInspect={onInspect}
+            lineage={lineage}
+            mapTrail={mapTrail}
+            mapMode={activeMapMode}
+            onMapFocus={focusMap}
+            onMapBack={mapBack}
+            onMapReset={mapReset}
+            onMapUnavailable={onMapUnavailable}
           />
-        )}
+          {showPanel && (
+            <AddonsPanel
+              graph={graph}
+              index={index}
+              lineage={lineage}
+              theme={theme}
+              selectedId={selected}
+              onSelect={setSelectedId}
+              onFocusComponent={focusComponent}
+              onTraceFile={(uiId) => {
+                setTab('map');
+                focusMap(uiId);
+              }}
+              tab={panel.tab}
+              onTabChange={(next) => setPanel((p) => ({ ...p, tab: next }))}
+              mode={isNarrow ? 'sheet' : 'docked'}
+              height={panel.height}
+              onHeightChange={(height) => setPanel((p) => ({ ...p, height }))}
+              onClose={isNarrow ? clearSelection : hidePanel}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@
   --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-ui) 45%, transparent);
 }
 
-/* ---- Toolbar: breadcrumb, legend, 2D/3D ---- */
+/* ---- Canvas header: Back, breadcrumb, search status, legend ---- */
 
 .token-map__toolbar {
   flex-shrink: 0;
@@ -214,44 +214,6 @@
   height: 6px;
   background: var(--tk-edge);
   clip-path: polygon(0 42%, 100% 0, 100% 100%, 0 58%);
-}
-
-.token-map__modes {
-  flex-shrink: 0;
-  display: inline-flex;
-  gap: 2px;
-  padding: 2px;
-  background: var(--tk-sunken);
-  border: 1px solid var(--tk-border);
-  border-radius: 6px;
-}
-
-.token-map__mode {
-  padding: 4px 12px;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--tk-text-soft);
-  background: transparent;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 120ms ease, color 120ms ease;
-}
-
-.token-map__mode:hover:not(:disabled):not(.token-map__mode--active) {
-  color: var(--tk-text-strong);
-}
-
-.token-map__mode--active {
-  color: var(--tk-text-heading);
-  background: var(--tk-raised);
-  box-shadow: inset 0 0 0 1px var(--tk-border-strong);
-}
-
-.token-map__mode:disabled {
-  color: var(--tk-text-disabled);
-  cursor: not-allowed;
 }
 
 .token-map__notice {
@@ -910,25 +872,6 @@
   }
 }
 
-/* Clear the floating inspector so it never covers the UI column; the
-   breadcrumb needs the room more than the legend does. */
-@media (min-width: 901px) {
-  /* The inspector: 340px wide and 16px in from the right, plus an 8px gap. */
-  .token-map--inspector-open {
-    padding-right: 364px;
-  }
-
-  .token-map--inspector-open .token-map__legend {
-    display: none;
-  }
-
-  .token-map--inspector-open .token-map__heads-inner,
-  .token-map--inspector-open .token-map__plot {
-    margin-left: 14px;
-    margin-right: 14px;
-  }
-}
-
 @media (max-width: 1100px) {
   .token-map__legend {
     display: none;
@@ -957,15 +900,5 @@
   .token-map__plot {
     margin-left: 14px;
     margin-right: 14px;
-  }
-
-  /* The inspector is a bottom sheet here: let the last rows scroll above it. */
-  .token-map--inspector-open .token-map__canvas {
-    padding-bottom: 50vh;
-  }
-
-  /* The sheet would cover the edge buttons; the faded edges still show more. */
-  .token-map--inspector-open .token-map__more-button {
-    display: none;
   }
 }

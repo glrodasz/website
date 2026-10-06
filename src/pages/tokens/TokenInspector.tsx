@@ -1,15 +1,12 @@
 /**
- * DOM inspector panel for a selected token node.
- *
- * Shows the full reference chain (component → system → global) with CSS
- * variable names, resolved values, and color swatches, plus a "Used by"
- * section for system/global tokens. Floating card on desktop, bottom
- * sheet on mobile (see Tokens.css).
+ * The Inspector tab of the addons panel: a selected token's full reference
+ * chain (component → system → global), laid out left to right, with CSS
+ * variable names, both themes' values and color swatches. Where the token
+ * is used lives in the panel's Usage tab.
  */
 
 import { useState } from 'react';
 import {
-  getConsumers,
   getReferenceChain,
   type EdgeIndex,
   type GraphNode,
@@ -18,9 +15,8 @@ import {
 } from '../../tokens/graph-builder';
 import { TokenSwatch } from './TokenSwatch';
 import { displayComponentName } from './utils';
+import { Icon } from './shell/Icon';
 import './TokenInspector.css';
-
-const MAX_CONSUMERS_SHOWN = 8;
 
 export interface TokenInspectorProps {
   graph: TokenGraph;
@@ -29,7 +25,6 @@ export interface TokenInspectorProps {
   theme: ThemeMode;
   onSelect: (nodeId: string) => void;
   onFocusComponent: (name: string) => void;
-  onClose: () => void;
 }
 
 function ValueRow({
@@ -71,9 +66,11 @@ function CopyButton({ text }: { text: string }) {
           })
           .catch(() => {});
       }}
-      title="Copy CSS variable name"
+      aria-label={copied ? 'Copied' : `Copy ${text}`}
+      title="Copy the CSS variable"
     >
-      {copied ? 'copied' : 'copy'}
+      <Icon name={copied ? 'check' : 'copy'} />
+      <span aria-hidden="true">{copied ? 'Copied' : 'Copy'}</span>
     </button>
   );
 }
@@ -152,96 +149,45 @@ export function TokenInspector({
   theme,
   onSelect,
   onFocusComponent,
-  onClose,
 }: TokenInspectorProps) {
   const node = graph.nodesById.get(selectedId);
   if (!node) return null;
 
   const chain = getReferenceChain(graph, index, selectedId);
-  const consumers = node.level === 'component' ? [] : getConsumers(index, selectedId);
 
   return (
-    <aside className="token-inspector" aria-label="Token details">
+    <div className="token-inspector">
       <header className="token-inspector__header">
-        <div className="token-inspector__header-main">
-          <span className={`token-inspector__level token-inspector__level--${node.level}`}>
-            {node.level}
-          </span>
-          <div className="token-inspector__path">{node.path}</div>
-        </div>
-        <button
-          type="button"
-          className="token-inspector__close"
-          onClick={onClose}
-          aria-label="Close token details"
-        >
-          ✕
-        </button>
-      </header>
-
-      {node.level === 'component' && node.componentName && (
-        <div className="token-inspector__component">
-          <span className="token-inspector__component-chip">
-            {displayComponentName(node.componentName)}
-          </span>
+        <span className={`token-inspector__level token-inspector__level--${node.level}`}>
+          {node.level}
+        </span>
+        <h2 className="token-inspector__path">{node.path}</h2>
+        {node.level === 'component' && node.componentName && (
           <button
             type="button"
             className="token-inspector__focus"
             onClick={() => onFocusComponent(node.componentName!)}
             title={`Jump to ${displayComponentName(node.componentName)}'s tokens`}
           >
-            View component
+            View {displayComponentName(node.componentName)}
+            <Icon name="arrowRight" />
           </button>
-        </div>
-      )}
+        )}
+      </header>
 
-      <section className="token-inspector__section">
-        <h3 className="token-inspector__section-title">Reference chain</h3>
-        <div className="token-inspector__chain">
-          {chain.map((n, i) => (
-            <div key={n.id} className="token-inspector__chain-step">
-              {i > 0 && <div className="token-inspector__chain-arrow">↓ references</div>}
-              <ChainRow
-                node={n}
-                isCurrent={n.id === selectedId}
-                theme={theme}
-                onSelect={onSelect}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {consumers.length > 0 && (
-        <section className="token-inspector__section">
-          <h3 className="token-inspector__section-title">
-            Used by <span className="token-inspector__count">{consumers.length}</span>
-          </h3>
-          <div className="token-inspector__consumers">
-            {consumers.slice(0, MAX_CONSUMERS_SHOWN).map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                className="token-inspector__consumer"
-                onClick={() => onSelect(c.id)}
-                title={`Inspect ${c.path}`}
-              >
-                <span className={`token-inspector__level token-inspector__level--${c.level}`}>
-                  {c.level === 'component' && c.componentName
-                    ? displayComponentName(c.componentName)
-                    : c.level}
-                </span>
-                <span className="token-inspector__consumer-label">{c.displayLabel}</span>
-              </button>
-            ))}
-            {consumers.length > MAX_CONSUMERS_SHOWN && (
-              <div className="token-inspector__more">
-                +{consumers.length - MAX_CONSUMERS_SHOWN} more
-              </div>
+      <ol className="token-inspector__chain" aria-label="Reference chain">
+        {chain.map((n, i) => (
+          <li key={n.id} className="token-inspector__chain-step">
+            {i > 0 && (
+              <span className="token-inspector__chain-arrow">
+                <Icon name="arrowRight" />
+                <span className="sr-only">references</span>
+              </span>
             )}
-          </div>
-        </section>
-      )}
-    </aside>
+            <ChainRow node={n} isCurrent={n.id === selectedId} theme={theme} onSelect={onSelect} />
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }

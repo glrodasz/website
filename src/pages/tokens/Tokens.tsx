@@ -65,6 +65,9 @@ export default function Tokens() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [panel, setPanel] = useState<PanelPrefs>(readPanelPrefs);
+  // With nothing selected the docked panel would only show its empty state,
+  // so it stays out of the canvas's way unless the toolbar toggle asks for it.
+  const [emptyPanelRequested, setEmptyPanelRequested] = useState(false);
   // Debounced, since a handle drag changes the height on every pointer move,
   // and flushed on unmount so leaving the page right after a change keeps it.
   const latestPanel = useRef(panel);
@@ -282,7 +285,9 @@ export default function Tokens() {
         : null;
 
   const selected = selectedId !== null && graph.nodesById.has(selectedId) ? selectedId : null;
-  const showPanel = isNarrow ? selected !== null : panel.open;
+  const showPanel = isNarrow
+    ? selected !== null
+    : panel.open && (selected !== null || emptyPanelRequested);
 
   return (
     <div className={`tokens-page${sidebarOpen ? ' tokens-page--sidebar-open' : ''}`}>
@@ -343,8 +348,12 @@ export default function Tokens() {
             setEnabledCategories(new Set(graph.categories));
             setEnabledComponents(new Set(graph.componentNames));
           }}
-          panelOpen={isNarrow ? null : panel.open}
-          onTogglePanel={() => (panel.open ? hidePanel() : openPanel())}
+          panelOpen={isNarrow ? null : showPanel}
+          onTogglePanel={() => {
+            setEmptyPanelRequested(!showPanel);
+            if (showPanel) hidePanel();
+            else openPanel();
+          }}
           navOpen={isNarrow ? sidebarOpen : null}
           navId={SIDEBAR_ID}
           onToggleNav={() => setSidebarOpen((v) => !v)}

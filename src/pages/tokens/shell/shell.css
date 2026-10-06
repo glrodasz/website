@@ -879,9 +879,10 @@
   container: tokens-panel / inline-size;
 }
 
-/* The canvas keeps at least PANEL_CANVAS_MIN (helpers.ts) above the panel. */
+/* Mirrors maxPanelHeight (helpers.ts): the canvas keeps PANEL_CANVAS_MIN
+   above the panel, but never at the cost of the panel's own PANEL_MIN. */
 .tokens-panel--docked {
-  max-height: calc(100% - 240px);
+  max-height: max(140px, calc(100% - 240px));
 }
 
 /* A fixed height, not sized to content, so switching Inspector/Usage does

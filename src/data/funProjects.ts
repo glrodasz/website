@@ -49,15 +49,16 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['TypeScript'],
   },
   {
-    slug: 'html-colors',
-    name: 'Favorite HTML Colors',
-    url: 'https://colors.guillermorodas.com',
-    repoUrl: 'https://github.com/glrodasz/colors',
+    slug: 'timepass',
+    name: 'Timepass',
+    url: 'https://github.com/glrodasz/timepass',
+    repoUrl: 'https://github.com/glrodasz/timepass',
     description:
-      'A hand-picked showcase of the 24 HTML named colors I keep forgetting, previewed live on buttons, type and UI mocks.',
+      'A native Apple Silicon menu bar app that shows multiple time zones, each with its country flag and current time.',
     descriptionEs:
-      'Una selección de los 24 colores con nombre de HTML que siempre olvido, con vista previa en botones, tipografía y maquetas de UI.',
-    tags: ['Next.js', 'CSS'],
+      'Una app nativa para la barra de menú de Apple Silicon que muestra varias zonas horarias, cada una con su bandera y hora actual.',
+    tags: ['Swift', 'macOS'],
+    capturable: false,
   },
   {
     slug: 'js-lineage',
@@ -70,46 +71,17 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Vite', 'TypeScript', 'Animation'],
   },
   {
-    slug: 'undefined-academy',
-    name: 'Undefined Academy',
-    url: 'https://undefined.academy',
-    repoUrl: 'https://github.com/glrodasz/academy',
+    slug: 'html-colors',
+    name: 'Favorite HTML Colors',
+    url: 'https://colors.guillermorodas.com',
+    repoUrl: 'https://github.com/glrodasz/colors',
     description:
-      'A free, 100% online 16-week bootcamp to become a full-stack JavaScript developer.',
+      'A hand-picked showcase of the 24 HTML named colors I keep forgetting, previewed live on buttons, type and UI mocks.',
     descriptionEs:
-      'Un bootcamp gratuito y 100% online de 16 semanas para convertirte en desarrollador full-stack de JavaScript.',
-    tags: ['Education', 'JavaScript'],
-  },
-  {
-    slug: 'reto',
-    name: 'RETO',
-    url: 'https://www.makemistak.es',
-    repoUrl: 'https://github.com/glrodasz/cero-web',
-    description:
-      'A focus-first task planner built from zero to production in the live-coding series Cero a Producción: keep a backlog, work on a few tasks at a time and close each focus session with a retrospective.',
-    descriptionEs:
-      'Un planificador de tareas enfocado, construido de cero a producción en la serie en vivo Cero a Producción: mantén un backlog, trabaja en pocas tareas a la vez y cierra cada sesión de foco con una retrospectiva.',
-    tags: ['Next.js', 'React Query', 'Auth0'],
-  },
-  {
-    slug: 'timepass',
-    name: 'Timepass',
-    url: 'https://github.com/glrodasz/timepass',
-    repoUrl: 'https://github.com/glrodasz/timepass',
-    description:
-      'A native Apple Silicon menu bar app that shows multiple time zones, each with its country flag and current time.',
-    descriptionEs:
-      'Una app nativa para la barra de menú de Apple Silicon que muestra varias zonas horarias, cada una con su bandera y hora actual.',
-    tags: ['Swift', 'macOS'],
-    capturable: false,
+      'Una selección de los 24 colores con nombre de HTML que siempre olvido, con vista previa en botones, tipografía y maquetas de UI.',
+    tags: ['Next.js', 'CSS'],
   },
 ];
 
-/** Projects linked from the footer, in display order. */
-export const FOOTER_PROJECT_SLUGS = ['walleto', 'reto', 'timepass', 'serieslines'];
-
-export const FOOTER_PROJECTS: FunProject[] = FOOTER_PROJECT_SLUGS.map((slug) => {
-  const project = FUN_PROJECTS.find((p) => p.slug === slug);
-  if (!project) throw new Error(`Unknown footer project: ${slug}`);
-  return project;
-});
+/** Projects linked from the footer: the first three of the list above. */
+export const FOOTER_PROJECTS: FunProject[] = FUN_PROJECTS.slice(0, 3);

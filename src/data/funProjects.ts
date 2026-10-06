@@ -20,15 +20,13 @@ export interface FunProject {
    * (Timepass uses the cover from its README); without one the card shows a mockup.
    */
   capturable?: boolean;
-  /** Hide from the site without deleting the entry. */
-  hidden?: boolean;
 }
 
 /**
  * Pet projects shown on /projects, newest and most polished first.
  * Sourced from what's deployed on Vercel and Netlify plus public GitHub repos.
  */
-const ALL_PROJECTS: FunProject[] = [
+export const FUN_PROJECTS: FunProject[] = [
   {
     slug: 'walleto',
     name: 'Walleto',
@@ -83,33 +81,7 @@ const ALL_PROJECTS: FunProject[] = [
       'Una selección de los 24 colores con nombre de HTML que siempre olvido, con vista previa en botones, tipografía y maquetas de UI.',
     tags: ['Next.js', 'CSS'],
   },
-  {
-    slug: 'undefined-academy',
-    name: 'Undefined Academy',
-    url: 'https://undefined.academy',
-    repoUrl: 'https://github.com/glrodasz/academy',
-    description:
-      'A free, 100% online 16-week bootcamp to become a full-stack JavaScript developer.',
-    descriptionEs:
-      'Un bootcamp gratuito y 100% online de 16 semanas para convertirte en desarrollador full-stack de JavaScript.',
-    hidden: true,
-    tags: ['Education', 'JavaScript'],
-  },
-  {
-    slug: 'reto',
-    name: 'RETO',
-    url: 'https://www.makemistak.es',
-    repoUrl: 'https://github.com/glrodasz/cero-web',
-    description:
-      'A focus-first task planner built from zero to production in the live-coding series Cero a Producción: keep a backlog, work on a few tasks at a time and close each focus session with a retrospective.',
-    descriptionEs:
-      'Un planificador de tareas enfocado, construido de cero a producción en la serie en vivo Cero a Producción: mantén un backlog, trabaja en pocas tareas a la vez y cierra cada sesión de foco con una retrospectiva.',
-    hidden: true,
-    tags: ['Next.js', 'React Query', 'Auth0'],
-  },
 ];
-
-export const FUN_PROJECTS: FunProject[] = ALL_PROJECTS.filter((p) => !p.hidden);
 
 /** Projects linked from the footer, in display order. */
 export const FOOTER_PROJECT_SLUGS = ['walleto', 'timepass', 'serieslines'];

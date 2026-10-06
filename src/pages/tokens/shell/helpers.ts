@@ -67,13 +67,6 @@ export function clampPanelHeight(height: number, available: number): number {
   return Math.round(Math.min(maxPanelHeight(available), Math.max(PANEL_MIN, height)));
 }
 
-export function toggleInSet(set: ReadonlySet<string>, key: string): Set<string> {
-  const next = new Set(set);
-  if (next.has(key)) next.delete(key);
-  else next.add(key);
-  return next;
-}
-
 /** Component namespaces in the order people look for them: by display name. */
 export function sortedComponentNames(graph: TokenGraph): string[] {
   return [...graph.componentNames].sort((a, b) =>

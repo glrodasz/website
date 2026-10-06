@@ -12,7 +12,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
 }
 
 .token-section__value-grid {

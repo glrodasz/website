@@ -1,155 +1,125 @@
-/* ---- Token inspector panel ---- */
+/* ---- Token inspector (the addons panel's Inspector tab) ----
+   The reference chain reads left to right while the panel is wide enough,
+   and stacks once it is not. */
 
 .token-inspector {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 4;
-  width: 340px;
-  max-height: calc(100% - 32px);
-  overflow-y: auto;
-  padding: 14px;
-  background: #0f1624;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-  font-size: 12px;
-  color: #e2e8f0;
+  padding: 14px 16px 18px;
+  font-size: 13px;
+  color: var(--tk-text-strong);
 }
 
 .token-inspector__header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.token-inspector__header-main {
-  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-bottom: 14px;
 }
 
 .token-inspector__path {
-  margin-top: 6px;
-  font-size: 12.5px;
+  flex: 1 1 240px;
+  min-width: 0;
+  margin: 0;
+  font-size: 14px;
   font-weight: 600;
-  color: #f1f5f9;
-  word-break: break-all;
-}
-
-.token-inspector__close {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  padding: 0;
-  background: transparent;
-  color: #94a3b8;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  font-size: 12px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.token-inspector__close:hover {
-  background: #1e293b;
-  color: #e2e8f0;
+  color: var(--tk-text-heading);
+  overflow-wrap: anywhere;
 }
 
 .token-inspector__level {
+  flex-shrink: 0;
   display: inline-block;
-  padding: 2px 6px;
+  padding: 2px 7px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  line-height: 16px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: #1e293b;
-  color: #94a3b8;
-  border-radius: 3px;
+  background: var(--tk-raised);
+  color: var(--tk-text-soft);
+  border-radius: 4px;
 }
 
 .token-inspector__level--component {
-  color: #7dd3fc;
+  color: var(--tk-accent-ink);
+  background: var(--tk-accent-soft);
 }
 
 .token-inspector__level--system {
-  color: #f1f5f9;
+  color: var(--tk-text-heading);
 }
 
-.token-inspector__component {
-  display: flex;
+.token-inspector__focus,
+.token-inspector__copy {
+  flex-shrink: 0;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.token-inspector__component-chip {
-  padding: 3px 10px;
-  font-size: 11px;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 13px;
   font-weight: 600;
-  color: #bae6fd;
-  background: rgba(125, 211, 252, 0.1);
-  border: 1px solid rgba(125, 211, 252, 0.3);
-  border-radius: 999px;
-}
-
-.token-inspector__focus {
-  padding: 3px 10px;
-  font-size: 11px;
-  color: #7dd3fc;
-  background: transparent;
-  border: 1px solid #334155;
-  border-radius: 999px;
+  color: var(--tk-accent-strong);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border-strong);
+  border-radius: 6px;
   cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease;
 }
 
-.token-inspector__focus:hover {
-  background: #1e293b;
-  border-color: #7dd3fc;
+.token-inspector__focus:hover,
+.token-inspector__copy:hover {
+  background: var(--tk-accent-soft);
+  border-color: var(--tk-accent);
 }
 
-.token-inspector__section {
-  margin-top: 14px;
-}
-
-.token-inspector__section-title {
-  margin: 0 0 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #94a3b8;
-}
-
-.token-inspector__count {
-  color: #7b8aa3;
+.token-inspector__copy {
+  padding: 0 10px;
   font-weight: 500;
 }
 
+.token-inspector__chain {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Equal cards; each arrow sits in the gap before its card. */
+.token-inspector__chain-step {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  /* A one- or two-step chain does not stretch across a wide panel. */
+  max-width: 520px;
+  display: flex;
+  align-items: stretch;
+}
+
 .token-inspector__chain-arrow {
-  margin: 4px 0;
-  padding-left: 12px;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #7b8aa3;
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  display: flex;
+  color: var(--tk-text-muted);
+  transform: translateY(-50%);
 }
 
 .token-inspector__chain-row {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  text-align: left;
-  background: #0b1220;
-  border: 1px solid #1f2937;
-  border-radius: 6px;
-  color: inherit;
-  font: inherit;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 10px 12px 12px;
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: 8px;
 }
 
 .token-inspector__chain-row--current {
-  border-color: rgba(255, 212, 0, 0.5);
-  background: rgba(255, 212, 0, 0.05);
+  border-color: color-mix(in srgb, var(--tk-select) 55%, transparent);
+  background: color-mix(in srgb, var(--tk-select) 5%, var(--tk-surface));
 }
 
 .token-inspector__chain-row--link {
@@ -157,15 +127,15 @@
 }
 
 .token-inspector__chain-row--link:hover {
-  border-color: #7dd3fc;
-  background: rgba(125, 211, 252, 0.06);
+  border-color: var(--tk-accent);
 }
 
 .token-inspector__chain-head {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 6px;
+  min-height: 32px;
+  margin-bottom: 4px;
 }
 
 /* Head doubles as the "inspect this token" control on non-current rows. */
@@ -174,6 +144,7 @@
   padding: 0;
   background: none;
   border: 0;
+  border-radius: 4px;
   color: inherit;
   font: inherit;
   text-align: left;
@@ -181,134 +152,114 @@
 }
 
 .token-inspector__chain-head--link:hover .token-inspector__chain-label {
-  color: #7dd3fc;
+  color: var(--tk-accent-strong);
+  text-decoration: underline;
 }
 
 .token-inspector__chain-label {
   min-width: 0;
   font-weight: 600;
-  font-size: 12px;
-  color: #f1f5f9;
-  word-break: break-all;
+  font-size: 13px;
+  color: var(--tk-text-heading);
+  overflow-wrap: anywhere;
 }
 
 .token-inspector__var-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .token-inspector__var {
   flex: 1 1 auto;
   min-width: 0;
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 11px;
-  color: #cbd5e1;
-  word-break: break-all;
-}
-
-.token-inspector__copy {
-  flex-shrink: 0;
-  padding: 2px 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #7dd3fc;
-  background: transparent;
-  border: 1px solid #334155;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.token-inspector__copy:hover {
-  background: #1e293b;
-  border-color: #7dd3fc;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--tk-text);
+  overflow-wrap: anywhere;
 }
 
 .token-inspector__value-row {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 6px;
-  margin-top: 3px;
+  grid-template-columns: 52px 1fr;
+  gap: 8px;
+  margin-top: 4px;
   align-items: center;
+}
+
+/* The theme not previewed recedes: its swatch fades, its text stays at 4.5:1. */
+.token-inspector__value-row:not(.token-inspector__value-row--active) .token-swatch {
   opacity: 0.55;
 }
 
-.token-inspector__value-row--active {
-  opacity: 1;
+.token-inspector__value-row:not(.token-inspector__value-row--active) code {
+  color: var(--tk-text-muted);
 }
 
 .token-inspector__value-key {
-  color: #7b8aa3;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: var(--tk-text-muted);
+  font-size: 12px;
 }
 
 .token-inspector__value {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 
 .token-inspector__value code {
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 11px;
-  color: #e2e8f0;
-  word-break: break-all;
+  font-size: 12px;
+  color: var(--tk-text-strong);
+  overflow-wrap: anywhere;
 }
 
-.token-inspector__consumers {
-  display: grid;
-  gap: 4px;
+/* Too narrow for three cards side by side: stack them, arrows pointing down. */
+@container tokens-panel (max-width: 820px) {
+  .token-inspector__chain {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .token-inspector__chain-step {
+    flex-direction: column;
+    max-width: none;
+  }
+
+  .token-inspector__chain-arrow {
+    position: static;
+    padding: 4px 0 4px 14px;
+    transform: none;
+  }
+
+  .token-inspector__chain-arrow .tokens-icon {
+    transform: rotate(90deg);
+  }
 }
 
-.token-inspector__consumer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 6px 8px;
-  text-align: left;
-  background: transparent;
-  border: 1px solid #1f2937;
-  border-radius: 4px;
-  color: #cbd5e1;
-  font: inherit;
-  font-size: 11.5px;
-  cursor: pointer;
-  transition: border-color 120ms ease, background 120ms ease;
-}
+/* Stacked but still roomy: each card puts its values beside its name. */
+@container tokens-panel (min-width: 560px) and (max-width: 820px) {
+  .token-inspector__chain-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-auto-flow: row dense;
+    column-gap: 20px;
+    align-items: center;
+  }
 
-.token-inspector__consumer:hover {
-  border-color: #7dd3fc;
-  background: rgba(125, 211, 252, 0.06);
-}
+  .token-inspector__chain-head,
+  .token-inspector__var-row {
+    grid-column: 1;
+  }
 
-.token-inspector__consumer-label {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+  .token-inspector__var-row {
+    margin-bottom: 0;
+  }
 
-.token-inspector__more {
-  padding: 4px 8px;
-  font-size: 11px;
-  color: #7b8aa3;
-}
-
-@media (max-width: 900px) {
-  .token-inspector {
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: auto;
-    max-height: 50vh;
-    border-radius: 12px 12px 0 0;
-    border-bottom: 0;
+  .token-inspector__value-row {
+    grid-column: 2;
   }
 }

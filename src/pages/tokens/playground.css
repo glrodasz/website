@@ -1,0 +1,173 @@
+/* ---- Token playground palette ----
+   The only place the explorer's colours are written down. Every rule in
+   src/pages/tokens/ reads these variables instead (the page is exempt from
+   the design-token rule, CLAUDE.md rule 2).
+
+   The same names are defined three times: the light chrome on .tokens-page
+   (sidebar, toolbar, menus, addons panel), then a light and a dark canvas under
+   [data-canvas-theme], which the views sit in and which follows the theme
+   whose values are previewed. A rule therefore picks up whichever palette
+   its element sits in. Tints are derived in the rules with color-mix().
+
+   Contrast: text colours reach 4.5:1 and marks (level hues, edges,
+   selection, focus) 3:1 against their own ground, in every palette. */
+
+.tokens-page {
+  /* Grounds */
+  --tk-bg: #f6f9fc;
+  --tk-bg-veil: rgba(246, 249, 252, 0.94);
+  --tk-surface: #ffffff;
+  --tk-sunken: #f6f9fc;
+  --tk-hover: #f1f4f8;
+  /* Hover on the sidebar's tinted ground. */
+  --tk-nav-hover: #e8eef6;
+  --tk-raised: #eef2f6;
+  --tk-raised-hover: #e3e8ee;
+  /* Borders */
+  --tk-border-faint: #eef1f5;
+  --tk-border: #e3e8ee;
+  --tk-border-strong: #cfd6df;
+  --tk-border-hover: #8a94a3;
+  /* Text, strongest first */
+  --tk-text-heading: #111827;
+  --tk-text-strong: #1f2a37;
+  --tk-text: #1f2a37;
+  --tk-text-soft: #3e4a59;
+  --tk-text-muted: #5b6675;
+  --tk-text-faint: #8a94a3;
+  --tk-text-disabled: #a3acb8;
+  /* Accent */
+  --tk-accent: #1d6fd8;
+  --tk-accent-strong: #1759b0;
+  --tk-accent-ink: #0f3e7a;
+  --tk-accent-soft: #e8f1fc;
+  --tk-on-accent: #ffffff;
+  --tk-select: #a16207;
+  --tk-focus-ring: #1d6fd8;
+  /* Status */
+  --tk-error: #b91c1c;
+  --tk-warning: #92400e;
+  --tk-info: #1d4ed8;
+  --tk-success: #166534;
+  /* Elevation */
+  --tk-shadow: rgba(15, 23, 42, 0.12);
+  --tk-shadow-strong: rgba(15, 23, 42, 0.18);
+  --tk-backdrop: rgba(15, 23, 42, 0.35);
+
+  /* The two canvases, as the Theme menu shows them. */
+  --tk-preview-light: #ffffff;
+  --tk-preview-dark: #0b1018;
+
+  /* Theme-independent: swatch furniture drawn over the token's own colour. */
+  --tk-checker-light: #e2e8f0;
+  --tk-checker-dark: #94a3b8;
+  --tk-on-swatch: #ffffff;
+  /* Under a label on any swatch colour, white on it stays above 4.5:1. */
+  --tk-on-swatch-chip: rgba(0, 0, 0, 0.62);
+}
+
+/* Storybook-style light canvas. */
+[data-canvas-theme='light'] {
+  --tk-bg: #ffffff;
+  --tk-bg-veil: rgba(255, 255, 255, 0.94);
+  --tk-bg-clear: rgba(255, 255, 255, 0);
+  --tk-surface: #ffffff;
+  --tk-sunken: #f6f8fa;
+  --tk-hover: #f1f5f9;
+  --tk-raised: #eef2f6;
+  --tk-raised-hover: #e2e8f0;
+  --tk-border-faint: #edf0f3;
+  --tk-border: #dde3ea;
+  --tk-border-strong: #cbd5e1;
+  --tk-border-hover: #94a3b8;
+  --tk-text-heading: #0f172a;
+  --tk-text-strong: #1e293b;
+  --tk-text: #334155;
+  --tk-text-soft: #475569;
+  --tk-text-muted: #5b6675;
+  --tk-text-faint: #8a94a3;
+  --tk-text-disabled: #a3acb8;
+  --tk-accent: #0369a1;
+  --tk-accent-strong: #075985;
+  --tk-accent-ink: #0c4a6e;
+  --tk-on-accent: #ffffff;
+  --tk-select: #a16207;
+  --tk-focus-ring: #1d4ed8;
+  --tk-error: #b91c1c;
+  --tk-warning: #92400e;
+  --tk-info: #1d4ed8;
+  --tk-success: #166534;
+  --tk-shadow: rgba(15, 23, 42, 0.12);
+  --tk-shadow-strong: rgba(15, 23, 42, 0.18);
+  /* Level hues, also used as text (column heads, crumbs). */
+  --tk-hue-global: #64748b;
+  --tk-hue-system: #1e293b;
+  --tk-hue-component: #0369a1;
+  --tk-hue-ui: #b45309;
+  --tk-edge: #64748b;
+  --tk-edge-lit: #0369a1;
+  /* 3D label overlay */
+  --tk-label-bg: rgba(255, 255, 255, 0.85);
+  --tk-label-bg-lit: rgba(241, 245, 249, 0.95);
+  --tk-label-component: #075985;
+  --tk-label-ui: #92400e;
+  --tk-chip-bg: rgba(255, 255, 255, 0.92);
+
+  background: var(--tk-bg);
+  color: var(--tk-text-strong);
+}
+
+/* The explorer's original slate canvas. */
+[data-canvas-theme='dark'] {
+  --tk-bg: #0b1018;
+  --tk-bg-veil: rgba(11, 16, 24, 0.94);
+  --tk-bg-clear: rgba(11, 16, 24, 0);
+  --tk-surface: #0f1624;
+  --tk-sunken: #0b1220;
+  --tk-hover: #141d2e;
+  --tk-raised: #1e293b;
+  --tk-raised-hover: #253247;
+  --tk-border-faint: #1a2332;
+  --tk-border: #1f2937;
+  --tk-border-strong: #334155;
+  --tk-border-hover: #475569;
+  --tk-text-heading: #f1f5f9;
+  --tk-text-strong: #e2e8f0;
+  --tk-text: #cbd5e1;
+  --tk-text-soft: #94a3b8;
+  --tk-text-muted: #7b8aa3;
+  --tk-text-faint: #64748b;
+  --tk-text-disabled: #475569;
+  --tk-accent: #7dd3fc;
+  --tk-accent-strong: #bae6fd;
+  --tk-accent-ink: #f0f9ff;
+  --tk-on-accent: #0b1018;
+  --tk-select: #ffd400;
+  --tk-focus-ring: #f1f5f9;
+  --tk-error: #f87171;
+  --tk-warning: #fbbf24;
+  --tk-info: #60a5fa;
+  --tk-success: #4ade80;
+  --tk-shadow: rgba(0, 0, 0, 0.45);
+  --tk-shadow-strong: rgba(0, 0, 0, 0.5);
+  --tk-hue-global: #94a3b8;
+  --tk-hue-system: #f1f5f9;
+  --tk-hue-component: #7dd3fc;
+  --tk-hue-ui: #fbbf24;
+  --tk-edge: #94a3b8;
+  --tk-edge-lit: #7dd3fc;
+  --tk-label-bg: rgba(11, 16, 24, 0.78);
+  --tk-label-bg-lit: rgba(20, 29, 46, 0.9);
+  --tk-label-component: #bae6fd;
+  --tk-label-ui: #fde68a;
+  --tk-chip-bg: rgba(30, 41, 59, 0.92);
+
+  background: var(--tk-bg);
+  color: var(--tk-text-strong);
+}
+
+/* The site's focus ring follows the site theme, which can differ from the
+   ground here (a yellow ring on the light chrome); use this palette's. */
+.tokens-page :focus-visible {
+  outline-color: var(--tk-focus-ring);
+}

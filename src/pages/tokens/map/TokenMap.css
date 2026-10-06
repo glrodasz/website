@@ -1,0 +1,904 @@
+/* ---- Token map (Map tab) ----
+   Dev-only page: uses the explorer's own palette (playground.css) rather
+   than design tokens (see CLAUDE.md rule 2). Each column sets
+   --token-map-hue for its level from the canvas's level hues. */
+
+.token-map {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.token-map__column--global,
+.token-map__head--global,
+.token-map__crumb--global,
+.token-map__caption3d--global {
+  --token-map-hue: var(--tk-hue-global);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-global) 45%, transparent);
+}
+
+.token-map__column--system,
+.token-map__head--system,
+.token-map__crumb--system,
+.token-map__caption3d--system {
+  --token-map-hue: var(--tk-hue-system);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-system) 40%, transparent);
+}
+
+.token-map__column--component,
+.token-map__head--component,
+.token-map__crumb--component,
+.token-map__caption3d--component {
+  --token-map-hue: var(--tk-hue-component);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-component) 45%, transparent);
+}
+
+.token-map__column--ui,
+.token-map__head--ui,
+.token-map__crumb--ui,
+.token-map__caption3d--ui {
+  --token-map-hue: var(--tk-hue-ui);
+  --token-map-hue-soft: color-mix(in srgb, var(--tk-hue-ui) 45%, transparent);
+}
+
+/* ---- Canvas header: Back, breadcrumb, search status, legend ---- */
+
+.token-map__toolbar {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.token-map__trail {
+  flex: 1 1 200px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.token-map__back {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tk-text-strong);
+  background: var(--tk-raised);
+  border: 1px solid var(--tk-border-strong);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.token-map__back:hover:not(:disabled) {
+  background: var(--tk-raised-hover);
+  border-color: var(--tk-accent);
+}
+
+.token-map__back:disabled {
+  color: var(--tk-text-muted);
+  background: transparent;
+  border-color: var(--tk-border);
+  cursor: default;
+}
+
+.token-map__crumbs {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  /* Room inside the clip for the 2px focus ring (offset 2px) of the crumbs,
+     which overhang the list by their 4px side margins. */
+  margin: -4px -8px;
+  padding: 4px 8px;
+  list-style: none;
+  font-size: 12.5px;
+  overflow: hidden;
+}
+
+.token-map__crumb {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.token-map__crumb + .token-map__crumb::before {
+  content: '›';
+  flex-shrink: 0;
+  padding: 0 8px;
+  color: var(--tk-text-faint);
+}
+
+/* Earlier crumbs give way first, down to a stub that still shows its
+   ellipsis; the current focus keeps its name longest. */
+.token-map__crumb:not(:last-child) {
+  flex: 0 100 auto;
+  min-width: 4.5em;
+}
+
+.token-map__crumbs .token-map__crumb--gap {
+  flex: none;
+  min-width: 0;
+  color: var(--tk-text-muted);
+}
+
+.token-map__crumb-link,
+.token-map__crumb-current {
+  min-width: 0;
+  max-width: 18em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Level dot, matching the column the focus sits in. */
+.token-map__crumb--level .token-map__crumb-link::before,
+.token-map__crumb--level .token-map__crumb-current::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  vertical-align: 1px;
+  border-radius: 50%;
+  background: var(--token-map-hue);
+}
+
+.token-map__crumb-link {
+  padding: 2px 4px;
+  margin: 0 -4px;
+  font: inherit;
+  color: var(--tk-accent);
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.token-map__crumb-link:hover {
+  color: var(--tk-accent-strong);
+  text-decoration: underline;
+}
+
+.token-map__crumb-current {
+  font-weight: 600;
+  color: var(--tk-text-heading);
+  /* Rounds the site focus ring it gets when the control just used goes away. */
+  border-radius: 4px;
+}
+
+.token-map__search-status {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--tk-text-soft);
+  white-space: nowrap;
+}
+
+/* Hidden visually, not with display: none, so the live region is already in
+   the accessibility tree when the first count arrives and gets announced. */
+.token-map__search-status:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.token-map__legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--tk-text-muted);
+}
+
+.token-map__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* A wedge: links widen with the number of references they stand for. */
+.token-map__legend-line {
+  width: 24px;
+  height: 6px;
+  background: var(--tk-edge);
+  clip-path: polygon(0 42%, 100% 0, 100% 100%, 0 58%);
+}
+
+.token-map__notice {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-size: 13px;
+  color: var(--tk-text-soft);
+}
+
+/* ---- 2D map ---- */
+
+.token-map__viewport {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.token-map__scroller {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* Narrow screens scroll sideways rather than squeezing four columns. */
+.token-map__canvas {
+  position: relative;
+  min-width: 720px;
+  padding-bottom: 48px;
+}
+
+/* Columns cut off by a narrow scroller: the edge fades and names them. */
+.token-map__more {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 56px;
+  pointer-events: none;
+}
+
+.token-map__more--before {
+  left: 0;
+  background: linear-gradient(to right, var(--tk-bg) 10%, var(--tk-bg-clear));
+}
+
+.token-map__more--after {
+  right: 0;
+  background: linear-gradient(to left, var(--tk-bg) 10%, var(--tk-bg-clear));
+}
+
+.token-map__more-button {
+  position: absolute;
+  /* Below the rows rather than over the column heads, which stay readable. */
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--tk-text-strong);
+  background: var(--tk-raised);
+  border: 1px solid var(--tk-border-strong);
+  border-radius: 999px;
+  box-shadow: 0 2px 10px var(--tk-shadow-strong);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.token-map__more--before .token-map__more-button {
+  left: 8px;
+}
+
+.token-map__more--after .token-map__more-button {
+  right: 8px;
+}
+
+.token-map__more-button:hover {
+  border-color: var(--tk-accent);
+}
+
+.token-map__heads {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 52px;
+  background: var(--tk-bg-veil);
+  border-bottom: 1px solid var(--tk-border);
+  backdrop-filter: blur(6px);
+}
+
+.token-map__heads-inner {
+  position: relative;
+  height: 100%;
+  margin: 0 20px;
+}
+
+.token-map__head {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.token-map__head-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tk-text-strong);
+}
+
+.token-map__head-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--token-map-hue);
+}
+
+.token-map__head-count {
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--tk-text);
+  background: var(--tk-raised);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.token-map__head-caption {
+  padding-left: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--tk-text-muted);
+}
+
+.token-map__plot {
+  position: relative;
+  margin: 12px 20px 0;
+}
+
+.token-map__edges {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.token-map__edge {
+  fill: none;
+  stroke: var(--tk-edge);
+  /* Set per gap by the renderer: dense gaps rest fainter. */
+  stroke-opacity: var(--token-map-edge-rest, 0.35);
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  transition: stroke-opacity 140ms ease;
+}
+
+/* While a row is traced every resting link fades; its lineage is redrawn on top. */
+.token-map__edges--tracing .token-map__edge {
+  stroke-opacity: 0.06;
+}
+
+.token-map__edges--tracing .token-map__edge--lit {
+  stroke: var(--tk-edge-lit);
+  stroke-opacity: 0.9;
+}
+
+.token-map__column {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.token-map__column-empty {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 14px 10px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--tk-text-muted);
+  border: 1px dashed var(--tk-border);
+  border-radius: 6px;
+}
+
+/* Height matches ROW.sectionH in arrange.ts. */
+.token-map__section {
+  position: absolute;
+  left: 2px;
+  right: 0;
+  height: 22px;
+  margin: 0;
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tk-text-muted);
+}
+
+/* Height matches ROW.h in arrange.ts. */
+.token-map__slot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28px;
+  display: flex;
+  gap: 3px;
+}
+
+/* Members of an expanded group hang off a bracket line. */
+.token-map__slot--expanded {
+  padding-left: 10px;
+}
+
+.token-map__slot--expanded::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 3px;
+  border-left: 1px solid var(--tk-border-strong);
+}
+
+.token-map__row {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 7px;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  color: var(--tk-text);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-left: 2px solid var(--token-map-hue-soft);
+  border-radius: 5px;
+  cursor: pointer;
+  /* Keyboard focus scrolls rows clear of the sticky column heads. */
+  scroll-margin: 72px 24px 24px;
+  transition:
+    opacity 140ms ease,
+    border-color 120ms ease,
+    background 120ms ease,
+    color 120ms ease;
+}
+
+/* A group stands for several tokens: drawn as a small stack of cards. */
+.token-map__row--group {
+  box-shadow:
+    3px 3px 0 -1px var(--tk-bg),
+    3px 3px 0 0 var(--tk-border);
+}
+
+.token-map__row:hover,
+.token-map__row--lit {
+  color: var(--tk-text-heading);
+  background: var(--tk-hover);
+  border-color: var(--tk-border-hover);
+  border-left-color: var(--token-map-hue);
+}
+
+/* While a lineage is traced, every row outside it dims. */
+.token-map__plot--tracing .token-map__row:not(.token-map__row--lit) {
+  opacity: 0.3;
+}
+
+/* Search misses recede by colour rather than opacity, so their text stays
+   at 4.5:1 or better: they are still live controls. */
+.token-map__row--muted {
+  color: var(--tk-text-muted);
+  background: var(--tk-bg);
+  border-color: var(--tk-border-faint);
+  border-left-color: color-mix(in srgb, var(--tk-edge) 20%, transparent);
+}
+
+.token-map__row--muted .token-map__label-head {
+  opacity: 1;
+}
+
+.token-map__row--muted .token-map__swatches {
+  opacity: 0.45;
+}
+
+.token-map__row--muted .token-map__count {
+  color: var(--tk-text-muted);
+}
+
+.token-map__row--muted.token-map__row--lit {
+  color: var(--tk-text-soft);
+  background: var(--tk-hover);
+  border-left-color: var(--token-map-hue-soft);
+}
+
+.token-map__row--focus {
+  font-weight: 500;
+  color: var(--tk-accent-ink);
+  background: color-mix(in srgb, var(--tk-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--tk-accent) 60%, transparent);
+  border-left-color: var(--tk-accent);
+}
+
+.token-map__row--focus:hover,
+.token-map__row--focus.token-map__row--lit {
+  background: color-mix(in srgb, var(--tk-accent) 18%, transparent);
+  border-color: var(--tk-accent);
+}
+
+/* The focus tint is lighter than a row, so its quiet text needs a lighter grey. */
+.token-map__row--focus.token-map__row--muted,
+.token-map__row--focus .token-map__value,
+.token-map__row--focus .token-map__count,
+.token-map__row--focus .token-map__elsewhere,
+.token-map__row--focus .token-map__chevron {
+  color: var(--tk-text-soft);
+}
+
+/* The token open in the inspector, in the explorer's selection yellow. */
+.token-map__row--selected {
+  border-color: color-mix(in srgb, var(--tk-select) 70%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tk-select) 35%, transparent);
+}
+
+.token-map__row:focus-visible,
+.token-map__fold:focus-visible {
+  outline: 2px solid var(--tk-focus-ring);
+  outline-offset: 2px;
+}
+
+.token-map__swatches {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.token-map__swatches .token-swatch {
+  box-shadow: 0 0 0 1px var(--tk-surface);
+}
+
+.token-map__swatches .token-swatch + .token-swatch {
+  margin-left: -6px;
+}
+
+.token-map__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+}
+
+.token-map__label-head,
+.token-map__label-tail {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The shared prefix shrinks first and keeps room for its ellipsis. */
+.token-map__label-head {
+  flex: 0 1000 auto;
+  min-width: 1.4em;
+  opacity: 0.72;
+}
+
+/* Faded ink drops below 4.5:1 on the light focus tint; a lighter accent recedes instead. */
+.token-map__row--focus .token-map__label-head {
+  opacity: 1;
+  color: var(--tk-accent-strong);
+}
+
+.token-map__row--focus.token-map__row--muted .token-map__label-head {
+  color: inherit;
+}
+
+.token-map__label-tail {
+  flex: 0 1 auto;
+}
+
+/* Short values (12, 600) stay whole; long ones are capped. */
+.token-map__value {
+  flex: 0 0 auto;
+  max-width: 34%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--tk-text-muted);
+}
+
+.token-map__count {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tk-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Users that exist but are not on this map — present, but quiet. */
+.token-map__elsewhere,
+.token-map__legend-badge {
+  flex-shrink: 0;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  color: var(--tk-text-muted);
+  border: 1px dashed var(--tk-border-strong);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.token-map__chevron {
+  flex-shrink: 0;
+  font-size: 10px;
+  color: var(--tk-text-muted);
+}
+
+.token-map__fold {
+  flex: 0 0 24px;
+  padding: 0;
+  font: inherit;
+  font-size: 11px;
+  color: var(--tk-text-soft);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+.token-map__fold:hover {
+  color: var(--tk-text-heading);
+  border-color: var(--tk-border-hover);
+}
+
+/* ---- 3D map ----
+   The canvas fills the stage; labels and captions are an HTML layer on top,
+   positioned by the scene every frame it draws. */
+
+.token-map__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--tk-bg);
+}
+
+.token-map__canvas3d {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.token-map__canvas3d:active {
+  cursor: grabbing;
+}
+
+.token-map__labels3d {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.token-map__label3d,
+.token-map__caption3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.token-map__label3d {
+  display: flex;
+  max-width: 190px;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 14px;
+  color: var(--tk-text);
+  background: var(--tk-label-bg);
+  border-radius: 4px;
+  transition: opacity 120ms ease;
+}
+
+.token-map__label3d--component {
+  color: var(--tk-label-component);
+}
+
+.token-map__label3d--ui {
+  color: var(--tk-label-ui);
+}
+
+.token-map__label3d-head {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--tk-text-muted);
+}
+
+.token-map__label3d-tail {
+  flex-shrink: 0;
+}
+
+.token-map__label3d--lit {
+  color: var(--tk-text-heading);
+  background: var(--tk-label-bg-lit);
+}
+
+.token-map__label3d--focus {
+  color: var(--tk-accent-ink);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tk-accent) 60%, transparent);
+}
+
+.token-map__label3d--selected {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tk-select) 70%, transparent);
+}
+
+.token-map__label3d--hover {
+  z-index: 1;
+  color: var(--tk-text-heading);
+  background: var(--tk-raised);
+  box-shadow: inset 0 0 0 1px var(--tk-border-hover);
+}
+
+.token-map__label3d--dim,
+.token-map__label3d--muted {
+  opacity: 0.35;
+}
+
+.token-map__caption3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tk-text-strong);
+}
+
+.token-map__caption3d::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--token-map-hue);
+}
+
+.token-map__caption3d-count {
+  padding: 0 7px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--tk-text);
+  background: var(--tk-raised);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.token-map__stage > .token-map__notice--overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--tk-bg);
+}
+
+.token-map__dock3d {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  pointer-events: none;
+}
+
+.token-map__chip3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tk-text-strong);
+  background: var(--tk-chip-bg);
+  border: 1px solid var(--tk-border-strong);
+  border-radius: 6px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color 120ms ease;
+}
+
+.token-map__chip3d:hover:not(:disabled) {
+  border-color: var(--tk-accent);
+}
+
+.token-map__chip3d:disabled {
+  color: var(--tk-text-faint);
+  cursor: default;
+}
+
+.token-map__chip3d:focus-visible {
+  outline: 2px solid var(--tk-focus-ring);
+  outline-offset: 2px;
+}
+
+.token-map__hint3d {
+  font-size: 11.5px;
+  color: var(--tk-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .token-map__row,
+  .token-map__edge,
+  .token-map__label3d {
+    transition: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .token-map__legend {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .token-map__toolbar {
+    padding: 8px 14px;
+  }
+
+  .token-map__swatches .token-swatch:nth-child(n + 3) {
+    display: none;
+  }
+
+  /* Back covers the history here; only the current focus is named. */
+  .token-map__crumb:not(:last-child) {
+    display: none;
+  }
+
+  .token-map__crumb:last-child::before {
+    display: none;
+  }
+
+  .token-map__heads-inner,
+  .token-map__plot {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}

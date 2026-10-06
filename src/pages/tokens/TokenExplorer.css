@@ -1,119 +1,82 @@
-/* ---- Explorer ---- */
+/* ---- Canvas ----
+   The views sit on the canvas, whose palette follows the previewed theme
+   (data-canvas-theme, playground.css). */
 
 .token-explorer {
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  outline: none;
 }
 
 .token-explorer__head {
   flex-shrink: 0;
-  padding: 16px 20px 12px;
-  border-bottom: 1px solid #1f2937;
-  background: #0d1320;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--tk-border);
 }
 
-.token-explorer__pills {
+.token-explorer__title {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--tk-text-heading);
 }
 
-.token-explorer__pill-step {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.token-explorer__pill-arrow {
-  color: #7b8aa3;
-  font-size: 13px;
-  padding: 0 2px;
-}
-
-.token-explorer__pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 14px;
+.token-explorer__count {
+  padding: 1px 8px;
   font-size: 13px;
   font-weight: 600;
-  color: #94a3b8;
-  background: #0b1220;
-  border: 1px solid #1f2937;
+  letter-spacing: 0;
+  color: var(--tk-text-soft);
+  background: var(--tk-raised);
   border-radius: 999px;
-  cursor: pointer;
-  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
-}
-
-.token-explorer__pill:hover {
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-.token-explorer__pill--active {
-  color: #0b1018;
-  background: #7dd3fc;
-  border-color: #7dd3fc;
-}
-
-.token-explorer__pill-count {
-  font-size: 11px;
-  font-weight: 600;
   font-variant-numeric: tabular-nums;
-  opacity: 0.75;
 }
 
 .token-explorer__caption {
-  margin: 8px 0 0;
-  font-size: 11.5px;
-  color: #7b8aa3;
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--tk-text-muted);
 }
 
 .token-explorer__body {
   flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
-  padding: 16px 20px 80px;
+  padding: 16px 24px 48px;
 }
 
 .token-explorer__empty {
   padding: 24px 4px;
   font-size: 13px;
-  color: #7b8aa3;
-}
-
-.token-explorer__pill--audit {
-  margin-left: 12px;
-}
-
-.token-explorer__pill--audit-error:not(.token-explorer__pill--active) {
-  color: #f87171;
-  border-color: rgba(248, 113, 113, 0.4);
-}
-
-.token-explorer__pill--audit-warning:not(.token-explorer__pill--active) {
-  color: #fbbf24;
-  border-color: rgba(251, 191, 36, 0.4);
+  color: var(--tk-text-muted);
 }
 
 @media (max-width: 900px) {
   .token-explorer__head {
-    padding: 14px 14px 10px;
-    /* leave room for the floating Filters toggle */
-    padding-left: 110px;
-    min-height: 52px;
+    padding: 14px 16px 12px;
+  }
+
+  .token-explorer__title {
+    font-size: 16px;
   }
 
   .token-explorer__body {
-    padding: 12px 14px 96px;
+    padding: 12px 16px 32px;
   }
+}
 
-  .token-explorer__caption {
-    display: none;
-  }
-
-  .token-explorer__pill--audit {
-    margin-left: 0;
-  }
+/* The map scrolls itself on both axes and fills the remaining height, so the
+   body neither pads nor scrolls. Last, to win over the narrow padding above. */
+.token-explorer__body--map {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
 }

@@ -17,6 +17,14 @@ import NotFound from './pages/NotFound';
 // Dev-only token explorer: bundles every token JSON plus the audit engine,
 // so it is lazy-loaded to keep it out of the main bundle.
 const Tokens = lazy(() => import('./pages/tokens/Tokens'));
+// Layout only, inline: the explorer's stylesheet ships in the lazy chunk this
+// fallback waits for, so no class from it could style the fallback.
+const TOKENS_FALLBACK_LAYOUT = {
+  position: 'fixed',
+  inset: 0,
+  display: 'grid',
+  placeItems: 'center',
+} as const;
 
 /** Routes that own the whole viewport and render no site chrome around them. */
 function isFullScreenRoute(pathname: string): boolean {
@@ -55,7 +63,7 @@ function AppShell() {
           <Route
             path="/tokens"
             element={
-              <Suspense fallback={<div className="tokens-page tokens-page--loading">Loading tokens…</div>}>
+              <Suspense fallback={<div style={TOKENS_FALLBACK_LAYOUT}>Loading tokens…</div>}>
                 <Tokens />
               </Suspense>
             }

@@ -135,9 +135,22 @@ export function ComponentsView({
     if (focusedComponent) setExpanded((prev) => new Set(prev).add(focusedComponent));
   }
 
-  // …and scrolls its card into view once it has rendered.
+  // …and scrolls its card into view once it has rendered. The explorer body is
+  // scrolled directly: Element.scrollIntoView would also move the browser's Tab
+  // starting point into the card, so on a deep link the first Tab would skip
+  // the skip link, the search and the nav.
   useEffect(() => {
-    focusedRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    const card = focusedRef.current;
+    const scroller = card?.closest<HTMLElement>('.token-explorer__body');
+    if (!card || !scroller) return;
+    const margin = parseFloat(getComputedStyle(card).scrollMarginTop) || 0;
+    const top =
+      scroller.scrollTop +
+      card.getBoundingClientRect().top -
+      scroller.getBoundingClientRect().top -
+      margin;
+    const instant = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    scroller.scrollTo({ top, behavior: instant ? 'auto' : 'smooth' });
   }, [focusedComponent]);
 
   // A search expands everything that matched (when the result set is small).
@@ -168,16 +181,18 @@ export function ComponentsView({
             className={`token-card${focusedComponent === name ? ' token-card--focused' : ''}`}
             ref={focusedComponent === name ? (el) => { focusedRef.current = el; } : undefined}
           >
-            <button
-              type="button"
-              className="token-card__header"
-              onClick={() => toggle(name)}
-              aria-expanded={open}
-            >
-              <span className="token-card__chevron" aria-hidden="true">{open ? '▾' : '▸'}</span>
-              <span className="token-card__name">{displayComponentName(name)}</span>
-              <span className="token-card__count">{count} tokens</span>
-            </button>
+            <h3 className="token-card__heading">
+              <button
+                type="button"
+                className="token-card__header"
+                onClick={() => toggle(name)}
+                aria-expanded={open}
+              >
+                <span className="token-card__chevron" aria-hidden="true">{open ? '▾' : '▸'}</span>
+                <span className="token-card__name">{displayComponentName(name)}</span>
+                <span className="token-card__count">{count} tokens</span>
+              </button>
+            </h3>
             {open && (
               <div className="token-card__body">
                 {[...byProperty.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([prop, members]) => (

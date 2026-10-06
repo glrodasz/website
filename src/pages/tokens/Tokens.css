@@ -1,5 +1,6 @@
 /* Owns the whole viewport: App hides the site navbar and footer on this route,
-   so there is no chrome to sit below and nothing rendered behind the panel. */
+   so there is no chrome to sit below and nothing rendered behind the panel.
+   Storybook's frame: sidebar | toolbar over canvas over addons panel. */
 .tokens-page {
   position: fixed;
   top: 0;
@@ -7,380 +8,40 @@
   right: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: 320px 1fr;
-  background: #0b1018;
-  color: #e2e8f0;
+  grid-template-columns: 260px minmax(0, 1fr);
+  background: var(--tk-bg);
+  color: var(--tk-text-strong);
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
   z-index: 1;
-}
-
-/* Suspense fallback while the lazy chunk loads — same ground as the page. */
-.tokens-page--loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: #94a3b8;
-}
-
-.tokens-page__sidebar-toggle {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 3;
-  display: none;
-  padding: 8px 14px;
-  background: rgba(15, 22, 36, 0.92);
-  color: #e2e8f0;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.tokens-page__sidebar-toggle:hover {
-  background: #1e293b;
 }
 
 .tokens-page__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--tk-backdrop);
   z-index: 2;
-}
-
-.tokens-page__sidebar {
-  overflow-y: auto;
-  padding: 20px 18px;
-  border-right: 1px solid #1f2937;
-  background: #0f1624;
-}
-
-.tokens-page__header {
-  margin-bottom: 18px;
-}
-
-.tokens-page__title {
-  margin: 0 0 6px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.tokens-page__description {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #94a3b8;
-}
-
-.tokens-page__stats {
-  display: grid;
-  gap: 4px;
-  margin: 0 0 18px;
-  padding: 12px;
-  font-size: 12px;
-  background: #0b1220;
-  border: 1px solid #1f2937;
-  border-radius: 6px;
-  color: #cbd5e1;
-}
-
-.tokens-page__stats strong {
-  display: inline-block;
-  min-width: 40px;
-  color: #f1f5f9;
-  font-variant-numeric: tabular-nums;
-}
-
-.tokens-page__filter-group {
-  margin-bottom: 18px;
-}
-
-.tokens-page__filter-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.tokens-page__filter-title {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #94a3b8;
-}
-
-.tokens-page__stats-note {
-  display: block;
-  margin-top: 2px;
-  font-size: 11px;
-  color: #7b8aa3;
-}
-
-.tokens-page__theme-switch {
-  display: inline-flex;
-  margin-top: 4px;
-  padding: 2px;
-  background: #0b1220;
-  border: 1px solid #1f2937;
-  border-radius: 6px;
-  gap: 2px;
-}
-
-.tokens-page__theme-option {
-  padding: 5px 14px;
-  background: transparent;
-  color: #94a3b8;
-  border: 0;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 120ms ease, color 120ms ease;
-}
-
-.tokens-page__theme-option:hover:not(.tokens-page__theme-option--active) {
-  color: #e2e8f0;
-}
-
-.tokens-page__theme-option--active {
-  background: #1e293b;
-  color: #f1f5f9;
-  box-shadow: inset 0 0 0 1px #334155;
-}
-
-.tokens-page__bulk {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #7b8aa3;
-}
-
-.tokens-page__bulk button {
-  background: transparent;
-  color: #7dd3fc;
-  border: 0;
-  padding: 2px 4px;
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.tokens-page__bulk button:hover {
-  color: #bae6fd;
-  text-decoration: underline;
-}
-
-.tokens-page__search {
-  width: 100%;
-  margin: 6px 0 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  background: #0b1220;
-  color: #e2e8f0;
-  border: 1px solid #1f2937;
-  border-radius: 4px;
-  outline: none;
-}
-
-/* iOS zooms the page in when focusing an input under 16px, and never zooms
-   back out — the same guard global.css applies to every other input. */
-@media (pointer: coarse) {
-  .tokens-page__search {
-    font-size: 16px;
-  }
-}
-
-.tokens-page__search::placeholder {
-  color: #7b8aa3;
-}
-
-.tokens-page__search:focus {
-  border-color: #7dd3fc;
-}
-
-.tokens-page__empty {
-  padding: 10px 4px;
-  font-size: 12px;
-  color: #7b8aa3;
-}
-
-.tokens-filter-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 6px;
-  margin: 0 -6px;
-  font-size: 13px;
-  color: #cbd5e1;
-  border-radius: 4px;
-}
-
-.tokens-filter-row:hover {
-  background: rgba(125, 211, 252, 0.06);
-}
-
-.tokens-filter-row--focused {
-  background: rgba(125, 211, 252, 0.12);
-}
-
-.tokens-filter-row--focused .tokens-filter-row__label {
-  color: #bae6fd;
-  font-weight: 500;
-}
-
-/* The whole row is one switch — a single, unambiguous click target. */
-.tokens-filter-row__main {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 0;
-  background: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.tokens-switch {
-  flex-shrink: 0;
-  position: relative;
-  width: 28px;
-  height: 16px;
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 999px;
-  transition: background 140ms ease, border-color 140ms ease;
-}
-
-.tokens-switch__thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 10px;
-  height: 10px;
-  background: #64748b;
-  border-radius: 50%;
-  transition: transform 140ms ease, background 140ms ease;
-}
-
-.tokens-filter-row__main[aria-checked='true'] .tokens-switch {
-  background: #7dd3fc;
-  border-color: #7dd3fc;
-}
-
-.tokens-filter-row__main[aria-checked='true'] .tokens-switch__thumb {
-  background: #0b1018;
-  transform: translateX(12px);
-}
-
-.tokens-filter-row__main:hover .tokens-switch {
-  border-color: #475569;
-}
-
-.tokens-filter-row__main:hover[aria-checked='true'] .tokens-switch {
-  border-color: #bae6fd;
-}
-
-.tokens-filter-row__label {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.tokens-filter-row__main[aria-checked='false'] .tokens-filter-row__label {
-  color: #7b8aa3;
-}
-
-.tokens-filter-row__actions {
-  flex-shrink: 0;
-  display: inline-flex;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 120ms ease;
-}
-
-.tokens-filter-row:hover .tokens-filter-row__actions,
-.tokens-filter-row:focus-within .tokens-filter-row__actions {
-  opacity: 1;
-}
-
-.tokens-filter-row__action {
-  padding: 2px 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #7dd3fc;
-  background: transparent;
-  border: 1px solid #334155;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background 120ms ease, border-color 120ms ease;
-}
-
-.tokens-filter-row__action:hover {
-  background: #1e293b;
-  border-color: #7dd3fc;
-}
-
-.tokens-focus-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 14px;
-  padding: 8px 10px;
-  font-size: 12px;
-  color: #bae6fd;
-  background: rgba(125, 211, 252, 0.1);
-  border: 1px solid rgba(125, 211, 252, 0.3);
-  border-radius: 4px;
-}
-
-.tokens-focus-banner strong {
-  color: #e0f2fe;
-}
-
-.tokens-focus-banner button {
-  background: transparent;
-  color: #7dd3fc;
-  border: 0;
-  padding: 2px 6px;
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.tokens-focus-banner button:hover {
-  text-decoration: underline;
-}
-
-.tokens-page__filter-list {
-  max-height: 40vh;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-/* On touch devices the hover-reveal pattern hides the actions forever.
-   Always show them there. */
-@media (hover: none) {
-  .tokens-filter-row__actions {
-    opacity: 1;
-  }
 }
 
 .tokens-page__content {
   position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  /* Keeps the explorer's own layers (sticky map heads, edge hints) under the drawer and its backdrop. */
+  isolation: isolate;
+  /* The toolbar's density follows this width, not the viewport's (shell.css). */
+  container: tokens-content / inline-size;
+}
+
+/* Canvas over the addons panel; the panel's height comes out of the canvas. */
+.tokens-page__stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---- Token rows (shared across views) ---- */
@@ -390,10 +51,10 @@
   width: 100%;
   padding: 8px 10px;
   margin: 0 0 4px;
-  background: #0b1220;
-  border: 1px solid #1f2937;
+  background: var(--tk-sunken);
+  border: 1px solid var(--tk-border);
   border-radius: 6px;
-  color: #cbd5e1;
+  color: var(--tk-text);
   font: inherit;
   font-size: 12.5px;
   text-align: left;
@@ -402,13 +63,13 @@
 }
 
 .token-row:hover {
-  border-color: #7dd3fc;
-  background: rgba(125, 211, 252, 0.05);
+  border-color: var(--tk-accent);
+  background: color-mix(in srgb, var(--tk-accent) 5%, transparent);
 }
 
 .token-row--selected {
-  border-color: rgba(255, 212, 0, 0.55);
-  background: rgba(255, 212, 0, 0.05);
+  border-color: color-mix(in srgb, var(--tk-select) 55%, transparent);
+  background: color-mix(in srgb, var(--tk-select) 5%, transparent);
 }
 
 .token-row__main {
@@ -425,14 +86,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: 500;
-  color: #f1f5f9;
+  color: var(--tk-text-heading);
 }
 
 .token-row__value {
   flex-shrink: 0;
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
 }
 
 .token-row__chain {
@@ -452,7 +113,7 @@
 }
 
 .token-row__chain-arrow {
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
   font-size: 11px;
 }
 
@@ -462,22 +123,22 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: #1e293b;
-  color: #94a3b8;
+  background: var(--tk-raised);
+  color: var(--tk-text-soft);
   border-radius: 3px;
 }
 
 .token-row__chain-level--system {
-  color: #f1f5f9;
+  color: var(--tk-hue-system);
 }
 
 .token-row__chain-level--global {
-  color: #9aa0a6;
+  color: var(--tk-text-soft);
 }
 
 .token-row__chain-name {
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--tk-text-soft);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -509,7 +170,7 @@
 }
 
 .token-row__themed-empty {
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 @media (max-width: 560px) {
@@ -530,17 +191,21 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  opacity: 0.55;
-}
-
-.token-row__themed--active {
-  opacity: 1;
 }
 
 .token-row__themed code {
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-size: 11px;
-  color: #cbd5e1;
+  color: var(--tk-text);
+}
+
+/* The theme not previewed recedes: its swatch fades, its text stays at 4.5:1. */
+.token-row__themed:not(.token-row__themed--active) .token-swatch {
+  opacity: 0.55;
+}
+
+.token-row__themed:not(.token-row__themed--active) code {
+  color: var(--tk-text-muted);
 }
 
 .token-row__themed-tag {
@@ -548,14 +213,14 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #7b8aa3;
+  color: var(--tk-text-muted);
 }
 
 .token-row__used-by {
   flex-shrink: 0;
   margin-left: auto;
   font-size: 11px;
-  color: #7dd3fc;
+  color: var(--tk-accent);
   white-space: nowrap;
 }
 
@@ -566,6 +231,16 @@
   margin: 0;
 }
 
+/* Long values (font stacks) give way before the name does; the full value is in the inspector. */
+.token-row--compact .token-row__value {
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 55%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ---- Swatches ---- */
 
 .token-swatch {
@@ -573,7 +248,7 @@
   position: relative;
   width: 12px;
   height: 12px;
-  border: 1px solid #334155;
+  border: 1px solid var(--tk-border-strong);
   border-radius: 3px;
   overflow: hidden;
   flex-shrink: 0;
@@ -587,10 +262,10 @@
 
 /* Checkerboard behind translucent values so alpha is visible. */
 .token-swatch--alpha {
-  background-color: #e2e8f0;
+  background-color: var(--tk-checker-light);
   background-image:
-    linear-gradient(45deg, #94a3b8 25%, transparent 25%, transparent 75%, #94a3b8 75%),
-    linear-gradient(45deg, #94a3b8 25%, transparent 25%, transparent 75%, #94a3b8 75%);
+    linear-gradient(45deg, var(--tk-checker-dark) 25%, transparent 25%, transparent 75%, var(--tk-checker-dark) 75%),
+    linear-gradient(45deg, var(--tk-checker-dark) 25%, transparent 25%, transparent 75%, var(--tk-checker-dark) 75%);
   background-size: 6px 6px;
   background-position: 0 0, 3px 3px;
 }
@@ -603,35 +278,35 @@
 /* ---- Mobile / narrow layout ---- */
 @media (max-width: 900px) {
   .tokens-page {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .tokens-page__sidebar-toggle {
-    display: inline-flex;
-  }
-
-  .tokens-page__sidebar {
+  .tokens-sidebar {
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
-    width: min(320px, 85vw);
+    width: min(300px, 85vw);
     z-index: 3;
     transform: translateX(-100%);
-    transition: transform 200ms ease-out;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
-    padding-top: 56px; /* leave room for the toggle button */
+    transition:
+      transform 200ms ease-out,
+      box-shadow 200ms ease-out;
   }
 
-  .tokens-page--sidebar-open .tokens-page__sidebar {
+  /* Shadowed only while open: a closed drawer's shadow would still fall on the canvas edge. */
+  .tokens-page--sidebar-open .tokens-sidebar {
     transform: translateX(0);
-  }
-
-  .tokens-page__filter-list {
-    max-height: none;
+    box-shadow: 4px 0 20px var(--tk-shadow-strong);
   }
 
   .token-row__chain {
     padding-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tokens-sidebar {
+    transition: none;
   }
 }

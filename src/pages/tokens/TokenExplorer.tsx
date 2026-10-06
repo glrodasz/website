@@ -1,22 +1,23 @@
 /**
- * DOM-based explorer for the three-level design token hierarchy.
- *
- * Four tabs — Global / System / Component / Audit — over the same TokenGraph
- * that powers the generated design-tokens.css. Tab state is owned by the page
- * so it can be deep-linked; clicking any token opens the TokenInspector.
+ * The playground canvas: hosts one of five views — Map / Global / System /
+ * Components / Audit — over the same TokenGraph that powers the generated
+ * design-tokens.css. The sidebar picks the view and the page owns its state
+ * so it can be deep-linked; clicking any token opens it in the addons panel.
+ * The canvas palette follows the previewed theme, like Storybook's
+ * backgrounds.
  */
 
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import type { EdgeIndex, ThemeMode, TokenGraph } from '../../tokens/graph-builder';
 import type { AuditReport } from '../../tokens/audit';
 import { ComponentsView } from './ComponentsView';
 import { SystemView } from './SystemView';
 import { GlobalView } from './GlobalView';
 import { AuditView } from './AuditView';
-import type { ExplorerTab } from './utils';
+import { MapView, type MapMode } from './map/MapView';
+import type { LineageModel } from './map/lineage';
+import { auditSummary, type ExplorerTab } from './utils';
 import './TokenExplorer.css';
-
-export type { ExplorerTab };
 
 export interface TokenExplorerProps {
   graph: TokenGraph;
@@ -24,43 +25,74 @@ export interface TokenExplorerProps {
   audit: AuditReport;
   theme: ThemeMode;
   tab: ExplorerTab;
-  onTabChange: (tab: ExplorerTab) => void;
   search: string;
   enabledCategories: Set<string>;
   enabledComponents: Set<string>;
   focusedComponent: string | null;
   selectedId: string | null;
+  /** Toggles the inspector for a token (list views). */
   onSelect: (nodeId: string) => void;
+  /** Opens the inspector on a token, never closing it (the map). */
+  onInspect: (nodeId: string) => void;
+  lineage: LineageModel;
+  /** Map focus history, newest last. */
+  mapTrail: readonly string[];
+  mapMode: MapMode;
+  onMapFocus: (id: string) => void;
+  onMapBack: () => void;
+  onMapReset: () => void;
+  onMapUnavailable: () => void;
 }
 
-const HIERARCHY_PILLS: { tab: ExplorerTab; label: string; statKey: 'global' | 'system' | 'component' }[] = [
-  { tab: 'global', label: 'Global', statKey: 'global' },
-  { tab: 'system', label: 'System', statKey: 'system' },
-  { tab: 'components', label: 'Component', statKey: 'component' },
-];
+const CANVAS_HEADS: Record<Exclude<ExplorerTab, 'map'>, { title: string; caption: string }> = {
+  global: {
+    title: 'Global tokens',
+    caption: 'Raw values — palettes, scales and type. System tokens alias these.',
+  },
+  system: {
+    title: 'System tokens',
+    caption: 'Semantic aliases of global values, with their light and dark values side by side.',
+  },
+  components: {
+    title: 'Component tokens',
+    caption: 'Scoped to one component each, and resolved through a system token to a global value.',
+  },
+  audit: {
+    title: 'Audit',
+    caption: 'Health checks over the token system.',
+  },
+};
 
-export function TokenExplorer({
+// Memoised: the page re-renders on panel drags and tab switches that leave
+// the canvas unchanged, and the map is costly to re-render.
+export const TokenExplorer = memo(function TokenExplorer({
   graph,
   index,
   audit,
   theme,
   tab,
-  onTabChange,
   search,
   enabledCategories,
   enabledComponents,
   focusedComponent,
   selectedId,
   onSelect,
+  onInspect,
+  lineage,
+  mapTrail,
+  mapMode,
+  onMapFocus,
+  onMapBack,
+  onMapReset,
+  onMapUnavailable,
 }: TokenExplorerProps) {
-  const auditSeverity =
-    audit.counts.error > 0 ? 'error' : audit.counts.warning > 0 ? 'warning' : 'info';
-  // The pill badge counts actionable findings only; informational notes
-  // (duplicates, unused tokens) are numerous by design and live in the caption.
-  const auditActionable = audit.counts.error + audit.counts.warning;
-  const auditSummary = `${audit.counts.error} errors, ${audit.counts.warning} warnings, ${audit.counts.info} notes`;
 
   const query = search.trim().toLowerCase();
+  const head = tab === 'map' ? null : CANVAS_HEADS[tab];
+  const stat =
+    tab === 'global' ? graph.stats.global
+    : tab === 'system' ? graph.stats.system
+    : graph.stats.component;
 
   const { componentNodes, systemNodes, globalNodes } = useMemo(
     () => ({
@@ -78,44 +110,43 @@ export function TokenExplorer({
   }, [index]);
 
   return (
-    <div className="token-explorer">
-      <header className="token-explorer__head">
-        <div className="token-explorer__pills" aria-label="Token hierarchy">
-          {HIERARCHY_PILLS.map((p, i) => (
-            <span key={p.tab} className="token-explorer__pill-step">
-              {i > 0 && <span className="token-explorer__pill-arrow" aria-hidden="true">→</span>}
-              <button
-                type="button"
-                className={`token-explorer__pill${tab === p.tab ? ' token-explorer__pill--active' : ''}`}
-                aria-pressed={tab === p.tab}
-                onClick={() => onTabChange(p.tab)}
-              >
-                {p.label}
-                <span className="token-explorer__pill-count">{graph.stats[p.statKey]}</span>
-              </button>
-            </span>
-          ))}
-          <button
-            type="button"
-            className={`token-explorer__pill token-explorer__pill--audit token-explorer__pill--audit-${auditSeverity}${tab === 'audit' ? ' token-explorer__pill--active' : ''}`}
-            aria-pressed={tab === 'audit'}
-            onClick={() => onTabChange('audit')}
-            title={auditSummary}
-          >
-            Audit
-            <span className="token-explorer__pill-count">
-              {auditActionable > 0 ? auditActionable : '✓'}
-            </span>
-          </button>
-        </div>
-        <p className="token-explorer__caption">
-          {tab === 'audit'
-            ? `Health checks over the token system — ${auditSummary}.`
-            : 'Component tokens reference system tokens, which reference global values. Tap any token to inspect its chain.'}
-        </p>
-      </header>
-
-      <div className="token-explorer__body">
+    <section
+      className={`token-explorer${tab === 'map' ? ' token-explorer--map' : ''}`}
+      data-canvas-theme={theme}
+      aria-label="Canvas"
+      // Takes focus back when the token it was on goes away.
+      tabIndex={-1}
+    >
+      {head && (
+        <header className="token-explorer__head">
+          <h2 className="token-explorer__title">
+            {head.title}
+            {tab !== 'audit' && <span className="token-explorer__count">{stat}</span>}
+          </h2>
+          <p className="token-explorer__caption">
+            {tab === 'audit' ? `${head.caption} ${auditSummary(audit)}.` : head.caption}
+          </p>
+        </header>
+      )}
+      <div className={`token-explorer__body${tab === 'map' ? ' token-explorer__body--map' : ''}`}>
+        {tab === 'map' && (
+          <MapView
+            lineage={lineage}
+            index={index}
+            theme={theme}
+            search={search}
+            enabledCategories={enabledCategories}
+            enabledComponents={enabledComponents}
+            trail={mapTrail}
+            mode={mapMode}
+            selectedId={selectedId}
+            onFocus={onMapFocus}
+            onBack={onMapBack}
+            onReset={onMapReset}
+            onSelectToken={onInspect}
+            onUnavailable={onMapUnavailable}
+          />
+        )}
         {tab === 'components' && (
           <ComponentsView
             graph={graph}
@@ -161,6 +192,6 @@ export function TokenExplorer({
           />
         )}
       </div>
-    </div>
+    </section>
   );
-}
+});

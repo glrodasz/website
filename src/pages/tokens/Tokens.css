@@ -533,17 +533,21 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  opacity: 0.55;
-}
-
-.token-row__themed--active {
-  opacity: 1;
 }
 
 .token-row__themed code {
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-size: 11px;
   color: var(--tk-text);
+}
+
+/* The theme not previewed recedes: its swatch fades, its text stays at 4.5:1. */
+.token-row__themed:not(.token-row__themed--active) .token-swatch {
+  opacity: 0.55;
+}
+
+.token-row__themed:not(.token-row__themed--active) code {
+  color: var(--tk-text-muted);
 }
 
 .token-row__themed-tag {

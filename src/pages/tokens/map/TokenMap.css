@@ -648,6 +648,16 @@
   opacity: 0.72;
 }
 
+/* Faded ink drops below 4.5:1 on the light focus tint; a lighter accent recedes instead. */
+.token-map__row--focus .token-map__label-head {
+  opacity: 1;
+  color: var(--tk-accent-strong);
+}
+
+.token-map__row--focus.token-map__row--muted .token-map__label-head {
+  color: inherit;
+}
+
 .token-map__label-tail {
   flex: 0 1 auto;
 }

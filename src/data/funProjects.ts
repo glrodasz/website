@@ -83,11 +83,5 @@ export const FUN_PROJECTS: FunProject[] = [
   },
 ];
 
-/** Projects linked from the footer, in display order. */
-export const FOOTER_PROJECT_SLUGS = ['walleto', 'timepass', 'serieslines'];
-
-export const FOOTER_PROJECTS: FunProject[] = FOOTER_PROJECT_SLUGS.map((slug) => {
-  const project = FUN_PROJECTS.find((p) => p.slug === slug);
-  if (!project) throw new Error(`Unknown footer project: ${slug}`);
-  return project;
-});
+/** Projects linked from the footer: the first three of the list above. */
+export const FOOTER_PROJECTS: FunProject[] = FUN_PROJECTS.slice(0, 3);

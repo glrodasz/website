@@ -20,13 +20,15 @@ export interface FunProject {
    * (Timepass uses the cover from its README); without one the card shows a mockup.
    */
   capturable?: boolean;
+  /** Hide from the site without deleting the entry. */
+  hidden?: boolean;
 }
 
 /**
  * Pet projects shown on /projects, newest and most polished first.
  * Sourced from what's deployed on Vercel and Netlify plus public GitHub repos.
  */
-export const FUN_PROJECTS: FunProject[] = [
+const ALL_PROJECTS: FunProject[] = [
   {
     slug: 'walleto',
     name: 'Walleto',
@@ -49,15 +51,16 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['TypeScript'],
   },
   {
-    slug: 'html-colors',
-    name: 'Favorite HTML Colors',
-    url: 'https://colors.guillermorodas.com',
-    repoUrl: 'https://github.com/glrodasz/colors',
+    slug: 'timepass',
+    name: 'Timepass',
+    url: 'https://github.com/glrodasz/timepass',
+    repoUrl: 'https://github.com/glrodasz/timepass',
     description:
-      'A hand-picked showcase of the 24 HTML named colors I keep forgetting, previewed live on buttons, type and UI mocks.',
+      'A native Apple Silicon menu bar app that shows multiple time zones, each with its country flag and current time.',
     descriptionEs:
-      'Una selección de los 24 colores con nombre de HTML que siempre olvido, con vista previa en botones, tipografía y maquetas de UI.',
-    tags: ['Next.js', 'CSS'],
+      'Una app nativa para la barra de menú de Apple Silicon que muestra varias zonas horarias, cada una con su bandera y hora actual.',
+    tags: ['Swift', 'macOS'],
+    capturable: false,
   },
   {
     slug: 'js-lineage',
@@ -70,6 +73,17 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Vite', 'TypeScript', 'Animation'],
   },
   {
+    slug: 'html-colors',
+    name: 'Favorite HTML Colors',
+    url: 'https://colors.guillermorodas.com',
+    repoUrl: 'https://github.com/glrodasz/colors',
+    description:
+      'A hand-picked showcase of the 24 HTML named colors I keep forgetting, previewed live on buttons, type and UI mocks.',
+    descriptionEs:
+      'Una selección de los 24 colores con nombre de HTML que siempre olvido, con vista previa en botones, tipografía y maquetas de UI.',
+    tags: ['Next.js', 'CSS'],
+  },
+  {
     slug: 'undefined-academy',
     name: 'Undefined Academy',
     url: 'https://undefined.academy',
@@ -78,6 +92,7 @@ export const FUN_PROJECTS: FunProject[] = [
       'A free, 100% online 16-week bootcamp to become a full-stack JavaScript developer.',
     descriptionEs:
       'Un bootcamp gratuito y 100% online de 16 semanas para convertirte en desarrollador full-stack de JavaScript.',
+    hidden: true,
     tags: ['Education', 'JavaScript'],
   },
   {
@@ -89,24 +104,15 @@ export const FUN_PROJECTS: FunProject[] = [
       'A focus-first task planner built from zero to production in the live-coding series Cero a Producción: keep a backlog, work on a few tasks at a time and close each focus session with a retrospective.',
     descriptionEs:
       'Un planificador de tareas enfocado, construido de cero a producción en la serie en vivo Cero a Producción: mantén un backlog, trabaja en pocas tareas a la vez y cierra cada sesión de foco con una retrospectiva.',
+    hidden: true,
     tags: ['Next.js', 'React Query', 'Auth0'],
-  },
-  {
-    slug: 'timepass',
-    name: 'Timepass',
-    url: 'https://github.com/glrodasz/timepass',
-    repoUrl: 'https://github.com/glrodasz/timepass',
-    description:
-      'A native Apple Silicon menu bar app that shows multiple time zones, each with its country flag and current time.',
-    descriptionEs:
-      'Una app nativa para la barra de menú de Apple Silicon que muestra varias zonas horarias, cada una con su bandera y hora actual.',
-    tags: ['Swift', 'macOS'],
-    capturable: false,
   },
 ];
 
+export const FUN_PROJECTS: FunProject[] = ALL_PROJECTS.filter((p) => !p.hidden);
+
 /** Projects linked from the footer, in display order. */
-export const FOOTER_PROJECT_SLUGS = ['walleto', 'reto', 'timepass', 'serieslines'];
+export const FOOTER_PROJECT_SLUGS = ['walleto', 'timepass', 'serieslines'];
 
 export const FOOTER_PROJECTS: FunProject[] = FOOTER_PROJECT_SLUGS.map((slug) => {
   const project = FUN_PROJECTS.find((p) => p.slug === slug);

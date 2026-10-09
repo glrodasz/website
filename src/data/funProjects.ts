@@ -39,16 +39,6 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Next.js', 'TypeScript', 'Firestore'],
   },
   {
-    slug: 'serieslines',
-    name: 'Serieslines',
-    url: 'https://serieslines.guillermorodas.com',
-    description:
-      'A visual timeline of the TV series I watch — seasons and release dates laid out so I always know what is coming next.',
-    descriptionEs:
-      'Una línea de tiempo visual de las series que veo — temporadas y fechas de estreno organizadas para saber siempre qué viene.',
-    tags: ['TypeScript'],
-  },
-  {
     slug: 'timepass',
     name: 'Timepass',
     url: 'https://timepass.guillermorodas.com',
@@ -60,6 +50,17 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Swift', 'macOS'],
     capturable: false,
   },
+  {
+    slug: 'serieslines',
+    name: 'Serieslines',
+    url: 'https://serieslines.guillermorodas.com',
+    description:
+      'A visual timeline of the TV series I watch — seasons and release dates laid out so I always know what is coming next.',
+    descriptionEs:
+      'Una línea de tiempo visual de las series que veo — temporadas y fechas de estreno organizadas para saber siempre qué viene.',
+    tags: ['TypeScript'],
+  },
+
   {
     slug: 'js-lineage',
     name: 'The Lineage of JavaScript',

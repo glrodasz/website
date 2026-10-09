@@ -51,7 +51,7 @@ export const FUN_PROJECTS: FunProject[] = [
   {
     slug: 'timepass',
     name: 'Timepass',
-    url: 'https://github.com/glrodasz/timepass',
+    url: 'https://timepass.guillermorodas.com',
     repoUrl: 'https://github.com/glrodasz/timepass',
     description:
       'A native Apple Silicon menu bar app that shows multiple time zones, each with its country flag and current time.',

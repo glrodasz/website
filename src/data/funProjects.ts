@@ -82,6 +82,17 @@ export const FUN_PROJECTS: FunProject[] = [
       'Una selección de los 24 colores con nombre de HTML que siempre olvido, con vista previa en botones, tipografía y maquetas de UI.',
     tags: ['Next.js', 'CSS'],
   },
+  {
+    slug: 'prior',
+    name: 'PRIOR',
+    url: 'https://prior.guillermorodas.com',
+    repoUrl: 'https://github.com/glrodasz/cero-web',
+    description:
+      'A focus-first task planner built from zero to production in the live-coding series Cero a Producción: keep a backlog, work on a few tasks at a time and close each focus session with a retrospective.',
+    descriptionEs:
+      'Un planificador de tareas enfocado, construido de cero a producción en la serie en vivo Cero a Producción: mantén un backlog, trabaja en pocas tareas a la vez y cierra cada sesión de foco con una retrospectiva.',
+    tags: ['Next.js', 'React Query', 'Auth0'],
+  },
 ];
 
 /** Projects linked from the footer: the first three of the list above. */

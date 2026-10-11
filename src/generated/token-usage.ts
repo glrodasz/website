@@ -10,1712 +10,1722 @@ export const tokenUsages: TokenUsage[] = [
   {
     "varName": "--components-tokens--tag--spacing--small--vertical",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 18
+    "line": 16
   },
   {
     "varName": "--components-tokens--tag--spacing--small--horizontal",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--tag--radius--small",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--badge--typography--font-family",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 24
+    "line": 22
   },
   {
     "varName": "--components-tokens--typography--styles--label--small--font-size",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 25
+    "line": 23
   },
   {
     "varName": "--components-tokens--badge--typography--font-weight",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--typography--styles--label--small--line-height",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--tag--spacing--medium--vertical",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 31
+    "line": 29
   },
   {
     "varName": "--components-tokens--tag--spacing--medium--horizontal",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--tag--radius--large",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--badge--typography--font-family",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--typography--styles--label--large--font-size",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 38
+    "line": 36
   },
   {
     "varName": "--components-tokens--badge--typography--font-weight",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 39
+    "line": 37
   },
   {
     "varName": "--components-tokens--typography--styles--label--large--line-height",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 40
+    "line": 38
   },
   {
     "varName": "--components-tokens--badge--typography--letter-spacing",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 45
+    "line": 43
   },
   {
     "varName": "--components-tokens--tag--text-ccolor--duetone--discovery",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--tag--border-color--duetone--discovery",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 51
+    "line": 49
   },
   {
     "varName": "--components-tokens--tag--text-ccolor--duetone--info",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 56
+    "line": 54
   },
   {
     "varName": "--components-tokens--tag--border-color--duetone--info",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 57
+    "line": 55
   },
   {
     "varName": "--components-tokens--tag--text-ccolor--duetone--success",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 62
+    "line": 60
   },
   {
     "varName": "--components-tokens--tag--border-color--duetone--success",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 63
+    "line": 61
   },
   {
     "varName": "--components-tokens--tag--text-ccolor--duetone--warning",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 68
+    "line": 66
   },
   {
     "varName": "--components-tokens--tag--border-color--duetone--warning",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 69
+    "line": 67
   },
   {
     "varName": "--components-tokens--tag--text-ccolor--duetone--error",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 74
+    "line": 72
   },
   {
     "varName": "--components-tokens--tag--border-color--duetone--error",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 75
+    "line": 73
   },
   {
     "varName": "--components-tokens--tag--text-ccolor--duetone--neutral",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 80
+    "line": 78
   },
   {
     "varName": "--components-tokens--tag--border-color--duetone--neutral",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 81
+    "line": 79
   },
   {
     "varName": "--components-tokens--badge--background-color--accent",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 85
+    "line": 83
   },
   {
     "varName": "--components-tokens--badge--text-color--accent",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 86
+    "line": 84
   },
   {
     "varName": "--components-tokens--badge--border-color--accent",
     "file": "src/components/atoms/Badge/Badge.css",
-    "line": 87
+    "line": 85
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/atoms/Button.css",
-    "line": 14
+    "line": 12
   },
   {
     "varName": "--components-tokens--button--outline-color--focus",
     "file": "src/components/atoms/Button.css",
-    "line": 15
+    "line": 13
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/atoms/Button.css",
-    "line": 16
+    "line": 14
   },
   {
     "varName": "--components-tokens--button--spacing--large--gap",
     "file": "src/components/atoms/Button.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--button--spacing--large--vertical",
     "file": "src/components/atoms/Button.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--button--spacing--large--horizontal",
     "file": "src/components/atoms/Button.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--button--typography--large--font-family",
     "file": "src/components/atoms/Button.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--button--typography--large--font-weight",
     "file": "src/components/atoms/Button.css",
-    "line": 24
+    "line": 22
   },
   {
     "varName": "--components-tokens--button--typography--large--font-size",
     "file": "src/components/atoms/Button.css",
-    "line": 25
+    "line": 23
   },
   {
     "varName": "--components-tokens--button--typography--large--line-height",
     "file": "src/components/atoms/Button.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--button--sizing--large--min-height",
     "file": "src/components/atoms/Button.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--button--border-radius--large",
     "file": "src/components/atoms/Button.css",
-    "line": 28
+    "line": 26
   },
   {
     "varName": "--components-tokens--button--spacing--small--gap",
     "file": "src/components/atoms/Button.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--button--spacing--small--vertical",
     "file": "src/components/atoms/Button.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--button--spacing--small--horizontal",
     "file": "src/components/atoms/Button.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--button--typography--small--font-family",
     "file": "src/components/atoms/Button.css",
-    "line": 34
+    "line": 32
   },
   {
     "varName": "--components-tokens--button--typography--small--font-weight",
     "file": "src/components/atoms/Button.css",
-    "line": 35
+    "line": 33
   },
   {
     "varName": "--components-tokens--button--typography--small--font-size",
     "file": "src/components/atoms/Button.css",
-    "line": 36
+    "line": 34
   },
   {
     "varName": "--components-tokens--button--typography--small--line-height",
     "file": "src/components/atoms/Button.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--button--sizing--small--min-height",
     "file": "src/components/atoms/Button.css",
-    "line": 38
+    "line": 36
   },
   {
     "varName": "--components-tokens--button--border-radius--small",
     "file": "src/components/atoms/Button.css",
-    "line": 39
+    "line": 37
   },
   {
     "varName": "--components-tokens--button--background-color--primary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 44
+    "line": 42
   },
   {
     "varName": "--components-tokens--button--text-color--primary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 45
+    "line": 43
   },
   {
     "varName": "--components-tokens--button--background-color--primary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 46
+    "line": 44
   },
   {
     "varName": "--components-tokens--button--background-color--primary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--button--text-color--primary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 51
+    "line": 49
   },
   {
     "varName": "--components-tokens--button--background-color--primary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 52
+    "line": 50
   },
   {
     "varName": "--components-tokens--button--background-color--primary--active",
     "file": "src/components/atoms/Button.css",
-    "line": 56
+    "line": 54
   },
   {
     "varName": "--components-tokens--button--text-color--primary--actived",
     "file": "src/components/atoms/Button.css",
-    "line": 57
+    "line": 55
   },
   {
     "varName": "--components-tokens--button--background-color--primary--active",
     "file": "src/components/atoms/Button.css",
-    "line": 58
+    "line": 56
   },
   {
     "varName": "--components-tokens--button--background-color--secondary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 63
+    "line": 61
   },
   {
     "varName": "--components-tokens--button--text-color--secondary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 64
+    "line": 62
   },
   {
     "varName": "--components-tokens--button--border-color--secondary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 65
+    "line": 63
   },
   {
     "varName": "--components-tokens--button--background-color--secondary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 69
+    "line": 67
   },
   {
     "varName": "--components-tokens--button--text-color--secondary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--button--border-color--secondary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--button--background-color--secondary--active",
     "file": "src/components/atoms/Button.css",
-    "line": 75
+    "line": 73
   },
   {
     "varName": "--components-tokens--button--text-color--secondary--actived",
     "file": "src/components/atoms/Button.css",
-    "line": 76
+    "line": 74
   },
   {
     "varName": "--components-tokens--button--border-color--secondary--active",
     "file": "src/components/atoms/Button.css",
-    "line": 77
+    "line": 75
   },
   {
     "varName": "--components-tokens--button--background-color--tertiary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 82
+    "line": 80
   },
   {
     "varName": "--components-tokens--button--text-color--tertiary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 83
+    "line": 81
   },
   {
     "varName": "--components-tokens--button--border-color--tertiary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 84
+    "line": 82
   },
   {
     "varName": "--components-tokens--button--background-color--tertiary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 88
+    "line": 86
   },
   {
     "varName": "--components-tokens--button--text-color--tertiary--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 89
+    "line": 87
   },
   {
     "varName": "--components-tokens--button--border-color--tertiary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 90
+    "line": 88
   },
   {
     "varName": "--components-tokens--button--background-color--tertiary--active",
     "file": "src/components/atoms/Button.css",
-    "line": 94
+    "line": 92
   },
   {
     "varName": "--components-tokens--button--text-color--tertiary--actived",
     "file": "src/components/atoms/Button.css",
-    "line": 95
+    "line": 93
   },
   {
     "varName": "--components-tokens--button--border-color--tertiary--default",
     "file": "src/components/atoms/Button.css",
-    "line": 96
+    "line": 94
   },
   {
     "varName": "--components-tokens--button--background-color--ghost--default",
     "file": "src/components/atoms/Button.css",
-    "line": 101
+    "line": 99
   },
   {
     "varName": "--components-tokens--button--text-color--ghost--default",
     "file": "src/components/atoms/Button.css",
-    "line": 102
+    "line": 100
   },
   {
     "varName": "--components-tokens--button--border-color--ghost--default",
     "file": "src/components/atoms/Button.css",
-    "line": 103
+    "line": 101
   },
   {
     "varName": "--components-tokens--button--background-color--ghost--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 107
+    "line": 105
   },
   {
     "varName": "--components-tokens--button--text-color--ghost--hover",
     "file": "src/components/atoms/Button.css",
-    "line": 108
+    "line": 106
   },
   {
     "varName": "--components-tokens--button--border-color--ghost--default",
     "file": "src/components/atoms/Button.css",
-    "line": 109
+    "line": 107
   },
   {
     "varName": "--components-tokens--button--background-color--ghost--active",
     "file": "src/components/atoms/Button.css",
-    "line": 113
+    "line": 111
   },
   {
     "varName": "--components-tokens--button--text-color--ghost--actived",
     "file": "src/components/atoms/Button.css",
-    "line": 114
+    "line": 112
   },
   {
     "varName": "--components-tokens--button--border-color--ghost--default",
     "file": "src/components/atoms/Button.css",
-    "line": 115
+    "line": 113
   },
   {
     "varName": "--components-tokens--check-button--typography--font-family",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--check-button--background-color--default",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--check-button--text-color--default",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--check-button--border-color--default",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--check-button--sizing--large",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--check-button--sizing--large",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--check-button--sizing--small",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 31
+    "line": 29
   },
   {
     "varName": "--components-tokens--check-button--sizing--small",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--check-button--spacing--label-gap",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 46
+    "line": 44
   },
   {
     "varName": "--components-tokens--check-button--background-color--hover",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 51
+    "line": 49
   },
   {
     "varName": "--components-tokens--check-button--border-color--hover",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 52
+    "line": 50
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 57
+    "line": 55
   },
   {
     "varName": "--components-tokens--check-button--outline-color--focus",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 58
+    "line": 56
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 59
+    "line": 57
   },
   {
     "varName": "--components-tokens--check-button--background-color--actived",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 64
+    "line": 62
   },
   {
     "varName": "--components-tokens--check-button--text-color--actived",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 65
+    "line": 63
   },
   {
     "varName": "--components-tokens--check-button--border-color--actived",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 66
+    "line": 64
   },
   {
     "varName": "--components-tokens--check-button--background-color--actived-hover",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--check-button--border-color--actived-hover",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--check-button--background-color--disabled",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 78
+    "line": 76
   },
   {
     "varName": "--components-tokens--check-button--text-color--disabled",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 79
+    "line": 77
   },
   {
     "varName": "--components-tokens--check-button--border-color--disabled",
     "file": "src/components/atoms/CheckButton/CheckButton.css",
-    "line": 80
+    "line": 78
   },
   {
     "varName": "--components-tokens--icon--sizing--xxs",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 12
+    "line": 10
   },
   {
     "varName": "--components-tokens--icon--sizing--xxs",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 13
+    "line": 11
   },
   {
     "varName": "--components-tokens--icon--sizing--xs",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 17
+    "line": 15
   },
   {
     "varName": "--components-tokens--icon--sizing--xs",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 18
+    "line": 16
   },
   {
     "varName": "--components-tokens--icon--sizing--sm",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--icon--sizing--sm",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--icon--sizing--md",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--icon--sizing--md",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 28
+    "line": 26
   },
   {
     "varName": "--components-tokens--icon--sizing--ml",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--icon--sizing--ml",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--icon--sizing--lg",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--icon--sizing--lg",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 38
+    "line": 36
   },
   {
     "varName": "--components-tokens--icon--sizing--xl",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--icon--sizing--xl",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 43
+    "line": 41
   },
   {
     "varName": "--components-tokens--icon--sizing--xxl",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 47
+    "line": 45
   },
   {
     "varName": "--components-tokens--icon--sizing--xxl",
     "file": "src/components/atoms/Icon/Icon.css",
-    "line": 48
+    "line": 46
   },
   {
     "varName": "--components-tokens--logo--spacing--gap",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--logo--typography--font-family",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 7
+    "line": 5
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 24
+    "line": 22
   },
   {
     "varName": "--components-tokens--logo--outline-color--focus",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 25
+    "line": 23
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--logo--border-radius--focus",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--logo--sizing--icon-large",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 36
+    "line": 34
   },
   {
     "varName": "--components-tokens--logo--sizing--icon-large",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--logo--sizing--icon-small",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 41
+    "line": 39
   },
   {
     "varName": "--components-tokens--logo--sizing--icon-small",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--logo--typography--quantum--font-size",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 53
+    "line": 51
   },
   {
     "varName": "--components-tokens--logo--typography--quantum--font-weight",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 54
+    "line": 52
   },
   {
     "varName": "--components-tokens--logo--typography--quantum--letter-spacing",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 55
+    "line": 53
   },
   {
     "varName": "--components-tokens--logo--typography--design--font-size",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 59
+    "line": 57
   },
   {
     "varName": "--components-tokens--logo--typography--design--font-weight",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 60
+    "line": 58
   },
   {
     "varName": "--components-tokens--logo--typography--design--letter-spacing",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 61
+    "line": 59
   },
   {
     "varName": "--components-tokens--logo--text-color--default",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 66
+    "line": 64
   },
   {
     "varName": "--components-tokens--logo--text-color--contrast",
     "file": "src/components/atoms/Logo/Logo.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--number-button--typography--font-family",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--number-button--typography--font-weight",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 9
+    "line": 7
   },
   {
     "varName": "--components-tokens--number-button--border-radius--large",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 16
+    "line": 14
   },
   {
     "varName": "--components-tokens--number-button--background-color--default",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--number-button--text-color--default",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--number-button--border-color--default",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--number-button--sizing--large",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--number-button--sizing--large",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--number-button--padding--large",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 28
+    "line": 26
   },
   {
     "varName": "--components-tokens--number-button--typography--large--font-size",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 29
+    "line": 27
   },
   {
     "varName": "--components-tokens--number-button--sizing--small",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--number-button--sizing--small",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 34
+    "line": 32
   },
   {
     "varName": "--components-tokens--number-button--padding--small",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 35
+    "line": 33
   },
   {
     "varName": "--components-tokens--number-button--typography--small--font-size",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 36
+    "line": 34
   },
   {
     "varName": "--components-tokens--number-button--background-color--hover",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 41
+    "line": 39
   },
   {
     "varName": "--components-tokens--number-button--text-color--hover",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--number-button--border-color--hover",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 43
+    "line": 41
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 48
+    "line": 46
   },
   {
     "varName": "--components-tokens--number-button--outline-color--focus",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 49
+    "line": 47
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--number-button--background-color--selected",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 55
+    "line": 53
   },
   {
     "varName": "--components-tokens--number-button--text-color--selected",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 56
+    "line": 54
   },
   {
     "varName": "--components-tokens--number-button--border-color--selected",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 57
+    "line": 55
   },
   {
     "varName": "--components-tokens--number-button--background-color--selected-hover",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 61
+    "line": 59
   },
   {
     "varName": "--components-tokens--number-button--border-color--selected-hover",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 62
+    "line": 60
   },
   {
     "varName": "--components-tokens--number-button--background-color--disabled",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 69
+    "line": 67
   },
   {
     "varName": "--components-tokens--number-button--text-color--disabled",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--number-button--border-color--disabled",
     "file": "src/components/atoms/NumberButton/NumberButton.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--status--sizing--lg",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--status--sizing--lg",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 12
+    "line": 10
   },
   {
     "varName": "--components-tokens--status--sizing--sm",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 16
+    "line": 14
   },
   {
     "varName": "--components-tokens--status--sizing--sm",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 17
+    "line": 15
   },
   {
     "varName": "--components-tokens--status--sizing--xs",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--status--sizing--xs",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--status--background-color--success",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--status--background-color--warning",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 31
+    "line": 29
   },
   {
     "varName": "--components-tokens--status--background-color--error",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 35
+    "line": 33
   },
   {
     "varName": "--components-tokens--status--background-color--neutral",
     "file": "src/components/atoms/Status/Status.css",
-    "line": 39
+    "line": 37
   },
   {
     "varName": "--components-tokens--tag--spacing--small--horizontal",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--tag--typography--font-family",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 7
+    "line": 5
   },
   {
     "varName": "--components-tokens--tag--typography--font-weight",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--tag--radius--large",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 9
+    "line": 7
   },
   {
     "varName": "--components-tokens--tag--spacing--small--horizontal",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 16
+    "line": 14
   },
   {
     "varName": "--components-tokens--tag--spacing--medium--horizontal",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 17
+    "line": 15
   },
   {
     "varName": "--components-tokens--tag--typography--large--font-size",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 18
+    "line": 16
   },
   {
     "varName": "--components-tokens--tag--sizing--large",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--tag--spacing--medium--vertical",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--tag--spacing--small--horizontal",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 24
+    "line": 22
   },
   {
     "varName": "--components-tokens--tag--typography--small--font-size",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 25
+    "line": 23
   },
   {
     "varName": "--components-tokens--tag--sizing--small",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--tag--sizing--close",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--tag--sizing--close",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 43
+    "line": 41
   },
   {
     "varName": "--components-tokens--tag--close-background-color--filled-hover",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 49
+    "line": 47
   },
   {
     "varName": "--components-tokens--tag--close-background-color--outlined-hover",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 53
+    "line": 51
   },
   {
     "varName": "--components-tokens--tag--background-color--filled--discovery",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 58
+    "line": 56
   },
   {
     "varName": "--components-tokens--tag--text-color--contrast",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 59
+    "line": 57
   },
   {
     "varName": "--components-tokens--tag--text-color--discovery",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 64
+    "line": 62
   },
   {
     "varName": "--components-tokens--tag--text-color--discovery",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 65
+    "line": 63
   },
   {
     "varName": "--components-tokens--tag--background-color--filled--info",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--tag--text-color--contrast",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--tag--text-color--info",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 76
+    "line": 74
   },
   {
     "varName": "--components-tokens--tag--text-color--info",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 77
+    "line": 75
   },
   {
     "varName": "--components-tokens--tag--background-color--filled--success",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 82
+    "line": 80
   },
   {
     "varName": "--components-tokens--tag--text-color--contrast",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 83
+    "line": 81
   },
   {
     "varName": "--components-tokens--tag--text-color--success",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 88
+    "line": 86
   },
   {
     "varName": "--components-tokens--tag--text-color--success",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 89
+    "line": 87
   },
   {
     "varName": "--components-tokens--tag--background-color--filled--warning",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 94
+    "line": 92
   },
   {
     "varName": "--components-tokens--tag--text-color--contrast",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 95
+    "line": 93
   },
   {
     "varName": "--components-tokens--tag--text-color--warning",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 100
+    "line": 98
   },
   {
     "varName": "--components-tokens--tag--text-color--warning",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 101
+    "line": 99
   },
   {
     "varName": "--components-tokens--tag--background-color--filled--error",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 106
+    "line": 104
   },
   {
     "varName": "--components-tokens--tag--text-color--contrast",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 107
+    "line": 105
   },
   {
     "varName": "--components-tokens--tag--text-color--error",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 112
+    "line": 110
   },
   {
     "varName": "--components-tokens--tag--text-color--error",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 113
+    "line": 111
   },
   {
     "varName": "--components-tokens--tag--background-color--filled--neutral",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 118
+    "line": 116
   },
   {
     "varName": "--components-tokens--tag--text-color--contrast",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 119
+    "line": 117
   },
   {
     "varName": "--components-tokens--tag--text-color--neutral",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 124
+    "line": 122
   },
   {
     "varName": "--components-tokens--tag--text-color--neutral",
     "file": "src/components/atoms/Tag/Tag.css",
-    "line": 125
+    "line": 123
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--typography--colors--headings",
     "file": "src/components/atoms/Typography.css",
-    "line": 7
+    "line": 5
   },
   {
     "varName": "--components-tokens--typography--styles--display--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 12
+    "line": 10
   },
   {
     "varName": "--components-tokens--typography--styles--display--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 13
+    "line": 11
   },
   {
     "varName": "--components-tokens--typography--styles--display--large--font-weight",
     "file": "src/components/atoms/Typography.css",
-    "line": 14
+    "line": 12
   },
   {
     "varName": "--components-tokens--typography--styles--display--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 15
+    "line": 13
   },
   {
     "varName": "--components-tokens--typography--styles--heading--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--typography--styles--heading--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--typography--styles--heading--large--font-weight",
     "file": "src/components/atoms/Typography.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--typography--styles--heading--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 24
+    "line": 22
   },
   {
     "varName": "--components-tokens--typography--styles--title--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 30
+    "line": 28
   },
   {
     "varName": "--components-tokens--typography--styles--title--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 31
+    "line": 29
   },
   {
     "varName": "--components-tokens--typography--styles--title--large--font-weight",
     "file": "src/components/atoms/Typography.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--typography--styles--title--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 38
+    "line": 36
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 39
+    "line": 37
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--large--font-weight",
     "file": "src/components/atoms/Typography.css",
-    "line": 40
+    "line": 38
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 41
+    "line": 39
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 46
+    "line": 44
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 47
+    "line": 45
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--large--font-weight-regular",
     "file": "src/components/atoms/Typography.css",
-    "line": 48
+    "line": 46
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 49
+    "line": 47
   },
   {
     "varName": "--components-tokens--typography--styles--label--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 54
+    "line": 52
   },
   {
     "varName": "--components-tokens--typography--styles--label--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 55
+    "line": 53
   },
   {
     "varName": "--components-tokens--typography--styles--label--large--font-weight",
     "file": "src/components/atoms/Typography.css",
-    "line": 56
+    "line": 54
   },
   {
     "varName": "--components-tokens--typography--styles--label--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 57
+    "line": 55
   },
   {
     "varName": "--components-tokens--typography--styles--text-button--large--font-family",
     "file": "src/components/atoms/Typography.css",
-    "line": 62
+    "line": 60
   },
   {
     "varName": "--components-tokens--typography--styles--text-button--large--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 63
+    "line": 61
   },
   {
     "varName": "--components-tokens--typography--styles--text-button--large--font-weight",
     "file": "src/components/atoms/Typography.css",
-    "line": 64
+    "line": 62
   },
   {
     "varName": "--components-tokens--typography--styles--text-button--large--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 65
+    "line": 63
   },
   {
     "varName": "--components-tokens--typography--styles--display--small--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 72
+    "line": 70
   },
   {
     "varName": "--components-tokens--typography--styles--display--small--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 73
+    "line": 71
   },
   {
     "varName": "--components-tokens--typography--styles--heading--small--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 77
+    "line": 75
   },
   {
     "varName": "--components-tokens--typography--styles--heading--small--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 78
+    "line": 76
   },
   {
     "varName": "--components-tokens--typography--styles--title--small--font-size",
     "file": "src/components/atoms/Typography.css",
-    "line": 82
+    "line": 80
   },
   {
     "varName": "--components-tokens--typography--styles--title--small--line-height",
     "file": "src/components/atoms/Typography.css",
-    "line": 83
+    "line": 81
   },
   {
     "varName": "--components-tokens--button-group--spacing--large--vertical",
     "file": "src/components/molecules/ButtonGroup/ButtonGroup.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--button-group--spacing--large--horizontal",
     "file": "src/components/molecules/ButtonGroup/ButtonGroup.css",
-    "line": 12
+    "line": 10
   },
   {
     "varName": "--components-tokens--button-group--spacing--large--gap",
     "file": "src/components/molecules/ButtonGroup/ButtonGroup.css",
-    "line": 13
+    "line": 11
   },
   {
     "varName": "--components-tokens--button-group--spacing--small--vertical",
     "file": "src/components/molecules/ButtonGroup/ButtonGroup.css",
-    "line": 17
+    "line": 15
   },
   {
     "varName": "--components-tokens--button-group--spacing--small--horizontal",
     "file": "src/components/molecules/ButtonGroup/ButtonGroup.css",
-    "line": 18
+    "line": 16
   },
   {
     "varName": "--components-tokens--button-group--spacing--small--gap",
     "file": "src/components/molecules/ButtonGroup/ButtonGroup.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--button--spacing--large--gap",
     "file": "src/components/molecules/IconButton.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--button--sizing--icon--large",
     "file": "src/components/molecules/IconButton.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--button--sizing--icon--large",
     "file": "src/components/molecules/IconButton.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--icon-button--icon-color--ghost--default",
     "file": "src/components/molecules/IconButton.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--icon-button--icon-color--ghost--disabled",
     "file": "src/components/molecules/IconButton.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--button--sizing--icon--small",
     "file": "src/components/molecules/IconButton.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--button--sizing--icon--small",
     "file": "src/components/molecules/IconButton.css",
-    "line": 43
+    "line": 41
   },
   {
     "varName": "--components-tokens--button--spacing--small--gap",
     "file": "src/components/molecules/IconButton.css",
-    "line": 47
+    "line": 45
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--gap",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--input-field--typography--font-family",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 10
+    "line": 8
   },
   {
     "varName": "--components-tokens--input-field--typography--label--font-size",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--input-field--typography--label--font-weight",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 12
+    "line": 10
   },
   {
     "varName": "--components-tokens--input-field--text-color--label--default",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 13
+    "line": 11
   },
   {
     "varName": "--components-tokens--input-field--typography--label--line-height",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 14
+    "line": 12
   },
   {
     "varName": "--components-tokens--input-field--border-color--default",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--input-field--border-radius--large",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--input-field--background-color--default",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--input-field--sizing--large",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 29
+    "line": 27
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--horizontal",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 30
+    "line": 28
   },
   {
     "varName": "--components-tokens--input-field--sizing--small",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 34
+    "line": 32
   },
   {
     "varName": "--components-tokens--input-field--spacing--small--horizontal",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 35
+    "line": 33
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--horizontal",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 41
+    "line": 39
   },
   {
     "varName": "--components-tokens--input-field--sizing--icon--large",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--input-field--spacing--small--horizontal",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 48
+    "line": 46
   },
   {
     "varName": "--components-tokens--input-field--sizing--icon--small",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 49
+    "line": 47
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--horizontal",
+    "file": "src/components/molecules/InputText/InputText.css",
+    "line": 54
+  },
+  {
+    "varName": "--components-tokens--input-field--sizing--icon--large",
+    "file": "src/components/molecules/InputText/InputText.css",
+    "line": 55
+  },
+  {
+    "varName": "--components-tokens--input-field--sizing--icon--large",
     "file": "src/components/molecules/InputText/InputText.css",
     "line": 56
   },
   {
-    "varName": "--components-tokens--input-field--sizing--icon--large",
+    "varName": "--components-tokens--input-field--icon-color--default",
     "file": "src/components/molecules/InputText/InputText.css",
     "line": 57
   },
   {
-    "varName": "--components-tokens--input-field--sizing--icon--large",
-    "file": "src/components/molecules/InputText/InputText.css",
-    "line": 58
-  },
-  {
-    "varName": "--components-tokens--input-field--icon-color--default",
-    "file": "src/components/molecules/InputText/InputText.css",
-    "line": 59
-  },
-  {
     "varName": "--components-tokens--input-field--spacing--small--horizontal",
+    "file": "src/components/molecules/InputText/InputText.css",
+    "line": 62
+  },
+  {
+    "varName": "--components-tokens--input-field--sizing--icon--small",
+    "file": "src/components/molecules/InputText/InputText.css",
+    "line": 63
+  },
+  {
+    "varName": "--components-tokens--input-field--sizing--icon--small",
     "file": "src/components/molecules/InputText/InputText.css",
     "line": 64
   },
   {
-    "varName": "--components-tokens--input-field--sizing--icon--small",
-    "file": "src/components/molecules/InputText/InputText.css",
-    "line": 65
-  },
-  {
-    "varName": "--components-tokens--input-field--sizing--icon--small",
-    "file": "src/components/molecules/InputText/InputText.css",
-    "line": 66
-  },
-  {
     "varName": "--components-tokens--input-field--typography--font-family",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 75
+    "line": 73
   },
   {
     "varName": "--components-tokens--input-field--typography--input--large--font-size",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 76
+    "line": 74
   },
   {
     "varName": "--components-tokens--input-field--typography--input--large--line-height",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 77
+    "line": 75
   },
   {
     "varName": "--components-tokens--input-field--text-color--input--default",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 78
+    "line": 76
   },
   {
     "varName": "--components-tokens--input-field--typography--input--small--font-size",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 83
+    "line": 81
   },
   {
     "varName": "--components-tokens--input-field--typography--input--small--line-height",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 84
+    "line": 82
   },
   {
     "varName": "--components-tokens--input-field--text-color--input--placeholder",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 88
+    "line": 86
   },
   {
     "varName": "--components-tokens--input-field--border-color--focus",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 93
+    "line": 91
   },
   {
     "varName": "--components-tokens--input-field--outline-color--focus",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 94
+    "line": 92
   },
   {
     "varName": "--components-tokens--input-field--border-color--hover",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 99
+    "line": 97
   },
   {
     "varName": "--components-tokens--input-field--border-color--error",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 104
+    "line": 102
   },
   {
     "varName": "--components-tokens--input-field--border-color--error",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 108
+    "line": 106
   },
   {
     "varName": "--components-tokens--input-field--outline-color--error",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 109
+    "line": 107
   },
   {
     "varName": "--components-tokens--input-field--typography--font-family",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 113
+    "line": 111
   },
   {
     "varName": "--components-tokens--input-field--typography--message--font-size",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 114
+    "line": 112
   },
   {
     "varName": "--components-tokens--input-field--typography--message--line-height",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 115
+    "line": 113
   },
   {
     "varName": "--components-tokens--input-field--text-color--message--error",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 116
+    "line": 114
   },
   {
     "varName": "--components-tokens--input-field--background-color--disabled",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 121
+    "line": 119
   },
   {
     "varName": "--components-tokens--input-field--border-color--disabled",
     "file": "src/components/molecules/InputText/InputText.css",
-    "line": 122
+    "line": 120
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--depth",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 9
+    "line": 7
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--border-radius",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 10
+    "line": 8
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--fore-edge-radius",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--depth",
     "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 20
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--border-radius",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 21
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--border-radius",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 22
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--dvd--border-radius",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 23
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--dvd--border-radius",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 24
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--aspect-ratio",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--stage--perspective",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--aspect-ratio",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--stage--rest-tilt",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 44
+    "line": 42
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--stage--flip-duration",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 45
+    "line": 43
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--stage--flip-easing",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 46
+    "line": 44
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--shadow-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 61
+    "line": 59
   },
   {
     "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 80
+    "line": 78
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--large--font-size",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 101
+    "line": 99
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--large--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 102
+    "line": 100
   },
   {
     "varName": "--components-tokens--site--course-card--media-placeholder-accent-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 103
+    "line": 101
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--gap",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 125
+    "line": 123
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--gap",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 126
+    "line": 124
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 141
+    "line": 139
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 140
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 142
   },
   {
+    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 142
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 143
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 143
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 144
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 149
+  },
+  {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 144
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 144
+    "line": 159
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 145
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 145
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--book--hinge-offset",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 146
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 151
+    "line": 160
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
@@ -1723,244 +1733,244 @@ export const tokenUsages: TokenUsage[] = [
     "line": 161
   },
   {
-    "varName": "--components-tokens--site--lifestyle-card--book--spine-highlight-color",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 162
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 163
-  },
-  {
     "varName": "--components-tokens--site--lifestyle-card--back--background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 166
+    "line": 164
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 173
+    "line": 171
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--spine-shade-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 176
+    "line": 174
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--page-line-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 180
+    "line": 178
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--page-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 181
+    "line": 179
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--plastic-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 189
+    "line": 187
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--frame-padding",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 190
+    "line": 188
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 194
+    "line": 192
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 198
+    "line": 196
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 204
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--back--padding",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 205
+  },
+  {
+    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
     "file": "src/components/molecules/LifestyleMediaCard.css",
     "line": 206
   },
   {
-    "varName": "--components-tokens--site--lifestyle-card--back--padding",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 207
-  },
-  {
-    "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 208
-  },
-  {
     "varName": "--components-tokens--site--lifestyle-card--dvd--ridge-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 211
+    "line": 209
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 217
+    "line": 215
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--spine-width",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 221
+    "line": 219
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--book--border-radius",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 228
+    "line": 226
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--inner-shade-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 229
+    "line": 227
   },
   {
     "varName": "--components-tokens--site--course-card--media-background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 233
+    "line": 231
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--sheen-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 244
+    "line": 242
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--sheen-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 247
+    "line": 245
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--sheen-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 250
+    "line": 248
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--ridge-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 259
+    "line": 257
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--dvd--plastic-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 262
+    "line": 260
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--gap",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 271
+    "line": 269
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--padding",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 273
+    "line": 271
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--text-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 276
+    "line": 274
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 277
+    "line": 275
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--padding",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 284
+    "line": 282
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--cover-blur",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 287
+    "line": 285
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--cover-opacity",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 288
+    "line": 286
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--summary--min-font-size",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 298
+    "line": 296
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--title--font-family",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 303
+    "line": 301
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--title--font-weight",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 304
+    "line": 302
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--title--scale",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 305
+    "line": 303
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--title--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 306
+    "line": 304
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--link-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 307
+    "line": 305
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--extra-small--font-family",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 316
+    "line": 314
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--summary--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 318
+    "line": 316
   },
   {
     "varName": "--components-tokens--typography--styles--label--small--font-family",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 326
+    "line": 324
   },
   {
     "varName": "--components-tokens--typography--styles--label--small--font-size",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 327
+    "line": 325
   },
   {
     "varName": "--components-tokens--typography--styles--label--small--font-weight",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 328
+    "line": 326
   },
   {
     "varName": "--components-tokens--typography--styles--label--small--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 329
+    "line": 327
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--link-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 330
+    "line": 328
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--caption-gap",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 335
+    "line": 333
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--background-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 365
+    "line": 363
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--back--padding",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 366
+    "line": 364
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 374
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-color",
+    "file": "src/components/molecules/LifestyleMediaCard.css",
+    "line": 375
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
@@ -1968,519 +1978,519 @@ export const tokenUsages: TokenUsage[] = [
     "line": 376
   },
   {
-    "varName": "--components-tokens--site--focus-ring--outline-color",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 377
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-width",
-    "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 378
-  },
-  {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 382
+    "line": 380
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--caption-gap",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 390
+    "line": 388
   },
   {
     "varName": "--components-tokens--site--lifestyle-card--caption-top",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 391
+    "line": 389
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--small--font-family",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 396
+    "line": 394
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--small--font-weight",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 397
+    "line": 395
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--small--font-size",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 398
+    "line": 396
   },
   {
     "varName": "--components-tokens--typography--styles--subtitle--small--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 399
+    "line": 397
   },
   {
     "varName": "--components-tokens--site--course-card--card-title-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 400
+    "line": 398
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--extra-small--font-size",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 405
+    "line": 403
   },
   {
     "varName": "--components-tokens--typography--styles--paragraph--extra-small--line-height",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 406
+    "line": 404
   },
   {
     "varName": "--components-tokens--site--course-card--card-description-color",
     "file": "src/components/molecules/LifestyleMediaCard.css",
-    "line": 407
+    "line": 405
   },
   {
     "varName": "--components-tokens--text-area--spacing--large--gap",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--text-area--typography--font-family",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 10
+    "line": 8
   },
   {
     "varName": "--components-tokens--text-area--typography--label--font-size",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--text-area--typography--label--font-weight",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 12
+    "line": 10
   },
   {
     "varName": "--components-tokens--text-area--text-color--label--default",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 13
+    "line": 11
   },
   {
     "varName": "--components-tokens--text-area--typography--label--line-height",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 14
+    "line": 12
   },
   {
     "varName": "--components-tokens--text-area--border-color--default",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 18
+    "line": 16
   },
   {
     "varName": "--components-tokens--text-area--border-radius--large",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--text-area--background-color--default",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--text-area--typography--font-family",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--text-area--text-color--input--default",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--text-area--spacing--large--vertical",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 30
+    "line": 28
   },
   {
     "varName": "--components-tokens--text-area--spacing--large--horizontal",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 31
+    "line": 29
   },
   {
     "varName": "--components-tokens--text-area--typography--input--large--font-size",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--text-area--typography--input--large--line-height",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 33
+    "line": 31
   },
   {
     "varName": "--components-tokens--text-area--spacing--small--vertical",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--text-area--spacing--small--horizontal",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 38
+    "line": 36
   },
   {
     "varName": "--components-tokens--text-area--typography--input--small--font-size",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 39
+    "line": 37
   },
   {
     "varName": "--components-tokens--text-area--typography--input--small--line-height",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 40
+    "line": 38
   },
   {
     "varName": "--components-tokens--text-area--text-color--input--placeholder",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 44
+    "line": 42
   },
   {
     "varName": "--components-tokens--text-area--border-color--focus",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--text-area--outline-color--focus",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 51
+    "line": 49
   },
   {
     "varName": "--components-tokens--text-area--border-color--hover",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 56
+    "line": 54
   },
   {
     "varName": "--components-tokens--text-area--border-color--error",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 61
+    "line": 59
   },
   {
     "varName": "--components-tokens--text-area--border-color--error",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 65
+    "line": 63
   },
   {
     "varName": "--components-tokens--text-area--outline-color--error",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 66
+    "line": 64
   },
   {
     "varName": "--components-tokens--text-area--typography--font-family",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--text-area--typography--message--font-size",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--text-area--typography--message--line-height",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 72
+    "line": 70
   },
   {
     "varName": "--components-tokens--text-area--text-color--message--error",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 73
+    "line": 71
   },
   {
     "varName": "--components-tokens--text-area--background-color--disabled",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 78
+    "line": 76
   },
   {
     "varName": "--components-tokens--text-area--border-color--disabled",
     "file": "src/components/molecules/TextArea/TextArea.css",
-    "line": 79
+    "line": 77
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--vertical",
     "file": "src/components/molecules/WaitlistForm/WaitlistForm.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--input-field--spacing--large--vertical",
     "file": "src/components/molecules/WaitlistForm/WaitlistForm.css",
-    "line": 13
+    "line": 11
   },
   {
     "varName": "--components-tokens--input-field--typography--message--font-size",
     "file": "src/components/molecules/WaitlistForm/WaitlistForm.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--input-field--text-color--message--error",
     "file": "src/components/molecules/WaitlistForm/WaitlistForm.css",
-    "line": 23
+    "line": 21
   },
   {
     "varName": "--components-tokens--input-field--typography--label--font-size",
     "file": "src/components/molecules/WaitlistForm/WaitlistForm.css",
-    "line": 28
+    "line": 26
   },
   {
     "varName": "--components-tokens--input-field--text-color--label--default",
     "file": "src/components/molecules/WaitlistForm/WaitlistForm.css",
-    "line": 29
+    "line": 27
   },
   {
     "varName": "--components-tokens--card-image--border-radius--default",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--card-image--spacing--vertical",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--card-image--spacing--horizontal",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--card-image--spacing--button-gap",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--card-image--spacing--button-gap",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--card-image--background-color--flat",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--card-image--background-color--elevation",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 36
+    "line": 34
   },
   {
     "varName": "--components-tokens--card-image--shadow-color--elevation",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 37
+    "line": 35
   },
   {
     "varName": "--components-tokens--card-image--background-color--edge",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 41
+    "line": 39
   },
   {
     "varName": "--components-tokens--card-image--border-color--edge",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 42
+    "line": 40
   },
   {
     "varName": "--components-tokens--card-image--background-color--contrast",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 46
+    "line": 44
   },
   {
     "varName": "--components-tokens--card-image--text-color--contrast--title",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--card-image--text-color--contrast--caption",
     "file": "src/components/organisms/CardImage/CardImage.css",
-    "line": 54
+    "line": 52
   },
   {
     "varName": "--components-tokens--card-text--border-radius--default",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--card-text--spacing--vertical",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 14
+    "line": 12
   },
   {
     "varName": "--components-tokens--card-text--spacing--horizontal",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 15
+    "line": 13
   },
   {
     "varName": "--components-tokens--card-text--spacing--button-gap",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--card-text--spacing--button-gap",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--card-text--background-color--flat",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--card-text--background-color--elevation",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 30
+    "line": 28
   },
   {
     "varName": "--components-tokens--card-text--shadow-color--elevation",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 31
+    "line": 29
   },
   {
     "varName": "--components-tokens--card-text--background-color--edge",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 35
+    "line": 33
   },
   {
     "varName": "--components-tokens--card-text--border-color--edge",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 36
+    "line": 34
   },
   {
     "varName": "--components-tokens--card-text--background-color--contrast",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 40
+    "line": 38
   },
   {
     "varName": "--components-tokens--card-text--text-color--contrast--title",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 44
+    "line": 42
   },
   {
     "varName": "--components-tokens--card-text--text-color--contrast--caption",
     "file": "src/components/organisms/CardText/CardText.css",
-    "line": 48
+    "line": 46
   },
   {
     "varName": "--components-tokens--footer--background-color--flat",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 4
+    "line": 2
   },
   {
     "varName": "--components-tokens--footer--divider-color--flat",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 5
+    "line": 3
   },
   {
     "varName": "--components-tokens--footer--spacing--padding-top",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 6
+    "line": 4
   },
   {
     "varName": "--components-tokens--footer--spacing--padding-horizontal",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 7
+    "line": 5
   },
   {
     "varName": "--components-tokens--footer--spacing--padding-bottom",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--footer--typography--font-family",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 10
+    "line": 8
   },
   {
     "varName": "--components-tokens--footer--sizing--max-width",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 14
+    "line": 12
   },
   {
     "varName": "--components-tokens--footer--spacing--large--gap-blocks",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 21
+    "line": 19
   },
   {
     "varName": "--components-tokens--footer--spacing--large--vertical",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 22
+    "line": 20
   },
   {
     "varName": "--components-tokens--footer--typography--col-title--font-size",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 27
+    "line": 25
   },
   {
     "varName": "--components-tokens--footer--typography--col-title--line-height",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 28
+    "line": 26
   },
   {
     "varName": "--components-tokens--footer--typography--col-title--font-weight",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 29
+    "line": 27
   },
   {
     "varName": "--components-tokens--footer--text-color--accent",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 30
+    "line": 28
   },
   {
     "varName": "--components-tokens--footer--typography--col-title--tracking",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--footer--spacing--title-gap",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 34
+    "line": 32
   },
   {
     "varName": "--components-tokens--footer--spacing--col-item-gap",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 43
+    "line": 41
   },
   {
     "varName": "--components-tokens--footer--text-color--link-default",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 47
+    "line": 45
   },
   {
     "varName": "--components-tokens--footer--typography--link--font-size",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 48
+    "line": 46
   },
   {
     "varName": "--components-tokens--footer--typography--link--line-height",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 49
+    "line": 47
   },
   {
     "varName": "--components-tokens--footer--typography--link--font-weight",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--footer--text-color--link-hover",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 56
+    "line": 54
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 61
+    "line": 59
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 62
+    "line": 60
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 63
+    "line": 61
   },
   {
     "varName": "--components-tokens--footer--text-color--link-default",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 67
+    "line": 65
   },
   {
     "varName": "--components-tokens--footer--typography--link--font-size",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 68
+    "line": 66
+  },
+  {
+    "varName": "--components-tokens--footer--spacing--large--vertical",
+    "file": "src/components/organisms/Footer/Footer.css",
+    "line": 74
+  },
+  {
+    "varName": "--components-tokens--footer--spacing--large--vertical",
+    "file": "src/components/organisms/Footer/Footer.css",
+    "line": 75
   },
   {
     "varName": "--components-tokens--footer--spacing--large--vertical",
@@ -2488,1239 +2498,1229 @@ export const tokenUsages: TokenUsage[] = [
     "line": 76
   },
   {
-    "varName": "--components-tokens--footer--spacing--large--vertical",
+    "varName": "--components-tokens--footer--divider-color--flat",
     "file": "src/components/organisms/Footer/Footer.css",
     "line": 77
   },
   {
-    "varName": "--components-tokens--footer--spacing--large--vertical",
-    "file": "src/components/organisms/Footer/Footer.css",
-    "line": 78
-  },
-  {
-    "varName": "--components-tokens--footer--divider-color--flat",
-    "file": "src/components/organisms/Footer/Footer.css",
-    "line": 79
-  },
-  {
     "varName": "--components-tokens--footer--spacing--large--gap-social-media-items",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 93
+    "line": 91
   },
   {
     "varName": "--components-tokens--footer--typography--link--font-size",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 111
+    "line": 109
   },
   {
     "varName": "--components-tokens--footer--text-color--muted",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 112
+    "line": 110
   },
   {
     "varName": "--components-tokens--footer--typography--col-title--tracking",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 114
+    "line": 112
   },
   {
     "varName": "--components-tokens--footer--social-icon--sizing--button",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 121
+    "line": 119
   },
   {
     "varName": "--components-tokens--footer--social-icon--sizing--button",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 122
+    "line": 120
   },
   {
     "varName": "--components-tokens--footer--social-icon--border-radius",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 123
+    "line": 121
   },
   {
     "varName": "--components-tokens--footer--social-icon--background-color--default",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 124
+    "line": 122
   },
   {
     "varName": "--components-tokens--footer--social-icon--text-color--default",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 125
+    "line": 123
   },
   {
     "varName": "--components-tokens--footer--social-icon--background-color--hover",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 131
+    "line": 129
   },
   {
     "varName": "--components-tokens--footer--text-color--on-accent",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 132
+    "line": 130
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Footer/Footer.css",
+    "line": 135
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-color",
+    "file": "src/components/organisms/Footer/Footer.css",
+    "line": 136
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Footer/Footer.css",
     "line": 137
   },
   {
-    "varName": "--components-tokens--site--focus-ring--outline-color",
+    "varName": "--components-tokens--footer--sizing--icon--small",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 138
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Footer/Footer.css",
-    "line": 139
+    "line": 141
   },
   {
     "varName": "--components-tokens--footer--sizing--icon--small",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 143
-  },
-  {
-    "varName": "--components-tokens--footer--sizing--icon--small",
-    "file": "src/components/organisms/Footer/Footer.css",
-    "line": 144
+    "line": 142
   },
   {
     "varName": "--components-tokens--footer--spacing--bottom-gap",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 152
+    "line": 150
   },
   {
     "varName": "--components-tokens--footer--spacing--padding-bottom",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 154
+    "line": 152
   },
   {
     "varName": "--components-tokens--footer--divider-color--flat",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 155
+    "line": 153
   },
   {
     "varName": "--components-tokens--footer--spacing--bottom-gap",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 161
+    "line": 159
   },
   {
     "varName": "--components-tokens--footer--typography--link--font-size",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 176
+    "line": 174
   },
   {
     "varName": "--components-tokens--footer--typography--link--font-weight",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 178
+    "line": 176
   },
   {
     "varName": "--components-tokens--footer--text-color--muted",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 179
+    "line": 177
   },
   {
     "varName": "--components-tokens--footer--typography--link--line-height",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 185
+    "line": 183
   },
   {
     "varName": "--components-tokens--footer--text-color--link-hover",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 191
+    "line": 189
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 197
+    "line": 195
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 198
+    "line": 196
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 199
+    "line": 197
   },
   {
     "varName": "--components-tokens--footer--typography--copyright--font-size",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 204
+    "line": 202
   },
   {
     "varName": "--components-tokens--footer--typography--copyright--line-height",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 205
+    "line": 203
   },
   {
     "varName": "--components-tokens--footer--typography--copyright--font-weight",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 206
+    "line": 204
   },
   {
     "varName": "--components-tokens--footer--text-color--muted",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 207
+    "line": 205
   },
   {
     "varName": "--components-tokens--footer--spacing--responsive--gap-blocks",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 214
+    "line": 212
   },
   {
     "varName": "--components-tokens--footer--spacing--responsive--gap-menu-items",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 221
+    "line": 219
   },
   {
     "varName": "--components-tokens--footer--spacing--col-item-gap",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 227
+    "line": 225
   },
   {
     "varName": "--components-tokens--footer--spacing--responsive--gap-social-media-items",
     "file": "src/components/organisms/Footer/Footer.css",
-    "line": 231
+    "line": 229
   },
   {
     "varName": "--components-tokens--nav-bar--background-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 9
+    "line": 7
   },
   {
     "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 10
+    "line": 8
   },
   {
     "varName": "--components-tokens--nav-bar--typography--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 11
+    "line": 9
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--horizontal",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 15
+    "line": 13
   },
   {
     "varName": "--components-tokens--nav-bar--sizing--max-width",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 19
+    "line": 17
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--inner-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 24
+    "line": 22
   },
   {
     "varName": "--components-tokens--nav-bar--sizing--height",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 25
+    "line": 23
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--link-vertical",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 26
+    "line": 24
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--brand-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 32
+    "line": 30
   },
   {
     "varName": "--components-tokens--nav-bar--sizing--brand-mark",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 50
+    "line": 48
   },
   {
     "varName": "--components-tokens--nav-bar--sizing--brand-mark",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 51
+    "line": 49
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-name--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 84
+    "line": 82
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-name--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 85
+    "line": 83
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-name--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 86
+    "line": 84
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-name--line-height",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 87
+    "line": 85
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-name--letter-spacing",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 88
+    "line": 86
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--brand",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 89
+    "line": 87
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-tagline--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 93
+    "line": 91
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-tagline--line-height",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 94
+    "line": 92
   },
   {
     "varName": "--components-tokens--nav-bar--typography--brand-tagline--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 95
+    "line": 93
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--tagline",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 96
+    "line": 94
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--cluster-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 102
+    "line": 100
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--cluster-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 109
+    "line": 107
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--link-vertical",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 124
+    "line": 122
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--link-horizontal",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 125
+    "line": 123
   },
   {
     "varName": "--components-tokens--nav-bar--typography--font-family",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 125
+  },
+  {
+    "varName": "--components-tokens--nav-bar--typography--link--font-size",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 126
+  },
+  {
+    "varName": "--components-tokens--nav-bar--typography--link--line-height",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 127
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--link--font-size",
+    "varName": "--components-tokens--nav-bar--typography--link--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 128
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--link--line-height",
+    "varName": "--components-tokens--nav-bar--text-color--link-default",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 129
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--link--font-weight",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 130
-  },
-  {
-    "varName": "--components-tokens--nav-bar--text-color--link-default",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 131
-  },
-  {
     "varName": "--components-tokens--nav-bar--border-radius--link",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 134
+    "line": 132
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 143
+    "line": 141
   },
   {
     "varName": "--components-tokens--nav-bar--background-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 144
+    "line": 142
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-active",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 150
+    "line": 148
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link-active--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 151
+    "line": 149
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 154
+  },
+  {
+    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 155
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 156
   },
   {
-    "varName": "--components-tokens--nav-bar--outline-color--focus",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 157
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 158
-  },
-  {
     "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 177
+    "line": 175
   },
   {
     "varName": "--components-tokens--nav-bar--border-radius--link",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 178
+    "line": 176
   },
   {
     "varName": "--components-tokens--nav-bar--typography--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 193
+    "line": 191
   },
   {
     "varName": "--components-tokens--nav-bar--typography--about-label--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 194
+    "line": 192
   },
   {
     "varName": "--components-tokens--nav-bar--typography--about-label--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 195
+    "line": 193
   },
   {
     "varName": "--components-tokens--nav-bar--typography--about-label--line-height",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 196
+    "line": 194
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--tagline",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 195
+  },
+  {
+    "varName": "--components-tokens--nav-bar--spacing--link-vertical",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 197
   },
   {
-    "varName": "--components-tokens--nav-bar--spacing--link-vertical",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 199
-  },
-  {
     "varName": "--components-tokens--nav-bar--spacing--link-horizontal",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 200
+    "line": 198
   },
   {
     "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 201
+    "line": 199
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 211
+    "line": 209
   },
   {
     "varName": "--components-tokens--nav-bar--outline-color--focus",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 212
+    "line": 210
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 246
+    "line": 244
   },
   {
     "varName": "--components-tokens--nav-bar--background-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 247
+    "line": 245
   },
   {
     "varName": "--components-tokens--nav-bar--background-color--default",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 266
+  },
+  {
+    "varName": "--components-tokens--nav-bar--border-color--default",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 267
+  },
+  {
+    "varName": "--components-tokens--nav-bar--border-radius--link",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 268
   },
   {
-    "varName": "--components-tokens--nav-bar--border-color--default",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 269
-  },
-  {
-    "varName": "--components-tokens--nav-bar--border-radius--link",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 270
-  },
-  {
     "varName": "--components-tokens--nav-bar--spacing--link-vertical",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 282
+    "line": 280
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--link-horizontal",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 283
+    "line": 281
   },
   {
     "varName": "--components-tokens--nav-bar--typography--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 284
+    "line": 282
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 285
+    "line": 283
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 286
+    "line": 284
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link--line-height",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 287
+    "line": 285
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 288
+    "line": 286
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 295
+    "line": 293
   },
   {
     "varName": "--components-tokens--nav-bar--background-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 296
+    "line": 294
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 299
+  },
+  {
+    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 300
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 301
   },
   {
-    "varName": "--components-tokens--nav-bar--outline-color--focus",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 302
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 303
-  },
-  {
     "varName": "--components-tokens--nav-bar--text-color--link-active",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 307
+    "line": 305
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link-active--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 308
+    "line": 306
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--theme-wrap-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 315
+    "line": 313
   },
   {
     "varName": "--components-tokens--nav-bar--typography--theme-label--font-size",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 325
+  },
+  {
+    "varName": "--components-tokens--nav-bar--typography--theme-label--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 327
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--theme-label--font-weight",
+    "varName": "--components-tokens--nav-bar--typography--theme-label--line-height",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 328
+  },
+  {
+    "varName": "--components-tokens--nav-bar--text-color--theme-label",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 329
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--theme-label--line-height",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 330
-  },
-  {
-    "varName": "--components-tokens--nav-bar--text-color--theme-label",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 331
-  },
-  {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 336
+    "line": 334
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 338
+  },
+  {
+    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 339
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 340
   },
   {
-    "varName": "--components-tokens--nav-bar--outline-color--focus",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 341
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 342
-  },
-  {
     "varName": "--components-tokens--nav-bar--typography--theme-label--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 351
+    "line": 349
   },
   {
     "varName": "--components-tokens--nav-bar--typography--theme-label--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 352
+    "line": 350
   },
   {
     "varName": "--components-tokens--nav-bar--typography--theme-label--line-height",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 353
+    "line": 351
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--theme-label",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 354
+    "line": 352
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 362
+    "line": 360
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 365
+  },
+  {
+    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 366
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 367
   },
   {
-    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "varName": "--components-tokens--nav-bar--sizing--hamburger",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 368
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 369
+    "line": 381
   },
   {
     "varName": "--components-tokens--nav-bar--sizing--hamburger",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 383
-  },
-  {
-    "varName": "--components-tokens--nav-bar--sizing--hamburger",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 384
+    "line": 382
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 387
+  },
+  {
+    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 388
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 389
   },
   {
-    "varName": "--components-tokens--nav-bar--outline-color--focus",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 390
-  },
-  {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 391
-  },
-  {
     "varName": "--components-tokens--nav-bar--sizing--sm",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 396
+    "line": 394
   },
   {
     "varName": "--components-tokens--nav-bar--sizing--hamburger-bar",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 397
+    "line": 395
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--hamburger",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 398
+    "line": 396
   },
   {
     "varName": "--components-tokens--nav-bar--background-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 443
+    "line": 441
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--mobile-padding-vertical",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 459
+  },
+  {
+    "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 460
+  },
+  {
+    "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 461
   },
   {
-    "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 462
-  },
-  {
-    "varName": "--components-tokens--nav-bar--border-color--default",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 463
-  },
-  {
     "varName": "--components-tokens--nav-bar--text-color--link-default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 475
+    "line": 473
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 481
+    "line": 479
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 483
+  },
+  {
+    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 484
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 485
   },
   {
-    "varName": "--components-tokens--nav-bar--outline-color--focus",
+    "varName": "--components-tokens--nav-bar--border-radius--link",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 486
   },
   {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 487
-  },
-  {
-    "varName": "--components-tokens--nav-bar--border-radius--link",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 488
-  },
-  {
     "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 495
+    "line": 493
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--cluster-gap",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 499
+  },
+  {
+    "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 500
+  },
+  {
+    "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 501
   },
   {
-    "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 502
-  },
-  {
-    "varName": "--components-tokens--nav-bar--border-color--default",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 503
-  },
-  {
     "varName": "--components-tokens--nav-bar--typography--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 514
+    "line": 512
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 515
+    "line": 513
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link-active--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 516
+    "line": 514
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--brand",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 517
+    "line": 515
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--cluster-gap",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 523
+  },
+  {
+    "varName": "--components-tokens--nav-bar--typography--font-family",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 524
+  },
+  {
+    "varName": "--components-tokens--nav-bar--typography--mobile-item--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 525
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--font-family",
+    "varName": "--components-tokens--nav-bar--typography--mobile-item--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 526
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--mobile-item--font-size",
+    "varName": "--components-tokens--nav-bar--text-color--link-default",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 527
   },
   {
-    "varName": "--components-tokens--nav-bar--typography--mobile-item--font-weight",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 528
-  },
-  {
-    "varName": "--components-tokens--nav-bar--text-color--link-default",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 529
-  },
-  {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 535
+    "line": 533
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-active",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 539
+    "line": 537
   },
   {
     "varName": "--components-tokens--nav-bar--typography--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 545
+    "line": 543
   },
   {
     "varName": "--components-tokens--nav-bar--typography--mobile-item--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 546
+    "line": 544
   },
   {
     "varName": "--components-tokens--nav-bar--typography--mobile-item--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 547
+    "line": 545
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--tagline",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 548
+    "line": 546
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--cluster-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 561
+    "line": 559
   },
   {
     "varName": "--components-tokens--nav-bar--typography--font-family",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 569
+    "line": 567
   },
   {
     "varName": "--components-tokens--nav-bar--typography--mobile-sub-item--font-size",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 570
+    "line": 568
   },
   {
     "varName": "--components-tokens--nav-bar--typography--mobile-sub-item--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 571
+    "line": 569
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 572
+    "line": 570
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 578
+    "line": 576
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-active",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 583
+    "line": 581
   },
   {
     "varName": "--components-tokens--nav-bar--typography--link-active--font-weight",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 584
+    "line": 582
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 588
+    "line": 586
   },
   {
     "varName": "--components-tokens--nav-bar--outline-color--focus",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 589
+    "line": 587
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 590
+    "line": 588
   },
   {
     "varName": "--components-tokens--nav-bar--border-radius--link",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 591
+    "line": 589
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--brand",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 596
+    "line": 594
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 607
+  },
+  {
+    "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
+    "file": "src/components/organisms/Navigation/Navigation.css",
+    "line": 608
+  },
+  {
+    "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
     "line": 609
   },
   {
-    "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 610
-  },
-  {
-    "varName": "--components-tokens--nav-bar--border-color--default",
-    "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 611
-  },
-  {
     "varName": "--components-tokens--nav-bar--background-color--link-hover",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 617
+    "line": 615
   },
   {
     "varName": "--components-tokens--nav-bar--text-color--link-active",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 621
+    "line": 619
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--theme-wrap-gap",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 633
+    "line": 631
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--mobile-padding-vertical",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 634
+    "line": 632
   },
   {
     "varName": "--components-tokens--nav-bar--spacing--mobile-padding-horizontal",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 635
+    "line": 633
   },
   {
     "varName": "--components-tokens--nav-bar--border-color--default",
     "file": "src/components/organisms/Navigation/Navigation.css",
-    "line": 637
+    "line": 635
   },
   {
     "varName": "--components-tokens--project-card--border-color--default",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 8
+    "line": 6
   },
   {
     "varName": "--components-tokens--project-card--border-radius--default",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 9
+    "line": 7
   },
   {
     "varName": "--components-tokens--project-card--background-color--default",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 10
+    "line": 8
   },
   {
     "varName": "--components-tokens--project-card--border-color--hover",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 15
+    "line": 13
   },
   {
     "varName": "--components-tokens--project-card--sizing--media-width",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 20
+    "line": 18
   },
   {
     "varName": "--components-tokens--project-card--background-color--media",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 30
+    "line": 28
   },
   {
     "varName": "--components-tokens--project-card--spacing--placeholder-padding",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 60
+    "line": 58
   },
   {
     "varName": "--components-tokens--project-card--background-color--placeholder",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 61
+    "line": 59
   },
   {
     "varName": "--components-tokens--project-card--border-radius--placeholder-window",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 70
+    "line": 68
   },
   {
     "varName": "--components-tokens--project-card--background-color--placeholder-window",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 71
+    "line": 69
   },
   {
     "varName": "--components-tokens--project-card--spacing--placeholder-chrome-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 82
+    "line": 80
   },
   {
     "varName": "--components-tokens--project-card--spacing--tags-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 83
+    "line": 81
   },
   {
     "varName": "--components-tokens--project-card--border-color--default",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 84
+    "line": 82
   },
   {
     "varName": "--components-tokens--project-card--sizing--placeholder-dot",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 87
+  },
+  {
+    "varName": "--components-tokens--project-card--sizing--placeholder-dot",
+    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
+    "line": 88
+  },
+  {
+    "varName": "--components-tokens--project-card--border-radius--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
     "line": 89
   },
   {
-    "varName": "--components-tokens--project-card--sizing--placeholder-dot",
+    "varName": "--components-tokens--project-card--text-color--placeholder-dot",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
     "line": 90
   },
   {
-    "varName": "--components-tokens--project-card--border-radius--share-button",
-    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 91
-  },
-  {
-    "varName": "--components-tokens--project-card--text-color--placeholder-dot",
-    "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 92
-  },
-  {
     "varName": "--components-tokens--project-card--spacing--tags-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 96
+    "line": 94
   },
   {
     "varName": "--components-tokens--project-card--typography--font-family--body",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 100
+    "line": 98
   },
   {
     "varName": "--components-tokens--project-card--typography--font-size--placeholder-url",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 101
+    "line": 99
   },
   {
     "varName": "--components-tokens--project-card--text-color--placeholder-url",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 102
+    "line": 100
   },
   {
     "varName": "--components-tokens--project-card--spacing--placeholder-padding",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 110
+    "line": 108
   },
   {
     "varName": "--components-tokens--project-card--typography--font-family--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 113
+    "line": 111
   },
   {
     "varName": "--components-tokens--project-card--typography--font-size--placeholder-title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 114
+    "line": 112
   },
   {
     "varName": "--components-tokens--project-card--typography--font-weight--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 115
+    "line": 113
   },
   {
     "varName": "--components-tokens--project-card--typography--line-height--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 116
+    "line": 114
   },
   {
     "varName": "--components-tokens--project-card--text-color--placeholder-title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 117
+    "line": 115
   },
   {
     "varName": "--components-tokens--project-card--spacing--body-vertical",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 125
+    "line": 123
   },
   {
     "varName": "--components-tokens--project-card--spacing--body-horizontal",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 126
+    "line": 124
   },
   {
     "varName": "--components-tokens--project-card--spacing--tags-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 132
+    "line": 130
   },
   {
     "varName": "--components-tokens--project-card--spacing--tags-bottom",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 133
+    "line": 131
   },
   {
     "varName": "--components-tokens--project-card--spacing--title-bottom",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 139
+    "line": 137
   },
   {
     "varName": "--components-tokens--project-card--typography--font-family--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 140
+    "line": 138
   },
   {
     "varName": "--components-tokens--project-card--typography--font-size--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 141
+    "line": 139
   },
   {
     "varName": "--components-tokens--project-card--typography--font-weight--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 142
+    "line": 140
   },
   {
     "varName": "--components-tokens--project-card--typography--line-height--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 143
+    "line": 141
   },
   {
     "varName": "--components-tokens--project-card--text-color--title",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 144
+    "line": 142
   },
   {
     "varName": "--components-tokens--project-card--spacing--description-bottom",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 158
+    "line": 156
   },
   {
     "varName": "--components-tokens--project-card--typography--font-family--body",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 159
+    "line": 157
   },
   {
     "varName": "--components-tokens--project-card--typography--font-size--description",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 160
+    "line": 158
   },
   {
     "varName": "--components-tokens--project-card--typography--line-height--description",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 161
+    "line": 159
   },
   {
     "varName": "--components-tokens--project-card--text-color--description",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 162
+    "line": 160
   },
   {
     "varName": "--components-tokens--project-card--spacing--actions-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 170
+    "line": 168
   },
   {
     "varName": "--components-tokens--project-card--spacing--actions-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 176
+    "line": 174
   },
   {
     "varName": "--components-tokens--project-card--spacing--share-gap",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 183
+    "line": 181
   },
   {
     "varName": "--components-tokens--project-card--typography--font-family--body",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 187
+    "line": 185
   },
   {
     "varName": "--components-tokens--project-card--typography--font-size--share-label",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 188
+    "line": 186
   },
   {
     "varName": "--components-tokens--project-card--typography--font-weight--share-label",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 189
+    "line": 187
   },
   {
     "varName": "--components-tokens--project-card--text-color--share-label",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 190
+    "line": 188
   },
   {
     "varName": "--components-tokens--project-card--sizing--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 198
+    "line": 196
   },
   {
     "varName": "--components-tokens--project-card--sizing--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 199
+    "line": 197
   },
   {
     "varName": "--components-tokens--project-card--border-color--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 201
+    "line": 199
   },
   {
     "varName": "--components-tokens--project-card--border-radius--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 202
+    "line": 200
   },
   {
     "varName": "--components-tokens--project-card--background-color--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 203
+    "line": 201
   },
   {
     "varName": "--components-tokens--project-card--text-color--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 204
+    "line": 202
   },
   {
     "varName": "--components-tokens--project-card--sizing--share-icon",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 210
+    "line": 208
   },
   {
     "varName": "--components-tokens--project-card--sizing--share-icon",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 211
+    "line": 209
   },
   {
     "varName": "--components-tokens--project-card--background-color--share-button-hover",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 216
+    "line": 214
   },
   {
     "varName": "--components-tokens--project-card--background-color--share-button-hover",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 217
+    "line": 215
   },
   {
     "varName": "--components-tokens--project-card--text-color--share-button-hover",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 218
+    "line": 216
   },
   {
     "varName": "--components-tokens--project-card--text-color--share-feedback",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 223
+    "line": 221
   },
   {
     "varName": "--components-tokens--project-card--text-color--share-feedback",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 224
+    "line": 222
   },
   {
     "varName": "--components-tokens--project-card--background-color--share-button",
     "file": "src/components/organisms/ProjectCard/ProjectCard.css",
-    "line": 225
+    "line": 223
   },
   {
     "varName": "--components-tokens--markdown--font-family--heading",
@@ -4845,131 +4845,131 @@ export const tokenUsages: TokenUsage[] = [
   {
     "varName": "--components-tokens--site--page-layout--sizing--container-max-width",
     "file": "src/styles/global.css",
-    "line": 11
+    "line": 10
   },
   {
     "varName": "--components-tokens--site--colors--background",
     "file": "src/styles/global.css",
-    "line": 15
+    "line": 14
   },
   {
     "varName": "--components-tokens--site--colors--text",
     "file": "src/styles/global.css",
-    "line": 16
+    "line": 15
   },
   {
     "varName": "--components-tokens--site--colors--text-muted",
     "file": "src/styles/global.css",
-    "line": 17
+    "line": 16
   },
   {
     "varName": "--components-tokens--site--colors--surface",
     "file": "src/styles/global.css",
-    "line": 18
+    "line": 17
   },
   {
     "varName": "--components-tokens--site--colors--surface-secondary",
     "file": "src/styles/global.css",
-    "line": 19
+    "line": 18
   },
   {
     "varName": "--components-tokens--site--colors--border",
     "file": "src/styles/global.css",
-    "line": 20
+    "line": 19
   },
   {
     "varName": "--components-tokens--site--colors--accent",
     "file": "src/styles/global.css",
-    "line": 21
+    "line": 20
   },
   {
     "varName": "--components-tokens--site--typography--font-family--body",
     "file": "src/styles/global.css",
-    "line": 39
+    "line": 38
   },
   {
     "varName": "--components-tokens--site--typography--font-family--headings",
     "file": "src/styles/global.css",
-    "line": 49
+    "line": 48
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
+    "file": "src/styles/global.css",
+    "line": 80
+  },
+  {
+    "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/styles/global.css",
     "line": 81
   },
   {
-    "varName": "--components-tokens--site--focus-ring--outline-color",
+    "varName": "--components-tokens--site--focus-ring--outline-offset",
     "file": "src/styles/global.css",
     "line": 82
   },
   {
-    "varName": "--components-tokens--site--focus-ring--outline-offset",
-    "file": "src/styles/global.css",
-    "line": 83
-  },
-  {
     "varName": "--components-tokens--site--skip-link--spacing--top",
     "file": "src/styles/global.css",
-    "line": 89
+    "line": 88
   },
   {
     "varName": "--components-tokens--site--skip-link--spacing--left",
     "file": "src/styles/global.css",
-    "line": 90
+    "line": 89
   },
   {
     "varName": "--components-tokens--site--skip-link--spacing--padding-vertical",
     "file": "src/styles/global.css",
-    "line": 91
+    "line": 90
   },
   {
     "varName": "--components-tokens--site--skip-link--spacing--padding-horizontal",
     "file": "src/styles/global.css",
-    "line": 92
+    "line": 91
   },
   {
     "varName": "--components-tokens--site--skip-link--background-color",
     "file": "src/styles/global.css",
-    "line": 93
+    "line": 92
   },
   {
     "varName": "--components-tokens--site--skip-link--text-color",
     "file": "src/styles/global.css",
-    "line": 94
+    "line": 93
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-width",
     "file": "src/styles/global.css",
-    "line": 95
+    "line": 94
   },
   {
     "varName": "--components-tokens--site--focus-ring--outline-color",
     "file": "src/styles/global.css",
-    "line": 96
+    "line": 95
   },
   {
     "varName": "--components-tokens--site--skip-link--border-radius",
     "file": "src/styles/global.css",
-    "line": 97
+    "line": 96
   },
   {
     "varName": "--components-tokens--site--skip-link--typography--font-weight",
     "file": "src/styles/global.css",
-    "line": 98
+    "line": 97
   },
   {
     "varName": "--components-tokens--site--typography--font-family--body",
     "file": "src/styles/global.css",
-    "line": 122
+    "line": 121
   },
   {
     "varName": "--components-tokens--site--typography--font-family--code",
     "file": "src/styles/global.css",
-    "line": 127
+    "line": 126
   },
   {
     "varName": "--components-tokens--input-field--typography--mobile-min--font-size",
     "file": "src/styles/global.css",
-    "line": 163
+    "line": 162
   }
 ];

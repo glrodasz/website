@@ -1,6 +1,32 @@
 {
   "redirects": [
-    { "source": "/components", "destination": "/components/", "permanent": true }
+    { "source": "/components", "destination": "/components/", "permanent": true },
+    {
+      "source": "/",
+      "has": [{ "type": "cookie", "key": "locale", "value": { "re": "^es$" } }],
+      "destination": "/es",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "header", "key": "accept-language", "value": { "re": "^\\s*[Ee][Ss].*$" } }],
+      "missing": [{ "type": "cookie", "key": "locale", "value": { "re": "^(en|es)$" } }],
+      "destination": "/es",
+      "permanent": false
+    },
+    {
+      "source": "/:path((?!es(?:/|$)|tokens(?:/|$)|api/|assets/|components(?:/|$)|flags/|images/|logos/|og/|vectors/|.*\\.).+)",
+      "has": [{ "type": "cookie", "key": "locale", "value": { "re": "^es$" } }],
+      "destination": "/es/:path",
+      "permanent": false
+    },
+    {
+      "source": "/:path((?!es(?:/|$)|tokens(?:/|$)|api/|assets/|components(?:/|$)|flags/|images/|logos/|og/|vectors/|.*\\.).+)",
+      "has": [{ "type": "header", "key": "accept-language", "value": { "re": "^\\s*[Ee][Ss].*$" } }],
+      "missing": [{ "type": "cookie", "key": "locale", "value": { "re": "^(en|es)$" } }],
+      "destination": "/es/:path",
+      "permanent": false
+    }
   ],
   "rewrites": [
     { "source": "/components/", "destination": "/components/index.html" },

@@ -7,12 +7,16 @@ import { ScrollToTop } from './components/molecules/ScrollToTop';
 import Footer from './components/organisms/Footer';
 import { LangWrapper } from './components/common/LangWrapper';
 import Home from './pages/Home';
-import AboutHistory from './pages/AboutHistory';
-import AboutLifestyle from './pages/AboutLifestyle';
-import Courses from './pages/Courses';
-import FunProjects from './pages/FunProjects';
-import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+
+// Home is the landing page and stays in the main bundle; the other pages are
+// split out so their code (react-markdown on AboutHistory, for one) never
+// delays the first paint of /.
+const AboutHistory = lazy(() => import('./pages/AboutHistory'));
+const AboutLifestyle = lazy(() => import('./pages/AboutLifestyle'));
+const Courses = lazy(() => import('./pages/Courses'));
+const FunProjects = lazy(() => import('./pages/FunProjects'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 // Dev-only token explorer: bundles every token JSON plus the audit engine,
 // so it is lazy-loaded to keep it out of the main bundle.
@@ -48,28 +52,30 @@ function AppShell() {
       <ScrollToTop />
       {showChrome && <Navigation />}
       <main id="main-content" className="app-main" tabIndex={-1}>
-        <Routes>
-          {/* Language-aware routes: /:lang? covers both "/" and "/es/" */}
-          <Route path="/:lang?" element={<LangWrapper />}>
-            <Route index element={<Home />} />
-            <Route path="about/history" element={<AboutHistory />} />
-            <Route path="about/lifestyle" element={<AboutLifestyle />} />
-            <Route path="courses" element={<Courses />} />
-            <Route path="projects" element={<FunProjects />} />
-            <Route path="contact" element={<Contact />} />
+        <Suspense fallback={null}>
+          <Routes>
+            {/* Language-aware routes: /:lang? covers both "/" and "/es/" */}
+            <Route path="/:lang?" element={<LangWrapper />}>
+              <Route index element={<Home />} />
+              <Route path="about/history" element={<AboutHistory />} />
+              <Route path="about/lifestyle" element={<AboutLifestyle />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="projects" element={<FunProjects />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            {/* Tokens page is English-only, no lang prefix */}
+            <Route
+              path="/tokens"
+              element={
+                <Suspense fallback={<div style={TOKENS_FALLBACK_LAYOUT}>Loading tokens…</div>}>
+                  <Tokens />
+                </Suspense>
+              }
+            />
             <Route path="*" element={<NotFound />} />
-          </Route>
-          {/* Tokens page is English-only, no lang prefix */}
-          <Route
-            path="/tokens"
-            element={
-              <Suspense fallback={<div style={TOKENS_FALLBACK_LAYOUT}>Loading tokens…</div>}>
-                <Tokens />
-              </Suspense>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </main>
       {showChrome && <Footer />}
     </>

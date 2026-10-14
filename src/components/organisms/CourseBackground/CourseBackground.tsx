@@ -11,6 +11,11 @@ const TOKEN = '--components-tokens--site--course-background';
 const SURFACE_TOKEN = '--components-tokens--site--course-card--surface-color';
 const WIDE_PIXEL_RATIO = 2;
 const NARROW_PIXEL_RATIO = 1.5;
+const INTERACTION_EVENTS = ['pointermove', 'pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart'] as const;
+
+// Shared across mounts: once the visitor has interacted anywhere, a card mounted later (say, after
+// navigating to Courses) animates right away instead of waiting for another interaction.
+let hasInteracted = false;
 
 /** Relative luminance (0–1) of a CSS color, via a throwaway 2D context. */
 function luminance(color: string): number {
@@ -44,6 +49,8 @@ function readPalette(el: HTMLElement): ScenePalette | null {
  * A Three.js "plexus" cloud framed from the middle of the card to its right edge, with
  * depth-of-field bokeh, star-flare hubs and pulse cascades, over a soft atmosphere.
  * Parallax follows the pointer (fine pointers only) and the card's scroll position.
+ * Until the visitor first scrolls, moves the pointer, touches or types, it shows a still frame:
+ * a render loop that starts on load never lets the CPU go idle on slow phones (or in Lighthouse).
  * Three.js is loaded lazily, so it stays out of the main bundle. Colors come from the
  * Site.Course-background tokens and are re-read whenever `<html data-theme>` changes.
  */
@@ -83,7 +90,7 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ className })
 
     const sync = () => {
       if (!scene) return;
-      const shouldRun = visible && !reducedMotion;
+      const shouldRun = visible && !reducedMotion && hasInteracted;
       if (shouldRun && !running) {
         running = true;
         rafId = requestAnimationFrame(frame);
@@ -91,7 +98,7 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ className })
         running = false;
         cancelAnimationFrame(rafId);
       }
-      if (!running && reducedMotion) scene.still();
+      if (!running && (reducedMotion || !hasInteracted)) scene.still();
     };
 
     const applyPalette = () => {
@@ -134,6 +141,19 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ className })
       reducedMotion = e.matches;
       sync();
     };
+    const removeInteractionListeners = () => {
+      INTERACTION_EVENTS.forEach((type) => window.removeEventListener(type, onFirstInteraction));
+    };
+    const onFirstInteraction = () => {
+      hasInteracted = true;
+      removeInteractionListeners();
+      sync();
+    };
+    if (!hasInteracted) {
+      INTERACTION_EVENTS.forEach((type) =>
+        window.addEventListener(type, onFirstInteraction, { passive: true }),
+      );
+    }
 
     // Three.js ships in its own chunk, fetched only when a card with this background mounts.
     import('./scene')
@@ -166,6 +186,7 @@ export const CourseBackground: React.FC<CourseBackgroundProps> = ({ className })
       themeObserver.disconnect();
       intersectionObserver?.disconnect();
       motionQuery.removeEventListener('change', onMotionChange);
+      removeInteractionListeners();
       card.removeEventListener('pointermove', onPointerMove);
       card.removeEventListener('pointerleave', onPointerLeave);
       scene?.dispose();

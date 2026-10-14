@@ -1,5 +1,3 @@
-@import '../../../tokens/design-tokens.css';
-
 /* ProjectCard Organism */
 .qd-project-card {
   display: grid;

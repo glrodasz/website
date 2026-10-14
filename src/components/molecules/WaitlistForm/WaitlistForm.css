@@ -1,5 +1,3 @@
-@import '../../../tokens/design-tokens.css';
-
 .qd-waitlist-form {
   display: flex;
   flex-direction: column;

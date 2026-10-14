@@ -331,9 +331,9 @@ export const Button: React.FC<ButtonProps> = ({
 
 ### Component CSS Pattern
 
-```css
-@import '../../tokens/design-tokens.css';
+Token variables are global: `src/styles/global.css` imports `design-tokens.css` once for the app and Storybook. Don't `@import` it from component or page CSS — every lazy-loaded chunk that does ships its own ~115 KB copy.
 
+```css
 /* Block base */
 .qd-button {
   /* structural/layout only — no colors */

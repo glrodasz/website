@@ -1,5 +1,3 @@
-@import '../../tokens/design-tokens.css';
-
 /*
  * A book or DVD case built as a 3D box: front and back faces plus side faces
  * (spine, page block). Turning the object over rotates the whole box 180°.

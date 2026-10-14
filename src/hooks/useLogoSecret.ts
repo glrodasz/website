@@ -10,7 +10,7 @@ const LONG_PRESS_MS = 700;
 /**
  * Storybook is a separate static build that Vercel serves by rewrite, not a
  * router route, so it needs a real page load. The trailing slash skips the
- * `/components` → `/components/` redirect, and the locale middleware ignores
+ * `/components` → `/components/` redirect, and the locale redirects ignore
  * `components/` so this is never bounced to `/es/`.
  */
 const COMPONENTS_URL = '/components/';

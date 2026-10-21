@@ -162,12 +162,6 @@ export const FAVORITE_ANIME: FavoriteAnime[] = [
     summaryEs: 'Dos hermanos pagan un precio terrible por intentar traer de vuelta a su madre con la alquimia. La adaptación original toma su propio camino, más oscuro, y su final sigue golpeando fuerte.',
   },
   {
-    title: 'Fullmetal Alchemist: Brotherhood',
-    href: 'https://myanimelist.net/anime/5114',
-    summary: 'The faithful adaptation of the manga and one of the most complete stories in anime. Every character and plot thread pays off, building to a finale that earns its scale.',
-    summaryEs: 'La adaptación fiel del manga y una de las historias más completas del anime. Cada personaje y cada trama tienen su recompensa, hasta un final que justifica su escala.',
-  },
-  {
     title: 'Gantz',
     href: 'https://myanimelist.net/anime/384',
     summary: 'People who die are pulled into a room and forced to hunt aliens in a brutal game nobody explains. Violent, disturbing, and impossible to look away from.',

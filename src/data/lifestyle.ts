@@ -25,6 +25,15 @@ export interface FavoriteSeries {
   summaryEs?: string;
 }
 
+export interface FavoriteAnime {
+  title: string;
+  /** MyAnimeList title page */
+  href: string;
+  posterUrl?: string;
+  summary?: string;
+  summaryEs?: string;
+}
+
 /** Synced from Goodreads favorites shelf — edit as needed */
 export const FAVORITE_BOOKS: FavoriteBook[] = [
   {
@@ -142,5 +151,32 @@ export const FAVORITE_SERIES: FavoriteSeries[] = [
     href: 'https://www.imdb.com/title/tt1856010/',
     summary: 'A ruthless congressman climbs his way to the top of Washington, breaking the fourth wall to let you in on every move. Cynical, sharp, and hard to stop watching.',
     summaryEs: 'Un congresista despiadado escala hasta la cima de Washington, rompiendo la cuarta pared para contarte cada movimiento. Cínica, afilada y difícil de dejar de ver.',
+  },
+];
+
+export const FAVORITE_ANIME: FavoriteAnime[] = [
+  {
+    title: 'Fullmetal Alchemist',
+    href: 'https://myanimelist.net/anime/121',
+    summary: 'Two brothers pay a terrible price for trying to bring their mother back with alchemy. The original adaptation takes its own darker path, and its ending still hits hard.',
+    summaryEs: 'Dos hermanos pagan un precio terrible por intentar traer de vuelta a su madre con la alquimia. La adaptación original toma su propio camino, más oscuro, y su final sigue golpeando fuerte.',
+  },
+  {
+    title: 'Fullmetal Alchemist: Brotherhood',
+    href: 'https://myanimelist.net/anime/5114',
+    summary: 'The faithful adaptation of the manga and one of the most complete stories in anime. Every character and plot thread pays off, building to a finale that earns its scale.',
+    summaryEs: 'La adaptación fiel del manga y una de las historias más completas del anime. Cada personaje y cada trama tienen su recompensa, hasta un final que justifica su escala.',
+  },
+  {
+    title: 'Gantz',
+    href: 'https://myanimelist.net/anime/384',
+    summary: 'People who die are pulled into a room and forced to hunt aliens in a brutal game nobody explains. Violent, disturbing, and impossible to look away from.',
+    summaryEs: 'Personas que mueren son llevadas a una habitación y obligadas a cazar alienígenas en un juego brutal que nadie explica. Violento, perturbador e imposible de dejar de mirar.',
+  },
+  {
+    title: 'Frieren',
+    href: 'https://myanimelist.net/anime/52991',
+    summary: 'What happens after the hero\'s journey ends. An elf mage outlives her companions and slowly learns what those years meant. Quiet, melancholic, and beautifully paced.',
+    summaryEs: 'Lo que pasa después de que termina el viaje del héroe. Una maga elfa sobrevive a sus compañeros y poco a poco entiende lo que significaron esos años. Tranquila, melancólica y con un ritmo precioso.',
   },
 ];

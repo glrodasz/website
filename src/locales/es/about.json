@@ -15,7 +15,7 @@
     "hero": {
       "label": "Acerca",
       "title": "Estilo de vida",
-      "intro": "Libros, películas y series a los que siempre vuelvo — además de dónde encontrar más en <goodreads>Goodreads</goodreads> y <letterboxd>Letterboxd</letterboxd>."
+      "intro": "Libros, películas, series y anime a los que siempre vuelvo — además de dónde encontrar más en <goodreads>Goodreads</goodreads> y <letterboxd>Letterboxd</letterboxd>."
     },
     "books": {
       "title": "Libros favoritos",
@@ -30,6 +30,10 @@
     "series": {
       "title": "Series favoritas",
       "cardLink": "Ver en IMDb"
+    },
+    "anime": {
+      "title": "Anime favoritos",
+      "cardLink": "Ver en MyAnimeList"
     },
     "card": {
       "flip": "Voltea {{title}} para leer por qué lo recomiendo",

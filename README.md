@@ -25,7 +25,7 @@ Guillermo's career story: from modifying Blogger templates as a teenager, throug
 
 ### About — Lifestyle
 
-A curated selection of favorite books, films, and series, with links to Guillermo's profiles on Goodreads and Letterboxd and to each series on IMDb.
+A curated selection of favorite books, films, series, and anime, with links to Guillermo's profiles on Goodreads and Letterboxd, to each series on IMDb, and to each anime on MyAnimeList.
 
 ### Contact
 

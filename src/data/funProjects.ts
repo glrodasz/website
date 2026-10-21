@@ -28,17 +28,6 @@ export interface FunProject {
  */
 export const FUN_PROJECTS: FunProject[] = [
   {
-    slug: 'haggler',
-    name: 'Haggler',
-    url: 'https://glrodasz.github.io/haggler-agent/',
-    repoUrl: 'https://github.com/glrodasz/haggler-agent',
-    description:
-      'An agentic pipeline that tracks subscription prices across 67 countries and tells you which cheaper offers you can actually get, and at what risk.',
-    descriptionEs:
-      'Un pipeline de agentes que sigue los precios de suscripciones en 67 países y te dice qué ofertas más baratas puedes conseguir de verdad, y con qué riesgo.',
-    tags: ['Python', 'Google ADK', 'Gemini'],
-  },
-  {
     slug: 'walleto',
     name: 'Walleto',
     url: 'https://walleto.guillermorodas.com',
@@ -48,6 +37,17 @@ export const FUN_PROJECTS: FunProject[] = [
     descriptionEs:
       'Un planificador de finanzas personales: tu plan mensual, si el mes va por buen camino y dónde estás hoy — con soporte nativo para múltiples monedas.',
     tags: ['Next.js', 'TypeScript', 'Firestore'],
+  },
+  {
+    slug: 'haggler',
+    name: 'Haggler',
+    url: 'https://glrodasz.github.io/haggler-agent/',
+    repoUrl: 'https://github.com/glrodasz/haggler-agent',
+    description:
+      'An agentic pipeline that tracks subscription prices across 67 countries and tells you which cheaper offers you can actually get, and at what risk.',
+    descriptionEs:
+      'Un pipeline de agentes que sigue los precios de suscripciones en 67 países y te dice qué ofertas más baratas puedes conseguir de verdad, y con qué riesgo.',
+    tags: ['Python', 'Google ADK', 'Gemini'],
   },
   {
     slug: 'timepass',

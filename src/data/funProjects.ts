@@ -123,6 +123,15 @@ export const COMMUNITY_PROJECTS: CommunityProject[] = [
     descriptionEs:
       'Un bootcamp full-stack de JavaScript gratuito y 100% online: de cero a full-stack developer en 16 semanas.',
   },
+  {
+    slug: 'pasaportech',
+    name: 'Pasaportech',
+    url: 'https://pasaportech.com',
+    description:
+      'A podcast with real stories of people who moved to another country to work in tech, from life and culture to remote work and practical advice.',
+    descriptionEs:
+      'Un podcast con historias reales de personas que se mudaron a otro país para trabajar en tecnología, desde la vida y la cultura hasta el trabajo remoto y consejos prácticos.',
+  },
 ];
 
 /** Projects linked from the footer: the first three of FUN_PROJECTS. */

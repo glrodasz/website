@@ -19,6 +19,10 @@
     "shareText": "Mira {{project}} de @germorodas",
     "screenshotAlt": "Captura de pantalla de {{project}}"
   },
+  "community": {
+    "title": "Proyectos para la comunidad",
+    "lead": "Proyectos que construyo y mantengo para la comunidad dev en español."
+  },
   "more": {
     "title": "Hay más en GitHub",
     "lead": "Experimentos, talleres y material de cursos viven en mis repositorios.",

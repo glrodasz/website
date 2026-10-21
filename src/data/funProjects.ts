@@ -39,6 +39,17 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Next.js', 'TypeScript', 'Firestore'],
   },
   {
+    slug: 'haggler',
+    name: 'Haggler',
+    url: 'https://glrodasz.github.io/haggler-agent/',
+    repoUrl: 'https://github.com/glrodasz/haggler-agent',
+    description:
+      'An agentic pipeline that tracks subscription prices across 67 countries and tells you which cheaper offers you can actually get, and at what risk.',
+    descriptionEs:
+      'Un pipeline de agentes que sigue los precios de suscripciones en 67 países y te dice qué ofertas más baratas puedes conseguir de verdad, y con qué riesgo.',
+    tags: ['Python', 'Google ADK', 'Gemini'],
+  },
+  {
     slug: 'timepass',
     name: 'Timepass',
     url: 'https://timepass.guillermorodas.com',
@@ -84,5 +95,44 @@ export const FUN_PROJECTS: FunProject[] = [
   },
 ];
 
-/** Projects linked from the footer: the first three of the list above. */
+export interface CommunityProject {
+  slug: string;
+  name: string;
+  url: string;
+  description: string;
+  descriptionEs: string;
+}
+
+/** Projects for the community, listed under the pet projects on /projects without a screenshot. */
+export const COMMUNITY_PROJECTS: CommunityProject[] = [
+  {
+    slug: 'estreamers',
+    name: 'EStreamers Coders',
+    url: 'https://estreamers.guillermorodas.com',
+    description:
+      'A community-curated list of Spanish-speaking developers who stream about code on Twitch and YouTube.',
+    descriptionEs:
+      'Una lista curada por la comunidad de desarrolladores hispanohablantes que hacen streaming de programación en Twitch y YouTube.',
+  },
+  {
+    slug: 'undefined-academy',
+    name: 'Undefined Academy',
+    url: 'https://undefined.academy',
+    description:
+      'A free, 100% online full-stack JavaScript bootcamp: from zero to full-stack developer in 16 weeks.',
+    descriptionEs:
+      'Un bootcamp full-stack de JavaScript gratuito y 100% online: de cero a full-stack developer en 16 semanas.',
+  },
+  {
+    slug: 'pasaportech',
+    name: 'Pasaportech',
+    url: 'https://pasaportech.com',
+    description:
+      'A podcast with real stories of people who moved to another country to work in tech, from life and culture to remote work and practical advice.',
+    descriptionEs:
+      'Un podcast con historias reales de personas que se mudaron a otro país para trabajar en tecnología, desde la vida y la cultura hasta el trabajo remoto y consejos prácticos.',
+  },
+];
+
+/** Projects linked from the footer: the first three of FUN_PROJECTS. */
 export const FOOTER_PROJECTS: FunProject[] = FUN_PROJECTS.slice(0, 3);

@@ -16,6 +16,24 @@ export interface FavoriteFilm {
   summaryEs?: string;
 }
 
+export interface FavoriteSeries {
+  title: string;
+  /** IMDb title page — there is no Letterboxd equivalent for TV */
+  href: string;
+  posterUrl?: string;
+  summary?: string;
+  summaryEs?: string;
+}
+
+export interface FavoriteAnime {
+  title: string;
+  /** MyAnimeList title page */
+  href: string;
+  posterUrl?: string;
+  summary?: string;
+  summaryEs?: string;
+}
+
 /** Synced from Goodreads favorites shelf — edit as needed */
 export const FAVORITE_BOOKS: FavoriteBook[] = [
   {
@@ -102,3 +120,65 @@ export const FAVORITE_FILMS: FavoriteFilm[] = [
 ];
 
 export const LETTERBOXD_PROFILE = 'https://letterboxd.com/guillermorodas/';
+
+export const FAVORITE_SERIES: FavoriteSeries[] = [
+  {
+    title: 'Black Sails',
+    href: 'https://www.imdb.com/title/tt2375692/',
+    posterUrl: '/images/covers/series/black-sails.webp',
+    summary: 'A pirate drama written as a prequel to Treasure Island. What starts as an adventure grows into a sharp story about power, loyalty, and the myths people build around themselves.',
+    summaryEs: 'Un drama de piratas escrito como precuela de La isla del tesoro. Lo que empieza como una aventura se convierte en una historia afilada sobre el poder, la lealtad y los mitos que construimos sobre nosotros mismos.',
+  },
+  {
+    title: 'Better Call Saul',
+    href: 'https://www.imdb.com/title/tt3032476/',
+    posterUrl: '/images/covers/series/better-call-saul.webp',
+    summary: 'The rare spin-off that lives up to Breaking Bad. A patient, character-driven look at how Jimmy McGill becomes Saul Goodman, one small compromise at a time.',
+    summaryEs: 'Ese raro spin-off que está a la altura de Breaking Bad. Una mirada paciente, centrada en los personajes, a cómo Jimmy McGill se convierte en Saul Goodman, una pequeña concesión a la vez.',
+  },
+  {
+    title: 'Dexter',
+    href: 'https://www.imdb.com/title/tt0773262/',
+    posterUrl: '/images/covers/series/dexter.webp',
+    summary: 'A forensic blood-spatter analyst who is secretly a serial killer, hunting only other killers. A dark premise carried by a narrator you end up rooting for against your better judgment.',
+    summaryEs: 'Un analista forense de manchas de sangre que en secreto es un asesino en serie y solo caza a otros asesinos. Una premisa oscura sostenida por un narrador al que terminas apoyando aunque sepas que no deberías.',
+  },
+  {
+    title: 'How I Met Your Mother',
+    href: 'https://www.imdb.com/title/tt0460649/',
+    posterUrl: '/images/covers/series/how-i-met-your-mother.webp',
+    summary: 'A sitcom told as one long flashback, full of running jokes and callbacks that pay off seasons later. Light, warm, and easy to rewatch with friends.',
+    summaryEs: 'Una comedia contada como un largo flashback, llena de chistes recurrentes y guiños que se resuelven temporadas después. Ligera, cálida y perfecta para volver a ver con amigos.',
+  },
+  {
+    title: 'House of Cards',
+    href: 'https://www.imdb.com/title/tt1856010/',
+    posterUrl: '/images/covers/series/house-of-cards.webp',
+    summary: 'A ruthless congressman climbs his way to the top of Washington, breaking the fourth wall to let you in on every move. Cynical, sharp, and hard to stop watching.',
+    summaryEs: 'Un congresista despiadado escala hasta la cima de Washington, rompiendo la cuarta pared para contarte cada movimiento. Cínica, afilada y difícil de dejar de ver.',
+  },
+];
+
+export const FAVORITE_ANIME: FavoriteAnime[] = [
+  {
+    title: 'Fullmetal Alchemist',
+    href: 'https://myanimelist.net/anime/121',
+    posterUrl: '/images/covers/anime/fullmetal-alchemist.webp',
+    summary: 'Two brothers pay a terrible price for trying to bring their mother back with alchemy. The original adaptation takes its own darker path, and its ending still hits hard.',
+    summaryEs: 'Dos hermanos pagan un precio terrible por intentar traer de vuelta a su madre con la alquimia. La adaptación original toma su propio camino, más oscuro, y su final sigue golpeando fuerte.',
+  },
+  {
+    title: 'Gantz',
+    href: 'https://myanimelist.net/anime/384',
+    posterUrl: '/images/covers/anime/gantz.webp',
+    summary: 'People who die are pulled into a room and forced to hunt aliens in a brutal game nobody explains. Violent, disturbing, and impossible to look away from.',
+    summaryEs: 'Personas que mueren son llevadas a una habitación y obligadas a cazar alienígenas en un juego brutal que nadie explica. Violento, perturbador e imposible de dejar de mirar.',
+  },
+  {
+    title: 'Frieren',
+    href: 'https://myanimelist.net/anime/52991',
+    posterUrl: '/images/covers/anime/frieren.webp',
+    summary: 'What happens after the hero\'s journey ends. An elf mage outlives her companions and slowly learns what those years meant. Quiet, melancholic, and beautifully paced.',
+    summaryEs: 'Lo que pasa después de que termina el viaje del héroe. Una maga elfa sobrevive a sus compañeros y poco a poco entiende lo que significaron esos años. Tranquila, melancólica y con un ritmo precioso.',
+  },
+];

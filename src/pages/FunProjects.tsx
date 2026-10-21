@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { GithubLogo } from 'phosphor-react';
+import { ArrowUpRight, GithubLogo } from 'phosphor-react';
 import { ProjectCard } from '../components/organisms/ProjectCard';
 import { IconButton } from '../components/molecules/IconButton';
 import { Seo } from '../components/Seo';
-import { FUN_PROJECTS } from '../data/funProjects';
+import { communityImage } from '../data/communityImages';
+import { COMMUNITY_PROJECTS, FUN_PROJECTS } from '../data/funProjects';
 import { projectScreenshot } from '../data/projectScreenshots';
 import { titleForPage } from '../data/site';
 import { useLangPrefix } from '../hooks/useLangPrefix';
@@ -53,6 +54,42 @@ const FunProjects: React.FC = () => {
                   copyLinkLabel={t('card.copyLink', name)}
                   copiedLabel={t('card.copied')}
                 />
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <hr className="section-divider" />
+
+      <section className="page-section">
+        <h2 className="section-title">{t('community.title')}</h2>
+        <p className="page-section__lead">{t('community.lead')}</p>
+        <ul className="card-grid card-grid--3 fun-projects__community">
+          {COMMUNITY_PROJECTS.map((project) => {
+            const image = communityImage(project.slug);
+            return (
+              <li key={project.slug} className="fun-projects__community-item">
+                <div className="fun-projects__community-media">
+                  {image ? (
+                    <img src={image} alt="" loading="lazy" className="fun-projects__community-image" />
+                  ) : (
+                    <span className="fun-projects__community-placeholder" aria-hidden="true">
+                      {new URL(project.url).host}
+                    </span>
+                  )}
+                </div>
+                <div className="fun-projects__community-body">
+                  <h3 className="fun-projects__community-name">
+                    <a href={project.url} target="_blank" rel="noopener noreferrer">
+                      {project.name}
+                      <ArrowUpRight aria-hidden="true" />
+                    </a>
+                  </h3>
+                  <p className="fun-projects__community-description">
+                    {isEs ? project.descriptionEs : project.description}
+                  </p>
+                </div>
               </li>
             );
           })}

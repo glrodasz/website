@@ -870,6 +870,27 @@
   --components-tokens--site--lifestyle-card--dvd--ridge-color: var(--system-tokens--colors--fixed--sheen);
   --components-tokens--site--lifestyle-card--dvd--sheen-color: var(--system-tokens--colors--fixed--sheen);
   --components-tokens--site--lifestyle-card--dvd--inner-shade-color: var(--system-tokens--colors--fixed--shade);
+  --components-tokens--site--community-projects--spacing--body-vertical: var(--system-tokens--spacing--sm);
+  --components-tokens--site--community-projects--spacing--body-horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--site--community-projects--spacing--name-bottom: var(--system-tokens--spacing--xxs);
+  --components-tokens--site--community-projects--spacing--icon-gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--site--community-projects--spacing--placeholder-padding: var(--system-tokens--spacing--md);
+  --components-tokens--site--community-projects--border-radius--item: var(--system-tokens--border-radius--md);
+  --components-tokens--site--community-projects--background-color--item: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--site--community-projects--background-color--media-placeholder: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--community-projects--border-color--item: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--site--community-projects--border-color--item-hover: var(--system-tokens--colors--complementary--principal);
+  --components-tokens--site--community-projects--text-color--name: var(--system-tokens--colors--foregrounds--principal);
+  --components-tokens--site--community-projects--text-color--description: var(--system-tokens--colors--foregrounds--neutral);
+  --components-tokens--site--community-projects--text-color--media-placeholder: var(--system-tokens--colors--fixed--on-accent);
+  --components-tokens--site--community-projects--typography--font-family--name: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--site--community-projects--typography--font-family--description: var(--system-tokens--typography--font-family--body);
+  --components-tokens--site--community-projects--typography--font-size--name: var(--system-tokens--typography--font-size--body--md);
+  --components-tokens--site--community-projects--typography--font-size--description: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--site--community-projects--typography--font-size--media-placeholder: var(--system-tokens--typography--font-size--headings--xxs);
+  --components-tokens--site--community-projects--typography--line-height--name: var(--system-tokens--typography--line-height--headings--xxs);
+  --components-tokens--site--community-projects--typography--line-height--description: var(--system-tokens--typography--line-height--body--sm);
+  --components-tokens--site--community-projects--typography--font-weight--name: var(--system-tokens--typography--font-weight--strong);
 
   /* Logo */
   --components-tokens--logo--sizing--icon-large: 40px;

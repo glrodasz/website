@@ -19,6 +19,10 @@
     "shareText": "Check out {{project}} by @germorodas",
     "screenshotAlt": "Screenshot of {{project}}"
   },
+  "community": {
+    "title": "Community projects",
+    "lead": "Projects I build and run for the Spanish-speaking dev community."
+  },
   "more": {
     "title": "There's more on GitHub",
     "lead": "Experiments, workshops and course material live in my repositories.",

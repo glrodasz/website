@@ -9,3 +9,57 @@
   padding: 0;
   list-style: none;
 }
+
+.fun-projects__community {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The whole item is clickable: the name's link stretches over it. */
+.fun-projects__community-item {
+  position: relative;
+  padding: var(--components-tokens--site--community-projects--spacing--item-vertical)
+           var(--components-tokens--site--community-projects--spacing--item-horizontal);
+  border: 1px solid var(--components-tokens--site--community-projects--border-color--item);
+  border-radius: var(--components-tokens--site--community-projects--border-radius--item);
+  background-color: var(--components-tokens--site--community-projects--background-color--item);
+  transition: border-color 0.2s ease;
+}
+
+.fun-projects__community-item:hover {
+  border-color: var(--components-tokens--site--community-projects--border-color--item-hover);
+}
+
+.fun-projects__community-name {
+  margin: 0 0 var(--components-tokens--site--community-projects--spacing--name-bottom);
+  font-family: var(--components-tokens--site--community-projects--typography--font-family--name);
+  font-size: var(--components-tokens--site--community-projects--typography--font-size--name);
+  line-height: var(--components-tokens--site--community-projects--typography--line-height--name);
+  font-weight: var(--components-tokens--site--community-projects--typography--font-weight--name);
+}
+
+.fun-projects__community-name a {
+  color: var(--components-tokens--site--community-projects--text-color--name);
+  text-decoration: none;
+}
+
+/* Inline, so the arrow follows a long name that wraps instead of floating to the edge. */
+.fun-projects__community-name svg {
+  margin-inline-start: var(--components-tokens--site--community-projects--spacing--icon-gap);
+  vertical-align: middle;
+}
+
+.fun-projects__community-name a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.fun-projects__community-description {
+  margin: 0;
+  font-family: var(--components-tokens--site--community-projects--typography--font-family--description);
+  font-size: var(--components-tokens--site--community-projects--typography--font-size--description);
+  line-height: var(--components-tokens--site--community-projects--typography--line-height--description);
+  color: var(--components-tokens--site--community-projects--text-color--description);
+}

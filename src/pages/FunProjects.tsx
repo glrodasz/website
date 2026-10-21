@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { GithubLogo } from 'phosphor-react';
+import { ArrowUpRight, GithubLogo } from 'phosphor-react';
 import { ProjectCard } from '../components/organisms/ProjectCard';
 import { IconButton } from '../components/molecules/IconButton';
 import { Seo } from '../components/Seo';
-import { FUN_PROJECTS } from '../data/funProjects';
+import { COMMUNITY_PROJECTS, FUN_PROJECTS } from '../data/funProjects';
 import { projectScreenshot } from '../data/projectScreenshots';
 import { titleForPage } from '../data/site';
 import { useLangPrefix } from '../hooks/useLangPrefix';
@@ -56,6 +56,28 @@ const FunProjects: React.FC = () => {
               </li>
             );
           })}
+        </ul>
+      </section>
+
+      <hr className="section-divider" />
+
+      <section className="page-section">
+        <h2 className="section-title">{t('community.title')}</h2>
+        <p className="page-section__lead">{t('community.lead')}</p>
+        <ul className="card-grid card-grid--2 fun-projects__community">
+          {COMMUNITY_PROJECTS.map((project) => (
+            <li key={project.slug} className="fun-projects__community-item">
+              <h3 className="fun-projects__community-name">
+                <a href={project.url} target="_blank" rel="noopener noreferrer">
+                  {project.name}
+                  <ArrowUpRight aria-hidden="true" />
+                </a>
+              </h3>
+              <p className="fun-projects__community-description">
+                {isEs ? project.descriptionEs : project.description}
+              </p>
+            </li>
+          ))}
         </ul>
       </section>
 

@@ -3858,6 +3858,91 @@ export const tokenUsages: TokenUsage[] = [
     "line": 7
   },
   {
+    "varName": "--components-tokens--site--community-projects--spacing--item-vertical",
+    "file": "src/pages/FunProjects.css",
+    "line": 22
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--spacing--item-horizontal",
+    "file": "src/pages/FunProjects.css",
+    "line": 23
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--border-color--item",
+    "file": "src/pages/FunProjects.css",
+    "line": 24
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--border-radius--item",
+    "file": "src/pages/FunProjects.css",
+    "line": 25
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--background-color--item",
+    "file": "src/pages/FunProjects.css",
+    "line": 26
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--border-color--item-hover",
+    "file": "src/pages/FunProjects.css",
+    "line": 31
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--spacing--name-bottom",
+    "file": "src/pages/FunProjects.css",
+    "line": 35
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--font-family--name",
+    "file": "src/pages/FunProjects.css",
+    "line": 36
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--font-size--name",
+    "file": "src/pages/FunProjects.css",
+    "line": 37
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--line-height--name",
+    "file": "src/pages/FunProjects.css",
+    "line": 38
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--font-weight--name",
+    "file": "src/pages/FunProjects.css",
+    "line": 39
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--text-color--name",
+    "file": "src/pages/FunProjects.css",
+    "line": 43
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--spacing--icon-gap",
+    "file": "src/pages/FunProjects.css",
+    "line": 49
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--font-family--description",
+    "file": "src/pages/FunProjects.css",
+    "line": 61
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--font-size--description",
+    "file": "src/pages/FunProjects.css",
+    "line": 62
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--typography--line-height--description",
+    "file": "src/pages/FunProjects.css",
+    "line": 63
+  },
+  {
+    "varName": "--components-tokens--site--community-projects--text-color--description",
+    "file": "src/pages/FunProjects.css",
+    "line": 64
+  },
+  {
     "varName": "--components-tokens--site--typography--font-family--body",
     "file": "src/pages/Home.css",
     "line": 69

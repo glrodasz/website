@@ -28,6 +28,17 @@ export interface FunProject {
  */
 export const FUN_PROJECTS: FunProject[] = [
   {
+    slug: 'haggler',
+    name: 'Haggler',
+    url: 'https://glrodasz.github.io/haggler-agent/',
+    repoUrl: 'https://github.com/glrodasz/haggler-agent',
+    description:
+      'An agentic pipeline that tracks subscription prices across 67 countries and tells you which cheaper offers you can actually get, and at what risk.',
+    descriptionEs:
+      'Un pipeline de agentes que sigue los precios de suscripciones en 67 países y te dice qué ofertas más baratas puedes conseguir de verdad, y con qué riesgo.',
+    tags: ['Python', 'Google ADK', 'Gemini'],
+  },
+  {
     slug: 'walleto',
     name: 'Walleto',
     url: 'https://walleto.guillermorodas.com',
@@ -84,5 +95,35 @@ export const FUN_PROJECTS: FunProject[] = [
   },
 ];
 
-/** Projects linked from the footer: the first three of the list above. */
+export interface CommunityProject {
+  slug: string;
+  name: string;
+  url: string;
+  description: string;
+  descriptionEs: string;
+}
+
+/** Projects for the community, listed under the pet projects on /projects without a screenshot. */
+export const COMMUNITY_PROJECTS: CommunityProject[] = [
+  {
+    slug: 'estreamers',
+    name: 'Awesome EStreamers Coders',
+    url: 'https://estreamers.guillermorodas.com',
+    description:
+      'A community-curated list of Spanish-speaking developers who stream about code on Twitch and YouTube.',
+    descriptionEs:
+      'Una lista curada por la comunidad de desarrolladores hispanohablantes que hacen streaming de programación en Twitch y YouTube.',
+  },
+  {
+    slug: 'undefined-academy',
+    name: 'Undefined Academy',
+    url: 'https://undefined.academy',
+    description:
+      'My bootcamp for Spanish-speaking developers who want to take the next step in their careers.',
+    descriptionEs:
+      'Mi bootcamp para desarrolladores hispanohablantes que quieren dar el siguiente paso en su carrera.',
+  },
+];
+
+/** Projects linked from the footer: the first three of FUN_PROJECTS. */
 export const FOOTER_PROJECTS: FunProject[] = FUN_PROJECTS.slice(0, 3);

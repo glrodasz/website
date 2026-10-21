@@ -3714,6 +3714,96 @@
           "$value": "{system.Colors.Fixed.shade}"
         }
       }
+    },
+    "Community-projects": {
+      "spacing": {
+        "item-vertical": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "item-horizontal": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        },
+        "name-bottom": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        },
+        "icon-gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        }
+      },
+      "border-radius": {
+        "item": {
+          "$type": "number",
+          "$value": "{system.Border radius.md}"
+        }
+      },
+      "background-color": {
+        "item": {
+          "$type": "color",
+          "$value": "{system.Colors.Backgrounds.tertiary}"
+        }
+      },
+      "border-color": {
+        "item": {
+          "$type": "color",
+          "$value": "{system.Colors.Borders.neutral}"
+        },
+        "item-hover": {
+          "$type": "color",
+          "$value": "{system.Colors.Complementary.principal}"
+        }
+      },
+      "text-color": {
+        "name": {
+          "$type": "color",
+          "$value": "{system.Colors.Foregrounds.principal}"
+        },
+        "description": {
+          "$type": "color",
+          "$value": "{system.Colors.Foregrounds.neutral}"
+        }
+      },
+      "typography": {
+        "font-family": {
+          "name": {
+            "$type": "string",
+            "$value": "{system.Typography.Font-family.Headings}"
+          },
+          "description": {
+            "$type": "string",
+            "$value": "{system.Typography.Font-family.Body}"
+          }
+        },
+        "font-size": {
+          "name": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Headings.xxs}"
+          },
+          "description": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        },
+        "line-height": {
+          "name": {
+            "$type": "number",
+            "$value": "{system.Typography.Line-height.Headings.xxs}"
+          },
+          "description": {
+            "$type": "number",
+            "$value": "{system.Typography.Line-height.Body.sm}"
+          }
+        },
+        "font-weight": {
+          "name": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          }
+        }
+      }
     }
   },
   "logo": {

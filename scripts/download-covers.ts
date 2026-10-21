@@ -1,6 +1,6 @@
 /**
- * Build Script: Download and optimize book/film cover images
- * Output: public/images/covers/{books,films}/*.webp
+ * Build Script: Download and optimize book/film/series/anime cover images
+ * Output: public/images/covers/{books,films,series,anime}/*.webp
  *
  * Run: npm run build:covers
  * Idempotent — skips files that already exist locally.
@@ -13,7 +13,7 @@ import sharp from 'sharp';
 interface Cover {
   title: string;
   url: string;
-  outDir: 'books' | 'films';
+  outDir: 'books' | 'films' | 'series' | 'anime';
 }
 
 const COVERS: Cover[] = [

@@ -3717,11 +3717,11 @@
     },
     "Community-projects": {
       "spacing": {
-        "item-vertical": {
+        "body-vertical": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
         },
-        "item-horizontal": {
+        "body-horizontal": {
           "$type": "number",
           "$value": "{system.Spacing.md}"
         },
@@ -3732,6 +3732,10 @@
         "icon-gap": {
           "$type": "number",
           "$value": "{system.Spacing.xxs}"
+        },
+        "placeholder-padding": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
         }
       },
       "border-radius": {
@@ -3744,6 +3748,10 @@
         "item": {
           "$type": "color",
           "$value": "{system.Colors.Backgrounds.tertiary}"
+        },
+        "media-placeholder": {
+          "$type": "color",
+          "$value": "{system.Colors.Complementary.principal}"
         }
       },
       "border-color": {
@@ -3764,6 +3772,10 @@
         "description": {
           "$type": "color",
           "$value": "{system.Colors.Foregrounds.neutral}"
+        },
+        "media-placeholder": {
+          "$type": "color",
+          "$value": "{system.Colors.Fixed.on-accent}"
         }
       },
       "typography": {
@@ -3785,6 +3797,10 @@
           "description": {
             "$type": "number",
             "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "media-placeholder": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Headings.xxs}"
           }
         },
         "line-height": {

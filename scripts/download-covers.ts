@@ -29,6 +29,16 @@ const COVERS: Cover[] = [
   { title: 'Donnie Darko', url: 'https://image.tmdb.org/t/p/w342/6FKym4sm5LcqUC80HNpn2ejVoro.jpg', outDir: 'films' },
   { title: 'The Rescue', url: 'https://image.tmdb.org/t/p/w342/kC7fVtCkJACwPBaRr2hlj2whfKX.jpg', outDir: 'films' },
   { title: 'Oldboy', url: 'https://image.tmdb.org/t/p/w342/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg', outDir: 'films' },
+  // Series
+  { title: 'Black Sails', url: 'https://image.tmdb.org/t/p/w342/mZcSwrDdw6cdOVgXm496DgwrQcQ.jpg', outDir: 'series' },
+  { title: 'Better Call Saul', url: 'https://image.tmdb.org/t/p/w342/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg', outDir: 'series' },
+  { title: 'Dexter', url: 'https://image.tmdb.org/t/p/w342/i8ORB1biusVy703lGxUi5Rle6zA.jpg', outDir: 'series' },
+  { title: 'How I Met Your Mother', url: 'https://image.tmdb.org/t/p/w342/b34jPzmB0wZy7EjUZoleXOl2RRI.jpg', outDir: 'series' },
+  { title: 'House of Cards', url: 'https://image.tmdb.org/t/p/w342/hKWxWjFwnMvkWQawbhvC0Y7ygQ8.jpg', outDir: 'series' },
+  // Anime
+  { title: 'Fullmetal Alchemist', url: 'https://image.tmdb.org/t/p/w342/kKOQbCKbGB75h1d3Jlx9Gy4ZTfv.jpg', outDir: 'anime' },
+  { title: 'Gantz', url: 'https://image.tmdb.org/t/p/w342/m6SPdr37LCtwWFcjHyn2iR5nHTZ.jpg', outDir: 'anime' },
+  { title: 'Frieren', url: 'https://image.tmdb.org/t/p/w342/dqZENchTd7lp5zht7BdlqM7RBhD.jpg', outDir: 'anime' },
 ];
 
 function slugify(title: string): string {

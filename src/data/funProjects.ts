@@ -119,9 +119,9 @@ export const COMMUNITY_PROJECTS: CommunityProject[] = [
     name: 'Undefined Academy',
     url: 'https://undefined.academy',
     description:
-      'My bootcamp for Spanish-speaking developers who want to take the next step in their careers.',
+      'A free, 100% online full-stack JavaScript bootcamp: from zero to full-stack developer in 16 weeks.',
     descriptionEs:
-      'Mi bootcamp para desarrolladores hispanohablantes que quieren dar el siguiente paso en su carrera.',
+      'Un bootcamp full-stack de JavaScript gratuito y 100% online: de cero a full-stack developer en 16 semanas.',
   },
 ];
 

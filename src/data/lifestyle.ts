@@ -137,4 +137,10 @@ export const FAVORITE_SERIES: FavoriteSeries[] = [
     summary: 'A sitcom told as one long flashback, full of running jokes and callbacks that pay off seasons later. Light, warm, and easy to rewatch with friends.',
     summaryEs: 'Una comedia contada como un largo flashback, llena de chistes recurrentes y guiños que se resuelven temporadas después. Ligera, cálida y perfecta para volver a ver con amigos.',
   },
+  {
+    title: 'House of Cards',
+    href: 'https://www.imdb.com/title/tt1856010/',
+    summary: 'A ruthless congressman climbs his way to the top of Washington, breaking the fourth wall to let you in on every move. Cynical, sharp, and hard to stop watching.',
+    summaryEs: 'Un congresista despiadado escala hasta la cima de Washington, rompiendo la cuarta pared para contarte cada movimiento. Cínica, afilada y difícil de dejar de ver.',
+  },
 ];

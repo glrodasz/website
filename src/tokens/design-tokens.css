@@ -885,7 +885,7 @@
   --components-tokens--site--community-projects--text-color--media-placeholder: var(--system-tokens--colors--fixed--on-accent);
   --components-tokens--site--community-projects--typography--font-family--name: var(--system-tokens--typography--font-family--headings);
   --components-tokens--site--community-projects--typography--font-family--description: var(--system-tokens--typography--font-family--body);
-  --components-tokens--site--community-projects--typography--font-size--name: var(--system-tokens--typography--font-size--headings--xxs);
+  --components-tokens--site--community-projects--typography--font-size--name: var(--system-tokens--typography--font-size--body--md);
   --components-tokens--site--community-projects--typography--font-size--description: var(--system-tokens--typography--font-size--body--sm);
   --components-tokens--site--community-projects--typography--font-size--media-placeholder: var(--system-tokens--typography--font-size--headings--xxs);
   --components-tokens--site--community-projects--typography--line-height--name: var(--system-tokens--typography--line-height--headings--xxs);

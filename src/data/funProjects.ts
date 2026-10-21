@@ -107,7 +107,7 @@ export interface CommunityProject {
 export const COMMUNITY_PROJECTS: CommunityProject[] = [
   {
     slug: 'estreamers',
-    name: 'Awesome EStreamers Coders',
+    name: 'EStreamers Coders',
     url: 'https://estreamers.guillermorodas.com',
     description:
       'A community-curated list of Spanish-speaking developers who stream about code on Twitch and YouTube.',

@@ -3792,7 +3792,7 @@
         "font-size": {
           "name": {
             "$type": "number",
-            "$value": "{system.Typography.font-size.Headings.xxs}"
+            "$value": "{system.Typography.font-size.Body.md}"
           },
           "description": {
             "$type": "number",

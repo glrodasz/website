@@ -120,21 +120,21 @@ export const FAVORITE_SERIES: FavoriteSeries[] = [
     summaryEs: 'Un drama de piratas escrito como precuela de La isla del tesoro. Lo que empieza como una aventura se convierte en una historia afilada sobre el poder, la lealtad y los mitos que construimos sobre nosotros mismos.',
   },
   {
-    title: 'Severance',
-    href: 'https://www.imdb.com/title/tt11280740/',
-    summary: 'A workplace thriller where employees surgically split their work and personal memories. Unsettling, funny, and meticulously built, every episode leaves you with more questions.',
-    summaryEs: 'Un thriller laboral en el que los empleados separan quirúrgicamente sus recuerdos del trabajo y de su vida personal. Inquietante, divertida y construida al detalle; cada episodio te deja con más preguntas.',
-  },
-  {
     title: 'Better Call Saul',
     href: 'https://www.imdb.com/title/tt3032476/',
-    summary: 'The rare spin-off that lives up to the original. A patient, character-driven look at how Jimmy McGill becomes Saul Goodman, one small compromise at a time.',
-    summaryEs: 'Ese raro spin-off que está a la altura del original. Una mirada paciente, centrada en los personajes, a cómo Jimmy McGill se convierte en Saul Goodman, una pequeña concesión a la vez.',
+    summary: 'The rare spin-off that lives up to Breaking Bad. A patient, character-driven look at how Jimmy McGill becomes Saul Goodman, one small compromise at a time.',
+    summaryEs: 'Ese raro spin-off que está a la altura de Breaking Bad. Una mirada paciente, centrada en los personajes, a cómo Jimmy McGill se convierte en Saul Goodman, una pequeña concesión a la vez.',
   },
   {
-    title: 'Breaking Bad',
-    href: 'https://www.imdb.com/title/tt0903747/',
-    summary: 'A chemistry teacher\'s slow transformation into a drug lord, told with almost no wasted scenes. Tense from start to finish, with one of the best endings in television.',
-    summaryEs: 'La lenta transformación de un profesor de química en capo de la droga, contada casi sin escenas de relleno. Tensa de principio a fin, con uno de los mejores finales de la televisión.',
+    title: 'Dexter',
+    href: 'https://www.imdb.com/title/tt0773262/',
+    summary: 'A forensic blood-spatter analyst who is secretly a serial killer, hunting only other killers. A dark premise carried by a narrator you end up rooting for against your better judgment.',
+    summaryEs: 'Un analista forense de manchas de sangre que en secreto es un asesino en serie y solo caza a otros asesinos. Una premisa oscura sostenida por un narrador al que terminas apoyando aunque sepas que no deberías.',
+  },
+  {
+    title: 'How I Met Your Mother',
+    href: 'https://www.imdb.com/title/tt0460649/',
+    summary: 'A sitcom told as one long flashback, full of running jokes and callbacks that pay off seasons later. Light, warm, and easy to rewatch with friends.',
+    summaryEs: 'Una comedia contada como un largo flashback, llena de chistes recurrentes y guiños que se resuelven temporadas después. Ligera, cálida y perfecta para volver a ver con amigos.',
   },
 ];

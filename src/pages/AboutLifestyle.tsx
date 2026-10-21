@@ -2,6 +2,7 @@ import { useTranslation, Trans } from 'react-i18next';
 import {
   FAVORITE_BOOKS,
   FAVORITE_FILMS,
+  FAVORITE_SERIES,
   GOODREADS_PROFILE,
   LETTERBOXD_PROFILE,
 } from '../data/lifestyle';
@@ -106,6 +107,31 @@ const AboutLifestyle: React.FC = () => {
                 placeholder="▶"
                 linkLabel={t('lifestyle.films.cardLink')}
                 flipLabel={t('lifestyle.card.flip', { title: f.title })}
+                flipBackLabel={t('lifestyle.card.flipBack')}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <hr className="section-divider" />
+
+      <section className="page-section">
+        <div className="lifestyle-section-head">
+          <h2 className="section-title">{t('lifestyle.series.title')}</h2>
+        </div>
+        <ul className="lifestyle-grid">
+          {FAVORITE_SERIES.map((s) => (
+            <li key={s.href}>
+              <LifestyleMediaCard
+                variant="dvd"
+                href={s.href}
+                imageUrl={s.posterUrl}
+                title={s.title}
+                summary={isEs ? (s.summaryEs ?? s.summary) : s.summary}
+                placeholder="📺"
+                linkLabel={t('lifestyle.series.cardLink')}
+                flipLabel={t('lifestyle.card.flip', { title: s.title })}
                 flipBackLabel={t('lifestyle.card.flipBack')}
               />
             </li>

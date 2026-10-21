@@ -16,6 +16,15 @@ export interface FavoriteFilm {
   summaryEs?: string;
 }
 
+export interface FavoriteSeries {
+  title: string;
+  /** IMDb title page — there is no Letterboxd equivalent for TV */
+  href: string;
+  posterUrl?: string;
+  summary?: string;
+  summaryEs?: string;
+}
+
 /** Synced from Goodreads favorites shelf — edit as needed */
 export const FAVORITE_BOOKS: FavoriteBook[] = [
   {
@@ -102,3 +111,30 @@ export const FAVORITE_FILMS: FavoriteFilm[] = [
 ];
 
 export const LETTERBOXD_PROFILE = 'https://letterboxd.com/guillermorodas/';
+
+export const FAVORITE_SERIES: FavoriteSeries[] = [
+  {
+    title: 'Black Sails',
+    href: 'https://www.imdb.com/title/tt2375692/',
+    summary: 'A pirate drama written as a prequel to Treasure Island. What starts as an adventure grows into a sharp story about power, loyalty, and the myths people build around themselves.',
+    summaryEs: 'Un drama de piratas escrito como precuela de La isla del tesoro. Lo que empieza como una aventura se convierte en una historia afilada sobre el poder, la lealtad y los mitos que construimos sobre nosotros mismos.',
+  },
+  {
+    title: 'Severance',
+    href: 'https://www.imdb.com/title/tt11280740/',
+    summary: 'A workplace thriller where employees surgically split their work and personal memories. Unsettling, funny, and meticulously built, every episode leaves you with more questions.',
+    summaryEs: 'Un thriller laboral en el que los empleados separan quirúrgicamente sus recuerdos del trabajo y de su vida personal. Inquietante, divertida y construida al detalle; cada episodio te deja con más preguntas.',
+  },
+  {
+    title: 'Better Call Saul',
+    href: 'https://www.imdb.com/title/tt3032476/',
+    summary: 'The rare spin-off that lives up to the original. A patient, character-driven look at how Jimmy McGill becomes Saul Goodman, one small compromise at a time.',
+    summaryEs: 'Ese raro spin-off que está a la altura del original. Una mirada paciente, centrada en los personajes, a cómo Jimmy McGill se convierte en Saul Goodman, una pequeña concesión a la vez.',
+  },
+  {
+    title: 'Breaking Bad',
+    href: 'https://www.imdb.com/title/tt0903747/',
+    summary: 'A chemistry teacher\'s slow transformation into a drug lord, told with almost no wasted scenes. Tense from start to finish, with one of the best endings in television.',
+    summaryEs: 'La lenta transformación de un profesor de química en capo de la droga, contada casi sin escenas de relleno. Tensa de principio a fin, con uno de los mejores finales de la televisión.',
+  },
+];

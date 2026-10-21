@@ -41,7 +41,7 @@ export const FUN_PROJECTS: FunProject[] = [
   {
     slug: 'haggler',
     name: 'Haggler',
-    url: 'https://glrodasz.github.io/haggler-agent/',
+    url: 'https://haggler.guillermorodas.com',
     repoUrl: 'https://github.com/glrodasz/haggler-agent',
     description:
       'An agentic pipeline that tracks subscription prices across 67 countries and tells you which cheaper offers you can actually get, and at what risk.',

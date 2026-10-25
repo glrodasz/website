@@ -52,7 +52,7 @@
     "globals": "^16.5.0",
     "playwright": "^1.57.0",
     "sharp": "^0.34.5",
-    "storybook": "^10.1.8",
+    "storybook": "^10.6.2",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",

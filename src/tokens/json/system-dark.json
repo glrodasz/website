@@ -68,11 +68,11 @@
       },
       "Highlight": {
         "$type": "color",
-        "$value": "#F7DF1D"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}"
       },
       "Alternative": {
         "$type": "color",
-        "$value": "#F7DF1D"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}"
       },
       "Contrast": {
         "$type": "color",
@@ -80,11 +80,11 @@
       },
       "Link": {
         "$type": "color",
-        "$value": "#F7DF1D"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "#525252"
+        "$value": "{global.Colors.Custom.Principal palette.500}"
       }
     },
     "Borders": {
@@ -102,7 +102,7 @@
       },
       "alternative": {
         "$type": "color",
-        "$value": "#F7DF1D"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.400}"
       },
       "focus": {
         "$type": "color",
@@ -112,19 +112,19 @@
     "Neutral": {
       "high": {
         "$type": "color",
-        "$value": "#262626"
+        "$value": "{global.Colors.Support.Shark.600}"
       },
       "principal": {
         "$type": "color",
-        "$value": "#454545"
+        "$value": "{global.Colors.Support.Shark.500}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "#5D5D5D"
+        "$value": "{global.Colors.Support.Shark.400}"
       },
       "off": {
         "$type": "color",
-        "$value": "#262626"
+        "$value": "{global.Colors.Support.Shark.600}"
       }
     },
     "Complementary": {
@@ -134,15 +134,15 @@
       },
       "subtle": {
         "$type": "color",
-        "$value": "#A3CC00"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.500}"
       },
       "off": {
         "$type": "color",
-        "$value": "#1F2600"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.700}"
       },
       "high": {
         "$type": "color",
-        "$value": "#313D00"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.600}"
       },
       "deep": {
         "$type": "color",
@@ -153,77 +153,77 @@
     "Primary": {
       "principal": {
         "$type": "color",
-        "$value": "#FFFFFF"
+        "$value": "{global.Colors.Support.Shark.0}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "#D1D1D1"
+        "$value": "{global.Colors.Support.Shark.200}"
       },
       "off": {
         "$type": "color",
-        "$value": "#2E2E2E"
+        "$value": "{global.Colors.Support.Shark.800}"
       },
       "high": {
         "$type": "color",
-        "$value": "#FFFFFF"
+        "$value": "{global.Colors.Support.Shark.0}"
       }
     },
     "Info": {
       "high": {
         "$type": "color",
-        "$value": "#EBFDFF"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Gunmetal.100}"
       },
       "low": {
         "$type": "color",
-        "$value": "#0F1F22"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Gunmetal.700}"
       }
     },
     "Success": {
       "high": {
         "$type": "color",
-        "$value": "#10B981"
+        "$value": "{global.Colors.Support.Shamrock.350}"
       },
       "low": {
         "$type": "color",
-        "$value": "#0A2A1F"
+        "$value": "{global.Colors.Support.Shamrock.700}"
       }
     },
     "Warning": {
       "high": {
         "$type": "color",
-        "$value": "#EAB308"
+        "$value": "{global.Colors.Support.Supernova.350}"
       },
       "low": {
         "$type": "color",
-        "$value": "#2A1F00"
+        "$value": "{global.Colors.Support.Supernova.700}"
       }
     },
     "Danger": {
       "high": {
         "$type": "color",
-        "$value": "#EF4444"
+        "$value": "{global.Colors.Support.Geraldine.350}"
       },
       "low": {
         "$type": "color",
-        "$value": "#2A1410"
+        "$value": "{global.Colors.Support.Geraldine.700}"
       }
     },
     "Transparency": {
       "primary": {
         "$type": "color",
-        "$value": "#FFFFFF1a"
+        "$value": "{global.Colors.Support.Shark.opacity-light-subtle}"
       },
       "complementary": {
         "$type": "color",
-        "$value": "#F7DF1D26"
+        "$value": "{global.Colors.Schemas.Metal chartreuse.Chartreuse.opacity}"
       },
       "light": {
         "$type": "color",
-        "$value": "#FFFFFF26"
+        "$value": "{global.Colors.Support.Shark.opacity-light}"
       },
       "dark": {
         "$type": "color",
-        "$value": "#0000004d"
+        "$value": "{global.Colors.Support.Shark.opacity-dark-strong}"
       }
     },
     "Fixed": {

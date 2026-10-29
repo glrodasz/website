@@ -245,6 +245,10 @@
             "$type": "color",
             "$value": "#002529"
           },
+          "700": {
+            "$type": "color",
+            "$value": "#0F1F22"
+          },
           "opacity": {
             "$type": "color",
             "$value": "#00252926"
@@ -274,6 +278,10 @@
           "600": {
             "$type": "color",
             "$value": "#313D00"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#1F2600"
           },
           "opacity": {
             "$type": "color",
@@ -645,6 +653,14 @@
         "opacity-dark": {
           "$type": "color",
           "$value": "#00000026"
+        },
+        "opacity-light-subtle": {
+          "$type": "color",
+          "$value": "#FFFFFF1A"
+        },
+        "opacity-dark-strong": {
+          "$type": "color",
+          "$value": "#0000004D"
         }
       },
       "Shamrock": {
@@ -660,6 +676,10 @@
           "$type": "color",
           "$value": "#36D19B"
         },
+        "350": {
+          "$type": "color",
+          "$value": "#10B981"
+        },
         "400": {
           "$type": "color",
           "$value": "#07946B"
@@ -671,6 +691,10 @@
         "600": {
           "$type": "color",
           "$value": "#022C23"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#0A2A1F"
         }
       },
       "Supernova": {
@@ -686,6 +710,10 @@
           "$type": "color",
           "$value": "#EDB305"
         },
+        "350": {
+          "$type": "color",
+          "$value": "#EAB308"
+        },
         "400": {
           "$type": "color",
           "$value": "#CD8901"
@@ -697,6 +725,10 @@
         "600": {
           "$type": "color",
           "$value": "#432005"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#2A1F00"
         }
       },
       "Geraldine": {
@@ -712,6 +744,10 @@
           "$type": "color",
           "$value": "#EF867A"
         },
+        "350": {
+          "$type": "color",
+          "$value": "#EF4444"
+        },
         "400": {
           "$type": "color",
           "$value": "#D04232"
@@ -723,6 +759,10 @@
         "600": {
           "$type": "color",
           "$value": "#41130E"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#2A1410"
         }
       }
     }

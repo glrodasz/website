@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:tokens": "tsx src/tokens/build-tokens.ts",
+    "audit:tokens": "node scripts/quantum-tokens.mjs audit --src src/tokens/json --scan src --exempt src/pages/tokens --exempt src/tokens/design-tokens.css",
     "build:posts": "tsx scripts/build-posts.ts",
     "build:usage": "tsx scripts/build-token-usage.ts",
     "build:covers": "tsx scripts/download-covers.ts",

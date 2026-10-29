@@ -22,6 +22,7 @@ npm run dev              # Build tokens + posts, then start Vite dev server
 npm run build            # Build tokens + posts + TS check + Vite + Storybook
 npm run storybook        # Build tokens + posts, then start Storybook on port 6006
 npm run build:tokens     # Regenerate design-tokens.css from JSON source files
+npm run audit:tokens     # Audit token JSON + CSS usage (fails on errors; runs in CI)
 npm run build:posts      # Build blog post data
 npm run lint             # Run ESLint
 npm run preview          # Preview production build
@@ -29,6 +30,8 @@ npm run build-storybook  # Build Storybook as static site
 ```
 
 > **Token builds run automatically** before `dev`, `build`, and `storybook`. If you change any file in `src/tokens/json/`, you must run `npm run build:tokens` for the changes to take effect in CSS.
+
+> **Token audit**: `scripts/quantum-tokens.mjs` is a vendored copy of the Quantum Design tokens audit — don't edit it by hand. `npm run audit:tokens` must report 0 errors (CI enforces it). Mark an intentional raw value (alpha mask, hairline) with a `quantum-tokens-ignore` comment on the same line.
 
 ---
 

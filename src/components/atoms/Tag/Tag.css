@@ -25,7 +25,7 @@
 }
 
 .qd-tag__text {
-  line-height: 1;
+  line-height: var(--components-tokens--tag--typography--line-height);
 }
 
 .qd-tag__close {

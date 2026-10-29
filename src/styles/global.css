@@ -26,7 +26,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: var(--components-tokens--site--typography--root--font-size);
   scroll-behavior: smooth;
 }
 
@@ -36,7 +36,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--components-tokens--site--typography--font-family--body);
-  line-height: 1.6;
+  line-height: var(--components-tokens--site--typography--body--line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -46,19 +46,19 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--components-tokens--site--typography--font-family--headings);
-  line-height: 1.2;
+  line-height: var(--components-tokens--site--typography--headings--line-height);
   margin-top: 0;
-  margin-bottom: 0.5em;
-  font-weight: 700;
+  margin-bottom: var(--components-tokens--site--typography--headings--margin-bottom);
+  font-weight: var(--components-tokens--site--typography--headings--font-weight);
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
-h3 { font-size: clamp(1.2rem, 2.5vw, 1.75rem); }
+h1 { font-size: var(--components-tokens--site--typography--h1--font-size); }
+h2 { font-size: var(--components-tokens--site--typography--h2--font-size); }
+h3 { font-size: var(--components-tokens--site--typography--h3--font-size); }
 
 p {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: var(--components-tokens--site--typography--paragraph--margin-bottom);
 }
 
 a {
@@ -112,9 +112,9 @@ img {
 }
 
 ul, ol {
-  padding-left: 1.5em;
+  padding-left: var(--components-tokens--site--typography--list--indent);
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: var(--components-tokens--site--typography--list--margin-bottom);
 }
 
 button {
@@ -129,7 +129,7 @@ code, pre, kbd, samp {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--components-tokens--site--page-layout--spacing--container-horizontal);
 }
 
 .accent {
@@ -145,7 +145,7 @@ code, pre, kbd, samp {
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
+  margin: -1px; /* quantum-tokens-ignore: visually-hidden pattern */
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -159,5 +159,5 @@ code, pre, kbd, samp {
 
 /* Prevent iOS Safari from zooming in when focusing inputs with font-size < 16px */
 input, select, textarea {
-  font-size: max(var(--components-tokens--input-field--typography--mobile-min--font-size), 1em);
+  font-size: max(var(--components-tokens--input-field--typography--mobile-min--font-size), 1em); /* quantum-tokens-ignore: zoom floor follows the inherited size */
 }

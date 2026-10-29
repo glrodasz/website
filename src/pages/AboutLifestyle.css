@@ -1,8 +1,8 @@
 .lifestyle-intro {
-  font-size: 1.1rem;
+  font-size: var(--components-tokens--site--lifestyle-page--intro--font-size);
   color: var(--color-text);
   max-width: 680px;
-  line-height: 1.7;
+  line-height: var(--components-tokens--site--lifestyle-page--intro--line-height);
   margin: 0;
 }
 
@@ -20,8 +20,8 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: var(--components-tokens--site--lifestyle-page--section-head--gap);
+  margin-bottom: var(--components-tokens--site--lifestyle-page--section-head--margin-bottom);
 }
 
 .lifestyle-external {

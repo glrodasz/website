@@ -11,7 +11,7 @@
   font-size: var(--components-tokens--typography--styles--display--large--font-size);
   font-weight: var(--components-tokens--typography--styles--display--large--font-weight);
   line-height: var(--components-tokens--typography--styles--display--large--line-height);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--components-tokens--typography--styles--display--large--letter-spacing);
 }
 
 /* Heading Text */
@@ -20,7 +20,7 @@
   font-size: var(--components-tokens--typography--styles--heading--large--font-size);
   font-weight: var(--components-tokens--typography--styles--heading--large--font-weight);
   line-height: var(--components-tokens--typography--styles--heading--large--line-height);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--components-tokens--typography--styles--heading--large--letter-spacing);
 }
 
 /* Title Text */
@@ -61,7 +61,7 @@
   font-size: var(--components-tokens--typography--styles--text-button--large--font-size);
   font-weight: var(--components-tokens--typography--styles--text-button--large--font-weight);
   line-height: var(--components-tokens--typography--styles--text-button--large--line-height);
-  letter-spacing: 0.01em;
+  letter-spacing: var(--components-tokens--typography--styles--text-button--large--letter-spacing);
 }
 
 /* Responsive Typography */

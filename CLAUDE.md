@@ -22,7 +22,7 @@ npm run dev              # Build tokens + posts, then start Vite dev server
 npm run build            # Build tokens + posts + TS check + Vite + Storybook
 npm run storybook        # Build tokens + posts, then start Storybook on port 6006
 npm run build:tokens     # Regenerate design-tokens.css from JSON source files
-npm run audit:tokens     # Audit token JSON + CSS usage (fails on errors; runs in CI)
+npm run audit:tokens     # Audit token JSON + CSS usage (fails on errors and warnings; runs in CI)
 npm run build:posts      # Build blog post data
 npm run lint             # Run ESLint
 npm run preview          # Preview production build
@@ -31,7 +31,7 @@ npm run build-storybook  # Build Storybook as static site
 
 > **Token builds run automatically** before `dev`, `build`, and `storybook`. If you change any file in `src/tokens/json/`, you must run `npm run build:tokens` for the changes to take effect in CSS.
 
-> **Token audit**: `scripts/quantum-tokens.mjs` is a vendored copy of the Quantum Design tokens audit — don't edit it by hand. `npm run audit:tokens` must report 0 errors (CI enforces it). Mark an intentional raw value (alpha mask, hairline) with a `quantum-tokens-ignore` comment on the same line.
+> **Token audit**: `scripts/quantum-tokens.mjs` is a vendored copy of the Quantum Design tokens audit — don't edit it by hand. `npm run audit:tokens` must report 0 errors and 0 warnings (CI enforces it). Mark an intentional raw value (alpha mask, hairline) with a `quantum-tokens-ignore` comment on the same line.
 
 ---
 
@@ -113,6 +113,8 @@ Raw design values. These are the source of all colors, sizes, and typography. Ne
 | Font families | 16 families (Inter, Montserrat, DM Sans, Work Sans…) |
 | Font weights | Numeric values keyed by weight: Light 100, Regular 300, Medium 400, Semibold 600, Bold 700, Black 900 |
 | Typography scale | `Base` sizes 8–21, `Scale` high/medium/low contrast ratios, and `Steps` — the 25 computed sizes (13–98) the system type scale aliases |
+| Leading | Unitless line-height ratios keyed ×100: `100`, `120`, `130`, `140`, `160`, `170` |
+| Tracking | em letter-spacing keyed in hundredths: `minus-2`, `minus-1`, `0`, `4`, `8`, `10` |
 
 #### Level 2 — System Tokens (`system-light.json` / `system-dark.json`)
 
@@ -131,7 +133,11 @@ Semantic aliases to global tokens. These give meaning to raw values. Theme-aware
 | Sizing | `xxs`=12, `xs`=16, `sm`=24, `md`=32, `ml`=48, `lg`=64, `xl`=96, `xxl`=148 |
 | Spacing | `xxs`=4, `xs`=8, `sm`=12, `md`=24, `ml`=32, `lm`=48, `lg`=64, `xl`=80, `xxl`=116, `xxxl`=180 |
 | Border radius | `flat`=2, `xs`=4, `sm`=8, `md`=12, `lm`=16, `lg`=24, `xl`=32, `xxl`=48, `full`=100 |
-| Elevations | `soft`, `medium`, `high`, `extreme` |
+| Typography — Leading | `none`=1, `tight`=1.2, `snug`=1.3, `medium`=1.4, `normal`=1.6, `relaxed`=1.7 (unitless) |
+| Typography — Tracking | `tighter`=-0.02em, `tight`=-0.01em, `normal`=0, `wide`=0.04em, `wider`=0.08em, `widest`=0.1em |
+| Elevations | `soft` (0 4 16 0), `medium` (0 8 24 0) — each split into `offset-x`, `offset-y`, `blur-radius`, `spread-radius`; the shadow color is a separate color token |
+
+Unitless line-heights and em tracking are typed `string` all the way down: the generator appends `px` to any `number` token whose path mentions `line-height`.
 
 **Dark mode override rule**: `system-dark.json` only needs to define tokens whose values change in dark mode. Light system colors are emitted under `:root, [data-theme="light"]`, so tokens omitted from it inherit the light value. Tokens that must stay constant across themes (e.g. neutral--high on a yellow button) must be explicitly set in `system-dark.json` with the same value.
 

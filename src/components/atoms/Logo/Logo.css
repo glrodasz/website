@@ -44,7 +44,7 @@
 .qd-logo__text {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  line-height: var(--components-tokens--logo--typography--line-height);
 }
 
 .qd-logo__text-quantum {

@@ -89,7 +89,7 @@
 /* Focus state */
 .qd-input-text__container:focus-within {
   border-color: var(--components-tokens--input-field--border-color--focus);
-  box-shadow: 0 0 0 3px var(--components-tokens--input-field--outline-color--focus);
+  box-shadow: 0 0 0 var(--components-tokens--input-field--sizing--focus-ring) var(--components-tokens--input-field--outline-color--focus);
 }
 
 /* Hover state */
@@ -104,7 +104,7 @@
 
 .qd-input-text__container--error:focus-within {
   border-color: var(--components-tokens--input-field--border-color--error);
-  box-shadow: 0 0 0 3px var(--components-tokens--input-field--outline-color--error);
+  box-shadow: 0 0 0 var(--components-tokens--input-field--sizing--focus-ring) var(--components-tokens--input-field--outline-color--error);
 }
 
 .qd-input-text__error-message {

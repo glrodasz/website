@@ -32,7 +32,7 @@
 
 .qd-card-image--elevation {
   background-color: var(--components-tokens--card-image--background-color--elevation);
-  box-shadow: 0 4px 16px var(--components-tokens--card-image--shadow-color--elevation);
+  box-shadow: var(--components-tokens--card-image--elevation--offset-x) var(--components-tokens--card-image--elevation--offset-y) var(--components-tokens--card-image--elevation--blur-radius) var(--components-tokens--card-image--elevation--spread-radius) var(--components-tokens--card-image--shadow-color--elevation);
 }
 
 .qd-card-image--edge {

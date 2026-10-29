@@ -56,7 +56,7 @@
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  box-shadow: 0 8px 20px var(--components-tokens--site--lifestyle-card--shadow-color);
+  box-shadow: var(--components-tokens--site--lifestyle-card--elevation--offset-x) var(--components-tokens--site--lifestyle-card--elevation--offset-y) var(--components-tokens--site--lifestyle-card--elevation--blur-radius) var(--components-tokens--site--lifestyle-card--elevation--spread-radius) var(--components-tokens--site--lifestyle-card--shadow-color);
 }
 
 .qd-lifestyle-media-card__front {

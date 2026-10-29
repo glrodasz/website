@@ -163,14 +163,14 @@
 .qd-footer__controls {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--components-tokens--footer--spacing--controls-gap);
 }
 
 .qd-footer__lang-switcher,
 .qd-footer__theme-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--components-tokens--footer--spacing--theme-toggle-gap);
   font-size: var(--components-tokens--footer--typography--link--font-size);
   font-family: inherit;
   font-weight: var(--components-tokens--footer--typography--link--font-weight);
@@ -195,7 +195,7 @@
   outline: var(--components-tokens--site--focus-ring--outline-width) solid
            var(--components-tokens--site--focus-ring--outline-color);
   outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
-  border-radius: 2px;
+  border-radius: var(--components-tokens--footer--border-radius--focus);
 }
 
 .qd-footer__copyright {

@@ -1149,6 +1149,58 @@
         "$type": "number",
         "$value": 98
       }
+    },
+    "Leading": {
+      "100": {
+        "$type": "string",
+        "$value": "1"
+      },
+      "120": {
+        "$type": "string",
+        "$value": "1.2"
+      },
+      "130": {
+        "$type": "string",
+        "$value": "1.3"
+      },
+      "140": {
+        "$type": "string",
+        "$value": "1.4"
+      },
+      "160": {
+        "$type": "string",
+        "$value": "1.6"
+      },
+      "170": {
+        "$type": "string",
+        "$value": "1.7"
+      }
+    },
+    "Tracking": {
+      "0": {
+        "$type": "string",
+        "$value": "0"
+      },
+      "4": {
+        "$type": "string",
+        "$value": "0.04em"
+      },
+      "8": {
+        "$type": "string",
+        "$value": "0.08em"
+      },
+      "10": {
+        "$type": "string",
+        "$value": "0.1em"
+      },
+      "minus-2": {
+        "$type": "string",
+        "$value": "-0.02em"
+      },
+      "minus-1": {
+        "$type": "string",
+        "$value": "-0.01em"
+      }
     }
   }
 }

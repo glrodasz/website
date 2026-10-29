@@ -26,7 +26,7 @@
 
 .qd-card-text--elevation {
   background-color: var(--components-tokens--card-text--background-color--elevation);
-  box-shadow: 0 4px 16px var(--components-tokens--card-text--shadow-color--elevation);
+  box-shadow: var(--components-tokens--card-text--elevation--offset-x) var(--components-tokens--card-text--elevation--offset-y) var(--components-tokens--card-text--elevation--blur-radius) var(--components-tokens--card-text--elevation--spread-radius) var(--components-tokens--card-text--shadow-color--elevation);
 }
 
 .qd-card-text--edge {

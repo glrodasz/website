@@ -260,6 +260,8 @@ const PULSE_FRAGMENT = /* glsl */ `
   }
 `;
 
+const flareWhite = (alpha: number) => `rgba(255,255,255,${alpha})`; // quantum-tokens-ignore: alpha mask
+
 function makeFlareTexture(): THREE.CanvasTexture {
   const size = 128;
   const c = document.createElement('canvas');
@@ -268,10 +270,10 @@ function makeFlareTexture(): THREE.CanvasTexture {
   const mid = size / 2;
   // Glow body. Drawn in white: the shader tints it with the signal token.
   const glow = g.createRadialGradient(mid, mid, 0, mid, mid, mid);
-  glow.addColorStop(0, 'rgba(255,255,255,1)');
-  glow.addColorStop(0.08, 'rgba(255,255,255,0.7)');
-  glow.addColorStop(0.3, 'rgba(255,255,255,0.12)');
-  glow.addColorStop(1, 'rgba(255,255,255,0)');
+  glow.addColorStop(0, flareWhite(1));
+  glow.addColorStop(0.08, flareWhite(0.7));
+  glow.addColorStop(0.3, flareWhite(0.12));
+  glow.addColorStop(1, flareWhite(0));
   g.fillStyle = glow;
   g.fillRect(0, 0, size, size);
   // Thin cross streaks — the "star" in star flare.
@@ -279,9 +281,9 @@ function makeFlareTexture(): THREE.CanvasTexture {
     const grad = horizontal
       ? g.createLinearGradient(0, mid, size, mid)
       : g.createLinearGradient(mid, 0, mid, size);
-    grad.addColorStop(0, 'rgba(255,255,255,0)');
-    grad.addColorStop(0.5, 'rgba(255,255,255,0.55)');
-    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    grad.addColorStop(0, flareWhite(0));
+    grad.addColorStop(0.5, flareWhite(0.55));
+    grad.addColorStop(1, flareWhite(0));
     g.fillStyle = grad;
     if (horizontal) g.fillRect(size * 0.1, mid - 0.75, size * 0.8, 1.5);
     else g.fillRect(mid - 0.75, size * 0.2, 1.5, size * 0.6);

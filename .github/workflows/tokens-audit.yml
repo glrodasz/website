@@ -1,0 +1,17 @@
+name: Tokens audit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      # The audit script has no dependencies, so no install step is needed.
+      - run: npm run audit:tokens

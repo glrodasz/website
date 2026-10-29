@@ -113,7 +113,7 @@ describe('computeMapView overview', () => {
 
   it('shows one row per group and per UI source', () => {
     expect(overview.focusId).toBeNull();
-    expect(rowCounts(overview)).toEqual([21, 20, 20, 27]);
+    expect(rowCounts(overview)).toEqual([23, 23, 20, 27]);
     expect(overview.totals).toEqual({
       global: graph.stats.global,
       system: graph.stats.system,
@@ -148,8 +148,8 @@ describe('computeMapView overview', () => {
 
     expect(pairsOf('global')).toEqual(groupPairs('system-global', 'global', 'system'));
     expect(pairsOf('system')).toEqual(groupPairs('component-system', 'system', 'component'));
-    expect(linksFrom(overview, 'global')).toHaveLength(33);
-    expect(linksFrom(overview, 'system')).toHaveLength(176);
+    expect(linksFrom(overview, 'global')).toHaveLength(36);
+    expect(linksFrom(overview, 'system')).toHaveLength(191);
     expect(overview.links.every((l) => l.weight > 0)).toBe(true);
   });
 
@@ -237,10 +237,10 @@ describe('computeMapView focus', () => {
   it('counts consumers left off the view as elsewhere', () => {
     const spacingSm = 'system::system tokens.Spacing.sm';
     const consumers = indexes.light.consumersByNode.get(spacingSm) ?? [];
-    expect(consumers).toHaveLength(56);
+    expect(consumers).toHaveLength(70);
     const view = viewOf(consumers[0].id);
     const row = view.columns.system.find((r) => r.id === spacingSm);
-    expect(row?.elsewhere).toBe(55);
+    expect(row?.elsewhere).toBe(69);
     expect(viewOf(spacingSm).columns.system[0].elsewhere).toBe(0);
   });
 

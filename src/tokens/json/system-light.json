@@ -560,6 +560,96 @@
           "$value": "{global.Typography.Steps.59}"
         }
       }
+    },
+    "Leading": {
+      "none": {
+        "$type": "string",
+        "$value": "{global.Typography.Leading.100}"
+      },
+      "tight": {
+        "$type": "string",
+        "$value": "{global.Typography.Leading.120}"
+      },
+      "snug": {
+        "$type": "string",
+        "$value": "{global.Typography.Leading.130}"
+      },
+      "medium": {
+        "$type": "string",
+        "$value": "{global.Typography.Leading.140}"
+      },
+      "normal": {
+        "$type": "string",
+        "$value": "{global.Typography.Leading.160}"
+      },
+      "relaxed": {
+        "$type": "string",
+        "$value": "{global.Typography.Leading.170}"
+      }
+    },
+    "Tracking": {
+      "tighter": {
+        "$type": "string",
+        "$value": "{global.Typography.Tracking.minus-2}"
+      },
+      "tight": {
+        "$type": "string",
+        "$value": "{global.Typography.Tracking.minus-1}"
+      },
+      "normal": {
+        "$type": "string",
+        "$value": "{global.Typography.Tracking.0}"
+      },
+      "wide": {
+        "$type": "string",
+        "$value": "{global.Typography.Tracking.4}"
+      },
+      "wider": {
+        "$type": "string",
+        "$value": "{global.Typography.Tracking.8}"
+      },
+      "widest": {
+        "$type": "string",
+        "$value": "{global.Typography.Tracking.10}"
+      }
+    }
+  },
+  "Elevations": {
+    "soft": {
+      "offset-x": {
+        "$type": "number",
+        "$value": "{global.Sizing.0}"
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": "{global.Sizing.4}"
+      },
+      "blur-radius": {
+        "$type": "number",
+        "$value": "{global.Sizing.16}"
+      },
+      "spread-radius": {
+        "$type": "number",
+        "$value": "{global.Sizing.0}"
+      }
+    },
+    "medium": {
+      "offset-x": {
+        "$type": "number",
+        "$value": "{global.Sizing.0}"
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": "{global.Sizing.8}"
+      },
+      "blur-radius": {
+        "$type": "number",
+        "$value": "{global.Sizing.24}"
+      },
+      "spread-radius": {
+        "$type": "number",
+        "$value": "{global.Sizing.0}"
+      }
     }
   }
 }

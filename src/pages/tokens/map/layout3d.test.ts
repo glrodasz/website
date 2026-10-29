@@ -61,7 +61,7 @@ describe('layout3D', () => {
     for (const focusId of [null, ...MAP_COLUMNS.flatMap((c) => overview.columns[c].map((r) => r.id))]) {
       expect(Math.max(...slabsOf(viewOf(focusId))), String(focusId)).toBeLessThanOrEqual(1);
     }
-    expect(slabsOf(VIEWS['Spacing.sm with Site expanded'])).toEqual([1, 1, 2, 1]);
+    expect(slabsOf(VIEWS['Spacing.sm with Site expanded'])).toEqual([1, 1, 3, 1]);
   });
 
   it('follows the 2D order down each slab', () => {

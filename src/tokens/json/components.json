@@ -36,6 +36,10 @@
           "Line-height": {
             "$type": "number",
             "$value": "{system.Typography.Line-height.Headings.huge}"
+          },
+          "Letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.tighter}"
           }
         },
         "Small": {
@@ -74,6 +78,10 @@
           "Line-height": {
             "$type": "number",
             "$value": "{system.Typography.Line-height.Headings.xl}"
+          },
+          "Letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.tight}"
           }
         },
         "Small": {
@@ -294,6 +302,10 @@
           "Line-height": {
             "$type": "number",
             "$value": "{system.Typography.Line-height.Body.md}"
+          },
+          "Letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.normal}"
           }
         },
         "Small": {
@@ -755,6 +767,11 @@
           "$type": "number",
           "$value": "{system.Sizing.xs}"
         }
+      },
+      "focus-ring": {
+        "$type": "number",
+        "$value": 3,
+        "$description": "Focus ring spread drawn as a box-shadow; the system has no border-width scale."
       }
     },
     "border-radius": {
@@ -1024,6 +1041,13 @@
           "$value": "{system.Typography.Line-height.Body.xs}"
         }
       }
+    },
+    "sizing": {
+      "focus-ring": {
+        "$type": "number",
+        "$value": 3,
+        "$description": "Focus ring spread drawn as a box-shadow; the system has no border-width scale."
+      }
     }
   },
   "tag": {
@@ -1230,6 +1254,10 @@
           "$value": 12,
           "$description": "Compact tag label, below the smallest Body step (13), so it sits outside the type scale."
         }
+      },
+      "line-height": {
+        "$type": "string",
+        "$value": "{system.Typography.Leading.none}"
       }
     },
     "text-color": {
@@ -1910,6 +1938,24 @@
         "$type": "color",
         "$value": "{system.Colors.Transparency.dark}"
       }
+    },
+    "elevation": {
+      "offset-x": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.offset-x}"
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.offset-y}"
+      },
+      "blur-radius": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.blur-radius}"
+      },
+      "spread-radius": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.spread-radius}"
+      }
     }
   },
   "card-text": {
@@ -1973,6 +2019,24 @@
       "elevation": {
         "$type": "color",
         "$value": "{system.Colors.Transparency.dark}"
+      }
+    },
+    "elevation": {
+      "offset-x": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.offset-x}"
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.offset-y}"
+      },
+      "blur-radius": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.blur-radius}"
+      },
+      "spread-radius": {
+        "$type": "number",
+        "$value": "{system.Elevations.soft.spread-radius}"
       }
     }
   },
@@ -2262,6 +2326,50 @@
       "bar-horizontal-mobile": {
         "$type": "number",
         "$value": "{system.Spacing.none}"
+      },
+      "brand-text-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "link-icon-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "about-label-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "dropdown-padding-vertical": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "dropdown-link-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "theme-toggle-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      },
+      "lang-switcher-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      },
+      "hamburger-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "hamburger-padding": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "overlay-close-padding": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "overlay-sub-link-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
       }
     },
     "background-color": {
@@ -2360,6 +2468,14 @@
       "theme-track": {
         "$type": "number",
         "$value": "{system.Border radius.full}"
+      },
+      "focus": {
+        "$type": "number",
+        "$value": "{system.Border radius.flat}"
+      },
+      "hamburger-bar": {
+        "$type": "number",
+        "$value": "{system.Border radius.flat}"
       }
     },
     "sizing": {
@@ -2462,6 +2578,10 @@
         "font-weight": {
           "$type": "number",
           "$value": "{system.Typography.Font-weight.Strong}"
+        },
+        "letter-spacing": {
+          "$type": "string",
+          "$value": "{system.Typography.Tracking.wider}"
         }
       },
       "link": {
@@ -2531,6 +2651,68 @@
           "$type": "number",
           "$value": "{system.Typography.Font-weight.Medium}"
         }
+      },
+      "brand-text": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.tight}"
+        }
+      },
+      "overlay-num": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.none}"
+        }
+      },
+      "overlay-item-name": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.tight}"
+        },
+        "letter-spacing": {
+          "$type": "string",
+          "$value": "{system.Typography.Tracking.wider}"
+        }
+      },
+      "overlay-section-label": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.tight}"
+        },
+        "letter-spacing": {
+          "$type": "string",
+          "$value": "{system.Typography.Tracking.wider}"
+        }
+      },
+      "overlay-sub-link": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.medium}"
+        }
+      }
+    },
+    "dropdown": {
+      "elevation": {
+        "offset-x": {
+          "$type": "number",
+          "$value": "{system.Elevations.soft.offset-x}"
+        },
+        "offset-y": {
+          "$type": "number",
+          "$value": "{system.Elevations.soft.offset-y}"
+        },
+        "blur-radius": {
+          "$type": "number",
+          "$value": "{system.Elevations.soft.blur-radius}"
+        },
+        "spread-radius": {
+          "$type": "number",
+          "$value": "{system.Elevations.soft.spread-radius}"
+        }
+      },
+      "shadow-color": {
+        "$type": "color",
+        "$value": "{system.Colors.Transparency.dark}"
       }
     }
   },
@@ -2647,6 +2829,14 @@
       "padding-horizontal": {
         "$type": "number",
         "$value": "{system.Spacing.md}"
+      },
+      "controls-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "theme-toggle-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
       }
     },
     "text-color": {
@@ -2777,6 +2967,12 @@
           "$value": "{system.Typography.Font-weight.Strong}"
         }
       }
+    },
+    "border-radius": {
+      "focus": {
+        "$type": "number",
+        "$value": "{system.Border radius.flat}"
+      }
     }
   },
   "Site": {
@@ -2788,6 +2984,16 @@
       "placeholder-text": {
         "$type": "color",
         "$value": "{system.Colors.Typography.Paragraph}"
+      },
+      "placeholder": {
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.sm}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.relaxed}"
+        }
       }
     },
     "Course-card": {
@@ -2897,12 +3103,38 @@
         "title-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
+        },
+        "container-horizontal": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
         }
       },
       "sizing": {
         "container-max-width": {
           "$type": "number",
           "$value": "{system.Sizing.container}"
+        }
+      },
+      "typography": {
+        "label": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.widest}"
+          }
+        },
+        "title": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strongest}"
+          }
         }
       }
     },
@@ -2940,6 +3172,72 @@
           "$type": "number",
           "$value": "{system.Spacing.sm}"
         }
+      },
+      "typography": {
+        "img-placeholder": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
+        },
+        "tag": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.wider}"
+          }
+        },
+        "title": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.snug}"
+          }
+        },
+        "meta": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
+        },
+        "excerpt": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.normal}"
+          }
+        }
+      },
+      "tag": {
+        "padding-vertical": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        },
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "border-radius": {
+          "$type": "number",
+          "$value": "{system.Border radius.full}"
+        }
       }
     },
     "Skills-grid": {
@@ -2969,6 +3267,24 @@
         "name-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.xxs}"
+        }
+      },
+      "typography": {
+        "name": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        },
+        "years": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
         }
       }
     },
@@ -3005,6 +3321,48 @@
         "bullet-left": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
+        },
+        "company-bottom": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        }
+      },
+      "typography": {
+        "period": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.wider}"
+          }
+        },
+        "company": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          }
+        },
+        "role": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        },
+        "bullet": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
         }
       }
     },
@@ -3031,6 +3389,30 @@
         "field-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.xxs}"
+        }
+      },
+      "typography": {
+        "school": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        },
+        "degree": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
+        },
+        "year": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
         }
       }
     },
@@ -3061,6 +3443,30 @@
         "gap": {
           "$type": "number",
           "$value": "{system.Spacing.xs}"
+        }
+      },
+      "typography": {
+        "flag": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.lg}"
+          }
+        },
+        "name": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
+        },
+        "level": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
         }
       }
     },
@@ -3104,6 +3510,24 @@
           "$type": "number",
           "$value": "{system.Spacing.sm}"
         }
+      },
+      "typography": {
+        "title": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        },
+        "sub": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          }
+        }
       }
     },
     "Lead": {
@@ -3111,6 +3535,16 @@
         "bottom": {
           "$type": "number",
           "$value": "{system.Spacing.ml}"
+        },
+        "pull-up": {
+          "$type": "number",
+          "$value": "{system.Spacing.xs}"
+        }
+      },
+      "typography": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.normal}"
         }
       }
     },
@@ -3127,6 +3561,54 @@
         "title-row-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.xs}"
+        }
+      },
+      "typography": {
+        "placeholder": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Headings.sm}"
+          }
+        },
+        "title": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.medium}"
+          }
+        },
+        "link": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
+        }
+      },
+      "link-icon": {
+        "offset-y": {
+          "$type": "number",
+          "$value": -2,
+          "$description": "Optical alignment nudge for the icon against its text, below the smallest spacing step (4)."
+        },
+        "spacing-left": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        },
+        "spacing-right": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "Optical alignment nudge for the icon against its text, below the smallest spacing step (4)."
         }
       }
     },
@@ -3151,6 +3633,26 @@
         "info-padding-horizontal": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
+        },
+        "info-gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        }
+      },
+      "typography": {
+        "title": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.medium}"
+          }
         }
       }
     },
@@ -3185,6 +3687,58 @@
         "desc-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
+        },
+        "header-gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.xs}"
+        },
+        "platform": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.wider}"
+          }
+        },
+        "title": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.snug}"
+          }
+        },
+        "desc": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.normal}"
+          }
+        },
+        "cta": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
         }
       },
       "featured": {
@@ -3223,6 +3777,23 @@
         "desc-bottom": {
           "$type": "number",
           "$value": "{system.Spacing.md}"
+        },
+        "title": {
+          "font-size": {
+            "$type": "string",
+            "$value": "clamp(1.6rem, 3vw, 2.2rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strongest}"
+          }
+        },
+        "description": {
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.relaxed}"
+          }
         }
       }
     },
@@ -3319,12 +3890,133 @@
         "success-gap": {
           "$type": "number",
           "$value": "{system.Spacing.sm}"
+        },
+        "intents-row-gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
         }
       },
       "form-input": {
         "border-radius": {
           "$type": "number",
           "$value": "{system.Border radius.sm}"
+        }
+      },
+      "typography": {
+        "hero-lead": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          }
+        },
+        "intent-label": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          }
+        },
+        "intent-body": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.relaxed}"
+          }
+        },
+        "intent-link": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
+        },
+        "language-note": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.normal}"
+          }
+        },
+        "language-note-link": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
+        },
+        "subtitle": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Headings.xxs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          }
+        },
+        "social-list-link": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
+        },
+        "email": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
+        },
+        "social-link": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        },
+        "form-label": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          },
+          "letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.wide}"
+          }
+        },
+        "form-input": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          }
+        }
+      },
+      "intent-icon": {
+        "offset-y": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "Optical alignment nudge for the icon against its text, below the smallest spacing step (4)."
         }
       }
     },
@@ -3435,8 +4127,7 @@
           },
           "font-weight": {
             "$type": "number",
-            "$value": 800,
-            "$description": "Off-scale weight used only by the 404 heading; the documented weights are 100/300/400/600/700/900."
+            "$value": "{system.Typography.Font-weight.Strongest}"
           },
           "line-height": {
             "$type": "string",
@@ -3483,6 +4174,73 @@
         "code": {
           "$type": "string",
           "$value": "{system.Typography.Font-family.Code}"
+        }
+      },
+      "root": {
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.sm}"
+        }
+      },
+      "body": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.normal}"
+        }
+      },
+      "headings": {
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.tight}"
+        },
+        "margin-bottom": {
+          "$type": "string",
+          "$value": "0.5em",
+          "$description": "Relative (em) spacing so the gap follows the element's own font size; the spacing scale is in px."
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{system.Typography.Font-weight.Strong}"
+        }
+      },
+      "h1": {
+        "font-size": {
+          "$type": "string",
+          "$value": "clamp(2rem, 5vw, 3.5rem)",
+          "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+        }
+      },
+      "h2": {
+        "font-size": {
+          "$type": "string",
+          "$value": "clamp(1.5rem, 3.5vw, 2.5rem)",
+          "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+        }
+      },
+      "h3": {
+        "font-size": {
+          "$type": "string",
+          "$value": "clamp(1.2rem, 2.5vw, 1.75rem)",
+          "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+        }
+      },
+      "paragraph": {
+        "margin-bottom": {
+          "$type": "string",
+          "$value": "1em",
+          "$description": "Relative (em) spacing so the gap follows the element's own font size; the spacing scale is in px."
+        }
+      },
+      "list": {
+        "indent": {
+          "$type": "string",
+          "$value": "1.5em",
+          "$description": "List indent in em so the markers line up at any font size; the spacing scale is in px."
+        },
+        "margin-bottom": {
+          "$type": "string",
+          "$value": "1em",
+          "$description": "Relative (em) spacing so the gap follows the element's own font size; the spacing scale is in px."
         }
       }
     },
@@ -3713,6 +4471,24 @@
           "$type": "color",
           "$value": "{system.Colors.Fixed.shade}"
         }
+      },
+      "elevation": {
+        "offset-x": {
+          "$type": "number",
+          "$value": "{system.Elevations.medium.offset-x}"
+        },
+        "offset-y": {
+          "$type": "number",
+          "$value": "{system.Elevations.medium.offset-y}"
+        },
+        "blur-radius": {
+          "$type": "number",
+          "$value": "{system.Elevations.medium.blur-radius}"
+        },
+        "spread-radius": {
+          "$type": "number",
+          "$value": "{system.Elevations.medium.spread-radius}"
+        }
       }
     },
     "Community-projects": {
@@ -3820,6 +4596,358 @@
           }
         }
       }
+    },
+    "Lifestyle-page": {
+      "intro": {
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.md}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.relaxed}"
+        }
+      },
+      "section-head": {
+        "gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "margin-bottom": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        }
+      }
+    },
+    "Home": {
+      "section": {
+        "padding-horizontal": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        },
+        "padding-horizontal-mobile": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "padding-vertical": {
+          "$type": "number",
+          "$value": "{system.Spacing.xl}"
+        },
+        "padding-vertical-mobile": {
+          "$type": "number",
+          "$value": "{system.Spacing.lm}"
+        },
+        "header-gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.sm}"
+        },
+        "grid-gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        }
+      },
+      "section-title": {
+        "font-weight": {
+          "$type": "number",
+          "$value": "{system.Typography.Font-weight.Strongest}"
+        },
+        "font-size": {
+          "$type": "string",
+          "$value": "clamp(1.8rem, 3.5vw, 2.5rem)",
+          "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+        }
+      },
+      "hero": {
+        "inner-shadow": {
+          "offset-y": {
+            "$type": "number",
+            "$value": -5,
+            "$description": "Inset shade along the hero's bottom edge; an inner shadow pointing up, which the outer Elevations scale does not model."
+          },
+          "blur-radius": {
+            "$type": "number",
+            "$value": 10,
+            "$description": "Blur of the hero's inset bottom shade; an inner shadow, not an elevation."
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{system.Colors.Transparency.dark}"
+          }
+        },
+        "layout": {
+          "padding-vertical": {
+            "$type": "number",
+            "$value": "{system.Spacing.lm}"
+          },
+          "padding-vertical-wide": {
+            "$type": "number",
+            "$value": "{system.Spacing.lg}"
+          }
+        },
+        "promo-pill": {
+          "gap": {
+            "$type": "number",
+            "$value": "{system.Spacing.xs}"
+          },
+          "padding-vertical": {
+            "$type": "number",
+            "$value": "{system.Spacing.xs}"
+          },
+          "padding-horizontal": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          },
+          "border-radius": {
+            "$type": "number",
+            "$value": "{system.Border radius.full}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.md}"
+          }
+        },
+        "promo-arrow": {
+          "font-size": {
+            "$type": "string",
+            "$value": "1.1em",
+            "$description": "Relative (em) size so it scales with its parent text; the type scale is in px."
+          }
+        },
+        "headline": {
+          "font-size": {
+            "$type": "string",
+            "$value": "clamp(2.2rem, 7vw, 3.6rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+          },
+          "font-size-mobile": {
+            "$type": "string",
+            "$value": "clamp(1.875rem, 8.5vw, 2.4rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.tight}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          }
+        },
+        "headline-secondary": {
+          "font-size": {
+            "$type": "string",
+            "$value": "0.75em",
+            "$description": "Relative (em) size so it scales with its parent text; the type scale is in px."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$type": "string",
+            "$value": "clamp(1.05rem, 2.5vw, 1.35rem)",
+            "$description": "Fluid type: a clamp() expression cannot be expressed as a token reference."
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.normal}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Moderate}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.md}"
+          }
+        },
+        "ctas": {
+          "gap": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          },
+          "margin-top": {
+            "$type": "number",
+            "$value": "{system.Spacing.xs}"
+          }
+        }
+      },
+      "courses": {
+        "header-margin-bottom": {
+          "$type": "number",
+          "$value": "{system.Spacing.ml}"
+        }
+      },
+      "placeholder": {
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Headings.sm}"
+        }
+      },
+      "course-card": {
+        "badge-container": {
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          }
+        },
+        "badge": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "letter-spacing": {
+            "$type": "string",
+            "$value": "{system.Typography.Tracking.widest}"
+          },
+          "padding-vertical": {
+            "$type": "number",
+            "$value": "{system.Spacing.xxs}"
+          },
+          "padding-horizontal": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          },
+          "border-radius": {
+            "$type": "number",
+            "$value": "{system.Border radius.full}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          }
+        },
+        "name": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.md}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.snug}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.xs}"
+          }
+        },
+        "desc": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.normal}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          }
+        },
+        "cta": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Medium}"
+          }
+        }
+      },
+      "writing": {
+        "header-margin-bottom": {
+          "$type": "number",
+          "$value": "{system.Spacing.lm}"
+        },
+        "posts-margin-bottom": {
+          "$type": "number",
+          "$value": "{system.Spacing.lm}"
+        },
+        "loading-padding": {
+          "$type": "number",
+          "$value": "{system.Spacing.lm}"
+        }
+      },
+      "post-card": {
+        "border-radius": {
+          "$type": "number",
+          "$value": "{system.Border radius.md}"
+        },
+        "body-padding": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        },
+        "title": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.sm}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{system.Typography.Font-weight.Strong}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.medium}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.xs}"
+          }
+        },
+        "meta": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "margin-bottom": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          },
+          "gap": {
+            "$type": "number",
+            "$value": "{system.Spacing.sm}"
+          }
+        },
+        "excerpt": {
+          "font-size": {
+            "$type": "number",
+            "$value": "{system.Typography.font-size.Body.xs}"
+          },
+          "line-height": {
+            "$type": "string",
+            "$value": "{system.Typography.Leading.normal}"
+          }
+        }
+      }
+    },
+    "Lang-tag": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.xxs}"
+        }
+      }
     }
   },
   "logo": {
@@ -3880,6 +5008,10 @@
           "$value": "1px",
           "$description": "Wordmark tracking in px. Tracking is not modelled at the system level."
         }
+      },
+      "line-height": {
+        "$type": "string",
+        "$value": "{system.Typography.Leading.tight}"
       }
     },
     "text-color": {
@@ -3961,6 +5093,11 @@
       "lead": {
         "$type": "number",
         "$value": "{system.Typography.font-size.Body.md}"
+      },
+      "code": {
+        "$type": "string",
+        "$value": "0.92em",
+        "$description": "Relative to the surrounding text so inline code scales with whatever it sits in; the type scale is in px."
       }
     },
     "color": {
@@ -4029,6 +5166,14 @@
       "quote-padding-horizontal": {
         "$type": "number",
         "$value": "{system.Spacing.md}"
+      },
+      "code-vertical": {
+        "$type": "number",
+        "$value": "{system.Spacing.none}"
+      },
+      "code-horizontal": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
       }
     },
     "border-radius": {
@@ -4039,6 +5184,30 @@
       "quote": {
         "$type": "number",
         "$value": "{system.Border radius.xs}"
+      }
+    },
+    "font-weight": {
+      "heading": {
+        "$type": "number",
+        "$value": "{system.Typography.Font-weight.Strong}"
+      },
+      "strong": {
+        "$type": "number",
+        "$value": "{system.Typography.Font-weight.Strong}"
+      }
+    },
+    "line-height": {
+      "heading": {
+        "$type": "string",
+        "$value": "{system.Typography.Leading.snug}"
+      },
+      "body": {
+        "$type": "string",
+        "$value": "{system.Typography.Leading.relaxed}"
+      },
+      "lead": {
+        "$type": "string",
+        "$value": "{system.Typography.Leading.relaxed}"
       }
     }
   }

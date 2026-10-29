@@ -32,7 +32,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#262626' : '#ffffff');
+    if (meta) {
+      const background = getComputedStyle(document.documentElement)
+        .getPropertyValue('--components-tokens--site--colors--background')
+        .trim();
+      meta.setAttribute('content', background);
+    }
   }, [theme]);
 
   // Follow OS preference changes, but only when the user has no stored override

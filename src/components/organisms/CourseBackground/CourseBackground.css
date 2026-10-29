@@ -26,7 +26,7 @@
 /* Phones: the copy runs full width over the network, so everything recedes further. */
 @container (max-width: 519px) {
   .qd-course-background__stage {
-    -webkit-mask-image: linear-gradient(to right, transparent 25%, rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.72) 100%);
-    mask-image: linear-gradient(to right, transparent 25%, rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.72) 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 25%, rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.72) 100%); /* quantum-tokens-ignore: alpha mask */
+    mask-image: linear-gradient(to right, transparent 25%, rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.72) 100%); /* quantum-tokens-ignore: alpha mask */
   }
 }

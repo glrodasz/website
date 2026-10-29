@@ -81,7 +81,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 1px; /* quantum-tokens-ignore: ring stroke width */
   pointer-events: none;
   opacity: 0;
   background: conic-gradient(
@@ -91,9 +91,9 @@
     var(--color-accent) 92%,
     transparent 100%
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); /* quantum-tokens-ignore: alpha mask */
   -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); /* quantum-tokens-ignore: alpha mask */
   mask-composite: exclude;
   animation: home-hero-glance 5s linear infinite;
 }

@@ -224,7 +224,7 @@
 .qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__media-placeholder,
 .qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__sheet {
   border-radius: var(--components-tokens--site--lifestyle-card--book--border-radius);
-  box-shadow: inset 0 0 0 1px var(--components-tokens--site--lifestyle-card--dvd--inner-shade-color);
+  box-shadow: inset 0 0 0 1px var(--components-tokens--site--lifestyle-card--dvd--inner-shade-color); /* quantum-tokens-ignore: hairline */
 }
 
 .qd-lifestyle-media-card--dvd .qd-lifestyle-media-card__media-placeholder {
@@ -239,7 +239,7 @@
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px var(--components-tokens--site--lifestyle-card--dvd--sheen-color);
+  box-shadow: inset 0 0 0 1px var(--components-tokens--site--lifestyle-card--dvd--sheen-color); /* quantum-tokens-ignore: hairline */
   background: linear-gradient(
     115deg,
     var(--components-tokens--site--lifestyle-card--dvd--sheen-color) 0,

@@ -52,7 +52,7 @@ export const FUN_PROJECTS: FunProject[] = [
   {
     slug: 'nido',
     name: 'Nido',
-    url: 'https://nido-agent.web.app',
+    url: 'https://nido.guillermorodas.com',
     repoUrl: 'https://github.com/glrodasz/nido-agent',
     description:
       'Movies and series the whole family enjoys, age-checked against official ratings from 9 countries, on the streaming services you already pay for.',

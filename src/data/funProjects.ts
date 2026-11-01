@@ -50,6 +50,17 @@ export const FUN_PROJECTS: FunProject[] = [
     tags: ['Python', 'Google ADK', 'Gemini'],
   },
   {
+    slug: 'nido',
+    name: 'Nido',
+    url: 'https://nido.guillermorodas.com',
+    repoUrl: 'https://github.com/glrodasz/nido-agent',
+    description:
+      'Movies and series the whole family enjoys, age-checked against official ratings from 9 countries, on the streaming services you already pay for.',
+    descriptionEs:
+      'Películas y series que disfruta toda la familia, con la edad verificada contra las clasificaciones oficiales de 9 países, en los servicios de streaming que ya pagas.',
+    tags: ['Python', 'Google ADK', 'Gemini'],
+  },
+  {
     slug: 'timepass',
     name: 'Timepass',
     url: 'https://timepass.guillermorodas.com',

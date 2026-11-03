@@ -2329,7 +2329,8 @@
       },
       "brand-text-gap": {
         "$type": "number",
-        "$value": "{system.Spacing.xxs}"
+        "$value": 2,
+        "$description": "Hairline gap between the brand name and tagline; below the smallest system spacing step (xxs = 4) so the two lines read as one block."
       },
       "link-icon-gap": {
         "$type": "number",
@@ -2486,7 +2487,8 @@
       },
       "brand-mark": {
         "$type": "number",
-        "$value": "{system.Sizing.ml}"
+        "$value": 40,
+        "$description": "Brand mark scaled down with the header brand text; 40px sits between the system ml (48) and md (32) steps."
       },
       "hamburger": {
         "$type": "number",
@@ -2538,8 +2540,8 @@
           "$value": "{system.Typography.font-size.Body.md}"
         },
         "line-height": {
-          "$type": "number",
-          "$value": "{system.Typography.Line-height.Body.sm}"
+          "$type": "string",
+          "$value": "{system.Typography.Leading.none}"
         },
         "font-weight": {
           "$type": "number",
@@ -2554,11 +2556,12 @@
       "brand-tagline": {
         "font-size": {
           "$type": "number",
-          "$value": "{system.Typography.font-size.Body.xs}"
+          "$value": 11,
+          "$description": "Header tagline sits below the smallest Body step (13) so the brand block reads ~15% smaller; the name is width-fitted to it at runtime (useMatchWidth)."
         },
         "line-height": {
-          "$type": "number",
-          "$value": "{system.Typography.Line-height.Body.xs}"
+          "$type": "string",
+          "$value": "{system.Typography.Leading.tight}"
         },
         "font-weight": {
           "$type": "number",

@@ -2,67 +2,19 @@
 
 # Guillermo Rodas
 
-**Personal site with courses, writing, side projects and contact, in English and Spanish.**
+**Personal site with courses, writing, side projects and contact.**
 
 [![Tokens audit](https://github.com/glrodasz/website/actions/workflows/tokens-audit.yml/badge.svg)](https://github.com/glrodasz/website/actions/workflows/tokens-audit.yml) ![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white) [![Storybook](https://img.shields.io/badge/Storybook-components-FF4785?logo=storybook&logoColor=white)](https://guillermorodas.com/components/)
 
 <br clear="left">
 
-[**Live site**](https://guillermorodas.com) · [Storybook](https://guillermorodas.com/components/) · [Token explorer](https://guillermorodas.com/tokens) · [What's on the site](#whats-on-the-site) · [Quick start](#quick-start)
-
-<img src="public/og/og-default.png" alt="Guillermo Rodas. Senior Forward Deployed Engineer. Helping developers level up while shipping quality software. guillermorodas.com" width="860">
+[**Live site**](https://guillermorodas.com) · [Storybook](https://guillermorodas.com/components/) · [Token explorer](https://guillermorodas.com/tokens) · [Quick start](#quick-start)
 
 ## Why
 
 Guillermo Rodas is a Senior Forward Deployed Engineer and community lead who helps companies build quality products and shares what he learns with the Spanish-speaking developer community. [guillermorodas.com](https://guillermorodas.com) is the hub that ties that work together: his courses, his writing on [blog.guillermorodas.com](https://blog.guillermorodas.com), the side projects he builds, and the right channel to reach him.
 
-The site doubles as a showcase of how he builds front ends: every visual value comes from the **Quantum Design** token system, every component is documented in Storybook, and every page ships in English and Spanish.
-
-## What's on the site
-
-| Page | Route | What it shows |
-|---|---|---|
-| Home | `/` | Hero, a preview of the latest course and the most recent blog posts |
-| Courses | `/courses` | AI-First Programming waitlist, free YouTube courses, Garaje Code Pills tutorials, courses on other platforms |
-| Projects | `/projects` | Side projects and community sites, with screenshots and share links |
-| My history | `/about/history` | Career story, long-form Markdown |
-| Lifestyle | `/about/lifestyle` | Favorite books, films, series and anime |
-| Contact | `/contact` | Which channel to use for what |
-
-Every route also lives under `/es` (for example `/es/courses`).
-
-### Home
-
-A hero introducing Guillermo as a technical partner for building better products, a preview of the latest course, and recent posts pulled from the blog.
-
-### Courses
-
-- **AI-First Programming**: an upcoming paid course on building software with AI as the primary tool, across JavaScript/TypeScript, Python, Go and Rust, in short focused video lessons. A waitlist form is open.
-- **Free courses**: full YouTube playlists, no paywall.
-- **Tutorials**: Garaje Code Pills, short practical videos on YouTube.
-- **Courses on other platforms**: a curated list of courses published elsewhere.
-
-### Projects
-
-Things Guillermo built for fun, to learn something new, or because he needed them (Walleto, Haggler, Nido, Timepass and more), plus the community sites he runs, such as Undefined Academy.
-
-### About: My history
-
-From modifying Blogger templates as a teenager, through university, Java, full-stack JavaScript, developer communities, agencies, startups and international teams.
-
-### About: Lifestyle
-
-A curated selection of books, films, series and anime, linked to Goodreads, Letterboxd, IMDb and MyAnimeList.
-
-### Contact
-
-| You want to | Channel |
-|---|---|
-| Say hi or ask a quick question | Twitter or Instagram |
-| Work on a project together | Email |
-| Talk about a job offer or career advice | LinkedIn |
-
-Guillermo writes in Spanish on Twitter, and in English on Bluesky, Threads and Mastodon.
+The site doubles as a showcase of how he builds front ends: every visual value comes from the **Quantum Design** token system and every component is documented in Storybook.
 
 ## Quick start
 

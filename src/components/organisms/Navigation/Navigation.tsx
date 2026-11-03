@@ -429,7 +429,7 @@ export const Navigation: FC<NavigationProps> = ({
                   onClick={closeMobile}
                 >
                   <span className="qd-navigation__overlay-bullet" aria-hidden="true">•</span>
-                  {t('nav.professional')}
+                  {t('nav.professionalShort')}
                   <ArrowSquareOut size={14} weight="regular" aria-hidden />
                   <span className="qd-navigation__overlay-arrow" aria-hidden="true">→</span>
                 </a>

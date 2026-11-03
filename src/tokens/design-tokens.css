@@ -666,9 +666,11 @@
 
   /* Nav-bar */
   --components-tokens--nav-bar--sizing--height: 72px;
+  --components-tokens--nav-bar--sizing--brand-mark: 40px;
   --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
   --components-tokens--nav-bar--sizing--dropdown-min-width: 200px;
   --components-tokens--nav-bar--typography--brand-name--letter-spacing: 2px;
+  --components-tokens--nav-bar--typography--brand-tagline--font-size: 11px;
   --components-tokens--nav-bar--typography--about-label--font-size: 11px;
   --components-tokens--nav-bar--spacing--horizontal: var(--system-tokens--spacing--md);
   --components-tokens--nav-bar--spacing--vertical: var(--system-tokens--spacing--md);
@@ -723,7 +725,6 @@
   --components-tokens--nav-bar--border-radius--theme-track: var(--system-tokens--border-radius--full);
   --components-tokens--nav-bar--border-radius--focus: var(--system-tokens--border-radius--flat);
   --components-tokens--nav-bar--border-radius--hamburger-bar: var(--system-tokens--border-radius--flat);
-  --components-tokens--nav-bar--sizing--brand-mark: var(--system-tokens--sizing--ml);
   --components-tokens--nav-bar--sizing--hamburger: var(--system-tokens--sizing--md);
   --components-tokens--nav-bar--sizing--theme-track-width: var(--system-tokens--sizing--ml);
   --components-tokens--nav-bar--sizing--theme-track-height: var(--system-tokens--sizing--sm);
@@ -735,7 +736,6 @@
   --components-tokens--nav-bar--typography--brand-name--font-size: var(--system-tokens--typography--font-size--body--md);
   --components-tokens--nav-bar--typography--brand-name--line-height: var(--system-tokens--typography--line-height--body--sm);
   --components-tokens--nav-bar--typography--brand-name--font-weight: var(--system-tokens--typography--font-weight--strong);
-  --components-tokens--nav-bar--typography--brand-tagline--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--nav-bar--typography--brand-tagline--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--nav-bar--typography--brand-tagline--font-weight: var(--system-tokens--typography--font-weight--moderate);
   --components-tokens--nav-bar--typography--about-label--line-height: var(--system-tokens--typography--line-height--body--xs);

@@ -2486,7 +2486,8 @@
       },
       "brand-mark": {
         "$type": "number",
-        "$value": "{system.Sizing.ml}"
+        "$value": 40,
+        "$description": "Brand mark scaled down with the header brand text; 40px sits between the system ml (48) and md (32) steps."
       },
       "hamburger": {
         "$type": "number",
@@ -2554,7 +2555,8 @@
       "brand-tagline": {
         "font-size": {
           "$type": "number",
-          "$value": "{system.Typography.font-size.Body.xs}"
+          "$value": 11,
+          "$description": "Header tagline sits below the smallest Body step (13) so the brand block reads ~15% smaller; the name is width-fitted to it at runtime (useMatchWidth)."
         },
         "line-height": {
           "$type": "number",

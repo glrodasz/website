@@ -665,6 +665,7 @@
   --components-tokens--project-card--typography--font-weight--share-label: var(--system-tokens--typography--font-weight--medium);
 
   /* Nav-bar */
+  --components-tokens--nav-bar--spacing--brand-text-gap: 2px;
   --components-tokens--nav-bar--sizing--height: 72px;
   --components-tokens--nav-bar--sizing--brand-mark: 40px;
   --components-tokens--nav-bar--sizing--hamburger-bar: 2px;
@@ -690,7 +691,6 @@
   --components-tokens--nav-bar--spacing--mobile-padding-vertical: var(--system-tokens--spacing--sm);
   --components-tokens--nav-bar--spacing--mobile-gap: var(--system-tokens--spacing--xxs);
   --components-tokens--nav-bar--spacing--bar-horizontal-mobile: var(--system-tokens--spacing--none);
-  --components-tokens--nav-bar--spacing--brand-text-gap: var(--system-tokens--spacing--xxs);
   --components-tokens--nav-bar--spacing--link-icon-gap: var(--system-tokens--spacing--xxs);
   --components-tokens--nav-bar--spacing--about-label-gap: var(--system-tokens--spacing--xxs);
   --components-tokens--nav-bar--spacing--dropdown-padding-vertical: var(--system-tokens--spacing--xxs);
@@ -734,9 +734,9 @@
   --components-tokens--nav-bar--typography--font-family: var(--system-tokens--typography--font-family--body);
   --components-tokens--nav-bar--typography--brand-name--font-family: var(--system-tokens--typography--font-family--headings);
   --components-tokens--nav-bar--typography--brand-name--font-size: var(--system-tokens--typography--font-size--body--md);
-  --components-tokens--nav-bar--typography--brand-name--line-height: var(--system-tokens--typography--line-height--body--sm);
+  --components-tokens--nav-bar--typography--brand-name--line-height: var(--system-tokens--typography--leading--none);
   --components-tokens--nav-bar--typography--brand-name--font-weight: var(--system-tokens--typography--font-weight--strong);
-  --components-tokens--nav-bar--typography--brand-tagline--line-height: var(--system-tokens--typography--line-height--body--xs);
+  --components-tokens--nav-bar--typography--brand-tagline--line-height: var(--system-tokens--typography--leading--tight);
   --components-tokens--nav-bar--typography--brand-tagline--font-weight: var(--system-tokens--typography--font-weight--moderate);
   --components-tokens--nav-bar--typography--about-label--line-height: var(--system-tokens--typography--line-height--body--xs);
   --components-tokens--nav-bar--typography--about-label--font-weight: var(--system-tokens--typography--font-weight--strong);

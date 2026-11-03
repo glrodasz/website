@@ -1,6 +1,6 @@
 # Guillermo Rodas — Personal Website
 
-Personal website for Guillermo Rodas, Senior Full-stack AI Engineer and community lead helping developers level up while shipping quality software.
+Personal website for Guillermo Rodas, Senior Forward Deployed Engineer and community lead helping developers level up while shipping quality software.
 
 ## Pages
 

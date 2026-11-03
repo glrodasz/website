@@ -8,6 +8,7 @@ import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useLangPrefix } from '../../../hooks/useLangPrefix';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useLogoSecret } from '../../../hooks/useLogoSecret';
+import { useMatchWidth } from '../../../hooks/useMatchWidth';
 import { persistLocale } from '../../../i18n/persistLocale';
 import './Navigation.css';
 
@@ -52,6 +53,14 @@ export const Navigation: FC<NavigationProps> = ({
   const location = useLocation();
   // Hidden ways into the dev pages: see useLogoSecret.
   const logoSecret = useLogoSecret();
+
+  // The name scales to span the tagline so the two lines read as one lockup.
+  const brandNameRef = useRef<HTMLSpanElement>(null);
+  const brandTaglineRef = useRef<HTMLSpanElement>(null);
+  const overlayBrandNameRef = useRef<HTMLSpanElement>(null);
+  const overlayBrandTaglineRef = useRef<HTMLSpanElement>(null);
+  useMatchWidth(brandNameRef, brandTaglineRef, [siteName, siteTagline]);
+  useMatchWidth(overlayBrandNameRef, overlayBrandTaglineRef, [siteName, siteTagline]);
 
   useFocusTrap(overlayRef, mobileOpen);
 
@@ -148,8 +157,8 @@ export const Navigation: FC<NavigationProps> = ({
               height={48}
             />
             <span className="qd-navigation__brand-text">
-              <span className="qd-navigation__brand-name">{siteName}</span>
-              <span className="qd-navigation__brand-tagline">{siteTagline}</span>
+              <span ref={brandNameRef} className="qd-navigation__brand-name">{siteName}</span>
+              <span ref={brandTaglineRef} className="qd-navigation__brand-tagline">{siteTagline}</span>
             </span>
           </Link>
 
@@ -363,8 +372,8 @@ export const Navigation: FC<NavigationProps> = ({
               height={48}
             />
             <span className="qd-navigation__brand-text">
-              <span className="qd-navigation__brand-name">{siteName}</span>
-              <span className="qd-navigation__brand-tagline">{siteTagline}</span>
+              <span ref={overlayBrandNameRef} className="qd-navigation__brand-name">{siteName}</span>
+              <span ref={overlayBrandTaglineRef} className="qd-navigation__brand-tagline">{siteTagline}</span>
             </span>
           </Link>
           <button

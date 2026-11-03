@@ -3,7 +3,7 @@ export const SITE_NAME = 'Guillermo Rodas';
 export const BLOG_URL = 'https://blog.guillermorodas.com';
 
 export const SITE_TAGLINE =
-  'Senior Full-stack AI Engineer';
+  'Senior Forward Deployed Engineer';
 
 export const HERO_HEADLINE = 'Tech partner for big companies';
 

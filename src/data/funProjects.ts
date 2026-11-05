@@ -145,5 +145,27 @@ export const COMMUNITY_PROJECTS: CommunityProject[] = [
   },
 ];
 
+/** Browser games, listed after the community projects on /projects. Same card as the community projects. */
+export const GAMES: CommunityProject[] = [
+  {
+    slug: 'unicornia',
+    name: 'Unicornia',
+    url: 'https://unicornia.pages.dev',
+    description:
+      'Dress up, style and do the makeup of a 3D clay unicorn. Made for kids who can\'t read yet; free and with no ads.',
+    descriptionEs:
+      'Viste, peina y maquilla a un unicornio de plastilina en 3D. Un juego para niños que aún no saben leer, gratis y sin anuncios.',
+  },
+  {
+    slug: 'cirquimia',
+    name: 'Cirquimia',
+    url: 'https://cirquimia.pages.dev',
+    description:
+      'Draw transmutation circles with your finger and duel rival alchemists in a tiny low-poly meadow, free in the browser.',
+    descriptionEs:
+      'Dibuja círculos de transmutación con el dedo y enfréntate a alquimistas rivales en una pequeña pradera low-poly, gratis en el navegador.',
+  },
+];
+
 /** Projects linked from the footer: the first three of FUN_PROJECTS. */
 export const FOOTER_PROJECTS: FunProject[] = FUN_PROJECTS.slice(0, 3);

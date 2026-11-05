@@ -23,6 +23,10 @@
     "title": "Community projects",
     "lead": "Projects I build and run for the Spanish-speaking dev community."
   },
+  "games": {
+    "title": "Games",
+    "lead": "Small browser games, free to play on a phone, tablet or computer."
+  },
   "more": {
     "title": "There's more on GitHub",
     "lead": "Experiments, workshops and course material live in my repositories.",

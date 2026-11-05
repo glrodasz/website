@@ -23,6 +23,10 @@
     "title": "Proyectos para la comunidad",
     "lead": "Proyectos que construyo y mantengo para la comunidad dev en español."
   },
+  "games": {
+    "title": "Juegos",
+    "lead": "Pequeños juegos para el navegador, gratis en el móvil, la tablet o el computador."
+  },
   "more": {
     "title": "Hay más en GitHub",
     "lead": "Experimentos, talleres y material de cursos viven en mis repositorios.",

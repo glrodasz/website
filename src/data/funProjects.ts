@@ -40,7 +40,7 @@ export const FUN_PROJECTS: FunProject[] = [
   },
   {
     slug: 'haggler',
-    name: 'Haggler',
+    name: 'Haggler Agent',
     url: 'https://haggler.guillermorodas.com',
     repoUrl: 'https://github.com/glrodasz/haggler-agent',
     description:
@@ -51,7 +51,7 @@ export const FUN_PROJECTS: FunProject[] = [
   },
   {
     slug: 'nido',
-    name: 'Nido',
+    name: 'Nido Agent',
     url: 'https://nido.guillermorodas.com',
     repoUrl: 'https://github.com/glrodasz/nido-agent',
     description:

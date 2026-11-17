@@ -85,7 +85,7 @@ export const Footer: FC<FooterProps> = ({
                 <Link to={`${prefix}/courses`}>{t('footer.allCourses')}</Link>
               </li>
               <li>
-                <Link to={`${prefix}/courses#ai-first`}>{t('footer.joinWaitlist')}</Link>
+                <Link to={`${prefix}/courses#ai-first`}>{t('footer.aiCourse')}</Link>
               </li>
             </ul>
           </div>

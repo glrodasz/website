@@ -2,7 +2,7 @@
   "trigger": "Need a short bio to copy?",
   "modal": {
     "title": "Copy a bio",
-    "description": "Three lengths for profiles and speaker pages. Switch the point of view, then copy.",
+    "description": "Switch the point of view, then copy.",
     "close": "Close"
   },
   "person": {

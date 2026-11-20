@@ -2,7 +2,7 @@
   "trigger": "¿Necesitas una bio corta para copiar?",
   "modal": {
     "title": "Copiar una bio",
-    "description": "Tres longitudes para perfiles y páginas de speaker. Cambia el punto de vista y copia.",
+    "description": "Cambia el punto de vista y copia.",
     "close": "Cerrar"
   },
   "person": {

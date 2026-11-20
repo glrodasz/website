@@ -9,6 +9,8 @@ export { NumberButton } from './NumberButton';
 export type { NumberButtonProps } from './NumberButton';
 export { CheckButton } from './CheckButton';
 export type { CheckButtonProps } from './CheckButton';
+export { SegmentedControl } from './SegmentedControl';
+export type { SegmentedControlProps, SegmentedControlOption } from './SegmentedControl';
 
 // Typography
 export { Typography } from './Typography';

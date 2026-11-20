@@ -1224,6 +1224,7 @@
   --components-tokens--site--home--post-card--excerpt--font-size: var(--system-tokens--typography--font-size--body--xs);
   --components-tokens--site--home--post-card--excerpt--line-height: var(--system-tokens--typography--leading--normal);
   --components-tokens--site--lang-tag--spacing--gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--site--history-hero--spacing--gap: var(--system-tokens--spacing--md);
 
   /* Logo */
   --components-tokens--logo--sizing--icon-large: 40px;
@@ -1283,6 +1284,37 @@
   --components-tokens--markdown--line-height--heading: var(--system-tokens--typography--leading--snug);
   --components-tokens--markdown--line-height--body: var(--system-tokens--typography--leading--relaxed);
   --components-tokens--markdown--line-height--lead: var(--system-tokens--typography--leading--relaxed);
+
+  /* Modal */
+  --components-tokens--modal--sizing--max-width: 720px;
+  --components-tokens--modal--background-color--backdrop: var(--system-tokens--colors--transparency--dark);
+  --components-tokens--modal--background-color--surface: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--modal--background-color--close-hover: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--modal--border-color--default: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--modal--text-color--title: var(--system-tokens--colors--typography--heading);
+  --components-tokens--modal--text-color--close: var(--system-tokens--colors--typography--heading);
+  --components-tokens--modal--text-color--description: var(--system-tokens--colors--typography--paragraph);
+  --components-tokens--modal--outline-color--focus: var(--system-tokens--colors--borders--focus);
+  --components-tokens--modal--border-radius--default: var(--system-tokens--border-radius--md);
+  --components-tokens--modal--border-radius--close: var(--system-tokens--border-radius--xs);
+  --components-tokens--modal--spacing--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--modal--spacing--vertical: var(--system-tokens--spacing--md);
+  --components-tokens--modal--spacing--gap: var(--system-tokens--spacing--md);
+  --components-tokens--modal--spacing--edge: var(--system-tokens--spacing--sm);
+  --components-tokens--modal--spacing--title-gap: var(--system-tokens--spacing--xxs);
+  --components-tokens--modal--sizing--close: var(--system-tokens--sizing--md);
+  --components-tokens--modal--typography--title--font-family: var(--system-tokens--typography--font-family--headings);
+  --components-tokens--modal--typography--title--font-size: var(--system-tokens--typography--font-size--headings--xs);
+  --components-tokens--modal--typography--title--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--modal--typography--title--line-height: var(--system-tokens--typography--leading--snug);
+  --components-tokens--modal--typography--description--font-family: var(--system-tokens--typography--font-family--body);
+  --components-tokens--modal--typography--description--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--modal--typography--description--line-height: var(--system-tokens--typography--leading--normal);
+  --components-tokens--modal--elevation--offset-x: var(--system-tokens--elevations--medium--offset-x);
+  --components-tokens--modal--elevation--offset-y: var(--system-tokens--elevations--medium--offset-y);
+  --components-tokens--modal--elevation--blur-radius: var(--system-tokens--elevations--medium--blur-radius);
+  --components-tokens--modal--elevation--spread-radius: var(--system-tokens--elevations--medium--spread-radius);
+  --components-tokens--modal--shadow-color--default: var(--system-tokens--colors--transparency--dark);
 
   /* Typography */
   --components-tokens--typography--colors--headings: var(--system-tokens--colors--typography--heading);
@@ -1508,6 +1540,49 @@
   --components-tokens--card-text--elevation--offset-y: var(--system-tokens--elevations--soft--offset-y);
   --components-tokens--card-text--elevation--blur-radius: var(--system-tokens--elevations--soft--blur-radius);
   --components-tokens--card-text--elevation--spread-radius: var(--system-tokens--elevations--soft--spread-radius);
+
+  /* Segmented-control */
+  --components-tokens--segmented-control--background-color--track: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--segmented-control--background-color--selected: var(--system-tokens--colors--backgrounds--principal);
+  --components-tokens--segmented-control--border-color--track: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--segmented-control--border-color--selected: var(--system-tokens--colors--borders--strong);
+  --components-tokens--segmented-control--text-color--default: var(--system-tokens--colors--typography--paragraph);
+  --components-tokens--segmented-control--text-color--hover: var(--system-tokens--colors--typography--heading);
+  --components-tokens--segmented-control--text-color--selected: var(--system-tokens--colors--typography--heading);
+  --components-tokens--segmented-control--outline-color--focus: var(--system-tokens--colors--borders--focus);
+  --components-tokens--segmented-control--border-radius--default: var(--system-tokens--border-radius--full);
+  --components-tokens--segmented-control--spacing--padding: var(--system-tokens--spacing--xxs);
+  --components-tokens--segmented-control--spacing--item-horizontal: var(--system-tokens--spacing--sm);
+  --components-tokens--segmented-control--spacing--item-vertical: var(--system-tokens--spacing--xxs);
+  --components-tokens--segmented-control--typography--font-family: var(--system-tokens--typography--font-family--alternative-text);
+  --components-tokens--segmented-control--typography--font-weight: var(--system-tokens--typography--font-weight--medium);
+  --components-tokens--segmented-control--typography--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--segmented-control--typography--line-height: var(--system-tokens--typography--leading--none);
+
+  /* Bio-card */
+  --components-tokens--bio-card--background-color--default: var(--system-tokens--colors--backgrounds--tertiary);
+  --components-tokens--bio-card--border-color--default: var(--system-tokens--colors--borders--neutral);
+  --components-tokens--bio-card--border-radius--default: var(--system-tokens--border-radius--sm);
+  --components-tokens--bio-card--text-color--title: var(--system-tokens--colors--typography--heading);
+  --components-tokens--bio-card--text-color--body: var(--system-tokens--colors--typography--paragraph);
+  --components-tokens--bio-card--text-color--strong: var(--system-tokens--colors--typography--heading);
+  --components-tokens--bio-card--text-color--link: var(--system-tokens--colors--typography--link);
+  --components-tokens--bio-card--text-color--meta: var(--system-tokens--colors--typography--paragraph);
+  --components-tokens--bio-card--spacing--horizontal: var(--system-tokens--spacing--md);
+  --components-tokens--bio-card--spacing--vertical: var(--system-tokens--spacing--md);
+  --components-tokens--bio-card--spacing--gap: var(--system-tokens--spacing--sm);
+  --components-tokens--bio-card--spacing--paragraph-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--bio-card--spacing--actions-gap: var(--system-tokens--spacing--xs);
+  --components-tokens--bio-card--typography--title--font-family: var(--system-tokens--typography--font-family--alternative-text);
+  --components-tokens--bio-card--typography--title--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--bio-card--typography--title--font-weight: var(--system-tokens--typography--font-weight--strong);
+  --components-tokens--bio-card--typography--title--line-height: var(--system-tokens--typography--leading--snug);
+  --components-tokens--bio-card--typography--body--font-family: var(--system-tokens--typography--font-family--body);
+  --components-tokens--bio-card--typography--body--font-size: var(--system-tokens--typography--font-size--body--sm);
+  --components-tokens--bio-card--typography--body--line-height: var(--system-tokens--typography--leading--relaxed);
+  --components-tokens--bio-card--typography--meta--font-family: var(--system-tokens--typography--font-family--body);
+  --components-tokens--bio-card--typography--meta--font-size: var(--system-tokens--typography--font-size--body--xs);
+  --components-tokens--bio-card--typography--meta--line-height: var(--system-tokens--typography--leading--normal);
 }
 
 :root,

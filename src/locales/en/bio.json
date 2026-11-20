@@ -1,0 +1,37 @@
+{
+  "trigger": "Need a short bio to copy?",
+  "modal": {
+    "title": "Copy a bio",
+    "description": "Switch the point of view, then copy.",
+    "close": "Close"
+  },
+  "person": {
+    "label": "Point of view",
+    "first": "First person",
+    "third": "Third person"
+  },
+  "copy": "Copy",
+  "copyMarkdown": "Copy Markdown",
+  "copied": "Copied",
+  "characters": "{{count}} characters",
+  "bios": {
+    "veryShort": {
+      "title": "Very short",
+      "hint": "X, Instagram, GitHub",
+      "first": "I build production AI systems and help developer communities level up.",
+      "third": "Guillermo Rodas builds production AI systems and helps developer communities level up."
+    },
+    "short": {
+      "title": "Short",
+      "hint": "LinkedIn, Twitch, YouTube",
+      "first": "I'm **Guillermo Rodas**, a Senior Forward Deployed Engineer building production AI systems, with over a decade of experience in web engineering. Originally from Colombia, now based in Sweden.",
+      "third": "**Guillermo Rodas** is a Senior Forward Deployed Engineer building production AI systems, with over a decade of experience in web engineering. Originally from Colombia, now based in Sweden."
+    },
+    "full": {
+      "title": "Full",
+      "hint": "Stack Overflow, speaker bios",
+      "first": "I'm a Senior Forward Deployed Engineer with over a decade of experience, originally from Colombia and now based in Sweden. At EQT Group I build production AI systems: agents, RAG pipelines and MCP integrations for the investment teams. Before that I shipped products at [Klarna](https://www.klarna.com) and [Auth0](https://www.auth0.com), serving millions of users worldwide.\n\nI'm a former [Google Developer Expert](https://glrz.me/gde) in Web Technologies and former [Twitch Partner](https://glrz.me/stream), an international conference speaker at DevFest and Nerdearla, and an instructor at [Platzi](https://platzi.com/profes/glrodasz/) and [Código Facilito](https://codigofacilito.com/).",
+      "third": "**Guillermo Rodas** is a Senior Forward Deployed Engineer with over a decade of experience, originally from Colombia and now based in Sweden. At EQT Group he builds production AI systems: agents, RAG pipelines and MCP integrations for the investment teams. Before that he shipped products at [Klarna](https://www.klarna.com) and [Auth0](https://www.auth0.com), serving millions of users worldwide.\n\nGuillermo is a former [Google Developer Expert](https://glrz.me/gde) in Web Technologies and former [Twitch Partner](https://glrz.me/stream), an international conference speaker at DevFest and Nerdearla, and an instructor at [Platzi](https://platzi.com/profes/glrodasz/) and [Código Facilito](https://codigofacilito.com/)."
+    }
+  }
+}

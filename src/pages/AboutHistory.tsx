@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';
 import { Seo } from '../components/Seo';
+import { BioModal } from '../components/organisms/BioModal';
 import { defaultDescription, titleForPage } from '../data/site';
 import { useLangPrefix } from '../hooks/useLangPrefix';
 import historyEn from '../content/history.md?raw';
@@ -25,9 +26,12 @@ const AboutHistory: React.FC = () => {
     <div className="page">
       <Seo title={titleForPage(t('history.seo.pageLabel'))} description={defaultDescription} path={`${prefix}/about/history`} />
 
-      <section className="page-hero">
-        <span className="section-label">{t('history.hero.label')}</span>
-        <h1 className="section-title">{t('history.hero.title')}</h1>
+      <section className="page-hero history-hero">
+        <div className="history-hero__heading">
+          <span className="section-label">{t('history.hero.label')}</span>
+          <h1 className="section-title">{t('history.hero.title')}</h1>
+        </div>
+        <BioModal />
       </section>
 
       <hr className="section-divider" />

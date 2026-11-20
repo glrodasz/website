@@ -105,3 +105,17 @@ The company gained traction, partnerships, and investor interest, but the pandem
 Together, those experiences gave me a broader view of what it means to build under uncertainty. **Docmeti** taught me the complexity of physical products and operations, while **Workia** showed me the speed, ambition, and emotional intensity of startup life.
 
 Those startup experiences reinforced one of the most important lessons in my career: building products requires adaptability, resilience, and the ability to keep learning while the context around you changes.
+
+## Embracing Remote Work
+
+While living in Medellín, I was working on a project for a bank. As is often the case with large organizations, things moved slowly, with plenty of red tape, processes, and dependencies. There were times when I finished all my coding work within the first few hours of the day, but since I was expected to spend the full day at the office, I couldn't simply leave.
+
+Instead of wasting that time, I started investing in my own development by reading engineering books, watching tutorials, and taking courses. One of those books was **Remote**, written by the founders of Basecamp. Until then, I thought working remotely simply meant working from home, but the book opened my eyes to a different philosophy: having more control over my time, greater flexibility, and the freedom to focus on meaningful work. That resonated with me, especially because I enjoyed building side projects and exploring ideas beyond my regular job.
+
+I decided to look for a fully remote opportunity and remembered meeting someone from **Auth0** at JS Conf Argentina. I already knew the product and its reputation in the tech industry, so I applied through their website. The interview process was particularly interesting: instead of a traditional technical test, I had to build a small project while pretending I was already part of the team. They evaluated not only my code but also how I communicated, asked questions, and handled uncertainty. Eventually, I got the job and became Auth0's second employee in Colombia.
+
+Joining Auth0 completely changed my professional landscape. I was suddenly working with talented people from around the world, which pushed me to raise my standards as an engineer. I also returned to full-stack JavaScript development, working with Node.js in production, and discovered new areas of interest such as identity management and OAuth 2.0. Working remotely also accelerated my English learning, since around 90% of my daily communication happened in English.
+
+Beyond the technical experience, Auth0 introduced me to company offsites, which I have come to appreciate at every company since. They showed me how important it is to build genuine relationships with colleagues, even in fully remote environments. I also had the opportunity to travel to Seattle and Buenos Aires, and learned to collaborate across time zones with teammates in Europe.
+
+Looking back, joining Auth0 was much more than getting a remote job. It changed how I understood work, professional growth, and collaboration, opening the door to a global career.

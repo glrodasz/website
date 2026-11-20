@@ -17,6 +17,7 @@ const SOCIALS: Record<string, { label: string; href: string }> = {
   bluesky: { label: 'Bluesky', href: 'https://bsky.app/profile/guillermorodas.com' },
   mastodon: { label: 'Mastodon', href: 'https://mastodon.cloud/@guillermorodas' },
   github: { label: 'GitHub', href: 'https://github.com/glrodasz' },
+  stackoverflow: { label: 'Stack Overflow', href: 'https://stackoverflow.com/users/guillermorodas' },
   goodreads: { label: 'Goodreads', href: 'https://goodreads.com/guillermorodas' },
 };
 
@@ -49,5 +50,6 @@ export const footerSocials: SocialLink[] = [
   'bluesky',
   'mastodon',
   'github',
+  'stackoverflow',
   'goodreads',
 ].map((id) => socialLink(id));

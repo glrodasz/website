@@ -4951,6 +4951,14 @@
           "$value": "{system.Spacing.xxs}"
         }
       }
+    },
+    "History-hero": {
+      "spacing": {
+        "gap": {
+          "$type": "number",
+          "$value": "{system.Spacing.md}"
+        }
+      }
     }
   },
   "logo": {
@@ -5211,6 +5219,341 @@
       "lead": {
         "$type": "string",
         "$value": "{system.Typography.Leading.relaxed}"
+      }
+    }
+  },
+  "modal": {
+    "background-color": {
+      "backdrop": {
+        "$type": "color",
+        "$value": "{system.Colors.Transparency.dark}"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.principal}"
+      },
+      "close-hover": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.tertiary}"
+      }
+    },
+    "border-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      }
+    },
+    "text-color": {
+      "title": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Heading}"
+      },
+      "close": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Heading}"
+      },
+      "description": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Paragraph}"
+      }
+    },
+    "outline-color": {
+      "focus": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.focus}"
+      }
+    },
+    "border-radius": {
+      "default": {
+        "$type": "number",
+        "$value": "{system.Border radius.md}"
+      },
+      "close": {
+        "$type": "number",
+        "$value": "{system.Border radius.xs}"
+      }
+    },
+    "spacing": {
+      "horizontal": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "vertical": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "edge": {
+        "$type": "number",
+        "$value": "{system.Spacing.sm}"
+      },
+      "title-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      }
+    },
+    "sizing": {
+      "max-width": {
+        "$type": "number",
+        "$value": 720,
+        "$description": "Dialog reading width, tuned to a comfortable bio line length rather than taken from the sizing scale."
+      },
+      "close": {
+        "$type": "number",
+        "$value": "{system.Sizing.md}"
+      }
+    },
+    "typography": {
+      "title": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Headings}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Headings.xs}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{system.Typography.Font-weight.Strong}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.snug}"
+        }
+      },
+      "description": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Body}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.sm}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.normal}"
+        }
+      }
+    },
+    "elevation": {
+      "offset-x": {
+        "$type": "number",
+        "$value": "{system.Elevations.medium.offset-x}"
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": "{system.Elevations.medium.offset-y}"
+      },
+      "blur-radius": {
+        "$type": "number",
+        "$value": "{system.Elevations.medium.blur-radius}"
+      },
+      "spread-radius": {
+        "$type": "number",
+        "$value": "{system.Elevations.medium.spread-radius}"
+      }
+    },
+    "shadow-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Transparency.dark}"
+      }
+    }
+  },
+  "segmented-control": {
+    "background-color": {
+      "track": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.tertiary}"
+      },
+      "selected": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.principal}"
+      }
+    },
+    "border-color": {
+      "track": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      },
+      "selected": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.strong}"
+      }
+    },
+    "text-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Paragraph}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Heading}"
+      },
+      "selected": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Heading}"
+      }
+    },
+    "outline-color": {
+      "focus": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.focus}"
+      }
+    },
+    "border-radius": {
+      "default": {
+        "$type": "number",
+        "$value": "{system.Border radius.full}"
+      }
+    },
+    "spacing": {
+      "padding": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      },
+      "item-horizontal": {
+        "$type": "number",
+        "$value": "{system.Spacing.sm}"
+      },
+      "item-vertical": {
+        "$type": "number",
+        "$value": "{system.Spacing.xxs}"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{system.Typography.Font-family.Alternative text}"
+      },
+      "font-weight": {
+        "$type": "number",
+        "$value": "{system.Typography.Font-weight.Medium}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{system.Typography.font-size.Body.xs}"
+      },
+      "line-height": {
+        "$type": "string",
+        "$value": "{system.Typography.Leading.none}"
+      }
+    }
+  },
+  "bio-card": {
+    "background-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Backgrounds.tertiary}"
+      }
+    },
+    "border-color": {
+      "default": {
+        "$type": "color",
+        "$value": "{system.Colors.Borders.neutral}"
+      }
+    },
+    "border-radius": {
+      "default": {
+        "$type": "number",
+        "$value": "{system.Border radius.sm}"
+      }
+    },
+    "text-color": {
+      "title": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Heading}"
+      },
+      "body": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Paragraph}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Heading}"
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Link}"
+      },
+      "meta": {
+        "$type": "color",
+        "$value": "{system.Colors.Typography.Paragraph}"
+      }
+    },
+    "spacing": {
+      "horizontal": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "vertical": {
+        "$type": "number",
+        "$value": "{system.Spacing.md}"
+      },
+      "gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.sm}"
+      },
+      "paragraph-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      },
+      "actions-gap": {
+        "$type": "number",
+        "$value": "{system.Spacing.xs}"
+      }
+    },
+    "typography": {
+      "title": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Alternative text}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.sm}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{system.Typography.Font-weight.Strong}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.snug}"
+        }
+      },
+      "body": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Body}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.sm}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.relaxed}"
+        }
+      },
+      "meta": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{system.Typography.Font-family.Body}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": "{system.Typography.font-size.Body.xs}"
+        },
+        "line-height": {
+          "$type": "string",
+          "$value": "{system.Typography.Leading.normal}"
+        }
       }
     }
   }

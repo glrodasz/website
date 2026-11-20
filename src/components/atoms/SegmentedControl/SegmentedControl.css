@@ -1,0 +1,54 @@
+.qd-segmented-control {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--components-tokens--segmented-control--spacing--padding);
+  background-color: var(--components-tokens--segmented-control--background-color--track);
+  border: 1px solid var(--components-tokens--segmented-control--border-color--track);
+  border-radius: var(--components-tokens--segmented-control--border-radius--default);
+}
+
+.qd-segmented-control__option {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.qd-segmented-control__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.qd-segmented-control__label {
+  padding: var(--components-tokens--segmented-control--spacing--item-vertical)
+           var(--components-tokens--segmented-control--spacing--item-horizontal);
+  border: 1px solid transparent;
+  border-radius: var(--components-tokens--segmented-control--border-radius--default);
+  font-family: var(--components-tokens--segmented-control--typography--font-family);
+  font-size: var(--components-tokens--segmented-control--typography--font-size);
+  font-weight: var(--components-tokens--segmented-control--typography--font-weight);
+  line-height: var(--components-tokens--segmented-control--typography--line-height);
+  color: var(--components-tokens--segmented-control--text-color--default);
+  white-space: nowrap;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.qd-segmented-control__option:hover .qd-segmented-control__label {
+  color: var(--components-tokens--segmented-control--text-color--hover);
+}
+
+.qd-segmented-control__input:checked + .qd-segmented-control__label {
+  background-color: var(--components-tokens--segmented-control--background-color--selected);
+  border-color: var(--components-tokens--segmented-control--border-color--selected);
+  color: var(--components-tokens--segmented-control--text-color--selected);
+}
+
+.qd-segmented-control__input:focus-visible + .qd-segmented-control__label {
+  outline: var(--components-tokens--site--focus-ring--outline-width) solid
+           var(--components-tokens--segmented-control--outline-color--focus);
+  outline-offset: var(--components-tokens--site--focus-ring--outline-offset);
+}

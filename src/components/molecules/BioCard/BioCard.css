@@ -1,0 +1,65 @@
+.qd-bio-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--components-tokens--bio-card--spacing--gap);
+  padding: var(--components-tokens--bio-card--spacing--vertical)
+           var(--components-tokens--bio-card--spacing--horizontal);
+  background-color: var(--components-tokens--bio-card--background-color--default);
+  border: 1px solid var(--components-tokens--bio-card--border-color--default);
+  border-radius: var(--components-tokens--bio-card--border-radius--default);
+}
+
+.qd-bio-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--components-tokens--bio-card--spacing--gap);
+}
+
+.qd-bio-card__title {
+  margin: 0;
+  font-family: var(--components-tokens--bio-card--typography--title--font-family);
+  font-size: var(--components-tokens--bio-card--typography--title--font-size);
+  font-weight: var(--components-tokens--bio-card--typography--title--font-weight);
+  line-height: var(--components-tokens--bio-card--typography--title--line-height);
+  color: var(--components-tokens--bio-card--text-color--title);
+}
+
+.qd-bio-card__meta {
+  margin: 0;
+  font-family: var(--components-tokens--bio-card--typography--meta--font-family);
+  font-size: var(--components-tokens--bio-card--typography--meta--font-size);
+  line-height: var(--components-tokens--bio-card--typography--meta--line-height);
+  color: var(--components-tokens--bio-card--text-color--meta);
+}
+
+.qd-bio-card__text {
+  font-family: var(--components-tokens--bio-card--typography--body--font-family);
+  font-size: var(--components-tokens--bio-card--typography--body--font-size);
+  line-height: var(--components-tokens--bio-card--typography--body--line-height);
+  color: var(--components-tokens--bio-card--text-color--body);
+}
+
+.qd-bio-card__text p {
+  margin: 0 0 var(--components-tokens--bio-card--spacing--paragraph-gap);
+}
+
+.qd-bio-card__text p:last-child {
+  margin-bottom: 0;
+}
+
+.qd-bio-card__text strong {
+  color: var(--components-tokens--bio-card--text-color--strong);
+}
+
+.qd-bio-card__text a {
+  color: var(--components-tokens--bio-card--text-color--link);
+  text-decoration: underline;
+}
+
+.qd-bio-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--components-tokens--bio-card--spacing--actions-gap);
+}

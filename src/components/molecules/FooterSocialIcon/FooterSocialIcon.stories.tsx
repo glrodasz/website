@@ -21,6 +21,7 @@ const meta: Meta<typeof FooterSocialIcon> = {
         'bluesky',
         'mastodon',
         'github',
+        'stackoverflow',
         'goodreads',
       ],
     },
@@ -46,7 +47,7 @@ export const AllIcons: Story = {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(6, 48px)',
+        gridTemplateColumns: 'repeat(7, 48px)',
         gap: 12,
         color: '#002529',
       }}
@@ -63,6 +64,7 @@ export const AllIcons: Story = {
         'bluesky',
         'mastodon',
         'github',
+        'stackoverflow',
         'goodreads',
       ].map((id) => (
         <div

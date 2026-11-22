@@ -119,3 +119,17 @@ Joining Auth0 completely changed my professional landscape. I was suddenly worki
 Beyond the technical experience, Auth0 introduced me to company offsites, which I have come to appreciate at every company since. They showed me how important it is to build genuine relationships with colleagues, even in fully remote environments. I also had the opportunity to travel to Seattle and Buenos Aires, and learned to collaborate across time zones with teammates in Europe.
 
 Looking back, joining Auth0 was much more than getting a remote job. It changed how I understood work, professional growth, and collaboration, opening the door to a global career.
+
+## A New Chapter: Moving to Sweden
+
+In early 2019, a friend who had moved to Sweden about six months earlier asked if I was interested in applying to **Klarna**, the company that had relocated him there. True to my habit of staying open to new opportunities, I asked my partner what they thought about moving. The answer was: "Let's pack our bags."
+
+The process was demanding, and I tried not to get my hopes up until it was over. Even so, I really enjoyed it. Although Klarna was technically a bank, the whole process felt more like working with a digital agency.
+
+The final round of interviews took place in Stockholm, with all expenses covered. On the longest leg of the trip, from Bogotá to Frankfurt, I was lucky enough to be upgraded to first class. It was my first time in Europe, and the most comfortable flight of my life. The interviews went very well, and I received an offer.
+
+However, I had two big fears. The first was financial: in Colombia, I was well established at Auth0, earning in US dollars and spending in pesos. The salary in Sweden was somewhat better, but not a dramatic change, and the country is known for its high taxes. On top of that, living in Colombia was much cheaper than earning and spending in a local European currency.
+
+The second fear was going back to working in an office. I had been working remotely for almost three years, I had really enjoyed it, and I wasn't sure how hard it would be to adjust again.
+
+In the end, I took the risk, and it turned out to be one of the best decisions of my life. It taught me that some of the best opportunities come when you are willing to step out of your comfort zone, even when the numbers and the comfort of the familiar point the other way.

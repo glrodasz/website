@@ -119,3 +119,17 @@ Unirme a Auth0 cambió por completo mi panorama profesional. De pronto estaba tr
 Más allá de la experiencia técnica, Auth0 me presentó los offsites de empresa, que desde entonces he aprendido a valorar en cada compañía. Me mostraron lo importante que es construir relaciones genuinas con los compañeros, incluso en entornos totalmente remotos. También tuve la oportunidad de viajar a Seattle y Buenos Aires, y aprendí a colaborar entre zonas horarias con compañeros en Europa.
 
 Mirando atrás, unirme a Auth0 fue mucho más que conseguir un trabajo remoto. Cambió la forma en que entendía el trabajo, el crecimiento profesional y la colaboración, abriendo la puerta a una carrera global.
+
+## Un nuevo capítulo: mudándome a Suecia
+
+A inicios de 2019, un amigo que se había mudado a Suecia unos seis meses antes me preguntó si me interesaba aplicar a **Klarna**, la compañía que lo había llevado allí con un proceso de relocation. Fiel a mi costumbre de estar abierto a nuevas oportunidades, le pregunté a mi pareja qué le parecía la idea de mudarnos. Su respuesta fue: "Empaquemos las maletas".
+
+El proceso fue exigente, y no quise hacerme ilusiones hasta completarlo. Aun así, lo disfruté mucho. Aunque técnicamente Klarna era un banco, todo el proceso se sintió más como el de una agencia digital.
+
+La última ronda de entrevistas fue en Estocolmo, con todos los gastos pagados. En el trayecto más largo, de Bogotá a Frankfurt, tuve la suerte de que me hicieran un upgrade a primera clase. Era mi primera vez en Europa y fue el vuelo más cómodo de mi vida. Las entrevistas salieron muy bien y me hicieron una oferta.
+
+Sin embargo, tenía dos grandes miedos. El primero era económico: en Colombia estaba muy bien establecido en Auth0, ganando en dólares y gastando en pesos. El salario en Suecia era algo mejor, pero no un cambio radical, y el país es conocido por sus altos impuestos. Además, vivir en Colombia era mucho más económico que ganar y gastar en una moneda local europea.
+
+El segundo miedo era volver a trabajar en una oficina. Llevaba casi tres años trabajando de forma remota, me había gustado mucho y no sabía qué tan difícil sería adaptarme de nuevo.
+
+Al final, decidí arriesgarme, y fue una de las mejores decisiones de mi vida. Esa experiencia me enseñó que algunas de las mejores oportunidades llegan cuando estás dispuesto a salir de tu zona de confort, incluso cuando los números y la comodidad de lo conocido apuntan en otra dirección.

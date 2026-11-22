@@ -48,7 +48,7 @@ Esta transición me enseñó a buscar herramientas que me ayuden a moverme por t
 
 Mi primer trabajo que requería inglés fue un punto de inflexión importante. Durante la entrevista, el CEO me dijo que mi nivel de inglés era un 3 de 5. Sorprendentemente, me sentí bien con eso, porque esperaba que fuera más bajo.
 
-Al principio, usaba el inglés principalmente durante las reuniones de stand-up. Practiqué frases básicas, aprendí a decir números de tickets y respondí las preguntas habituales: qué había hecho ayer, en qué estaba trabajando ese día y si tenía algún bloqueo. Al principio, rara vez daba muchos detalles más allá de mencionar los números de tickets en los que estaba trabajando.
+Al principio, usaba el inglés principalmente durante las reuniones de [stand-up](https://en.wikipedia.org/wiki/Stand-up_meeting). Practiqué frases básicas, aprendí a decir números de tickets y respondí las preguntas habituales: qué había hecho ayer, en qué estaba trabajando ese día y si tenía algún bloqueo. Al principio, rara vez daba muchos detalles más allá de mencionar los números de tickets en los que estaba trabajando.
 
 Con el tiempo, me fui sintiendo más cómodo, especialmente durante las reuniones técnicas donde los ingenieros de frontend discutían mejores prácticas y proponían soluciones. Esas discusiones tenían que ocurrir en inglés porque, aunque la mayoría de nosotros hablábamos español, un ingeniero solo hablaba inglés. Eso me impulsó a mejorar.
 
@@ -76,7 +76,7 @@ Esas comunidades también me enseñaron que compartir conocimiento no está sepa
 
 Durante este período, también inicié una agencia de diseño con un diseñador que había conocido en Komet Sales. La llamamos **Space Monkeys**. Juntos, trabajamos en varios proyectos, incluyendo **Docmeti**, **Mr. Och8** y **Speed**.
 
-En Komet Sales, conocí a un diseñador que era inusualmente abierto a sugerencias desde una perspectiva de desarrollo. En ese momento, el concepto de diseñador web aún estaba emergiendo, y muchos diseñadores todavía trabajaban desde una mentalidad de diseño gráfico tradicional. Conceptos como el diseño responsivo, Bootstrap y la accesibilidad a menudo se ignoraban.
+En Komet Sales, conocí a un diseñador que era inusualmente abierto a sugerencias desde una perspectiva de desarrollo. En ese momento, el concepto de diseñador web aún estaba emergiendo, y muchos diseñadores todavía trabajaban desde una mentalidad de diseño gráfico tradicional. Conceptos como el [diseño responsivo](https://en.wikipedia.org/wiki/Responsive_web_design), [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_%28front-end_framework%29) y la [accesibilidad](https://en.wikipedia.org/wiki/Web_accessibility) a menudo se ignoraban.
 
 Con este diseñador, sin embargo, había una fuerte comprensión de lo importantes que eran esos elementos para la web. Colaboramos bien porque compartíamos el mismo interés en combinar calidad de diseño con viabilidad técnica.
 
@@ -86,7 +86,7 @@ Así nació Space Monkeys.
 
 Entregamos muchos proyectos exitosos, pero el espacio de las agencias digitales estaba muy saturado. Al final, el éxito a menudo dependía de tener acceso a los clientes correctos. Los clientes más grandes a veces dudaban en confiar en una agencia pequeña, incluso cuando producíamos resultados sólidos. Irónicamente, algunas agencias más grandes que carecían de experiencia técnica nos subcontrataban trabajo.
 
-Trabajamos en proyectos para empresas como **Argos** y **GPM**, así como proyectos más pequeños como **La Piel Plus** y **Speed**. Nuestro trabajo abarcó desde sitios de e-commerce y aplicaciones móviles hasta juegos interactivos y aplicaciones web avanzadas.
+Trabajamos en proyectos para empresas como **[Argos](https://en.wikipedia.org/wiki/Grupo_Argos)** y **GPM**, así como proyectos más pequeños como **La Piel Plus** y **Speed**. Nuestro trabajo abarcó desde sitios de e-commerce y aplicaciones móviles hasta juegos interactivos y aplicaciones web avanzadas.
 
 Dirigir Space Monkeys fue una experiencia valiosa. Aprendí a trabajar con clientes, gestionar empleados y entender lo que se necesita para dirigir un negocio. También gané una mayor apreciación por el diseño al participar en los procesos creativos del día a día. Me enseñó cómo optimizar flujos de trabajo, comunicarme mejor entre disciplinas y construir productos con calidad tanto técnica como visual en mente.
 
@@ -110,12 +110,26 @@ Esas experiencias en startups reforzaron una de las lecciones más importantes d
 
 Mientras vivía en Medellín, trabajaba en un proyecto para un banco. Como suele pasar en las organizaciones grandes, las cosas avanzaban lentamente, con mucha burocracia, procesos y dependencias. Hubo momentos en los que terminaba todo mi trabajo de programación en las primeras horas del día, pero como se esperaba que pasara la jornada completa en la oficina, no podía simplemente irme.
 
-En lugar de desperdiciar ese tiempo, empecé a invertir en mi propio desarrollo leyendo libros de ingeniería, viendo tutoriales y tomando cursos. Uno de esos libros fue **Remote**, escrito por los fundadores de Basecamp. Hasta entonces, pensaba que trabajar de forma remota significaba simplemente trabajar desde casa, pero el libro me abrió los ojos a una filosofía diferente: tener más control sobre mi tiempo, mayor flexibilidad y la libertad de enfocarme en trabajo significativo. Eso resonó conmigo, sobre todo porque disfrutaba construir proyectos personales y explorar ideas más allá de mi trabajo habitual.
+En lugar de desperdiciar ese tiempo, empecé a invertir en mi propio desarrollo leyendo libros de ingeniería, viendo tutoriales y tomando cursos. Uno de esos libros fue **[Remote](https://basecamp.com/books/remote)**, escrito por los fundadores de [Basecamp](https://en.wikipedia.org/wiki/37signals). Hasta entonces, pensaba que trabajar de forma remota significaba simplemente trabajar desde casa, pero el libro me abrió los ojos a una filosofía diferente: tener más control sobre mi tiempo, mayor flexibilidad y la libertad de enfocarme en trabajo significativo. Eso resonó conmigo, sobre todo porque disfrutaba construir proyectos personales y explorar ideas más allá de mi trabajo habitual.
 
-Decidí buscar una oportunidad completamente remota y recordé haber conocido a alguien de **Auth0** en JS Conf Argentina. Ya conocía el producto y su reputación en la industria tecnológica, así que apliqué a través de su sitio web. El proceso de entrevistas fue particularmente interesante: en lugar de una prueba técnica tradicional, tuve que construir un pequeño proyecto fingiendo que ya era parte del equipo. Evaluaron no solo mi código, sino también cómo me comunicaba, hacía preguntas y manejaba la incertidumbre. Finalmente, conseguí el trabajo y me convertí en el segundo empleado de Auth0 en Colombia.
+Decidí buscar una oportunidad completamente remota y recordé haber conocido a alguien de **[Auth0](https://auth0.com/)** en JS Conf Argentina. Ya conocía el producto y su reputación en la industria tecnológica, así que apliqué a través de su sitio web. El proceso de entrevistas fue particularmente interesante: en lugar de una prueba técnica tradicional, tuve que construir un pequeño proyecto fingiendo que ya era parte del equipo. Evaluaron no solo mi código, sino también cómo me comunicaba, hacía preguntas y manejaba la incertidumbre. Finalmente, conseguí el trabajo y me convertí en el segundo empleado de Auth0 en Colombia.
 
-Unirme a Auth0 cambió por completo mi panorama profesional. De pronto estaba trabajando con personas talentosas de todo el mundo, lo que me empujó a elevar mis estándares como ingeniero. También volví al desarrollo full-stack con JavaScript, trabajando con Node.js en producción, y descubrí nuevas áreas de interés como la gestión de identidades y OAuth 2.0. Trabajar de forma remota también aceleró mi aprendizaje de inglés, ya que cerca del 90% de mi comunicación diaria ocurría en ese idioma.
+Unirme a Auth0 cambió por completo mi panorama profesional. De pronto estaba trabajando con personas talentosas de todo el mundo, lo que me empujó a elevar mis estándares como ingeniero. También volví al desarrollo full-stack con JavaScript, trabajando con Node.js en producción, y descubrí nuevas áreas de interés como la [gestión de identidades](https://en.wikipedia.org/wiki/Identity_management) y [OAuth 2.0](https://en.wikipedia.org/wiki/OAuth#OAuth_2.0). Trabajar de forma remota también aceleró mi aprendizaje de inglés, ya que cerca del 90% de mi comunicación diaria ocurría en ese idioma.
 
 Más allá de la experiencia técnica, Auth0 me presentó los offsites de empresa, que desde entonces he aprendido a valorar en cada compañía. Me mostraron lo importante que es construir relaciones genuinas con los compañeros, incluso en entornos totalmente remotos. También tuve la oportunidad de viajar a Seattle y Buenos Aires, y aprendí a colaborar entre zonas horarias con compañeros en Europa.
 
 Mirando atrás, unirme a Auth0 fue mucho más que conseguir un trabajo remoto. Cambió la forma en que entendía el trabajo, el crecimiento profesional y la colaboración, abriendo la puerta a una carrera global.
+
+## Un nuevo capítulo: mudándome a Suecia
+
+A inicios de 2019, un amigo que se había mudado a Suecia unos seis meses antes me preguntó si me interesaba aplicar a **[Klarna](https://en.wikipedia.org/wiki/Klarna)**, la compañía que lo había llevado allí con un proceso de relocation. Fiel a mi costumbre de estar abierto a nuevas oportunidades, le pregunté a mi pareja qué le parecía la idea de mudarnos. Su respuesta fue: "Empaquemos las maletas".
+
+El proceso fue exigente, y no quise hacerme ilusiones hasta completarlo. Aun así, lo disfruté mucho. Aunque técnicamente Klarna era un banco, todo el proceso se sintió más como el de una agencia digital.
+
+La última ronda de entrevistas fue en Estocolmo, con todos los gastos pagados. En el trayecto más largo, de Bogotá a Frankfurt, tuve la suerte de que me hicieran un upgrade a primera clase. Era mi primera vez en Europa y fue el vuelo más cómodo de mi vida. Las entrevistas salieron muy bien y me hicieron una oferta.
+
+Sin embargo, tenía dos grandes miedos. El primero era económico: en Colombia estaba muy bien establecido en Auth0, ganando en dólares y gastando en pesos. El salario en Suecia era algo mejor, pero no un cambio radical, y el país es conocido por sus altos impuestos. Además, vivir en Colombia era mucho más económico que ganar y gastar en una moneda local europea.
+
+El segundo miedo era volver a trabajar en una oficina. Llevaba casi tres años trabajando de forma remota, me había gustado mucho y no sabía qué tan difícil sería adaptarme de nuevo.
+
+Al final, decidí arriesgarme, y fue una de las mejores decisiones de mi vida. Esa experiencia me enseñó que algunas de las mejores oportunidades llegan cuando estás dispuesto a salir de tu zona de confort, incluso cuando los números y la comodidad de lo conocido apuntan en otra dirección.

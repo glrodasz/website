@@ -64,7 +64,7 @@ I noticed that many community talks were valuable, but there was also room to im
 
 I also encouraged others to share what they knew, emphasizing that everyone starts somewhere.
 
-Later, I noticed there was no dedicated space for [CSS](https://en.wikipedia.org/wiki/CSS) enthusiasts in Medellín. Together with two friends, I created a CSS community that grew beyond our expectations. Our meetups consistently attracted around 100 attendees, which introduced new challenges, such as finding venues large enough to host everyone.
+Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. Together with two friends, I created a CSS community that grew beyond our expectations. Our meetups consistently attracted around 100 attendees, which introduced new challenges, such as finding venues large enough to host everyone.
 
 The success of that community eventually led us to organize Colombia's first CSS conference. It was a milestone that showed the growing interest in web technologies in the region.
 
@@ -74,7 +74,7 @@ Those communities also taught me that sharing knowledge is not separate from lea
 
 ## Building My Own Design Agency
 
-During this period, I also started a design agency with a designer I had met at Komet Sales. We called it **Space Monkeys**. Together, we worked on several projects, including **Docmeti**, **Mr. Och8**, and **Speed**.
+During this period, I also started a design agency with a designer I had met at **Komet Sales**. We called it **Space Monkeys**. Together, we worked on several projects, including **Docmeti**, **Mr. Och8**, and **Speed**.
 
 At Komet Sales, I met a designer who was unusually open to suggestions from a development perspective. At the time, the concept of a web designer was still emerging, and many designers were still working from a traditional print-design mindset. Concepts like [responsive design](https://en.wikipedia.org/wiki/Responsive_web_design), [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_%28front-end_framework%29), and [accessibility](https://en.wikipedia.org/wiki/Web_accessibility) were often ignored.
 
@@ -86,7 +86,7 @@ That was how Space Monkeys was born.
 
 We delivered many successful projects, but the digital agency space was highly saturated. In the end, success often depended on having access to the right clients. Larger clients were sometimes hesitant to trust a small agency, even when we produced strong results. Ironically, some larger agencies that lacked technical expertise outsourced work to us.
 
-We worked on projects for companies such as **[Argos](https://en.wikipedia.org/wiki/Grupo_Argos)** and **GPM**, as well as smaller projects like **La Piel Plus** and **Speed**. Our work ranged from e-commerce sites and mobile applications to interactive games and advanced web applications.
+We worked on projects for companies such as [Argos](https://en.wikipedia.org/wiki/Grupo_Argos) and **GPM**, as well as smaller projects like **La Piel Plus** and Speed. Our work ranged from e-commerce sites and mobile applications to interactive games and advanced web applications.
 
 Running Space Monkeys was a valuable experience. I learned how to work with clients, manage employees, and understand what it takes to run a business. I also gained a deeper appreciation for design by being involved in day-to-day creative processes. It taught me how to optimize workflows, communicate better across disciplines, and build products with both technical and visual quality in mind.
 
@@ -102,7 +102,7 @@ After that came **Workia**, a startup built around the idea of a global coworkin
 
 The company gained traction, partnerships, and investor interest, but the pandemic forced us to pivot quickly. Although the new product showed promise, the team was already worn down, and we eventually decided to close the company.
 
-Together, those experiences gave me a broader view of what it means to build under uncertainty. **Docmeti** taught me the complexity of physical products and operations, while **Workia** showed me the speed, ambition, and emotional intensity of startup life.
+Together, those experiences gave me a broader view of what it means to build under uncertainty. Docmeti taught me the complexity of physical products and operations, while Workia showed me the speed, ambition, and emotional intensity of startup life.
 
 Those startup experiences reinforced one of the most important lessons in my career: building products requires adaptability, resilience, and the ability to keep learning while the context around you changes.
 
@@ -110,9 +110,9 @@ Those startup experiences reinforced one of the most important lessons in my car
 
 While living in Medellín, I was working on a project for a bank. As is often the case with large organizations, things moved slowly, with plenty of red tape, processes, and dependencies. There were times when I finished all my coding work within the first few hours of the day, but since I was expected to spend the full day at the office, I couldn't simply leave.
 
-Instead of wasting that time, I started investing in my own development by reading engineering books, watching tutorials, and taking courses. One of those books was **[Remote](https://basecamp.com/books/remote)**, written by the founders of [Basecamp](https://en.wikipedia.org/wiki/37signals). Until then, I thought working remotely simply meant working from home, but the book opened my eyes to a different philosophy: having more control over my time, greater flexibility, and the freedom to focus on meaningful work. That resonated with me, especially because I enjoyed building side projects and exploring ideas beyond my regular job.
+Instead of wasting that time, I started investing in my own development by reading engineering books, watching tutorials, and taking courses. One of those books was [*Remote*](https://basecamp.com/books/remote), written by the founders of [Basecamp](https://en.wikipedia.org/wiki/37signals). Until then, I thought working remotely simply meant working from home, but the book opened my eyes to a different philosophy: having more control over my time, greater flexibility, and the freedom to focus on meaningful work. That resonated with me, especially because I enjoyed building side projects and exploring ideas beyond my regular job.
 
-I decided to look for a fully remote opportunity and remembered meeting someone from **[Auth0](https://auth0.com/)** at JS Conf Argentina. I already knew the product and its reputation in the tech industry, so I applied through their website. The interview process was particularly interesting: instead of a traditional technical test, I had to build a small project while pretending I was already part of the team. They evaluated not only my code but also how I communicated, asked questions, and handled uncertainty. Eventually, I got the job and became Auth0's second employee in Colombia.
+I decided to look for a fully remote opportunity and remembered meeting someone from [Auth0](https://auth0.com/) at JS Conf Argentina. I already knew the product and its reputation in the tech industry, so I applied through their website. The interview process was particularly interesting: instead of a traditional technical test, I had to build a small project while pretending I was already part of the team. They evaluated not only my code but also how I communicated, asked questions, and handled uncertainty. Eventually, I got the job and became Auth0's second employee in Colombia.
 
 Joining Auth0 completely changed my professional landscape. I was suddenly working with talented people from around the world, which pushed me to raise my standards as an engineer. I also returned to full-stack JavaScript development, working with Node.js in production, and discovered new areas of interest such as [identity management](https://en.wikipedia.org/wiki/Identity_management) and [OAuth 2.0](https://en.wikipedia.org/wiki/OAuth#OAuth_2.0). Working remotely also accelerated my English learning, since around 90% of my daily communication happened in English.
 
@@ -122,7 +122,7 @@ Looking back, joining Auth0 was much more than getting a remote job. It changed 
 
 ## A New Chapter: Moving to Sweden
 
-In early 2019, a friend who had moved to Sweden about six months earlier asked if I was interested in applying to **[Klarna](https://en.wikipedia.org/wiki/Klarna)**, the company that had relocated him there. True to my habit of staying open to new opportunities, I asked my partner what they thought about moving. The answer was: "Let's pack our bags."
+In early 2019, a friend who had moved to Sweden about six months earlier asked if I was interested in applying to [Klarna](https://en.wikipedia.org/wiki/Klarna), the company that had relocated him there. True to my habit of staying open to new opportunities, I asked my partner what they thought about moving. The answer was: "Let's pack our bags."
 
 The process was demanding, and I tried not to get my hopes up until it was over. Even so, I really enjoyed it. Although Klarna was technically a bank, the whole process felt more like working with a digital agency.
 

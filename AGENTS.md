@@ -146,3 +146,35 @@ which resolves to:
    that is hidden until keyboard-focused; do not remove it. The `<main>`
    landmark must keep `id="main-content"` and `tabIndex={-1}` so the
    link can target it.
+
+## About History Content — `src/content/history*.md`
+
+The "My history" page (`/about/history`) renders `src/content/history.md` (EN)
+and `src/content/history.es.md` (ES) with `react-markdown`.
+
+### Structure
+
+- Each chapter is a `##` heading followed by plain paragraphs. New chapters go
+  at the **end**, in chronological order.
+- Keep a chapter to roughly 300–450 words in 5–6 paragraphs, closing with a
+  short sentence about what that stage taught.
+- **EN and ES must stay in sync**: same chapters, same paragraph order, and the
+  same links and formatting on the same terms.
+
+### Formatting rules
+
+1. **Links** go on the **first mention on the page** of a term with a public
+   reference (technology, concept, company, community). Use English Wikipedia
+   for concepts and the official site when no article fits; both locales use
+   the same URL. Encode parentheses in URLs (`%28` / `%29`).
+2. **A linked term is never also bold.**
+3. **Bold** marks companies, projects, clients and awards **without a link**,
+   on their **first mention in each section** only. Later mentions in the same
+   section are plain text.
+4. **Italic** is only for titles of works (books, talks), e.g. `[*Remote*](…)`.
+5. **Inline code** is only for literal code (e.g. `` `for` ``).
+6. **Never add `target` or `rel` to links by hand.** `AboutHistory.tsx`
+   renders every link with `target="_blank" rel="noopener noreferrer"`, so all
+   links open in a new tab.
+7. Don't link places or generic subjects (cities, Calculus, Physics), and leave
+   own projects unlinked until there is a stable URL for them.

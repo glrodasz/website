@@ -64,7 +64,7 @@ Noté que muchas charlas de la comunidad eran valiosas, pero también había esp
 
 También animé a otros a compartir lo que sabían, enfatizando que todos empiezan en algún lugar.
 
-Más tarde, noté que no había un espacio dedicado a los entusiastas del [CSS](https://en.wikipedia.org/wiki/CSS) en Medellín. Junto con dos amigos, creé una comunidad de CSS que creció más allá de nuestras expectativas. Nuestros meetups atraían consistentemente alrededor de 100 asistentes, lo que introdujo nuevos desafíos, como encontrar venues lo suficientemente grandes para albergar a todos.
+Más tarde, noté que no había un espacio dedicado a los entusiastas del CSS en Medellín. Junto con dos amigos, creé una comunidad de CSS que creció más allá de nuestras expectativas. Nuestros meetups atraían consistentemente alrededor de 100 asistentes, lo que introdujo nuevos desafíos, como encontrar venues lo suficientemente grandes para albergar a todos.
 
 El éxito de esa comunidad eventualmente nos llevó a organizar la primera conferencia de CSS de Colombia. Fue un hito que mostró el creciente interés en las tecnologías web en la región.
 
@@ -74,7 +74,7 @@ Esas comunidades también me enseñaron que compartir conocimiento no está sepa
 
 ## Construyendo mi propia agencia de diseño
 
-Durante este período, también inicié una agencia de diseño con un diseñador que había conocido en Komet Sales. La llamamos **Space Monkeys**. Juntos, trabajamos en varios proyectos, incluyendo **Docmeti**, **Mr. Och8** y **Speed**.
+Durante este período, también inicié una agencia de diseño con un diseñador que había conocido en **Komet Sales**. La llamamos **Space Monkeys**. Juntos, trabajamos en varios proyectos, incluyendo **Docmeti**, **Mr. Och8** y **Speed**.
 
 En Komet Sales, conocí a un diseñador que era inusualmente abierto a sugerencias desde una perspectiva de desarrollo. En ese momento, el concepto de diseñador web aún estaba emergiendo, y muchos diseñadores todavía trabajaban desde una mentalidad de diseño gráfico tradicional. Conceptos como el [diseño responsivo](https://en.wikipedia.org/wiki/Responsive_web_design), [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_%28front-end_framework%29) y la [accesibilidad](https://en.wikipedia.org/wiki/Web_accessibility) a menudo se ignoraban.
 
@@ -86,7 +86,7 @@ Así nació Space Monkeys.
 
 Entregamos muchos proyectos exitosos, pero el espacio de las agencias digitales estaba muy saturado. Al final, el éxito a menudo dependía de tener acceso a los clientes correctos. Los clientes más grandes a veces dudaban en confiar en una agencia pequeña, incluso cuando producíamos resultados sólidos. Irónicamente, algunas agencias más grandes que carecían de experiencia técnica nos subcontrataban trabajo.
 
-Trabajamos en proyectos para empresas como **[Argos](https://en.wikipedia.org/wiki/Grupo_Argos)** y **GPM**, así como proyectos más pequeños como **La Piel Plus** y **Speed**. Nuestro trabajo abarcó desde sitios de e-commerce y aplicaciones móviles hasta juegos interactivos y aplicaciones web avanzadas.
+Trabajamos en proyectos para empresas como [Argos](https://en.wikipedia.org/wiki/Grupo_Argos) y **GPM**, así como proyectos más pequeños como **La Piel Plus** y Speed. Nuestro trabajo abarcó desde sitios de e-commerce y aplicaciones móviles hasta juegos interactivos y aplicaciones web avanzadas.
 
 Dirigir Space Monkeys fue una experiencia valiosa. Aprendí a trabajar con clientes, gestionar empleados y entender lo que se necesita para dirigir un negocio. También gané una mayor apreciación por el diseño al participar en los procesos creativos del día a día. Me enseñó cómo optimizar flujos de trabajo, comunicarme mejor entre disciplinas y construir productos con calidad tanto técnica como visual en mente.
 
@@ -102,7 +102,7 @@ Después llegó **Workia**, un startup construido alrededor de la idea de un pas
 
 La empresa ganó tracción, asociaciones e interés de inversores, pero la pandemia nos obligó a pivotar rápidamente. Aunque el nuevo producto mostraba promesa, el equipo ya estaba agotado, y eventualmente decidimos cerrar la empresa.
 
-Juntas, esas experiencias me dieron una visión más amplia de lo que significa construir bajo incertidumbre. **Docmeti** me enseñó la complejidad de los productos físicos y las operaciones, mientras que **Workia** me mostró la velocidad, ambición e intensidad emocional de la vida en un startup.
+Juntas, esas experiencias me dieron una visión más amplia de lo que significa construir bajo incertidumbre. Docmeti me enseñó la complejidad de los productos físicos y las operaciones, mientras que Workia me mostró la velocidad, ambición e intensidad emocional de la vida en un startup.
 
 Esas experiencias en startups reforzaron una de las lecciones más importantes de mi carrera: construir productos requiere adaptabilidad, resiliencia y la capacidad de seguir aprendiendo mientras el contexto a tu alrededor cambia.
 
@@ -110,9 +110,9 @@ Esas experiencias en startups reforzaron una de las lecciones más importantes d
 
 Mientras vivía en Medellín, trabajaba en un proyecto para un banco. Como suele pasar en las organizaciones grandes, las cosas avanzaban lentamente, con mucha burocracia, procesos y dependencias. Hubo momentos en los que terminaba todo mi trabajo de programación en las primeras horas del día, pero como se esperaba que pasara la jornada completa en la oficina, no podía simplemente irme.
 
-En lugar de desperdiciar ese tiempo, empecé a invertir en mi propio desarrollo leyendo libros de ingeniería, viendo tutoriales y tomando cursos. Uno de esos libros fue **[Remote](https://basecamp.com/books/remote)**, escrito por los fundadores de [Basecamp](https://en.wikipedia.org/wiki/37signals). Hasta entonces, pensaba que trabajar de forma remota significaba simplemente trabajar desde casa, pero el libro me abrió los ojos a una filosofía diferente: tener más control sobre mi tiempo, mayor flexibilidad y la libertad de enfocarme en trabajo significativo. Eso resonó conmigo, sobre todo porque disfrutaba construir proyectos personales y explorar ideas más allá de mi trabajo habitual.
+En lugar de desperdiciar ese tiempo, empecé a invertir en mi propio desarrollo leyendo libros de ingeniería, viendo tutoriales y tomando cursos. Uno de esos libros fue [*Remote*](https://basecamp.com/books/remote), escrito por los fundadores de [Basecamp](https://en.wikipedia.org/wiki/37signals). Hasta entonces, pensaba que trabajar de forma remota significaba simplemente trabajar desde casa, pero el libro me abrió los ojos a una filosofía diferente: tener más control sobre mi tiempo, mayor flexibilidad y la libertad de enfocarme en trabajo significativo. Eso resonó conmigo, sobre todo porque disfrutaba construir proyectos personales y explorar ideas más allá de mi trabajo habitual.
 
-Decidí buscar una oportunidad completamente remota y recordé haber conocido a alguien de **[Auth0](https://auth0.com/)** en JS Conf Argentina. Ya conocía el producto y su reputación en la industria tecnológica, así que apliqué a través de su sitio web. El proceso de entrevistas fue particularmente interesante: en lugar de una prueba técnica tradicional, tuve que construir un pequeño proyecto fingiendo que ya era parte del equipo. Evaluaron no solo mi código, sino también cómo me comunicaba, hacía preguntas y manejaba la incertidumbre. Finalmente, conseguí el trabajo y me convertí en el segundo empleado de Auth0 en Colombia.
+Decidí buscar una oportunidad completamente remota y recordé haber conocido a alguien de [Auth0](https://auth0.com/) en JS Conf Argentina. Ya conocía el producto y su reputación en la industria tecnológica, así que apliqué a través de su sitio web. El proceso de entrevistas fue particularmente interesante: en lugar de una prueba técnica tradicional, tuve que construir un pequeño proyecto fingiendo que ya era parte del equipo. Evaluaron no solo mi código, sino también cómo me comunicaba, hacía preguntas y manejaba la incertidumbre. Finalmente, conseguí el trabajo y me convertí en el segundo empleado de Auth0 en Colombia.
 
 Unirme a Auth0 cambió por completo mi panorama profesional. De pronto estaba trabajando con personas talentosas de todo el mundo, lo que me empujó a elevar mis estándares como ingeniero. También volví al desarrollo full-stack con JavaScript, trabajando con Node.js en producción, y descubrí nuevas áreas de interés como la [gestión de identidades](https://en.wikipedia.org/wiki/Identity_management) y [OAuth 2.0](https://en.wikipedia.org/wiki/OAuth#OAuth_2.0). Trabajar de forma remota también aceleró mi aprendizaje de inglés, ya que cerca del 90% de mi comunicación diaria ocurría en ese idioma.
 
@@ -122,7 +122,7 @@ Mirando atrás, unirme a Auth0 fue mucho más que conseguir un trabajo remoto. C
 
 ## Un nuevo capítulo: mudándome a Suecia
 
-A inicios de 2019, un amigo que se había mudado a Suecia unos seis meses antes me preguntó si me interesaba aplicar a **[Klarna](https://en.wikipedia.org/wiki/Klarna)**, la compañía que lo había llevado allí con un proceso de relocation. Fiel a mi costumbre de estar abierto a nuevas oportunidades, le pregunté a mi pareja qué le parecía la idea de mudarnos. Su respuesta fue: "Empaquemos las maletas".
+A inicios de 2019, un amigo que se había mudado a Suecia unos seis meses antes me preguntó si me interesaba aplicar a [Klarna](https://en.wikipedia.org/wiki/Klarna), la compañía que lo había llevado allí con un proceso de relocation. Fiel a mi costumbre de estar abierto a nuevas oportunidades, le pregunté a mi pareja qué le parecía la idea de mudarnos. Su respuesta fue: "Empaquemos las maletas".
 
 El proceso fue exigente, y no quise hacerme ilusiones hasta completarlo. Aun así, lo disfruté mucho. Aunque técnicamente Klarna era un banco, todo el proceso se sintió más como el de una agencia digital.
 

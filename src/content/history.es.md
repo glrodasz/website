@@ -150,9 +150,9 @@ Enseñar es la mejor forma de aprender para mí. Siempre lo ha sido, y creo que 
 
 ## Creando CSS Conf Colombia
 
-Entre 2018 y 2023 estuve a cargo de la comunidad **Medellín CSS** junto a otros dos organizadores, Estefan Aguilar y Luisa Vaca. Organizamos más de 20 eventos, sobre todo meetups con una charla principal, a veces acompañada de otras, además de talleres para la comunidad. En comparación con las comunidades bien establecidas de Medellín en ese momento, la nuestra fue muy exitosa. En promedio teníamos unas 100 personas en sala, a tal punto que encontrar un lugar para tanta gente se volvió un verdadero reto.
+Entre 2018 y 2023 estuve a cargo de la comunidad **Medellín CSS** junto a otras dos organizadoras, Estefany Aguilar y Luisa Vaca. Organizamos más de 20 eventos, sobre todo meetups con una charla principal, a veces acompañada de otras, además de talleres para la comunidad. En comparación con las comunidades bien establecidas de Medellín en ese momento, la nuestra fue muy exitosa. En promedio teníamos unas 100 personas en sala, a tal punto que encontrar un lugar para tanta gente se volvió un verdadero reto.
 
-Gracias a esa experiencia, decidimos embarcarnos en una aventura más grande y organizar una conferencia internacional. Estefan ya había dado una charla en CSS Conf, así que hablamos con su organizadora y nos dio permiso para crear la edición colombiana. Desde ese momento nos tomó un año de preparación. Para entonces yo ya tenía planeado mi viaje a Suecia, así que la mayor parte de las cosas me tocó organizarlas desde allá.
+Gracias a esa experiencia, decidimos embarcarnos en una aventura más grande y organizar una conferencia internacional. Estefany ya había dado una charla en CSS Conf, así que hablamos con su organizadora y nos dio permiso para crear la edición colombiana. Desde ese momento nos tomó un año de preparación. Para entonces yo ya tenía planeado mi viaje a Suecia, así que la mayor parte de las cosas me tocó organizarlas desde allá.
 
 No tengo cómo agradecerle a Henry Sarasa. Era otro de los organizadores y, en la práctica, mis ojos, mis pies y mi cuerpo en Medellín. Aunque yo tenía muchos contactos de emprendimientos anteriores, no tenía a nadie en el terreno que se encargara de todas esas diligencias, y Henry siempre estuvo atento y dispuesto a ayudarme.
 

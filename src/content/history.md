@@ -133,3 +133,17 @@ However, I had two big fears. The first was financial: in Colombia, I was well e
 The second fear was going back to working in an office. I had been working remotely for almost three years, I had really enjoyed it, and I wasn't sure how hard it would be to adjust again.
 
 In the end, I took the risk, and it turned out to be one of the best decisions of my life. It taught me that some of the best opportunities come when you are willing to step out of your comfort zone, even when the numbers and the comfort of the familiar point the other way.
+
+## Exploring Live Streaming in Twitch
+
+In early 2020, when the pandemic began, the Swedish government recommended working from home. I was spending my days in my first apartment in Sweden, and I felt a growing urge to create more content and more courses, beyond the ones I had already recorded on platforms like [Platzi](https://platzi.com/). One question kept coming back: why announce that I'm going to record a course, disappear, and only show up when it's finished?
+
+At the same time, I had something that would have been unthinkable in Latin America back then: a symmetrical 500 Mbps connection at home. A balanced connection like that was extremely hard to find in a residential setting. It felt like the perfect opportunity to try [live streaming](https://en.wikipedia.org/wiki/Live_streaming) on [Twitch](https://en.wikipedia.org/wiki/Twitch_(service)) and share the process of creating a course with the world: how I prepare and how I study.
+
+So I started a series of streams where we built a real project, with all the foundations needed to reach production. We called it "from zero to production", with the idea of reusing that same project in the final course. That addresses one of the biggest challenges in course creation: depending on the level you aim for, you either need a project that truly reaches that level, or you fall back on small, simple examples.
+
+It was a period of a lot of learning and networking. Thanks to streaming, I met incredible people and companies, and it opened doors to talks and other communities. The community we built around the streams also led us to start thinking about creating a bootcamp, which I'll talk about later.
+
+It taught me what it means to be on social media and to create content from a different perspective, exposed in front of an audience. I also learned a lot on the technical side: hardware, good audio, video editing, and formats. And it showed me the reality of streaming: I miss it a lot and I had a great time, but it consumes a lot of time. While I could, I made the most of it and practiced one of my favorite things: teaching.
+
+Teaching is the best way to learn for me. It always has been, and I think it always will be.

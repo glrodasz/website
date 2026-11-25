@@ -1,4 +1,4 @@
-> Siempre he aprendido experimentando, y muchas veces me puse a construir cosas antes de sentirme del todo listo. Empecé modificando plantillas de Blogger en la adolescencia, y desde entonces he pasado por la universidad, Java, JavaScript full-stack, comunidades de desarrolladores, agencias, startups y equipos internacionales. En todas esas etapas el patrón ha sido el mismo. Aprendo probando, compartiendo y construyendo con otras personas.
+> Siempre he aprendido experimentando, y muchas veces me puse a construir cosas antes de sentirme del todo listo. Empecé modificando plantillas de Blogger en la adolescencia, y desde entonces he pasado por la universidad, Java, JavaScript full-stack, comunidades de desarrolladores, agencias, startups y equipos internacionales. En todas esas etapas el patrón ha sido el mismo. Aprendo probando y construyendo con otras personas.
 
 ## Primeros experimentos con tecnología en el colegio
 
@@ -60,7 +60,7 @@ La comunicación mejora igual que las habilidades técnicas. La usas todos los d
 
 Me metí en las comunidades de tecnología asistiendo a meetups locales como [MedellinJS](https://www.meetup.com/medellinjs/), [MedellinPHP](https://www.meetup.com/medellin-php/) y otros grupos. Me gustaba ver cómo ayudaban a los desarrolladores a crecer, compartir conocimiento y encontrar oportunidades.
 
-Noté que muchas charlas eran valiosas, pero que también había espacio para mejorar cómo se presentaba el contenido técnico. Eso me motivó a empezar a dar charlas yo mismo. No porque pensara que era mejor, sino porque vi una oportunidad de ayudar a otros a aprender mientras entendía mejor las cosas yo mismo.
+Noté que muchas charlas eran valiosas, pero que también había espacio para mejorar cómo se presentaba el contenido técnico. Eso me motivó a empezar a dar charlas yo mismo. No porque pensara que era mejor, sino porque vi una oportunidad de ayudar a otros a aprender.
 
 También animé a otros a compartir lo que sabían, porque todos empiezan en algún lugar.
 
@@ -69,8 +69,6 @@ Más tarde, noté que no había un espacio dedicado a los entusiastas del CSS en
 El éxito de esa comunidad eventualmente nos llevó a organizar la primera conferencia de CSS de Colombia. Fue un hito que mostró el creciente interés en las tecnologías web en la región.
 
 Gestionar estas comunidades me enseñó mucho sobre liderazgo, organización de eventos y comunicación, y sobre la importancia de crear espacios donde los desarrolladores aprendan unos de otros.
-
-Compartir conocimiento no está separado del aprendizaje. Es una de las mejores formas de profundizarlo.
 
 ## Construyendo mi propia agencia de diseño
 
@@ -146,7 +144,7 @@ Fue una época de muchos aprendizajes y mucho networking. Gracias al streaming c
 
 Me enseñó lo que es estar en las redes y crear contenido desde otra perspectiva, exponiéndome ante una audiencia. También aprendí mucho a nivel técnico, desde hardware y buen sonido hasta edición de video y formatos. Y me mostró la realidad del streaming. Lo extraño muchísimo y me divertí, pero consume mucho tiempo. Mientras pude, lo aproveché y puse en práctica una de mis cosas preferidas, enseñar.
 
-Enseñar es la mejor forma de aprender para mí. Siempre lo ha sido, y creo que siempre lo seguirá siendo.
+Enseñar es la mejor forma de aprender para mí. Siempre lo ha sido, desde mis primeras charlas en los meetups, y creo que siempre lo seguirá siendo.
 
 ## Creando CSS Conf Colombia
 

@@ -1,4 +1,4 @@
-> I've always learned by experimenting, and I've often started building things before feeling fully ready. I began by modifying Blogger templates as a teenager, and since then I've gone through university, Java, full-stack JavaScript, developer communities, agencies, startups, and international teams. The pattern has been the same all along. I learn by trying things, sharing them, and building with other people.
+> I've always learned by experimenting, and I've often started building things before feeling fully ready. I began by modifying Blogger templates as a teenager, and since then I've gone through university, Java, full-stack JavaScript, developer communities, agencies, startups, and international teams. The pattern has been the same all along. I learn by trying things and building with other people.
 
 ## Early Experiments with Tech at School
 
@@ -60,7 +60,7 @@ Communication improves the same way technical skills do. You use it every day, y
 
 I got into tech communities by attending local meetups such as [MedellinJS](https://www.meetup.com/medellinjs/), [MedellinPHP](https://www.meetup.com/medellin-php/), and other technology groups. I liked how they helped developers grow, share knowledge, and find opportunities.
 
-I noticed that many talks were valuable, but there was also room to improve how the technical content was presented. That motivated me to start giving talks myself. Not because I thought I was better, but because I saw a chance to help others learn while understanding things better myself.
+I noticed that many talks were valuable, but there was also room to improve how the technical content was presented. That motivated me to start giving talks myself. Not because I thought I was better, but because I saw a chance to help others learn.
 
 I also encouraged others to share what they knew, since everyone starts somewhere.
 
@@ -69,8 +69,6 @@ Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. 
 The success of that community eventually led us to organize Colombia's first CSS conference. It was a milestone that showed the growing interest in web technologies in the region.
 
 Running these communities taught me a lot about leadership, organizing events, and communication, and about the importance of creating spaces where developers can learn from each other.
-
-Sharing knowledge isn't separate from learning. It's one of the strongest ways to deepen it.
 
 ## Building My Own Design Agency
 
@@ -146,7 +144,7 @@ It was a period of a lot of learning and networking. Thanks to streaming, I met 
 
 It taught me what it means to be on social media and to create content from a different perspective, exposed in front of an audience. I also learned a lot on the technical side, from hardware and good audio to video editing and formats. And it showed me the reality of streaming. I miss it a lot and I had a great time, but it consumes a lot of time. While I could, I made the most of it and practiced one of my favorite things, teaching.
 
-Teaching is the best way to learn for me. It always has been, and I think it always will be.
+Teaching is the best way to learn for me. It always has been, since my first talks at the meetups, and I think it always will be.
 
 ## Creating CSS Conf Colombia
 

@@ -64,7 +64,7 @@ I noticed that many community talks were valuable, but there was also room to im
 
 I also encouraged others to share what they knew, emphasizing that everyone starts somewhere.
 
-Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. Together with two friends, I created a CSS community that grew beyond our expectations. Our meetups consistently attracted around 100 attendees, which introduced new challenges, such as finding venues large enough to host everyone.
+Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. Together with two other organizers, Estefany Aguilar and Luisa Vaca, I created **Medellín CSS**, a community that grew beyond our expectations. Between 2018 and 2023, we organized more than 20 events, mostly meetups built around a main talk, sometimes with more, along with workshops for the community. Compared with the well-established communities in Medellín at the time, ours was remarkably successful. Our meetups consistently attracted around 100 attendees, which introduced new challenges, such as finding venues large enough to host everyone.
 
 The success of that community eventually led us to organize Colombia's first CSS conference. It was a milestone that showed the growing interest in web technologies in the region.
 
@@ -150,9 +150,7 @@ Teaching is the best way to learn for me. It always has been, and I think it alw
 
 ## Creating CSS Conf Colombia
 
-From 2018 to 2023, I ran the **Medellín CSS** community together with two other organizers, Estefany Aguilar and Luisa Vaca. We organized more than 20 events, mostly meetups built around a main talk, sometimes with more, along with workshops for the community. Compared with the well-established communities in Medellín at the time, ours was remarkably successful. We averaged around 100 people in the room, to the point that finding a venue for that many people became a real challenge.
-
-Thanks to that experience, we decided to embark on a bigger adventure and organize an international conference. Estefany had already given a talk at CSS Conf, so we spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
+When we decided to take on an international conference, we had a head start, since Estefany had already given a talk at CSS Conf. We spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
 
 I can't thank Henry Zarza enough. He was another of the organizers and, in practice, my Avatar in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
 

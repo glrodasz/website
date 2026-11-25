@@ -64,7 +64,7 @@ Noté que muchas charlas de la comunidad eran valiosas, pero también había esp
 
 También animé a otros a compartir lo que sabían, enfatizando que todos empiezan en algún lugar.
 
-Más tarde, noté que no había un espacio dedicado a los entusiastas del CSS en Medellín. Junto con dos amigos, creé una comunidad de CSS que creció más allá de nuestras expectativas. Nuestros meetups atraían consistentemente alrededor de 100 asistentes, lo que introdujo nuevos desafíos, como encontrar venues lo suficientemente grandes para albergar a todos.
+Más tarde, noté que no había un espacio dedicado a los entusiastas del CSS en Medellín. Junto a otras dos organizadoras, Estefany Aguilar y Luisa Vaca, creé **Medellín CSS**, una comunidad que creció más allá de nuestras expectativas. Entre 2018 y 2023 organizamos más de 20 eventos, sobre todo meetups con una charla principal, a veces acompañada de otras, además de talleres para la comunidad. En comparación con las comunidades bien establecidas de Medellín en ese momento, la nuestra fue muy exitosa. Nuestros meetups atraían consistentemente alrededor de 100 asistentes, lo que introdujo nuevos desafíos, como encontrar venues lo suficientemente grandes para albergar a todos.
 
 El éxito de esa comunidad eventualmente nos llevó a organizar la primera conferencia de CSS de Colombia. Fue un hito que mostró el creciente interés en las tecnologías web en la región.
 
@@ -147,3 +147,17 @@ Fue una época de muchos aprendizajes y mucho networking. Gracias al streaming c
 Me enseñó lo que es estar en las redes y crear contenido desde otra perspectiva, exponiéndome ante una audiencia. También aprendí mucho a nivel técnico, desde hardware y buen sonido hasta edición de video y formatos. Y me mostró la realidad del streaming. Lo extraño muchísimo y me divertí, pero consume mucho tiempo. Mientras pude, lo aproveché y puse en práctica una de mis cosas preferidas, enseñar.
 
 Enseñar es la mejor forma de aprender para mí. Siempre lo ha sido, y creo que siempre lo seguirá siendo.
+
+## Creando CSS Conf Colombia
+
+Cuando decidimos embarcarnos en una conferencia internacional, nuestra mayor ventaja era la experiencia que habíamos ganado con la comunidad del meetup. Estefany ya había dado una charla en CSS Conf, así que hablamos con su organizadora y nos dio permiso para crear la edición colombiana. Desde ese momento nos tomó un año de preparación. Para entonces yo ya tenía planeado mi viaje a Suecia, así que la mayor parte de las cosas me tocó organizarlas desde allá.
+
+No tengo cómo agradecerle a Henry Zarza. Era otro de los organizadores y, en la práctica, mi Avatar en Medellín. Aunque yo tenía muchos contactos de emprendimientos anteriores, no tenía a nadie en el terreno que se encargara de todas esas diligencias, y Henry siempre estuvo atento y dispuesto a ayudarme.
+
+La conferencia era para 2020, sí, ese año que muchos enterramos en la parte trasera de nuestros recuerdos. Una semana antes del evento, con los tiquetes de los speakers, el hotel, el venue, el alquiler de equipos y los servicios ya contratados, y con mi propio vuelo programado para ese fin de semana, nos enteramos de que el venue cancelaba todos los eventos. Lo peor fue que el venue no tuvo la profesionalidad de avisarnos con antelación. Nos enteramos por redes sociales y nos tocó manejar una tormenta de preguntas y decisiones.
+
+Logramos manejarlo bien. Hablamos con nuestros sponsors y acordamos aplazar. Nadie sabía cómo evolucionaría la pandemia, y quienes la vivieron saben que la normalidad tomó mucho más de lo que cualquiera se hubiese imaginado. Así que devolvimos el dinero de las boletas, aumentamos el número de speakers y la convertimos en una conferencia completamente virtual en el 2021.
+
+Fue un evento muy bonito y una experiencia increíble a pesar de que tuvo que ser en línea. Todavía hoy, cuando me encuentro a los speakers, me lo agradecen. Para ellos también fue una sorpresa, y lo recuerdan como un trabajo muy bien hecho.
+
+Aunque fue un reto maravilloso, me lo pensaría dos veces si tuviera que hacerlo de nuevo. Eso sí, me enseñó que una comunidad puede asumir un reto mucho más grande de lo que nadie espera, y que el cuidado que le pones a las personas que te acompañan crea mucho más impacto del que te puedas imaginar.

@@ -64,7 +64,7 @@ I noticed that many community talks were valuable, but there was also room to im
 
 I also encouraged others to share what they knew, emphasizing that everyone starts somewhere.
 
-Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. Together with two friends, I created a CSS community that grew beyond our expectations. Our meetups consistently attracted around 100 attendees, which introduced new challenges, such as finding venues large enough to host everyone.
+Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. Together with two other organizers, Estefany Aguilar and Luisa Vaca, I created **Medellín CSS**, a community that grew beyond our expectations. Between 2018 and 2023, we organized more than 20 events, mostly meetups built around a main talk, sometimes with more, along with workshops for the community. Compared with the well-established communities in Medellín at the time, ours was remarkably successful. Our meetups consistently attracted around 100 attendees, which introduced new challenges, such as finding venues large enough to host everyone.
 
 The success of that community eventually led us to organize Colombia's first CSS conference. It was a milestone that showed the growing interest in web technologies in the region.
 
@@ -147,3 +147,17 @@ It was a period of a lot of learning and networking. Thanks to streaming, I met 
 It taught me what it means to be on social media and to create content from a different perspective, exposed in front of an audience. I also learned a lot on the technical side, from hardware and good audio to video editing and formats. And it showed me the reality of streaming. I miss it a lot and I had a great time, but it consumes a lot of time. While I could, I made the most of it and practiced one of my favorite things, teaching.
 
 Teaching is the best way to learn for me. It always has been, and I think it always will be.
+
+## Creating CSS Conf Colombia
+
+When we decided to take on an international conference, our biggest advantage was the experience we had gained running the meetup community. Estefany had already given a talk at CSS Conf, so we spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
+
+I can't thank Henry Zarza enough. He was another of the organizers and, in practice, my Avatar in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
+
+The conference was scheduled for 2020, yes, that year many of us buried at the back of our memories. A week before the event, with the speakers' tickets, the hotel, the venue, the equipment rental, and the services all arranged, and with my own flight booked for that weekend, we learned that the venue was cancelling every event. What made it worse was that the venue didn't have the professionalism to warn us in advance. We found out through social media, and had to deal with a storm of questions and decisions.
+
+We managed to handle it well. We talked to our sponsors and agreed to postpone. Nobody knew how the pandemic would evolve, and anyone who lived through it knows that getting back to normal took much more than anyone could have imagined. So we refunded the tickets, increased the number of speakers, and turned it into a fully online conference in 2021.
+
+It was a beautiful event, and an incredible experience even though it had to be virtual. To this day, when I run into the speakers, they thank me for it. It was a surprise for them too, and they remember it as a very well-done piece of work.
+
+Although it was a wonderful challenge, I would think twice before doing it again. That said, it taught me that a community can take on a much bigger challenge than anyone expects, and that the care you put into the people who join you creates much more impact than you can imagine.

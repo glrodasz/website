@@ -150,7 +150,7 @@ Teaching is the best way to learn for me. It always has been, and I think it alw
 
 ## Creating CSS Conf Colombia
 
-When we decided to take on an international conference, we had a head start, since Estefany had already given a talk at CSS Conf. We spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
+When we decided to take on an international conference, our biggest advantage was the experience we had gained running the meetup community. Estefany had already given a talk at CSS Conf, so we spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
 
 I can't thank Henry Zarza enough. He was another of the organizers and, in practice, my Avatar in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
 

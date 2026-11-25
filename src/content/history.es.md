@@ -154,7 +154,7 @@ Cuando decidimos embarcarnos en una conferencia internacional, nuestra mayor ven
 
 No tengo cómo agradecerle a Henry Zarza. Era otro de los organizadores y, en la práctica, mi Avatar en Medellín. Aunque yo tenía muchos contactos de emprendimientos anteriores, no tenía a nadie en el terreno que se encargara de todas esas diligencias, y Henry siempre estuvo atento y dispuesto a ayudarme.
 
-La conferencia era para 2020. Una semana antes del evento, con los tiquetes de los speakers, el hotel, el venue, el alquiler de equipos y los servicios ya contratados, y con mi propio vuelo programado para ese fin de semana, nos enteramos de que el venue cancelaba todos los eventos. Lo peor fue que el venue no tuvo la profesionalidad de avisarnos con antelación. Nos enteramos por redes sociales y nos tocó manejar una tormenta de preguntas y decisiones.
+La conferencia era para 2020, sí, ese año que muchos enterramos en la parte trasera de nuestros recuerdos. Una semana antes del evento, con los tiquetes de los speakers, el hotel, el venue, el alquiler de equipos y los servicios ya contratados, y con mi propio vuelo programado para ese fin de semana, nos enteramos de que el venue cancelaba todos los eventos. Lo peor fue que el venue no tuvo la profesionalidad de avisarnos con antelación. Nos enteramos por redes sociales y nos tocó manejar una tormenta de preguntas y decisiones.
 
 Logramos manejarlo bien. Hablamos con nuestros sponsors y acordamos aplazar. Nadie sabía cómo evolucionaría la pandemia, y quienes la vivieron saben que volver a la normalidad tomó mucho más de uno o dos años. Así que devolvimos el dinero de las boletas, aumentamos el número de speakers y la convertimos en una conferencia completamente virtual en el 2021.
 

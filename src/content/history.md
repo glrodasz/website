@@ -154,7 +154,7 @@ When we decided to take on an international conference, our biggest advantage wa
 
 I can't thank Henry Zarza enough. He was another of the organizers and, in practice, my Avatar in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
 
-The conference was scheduled for 2020. A week before the event, with the speakers' tickets, the hotel, the venue, the equipment rental, and the services all arranged, and with my own flight booked for that weekend, we learned that the venue was cancelling every event. What made it worse was that the venue didn't have the professionalism to warn us in advance. We found out through social media, and had to deal with a storm of questions and decisions.
+The conference was scheduled for 2020, yes, that year many of us buried at the back of our memories. A week before the event, with the speakers' tickets, the hotel, the venue, the equipment rental, and the services all arranged, and with my own flight booked for that weekend, we learned that the venue was cancelling every event. What made it worse was that the venue didn't have the professionalism to warn us in advance. We found out through social media, and had to deal with a storm of questions and decisions.
 
 We managed to handle it well. We talked to our sponsors and agreed to postpone. Nobody knew how the pandemic would evolve, and anyone who lived through it knows it took far more than a year or two to return to normal. So we refunded the tickets, increased the number of speakers, and turned it into a fully online conference in 2021.
 

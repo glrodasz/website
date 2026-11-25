@@ -162,4 +162,4 @@ Afortunadamente lo supimos manejar. Hablamos con nuestros sponsors y acordamos a
 
 Fue un evento muy bonito y una experiencia increíble a pesar de que tuvo que ser en línea. Todavía hoy, cuando me encuentro a los speakers, me lo agradecen. Para ellos también fue una sorpresa, y lo recuerdan como un trabajo muy bien hecho.
 
-Es además un trabajo muy duro, y la verdad lo pensaría dos veces si tuviera que hacerlo de nuevo. Aun así, me enseñó que una comunidad puede asumir un reto mucho más grande de lo que nadie espera, y que el cuidado que le pones a las personas que te acompañan se recuerda mucho después de terminado el evento.
+Aunque fue un reto maravilloso, me lo pensaría dos veces si tuviera que hacerlo de nuevo. Eso sí, me enseñó que una comunidad puede asumir un reto mucho más grande de lo que nadie espera, y que el cuidado que le pones a las personas que te acompañan crea mucho más impacto del que te puedas imaginar.

@@ -162,4 +162,4 @@ Fortunately, we handled it well. We talked to our sponsors and agreed to postpon
 
 It was a beautiful event, and an incredible experience even though it had to be virtual. To this day, when I run into the speakers, they thank me for it. It was a surprise for them too, and they remember it as a very well-done piece of work.
 
-It is also very hard work, and I would think twice before doing it again. Still, it taught me that a community can take on a much bigger challenge than anyone expects, and that the care you put into the people who join you is remembered long after the event ends.
+Although it was a wonderful challenge, I would think twice before doing it again. That said, it taught me that a community can take on a much bigger challenge than anyone expects, and that the care you put into the people who join you creates much more impact than you can imagine.

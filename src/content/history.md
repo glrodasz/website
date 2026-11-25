@@ -150,7 +150,7 @@ Teaching is the best way to learn for me. It always has been, and I think it alw
 
 ## Creating CSS Conf Colombia
 
-For several years, I ran the **Medellín CSS** community together with two other organizers, Estefan Aguilar and Luisa Vaca. We organized meetups, usually with two talks each, and workshops with the community. Compared with the well-established communities in Medellín at the time, ours was remarkably successful. We averaged around 100 people in the room, to the point that finding a venue for that many people became a real challenge.
+From 2018 to 2023, I ran the **Medellín CSS** community together with two other organizers, Estefan Aguilar and Luisa Vaca. We organized more than 20 events, mostly meetups with two talks each, along with workshops for the community. Compared with the well-established communities in Medellín at the time, ours was remarkably successful. We averaged around 100 people in the room, to the point that finding a venue for that many people became a real challenge.
 
 Thanks to that experience, we decided to embark on a bigger adventure and organize an international conference. Estefan had already given a talk at CSS Conf, so we spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
 

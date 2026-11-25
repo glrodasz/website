@@ -133,3 +133,17 @@ Sin embargo, tenía dos grandes miedos. El primero era económico: en Colombia e
 El segundo miedo era volver a trabajar en una oficina. Llevaba casi tres años trabajando de forma remota, me había gustado mucho y no sabía qué tan difícil sería adaptarme de nuevo.
 
 Al final, decidí arriesgarme, y fue una de las mejores decisiones de mi vida. Esa experiencia me enseñó que algunas de las mejores oportunidades llegan cuando estás dispuesto a salir de tu zona de confort, incluso cuando los números y la comodidad de lo conocido apuntan en otra dirección.
+
+## Explorando el livestreaming en Twitch
+
+A inicios de 2020, cuando comenzó la pandemia, el gobierno sueco recomendó trabajar desde casa. Yo pasaba mis días en mi primer apartamento en Suecia y sentía cada vez más ganas de crear contenido y más cursos, además de los que ya había grabado en plataformas como [Platzi](https://platzi.com/). Me rondaba una pregunta: ¿por qué anunciar que voy a grabar un curso, desaparecerme y solo reaparecer cuando está terminado?
+
+Al mismo tiempo, tenía una conexión simétrica de 500 Mbps en casa, algo que en esa época era impensable en Latinoamérica. Tener una conexión así de balanceada a nivel residencial era dificilísimo. Me pareció la oportunidad perfecta para probar el [livestreaming](https://en.wikipedia.org/wiki/Live_streaming) en [Twitch](https://en.wikipedia.org/wiki/Twitch_(service)) y compartir con el mundo el proceso de creación de un curso, incluyendo cómo me preparo y cómo estudio.
+
+Así empecé una serie de streamings en los que construimos un proyecto real, con todos los fundamentos necesarios para llegar a producción. Lo llamamos "de cero a producción", con la idea de reutilizar ese mismo proyecto en el curso final. Eso resuelve uno de los mayores desafíos al crear un curso. Según el nivel que busques, o necesitas un proyecto que realmente esté a ese nivel, o terminas recurriendo a ejemplos pequeños y sencillos.
+
+Fue una época de muchos aprendizajes y mucho networking. Gracias al streaming conocí personas y empresas increíbles, y me abrió puertas a charlas y a otras comunidades. La comunidad que creamos alrededor de los streamings también nos llevó a pensar en la creación de un bootcamp, del cual hablaré más adelante.
+
+Me enseñó lo que es estar en las redes y crear contenido desde otra perspectiva, exponiéndome ante una audiencia. También aprendí mucho a nivel técnico, desde hardware y buen sonido hasta edición de video y formatos. Y me mostró la realidad del streaming. Lo extraño muchísimo y me divertí, pero consume mucho tiempo. Mientras pude, lo aproveché y puse en práctica una de mis cosas preferidas, enseñar.
+
+Enseñar es la mejor forma de aprender para mí. Siempre lo ha sido, y creo que siempre lo seguirá siendo.

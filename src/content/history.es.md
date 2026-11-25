@@ -154,7 +154,7 @@ Entre 2018 y 2023 estuve a cargo de la comunidad **Medellín CSS** junto a otras
 
 Gracias a esa experiencia, decidimos embarcarnos en una aventura más grande y organizar una conferencia internacional. Estefany ya había dado una charla en CSS Conf, así que hablamos con su organizadora y nos dio permiso para crear la edición colombiana. Desde ese momento nos tomó un año de preparación. Para entonces yo ya tenía planeado mi viaje a Suecia, así que la mayor parte de las cosas me tocó organizarlas desde allá.
 
-No tengo cómo agradecerle a Henry Sarasa. Era otro de los organizadores y, en la práctica, mis ojos, mis pies y mi cuerpo en Medellín. Aunque yo tenía muchos contactos de emprendimientos anteriores, no tenía a nadie en el terreno que se encargara de todas esas diligencias, y Henry siempre estuvo atento y dispuesto a ayudarme.
+No tengo cómo agradecerle a Henry Zarza. Era otro de los organizadores y, en la práctica, mis ojos, mis pies y mi cuerpo en Medellín. Aunque yo tenía muchos contactos de emprendimientos anteriores, no tenía a nadie en el terreno que se encargara de todas esas diligencias, y Henry siempre estuvo atento y dispuesto a ayudarme.
 
 Desafortunadamente, la conferencia era para 2020. Una semana antes del evento, con los tiquetes de los speakers, el hotel, el venue, el alquiler de equipos y el internet ya contratados, y con mi propio vuelo programado para ese fin de semana, nos enteramos de que el venue cancelaba todos los eventos. Lo peor fue que el venue no tuvo la profesionalidad de avisarnos con antelación. Nos enteramos por redes sociales y nos tocó manejar una tormenta de preguntas y decisiones.
 

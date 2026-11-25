@@ -154,7 +154,7 @@ From 2018 to 2023, I ran the **Medellín CSS** community together with two other
 
 Thanks to that experience, we decided to embark on a bigger adventure and organize an international conference. Estefany had already given a talk at CSS Conf, so we spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
 
-I can't thank Henry Zarza enough. He was another of the organizers and, in practice, my eyes, my feet, and my body in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
+I can't thank Henry Zarza enough. He was another of the organizers and, in practice, my Avatar in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
 
 Unfortunately, the conference was scheduled for 2020. A week before the event, with the speakers' tickets, the hotel, the venue, the equipment rental, and the internet all arranged, and with my own flight booked for that weekend, we learned that the venue was cancelling every event. What made it worse was that the venue didn't have the professionalism to warn us in advance. We found out through social media, and had to deal with a storm of questions and decisions.
 

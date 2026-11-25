@@ -150,7 +150,7 @@ Enseñar es la mejor forma de aprender para mí. Siempre lo ha sido, y creo que 
 
 ## Creando CSS Conf Colombia
 
-Cuando decidimos embarcarnos en una conferencia internacional, teníamos una ventaja, porque Estefany ya había dado una charla en CSS Conf. Hablamos con su organizadora y nos dio permiso para crear la edición colombiana. Desde ese momento nos tomó un año de preparación. Para entonces yo ya tenía planeado mi viaje a Suecia, así que la mayor parte de las cosas me tocó organizarlas desde allá.
+Cuando decidimos embarcarnos en una conferencia internacional, nuestra mayor ventaja era la experiencia que habíamos ganado con la comunidad del meetup. Estefany ya había dado una charla en CSS Conf, así que hablamos con su organizadora y nos dio permiso para crear la edición colombiana. Desde ese momento nos tomó un año de preparación. Para entonces yo ya tenía planeado mi viaje a Suecia, así que la mayor parte de las cosas me tocó organizarlas desde allá.
 
 No tengo cómo agradecerle a Henry Zarza. Era otro de los organizadores y, en la práctica, mi Avatar en Medellín. Aunque yo tenía muchos contactos de emprendimientos anteriores, no tenía a nadie en el terreno que se encargara de todas esas diligencias, y Henry siempre estuvo atento y dispuesto a ayudarme.
 

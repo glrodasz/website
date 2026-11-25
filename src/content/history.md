@@ -147,3 +147,19 @@ It was a period of a lot of learning and networking. Thanks to streaming, I met 
 It taught me what it means to be on social media and to create content from a different perspective, exposed in front of an audience. I also learned a lot on the technical side, from hardware and good audio to video editing and formats. And it showed me the reality of streaming. I miss it a lot and I had a great time, but it consumes a lot of time. While I could, I made the most of it and practiced one of my favorite things, teaching.
 
 Teaching is the best way to learn for me. It always has been, and I think it always will be.
+
+## Creating CSS Conf Colombia
+
+For several years, I ran the **Medellín CSS** community together with two other organizers, Estefan Aguilar and Luisa Vaca. We organized meetups, usually with two talks each, and workshops with the community. Compared with the well-established communities in Medellín at the time, ours was remarkably successful. We averaged around 100 people in the room, to the point that finding a venue for that many people became a real challenge.
+
+Thanks to that experience, we decided to embark on a bigger adventure and organize an international conference. Estefan had already given a talk at CSS Conf, so we spoke with its organizer and received permission to create the Colombian edition. From that moment, it took us a year of preparation. By then I had already planned my move to Sweden, so I had to organize most things from there.
+
+I can't thank Henry Sarasa enough. He was another of the organizers and, in practice, my eyes, my feet, and my body in Medellín. Even though I had many contacts from past ventures, I had nobody on the ground to take care of all those errands, and Henry was always attentive and ready to help.
+
+Unfortunately, the conference was scheduled for 2020. A week before the event, with the speakers' tickets, the hotel, the venue, the equipment rental, and the internet all arranged, and with my own flight booked for that weekend, we learned that the venue was cancelling every event. What made it worse was that the venue didn't have the professionalism to warn us in advance. We found out through social media, and had to deal with a storm of questions and decisions.
+
+Fortunately, we handled it well. We talked to our sponsors and agreed to postpone. Nobody knew how the pandemic would evolve, and anyone who lived through it knows it took far more than a year or two to return to normal. So we refunded the tickets, increased the number of speakers, and turned it into a fully online conference.
+
+It was a beautiful event, and an incredible experience even though it had to be virtual. To this day, when I run into the speakers, they thank me for it. It was a surprise for them too, and they remember it as a very well-done piece of work.
+
+It is also very hard work, and I would think twice before doing it again. Still, it taught me that a community can take on a much bigger challenge than anyone expects, and that the care you put into the people who join you is remembered long after the event ends.

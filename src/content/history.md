@@ -10,8 +10,6 @@ Over the next two years I taught myself some [Visual Basic](https://en.wikipedia
 
 One moment I still remember clearly was during my final school project. I had to repeat a task many times and I had no idea a `for` statement existed. A friend's brother-in-law explained it to me and it blew my mind. That's when I started to understand that programming isn't only about writing instructions. It's about finding better ways to solve problems.
 
-That's a habit that has stayed with me ever since. I still learn the same way, by experimenting and watching what changes.
-
 ## Fortunate Foundations at University
 
 I enrolled in Systems Engineering mostly because my friends were doing it. I thought I could learn programming on my own through the internet, which wasn't entirely wrong. I was also considering a more design-oriented career, because I was exploring [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) retouching and video editing with [Sony Vegas Pro](https://en.wikipedia.org/wiki/Vegas_Pro).
@@ -19,8 +17,6 @@ I enrolled in Systems Engineering mostly because my friends were doing it. I tho
 University taught me many fundamentals, but it was in an extra summer course that I really got interested in web development. There I learned [PHP](https://en.wikipedia.org/wiki/PHP), [MySQL](https://en.wikipedia.org/wiki/MySQL), [jQuery](https://en.wikipedia.org/wiki/JQuery), and more CSS.
 
 I struggled with subjects like Calculus, Geometry, and Physics, and that pushed me to take more advanced courses. One of the most important was [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), which turned out to be crucial for my professional growth. I'm glad I took those courses early, because they gave me a stronger foundation as a software engineer.
-
-Formal education and self-learning don't compete. They work well together when you're curious.
 
 ## First Steps into the Tech Industry
 
@@ -30,8 +26,6 @@ The other involved [Java](https://en.wikipedia.org/wiki/Java_%28programming_lang
 
 Unfortunately, the company went bankrupt after six months. Thanks to a recommendation from my former boss, I joined another company in a similar role. I grew a lot there and became a more well-rounded engineer.
 
-It was an early example of choosing growth over comfort, something I've done many times since.
-
 ## From Java to Full-stack JavaScript
 
 As I kept learning, I realized that building large web applications meant understanding both Java and JavaScript. Over time I found Java too verbose and complicated for the kind of work I wanted to do, while JavaScript felt more flexible and more fun.
@@ -40,9 +34,7 @@ Around then I discovered [Node.js](https://en.wikipedia.org/wiki/Node.js), which
 
 Like PHP, JavaScript with frameworks such as [Express.js](https://en.wikipedia.org/wiki/Express.js) made it easy to set up a server quickly. When ES6, or [ECMAScript 2015](https://en.wikipedia.org/wiki/ECMAScript_version_history#6th_Edition_%E2%80%93_ECMAScript_2015), came out, I dove into the new features, and they made JavaScript even more powerful and enjoyable.
 
-Frameworks like [Meteor](https://en.wikipedia.org/wiki/Meteor_%28web_framework%29) pushed me further in that direction by making it easier to build web and mobile apps from a shared codebase. It felt efficient, practical, and close to the kind of engineer I wanted to be. That's when I decided to specialize in JavaScript.
-
-It taught me to look for tools that let me move across the whole product, from the interface to the server and from the idea to the implementation.
+Frameworks like [Meteor](https://en.wikipedia.org/wiki/Meteor_%28web_framework%29) pushed me further in that direction by making it easier to build web and mobile apps from a shared codebase. It felt efficient, practical, and close to the kind of engineer I wanted to be. So I decided to specialize in JavaScript.
 
 ## Transitioning to Working in English
 
@@ -68,27 +60,23 @@ Later, I noticed there was no dedicated space for CSS enthusiasts in Medellín. 
 
 The success of that community eventually led us to organize Colombia's first CSS conference. It was a milestone that showed the growing interest in web technologies in the region.
 
-Running these communities taught me a lot about leadership, organizing events, and communication, and about the importance of creating spaces where developers can learn from each other.
-
 ## Building My Own Design Agency
 
-During this period, I also started a design agency with a designer I had met at **Komet Sales**. We called it **Space Monkeys**, and together we worked on several projects, including **Docmeti**, **Mr. Och8**, and **Speed**.
+During this period, I also started a design agency with a designer I had met at **Komet Sales**, someone unusually open to suggestions from a development perspective.
 
-At Komet Sales I met a designer who was unusually open to suggestions from a development perspective. Back then the concept of a web designer was still emerging, and many designers were still working with a traditional print-design mindset. Things like [responsive design](https://en.wikipedia.org/wiki/Responsive_web_design), [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_%28front-end_framework%29), and [accessibility](https://en.wikipedia.org/wiki/Web_accessibility) were often ignored.
+Back then the concept of a web designer was still emerging, and many designers were still working with a traditional print-design mindset. Things like [responsive design](https://en.wikipedia.org/wiki/Responsive_web_design), [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_%28front-end_framework%29), and [accessibility](https://en.wikipedia.org/wiki/Web_accessibility) were often ignored.
 
-With him it was different. He understood how important those things were for the web, and we shared the same interest in combining design quality with technical feasibility. We collaborated really well.
+With him it was different. He understood how important those things were for the web, and we shared the same interest in combining design quality with technical feasibility. We collaborated well.
 
 Eventually he left the company, but we stayed in touch and started collaborating on small freelance projects. After a few successful ones we saw a bigger opportunity. Many agencies weren't fully embracing new technologies and web trends, so we decided to create our own agency and do things differently.
 
-That's how Space Monkeys was born.
+That's how **Space Monkeys** was born.
 
-We delivered many successful projects, but the digital agency space was very saturated, and in the end success often depended on having access to the right clients. Larger clients sometimes hesitated to trust a small agency, even when we produced strong results. Ironically, some larger agencies that lacked technical expertise outsourced work to us.
+We delivered many successful projects, but the digital agency space was very saturated, and success often depended on having access to the right clients. Larger clients sometimes hesitated to trust a small agency, even when we produced strong results. Ironically, some larger agencies that lacked technical expertise outsourced work to us.
 
-We worked on projects for companies such as [Argos](https://en.wikipedia.org/wiki/Grupo_Argos) and **GPM**, and on smaller ones like **La Piel Plus** and Speed. The work ranged from e-commerce sites and mobile apps to interactive games and advanced web applications.
+We worked on projects for companies such as [Argos](https://en.wikipedia.org/wiki/Grupo_Argos) and **GPM**, and on smaller ones like **La Piel Plus** and **Speed**, along with **Docmeti** and **Mr. Och8**. The work ranged from e-commerce sites and mobile apps to interactive games and advanced web applications.
 
-Running Space Monkeys was a valuable experience. I learned how to work with clients, manage employees, and what it takes to run a business. I also gained a deeper appreciation for design by being involved in the creative process every day. It taught me to optimize workflows, communicate better across disciplines, and build products with both technical and visual quality in mind.
-
-It also showed me that a good digital product takes more than code. It takes design awareness, communication, trust, and the ability to turn unclear ideas into something that works.
+Running Space Monkeys, I learned how to work with clients, manage employees, and what it takes to run a business. Being involved in the creative process every day also gave me a deeper appreciation for design, and I got better at optimizing workflows, communicating across disciplines, and building products with both technical and visual quality in mind.
 
 ## A Journey into Startups
 
@@ -102,15 +90,13 @@ The company gained traction, partnerships, and investor interest, but the pandem
 
 Docmeti taught me how complex physical products and operations are, and Workia showed me the speed, ambition, and emotional intensity of a startup.
 
-Those years taught me that building products takes adaptability and resilience, and the ability to keep learning while everything around you changes.
-
 ## Embracing Remote Work
 
 While I was living in Medellín, I was working on a project for a bank. As often happens in large organizations, things moved slowly, with a lot of red tape, processes, and dependencies. Sometimes I finished all my coding in the first few hours of the day, but I was expected to spend the full day at the office, so I couldn't just leave.
 
 Instead of wasting that time, I started investing in myself by reading engineering books, watching tutorials, and taking courses. One of those books was [*Remote*](https://basecamp.com/books/remote), written by the founders of [Basecamp](https://en.wikipedia.org/wiki/37signals). Until then I thought working remotely just meant working from home, but the book showed me a different philosophy, with more control over my time, more flexibility, and the freedom to focus on meaningful work. That resonated with me, especially because I enjoyed building side projects and exploring ideas beyond my job.
 
-I decided to look for a fully remote job and remembered meeting someone from [Auth0](https://auth0.com/) at JS Conf Argentina. I already knew the product and its reputation, so I applied through their website. The interview process was interesting. Instead of a traditional technical test, I had to build a small project while pretending I was already part of the team. They evaluated not only my code but also how I communicated, asked questions, and handled uncertainty. In the end I got the job and became Auth0's second employee in Colombia.
+I decided to look for a fully remote job and remembered meeting someone from [Auth0](https://auth0.com/) at JS Conf Argentina. I already knew the product and its reputation, so I applied through their website. The interview process was interesting. Instead of a traditional technical test, I had to build a small project while pretending I was already part of the team. They evaluated not only my code but also how I communicated, asked questions, and handled uncertainty. I got the job and became Auth0's second employee in Colombia.
 
 Auth0 completely changed my professional landscape. I was suddenly working with talented people from around the world, and that pushed me to raise my standards as an engineer. I also went back to full-stack JavaScript, using Node.js in production, and found new areas of interest like [identity management](https://en.wikipedia.org/wiki/Identity_management) and [OAuth 2.0](https://en.wikipedia.org/wiki/OAuth#OAuth_2.0). Working remotely also sped up my English, since around 90% of my daily communication was in English.
 
